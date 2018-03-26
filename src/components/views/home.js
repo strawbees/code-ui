@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types'
 import App from 'src/components/app'
 
-export default ({
+const HomeView = ({
 	app
 }) =>
 	<App {...app}>
@@ -9,3 +10,9 @@ export default ({
 			asdasd
 		</div>
 	</App>
+
+HomeView.propTypes = {
+	app : PropTypes.shape(App.propTypes)
+}
+
+export default HomeView

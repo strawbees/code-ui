@@ -1,8 +1,15 @@
+import PropTypes from 'prop-types'
 import App from 'src/components/app'
 
-export default ({
+const TextView = ({
 	app
 }) =>
 	<App {...app}>
 		text
 	</App>
+
+TextView.propTypes = {
+	app : PropTypes.shape(App.propTypes)
+}
+
+export default TextView
