@@ -1,0 +1,11 @@
+.DS_Store
+node_modules
+yarn-error.log
+/.env
+/.next
+/out
+/static/lib/nprogress.css
+/static/lib/scratch-blocks
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

@@ -1,0 +1,28 @@
+{
+	"locale.code" : "en",
+	"locale.name" : "English",
+
+	"home.url" : "/",
+	"home.og.title" : "Strawbees CODE",
+
+	"flow.url" : "/flow",
+	"flow.og.title" : "Flow Programming",
+
+	"text.url" : "/text",
+
+	"scratch.url" : "/scratch",
+	"scratch.og.title" : "Scratch Programming",
+	"scratch.toolbox.category.input" : "Input",
+	"scratch.toolbox.category.output" : "Output",
+	"scratch.toolbox.category.control" : "Control",
+	"scratch.toolbox.category.operators" : "Operators",
+	"scratch.toolbox.category.variables" : "My Variables",
+	"scratch.toolbox.category.procedures" : "My Blocks",
+	"scratch.blocks.input_circuit_touch.message0" : "value of circuit touch %1",
+	"scratch.blocks.input_light_sensor.message0" : "value of light sensor %1",
+	"scratch.blocks.places.left_arm" : "left arm",
+	"scratch.blocks.places.left_leg" : "left leg",
+	"scratch.blocks.places.right_arm" : "right arm",
+	"scratch.blocks.places.right_leg" : "right leg",
+	"scratch.blocks.places.horn" : "horn"
+}

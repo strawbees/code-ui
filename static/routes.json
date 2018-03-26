@@ -1,0 +1,58 @@
+{
+	"/": {
+		"page": "/",
+		"query": {
+			"locale" : "en",
+			"ref" : "home"
+		}
+	},
+	"/flow": {
+		"page": "/flow",
+		"query": {
+			"locale" : "en",
+			"ref" : "flow"
+		}
+	},
+	"/scratch": {
+		"page": "/scratch",
+		"query": {
+			"locale" : "en",
+			"ref" : "scratch"
+		}
+	},
+	"/text": {
+		"page": "/text",
+		"query": {
+			"locale" : "en",
+			"ref" : "text"
+		}
+	},
+	"/sv": {
+		"page": "/",
+		"query": {
+			"locale" : "sv",
+			"ref" : "home"
+		}
+	},
+	"/sv/flow": {
+		"page": "/flow",
+		"query": {
+			"locale" : "sv",
+			"ref" : "flow"
+		}
+	},
+	"/sv/scratch": {
+		"page": "/scratch",
+		"query": {
+			"locale" : "sv",
+			"ref" : "scratch"
+		}
+	},
+	"/sv/text": {
+		"page": "/text",
+		"query": {
+			"locale" : "sv",
+			"ref" : "text"
+		}
+	}
+}
