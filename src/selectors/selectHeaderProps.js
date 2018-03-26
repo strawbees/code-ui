@@ -1,12 +1,12 @@
 import selectLocalesMenuProps from 'src/selectors/selectLocalesMenuProps'
-import s from 'src/utils/s'
+import s from 'src/selectors/selectString'
 
 export default (state) => ({
 	header : {
-		homeUrl    : s('home.url'),
-		flowUrl    : s('flow.url'),
-		scratchUrl : s('scratch.url'),
-		textUrl    : s('text.url'),
+		homeUrl    : s('home.url', state),
+		flowUrl    : s('flow.url', state),
+		scratchUrl : s('scratch.url', state),
+		textUrl    : s('text.url', state),
 		...selectLocalesMenuProps(state)
 	}
 })

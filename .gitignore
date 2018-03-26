@@ -6,6 +6,7 @@ yarn-error.log
 /out
 /static/lib/nprogress.css
 /static/lib/scratch-blocks
+/static/locales/*/computed.json
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml

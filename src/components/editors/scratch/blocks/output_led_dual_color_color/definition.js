@@ -1,4 +1,4 @@
-export default () => ({
+export default (state) => ({
 	"message0": "set dual color led %1 color to %2",
 	"args0": [
 		{

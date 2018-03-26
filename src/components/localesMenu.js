@@ -1,13 +1,17 @@
+import PropTypes from 'prop-types'
 import Link from 'src/components/link'
 
-export default ({ current, alternatives }) =>
+const LocalesMenu = ({
+	current,
+	alternatives
+}) =>
 	<div className='root localesMenu'>
-		<style jsx>{`
 
-		`}</style>
-		<Link>
-			{current.title}
-		</Link>
+		{current &&
+			<Link>
+				{current.title}
+			</Link>
+		}
 		{alternatives.map(({ title, url }, key) =>
 			<Link
 				key={key}
@@ -16,3 +20,21 @@ export default ({ current, alternatives }) =>
 			</Link>
 		)}
 	</div>
+
+LocalesMenu.defaultProps = {
+	current      : null,
+	alternatives : []
+}
+
+LocalesMenu.propTypes = {
+	current : PropTypes.shape({
+		title : PropTypes.string,
+		url   : PropTypes.string
+	}),
+	alternatives : PropTypes.arrayOf(PropTypes.shape({
+		title : PropTypes.string,
+		url   : PropTypes.string
+	}))
+}
+
+export default LocalesMenu

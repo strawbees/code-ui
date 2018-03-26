@@ -1,7 +1,8 @@
-import Head from 'next/head'
+import PropTypes from 'prop-types'
+import DocumentHead from 'next/head'
 
-export default ({ og }) =>
-	<Head>
+const Head = ({ og }) =>
+	<DocumentHead>
 		{og['og:title'] &&
 			<title>{og['og:title']}</title>
 		}
@@ -27,4 +28,14 @@ export default ({ og }) =>
 		<link rel="shortcut icon" href="/static/favicon/favicon.ico"/>
 		<meta name="msapplication-config" content="/static/favicon/browserconfig.xml"/>
 		<meta name="theme-color" content="#ffffff"/>
-	</Head>
+	</DocumentHead>
+
+Head.defaultProps = {
+	og : {}
+}
+
+Head.propTypes = {
+	og : PropTypes.objectOf(PropTypes.string)
+}
+
+export default Head

@@ -1,11 +1,12 @@
-import { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import NProgress from 'nprogress'
 import Router from 'next/router'
 import Head from 'src/components/head'
 import Header from 'src/components/header'
 import Footer from 'src/components/footer'
 
-export default class App extends Component {
+class App extends React.Component {
 	componentDidMount() {
 		// hookup nprogress
 		Router.router.events.on('routeChangeStart', NProgress.start)
@@ -19,6 +20,7 @@ export default class App extends Component {
 		Router.router.events.off('routeChangeComplete', NProgress.done)
 		Router.router.events.off('routeChangeError', NProgress.done)
 	}
+
 	render() {
 		const {
 			head,
@@ -64,3 +66,17 @@ export default class App extends Component {
 		)
 	}
 }
+
+App.defaultProps = {
+	head   : Head.defaultProps,
+	header : Header.defaultProps,
+	footer : Footer.defaultProps
+}
+
+App.propTypes = {
+	head   : PropTypes.shape(Head.propTypes),
+	header : PropTypes.shape(Header.propTypes),
+	footer : PropTypes.shape(Footer.propTypes)
+}
+
+export default App

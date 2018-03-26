@@ -2,8 +2,9 @@ import App from 'src/components/app'
 import ScratchEditor from 'src/components/editors/scratch/index'
 
 export default ({
-	app
+	app,
+	scratchEditor
 }) =>
 	<App {...app}>
-		<ScratchEditor/>
+		<ScratchEditor {...scratchEditor}/>
 	</App>

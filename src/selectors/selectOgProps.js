@@ -1,7 +1,4 @@
-/* global CANONICAL_URL */
-import s from 'src/utils/s'
-
-const baseUrl = typeof CANONICAL_URL !== 'undefined' ? CANONICAL_URL : ''
+import s from 'src/selectors/selectString'
 
 export default ({
 	url,
@@ -11,10 +8,10 @@ export default ({
 	type
 }, state) => ({
 	og : {
-		'og:url'         : url || baseUrl ? `${baseUrl}${state.asPath}` : '',
-		'og:title'       : title || s('home.og.title'),
-		'og:description' : description || s('home.og.description'),
-		'og:image'       : image || s('home.og.image'),
+		'og:url'         : url,
+		'og:title'       : title || s('home.og.title', state),
+		'og:description' : description || s('home.og.description', state),
+		'og:image'       : image || s('home.og.image', state),
 		'og:type'        : type || 'website'
 	}
 })

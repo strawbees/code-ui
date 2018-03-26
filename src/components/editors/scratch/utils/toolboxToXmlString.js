@@ -1,5 +1,5 @@
 export default toolbox => `<xml>
-	${toolbox().reduce((xml, {
+	${toolbox.reduce((xml, {
 		name, colour, secondaryColour, blocks = [], custom
 	}) => {
 		xml += `<category

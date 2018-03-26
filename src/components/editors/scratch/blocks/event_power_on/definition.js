@@ -1,4 +1,4 @@
-export default () => ({
+export default (state) => ({
 	"message0"        : "when power is ON",
 	"inputsInline"    : true,
 	"nextStatement"   : null,

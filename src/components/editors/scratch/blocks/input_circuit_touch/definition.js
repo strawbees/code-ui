@@ -1,17 +1,17 @@
-import s from 'src/utils/s'
+import s from 'src/selectors/selectString'
 
-export default () => ({
-	message0 : s('scratch.blocks.input_circuit_touch.message0'),
+export default (state) => ({
+	message0 : s('scratch.blocks.input_circuit_touch.message0', state),
 	args0    : [
 		{
 			type    : 'field_dropdown',
 			name    : 'PLACE',
 			options : [
-				[s('scratch.blocks.places.horn'), 'H'],
-				[s('scratch.blocks.places.left_arm'), 'LA'],
-				[s('scratch.blocks.places.right_arm'), 'RA'],
-				[s('scratch.blocks.places.left_leg'), 'LL'],
-				[s('scratch.blocks.places.right_leg'), 'RL'],
+				[s('scratch.blocks.places.horn', state), 'H'],
+				[s('scratch.blocks.places.left_arm', state), 'LA'],
+				[s('scratch.blocks.places.right_arm', state), 'RA'],
+				[s('scratch.blocks.places.left_leg', state), 'LL'],
+				[s('scratch.blocks.places.right_leg', state), 'RL'],
 			]
 		}
 	],

@@ -1,16 +1,16 @@
 import { Component } from 'react'
-import { registerStrings } from 'src/utils/s'
+import parseUrlVars from 'src/utils/parseUrlVars'
 import loadStaticData from 'src/utils/loadStaticData'
 import inMemoryCache from 'src/utils/inMemoryCache'
 
 let firstClientRender = process.browser
+let FACTORY = 0
 
 export default Child => class WithClientProps extends Component {
 	static async getInitialProps(ctx) {
-		const { query, asPath } = ctx
 		let props = {
-			query,
-			asPath,
+			query   : ctx.query,
+			asPath  : process.browser && ctx.asPath,
 			locales :
 				inMemoryCache.get('locales') ||
 				await loadStaticData('locales/locales.json'),
@@ -18,27 +18,31 @@ export default Child => class WithClientProps extends Component {
 				inMemoryCache.get('routes') ||
 				await loadStaticData('routes.json'),
 			strings :
-				inMemoryCache.get(`strings${query.locale}`) ||
-				await loadStaticData(`locales/${query.locale}/strings.json`)
+				inMemoryCache.get(`strings${ctx.query.locale}`) ||
+				await loadStaticData(`locales/${ctx.query.locale}/computed.json`)
 		}
-		// Register strings (for localization)
-		registerStrings(props.strings)
 
 		if (Child.getInitialProps) {
 			props = await Child.getInitialProps(props)
 		}
 		if (process.browser) {
-			props = WithClientProps.getClientProps(props)
+			props = await WithClientProps.getClientProps(props)
 		}
 		return props
 	}
 
 	static async getClientProps(props) {
-		// Register strings (for localization)
-		registerStrings(props.strings)
-
+		// Due to the static export, we need to recompute the asPath
+		// in the client side
+		if (!props.asPath && props.url) {
+			props = {
+				...props,
+				asPath : props.url.asPath
+			}
+		}
 		props = {
 			...props,
+			urlVars : parseUrlVars(props.asPath),
 			storage : localStorage.getItem('storage') || {}
 		}
 		return Child.getClientProps(props)
@@ -58,25 +62,31 @@ export default Child => class WithClientProps extends Component {
 		inMemoryCache.set('locales', locales)
 		inMemoryCache.set('routes', routes)
 		inMemoryCache.set(`strings${locale}`, strings)
+
+		this.state = this.props
+
+		this.label = ++FACTORY
+	}
+
+	componentWillReceiveProps(props) {
+		this.setState({
+			...props
+		})
 	}
 
 	async componentDidMount() {
 		// If this is the first client render, get the "client side"
 		// props and merge it to state.
 		if (firstClientRender) {
+			firstClientRender = false
 			this.setState({
-				...await WithClientProps.getClientProps(this.props)
+				...await WithClientProps.getClientProps(this.state)
 			})
 		}
 	}
 
 	render() {
-		const { props, state } = this
-		let computedProps = props
-		if (firstClientRender && state) {
-			computedProps = state
-			firstClientRender = false
-		}
-		return <Child {...computedProps}/>
+		const { state } = this
+		return <Child {...state}/>
 	}
 }

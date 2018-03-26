@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types'
 import Link from 'src/components/link'
 import LocalesMenu from 'src/components/localesMenu'
 
-export default ({
+const Header = ({
 	homeUrl,
 	flowUrl,
 	scratchUrl,
@@ -17,17 +18,30 @@ export default ({
 		`}</style>
 		<div className='wrapper'>
 			<Link to={homeUrl}>
-				home
+				home/
 			</Link>
 			<Link to={flowUrl}>
-				flow
+				flow/
 			</Link>
 			<Link to={scratchUrl}>
-				scratch
+				scratch/
+			</Link>
+			<Link to={`${scratchUrl}?p=3w43w4w4`}>
+				scratch?p/
 			</Link>
 			<Link to={textUrl}>
-				text
+				text/
 			</Link>
 			<LocalesMenu {...localesMenu}/>
 		</div>
 	</div>
+
+Header.propTypes = {
+	homeUrl     : PropTypes.string,
+	flowUrl     : PropTypes.string,
+	scratchUrl  : PropTypes.string,
+	textUrl     : PropTypes.string,
+	localesMenu : PropTypes.shape(LocalesMenu.propTypes)
+}
+
+export default Header

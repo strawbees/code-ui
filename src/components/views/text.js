@@ -4,8 +4,5 @@ export default ({
 	app
 }) =>
 	<App {...app}>
-
-		<div className="aaa">
-			asdasd
-		</div>
+		text
 	</App>

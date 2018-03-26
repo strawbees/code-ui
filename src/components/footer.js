@@ -1,11 +1,14 @@
 import Package from 'root/package.json'
 
-export default ({ appProps }) =>
+const Footer = () =>
 	<div className='root footer'>
-		<style jsx>{`
-
-		`}</style>
 		<div className='version'>
 			v{Package.version}
 		</div>
 	</div>
+
+Footer.defaultProps = {}
+
+Footer.propTypes = {}
+
+export default Footer
