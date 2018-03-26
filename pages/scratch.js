@@ -12,6 +12,7 @@ ScratchView.getInitialProps = async (state) => {
 ScratchView.getClientProps = async (state) => {
 	return {
 		...state,
+		// recaulculate app props as this page uses client side url vars
 		...selectAppProps(state),
 		...selectScratchEditorProps(state)
 	}
