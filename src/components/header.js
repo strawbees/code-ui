@@ -7,7 +7,7 @@ const Header = ({
 	flowUrl,
 	scratchUrl,
 	textUrl,
-	localesMenu
+	propsLocalesMenu
 }) =>
 	<div className='root header'>
 		<style jsx>{`
@@ -32,16 +32,16 @@ const Header = ({
 			<Link to={textUrl}>
 				text/
 			</Link>
-			<LocalesMenu {...localesMenu}/>
+			<LocalesMenu {...propsLocalesMenu}/>
 		</div>
 	</div>
 
 Header.propTypes = {
-	homeUrl     : PropTypes.string,
-	flowUrl     : PropTypes.string,
-	scratchUrl  : PropTypes.string,
-	textUrl     : PropTypes.string,
-	localesMenu : PropTypes.shape(LocalesMenu.propTypes)
+	homeUrl          : PropTypes.string,
+	flowUrl          : PropTypes.string,
+	scratchUrl       : PropTypes.string,
+	textUrl          : PropTypes.string,
+	propsLocalesMenu : PropTypes.shape(LocalesMenu.propTypes)
 }
 
 export default Header

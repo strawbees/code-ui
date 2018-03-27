@@ -1,20 +1,20 @@
 import ScratchView from 'src/components/views/scratch'
 import withClientProps from 'src/components/hoc/withClientProps'
-import selectAppProps from 'src/selectors/selectAppProps'
-import selectScratchEditorProps from 'src/selectors/selectScratchEditorProps'
+import propsAppSelector from 'src/selectors/propsApp'
+import propsScratchEditorSelector from 'src/selectors/propsScratchEditor'
 
 ScratchView.getInitialProps = async (state) => {
 	return {
 		...state,
-		...selectAppProps(state)
+		propsApp : propsAppSelector(state)
 	}
 }
 ScratchView.getClientProps = async (state) => {
 	return {
 		...state,
 		// recaulculate app props as this page uses client side url vars
-		...selectAppProps(state),
-		...selectScratchEditorProps(state)
+		propsApp           : propsAppSelector(state),
+		propsScratchEditor : propsScratchEditorSelector(state)
 	}
 }
 

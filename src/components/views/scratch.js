@@ -3,17 +3,17 @@ import App from 'src/components/app'
 import ScratchEditor from 'src/components/editors/scratch/index'
 
 const ScratchView = ({
-	app,
-	scratchEditor
+	propsApp,
+	propsScratchEditor
 }) =>
-	<App {...app}>
-		<ScratchEditor {...scratchEditor}/>
+	<App {...propsApp}>
+		<ScratchEditor {...propsScratchEditor}/>
 	</App>
 
 
 ScratchView.propTypes = {
-	app           : PropTypes.shape(App.propTypes),
-	scratchEditor : PropTypes.shape(ScratchEditor.propTypes)
+	propsApp           : PropTypes.shape(App.propTypes),
+	propsScratchEditor : PropTypes.shape(ScratchEditor.propTypes)
 }
 
 export default ScratchView

@@ -23,9 +23,9 @@ class App extends React.Component {
 
 	render() {
 		const {
-			head,
-			header,
-			footer,
+			propsHead,
+			propsHeader,
+			propsFooter,
 			children
 		} = this.props
 		return (
@@ -58,25 +58,25 @@ class App extends React.Component {
 						grid-template-rows: 3rem auto 2rem;
 					}
 				`}</style>
-				<Head {...head}/>
-				<Header {...header}/>
+				<Head {...propsHead}/>
+				<Header {...propsHeader}/>
 				{children}
-				<Footer {...footer}/>
+				<Footer {...propsFooter}/>
 			</div>
 		)
 	}
 }
 
 App.defaultProps = {
-	head   : Head.defaultProps,
-	header : Header.defaultProps,
-	footer : Footer.defaultProps
+	propsHead   : Head.defaultProps,
+	propsHeader : Header.defaultProps,
+	propsFooter : Footer.defaultProps
 }
 
 App.propTypes = {
-	head   : PropTypes.shape(Head.propTypes),
-	header : PropTypes.shape(Header.propTypes),
-	footer : PropTypes.shape(Footer.propTypes)
+	propsHead   : PropTypes.shape(Head.propTypes),
+	propsHeader : PropTypes.shape(Header.propTypes),
+	propsFooter : PropTypes.shape(Footer.propTypes)
 }
 
 export default App

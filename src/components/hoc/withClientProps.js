@@ -87,6 +87,7 @@ export default Child => class WithClientProps extends Component {
 
 	render() {
 		const { state } = this
+		console.log('render', state)
 		return <Child {...state}/>
 	}
 }

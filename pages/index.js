@@ -1,10 +1,10 @@
 import HomeView from 'src/components/views/home'
 import withClientProps from 'src/components/hoc/withClientProps'
-import selectAppProps from 'src/selectors/selectAppProps'
+import propsAppSelector from 'src/selectors/propsApp'
 
 HomeView.getInitialProps = async state => ({
 	...state,
-	...selectAppProps(state)
+	propsApp : propsAppSelector(state)
 })
 
 HomeView.getClientProps = async state => state

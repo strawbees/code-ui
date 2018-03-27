@@ -1,8 +1,8 @@
-import s from 'src/selectors/selectString'
+import s from 'src/selectors/makeStringSelector'
 
 export default (state) => ([
 	{
-		name            : s('scratch.toolbox.category.input', state),
+		name            : s('scratch.toolbox.category.input')(state),
 		colour          : '#7fd5f0',
 		secondaryColour : '#01adee',
 		blocks          : [
@@ -15,7 +15,7 @@ export default (state) => ([
 		]
 	},
 	{
-		name            : s('scratch.toolbox.category.output', state),
+		name            : s('scratch.toolbox.category.output')(state),
 		colour          : '#f580c5',
 		secondaryColour : '#f75abb',
 		blocks          : [
@@ -88,7 +88,7 @@ export default (state) => ([
 		]
 	},
 	{
-		name            : s('scratch.toolbox.category.control', state),
+		name            : s('scratch.toolbox.category.control')(state),
 		colour          : '#FFAB19',
 		secondaryColour : '#CF8B17',
 		blocks          : [
@@ -132,7 +132,7 @@ export default (state) => ([
 		]
 	},
 	{
-		name            : s('scratch.toolbox.category.operators', state),
+		name            : s('scratch.toolbox.category.operators')(state),
 		colour          : '#40BF4A',
 		secondaryColour : '#389438',
 		blocks          : [
@@ -323,13 +323,13 @@ export default (state) => ([
 		]
 	},
 	{
-		name            : s('scratch.toolbox.category.variables', state),
+		name            : s('scratch.toolbox.category.variables')(state),
 		colour          : '#FF8C1A',
 		secondaryColour : '#DB6E00',
 		custom          : 'VARIABLE'
 	},
 	{
-		name            : s('scratch.toolbox.category.procedures', state),
+		name            : s('scratch.toolbox.category.procedures')(state),
 		colour          : '#FF6680',
 		secondaryColour : '#FF4D6A',
 		custom          : 'PROCEDURE'

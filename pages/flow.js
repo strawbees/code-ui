@@ -1,11 +1,11 @@
 import FlowView from 'src/components/views/flow'
 import withClientProps from 'src/components/hoc/withClientProps'
-import selectAppProps from 'src/selectors/selectAppProps'
+import propsAppSelector from 'src/selectors/propsApp'
 
 FlowView.getInitialProps = async (state) => {
 	return {
 		...state,
-		...selectAppProps(state)
+		propsApp : propsAppSelector(state)
 	}
 }
 FlowView.getClientProps = async (state) => {

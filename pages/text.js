@@ -1,11 +1,11 @@
 import TextView from 'src/components/views/text'
 import withClientProps from 'src/components/hoc/withClientProps'
-import selectAppProps from 'src/selectors/selectAppProps'
+import propsAppSelector from 'src/selectors/propsApp'
 
 TextView.getInitialProps = async (state) => {
 	return {
 		...state,
-		...selectAppProps(state),
+		propsApp : propsAppSelector(state)
 	}
 }
 TextView.getClientProps = async (state) => {

@@ -9,14 +9,14 @@ const LocalesMenu = ({
 
 		{current &&
 			<Link>
-				{current.title}
+				{current.name}
 			</Link>
 		}
-		{alternatives.map(({ title, url }, key) =>
+		{alternatives.map(({ name, url }, key) =>
 			<Link
 				key={key}
 				to={url}>
-				{title}
+				{name}
 			</Link>
 		)}
 	</div>
@@ -28,12 +28,12 @@ LocalesMenu.defaultProps = {
 
 LocalesMenu.propTypes = {
 	current : PropTypes.shape({
-		title : PropTypes.string,
-		url   : PropTypes.string
+		name : PropTypes.string,
+		url  : PropTypes.string
 	}),
 	alternatives : PropTypes.arrayOf(PropTypes.shape({
-		title : PropTypes.string,
-		url   : PropTypes.string
+		name : PropTypes.string,
+		url  : PropTypes.string
 	}))
 }
 
