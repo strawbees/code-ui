@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect'
-import urlVarsSelector from 'src/selectors/urlVars'
+import urlVarsSelector from 'src/selectors/urlVarsSelector'
 
 export default createSelector(
 	[urlVarsSelector],

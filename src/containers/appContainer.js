@@ -1,16 +1,67 @@
 import React from 'react'
 import NProgress from 'nprogress'
 import Router from 'next/router'
+import withSetup from 'src/hoc/withSetup'
+import autobindDispatchToProps from 'src/utils/autobindDispatchToProps'
+import parseUrlVars from 'src/utils/parseUrlVars'
+import loadStaticData from 'src/utils/loadStaticData'
+import storage from 'src/utils/storage'
+import * as setupActions from 'src/actions/setup'
 import HeadContainer from 'src/containers/headContainer'
 import HeaderContainer from 'src/containers/headerContainer'
-//import Footer from 'src/components/footer'
+// import Footer from 'src/components/footer'
+import PageContainer from 'src/containers/pageContainer'
+
 
 class AppContainer extends React.Component {
-	componentDidMount() {
+	static async setup({
+		// next props
+		query,
+		asPath,
+		isServer,
+		// state to props
+		state,
+		// dispatch to props
+		setQuery,
+		setRoutes,
+		setLocales,
+		setStrings,
+		setAsPath,
+		setUrlVars,
+		setLocalStorage
+	}) {
+		setQuery(query)
+		if (!state.routes) {
+			setRoutes(await loadStaticData('routes.json'))
+		}
+		if (!state.locales) {
+			setLocales(await loadStaticData('locales/locales.json'))
+		}
+		if (!state.strings[query.locale]) {
+			setStrings({
+				locale : query.locale,
+				data   : await loadStaticData(`locales/${query.locale}/computed.json`)
+			})
+		}
+		/* if (!isServer) {
+			const computedAsPath = url && asPath !== url.asPath ?
+				url.asPath : asPath
+			setAsPath(computedAsPath)
+			setUrlVars(parseUrlVars(computedAsPath))
+			setLocalStorage(storage.get())
+		} */
+	}
+
+	async componentDidMount() {
 		// hookup nprogress
 		Router.router.events.on('routeChangeStart', NProgress.start)
 		Router.router.events.on('routeChangeComplete', NProgress.done)
 		Router.router.events.on('routeChangeError', NProgress.done)
+		// load local storage
+		const {
+			setLocalStorage
+		} = this.props
+		setLocalStorage(storage.get())
 	}
 
 	componentWillUnmount() {
@@ -21,9 +72,6 @@ class AppContainer extends React.Component {
 	}
 
 	render() {
-		const {
-			children
-		} = this.props
 		return (
 			<div className="root app">
 				<style jsx>{`
@@ -56,10 +104,19 @@ class AppContainer extends React.Component {
 				`}</style>
 				<HeadContainer />
 				<HeaderContainer/>
-				{children}
+				<PageContainer />
 			</div>
 		)
 	}
 }
 
-export default AppContainer
+const mapStateToProps = (state) => ({
+	state
+})
+const mapDispatchToProps = autobindDispatchToProps(setupActions)
+
+export default withSetup(
+	AppContainer,
+	mapStateToProps,
+	mapDispatchToProps
+)

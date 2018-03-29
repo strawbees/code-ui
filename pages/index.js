@@ -1,4 +1,3 @@
-import HomePageContainer from 'src/containers/homePageContainer'
-import withInitialization from 'src/hoc/withInitialization'
+import AppContainer from 'src/containers/appContainer'
 
-export default withInitialization(HomePageContainer)
+export default AppContainer

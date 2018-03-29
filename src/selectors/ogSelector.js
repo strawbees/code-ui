@@ -1,6 +1,6 @@
 /* global CANONICAL_URL */
 import { createSelector } from 'reselect'
-import queryRefSelector from 'src/selectors/queryRef'
+import queryRefSelector from 'src/selectors/queryRefSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 
 const baseUrl = typeof CANONICAL_URL !== 'undefined' ? CANONICAL_URL : ''

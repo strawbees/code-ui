@@ -7,21 +7,21 @@
 		}
 	},
 	"/flow": {
-		"page": "/flow",
+		"page": "/",
 		"query": {
 			"locale" : "en",
 			"ref" : "flow"
 		}
 	},
 	"/scratch": {
-		"page": "/scratch",
+		"page": "/",
 		"query": {
 			"locale" : "en",
 			"ref" : "scratch"
 		}
 	},
 	"/text": {
-		"page": "/text",
+		"page": "/",
 		"query": {
 			"locale" : "en",
 			"ref" : "text"
@@ -35,21 +35,21 @@
 		}
 	},
 	"/sv/flow": {
-		"page": "/flow",
+		"page": "/",
 		"query": {
 			"locale" : "sv",
 			"ref" : "flow"
 		}
 	},
 	"/sv/scratch": {
-		"page": "/scratch",
+		"page": "/",
 		"query": {
 			"locale" : "sv",
 			"ref" : "scratch"
 		}
 	},
 	"/sv/text": {
-		"page": "/text",
+		"page": "/",
 		"query": {
 			"locale" : "sv",
 			"ref" : "text"

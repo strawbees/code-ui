@@ -28,8 +28,7 @@ LocalesMenu.defaultProps = {
 
 LocalesMenu.propTypes = {
 	current : PropTypes.shape({
-		name : PropTypes.string,
-		url  : PropTypes.string
+		name : PropTypes.string
 	}),
 	alternatives : PropTypes.arrayOf(PropTypes.shape({
 		name : PropTypes.string,
