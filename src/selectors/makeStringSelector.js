@@ -8,12 +8,18 @@ export default (key) => createSelector(
 	(
 		localeStrings
 	) => {
+		if (!localeStrings) {
+			// strings are not loaded
+			return ''
+		}
 		if (typeof localeStrings[key] !== 'undefined') {
 			return localeStrings[key]
 		}
-		/* eslint-disable no-console */
-		console.warn(`missing translation: ${key}`)
-		/* eslint-enable no-console */
+		if (process.NODE_EN !== 'production') {
+			/* eslint-disable no-console */
+			console.warn(`missing translation: ${key}`)
+			/* eslint-enable no-console */
+		}
 		return key
 	}
 )

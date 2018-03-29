@@ -6,7 +6,7 @@ import reducer from 'src/reducers/index'
 export default (state = {}) => {
 	const middlewares = []
 	middlewares.push(thunkMiddleware)
-	if (process.browser) {
+	if (process.browser /* && process.NODE_EN !== 'production' */) {
 		middlewares.push(createLogger({
 			collapsed : true,
 			diff      : true
