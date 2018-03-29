@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect'
-import ogSelector from 'src/selectors/og'
+import ogSelector from 'src/selectors/ogSelector'
 
 export default createSelector(
 	[

@@ -1,18 +1,4 @@
-import FlowView from 'src/components/views/flow'
-import withClientProps from 'src/components/hoc/withClientProps'
-import propsAppSelector from 'src/selectors/propsApp'
+import FlowPageContainer from 'src/containers/flowPageContainer'
+import withInitialization from 'src/hoc/withInitialization'
 
-FlowView.getInitialProps = async (state) => {
-	return {
-		...state,
-		propsApp : propsAppSelector(state)
-	}
-}
-FlowView.getClientProps = async (state) => {
-	return {
-		...state
-	}
-}
-
-
-export default withClientProps(FlowView)
+export default withInitialization(FlowPageContainer)

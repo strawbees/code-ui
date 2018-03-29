@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types'
 import Link from 'src/components/link'
-import LocalesMenu from 'src/components/localesMenu'
+//import LocalesMenu from 'src/components/localesMenu'
 
 const Header = ({
 	homeUrl,
 	flowUrl,
 	scratchUrl,
 	textUrl,
-	propsLocalesMenu
+	//propsLocalesMenu
 }) =>
 	<div className='root header'>
 		<style jsx>{`
@@ -32,7 +32,7 @@ const Header = ({
 			<Link to={textUrl}>
 				text/
 			</Link>
-			<LocalesMenu {...propsLocalesMenu}/>
+			{/* <LocalesMenu {...propsLocalesMenu} */}
 		</div>
 	</div>
 
@@ -41,7 +41,7 @@ Header.propTypes = {
 	flowUrl          : PropTypes.string,
 	scratchUrl       : PropTypes.string,
 	textUrl          : PropTypes.string,
-	propsLocalesMenu : PropTypes.shape(LocalesMenu.propTypes)
+	// propsLocalesMenu : PropTypes.shape(LocalesMenu.propTypes)
 }
 
 export default Header

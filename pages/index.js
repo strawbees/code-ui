@@ -1,13 +1,4 @@
-import HomeView from 'src/components/views/home'
-import withClientProps from 'src/components/hoc/withClientProps'
-import propsAppSelector from 'src/selectors/propsApp'
+import HomePageContainer from 'src/containers/homePageContainer'
+import withInitialization from 'src/hoc/withInitialization'
 
-HomeView.getInitialProps = async state => ({
-	...state,
-	propsApp : propsAppSelector(state)
-})
-
-HomeView.getClientProps = async state => state
-
-
-export default withClientProps(HomeView)
+export default withInitialization(HomePageContainer)

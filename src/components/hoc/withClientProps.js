@@ -1,93 +1,102 @@
 import { Component } from 'react'
+import { bindActionCreators } from 'redux'
+import withRedux from 'next-redux-wrapper'
+import initStore from 'src/store'
 import parseUrlVars from 'src/utils/parseUrlVars'
 import loadStaticData from 'src/utils/loadStaticData'
-import inMemoryCache from 'src/utils/inMemoryCache'
+import storage from 'src/utils/storage'
+import * as setupActions from 'src/actions/setup'
 
-let firstClientRender = process.browser
-let FACTORY = 0
-
-export default Child => class WithClientProps extends Component {
-	static async getInitialProps(ctx) {
-		let props = {
-			query   : ctx.query,
-			asPath  : process.browser && ctx.asPath,
-			locales :
-				inMemoryCache.get('locales') ||
-				await loadStaticData('locales/locales.json'),
-			routes :
-				inMemoryCache.get('routes') ||
-				await loadStaticData('routes.json'),
-			strings :
-				inMemoryCache.get(`strings${ctx.query.locale}`) ||
-				await loadStaticData(`locales/${ctx.query.locale}/computed.json`)
-		}
-
-		if (Child.getInitialProps) {
-			props = await Child.getInitialProps(props)
-		}
-		if (process.browser) {
-			props = await WithClientProps.getClientProps(props)
-		}
-		return props
-	}
-
-	static async getClientProps(props) {
-		// Due to the static export, we need to recompute the asPath
-		// in the client side
-		if (!props.asPath && props.url) {
-			props = {
-				...props,
-				asPath : props.url.asPath
-			}
-		}
-		props = {
-			...props,
-			urlVars : parseUrlVars(props.asPath),
-			storage : localStorage.getItem('storage') || {}
-		}
-		return Child.getClientProps(props)
-	}
-
-	constructor(props) {
-		super(props)
-
-		// cache the loaded props
-		const {
-			query : { locale },
-			locales,
-			routes,
-			strings
-		} = this.props
-
-		inMemoryCache.set('locales', locales)
-		inMemoryCache.set('routes', routes)
-		inMemoryCache.set(`strings${locale}`, strings)
-
-		this.state = this.props
-
-		this.label = ++FACTORY
-	}
-
-	componentWillReceiveProps(props) {
-		this.setState({
-			...props
-		})
-	}
-
-	async componentDidMount() {
-		// If this is the first client render, get the "client side"
-		// props and merge it to state.
-		if (firstClientRender) {
-			firstClientRender = false
-			this.setState({
-				...await WithClientProps.getClientProps(this.state)
+export default Child => {
+	class WithClientProps extends Component {
+		static async getInitialProps(ctx) {
+			WithClientProps.setup({
+				__ctx : ctx,
+				...ctx,
+				...WithClientProps.mapStateToProps(ctx.store.getState()),
+				...WithClientProps.mapDispatchToProps(ctx.store.dispatch)
 			})
 		}
+		static async setup({
+			// next props
+			store,
+			query,
+			asPath,
+			isServer,
+			__ctx, // <- full next ctx to pass down to child
+			// state to props
+			routes,
+			locales,
+			strings,
+			// dispatch to props
+			setQuery,
+			setRoutes,
+			setLocales,
+			setStrings,
+			setAsPath,
+			setUrlVars,
+			setLocalStorage
+		}) {
+			setQuery(query)
+			if (!routes) {
+				setRoutes(await loadStaticData('routes.json'))
+			}
+			if (!locales) {
+				setLocales(await loadStaticData('locales/locales.json'))
+			}
+			if (!strings[query.locale]) {
+				setStrings(await loadStaticData(`locales/${query.locale}/computed.json`))
+			}
+			if (!isServer) {
+				const computedAsPath = url && asPath !== url.asPath ?
+					url.asPath : asPath
+				setAsPath(computedAsPath)
+				setUrlVars(parseUrlVars(computedAsPath))
+				setLocalStorage(storage.get())
+			}
+
+			await Child.setup({
+				...__ctx,
+				...Child.mapStateToProps(store.getState()),
+				...Child.mapDispatchToProps(store.dispatch)
+			})
+		}
+
+		async componentDidMount() {
+			// If this is the first client render, get the "client side"
+			// props and merge it to state.
+			if (firstClientRender) {
+				firstClientRender = false
+			//	await WithClientProps.setupClient(this.props)
+			}
+			//console.log(store.getState())
+		}
+
+		render() {
+			return <Child />
+		}
 	}
 
-	render() {
-		const { state } = this
-		console.log('render', state)
-		return <Child {...state}/>
-	}
+	WithClientProps.mapStateToProps = ({
+		routes,
+		locales,
+		strings
+	}) => ({
+		routes,
+		locales,
+		strings
+	})
+	WithClientProps.mapDispatchToProps = (dispatch) => ({
+		setQuery        : bindActionCreators(setupActions.setQuery, dispatch),
+		setAsPath       : bindActionCreators(setupActions.setAsPath, dispatch),
+		setLocales      : bindActionCreators(setupActions.setLocales, dispatch),
+		setRoutes       : bindActionCreators(setupActions.setRoutes, dispatch),
+		setStrings      : bindActionCreators(setupActions.setStrings, dispatch),
+		setLocalStorage : bindActionCreators(setupActions.setLocalStorage, dispatch)
+	})
+	return withRedux(
+		initStore,
+		WithClientProps.mapStateToProps,
+		WithClientProps.mapDispatchToProps
+	)(WithClientProps)
 }

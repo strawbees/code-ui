@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect'
-import propsLocalesMenuSelector from 'src/selectors/propsLocalesMenu'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 
 export default createSelector(
@@ -7,20 +6,17 @@ export default createSelector(
 		makeStringSelector('home.url'),
 		makeStringSelector('flow.url'),
 		makeStringSelector('scratch.url'),
-		makeStringSelector('text.url'),
-		propsLocalesMenuSelector
+		makeStringSelector('text.url')
 	],
 	(
 		homeUrl,
 		flowUrl,
 		scratchUrl,
-		textUrl,
-		propsLocalesMenu
+		textUrl
 	) => ({
 		homeUrl,
 		flowUrl,
 		scratchUrl,
-		textUrl,
-		propsLocalesMenu
+		textUrl
 	})
 )
