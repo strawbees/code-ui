@@ -1,8 +1,10 @@
-import Link from 'next/link'
+import PropTypes from 'prop-types'
+
+import NextLink from 'next/link'
 import routes from 'static/routes.json'
 import generateClassnames from 'src/utils/generateClassnames'
 
-export default ({ children, ...props }) => {
+const Link = ({ children, ...props }) => {
 	const {
 		to,
 		external,
@@ -29,7 +31,7 @@ export default ({ children, ...props }) => {
 
 	if (to) {
 		return (
-			<Link href={href} as={as} {...otherProps}>
+			<NextLink href={href} as={as} {...otherProps}>
 				<a
 					className={`root link ${generateClassnames({
 						to,
@@ -44,7 +46,7 @@ export default ({ children, ...props }) => {
 					`}</style>
 					{children}
 				</a>
-			</Link>
+			</NextLink>
 		)
 	}
 
@@ -62,3 +64,10 @@ export default ({ children, ...props }) => {
 		</span>
 	)
 }
+
+Link.propTypes = {
+	to       : PropTypes.string,
+	external : PropTypes.bool
+}
+
+export default Link

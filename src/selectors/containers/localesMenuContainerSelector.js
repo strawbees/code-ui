@@ -1,10 +1,10 @@
 import { createSelector } from 'reselect'
-import routesSelector from 'src/selectors/routes'
-import queryLocaleSelector from 'src/selectors/queryLocale'
-import queryRefSelector from 'src/selectors/queryRef'
-import urlVarsStringSelector from 'src/selectors/urlVarsString'
-import currentLocaleSelector from 'src/selectors/currentLocale'
-import otherLocalesSelector from 'src/selectors/otherLocales'
+import routesSelector from 'src/selectors/routesSelector'
+import currentLocaleSelector from 'src/selectors/currentLocaleSelector'
+import otherLocalesSelector from 'src/selectors/otherLocalesSelector'
+import queryLocaleSelector from 'src/selectors/queryLocaleSelector'
+import queryRefSelector from 'src/selectors/queryRefSelector'
+import urlVarsStringSelector from 'src/selectors/urlVarsStringSelector'
 
 export default createSelector(
 	[

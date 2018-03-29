@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect'
-import localesSelector from 'src/selectors/locales'
-import queryLocaleSelector from 'src/selectors/queryLocale'
+import localesSelector from 'src/selectors/localesSelector'
+import queryLocaleSelector from 'src/selectors/queryLocaleSelector'
 
 export default createSelector(
 	[
