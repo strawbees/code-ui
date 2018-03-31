@@ -16,11 +16,14 @@ class MidiInterfaceContainer extends React.Component {
 
 		const links = getLinks().reduce((acc, link) => {
 			acc[link.runtimeId] = {
-				runtimeId  : link.runtimeId,
-				uuid       : link.uuid,
-				bootloader : link.bootloader,
-				midi       : link.midi,
-				updated    : link.updated
+				runtimeId              : link.runtimeId,
+				uuid                   : link.uuid,
+				bootloader             : link.bootloader,
+				midi                   : link.midi,
+				updated                : link.updated,
+				uploading              : link.uploading,
+				enteringBootloaderMode : link.enteringBootloaderMode,
+				exitingBootloaderMode  : link.exitingBootloaderMode
 			}
 			return acc
 		}, {})
@@ -33,7 +36,7 @@ class MidiInterfaceContainer extends React.Component {
 		if (process.browser) {
 			initMidi()
 			if (process.env.NODE_ENV !== 'production') {
-				//enableLogs()
+				// enableLogs()
 			}
 			this.timer = window.setInterval(() => this.onTick(), 1000)
 		}
@@ -47,7 +50,7 @@ class MidiInterfaceContainer extends React.Component {
 	}
 }
 
-const mapStateToProps = () => ({})
+const mapStateToProps = null
 const mapDispatchToProps = autobindDispatchToProps(qbmidiActions)
 
 export default connect(
