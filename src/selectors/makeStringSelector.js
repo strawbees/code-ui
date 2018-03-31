@@ -17,7 +17,7 @@ export default (key) => createSelector(
 		}
 		if (process.NODE_EN !== 'production') {
 			/* eslint-disable no-console */
-			console.warn(`missing translation: ${key}`)
+			// console.warn(`missing translation: ${key}`)
 			/* eslint-enable no-console */
 		}
 		return key

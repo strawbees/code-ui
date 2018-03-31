@@ -11,7 +11,9 @@ import {
 const query = (state = null, { type, payload }) => {
 	switch (type) {
 		case SETUP_SET_QUERY:
-			return payload
+			return {
+				...payload
+			}
 		default:
 			return state
 	}
@@ -27,7 +29,9 @@ const asPath = (state = null, { type, payload }) => {
 const urlVars = (state = null, { type, payload }) => {
 	switch (type) {
 		case SETUP_SET_URL_VARS:
-			return payload
+			return {
+				...payload
+			}
 		default:
 			return state
 	}
@@ -35,7 +39,9 @@ const urlVars = (state = null, { type, payload }) => {
 const locales = (state = null, { type, payload }) => {
 	switch (type) {
 		case SETUP_SET_LOCALES:
-			return payload
+			return [
+				...payload
+			]
 		default:
 			return state
 	}
@@ -43,7 +49,9 @@ const locales = (state = null, { type, payload }) => {
 const routes = (state = null, { type, payload }) => {
 	switch (type) {
 		case SETUP_SET_ROUTES:
-			return payload
+			return {
+				...payload
+			}
 		default:
 			return state
 	}

@@ -1,22 +1,36 @@
 import PropTypes from 'prop-types'
 import DocumentHead from 'next/head'
 
-const Head = ({ og }) =>
+const Head = ({
+	ogTitle,
+	ogUrl,
+	ogDescription,
+	ogImage,
+	ogType
+}) =>
 	<DocumentHead>
-		{og['og:title'] &&
-			<title>{og['og:title']}</title>
+		{ogTitle &&
+			<title>{ogTitle}</title>
 		}
-		{og['og:url'] &&
-			<link rel="canonical" href={og['og:url']} />
+		{ogUrl &&
+			<link rel="canonical" href={ogUrl} />
 		}
-		{Object.keys(og).map((m, i) => {
-			if (og[m]) {
-				return (
-					<meta key={i} property={m} content={og[m]} />
-				)
-			}
-			return null
-		})}
+		{ogTitle &&
+			<meta property="og:title" content={ogTitle} />
+		}
+		{ogUrl &&
+			<meta property="og:url" content={ogUrl} />
+		}
+		{ogDescription &&
+			<meta property="og:description" content={ogDescription} />
+		}
+		{ogImage &&
+			<meta property="og:image" content={ogImage} />
+		}
+		{ogType &&
+			<meta property="og:type" content={ogType} />
+		}
+
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<link rel="stylesheet" href="/static/lib/nprogress.css"/>
 
@@ -30,12 +44,13 @@ const Head = ({ og }) =>
 		<meta name="theme-color" content="#ffffff"/>
 	</DocumentHead>
 
-Head.defaultProps = {
-	og : {}
-}
 
 Head.propTypes = {
-	og : PropTypes.objectOf(PropTypes.string)
+	ogTitle       : PropTypes.string,
+	ogUrl         : PropTypes.string,
+	ogDescription : PropTypes.string,
+	ogImage       : PropTypes.string,
+	ogType        : PropTypes.string
 }
 
 export default Head

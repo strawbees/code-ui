@@ -7,10 +7,12 @@ import parseUrlVars from 'src/utils/parseUrlVars'
 import loadStaticData from 'src/utils/loadStaticData'
 import storage from 'src/utils/storage'
 import * as setupActions from 'src/actions/setup'
+
 import HeadContainer from 'src/containers/headContainer'
 import HeaderContainer from 'src/containers/headerContainer'
-// import Footer from 'src/components/footer'
+import FooterContainer from 'src/containers/footerContainer'
 import PageContainer from 'src/containers/pageContainer'
+import MidiInterfaceContainer from 'src/containers/midiInterfaceContainer'
 
 
 class AppContainer extends React.Component {
@@ -27,8 +29,7 @@ class AppContainer extends React.Component {
 		setLocales,
 		setStrings,
 		setAsPath,
-		setUrlVars,
-		setLocalStorage
+		setUrlVars
 	}) {
 		setQuery(query)
 		if (!state.routes) {
@@ -48,7 +49,6 @@ class AppContainer extends React.Component {
 				url.asPath : asPath
 			setAsPath(computedAsPath)
 			setUrlVars(parseUrlVars(computedAsPath))
-			setLocalStorage(storage.get())
 		} */
 	}
 
@@ -69,6 +69,15 @@ class AppContainer extends React.Component {
 		Router.router.events.off('routeChangeStart', NProgress.start)
 		Router.router.events.off('routeChangeComplete', NProgress.done)
 		Router.router.events.off('routeChangeError', NProgress.done)
+	}
+
+	shouldComponentUpdate() {
+		// we just want it to update once, regardless of state changes
+		if (!this.blockRender) {
+			this.blockRender = true
+			return true
+		}
+		return false
 	}
 
 	render() {
@@ -103,8 +112,10 @@ class AppContainer extends React.Component {
 					}
 				`}</style>
 				<HeadContainer />
-				<HeaderContainer/>
+				<HeaderContainer />
 				<PageContainer />
+				<FooterContainer />
+				<MidiInterfaceContainer />
 			</div>
 		)
 	}
