@@ -2,8 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import RemoteStorage from 'remotestoragejs'
 import RemoteStorageDocuments from 'remotestorage-module-documents'
-// import RemoteStorageWidget from 'remotestorage-widget'
-import storage from 'src/utils/storage'
+import RemoteStorageWidget from 'remotestorage-widget'
+import { registerRemoteStorage } from 'src/utils/storage'
 import * as storageActions from 'src/actions/storage'
 import storageManagerContainerSelector from 'src/selectors/containers/storageManagerContainerSelector'
 import autobindDispatchToProps from 'src/utils/autobindDispatchToProps'
@@ -16,7 +16,7 @@ class StorageManagerContainer extends React.Component {
 	componentDidMount() {
 		const {
 			setReady,
-			setPrograms,
+			// setPrograms,
 			addProgram,
 			updateProgram,
 			removeProgram,
@@ -34,8 +34,9 @@ class StorageManagerContainer extends React.Component {
 			// logging : true,
 			modules : [RemoteStorageDocuments]
 		})
+		registerRemoteStorage(rs)
 		rs.setApiKeys({
-			// dropbox     : 'zd6wx3xxewwjdf5',
+			dropbox : 'zd6wx3xxewwjdf5',
 			// googledrive : '797731471383-guaj6k58h14fp8g787o210m533m5scng.apps.googleusercontent.com'
 		})
 		rs.access.claim('strawbeescode', 'rw')
@@ -45,36 +46,40 @@ class StorageManagerContainer extends React.Component {
 		const textClient = rs.strawbeescode.privateList('text')
 
 		// hookup to storage actions
-		const setClientValues = (mode, values) => {
-			const data = Object.entries(values).reduce((acc, entry) => {
-				const [id, value] = entry
-				acc[id] = value
-				delete acc[id]['@context']
-				return acc
-			}, {})
-			setPrograms({
-				mode,
-				data
-			})
-		}
+		// const setClientValues = (mode, values) => {
+		// 	const data = Object.entries(values).reduce((acc, entry) => {
+		// 		const [id, value] = entry
+		// 		acc[id] = value
+		// 		delete acc[id]['@context']
+		// 		return acc
+		// 	}, {})
+		// 	setPrograms({
+		// 		mode,
+		// 		data
+		// 	})
+		// }
 		rs.on('ready', async () => {
+			// fetch all currently stored programs
+			// const [
+			// 	flowValues,
+			// 	scratchValues,
+			// 	textValues
+			// ] = await Promise.all([
+			// 	flowClient.getAll(),
+			// 	scratchClient.getAll(),
+			// 	textClient.getAll()
+			// ])
+			// setClientValues('flow', flowValues)
+			// setClientValues('scratch', scratchValues)
+			// setClientValues('text', textValues)
+			// set storage as ready
 			setReady(true)
-			const [
-				flowValues,
-				scratchValues,
-				textValues
-			] = await Promise.all([
-				flowClient.getAll(),
-				scratchClient.getAll(),
-				textClient.getAll()
-			])
-			setClientValues('flow', flowValues)
-			setClientValues('scratch', scratchValues)
-			setClientValues('text', textValues)
 		})
 		rs.on('disconnected', () => {
-			setReady(false)
+			// remove all programs
 			removeAllPrograms()
+			// mark the storage as not ready
+			setReady(false)
 		})
 		const handleClientChange = mode => e => {
 			const data = {
@@ -105,17 +110,12 @@ class StorageManagerContainer extends React.Component {
 		scratchClient.on('change', handleClientChange('scratch'))
 		textClient.on('change', handleClientChange('text'))
 
-		//  const widget = new RemoteStorageWidget(rs, {
-		//  	leaveOpen : true
-		//  })
-		//  widget.attach('remotestorage-widget-container')
+		const widget = new RemoteStorageWidget(rs, {
+			leaveOpen : true
+		})
+		widget.attach('remotestorage-widget-container')
 	}
-	static getDerivedStateFromProps({ localStorage }) {
-		if (localStorage) {
-			storage.set(localStorage)
-		}
-		return null
-	}
+
 	render() {
 		return null
 	}

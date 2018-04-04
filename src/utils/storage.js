@@ -1,31 +1,24 @@
-const get = () => {
-	if (!process.browser) {
-		return null
-	}
-	try {
-		const storage = JSON.parse(window.localStorage.getItem('__storage__')) || {}
-		return storage
-	} catch (e) {
-		/* eslint-disable no-console */
-		console.log('Error loading local storage', e)
-		/* eslint-enable no-console */
-	}
-	return null
-}
-const set = (storage) => {
-	if (!process.browser) {
-		return
-	}
-	try {
-		window.localStorage.setItem('__storage__', JSON.stringify(storage))
-	} catch (e) {
-		/* eslint-disable no-console */
-		console.log('Error saving local storage', e)
-		/* eslint-enable no-console */
-	}
-}
+let RS
+export const registerRemoteStorage = rs =>
+	RS = rs
 
-export default {
-	get,
-	set
-}
+export const resolveClient = mode =>
+	RS.strawbeescode.privateList(mode)
+
+export const getProgram = async (mode, id) =>
+	resolveClient(mode).get(id)
+
+export const addProgram = async (mode, data) =>
+	resolveClient(mode).add({
+		...data,
+		updated : Date.now()
+	})
+
+export const updateProgram = async (mode, id, data) =>
+	resolveClient(mode).set(id, {
+		...data,
+		updated : Date.now()
+	})
+
+export const removeProgram = async (mode, id) =>
+	resolveClient(mode).remove(id)
