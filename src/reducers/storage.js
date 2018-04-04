@@ -1,25 +1,41 @@
 import { combineReducers } from 'redux'
 import {
+	STORAGE_SET_READY,
+	STORAGE_SET_PROGRAMS,
 	STORAGE_ADD_PROGRAM,
 	STORAGE_UPDATE_PROGRAM,
 	STORAGE_REMOVE_PROGRAM,
 	STORAGE_REMOVE_ALL_PROGRAMS
 } from 'src/constants/actionTypes'
 
-const genericProgramReducer = (state = {}, { type, payload : { id, data } }) => {
+const ready = (state = false, { type, payload }) => {
 	switch (type) {
+		case STORAGE_SET_READY: {
+			return payload
+		}
+		default:
+			return state
+	}
+}
+
+const genericProgramReducer = (state = {}, { type, payload }) => {
+	switch (type) {
+		case STORAGE_SET_PROGRAMS:
+			return {
+				...payload.data
+			}
 		case STORAGE_ADD_PROGRAM:
 		case STORAGE_UPDATE_PROGRAM: {
 			return {
 				...state,
-				[id] : data
+				[payload.id] : payload.data
 			}
 		}
 		case STORAGE_REMOVE_PROGRAM: {
 			const newState = {
 				...state
 			}
-			delete newState[id]
+			delete newState[payload.id]
 			return newState
 		}
 		case STORAGE_REMOVE_ALL_PROGRAMS: {
@@ -29,27 +45,55 @@ const genericProgramReducer = (state = {}, { type, payload : { id, data } }) => 
 			return state
 	}
 }
-const flow = (state = {}, { payload = {} }) => {
-	if (payload.mode !== 'flow') {
+const flowPrograms = (state = {}, action) => {
+	if (action && action.payload && action.payload.mode !== 'flow') {
 		return state
 	}
-	return genericProgramReducer(state, payload)
+	switch (action.type) {
+		case STORAGE_SET_PROGRAMS:
+		case STORAGE_ADD_PROGRAM:
+		case STORAGE_UPDATE_PROGRAM:
+		case STORAGE_REMOVE_PROGRAM:
+		case STORAGE_REMOVE_ALL_PROGRAMS:
+			return genericProgramReducer(state, action)
+		default:
+			return state
+	}
 }
-const scratch = (state = {}, { payload = {} }) => {
-	if (payload.mode !== 'scratch') {
+const scratchPrograms = (state = {}, action) => {
+	if (action && action.payload && action.payload.mode !== 'scratch') {
 		return state
 	}
-	return genericProgramReducer(state, payload)
+	switch (action.type) {
+		case STORAGE_SET_PROGRAMS:
+		case STORAGE_ADD_PROGRAM:
+		case STORAGE_UPDATE_PROGRAM:
+		case STORAGE_REMOVE_PROGRAM:
+		case STORAGE_REMOVE_ALL_PROGRAMS:
+			return genericProgramReducer(state, action)
+		default:
+			return state
+	}
 }
-const text = (state = {}, { payload = {} }) => {
-	if (payload.mode !== 'text') {
+const textPrograms = (state = {}, action) => {
+	if (action && action.payload && action.payload.mode !== 'text') {
 		return state
 	}
-	return genericProgramReducer(state, payload)
+	switch (action.type) {
+		case STORAGE_SET_PROGRAMS:
+		case STORAGE_ADD_PROGRAM:
+		case STORAGE_UPDATE_PROGRAM:
+		case STORAGE_REMOVE_PROGRAM:
+		case STORAGE_REMOVE_ALL_PROGRAMS:
+			return genericProgramReducer(state, action)
+		default:
+			return state
+	}
 }
 
 export default combineReducers({
-	flow,
-	scratch,
-	text
+	ready,
+	flowPrograms,
+	scratchPrograms,
+	textPrograms
 })
