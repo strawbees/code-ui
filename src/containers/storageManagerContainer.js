@@ -41,38 +41,26 @@ class StorageManagerContainer extends React.Component {
 		})
 		rs.access.claim('strawbeescode', 'rw')
 		rs.caching.enable('/strawbeescode/')
-		const flowClient = rs.strawbeescode.privateList('flow')
-		const scratchClient = rs.strawbeescode.privateList('scratch')
-		const textClient = rs.strawbeescode.privateList('text')
+
+		const modes = ['flow', 'scratch', 'text']
+		modes.forEach(mode => {
+			const client = rs.strawbeescode.privateList(mode)
+			client.on('change', ({ newValue, oldValue, relativePath }) => {
+				const data = { ...newValue }
+				delete data['@context']
+				const id = relativePath
+				if (newValue && !oldValue) {
+					addProgram({ mode, id, data })
+				} else if (!newValue && oldValue) {
+					removeProgram({ mode, id })
+				} else if (newValue && oldValue) {
+					updateProgram({ mode, id, data })
+				}
+			})
+		})
 
 		// hookup to storage actions
-		// const setClientValues = (mode, values) => {
-		// 	const data = Object.entries(values).reduce((acc, entry) => {
-		// 		const [id, value] = entry
-		// 		acc[id] = value
-		// 		delete acc[id]['@context']
-		// 		return acc
-		// 	}, {})
-		// 	setPrograms({
-		// 		mode,
-		// 		data
-		// 	})
-		// }
 		rs.on('ready', async () => {
-			// fetch all currently stored programs
-			// const [
-			// 	flowValues,
-			// 	scratchValues,
-			// 	textValues
-			// ] = await Promise.all([
-			// 	flowClient.getAll(),
-			// 	scratchClient.getAll(),
-			// 	textClient.getAll()
-			// ])
-			// setClientValues('flow', flowValues)
-			// setClientValues('scratch', scratchValues)
-			// setClientValues('text', textValues)
-			// set storage as ready
 			setReady(true)
 		})
 		rs.on('disconnected', () => {
@@ -81,35 +69,6 @@ class StorageManagerContainer extends React.Component {
 			// mark the storage as not ready
 			setReady(false)
 		})
-		const handleClientChange = mode => e => {
-			const data = {
-				...e.newValue
-			}
-			delete data['@context']
-			const id = e.relativePath
-			if (e.newValue && !e.oldValue) {
-				addProgram({
-					mode,
-					id,
-					data
-				})
-			} else if (!e.newValue && e.oldValue) {
-				removeProgram({
-					mode,
-					id
-				})
-			} else if (e.newValue && e.oldValue) {
-				updateProgram({
-					mode,
-					id,
-					data
-				})
-			}
-		}
-		flowClient.on('change', handleClientChange('flow'))
-		scratchClient.on('change', handleClientChange('scratch'))
-		textClient.on('change', handleClientChange('text'))
-
 		const widget = new RemoteStorageWidget(rs, {
 			leaveOpen : true
 		})
