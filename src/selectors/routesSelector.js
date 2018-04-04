@@ -1,1 +1,6 @@
-export default (state) => state.routes || []
+export default (state) =>
+	(
+		state &&
+		state.setup &&
+		state.setup.routes
+	) || []

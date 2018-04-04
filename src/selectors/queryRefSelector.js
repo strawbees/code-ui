@@ -1,1 +1,5 @@
-export default (state) => state && state.query && state.query.ref
+export default (state) =>
+	state &&
+	state.setup &&
+	state.setup.query &&
+	state.setup.query.ref

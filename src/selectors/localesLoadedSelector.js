@@ -2,5 +2,5 @@ export default (state) =>
 	(
 		state &&
 		state.setup &&
-		state.setup.strings
-	) || {}
+		state.setup.localesLoaded
+	) || false

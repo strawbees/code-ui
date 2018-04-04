@@ -18,7 +18,7 @@ export default (
 		static async getInitialProps(ctx) {
 			await Component.setup({
 				...ctx,
-				...mapStateToProps(ctx.store.getState()),
+				...mapStateToProps(ctx.store.getState(), {}),
 				...mapDispatchToProps(ctx.store.dispatch)
 			})
 		}

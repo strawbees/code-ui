@@ -216,7 +216,7 @@ ansi-styles@^3.1.0, ansi-styles@^3.2.1:
   dependencies:
     color-convert "^1.9.0"
 
-any-promise@^1.0.0, any-promise@^1.1.0:
+any-promise@^1.1.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/any-promise/-/any-promise-1.3.0.tgz#abc6afeedcea52e809cdc0376aed3ce39635d17f"
 
@@ -2471,10 +2471,6 @@ glob-parent@^3.1.0:
     is-glob "^3.1.0"
     path-dirname "^1.0.0"
 
-glob-promise@3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/glob-promise/-/glob-promise-3.3.0.tgz#d1eb3625c4e6dcbb9b96eeae4425d5a3b135fed2"
-
 glob@7.1.2, glob@^7.0.3, glob@^7.0.5, glob@^7.1.2:
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.2.tgz#c19c9df9a028702d678612384a6552404c636d15"
@@ -2671,11 +2667,7 @@ hoek@2.x.x:
   version "2.16.3"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-2.16.3.tgz#20bb7403d3cea398e91dc4710a8ff1b8274a25ed"
 
-hoist-non-react-statics@2.3.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.3.1.tgz#343db84c6018c650778898240135a1420ee22ce0"
-
-hoist-non-react-statics@^2.5.0:
+hoist-non-react-statics@2.5.0, hoist-non-react-statics@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.0.tgz#d2ca2dfc19c5a91c5a6615ce8e564ef0347e2a40"
 
@@ -3426,8 +3418,8 @@ mkdirp-then@1.2.0:
     minimist "0.0.8"
 
 moment@^2.11.2:
-  version "2.21.0"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.21.0.tgz#2a114b51d2a6ec9e6d83cf803f838a878d8a023a"
+  version "2.22.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.0.tgz#7921ade01017dd45186e7fee5f424f0b8663a730"
 
 move-concurrently@^1.0.1:
   version "1.0.1"
@@ -3455,14 +3447,6 @@ ms@2.1.1:
 mute-stream@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
-
-mz@2.7.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/mz/-/mz-2.7.0.tgz#95008057a56cafadc2bc63dde7f9ff6955948e32"
-  dependencies:
-    any-promise "^1.0.0"
-    object-assign "^4.0.1"
-    thenify-all "^1.0.0"
 
 nan@^2.3.0:
   version "2.10.0"
@@ -3515,9 +3499,9 @@ next-tick@1:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
 
-next@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/next/-/next-5.1.0.tgz#9f79f095b28e1be568ba6fc61ec807409ec77e0a"
+next@^6.0.0-canary.2:
+  version "6.0.0-canary.2"
+  resolved "https://registry.yarnpkg.com/next/-/next-6.0.0-canary.2.tgz#49dcc933aa7a3f22702516f89bc418e24f058a17"
   dependencies:
     "@zeit/check-updates" "1.1.1"
     "@zeit/source-map-support" "0.6.2"
@@ -3544,15 +3528,13 @@ next@^5.1.0:
     fresh "0.5.2"
     friendly-errors-webpack-plugin "1.6.1"
     glob "7.1.2"
-    glob-promise "3.3.0"
-    hoist-non-react-statics "2.3.1"
+    hoist-non-react-statics "2.5.0"
     htmlescape "1.1.1"
     http-errors "1.6.2"
     http-status "1.0.1"
     loader-utils "1.1.0"
     minimist "1.2.0"
     mkdirp-then "1.2.0"
-    mz "2.7.0"
     path-to-regexp "2.1.0"
     prop-types "15.6.0"
     prop-types-exact "1.1.1"
@@ -4307,6 +4289,22 @@ regjsparser@^0.1.4:
   dependencies:
     jsesc "~0.5.0"
 
+remotestorage-module-documents@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/remotestorage-module-documents/-/remotestorage-module-documents-0.2.1.tgz#7f12f2ac7da828f9a25de671e88466d963fc3c1a"
+
+remotestorage-widget@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/remotestorage-widget/-/remotestorage-widget-1.3.0.tgz#6416d0da35fc30bf585331a179079656ed6b1517"
+
+remotestoragejs@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/remotestoragejs/-/remotestoragejs-1.0.3.tgz#8256b3f58c7369db5669814b3a10b6c3bb779830"
+  dependencies:
+    tv4 "^1.3.0"
+    webfinger.js "^2.6.6"
+    xhr2 "^0.1.4"
+
 remove-trailing-separator@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/remove-trailing-separator/-/remove-trailing-separator-1.1.0.tgz#c24bce2a283adad5bc3f58e0d48249b92379d8ef"
@@ -4971,18 +4969,6 @@ text-table@~0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
 
-thenify-all@^1.0.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/thenify-all/-/thenify-all-1.6.0.tgz#1a1918d402d8fc3f98fbf234db0bcc8cc10e9726"
-  dependencies:
-    thenify ">= 3.1.0 < 4"
-
-"thenify@>= 3.1.0 < 4":
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/thenify/-/thenify-3.3.0.tgz#e69e38a1babe969b0108207978b9f62b88604839"
-  dependencies:
-    any-promise "^1.0.0"
-
 through2@^2.0.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.3.tgz#0004569b37c7c74ba39c43f3ced78d1ad94140be"
@@ -5081,6 +5067,10 @@ tunnel-agent@^0.6.0:
   resolved "https://registry.yarnpkg.com/tunnel-agent/-/tunnel-agent-0.6.0.tgz#27a5dea06b36b04a0a9966774b290868f0fc40fd"
   dependencies:
     safe-buffer "^5.0.1"
+
+tv4@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/tv4/-/tv4-1.3.0.tgz#d020c846fadd50c855abb25ebaecc68fc10f7963"
 
 tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
@@ -5299,6 +5289,12 @@ watchpack@^1.4.0:
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
 
+webfinger.js@^2.6.6:
+  version "2.6.6"
+  resolved "https://registry.yarnpkg.com/webfinger.js/-/webfinger.js-2.6.6.tgz#52ebdc85da8c8fb6beb690e8e32594c99d2ff4ae"
+  dependencies:
+    xhr2 "^0.1.4"
+
 webpack-dev-middleware@1.12.0:
   version "1.12.0"
   resolved "https://registry.yarnpkg.com/webpack-dev-middleware/-/webpack-dev-middleware-1.12.0.tgz#d34efefb2edda7e1d3b5dbe07289513219651709"
@@ -5439,6 +5435,10 @@ write@^0.2.1:
 xdg-basedir@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/xdg-basedir/-/xdg-basedir-3.0.0.tgz#496b2cc109eca8dbacfe2dc72b603c17c5870ad4"
+
+xhr2@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/xhr2/-/xhr2-0.1.4.tgz#7f87658847716db5026323812f818cadab387a5f"
 
 xml2js@0.2.6:
   version "0.2.6"

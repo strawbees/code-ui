@@ -1,11 +1,11 @@
+import { combineReducers } from 'redux'
 import {
 	SETUP_SET_QUERY,
 	SETUP_SET_AS_PATH,
 	SETUP_SET_URL_VARS,
 	SETUP_SET_LOCALES,
 	SETUP_SET_ROUTES,
-	SETUP_SET_STRINGS,
-	SETUP_SET_LOCAL_STORAGE
+	SETUP_SET_STRINGS
 } from 'src/constants/actionTypes'
 
 const query = (state = null, { type, payload }) => {
@@ -46,6 +46,14 @@ const locales = (state = null, { type, payload }) => {
 			return state
 	}
 }
+const localesLoaded = (state = false, { type }) => {
+	switch (type) {
+		case SETUP_SET_LOCALES:
+			return true
+		default:
+			return state
+	}
+}
 const routes = (state = null, { type, payload }) => {
 	switch (type) {
 		case SETUP_SET_ROUTES:
@@ -56,33 +64,49 @@ const routes = (state = null, { type, payload }) => {
 			return state
 	}
 }
-const strings = (state = {}, { type, payload }) => {
-	const newState = {
-		...state
-	}
+const routesLoaded = (state = false, { type }) => {
 	switch (type) {
-		case SETUP_SET_STRINGS:
-			newState[payload.locale] = payload.data
-			return newState
+		case SETUP_SET_ROUTES:
+			return true
 		default:
 			return state
 	}
 }
-const localStorage = (state = null, { type, payload }) => {
+const strings = (state = {}, { type, payload }) => {
 	switch (type) {
-		case SETUP_SET_LOCAL_STORAGE:
-			return payload
+		case SETUP_SET_STRINGS: {
+			const newState = {
+				...state
+			}
+			newState[payload.locale] = payload.data
+			return newState
+		}
+		default:
+			return state
+	}
+}
+const stringsLoaded = (state = {}, { type, payload }) => {
+	switch (type) {
+		case SETUP_SET_STRINGS: {
+			const newState = {
+				...state
+			}
+			newState[payload.locale] = true
+			return newState
+		}
 		default:
 			return state
 	}
 }
 
-export default {
+export default combineReducers({
 	query,
 	asPath,
 	urlVars,
 	locales,
+	localesLoaded,
 	routes,
+	routesLoaded,
 	strings,
-	localStorage
-}
+	stringsLoaded
+})

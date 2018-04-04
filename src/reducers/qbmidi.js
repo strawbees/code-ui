@@ -1,6 +1,7 @@
+import { combineReducers } from 'redux'
 import { QBMIDI_SET_LINKS } from 'src/constants/actionTypes'
 
-const qbmidiLinks = (state = {}, { type, payload }) => {
+const links = (state = {}, { type, payload }) => {
 	switch (type) {
 		case QBMIDI_SET_LINKS:
 			return {
@@ -11,6 +12,6 @@ const qbmidiLinks = (state = {}, { type, payload }) => {
 	}
 }
 
-export default {
-	qbmidiLinks
-}
+export default combineReducers({
+	links
+})

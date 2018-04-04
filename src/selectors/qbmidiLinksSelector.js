@@ -1,1 +1,5 @@
-export default (state) => state.qbmidiLinks || {}
+export default (state) =>
+	(
+		state.setup &&
+		state.qbmidi.links
+	) || {}

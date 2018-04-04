@@ -5,7 +5,7 @@ import withSetup from 'src/hoc/withSetup'
 import autobindDispatchToProps from 'src/utils/autobindDispatchToProps'
 import parseUrlVars from 'src/utils/parseUrlVars'
 import loadStaticData from 'src/utils/loadStaticData'
-import storage from 'src/utils/storage'
+import appContainerSelector from 'src/selectors/containers/appContainerSelector'
 import * as setupActions from 'src/actions/setup'
 
 import HeadContainer from 'src/containers/headContainer'
@@ -13,6 +13,7 @@ import HeaderContainer from 'src/containers/headerContainer'
 import FooterContainer from 'src/containers/footerContainer'
 import PageContainer from 'src/containers/pageContainer'
 import MidiInterfaceContainer from 'src/containers/midiInterfaceContainer'
+import StorageManagerContainer from 'src/containers/storageManagerContainer'
 
 
 class AppContainer extends React.Component {
@@ -22,7 +23,9 @@ class AppContainer extends React.Component {
 		asPath,
 		isServer,
 		// state to props
-		state,
+		routesLoaded,
+		localesLoaded,
+		stringsLoaded,
 		// dispatch to props
 		setQuery,
 		setRoutes,
@@ -32,24 +35,22 @@ class AppContainer extends React.Component {
 		setUrlVars
 	}) {
 		setQuery(query)
-		if (!state.routes) {
+		if (!routesLoaded) {
 			setRoutes(await loadStaticData('routes.json'))
 		}
-		if (!state.locales) {
+		if (!localesLoaded) {
 			setLocales(await loadStaticData('locales/locales.json'))
 		}
-		if (!state.strings[query.locale]) {
+		if (!stringsLoaded[query.locale]) {
 			setStrings({
 				locale : query.locale,
 				data   : await loadStaticData(`locales/${query.locale}/computed.json`)
 			})
 		}
-		/* if (!isServer) {
-			const computedAsPath = url && asPath !== url.asPath ?
-				url.asPath : asPath
-			setAsPath(computedAsPath)
-			setUrlVars(parseUrlVars(computedAsPath))
-		} */
+		if (!isServer) {
+			setAsPath(asPath)
+			setUrlVars(parseUrlVars(asPath))
+		}
 	}
 
 	async componentDidMount() {
@@ -57,11 +58,13 @@ class AppContainer extends React.Component {
 		Router.router.events.on('routeChangeStart', NProgress.start)
 		Router.router.events.on('routeChangeComplete', NProgress.done)
 		Router.router.events.on('routeChangeError', NProgress.done)
-		// load local storage
+		// adjust as path on first render
 		const {
-			setLocalStorage
+			setAsPath,
+			setUrlVars
 		} = this.props
-		setLocalStorage(storage.get())
+		setAsPath(Router.router.asPath)
+		setUrlVars(parseUrlVars(Router.router.asPath))
 	}
 
 	componentWillUnmount() {
@@ -72,11 +75,8 @@ class AppContainer extends React.Component {
 	}
 
 	shouldComponentUpdate() {
-		// we just want it to update once, regardless of state changes
-		if (!this.blockRender) {
-			this.blockRender = true
-			return true
-		}
+		// Since we don't really pass down any props/state, we just need
+		// to render once.
 		return false
 	}
 
@@ -111,19 +111,21 @@ class AppContainer extends React.Component {
 						grid-template-rows: 3rem auto 2rem;
 					}
 				`}</style>
+				<div
+					id="remotestorage-widget-container"
+					style={{ display : 'none' }}/>
 				<HeadContainer />
 				<HeaderContainer />
 				<PageContainer />
 				<FooterContainer />
 				<MidiInterfaceContainer />
+				<StorageManagerContainer />
 			</div>
 		)
 	}
 }
 
-const mapStateToProps = (state) => ({
-	state
-})
+const mapStateToProps = appContainerSelector
 const mapDispatchToProps = autobindDispatchToProps(setupActions)
 
 export default withSetup(

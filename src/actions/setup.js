@@ -4,8 +4,7 @@ import {
 	SETUP_SET_URL_VARS,
 	SETUP_SET_LOCALES,
 	SETUP_SET_ROUTES,
-	SETUP_SET_STRINGS,
-	SETUP_SET_LOCAL_STORAGE
+	SETUP_SET_STRINGS
 } from 'src/constants/actionTypes'
 
 export const setQuery = payload => ({
@@ -30,9 +29,5 @@ export const setRoutes = payload => ({
 })
 export const setStrings = payload => ({
 	type : SETUP_SET_STRINGS,
-	payload
-})
-export const setLocalStorage = payload => ({
-	type : SETUP_SET_LOCAL_STORAGE,
 	payload
 })

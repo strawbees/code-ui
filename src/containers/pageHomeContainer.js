@@ -1,8 +1,4 @@
 import { connect } from 'react-redux'
+import PageHome from 'src/components/pageHome'
 
-const PageHomeContainer = () =>
-	<div>
-		Home!
-	</div>
-
-export default connect()(PageHomeContainer)
+export default connect()(PageHome)

@@ -1,1 +1,5 @@
-export default (state) => state.locales || []
+export default (state) =>
+	(
+		state.setup &&
+		state.setup.locales
+	) || []

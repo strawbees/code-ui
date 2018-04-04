@@ -1,6 +1,9 @@
 const get = () => {
+	if (!process.browser) {
+		return null
+	}
 	try {
-		const storage = JSON.parse(localStorage.getItem('__storage__'))
+		const storage = JSON.parse(window.localStorage.getItem('__storage__')) || {}
 		return storage
 	} catch (e) {
 		/* eslint-disable no-console */
@@ -10,8 +13,11 @@ const get = () => {
 	return null
 }
 const set = (storage) => {
+	if (!process.browser) {
+		return
+	}
 	try {
-		localStorage.setItem('__storage__', JSON.stringify(storage))
+		window.localStorage.setItem('__storage__', JSON.stringify(storage))
 	} catch (e) {
 		/* eslint-disable no-console */
 		console.log('Error saving local storage', e)
