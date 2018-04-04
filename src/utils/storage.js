@@ -1,24 +1,24 @@
 let RS
-export const registerRemoteStorage = rs =>
+let privateClient
+export const registerRemoteStorage = rs => {
 	RS = rs
+	privateClient = RS.strawbeescode.privateList('programs')
+}
 
-export const resolveClient = mode =>
-	RS.strawbeescode.privateList(mode)
+export const getProgram = async (id) =>
+	privateClient.get(id)
 
-export const getProgram = async (mode, id) =>
-	resolveClient(mode).get(id)
-
-export const addProgram = async (mode, data) =>
-	resolveClient(mode).add({
+export const addProgram = async (data) =>
+	privateClient.add({
 		...data,
 		updated : Date.now()
 	})
 
-export const updateProgram = async (mode, id, data) =>
-	resolveClient(mode).set(id, {
+export const updateProgram = async (id, data) =>
+	privateClient.set(id, {
 		...data,
 		updated : Date.now()
 	})
 
-export const removeProgram = async (mode, id) =>
-	resolveClient(mode).remove(id)
+export const removeProgram = async (id) =>
+	privateClient.remove(id)

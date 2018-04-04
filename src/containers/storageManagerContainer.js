@@ -41,22 +41,18 @@ class StorageManagerContainer extends React.Component {
 		})
 		rs.access.claim('strawbeescode', 'rw')
 		rs.caching.enable('/strawbeescode/')
-
-		const modes = ['flow', 'scratch', 'text']
-		modes.forEach(mode => {
-			const client = rs.strawbeescode.privateList(mode)
-			client.on('change', ({ newValue, oldValue, relativePath }) => {
-				const data = { ...newValue }
-				delete data['@context']
-				const id = relativePath
-				if (newValue && !oldValue) {
-					addProgram({ mode, id, data })
-				} else if (!newValue && oldValue) {
-					removeProgram({ mode, id })
-				} else if (newValue && oldValue) {
-					updateProgram({ mode, id, data })
-				}
-			})
+		const client = rs.strawbeescode.privateList('programs')
+		client.on('change', ({ newValue, oldValue, relativePath }) => {
+			const data = { ...newValue }
+			delete data['@context']
+			const id = relativePath
+			if (newValue && !oldValue) {
+				addProgram({ id, data })
+			} else if (!newValue && oldValue) {
+				removeProgram({ id })
+			} else if (newValue && oldValue) {
+				updateProgram({ id, data })
+			}
 		})
 
 		// hookup to storage actions
