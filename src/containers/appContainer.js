@@ -110,6 +110,10 @@ class AppContainer extends React.Component {
 						grid-template-columns: 1fr;
 						grid-template-rows: 3rem auto 2rem;
 					}
+					.root :global(> .page) {
+						overflow-y: scroll;
+						-webkit-overflow-scrolling: touch;
+					}
 				`}</style>
 				<div
 					id="remotestorage-widget-container"

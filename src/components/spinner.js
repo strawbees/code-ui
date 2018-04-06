@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import tinycolor from 'tinycolor2'
 import {
 	BLUE,
 	YELLOW
@@ -32,11 +33,11 @@ const Spinner = ({
 				animation-timing-function: linear;
 			}
 			.circles > .a {
-				background-color: ${YELLOW.toRgbString()};
+				background-color: ${tinycolor(YELLOW).toRgbString()};
 				animation-direction: normal;
 			}
 			.circles > .b {
-				background-color: ${BLUE.toRgbString()};
+				background-color: ${tinycolor(BLUE).toRgbString()};
 				animation-direction: reverse;
 			}
 			@keyframes slide {

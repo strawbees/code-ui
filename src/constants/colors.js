@@ -1,16 +1,14 @@
-import tinycolor from 'tinycolor2'
-
-export const YELLOW = tinycolor('#FFF000')
-export const YELLOW_LIGHT = tinycolor('#FFF8A1')
-export const GREEN = tinycolor('rgb(57, 165, 0)')
-export const GREEN_DARK = tinycolor('#48a93d')
-export const BLUE = tinycolor('rgb(0,173,238)')
-export const BLUE_LIGHT = tinycolor('rgb(128,214,247)')
-export const PINK = tinycolor('rgb(244,66,176)')
-export const RED = tinycolor('rgb(240,60,104)')
-export const BLACK = tinycolor('rgb(51,51,51)')
-export const WHITE = tinycolor('white')
-export const GREY = tinycolor('rgb(153,153,153)')
-export const GREY_DARK = tinycolor('rgb(102,102,102)')
-export const GREY_LIGHT = tinycolor('rgb(204,204,204)')
-export const GREY_LIGHTEST = tinycolor('rgb(244,244,244)')
+export const YELLOW = '#FFF000'
+export const YELLOW_LIGHT = '#FFF8A1'
+export const GREEN = 'rgb(57, 165, 0)'
+export const GREEN_DARK = '#48a93d'
+export const BLUE = 'rgb(0,173,238)'
+export const BLUE_LIGHT = 'rgb(128,214,247)'
+export const PINK = 'rgb(244,66,176)'
+export const RED = 'rgb(240,60,104)'
+export const BLACK = 'rgb(51,51,51)'
+export const WHITE = 'white'
+export const GREY = 'rgb(153,153,153)'
+export const GREY_DARK = 'rgb(102,102,102)'
+export const GREY_LIGHT = 'rgb(204,204,204)'
+export const GREY_LIGHTEST = 'rgb(244,244,244)'

@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types'
+import tinycolor from 'tinycolor2'
+import { BLUE } from 'src/constants/colors'
 import Link from 'src/components/link'
 import LocalesMenuContainer from 'src/containers/localesMenuContainer'
 
@@ -13,6 +15,7 @@ const Header = ({
 			.root {
 				display: flex;
 				flex-direction: row;
+				background-color: ${tinycolor(BLUE).setAlpha(0.5).toRgbString()};
 			}
 		`}</style>
 
