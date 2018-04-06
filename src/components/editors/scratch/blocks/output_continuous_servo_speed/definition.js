@@ -1,4 +1,4 @@
-export default (state) => ({
+export default (strings) => ({
 	"message0": "set continuos servo %1 speed to %2",
 	"args0": [
 		{

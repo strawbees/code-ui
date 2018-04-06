@@ -1,4 +1,4 @@
-export default (state) => ({
+export default (strings) => ({
 	"message0": "%1",
 	"args0": [
 		{

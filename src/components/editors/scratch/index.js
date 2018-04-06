@@ -1,14 +1,15 @@
 import React from 'react'
-import withScript from 'src/components/hoc/withScript'
-import xmlToJson from './utils/xmlToJson'
+import withScript from 'src/hoc/withScript'
+import Spinner from 'src/components/spinner'
+// import xmlToJson from './utils/xmlToJson'
 import toolboxToXmlString from './utils/toolboxToXmlString'
 import parsing from './utils/parsing'
 import blocks from './blocks/index'
 import toolbox from './toolbox'
 
 const {
-	assembleStructure,
-	parseBlock,
+	// assembleStructure,
+	// parseBlock,
 	registerGenerator
 } = parsing
 
@@ -19,7 +20,7 @@ class ScratchEditor extends React.Component {
 		} = window
 
 		const {
-			state
+			strings
 		} = this.props
 
 		// Load and register all blocks
@@ -33,7 +34,7 @@ class ScratchEditor extends React.Component {
 				Blockly.Blocks[id] = {
 					/* eslint-disable object-shorthand */
 					/* eslint-disable func-names */
-					init : function () { this.jsonInit(definition(state)) }
+					init : function () { this.jsonInit(definition(strings)) }
 					/* eslint-enable object-shorthand */
 					/* eslint-enable func-names */
 				}
@@ -43,7 +44,7 @@ class ScratchEditor extends React.Component {
 			}
 		})
 		// Load toolbox
-		const toolboxXmlString = toolboxToXmlString(toolbox(state))
+		const toolboxXmlString = toolboxToXmlString(toolbox(strings))
 		const toolboxXml = Blockly.Xml.textToDom(toolboxXmlString)
 
 		// Setup workspace
@@ -118,5 +119,6 @@ class ScratchEditor extends React.Component {
 
 export default withScript(
 	['/static/lib/scratch-blocks/vertical.js'],
-	ScratchEditor
+	ScratchEditor,
+	Spinner
 )

@@ -1,17 +1,17 @@
-import s from 'src/selectors/makeStringSelector'
+import s from 'src/utils/s'
 
-export default (state) => ({
-	message0 : s('scratch.blocks.input_light_sensor.message0')(state),
+export default (strings) => ({
+	message0 : s(strings, 'scratch.blocks.input_light_sensor.message0'),
 	args0    : [
 		{
 			type    : 'field_dropdown',
 			name    : 'PLACE',
 			options : [
-				[s('scratch.blocks.places.horn')(state), 'H'],
-				[s('scratch.blocks.places.left_arm')(state), 'LA'],
-				[s('scratch.blocks.places.right_arm')(state), 'RA'],
-				[s('scratch.blocks.places.left_leg')(state), 'LL'],
-				[s('scratch.blocks.places.right_leg')(state), 'RL'],
+				[s(strings, 'scratch.blocks.places.horn'), 'H'],
+				[s(strings, 'scratch.blocks.places.left_arm'), 'LA'],
+				[s(strings, 'scratch.blocks.places.right_arm'), 'RA'],
+				[s(strings, 'scratch.blocks.places.left_leg'), 'LL'],
+				[s(strings, 'scratch.blocks.places.right_leg'), 'RL'],
 			]
 		}
 	],

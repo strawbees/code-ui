@@ -11,13 +11,13 @@ const Spinner = ({
 	<div className={`root spinner ${status}`}>
 		<style jsx>{`
 			.root {
-				min-width: 2rem;
-				min-height: 1rem;
+				min-width: 2.5rem;
+				min-height: 1.5rem;
 			}
 			.circles {
 				width: 1rem;
 				height: 1rem;
-				margin: 0 0.5rem;
+				margin: 0.25 0.75rem;
 				position: relative;
 				isolation: isolate;
 			}

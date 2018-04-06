@@ -3,7 +3,7 @@ import Script from 'react-load-script'
 
 const CACHE = {}
 
-export default (scripts, Child, PreloadChild) => {
+export default (scripts, Child, Preloader) => {
 	class WithScript extends React.Component {
 		constructor(props) {
 			super(props)
@@ -39,8 +39,8 @@ export default (scripts, Child, PreloadChild) => {
 							onLoad={() => this.handleScriptLoad(script)}
 						/>
 					)}
-					{PreloadChild &&
-						<PreloadChild {...this.props}/>
+					{Preloader &&
+						<Preloader {...this.props}/>
 					}
 				</div>
 			)
