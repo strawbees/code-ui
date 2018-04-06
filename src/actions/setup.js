@@ -1,3 +1,4 @@
+import generateAction from 'src/utils/generateAction'
 import {
 	SETUP_SET_QUERY,
 	SETUP_SET_AS_PATH,
@@ -7,27 +8,9 @@ import {
 	SETUP_SET_STRINGS
 } from 'src/constants/actionTypes'
 
-export const setQuery = payload => ({
-	type : SETUP_SET_QUERY,
-	payload
-})
-export const setAsPath = payload => ({
-	type : SETUP_SET_AS_PATH,
-	payload
-})
-export const setUrlVars = payload => ({
-	type : SETUP_SET_URL_VARS,
-	payload
-})
-export const setLocales = payload => ({
-	type : SETUP_SET_LOCALES,
-	payload
-})
-export const setRoutes = payload => ({
-	type : SETUP_SET_ROUTES,
-	payload
-})
-export const setStrings = payload => ({
-	type : SETUP_SET_STRINGS,
-	payload
-})
+export const setQuery = generateAction(SETUP_SET_QUERY)
+export const setAsPath = generateAction(SETUP_SET_AS_PATH)
+export const setUrlVars = generateAction(SETUP_SET_URL_VARS)
+export const setLocales = generateAction(SETUP_SET_LOCALES)
+export const setRoutes = generateAction(SETUP_SET_ROUTES)
+export const setStrings = generateAction(SETUP_SET_STRINGS)

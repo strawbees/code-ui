@@ -1,3 +1,4 @@
+import generateAction from 'src/utils/generateAction'
 import {
 	STORAGE_SET_READY,
 	STORAGE_SET_PROGRAMS,
@@ -7,27 +8,9 @@ import {
 	STORAGE_REMOVE_ALL_PROGRAMS
 } from 'src/constants/actionTypes'
 
-export const setReady = payload => ({
-	type : STORAGE_SET_READY,
-	payload
-})
-export const setPrograms = payload => ({
-	type : STORAGE_SET_PROGRAMS,
-	payload
-})
-export const addProgram = payload => ({
-	type : STORAGE_ADD_PROGRAM,
-	payload
-})
-export const updateProgram = payload => ({
-	type : STORAGE_UPDATE_PROGRAM,
-	payload
-})
-export const removeProgram = payload => ({
-	type : STORAGE_REMOVE_PROGRAM,
-	payload
-})
-export const removeAllPrograms = payload => ({
-	type : STORAGE_REMOVE_ALL_PROGRAMS,
-	payload
-})
+export const setReady = generateAction(STORAGE_SET_READY)
+export const setPrograms = generateAction(STORAGE_SET_PROGRAMS)
+export const addProgram = generateAction(STORAGE_ADD_PROGRAM)
+export const updateProgram = generateAction(STORAGE_UPDATE_PROGRAM)
+export const removeProgram = generateAction(STORAGE_REMOVE_PROGRAM)
+export const removeAllPrograms = generateAction(STORAGE_REMOVE_ALL_PROGRAMS)
