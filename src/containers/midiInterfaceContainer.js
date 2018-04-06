@@ -5,7 +5,7 @@ import autobindDispatchToProps from 'src/utils/autobindDispatchToProps'
 import {
 	init as initMidi,
 	getLinks,
-	enableLogs
+	// enableLogs
 } from 'quirkbot-midi-interface'
 
 class MidiInterfaceContainer extends React.Component {

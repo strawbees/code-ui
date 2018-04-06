@@ -11,13 +11,14 @@ export const getProgram = async (id) =>
 export const addProgram = async (data) =>
 	privateClient.add({
 		...data,
-		updated : Date.now()
+		createdAt  : Date.now(),
+		modifiedAt : Date.now()
 	})
 
 export const updateProgram = async (id, data) =>
 	privateClient.set(id, {
 		...data,
-		updated : Date.now()
+		modifiedAt : Date.now()
 	})
 
 export const removeProgram = async (id) =>

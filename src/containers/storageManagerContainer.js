@@ -4,9 +4,8 @@ import RemoteStorage from 'remotestoragejs'
 import RemoteStorageDocuments from 'remotestorage-module-documents'
 import RemoteStorageWidget from 'remotestorage-widget'
 import { registerRemoteStorage } from 'src/utils/storage'
-import * as storageActions from 'src/actions/storage'
-import storageManagerContainerSelector from 'src/selectors/containers/storageManagerContainerSelector'
 import autobindDispatchToProps from 'src/utils/autobindDispatchToProps'
+import * as storageActions from 'src/actions/storage'
 
 class StorageManagerContainer extends React.Component {
 	constructor(props) {
@@ -36,8 +35,8 @@ class StorageManagerContainer extends React.Component {
 		})
 		registerRemoteStorage(rs)
 		rs.setApiKeys({
-			dropbox : 'zd6wx3xxewwjdf5',
-			// googledrive : '797731471383-guaj6k58h14fp8g787o210m533m5scng.apps.googleusercontent.com'
+			dropbox     : 'zd6wx3xxewwjdf5',
+			googledrive : '797731471383-guaj6k58h14fp8g787o210m533m5scng.apps.googleusercontent.com'
 		})
 		rs.access.claim('strawbeescode', 'rw')
 		rs.caching.enable('/strawbeescode/')
@@ -76,7 +75,7 @@ class StorageManagerContainer extends React.Component {
 	}
 }
 
-const mapStateToProps = storageManagerContainerSelector
+const mapStateToProps = null
 const mapDispatchToProps = autobindDispatchToProps(storageActions)
 
 export default connect(
