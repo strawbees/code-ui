@@ -34,7 +34,7 @@
     "rimraf": "^2.6.2",
     "s3": "^4.4.0",
     "scratch-blocks": "^0.1.0-prerelease.1522264400",
-    "serve": "^6.5.3",
+    "serve": "^6.5.4",
     "tinycolor2": "^1.4.1"
   },
   "author": "Paulo Barcelos <paulo@strawbees.com>",
