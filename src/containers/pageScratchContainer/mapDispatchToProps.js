@@ -1,10 +1,4 @@
 import autobindDispatchToProps from 'src/utils/autobindDispatchToProps'
-import {
-	setScratchSource,
-	setScratchGeneratedCode
-} from 'src/actions/editor'
+import * as editorActions from 'src/actions/editor'
 
-export default autobindDispatchToProps({
-	setSource        : setScratchSource,
-	setGeneratedCode : setScratchGeneratedCode
-})
+export default autobindDispatchToProps(editorActions)

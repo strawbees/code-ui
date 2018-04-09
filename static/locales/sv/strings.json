@@ -5,5 +5,8 @@
 	"home.og.title" : "Strawbees CODE - SV",
 	"flow.url" : "/sv/flow",
 	"scratch.url" : "/sv/scratch",
-	"text.url" : "/sv/text"
+	"text.url" : "/sv/text",
+
+	"scratch.blocks.input_circuit_touch.message0" : "SV value of circuit touch %1",
+	"scratch.blocks.input_light_sensor.message0" : "SVvalue of light sensor %1"
 }

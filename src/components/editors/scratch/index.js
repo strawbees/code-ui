@@ -17,6 +17,17 @@ class ScratchEditor extends React.Component {
 		super(props)
 		this.mainWorkspaceContainer = React.createRef()
 	}
+
+	loadSource(source) {
+		const {
+			Blockly
+		} = window
+		Blockly.Xml.domToWorkspace(
+			Blockly.Xml.textToDom(source),
+			this.mainWorkspace
+		)
+	}
+
 	componentDidMount() {
 		const {
 			Blockly
@@ -67,30 +78,34 @@ class ScratchEditor extends React.Component {
 		})
 		const { mainWorkspace } = this
 
-		// Add the default initial block
-		Blockly.Xml.domToWorkspace(
-			Blockly.Xml.textToDom(
-				'<xml><block type="event_power_on" id="rootblock" deletable="false" x="50" y="50"></xml>'
-			),
-			mainWorkspace
-		)
-
 		// Handle the source changes
-		const { onSourceCodeChange } = this.props
-		let tempSource = null
+		const {
+			onSourceChange,
+			source
+		} = this.props
+		this.source = source
 		mainWorkspace.addChangeListener(() => {
 			const xml = Blockly.Xml.workspaceToDom(mainWorkspace)
-			const source = Blockly.Xml.domToPrettyText(xml)
-			if (tempSource !== source) {
-				tempSource = source
-				onSourceCodeChange(source)
+			const currentSource = Blockly.Xml.domToText(xml)
+			if (this.source !== currentSource) {
+				this.source = currentSource
+				onSourceChange(currentSource)
 			}
 		})
+		// Load the initial source
+		this.loadSource(source)
 	}
 
 	compomnentWillUnmount() {
-		const { mainWorkspace } = this
-		mainWorkspace.dispose()
+		this.mainWorkspace.dispose()
+	}
+
+	componentDidUpdate() {
+		const { source } = this.props
+		const { source : prevSource } = this
+		if (source !== prevSource) {
+			this.loadSource(source)
+		}
 	}
 
 	render() {
