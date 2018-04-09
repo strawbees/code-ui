@@ -17,21 +17,21 @@ import {
 
 export default combineReducers({
 	flow : combineReducers({
-		name          : generateReducer(EDITOR_SET_FLOW_NAME, ''),
-		saved         : generateReducer(EDITOR_SET_FLOW_SAVED, false),
+		name          : generateReducer(EDITOR_SET_FLOW_NAME),
+		saved         : generateReducer(EDITOR_SET_FLOW_SAVED),
 		source        : generateReducer(EDITOR_SET_FLOW_SOURCE),
-		generatedCode : generateReducer(EDITOR_SET_FLOW_GENERATED_CODE)
+		// generatedCode : generateReducer(EDITOR_SET_FLOW_GENERATED_CODE)
 	}),
 	scratch : combineReducers({
-		name          : generateReducer(EDITOR_SET_SCRATCH_NAME, ''),
-		saved         : generateReducer(EDITOR_SET_SCRATCH_SAVED, false),
+		name          : generateReducer(EDITOR_SET_SCRATCH_NAME),
+		saved         : generateReducer(EDITOR_SET_SCRATCH_SAVED),
 		source        : generateReducer(EDITOR_SET_SCRATCH_SOURCE),
-		generatedCode : generateReducer(EDITOR_SET_SCRATCH_GENERATED_CODE)
+		// generatedCode : generateReducer(EDITOR_SET_SCRATCH_GENERATED_CODE)
 	}),
 	text : combineReducers({
-		name          : generateReducer(EDITOR_SET_TEXT_NAME, ''),
-		saved         : generateReducer(EDITOR_SET_TEXT_SAVED, false),
+		name          : generateReducer(EDITOR_SET_TEXT_NAME),
+		saved         : generateReducer(EDITOR_SET_TEXT_SAVED),
 		source        : generateReducer(EDITOR_SET_TEXT_SOURCE),
-		generatedCode : generateReducer(EDITOR_SET_TEXT_GENERATED_CODE)
+		// generatedCode : generateReducer(EDITOR_SET_TEXT_GENERATED_CODE)
 	})
 })

@@ -1,65 +1,50 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-class EditorMenu extends React.Component {
-	state = {
-		name : ''
-	}
-	static getDerivedStateFromProps({ name }) {
-		return {
-			name
+const EditorMenu = ({
+	name,
+	saved,
+	saveButtonLabel,
+	shareButtonLabel,
+	uploadButtonLabel,
+	placeholderName,
+	setName,
+	setSaved,
+	onSharePress,
+	onUploadPress
+}) =>
+	<div className='root editorMenu'>
+		<style jsx>{`
+			.root {
+				display: flex;
+				flex-direction: row;
+			}
+		`}</style>
+		<input
+			type="text"
+			value={name}
+			placeholder={placeholderName}
+			onChange={e => setName(e.target.value)}
+		/>
+		{!saved &&
+			<button onClick={() => setSaved(true)}>
+				{saveButtonLabel}
+			</button>
 		}
-	}
-	render() {
-		const {
-			saved,
-			saveButtonLabel,
-			shareButtonLabel,
-			uploadButtonLabel,
-			setName,
-			setSaved,
-			onSharePress,
-			onUploadPress,
-		} = this.props
-		const {
-			name
-		} = this.state
-		return (
-			<div className='root editorMenu'>
-				<style jsx>{`
-					.root {
-						display: flex;
-						flex-direction: row;
-					}
-				`}</style>
-				<input
-					type="text"
-					value={name}
-					onChange={e => setName(e.target.value)}
-				/>
-				{!saved &&
-					<button onClick={() => setSaved(true)}>
-						{saveButtonLabel}
-					</button>
-				}
-				<button onClick={onSharePress}>
-					{shareButtonLabel}
-				</button>
-				<button onClick={onUploadPress}>
-					{uploadButtonLabel}
-				</button>
-			</div>
-		)
-	}
-}
+		<button onClick={onSharePress}>
+			{shareButtonLabel}
+		</button>
+		<button onClick={onUploadPress}>
+			{uploadButtonLabel}
+		</button>
+	</div>
 
-EditorMenu.defaultProps = {
-	name : ''
-}
+EditorMenu.defaultProps = {}
 
 EditorMenu.propTypes = {
 	name              : PropTypes.string,
 	saved             : PropTypes.bool,
+	placeholderName   : PropTypes.string,
 	saveButtonLabel   : PropTypes.string,
 	shareButtonLabel  : PropTypes.string,
 	uploadButtonLabel : PropTypes.string,

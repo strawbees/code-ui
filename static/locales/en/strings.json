@@ -10,7 +10,7 @@
 
 	"text.url" : "/text",
 
-	"ui.editor.newProgram.name" : "untitled program",
+	"ui.editor.program.placeholder_name" : "untitled program",
 	"ui.editor.save" : "save",
 	"ui.editor.share" : "share",
 	"ui.editor.upload" : "upload",

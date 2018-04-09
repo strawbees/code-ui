@@ -30,9 +30,6 @@ const Header = ({
 		<Link to={scratchUrl}>
 			scratch/
 		</Link>
-		<Link to={`${scratchUrl}?p=3w43w4w4`}>
-			scratch?p/
-		</Link>
 		<Link to={textUrl}>
 			text/
 		</Link>
