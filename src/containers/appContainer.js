@@ -108,7 +108,7 @@ class AppContainer extends React.Component {
 						width: 100vw;
 						display: grid;
 						grid-template-columns: 1fr;
-						grid-template-rows: 3rem auto 2rem;
+						grid-template-rows: 2rem auto 2rem;
 					}
 					.root :global(> .page) {
 						overflow-y: scroll;

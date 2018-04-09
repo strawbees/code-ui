@@ -10,6 +10,11 @@
 
 	"text.url" : "/text",
 
+	"ui.editor.newProgram.name" : "untitled program",
+	"ui.editor.save" : "save",
+	"ui.editor.share" : "share",
+	"ui.editor.upload" : "upload",
+
 	"scratch.url" : "/scratch",
 	"scratch.og.title" : "Scratch Programming",
 	"scratch.toolbox.category.input" : "Input",

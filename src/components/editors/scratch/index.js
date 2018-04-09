@@ -1,7 +1,6 @@
 import React from 'react'
 import withScript from 'src/hoc/withScript'
 import Spinner from 'src/components/spinner'
-// import xmlToJson from './utils/xmlToJson'
 import toolboxToXmlString from './utils/toolboxToXmlString'
 import parsing from './utils/parsing'
 import blocks from './blocks/index'
@@ -14,6 +13,10 @@ const {
 } = parsing
 
 class ScratchEditor extends React.Component {
+	constructor(props) {
+		super(props)
+		this.mainWorkspaceContainer = React.createRef()
+	}
 	componentDidMount() {
 		const {
 			Blockly
@@ -49,7 +52,7 @@ class ScratchEditor extends React.Component {
 
 		// Setup workspace
 		const { mainWorkspaceContainer } = this
-		this.mainWorkspace = Blockly.inject(mainWorkspaceContainer, {
+		this.mainWorkspace = Blockly.inject(mainWorkspaceContainer.current, {
 			toolbox : toolboxXml,
 			media   : '/static/lib/scratch-blocks/media/',
 			zoom    : {
@@ -67,10 +70,22 @@ class ScratchEditor extends React.Component {
 		// Add the default initial block
 		Blockly.Xml.domToWorkspace(
 			Blockly.Xml.textToDom(
-				'<xml><block type="event_power_on" deletable="false" x="50" y="50"></xml>'
+				'<xml><block type="event_power_on" id="rootblock" deletable="false" x="50" y="50"></xml>'
 			),
 			mainWorkspace
 		)
+
+		// Handle the source changes
+		const { onSourceCodeChange } = this.props
+		let tempSource = null
+		mainWorkspace.addChangeListener(() => {
+			const xml = Blockly.Xml.workspaceToDom(mainWorkspace)
+			const source = Blockly.Xml.domToPrettyText(xml)
+			if (tempSource !== source) {
+				tempSource = source
+				onSourceCodeChange(source)
+			}
+		})
 	}
 
 	compomnentWillUnmount() {
@@ -78,16 +93,7 @@ class ScratchEditor extends React.Component {
 		mainWorkspace.dispose()
 	}
 
-	assignMainWorkspaceContainer(e) {
-		this.mainWorkspaceContainer = e
-	}
-
 	render() {
-		let {
-			assignMainWorkspaceContainer
-		} = this
-		assignMainWorkspaceContainer = assignMainWorkspaceContainer.bind(this)
-
 		return (
 			<div className='root editor scratch'>
 				<style jsx>{`
@@ -110,15 +116,27 @@ class ScratchEditor extends React.Component {
 				`}</style>
 				<div
 					className='workspace'
-					ref={ assignMainWorkspaceContainer }
+					ref={ this.mainWorkspaceContainer }
 				/>
 			</div>
 		)
 	}
 }
 
-export default withScript(
+const ScratchEditorWithStrings = (props) => {
+	// as the editor breaks if the correct strings are not in place,
+	// we need to make sure they are loaded before diplaying it
+	if (!props.strings) {
+		return <Spinner />
+	}
+	return (
+		<ScratchEditor {...props}/>
+	)
+}
+
+const ScratchEditorWithScript = withScript(
 	['/static/lib/scratch-blocks/vertical.js'],
-	ScratchEditor,
+	ScratchEditorWithStrings,
 	Spinner
 )
+export default ScratchEditorWithScript

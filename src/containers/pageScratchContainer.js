@@ -6,19 +6,18 @@ import {
 	setScratchGeneratedCode
 } from 'src/actions/editor'
 import ScratchEditor from 'src/components/editors/scratch'
-import Spinner from 'src/components/spinner'
 
-
-const PageScratchContainer = (props) => {
-	// as the editor breaks if the correct strings are not in place,
-	// we need to make sure they are loaded before diplaying it
-	if (!props.strings) {
-		return <Spinner />
-	}
-	return (
-		<ScratchEditor {...props}/>
-	)
+const onSourceCodeChange = (source) => {
+	console.log(source)
 }
+
+const fns = {
+	onSourceCodeChange
+}
+
+
+const PageScratchContainer = (props) =>
+	<ScratchEditor {...props} {...fns}/>
 
 
 const mapStateToProps = pageScratchContainerSelector

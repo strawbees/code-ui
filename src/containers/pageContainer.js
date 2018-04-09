@@ -4,34 +4,39 @@ import { connect } from 'react-redux'
 import queryRefSelector from 'src/selectors/queryRefSelector'
 import Spinner from 'src/components/spinner'
 
-const PageHomeContainer = dynamic(
-	import('src/containers/pageHomeContainer'),
-	{ loading : () => <Spinner/> }
-)
-const PageFlowContainer = dynamic(
-	import('src/containers/pageFlowContainer'),
-	{ loading : () => <Spinner/> }
-)
-const PageScratchContainer = dynamic(
-	import('src/containers/pageScratchContainer'),
-	{ loading : () => <Spinner/> }
-)
-const PageTextContainer = dynamic(
-	import('src/containers/pageTextContainer'),
-	{ loading : () => <Spinner/> }
-)
+// const PageHomeContainer = dynamic(
+// 	import('src/containers/pageHomeContainer'),
+// 	{ loading : () => <Spinner/> }
+// )
+// const PageFlowContainer = dynamic(
+// 	import('src/containers/pageFlowContainer'),
+// 	{ loading : () => <Spinner/> }
+// )
+// const PageScratchContainer = dynamic(
+// 	import('src/containers/pageScratchContainer'),
+// 	{ loading : () => <Spinner/> }
+// )
+// const PageTextContainer = dynamic(
+// 	import('src/containers/pageTextContainer'),
+// 	{ loading : () => <Spinner/> }
+// )
 
-const PageContainer = ({ queryRef }) => {
+import PageHomeContainer from 'src/containers/pageHomeContainer'
+import PageFlowContainer from 'src/containers/pageFlowContainer'
+import PageScratchContainer from 'src/containers/pageScratchContainer'
+import PageTextContainer from 'src/containers/pageTextContainer'
+
+const PageContainer = (props) => {
 	const components = {
 		home    : PageHomeContainer,
 		flow    : PageFlowContainer,
 		scratch : PageScratchContainer,
 		text    : PageTextContainer,
 	}
-	const RefComponent = components[queryRef]
+	const RefComponent = components[props.queryRef]
 	return (
 		<div className='root page'>
-			<RefComponent />
+			<RefComponent {...props}/>
 		</div>
 	)
 }

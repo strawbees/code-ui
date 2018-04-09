@@ -6,7 +6,12 @@ const LocalesMenu = ({
 	alternatives
 }) =>
 	<div className='root localesMenu'>
-
+		<style jsx>{`
+			.root {
+				display: flex;
+				flex-direction: row;
+			}
+		`}</style>
 		{current &&
 			<Link>
 				{current.name}
