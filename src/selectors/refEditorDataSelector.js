@@ -1,14 +1,14 @@
 import { createSelector } from 'reselect'
 import editorSelector from 'src/selectors/editorSelector'
-import queryRefSelector from 'src/selectors/queryRefSelector'
+import refEditorTypeSelector from 'src/selectors/refEditorTypeSelector'
 
 export default createSelector(
 	[
 		editorSelector,
-		queryRefSelector,
+		refEditorTypeSelector,
 	],
 	(
 		editor,
-		queryRef
-	) => editor[queryRef]
+		type
+	) => editor[type]
 )

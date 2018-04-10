@@ -8,8 +8,12 @@ import mergeProps from './mergeProps'
 
 class EditorMenuContainer extends React.Component {
 	state = {}
-	static getDerivedStateFromProps({ notInitialized, initializeProgram }) {
-		if (notInitialized) {
+	static getDerivedStateFromProps({ initialized, initializeProgram }) {
+		if (
+			typeof initialized !== 'undefined' &&
+			typeof initializeProgram !== 'undefined' &&
+			!initialized
+		) {
 			initializeProgram()
 		}
 		return null
@@ -21,7 +25,7 @@ class EditorMenuContainer extends React.Component {
 
 EditorMenuContainer.propTypes = {
 	initializeProgram : PropTypes.func,
-	notInitialized    : PropTypes.bool
+	initialized       : PropTypes.bool
 }
 
 export default connect(

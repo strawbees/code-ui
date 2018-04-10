@@ -1,4 +1,13 @@
 import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
-import * as editorActions from 'src/actions/editor'
+import {
+	updateCurrentEditorProgramName,
+	resetCurrentEditorProgram,
+	saveCurrentEditorProgram
+} from 'src/actions/program'
 
-export default autobindDispatchToActionCreators(editorActions)
+export default autobindDispatchToActionCreators({
+	onNameChange      : updateCurrentEditorProgramName,
+	onSavePress       : saveCurrentEditorProgram,
+	onNewPress        : resetCurrentEditorProgram,
+	initializeProgram : resetCurrentEditorProgram
+})

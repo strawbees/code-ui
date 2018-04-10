@@ -4,16 +4,16 @@ export default (stateProps, dispatchProps, ownProps) => {
 	} = ownProps
 
 	const {
-		openProgramInEditorById,
-		removeProgramAndClearEditor
+		openProgramByIdAndGoToEditor,
+		removeProgramByIdAndClearEditor
 	} = dispatchProps
 
 	return {
 		...stateProps,
 		...dispatchProps,
 		...ownProps,
-		onEditPress      : () => openProgramInEditorById(id),
-		onRemovePress    : () => removeProgramAndClearEditor(id),
+		onEditPress      : () => openProgramByIdAndGoToEditor(id),
+		onRemovePress    : () => removeProgramByIdAndClearEditor(id),
 		onSharePress     : () => {},
 		onDuplicatePress : () => {},
 	}

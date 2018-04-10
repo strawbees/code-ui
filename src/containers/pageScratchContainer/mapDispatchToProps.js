@@ -1,4 +1,6 @@
 import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
-import * as editorActions from 'src/actions/editor'
+import { updateCurrentEditorProgramSource } from 'src/actions/program'
 
-export default autobindDispatchToActionCreators(editorActions)
+export default autobindDispatchToActionCreators({
+	onSourceChange : updateCurrentEditorProgramSource
+})
