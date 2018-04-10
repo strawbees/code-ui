@@ -57,18 +57,12 @@ class AppContainer extends React.Component {
 		if (query.program) {
 			try {
 				const program = JSON.parse(query.program)
-				switch (program.type) {
-					case 'flow':
-						setFlowProgram(program)
-						break
-					case 'scratch':
-						setScratchProgram(program)
-						break
-					case 'text':
-						setTextProgram(program)
-						break
-					default:
-						break
+				if (program.type === 'flow') {
+					setFlowProgram(program)
+				} else if (program.type === 'scratch') {
+					setScratchProgram(program)
+				} else if (program.type === 'text') {
+					setTextProgram(program)
 				}
 			} catch (e) {
 				// eslint-disable-next-line no-console
