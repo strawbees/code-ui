@@ -1,4 +1,4 @@
 import * as qbmidiActions from 'src/actions/qbmidi'
-import autobindDispatchToProps from 'src/utils/autobindDispatchToProps'
+import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
 
-export default autobindDispatchToProps(qbmidiActions)
+export default autobindDispatchToActionCreators(qbmidiActions)

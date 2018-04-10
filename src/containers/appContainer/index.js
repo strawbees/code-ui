@@ -30,7 +30,11 @@ class AppContainer extends React.Component {
 		setLocales,
 		setStrings,
 		setAsPath,
-		setUrlVars
+		setUrlVars,
+		// editor action
+		setFlowProgram,
+		setScratchProgram,
+		setTextProgram
 	}) {
 		setQuery(query)
 		if (!routesLoaded) {
@@ -48,6 +52,28 @@ class AppContainer extends React.Component {
 		if (!isServer) {
 			setAsPath(asPath)
 			setUrlVars(parseUrlVars(asPath))
+		}
+		// if there is a "program" query, deal with it
+		if (query.program) {
+			try {
+				const program = JSON.parse(query.program)
+				switch (program.type) {
+					case 'flow':
+						setFlowProgram(program)
+						break
+					case 'scratch':
+						setScratchProgram(program)
+						break
+					case 'text':
+						setTextProgram(program)
+						break
+					default:
+						break
+				}
+			} catch (e) {
+				// eslint-disable-next-line no-console
+				console.log('Error try to handle program query', e)
+			}
 		}
 	}
 

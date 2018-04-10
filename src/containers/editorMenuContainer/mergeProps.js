@@ -1,50 +1,71 @@
+import {
+	addProgram,
+	updateProgramName
+} from 'src/utils/storage'
 import generateNewProgramSource from 'src/utils/generateNewProgramSource'
 
 export default (stateProps, dispatchProps, ownProps) => {
 	const {
-		queryRef
+		queryRef,
+		saved,
+		id
 	} = stateProps
 	const {
 		setFlowName,
 		setFlowSource,
-		setFlowSaved,
+		setFlowId,
 		setScratchName,
 		setScratchSource,
-		setScratchSaved,
+		setScratchId,
 		setTextName,
 		setTextSource,
-		setTextSaved,
+		setTextId,
 	} = dispatchProps
 
-	const editorActions = {
-		flow : {
-			setName   : setFlowName,
-			setSource : setFlowSource,
-			setSaved  : setFlowSaved,
+	let setName
+	let setSource
+	let setId
 
-		},
-		scratch : {
-			setName   : setScratchName,
-			setSource : setScratchSource,
-			setSaved  : setScratchSaved
-		},
-		text : {
-			setName   : setTextName,
-			setSource : setTextSource,
-			setSaved  : setTextSaved
-		},
+	switch (queryRef) {
+		case 'flow':
+			setName = setFlowName
+			setSource = setFlowSource
+			setId = setFlowId
+			break
+		case 'scratch':
+			setName = setScratchName
+			setSource = setScratchSource
+			setId = setScratchId
+			break
+		case 'text':
+			setName = setTextName
+			setSource = setTextSource
+			setId = setTextId
+			break
+		default:
+			break
 	}
-	const {
-		setName,
-		setSource
-	} = editorActions[queryRef]
 
 	return {
 		...stateProps,
 		...dispatchProps,
 		...ownProps,
-		setName,
+		onNameChange : (name) => {
+			setName(name)
+			if (saved) {
+				updateProgramName(id, name)
+			}
+		},
+		onSavePress : async () => {
+			const {
+				name,
+				source
+			} = stateProps
+			const doc = await addProgram(queryRef, name, source)
+			setId(doc.id)
+		},
 		initializeProgram : () => {
+			setId(null)
 			setName('')
 			setSource(generateNewProgramSource(queryRef))
 		}

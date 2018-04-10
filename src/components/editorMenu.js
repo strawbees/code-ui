@@ -8,8 +8,8 @@ const EditorMenu = ({
 	shareButtonLabel,
 	uploadButtonLabel,
 	placeholderName,
-	setName,
-	setSaved,
+	onNameChange,
+	onSavePress,
 	onSharePress,
 	onUploadPress
 }) =>
@@ -24,10 +24,10 @@ const EditorMenu = ({
 			type="text"
 			value={name}
 			placeholder={placeholderName}
-			onChange={e => setName(e.target.value)}
+			onChange={e => onNameChange(e.target.value)}
 		/>
 		{!saved &&
-			<button onClick={() => setSaved(true)}>
+			<button onClick={onSavePress}>
 				{saveButtonLabel}
 			</button>
 		}
@@ -48,8 +48,8 @@ EditorMenu.propTypes = {
 	saveButtonLabel   : PropTypes.string,
 	shareButtonLabel  : PropTypes.string,
 	uploadButtonLabel : PropTypes.string,
-	setName           : PropTypes.func,
-	setSaved          : PropTypes.func,
+	onNameChange      : PropTypes.func,
+	onSavePress       : PropTypes.func,
 	onSharePress      : PropTypes.func,
 	onUploadPress     : PropTypes.func,
 }

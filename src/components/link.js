@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
-
 import NextLink from 'next/link'
-import routes from 'static/routes.json'
+import resolveLinkUrl from 'src/utils/resolveLinkUrl'
 import generateClassnames from 'src/utils/generateClassnames'
 
 const Link = ({ children, ...props }) => {
@@ -11,23 +10,10 @@ const Link = ({ children, ...props }) => {
 		...otherProps
 	} = props
 
-	let href
-	let as
-	if (to && routes[to]) {
-		href = {
-			pathname : routes[to].page,
-			query    : routes[to].query
-		}
-		as = to
-	} else if (to && routes[to.split('?')[0]]) {
-		href = {
-			pathname : routes[to.split('?')[0]].page,
-			query    : routes[to.split('?')[0]].query
-		}
-		as = to
-	} else {
-		href = to
-	}
+	const {
+		href,
+		as
+	} = resolveLinkUrl(to)
 
 	if (to) {
 		return (

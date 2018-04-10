@@ -1,4 +1,4 @@
-import autobindDispatchToProps from 'src/utils/autobindDispatchToProps'
+import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
 import * as editorActions from 'src/actions/editor'
 
-export default autobindDispatchToProps(editorActions)
+export default autobindDispatchToActionCreators(editorActions)

@@ -8,18 +8,43 @@ export const registerRemoteStorage = rs => {
 export const getProgram = async (id) =>
 	privateClient.get(id)
 
-export const addProgram = async (data) =>
+export const addProgram = async (type, name, source) =>
 	privateClient.add({
-		...data,
+		type,
+		name,
+		source,
 		createdAt  : Date.now(),
 		modifiedAt : Date.now()
 	})
 
-export const updateProgram = async (id, data) =>
-	privateClient.set(id, {
-		...data,
+export const updateProgram = async (id, name, source) => {
+	const program = await getProgram(id)
+	return privateClient.set(id, {
+		...program,
+		name,
+		source,
 		modifiedAt : Date.now()
 	})
+}
+
+export const updateProgramName = async (id, name) => {
+	const program = await getProgram(id)
+	return privateClient.set(id, {
+		...program,
+		name,
+		modifiedAt : Date.now()
+	})
+}
+
+export const updateProgramSource = async (id, source) => {
+	const program = await getProgram(id)
+	return privateClient.set(id, {
+		...program,
+		source,
+		modifiedAt : Date.now()
+	})
+}
+
 
 export const removeProgram = async (id) =>
 	privateClient.remove(id)

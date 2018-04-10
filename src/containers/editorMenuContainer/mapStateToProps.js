@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import queryRefSelector from 'src/selectors/queryRefSelector'
 import refEditorNameSelector from 'src/selectors/refEditorNameSelector'
 import refEditorSourceSelector from 'src/selectors/refEditorSourceSelector'
-import refEditorSavedSelector from 'src/selectors/refEditorSavedSelector'
+import refEditorIdSelector from 'src/selectors/refEditorIdSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 
 export default createSelector(
@@ -10,7 +10,7 @@ export default createSelector(
 		queryRefSelector,
 		refEditorNameSelector,
 		refEditorSourceSelector,
-		refEditorSavedSelector,
+		refEditorIdSelector,
 		makeStringSelector('ui.editor.program.placeholder_name'),
 		makeStringSelector('ui.editor.save'),
 		makeStringSelector('ui.editor.share'),
@@ -20,17 +20,18 @@ export default createSelector(
 		queryRef,
 		name,
 		source,
-		saved,
+		id,
 		placeholderName,
 		saveButtonLabel,
 		shareButtonLabel,
 		uploadButtonLabel,
 	) => ({
-		programNotInitialized : source === null,
-
-		name : name || '',
+		notInitialized : source === null,
+		name           : name || '',
+		saved          : id !== null,
+		id,
+		source,
 		queryRef,
-		saved,
 		placeholderName,
 		saveButtonLabel,
 		shareButtonLabel,

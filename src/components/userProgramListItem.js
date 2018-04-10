@@ -4,32 +4,32 @@ const UserProgramListItem = ({
 	name,
 	type,
 	createdAt,
-	edit,
-	remove,
-	duplicate,
-	share
+	onEditPress,
+	onRemovePress,
+	onDuplicatePress,
+	onSharePress
 }) =>
 	<div className='root userProgramListItem'>
 		<div className='name'>{name}</div>
 		<div className='type'>{type}</div>
 		<div className='createdAt'>{createdAt}</div>
-		<button onClick={edit}>edit</button>
-		<button onClick={remove}>remove</button>
-		<button onClick={duplicate}>duplicate</button>
-		<button onClick={share}>share</button>
+		<button onClick={onEditPress}>edit</button>
+		<button onClick={onRemovePress}>remove</button>
+		<button onClick={onDuplicatePress}>duplicate</button>
+		<button onClick={onSharePress}>share</button>
 	</div>
 
 UserProgramListItem.defaultProps = {
 }
 
 UserProgramListItem.propTypes = {
-	name      : PropTypes.string,
-	type      : PropTypes.string,
-	createdAt : PropTypes.string,
-	edit      : PropTypes.func,
-	remove    : PropTypes.func,
-	duplicate : PropTypes.func,
-	share     : PropTypes.func
+	name             : PropTypes.string,
+	type             : PropTypes.string,
+	createdAt        : PropTypes.string,
+	onEditPress      : PropTypes.func,
+	onRemovePress    : PropTypes.func,
+	onDuplicatePress : PropTypes.func,
+	onSharePress     : PropTypes.func
 }
 
 export default UserProgramListItem

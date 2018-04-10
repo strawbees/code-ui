@@ -1,30 +1,45 @@
 import generateAction from 'src/utils/generateAction'
 import {
 	EDITOR_SET_FLOW_NAME,
-	EDITOR_SET_FLOW_SAVED,
+	EDITOR_SET_FLOW_ID,
 	EDITOR_SET_FLOW_SOURCE,
 	EDITOR_SET_FLOW_GENERATED_CODE,
 	EDITOR_SET_SCRATCH_NAME,
-	EDITOR_SET_SCRATCH_SAVED,
+	EDITOR_SET_SCRATCH_ID,
 	EDITOR_SET_SCRATCH_SOURCE,
 	EDITOR_SET_SCRATCH_GENERATED_CODE,
 	EDITOR_SET_TEXT_NAME,
-	EDITOR_SET_TEXT_SAVED,
+	EDITOR_SET_TEXT_ID,
 	EDITOR_SET_TEXT_SOURCE,
 	EDITOR_SET_TEXT_GENERATED_CODE
 } from 'src/constants/actionTypes'
 
 export const setFlowName = generateAction(EDITOR_SET_FLOW_NAME)
-export const setFlowSaved = generateAction(EDITOR_SET_FLOW_SAVED)
+export const setFlowId = generateAction(EDITOR_SET_FLOW_ID)
 export const setFlowSource = generateAction(EDITOR_SET_FLOW_SOURCE)
 export const setFlowGeneratedCode = generateAction(EDITOR_SET_FLOW_GENERATED_CODE)
+export const setFlowProgram = ({ id, name, source }) => (dispatch) => {
+	dispatch(setFlowId(id))
+	dispatch(setFlowName(name))
+	dispatch(setFlowSource(source))
+}
 
 export const setScratchName = generateAction(EDITOR_SET_SCRATCH_NAME)
-export const setScratchSaved = generateAction(EDITOR_SET_SCRATCH_SAVED)
+export const setScratchId = generateAction(EDITOR_SET_SCRATCH_ID)
 export const setScratchSource = generateAction(EDITOR_SET_SCRATCH_SOURCE)
 export const setScratchGeneratedCode = generateAction(EDITOR_SET_SCRATCH_GENERATED_CODE)
+export const setScratchProgram = ({ id, name, source }) => (dispatch) => {
+	dispatch(setScratchId(id))
+	dispatch(setScratchName(name))
+	dispatch(setScratchSource(source))
+}
 
 export const setTextName = generateAction(EDITOR_SET_TEXT_NAME)
-export const setTextSaved = generateAction(EDITOR_SET_TEXT_SAVED)
+export const setTextId = generateAction(EDITOR_SET_TEXT_ID)
 export const setTextSource = generateAction(EDITOR_SET_TEXT_SOURCE)
 export const setTextGeneratedCode = generateAction(EDITOR_SET_TEXT_GENERATED_CODE)
+export const setTextProgram = ({ id, name, source }) => (dispatch) => {
+	dispatch(setTextId(id))
+	dispatch(setTextName(name))
+	dispatch(setTextSource(source))
+}

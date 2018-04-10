@@ -1,4 +1,4 @@
-import autobindDispatchToProps from 'src/utils/autobindDispatchToProps'
+import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
 import * as storageActions from 'src/actions/storage'
 
-export default autobindDispatchToProps(storageActions)
+export default autobindDispatchToActionCreators(storageActions)
