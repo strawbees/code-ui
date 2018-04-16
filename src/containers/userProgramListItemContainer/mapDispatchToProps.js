@@ -1,12 +1,12 @@
 import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
 import {
 	openProgramByIdAndGoToEditor,
-	removeProgramByIdAndClearEditor,
+	modalRemoveProgram,
+	modalDuplicateProgram
 } from 'src/actions/program'
-import { openDialogModal } from 'src/actions/modal'
 
 export default autobindDispatchToActionCreators({
 	openProgramByIdAndGoToEditor,
-	removeProgramByIdAndClearEditor,
-	openDialogModal
+	modalRemoveProgram,
+	modalDuplicateProgram
 })

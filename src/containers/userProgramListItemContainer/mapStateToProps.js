@@ -1,20 +1,15 @@
 import { createSelector } from 'reselect'
-import storageProgramsSelector from 'src/selectors/storageProgramsSelector'
-import makeStringSelector from 'src/selectors/makeStringSelector'
+import formatedProgramSelector from 'src/selectors/formatedProgramSelector'
 
 export default createSelector(
 	[
-		(_, { id }) => id,
-		storageProgramsSelector,
-		makeStringSelector('ui.editor.program.placeholder_name'),
+		formatedProgramSelector,
 	],
 	(
-		id,
-		storagePrograms,
-		placeholderName
+		formatedProgram
 	) => ({
-		name      : storagePrograms[id].name || placeholderName,
-		type      : storagePrograms[id].type,
-		createdAt : storagePrograms[id].createdAt.toString()
+		name      : formatedProgram.name,
+		type      : formatedProgram.type,
+		createdAt : formatedProgram.createdAt.toString()
 	})
 )

@@ -4,7 +4,12 @@ import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
-const SContainer = ({ string }) => string || ''
+const SContainer = ({ string, onChange, render = true }) => {
+	if (onChange) {
+		onChange(string)
+	}
+	return render && (string || '')
+}
 SContainer.propTypes = {
 	string : PropTypes.string
 }

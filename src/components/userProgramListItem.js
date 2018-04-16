@@ -8,7 +8,8 @@ const UserProgramListItem = ({
 	onEditPress,
 	onRemovePress,
 	onDuplicatePress,
-	onSharePress
+	onSharePress,
+	onUploadPress
 }) =>
 	<div className='root userProgramListItem'>
 		<div className='name'>{name}</div>
@@ -26,6 +27,9 @@ const UserProgramListItem = ({
 		<button onClick={onSharePress}>
 			<S value='ui.editor.share'/>
 		</button>
+		<button onClick={onUploadPress}>
+			<S value='ui.editor.upload'/>
+		</button>
 	</div>
 
 UserProgramListItem.defaultProps = {
@@ -38,7 +42,8 @@ UserProgramListItem.propTypes = {
 	onEditPress      : PropTypes.func,
 	onRemovePress    : PropTypes.func,
 	onDuplicatePress : PropTypes.func,
-	onSharePress     : PropTypes.func
+	onSharePress     : PropTypes.func,
+	onUploadPress    : PropTypes.func,
 }
 
 export default UserProgramListItem

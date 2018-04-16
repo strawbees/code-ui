@@ -34,7 +34,10 @@ const Dialog = ({
 		}
 	</div>
 
-Dialog.defaultProps = {}
+Dialog.defaultProps = {
+	displayConfirm : true,
+	displayCancel  : true
+}
 
 Dialog.propTypes = {
 	children : PropTypes.oneOfType([
@@ -46,7 +49,7 @@ Dialog.propTypes = {
 	confirmLabel   : PropTypes.string,
 	cancelLabel    : PropTypes.string,
 	onConfirm      : PropTypes.func,
-	onCance        : PropTypes.func,
+	onCancel       : PropTypes.func,
 }
 
 export default Dialog

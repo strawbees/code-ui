@@ -11,7 +11,7 @@
 	"text.url" : "/text",
 
 	"ui.editor.program.placeholder_name" : "untitled program",
-	"ui.editor.edit" : "save",
+	"ui.editor.edit" : "edit",
 	"ui.editor.remove" : "remove",
 	"ui.editor.duplicate" : "duplicate",
 	"ui.editor.save" : "save",
