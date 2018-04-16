@@ -11,9 +11,15 @@
 	"text.url" : "/text",
 
 	"ui.editor.program.placeholder_name" : "untitled program",
+	"ui.editor.edit" : "save",
+	"ui.editor.remove" : "remove",
+	"ui.editor.duplicate" : "duplicate",
 	"ui.editor.save" : "save",
 	"ui.editor.share" : "share",
 	"ui.editor.upload" : "upload",
+
+	"ui.buttons.cancel" : "cancel",
+	"ui.buttons.confirm" : "ok",
 
 	"scratch.url" : "/scratch",
 	"scratch.og.title" : "Scratch Programming",

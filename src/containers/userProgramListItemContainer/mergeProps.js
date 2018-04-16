@@ -6,7 +6,7 @@ export default (stateProps, dispatchProps, ownProps) => {
 	const {
 		openProgramByIdAndGoToEditor,
 		removeProgramByIdAndClearEditor,
-		openModal
+		openDialogModal
 	} = dispatchProps
 
 	return {
@@ -14,10 +14,15 @@ export default (stateProps, dispatchProps, ownProps) => {
 		...dispatchProps,
 		...ownProps,
 		onEditPress   : () => openProgramByIdAndGoToEditor(id),
-		onRemovePress : () => {
-			openModal()
-			// removeProgramByIdAndClearEditor(id)
-		},
+		onRemovePress : () => openDialogModal(
+			'Are you sureaa',
+			{
+				displayCancel   : true,
+				displayConfirm  : true,
+				displayLabelKey : 'ui.editor.remove',
+				onConfirm       : () => removeProgramByIdAndClearEditor(id)
+			}
+		),
 		onSharePress     : () => {},
 		onDuplicatePress : () => {},
 	}

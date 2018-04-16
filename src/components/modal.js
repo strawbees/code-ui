@@ -10,7 +10,7 @@ if (process.browser) {
 
 const Modal = ({
 	display,
-	content : Content,
+	content,
 	onRequestClose
 }) =>
 	<ReactModal
@@ -58,7 +58,7 @@ const Modal = ({
 			close
 		</div>
 		<div className="content">
-			{Content && <Content onRequestClose={onRequestClose}/>}
+			{content}
 		</div>
 	</ReactModal>
 
