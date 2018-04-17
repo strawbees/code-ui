@@ -5,6 +5,7 @@ const UserProgramListItem = ({
 	name,
 	type,
 	createdAt,
+	uploadEnabled,
 	onEditPress,
 	onRemovePress,
 	onDuplicatePress,
@@ -27,7 +28,7 @@ const UserProgramListItem = ({
 		<button onClick={onSharePress}>
 			<S value='ui.editor.share'/>
 		</button>
-		<button onClick={onUploadPress}>
+		<button onClick={onUploadPress} disabled={!uploadEnabled}>
 			<S value='ui.editor.upload'/>
 		</button>
 	</div>
@@ -39,6 +40,7 @@ UserProgramListItem.propTypes = {
 	name             : PropTypes.string,
 	type             : PropTypes.string,
 	createdAt        : PropTypes.string,
+	uploadEnabled    : PropTypes.bool,
 	onEditPress      : PropTypes.func,
 	onRemovePress    : PropTypes.func,
 	onDuplicatePress : PropTypes.func,

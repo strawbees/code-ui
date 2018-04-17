@@ -8,7 +8,7 @@ import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
-class StorageManagerContainer extends React.Component {
+class StorageManager extends React.Component {
 	componentDidMount() {
 		const {
 			setReady,
@@ -76,4 +76,4 @@ export default connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
-)(StorageManagerContainer)
+)(StorageManager)

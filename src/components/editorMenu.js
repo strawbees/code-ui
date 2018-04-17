@@ -1,12 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import S from 'src/containers/sContainer'
 
 const EditorMenu = ({
 	name,
 	saved,
-	saveButtonLabel,
-	shareButtonLabel,
-	uploadButtonLabel,
+	uploadEnabled,
 	placeholderName,
 	onNameChange,
 	onSavePress,
@@ -28,30 +27,28 @@ const EditorMenu = ({
 		/>
 		{!saved &&
 			<button onClick={onSavePress}>
-				{saveButtonLabel}
+				<S value='ui.editor.save'/>
 			</button>
 		}
 		<button onClick={onSharePress}>
-			{shareButtonLabel}
+			<S value='ui.editor.share'/>
 		</button>
-		<button onClick={onUploadPress}>
-			{uploadButtonLabel}
+		<button onClick={onUploadPress} disabled={!uploadEnabled}>
+			<S value='ui.editor.upload'/>
 		</button>
 	</div>
 
 EditorMenu.defaultProps = {}
 
 EditorMenu.propTypes = {
-	name              : PropTypes.string,
-	saved             : PropTypes.bool,
-	placeholderName   : PropTypes.string,
-	saveButtonLabel   : PropTypes.string,
-	shareButtonLabel  : PropTypes.string,
-	uploadButtonLabel : PropTypes.string,
-	onNameChange      : PropTypes.func,
-	onSavePress       : PropTypes.func,
-	onSharePress      : PropTypes.func,
-	onUploadPress     : PropTypes.func,
+	name            : PropTypes.string,
+	saved           : PropTypes.bool,
+	placeholderName : PropTypes.string,
+	uploadEnabled   : PropTypes.bool,
+	onNameChange    : PropTypes.func,
+	onSavePress     : PropTypes.func,
+	onSharePress    : PropTypes.func,
+	onUploadPress   : PropTypes.func,
 }
 
 export default EditorMenu

@@ -4,7 +4,7 @@ import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
-class MidiInterfaceContainer extends React.Component {
+class MidiInterfaceManager extends React.Component {
 	onTick() {
 		const {
 			setQbmidiLinks,
@@ -55,4 +55,4 @@ export default connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
-)(MidiInterfaceContainer)
+)(MidiInterfaceManager)

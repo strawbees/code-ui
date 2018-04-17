@@ -17,20 +17,10 @@ class PageHome extends React.Component {
 		document.body.appendChild(el)
 	}
 	render() {
-		const {
-			addProgram
-		} = this.props
 		return (
 			<div className='root pageHome'>
 				<div ref={this.localStorageWidget} />
 				<UserProgramListContainer />
-				<button onClick={() => addProgram({
-					type : 'flow',
-					name : 'Untitled Program',
-					data : Date.now()
-				})}>
-					add program
-				</button>
 			</div>
 		)
 	}

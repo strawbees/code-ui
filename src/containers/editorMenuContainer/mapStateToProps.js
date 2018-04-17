@@ -3,6 +3,7 @@ import refEditorNameSelector from 'src/selectors/refEditorNameSelector'
 import refEditorSavedSelector from 'src/selectors/refEditorSavedSelector'
 import refEditorInitializedSelector from 'src/selectors/refEditorInitializedSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
+import qbmidiLinksSelector from 'src/selectors/qbmidiLinksSelector'
 
 export default createSelector(
 	[
@@ -10,25 +11,19 @@ export default createSelector(
 		refEditorSavedSelector,
 		refEditorInitializedSelector,
 		makeStringSelector('ui.editor.program.placeholder_name'),
-		makeStringSelector('ui.editor.save'),
-		makeStringSelector('ui.editor.share'),
-		makeStringSelector('ui.editor.upload'),
+		qbmidiLinksSelector
 	],
 	(
 		name,
 		saved,
 		initialized,
 		placeholderName,
-		saveButtonLabel,
-		shareButtonLabel,
-		uploadButtonLabel,
+		qbmidiLinks,
 	) => ({
 		name,
 		saved,
 		initialized,
 		placeholderName,
-		saveButtonLabel,
-		shareButtonLabel,
-		uploadButtonLabel,
+		uploadEnabled : Object.keys(qbmidiLinks).length > 0
 	})
 )

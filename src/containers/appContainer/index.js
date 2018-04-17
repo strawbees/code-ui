@@ -9,8 +9,8 @@ import HeaderContainer from 'src/containers/headerContainer'
 import FooterContainer from 'src/containers/footerContainer'
 import PageContainer from 'src/containers/pageContainer'
 import ModalContainer from 'src/containers/modalContainer'
-import MidiInterfaceContainer from 'src/containers/midiInterfaceContainer'
-import StorageManagerContainer from 'src/containers/storageManagerContainer'
+import MidiInterfaceManager from 'src/containers/midiInterfaceManager'
+import StorageManager from 'src/containers/storageManager'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
@@ -142,8 +142,8 @@ class AppContainer extends React.Component {
 				<PageContainer />
 				<FooterContainer />
 				<ModalContainer />
-				<MidiInterfaceContainer />
-				<StorageManagerContainer />
+				<MidiInterfaceManager />
+				<StorageManager />
 			</div>
 		)
 	}

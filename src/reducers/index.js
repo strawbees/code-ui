@@ -4,11 +4,13 @@ import storage from 'src/reducers/storage'
 import qbmidi from 'src/reducers/qbmidi'
 import editor from 'src/reducers/editor'
 import modal from 'src/reducers/modal'
+import compiler from 'src/reducers/compiler'
 
 export default combineReducers({
 	setup,
 	qbmidi,
 	storage,
 	editor,
-	modal
+	modal,
+	compiler
 })

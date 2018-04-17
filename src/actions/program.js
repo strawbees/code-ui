@@ -155,7 +155,7 @@ export const modalRemoveProgram = (id) => async (dispatch) => {
 		<S value='modal.program.remove-confirmation'/>,
 		{
 			confirmLabelKey : 'ui.editor.remove',
-			onConfirm       : () => removeProgramByIdAndClearEditor(id)
+			onConfirm       : () => dispatch(removeProgramByIdAndClearEditor(id))
 		}
 	))
 }
@@ -173,7 +173,7 @@ export const modalDuplicateProgram = (id) => async (dispatch, getState) => {
 		/>,
 		{
 			confirmLabelKey : 'ui.editor.duplicate',
-			onConfirm       : () => duplicateProgram(id, newName)
+			onConfirm       : () => dispatch(duplicateProgram(id, newName))
 		}
 	))
 }
