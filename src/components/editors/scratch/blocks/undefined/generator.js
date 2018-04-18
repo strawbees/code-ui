@@ -1,10 +1,6 @@
-import parsing from './../../utils/parsing'
+import { parseNext } from './../../utils/parsing'
 
-const {
-	parseNext
-} = parsing
-
-export default ({ NEXT, attributes }, structure) => {
+export default ({ next, attributes }, structure) => {
 	structure.body += `/* ${attributes.type} */`
-	parseNext(NEXT, structure)
+	parseNext(next, structure)
 }

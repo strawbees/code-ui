@@ -1,6 +1,6 @@
-export default ({ FIELD }, structure) => {
-	if (!FIELD || !FIELD[0]) {
+export default ({ field }, structure) => {
+	if (!field || !field[0]) {
 		return
 	}
-	structure.body += FIELD[0]
+	structure.body += field[0]
 }

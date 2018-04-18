@@ -1,3 +1,5 @@
+/* eslint-disable no-shadow */
+/* eslint-disable indent */
 export default toolbox => `<xml>
 	${toolbox.reduce((xml, {
 		name, colour, secondaryColour, blocks = [], custom

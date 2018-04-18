@@ -1,27 +1,25 @@
-import parsing from './../../utils/parsing'
-
-const {
+import {
 	parseNext,
 	getValueBlockByAttributeName,
 	computeInstanceName,
 	parseInstaceDefinition,
 	parseInstacePropertyAssignment,
 	setInstacePropertyOneTimeAssignment
-} = parsing
+} from './../../utils/parsing'
 
-export default ({ VALUE, FIELD, NEXT }, structure) => {
-	const place = FIELD && FIELD[0]
-	const positionBlock = getValueBlockByAttributeName(VALUE, 'POSITION')
+export default ({ value, field, next }, structure) => {
+	const place = field && field[0]
+	const positionBlock = getValueBlockByAttributeName(value, 'POSITION')
 	if (!positionBlock) {
-		parseNext(NEXT, structure)
+		parseNext(next, structure)
 		return
 	}
 	const type = 'Servo'
-	const instance = computeInstanceName(type, place)
+	const instance = computeInstanceName(structure, type, place)
 
 	parseInstaceDefinition(structure, instance, type)
 	setInstacePropertyOneTimeAssignment(structure, instance, 'place', place)
 	parseInstacePropertyAssignment(positionBlock, structure, instance, 'position')
 
-	parseNext(NEXT, structure)
+	parseNext(next, structure)
 }

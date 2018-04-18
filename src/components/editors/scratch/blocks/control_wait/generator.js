@@ -1,18 +1,16 @@
-import parsing from './../../utils/parsing'
-
-const {
+import {
 	parseNext,
 	getValueBlockByAttributeName,
 	getBlockBody
-} = parsing
+} from './../../utils/parsing'
 
-export default ({ VALUE, NEXT }, structure) => {
-	const durationBlock = getValueBlockByAttributeName(VALUE, 'DURATION')
+export default ({ value, next }, structure) => {
+	const durationBlock = getValueBlockByAttributeName(value, 'DURATION')
 	if (!durationBlock) {
-		parseNext(NEXT, structure)
+		parseNext(next, structure)
 		return
 	}
 	const seconds = getBlockBody(durationBlock, structure) || 0
 	structure.body += `delay(${seconds} * 1000);\n`
-	parseNext(NEXT, structure)
+	parseNext(next, structure)
 }

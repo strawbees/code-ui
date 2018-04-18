@@ -1,18 +1,16 @@
-import parsing from './../../utils/parsing'
-
-const {
+import {
 	parseNext,
 	getValueBlockByAttributeName,
 	getBlockBody
-} = parsing
+} from './../../utils/parsing'
 
-export default ({ VALUE, NEXT }, structure) => {
-	const operandBlock = getValueBlockByAttributeName(VALUE, 'OPERAND')
+export default ({ value, next }, structure) => {
+	const operandBlock = getValueBlockByAttributeName(value, 'OPERAND')
 	if (!operandBlock) {
-		parseNext(NEXT, structure)
+		parseNext(next, structure)
 		return
 	}
 	const operand = getBlockBody(operandBlock, structure)
-	structure.body += `(!${operand})`
-	parseNext(NEXT, structure)
+	structure.body += `!${operand}`
+	parseNext(next, structure)
 }

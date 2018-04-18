@@ -1,12 +1,8 @@
-import parsing from './../../utils/parsing'
+import { parseNext } from './../../utils/parsing'
 
-const {
-	parseNext
-} = parsing
-
-export default ({ NEXT, STATEMENT }, structure) => {
+export default ({ next, statement }, structure) => {
 	structure.body += 'while(true) {\n'
-	parseNext(STATEMENT, structure)
+	parseNext(statement, structure)
 	structure.body += 'Bot::update();\n}\n'
-	parseNext(NEXT, structure)
+	parseNext(next, structure)
 }

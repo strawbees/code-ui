@@ -1,20 +1,18 @@
-import parsing from './../../utils/parsing'
-
-const {
+import {
 	parseNext,
 	getValueBlockByAttributeName,
 	getBlockBody
-} = parsing
+} from './../../utils/parsing'
 
-export default ({ VALUE, NEXT }, structure) => {
-	const num1Block = getValueBlockByAttributeName(VALUE, 'NUM1')
-	const num2Block = getValueBlockByAttributeName(VALUE, 'NUM2')
+export default ({ value, next }, structure) => {
+	const num1Block = getValueBlockByAttributeName(value, 'NUM1')
+	const num2Block = getValueBlockByAttributeName(value, 'NUM2')
 	if (!num1Block || !num2Block) {
-		parseNext(NEXT, structure)
+		parseNext(next, structure)
 		return
 	}
 	const num1 = getBlockBody(num1Block, structure)
 	const num2 = getBlockBody(num2Block, structure)
-	structure.body += `(${num1} * ${num2})`
-	parseNext(NEXT, structure)
+	structure.body += `((float)${num1} * (float)${num2})`
+	parseNext(next, structure)
 }

@@ -1,16 +1,14 @@
-import parsing from './../../utils/parsing'
-
-const {
+import {
 	parseNext,
 	parseInstaceDefinition
-} = parsing
+} from './../../utils/parsing'
 
-export default ({ FIELD, NEXT }, structure) => {
-	const name = FIELD && FIELD[0]
+export default ({ field, next }, structure) => {
+	const name = field && field[0]
 
 	parseInstaceDefinition(structure, name, 'float')
 
 	structure.body += `${name}`
 
-	parseNext(NEXT, structure)
+	parseNext(next, structure)
 }

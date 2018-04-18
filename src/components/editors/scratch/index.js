@@ -2,15 +2,8 @@ import React from 'react'
 import withScript from 'src/hoc/withScript'
 import Spinner from 'src/components/spinner'
 import toolboxToXmlString from './utils/toolboxToXmlString'
-import parsing from './utils/parsing'
 import blocks from './blocks/index'
 import toolbox from './toolbox'
-
-const {
-	// assembleStructure,
-	// parseBlock,
-	registerGenerator
-} = parsing
 
 class ScratchEditor extends React.Component {
 	constructor(props) {
@@ -22,6 +15,7 @@ class ScratchEditor extends React.Component {
 		const {
 			Blockly
 		} = window
+		this.mainWorkspace.clear()
 		Blockly.Xml.domToWorkspace(
 			Blockly.Xml.textToDom(source),
 			this.mainWorkspace
@@ -36,14 +30,9 @@ class ScratchEditor extends React.Component {
 		const {
 			strings
 		} = this.props
-
 		// Load and register all blocks
 		Object.keys(blocks).forEach(id => {
-			const {
-				definition,
-				generator
-			} = blocks[id]
-
+			const { definition } = blocks[id]
 			if (definition) {
 				Blockly.Blocks[id] = {
 					/* eslint-disable object-shorthand */
@@ -52,9 +41,6 @@ class ScratchEditor extends React.Component {
 					/* eslint-enable object-shorthand */
 					/* eslint-enable func-names */
 				}
-			}
-			if (generator) {
-				registerGenerator(id, generator)
 			}
 		})
 		// Load toolbox

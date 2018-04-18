@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import S from 'src/containers/sContainer'
+import S from 'src/containers/sManager'
 
 const UserProgramListItem = ({
 	name,

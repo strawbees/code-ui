@@ -1,20 +1,18 @@
-import parsing from './../../utils/parsing'
-
-const {
+import {
 	parseNext,
 	getValueBlockByAttributeName,
 	getBlockBody
-} = parsing
+} from './../../utils/parsing'
 
-export default ({ VALUE, NEXT, STATEMENT }, structure) => {
-	const timesBlock = getValueBlockByAttributeName(VALUE, 'TIMES')
+export default ({ value, next, statement }, structure) => {
+	const timesBlock = getValueBlockByAttributeName(value, 'TIMES')
 	if (!timesBlock) {
-		parseNext(NEXT, structure)
+		parseNext(next, structure)
 		return
 	}
 	const times = getBlockBody(timesBlock, structure)
 	structure.body += `for (int i = 0; i < ${times}; i++) {\n`
-	parseNext(STATEMENT, structure)
+	parseNext(statement, structure)
 	structure.body += 'Bot::update();\n}\n'
-	parseNext(NEXT, structure)
+	parseNext(next, structure)
 }

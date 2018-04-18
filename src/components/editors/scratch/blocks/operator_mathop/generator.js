@@ -1,20 +1,18 @@
-import parsing from './../../utils/parsing'
-
-const {
+import {
 	parseNext,
 	getValueBlockByAttributeName,
 	getBlockBody
-} = parsing
+} from './../../utils/parsing'
 
-export default ({ VALUE, FIELD, NEXT }, structure) => {
-	const numBlock = getValueBlockByAttributeName(VALUE, 'NUM')
+export default ({ value, field, next }, structure) => {
+	const numBlock = getValueBlockByAttributeName(value, 'NUM')
 	if (!numBlock) {
-		parseNext(NEXT, structure)
+		parseNext(next, structure)
 		return
 	}
 	const num = getBlockBody(numBlock, structure)
 
-	const op = FIELD && FIELD[0]
+	const op = field && field[0]
 	let code = ''
 	switch (op) {
 		case 'abs':
@@ -64,5 +62,5 @@ export default ({ VALUE, FIELD, NEXT }, structure) => {
 			break
 	}
 	structure.body += code
-	parseNext(NEXT, structure)
+	parseNext(next, structure)
 }

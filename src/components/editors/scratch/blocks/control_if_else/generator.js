@@ -1,22 +1,20 @@
-import parsing from './../../utils/parsing'
-
-const {
+import {
 	parseNext,
 	getValueBlockByAttributeName,
 	getBlockBody
-} = parsing
+} from './../../utils/parsing'
 
-export default ({ VALUE, NEXT, STATEMENT }, structure) => {
-	const conditionBlock = getValueBlockByAttributeName(VALUE, 'CONDITION')
+export default ({ value, next, statement }, structure) => {
+	const conditionBlock = getValueBlockByAttributeName(value, 'CONDITION')
 	if (!conditionBlock) {
-		parseNext(NEXT, structure)
+		parseNext(next, structure)
 		return
 	}
 	const condition = getBlockBody(conditionBlock, structure)
-	structure.body += `if(${condition}) {\n`
-	parseNext([STATEMENT && STATEMENT[0]], structure)
+	structure.body += `if (${condition}) {\n`
+	parseNext([statement && statement[0]], structure)
 	structure.body += '} else {\n'
-	parseNext([STATEMENT && STATEMENT[1]], structure)
+	parseNext([statement && statement[1]], structure)
 	structure.body += '}\n'
-	parseNext(NEXT, structure)
+	parseNext(next, structure)
 }

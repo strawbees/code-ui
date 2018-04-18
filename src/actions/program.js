@@ -34,7 +34,7 @@ import makeStringSelector from 'src/selectors/makeStringSelector'
 import resolveLinkUrl from 'src/utils/resolveLinkUrl'
 import generateNewProgramSource from 'src/utils/generateNewProgramSource'
 import FormInput from 'src/components/formInput'
-import S from 'src/containers/sContainer'
+import S from 'src/containers/sManager'
 
 export const resetEditorProgramByType = (type) => (dispatch) => {
 	const program = {
@@ -106,8 +106,13 @@ export const updateCurrentEditorProgramSource = (source) => async (dispatch, get
 	}
 }
 
-export const duplicateProgram = (id, newName) => async () => {
-	const { type, source } = await getProgram(id)
+export const duplicateProgramById = (id, newName) => async (dispatch) => {
+	const program = await getProgram(id)
+	dispatch(duplicateProgramData(program, newName))
+}
+
+export const duplicateProgramData = (program, newName) => async () => {
+	const { type, source } = program
 	await addProgram(
 		type,
 		newName,
@@ -125,20 +130,15 @@ export const removeProgramByIdAndClearEditor = (id) => async (dispatch, getState
 	}
 }
 
-export const openProgramByIdAndGoToEditor = (id) => async (dispatch, getState) => {
-	const state = getState()
-
-	const rawProgram = await getProgram(id)
+export const openProgramByIdAndGoToEditor = (id) => async (dispatch) => {
+	const { type, name, source } = await getProgram(id)
 	const program = {
 		id,
-		type   : rawProgram.type,
-		name   : rawProgram.name,
-		source : rawProgram.source
+		type,
+		name,
+		source
 	}
-	const editorUrl = makeStringSelector(`${program.type}.url`)(state)
-	const { href, as } = resolveLinkUrl(editorUrl)
-	href.query.program = JSON.stringify(program)
-	Router.push(href, as)
+	dispatch(openProgramDataAndGoToEditor(program))
 }
 
 export const openProgramDataAndGoToEditor = (program) => (dispatch, getState) => {
@@ -160,7 +160,7 @@ export const modalRemoveProgram = (id) => async (dispatch) => {
 	))
 }
 
-export const modalDuplicateProgram = (id) => async (dispatch, getState) => {
+export const modalDuplicateProgramById = (id) => async (dispatch, getState) => {
 	const state = getState()
 	const { name } = formatedProgramSelector(state, { id })
 
@@ -173,7 +173,24 @@ export const modalDuplicateProgram = (id) => async (dispatch, getState) => {
 		/>,
 		{
 			confirmLabelKey : 'ui.editor.duplicate',
-			onConfirm       : () => dispatch(duplicateProgram(id, newName))
+			onConfirm       : () => dispatch(duplicateProgramById(id, newName))
+		}
+	))
+}
+
+export const modalDuplicateProgramData = (program) => async (dispatch) => {
+	const { name } = program
+
+	let newName = `${name} copy`
+	dispatch(openDialogModal(
+		<FormInput
+			defaultValue={newName}
+			labelKey={'modal.program.duplicate-confirmation'}
+			onChange={e => newName = e}
+		/>,
+		{
+			confirmLabelKey : 'ui.editor.duplicate',
+			onConfirm       : () => dispatch(duplicateProgramData(program, newName))
 		}
 	))
 }

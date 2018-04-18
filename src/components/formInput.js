@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import S from 'src/containers/sContainer'
+import S from 'src/containers/sManager'
 
 class FormInput extends React.Component {
 	state = {}

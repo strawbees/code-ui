@@ -201,7 +201,7 @@ const generateCode = (workspace) => {
 		oneTimeAssignments: {},
 		body : ''
 	}
-	const start = json && json.BLOCK && json.BLOCK[0]
+	const start = json && json.block && json.block[0]
 	parseBlock(start, structure)
 	const code = assembleStructure(structure)
 	console.log('code', code)

@@ -1,26 +1,25 @@
 import { createSelector } from 'reselect'
 import queryLocaleSelector from 'src/selectors/queryLocaleSelector'
 import localeStringsSelector from 'src/selectors/localeStringsSelector'
-import refEditorIdSelector from 'src/selectors/refEditorIdSelector'
 import refEditorSourceSelector from 'src/selectors/refEditorSourceSelector'
+import refEditorGeneratedCodeSelector from 'src/selectors/refEditorGeneratedCodeSelector'
 
 export default createSelector(
 	[
-		refEditorIdSelector,
 		refEditorSourceSelector,
+		refEditorGeneratedCodeSelector,
 		queryLocaleSelector,
 		localeStringsSelector,
 	],
 	(
-		id,
 		source,
+		generatedCode,
 		queryLocale,
 		localeStrings,
 	) => ({
-		id,
 		source,
-		saved   : id !== null,
-		strings : localeStrings,
+		generatedCode,
 		key     : `${queryLocale}`,
+		strings : localeStrings,
 	})
 )

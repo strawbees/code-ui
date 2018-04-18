@@ -1,18 +1,16 @@
-import parsing from './../../utils/parsing'
-
-const {
+import {
 	parseNext,
 	getValueBlockByAttributeName,
 	getBlockBody
-} = parsing
+} from './../../utils/parsing'
 
-export default ({ VALUE, NEXT }, structure) => {
-	const numBlock = getValueBlockByAttributeName(VALUE, 'NUM')
+export default ({ value, next }, structure) => {
+	const numBlock = getValueBlockByAttributeName(value, 'NUM')
 	if (!numBlock) {
-		parseNext(NEXT, structure)
+		parseNext(next, structure)
 		return
 	}
 	const num = getBlockBody(numBlock, structure)
 	structure.body += `round(${num})`
-	parseNext(NEXT, structure)
+	parseNext(next, structure)
 }

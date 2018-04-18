@@ -1,20 +1,18 @@
-import parsing from './../../utils/parsing'
-
-const {
+import {
 	parseNext,
 	getValueBlockByAttributeName,
 	getBlockBody
-} = parsing
+} from './../../utils/parsing'
 
-export default ({ VALUE, NEXT }, structure) => {
-	const fromBlock = getValueBlockByAttributeName(VALUE, 'FROM')
-	const toBlock = getValueBlockByAttributeName(VALUE, 'TO')
+export default ({ value, next }, structure) => {
+	const fromBlock = getValueBlockByAttributeName(value, 'FROM')
+	const toBlock = getValueBlockByAttributeName(value, 'TO')
 	if (!fromBlock || !toBlock) {
-		parseNext(NEXT, structure)
+		parseNext(next, structure)
 		return
 	}
 	const from = getBlockBody(fromBlock, structure)
 	const to = getBlockBody(toBlock, structure)
-	structure.body += `(${from} + ((float)random(1000000) / 1000000) * (${to} - ${from}))`
-	parseNext(NEXT, structure)
+	structure.body += `((float)random(${from} * 1000, ${to}  * 1000) / 1000.0)`
+	parseNext(next, structure)
 }

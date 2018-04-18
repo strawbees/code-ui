@@ -1,21 +1,19 @@
-import parsing from './../../utils/parsing'
-
-const {
+import {
 	parseNext,
 	computeInstanceName,
 	parseInstaceDefinition,
 	parseInstacePropertyRetrieval,
 	setInstacePropertyOneTimeAssignment
-} = parsing
+} from './../../utils/parsing'
 
-export default ({ FIELD, NEXT }, structure) => {
-	const place = FIELD && FIELD[0]
+export default ({ field, next }, structure) => {
+	const place = field && field[0]
 	const type = 'LightSensor'
-	const instance = computeInstanceName(type, place)
+	const instance = computeInstanceName(structure, type, place)
 
 	parseInstaceDefinition(structure, instance, type)
 	setInstacePropertyOneTimeAssignment(structure, instance, 'place', place)
 	parseInstacePropertyRetrieval(structure, instance, 'out')
 
-	parseNext(NEXT, structure)
+	parseNext(next, structure)
 }

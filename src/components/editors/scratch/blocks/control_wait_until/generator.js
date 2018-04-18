@@ -1,20 +1,18 @@
-import parsing from './../../utils/parsing'
-
-const {
+import {
 	parseNext,
 	getValueBlockByAttributeName,
 	getBlockBody
-} = parsing
+} from './../../utils/parsing'
 
-export default ({ VALUE, NEXT }, structure) => {
-	const conditionBlock = getValueBlockByAttributeName(VALUE, 'CONDITION')
+export default ({ value, next }, structure) => {
+	const conditionBlock = getValueBlockByAttributeName(value, 'CONDITION')
 	if (!conditionBlock) {
-		parseNext(NEXT, structure)
+		parseNext(next, structure)
 		return
 	}
 	const condition = getBlockBody(conditionBlock, structure)
 	structure.body += `while(${condition}) {\n`
 	structure.body += 'Bot::update();\n'
 	structure.body += '}\n'
-	parseNext(NEXT, structure)
+	parseNext(next, structure)
 }

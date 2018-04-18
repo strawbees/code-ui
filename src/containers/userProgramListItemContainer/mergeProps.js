@@ -6,7 +6,7 @@ export default (stateProps, dispatchProps, ownProps) => {
 	const {
 		openProgramByIdAndGoToEditor,
 		modalRemoveProgram,
-		modalDuplicateProgram
+		modalDuplicateProgramById
 	} = dispatchProps
 
 	return {
@@ -15,7 +15,7 @@ export default (stateProps, dispatchProps, ownProps) => {
 		...ownProps,
 		onEditPress      : () => openProgramByIdAndGoToEditor(id),
 		onRemovePress    : () => modalRemoveProgram(id),
-		onDuplicatePress : () => modalDuplicateProgram(id),
+		onDuplicatePress : () => modalDuplicateProgramById(id),
 		onSharePress     : () => {},
 	}
 }

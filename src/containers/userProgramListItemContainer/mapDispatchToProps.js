@@ -2,11 +2,11 @@ import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToAction
 import {
 	openProgramByIdAndGoToEditor,
 	modalRemoveProgram,
-	modalDuplicateProgram
+	modalDuplicateProgramById
 } from 'src/actions/program'
 
 export default autobindDispatchToActionCreators({
 	openProgramByIdAndGoToEditor,
 	modalRemoveProgram,
-	modalDuplicateProgram
+	modalDuplicateProgramById
 })
