@@ -1,8 +1,13 @@
-/* global CANONICAL_URL */
 import { createSelector } from 'reselect'
 import queryRefSelector from 'src/selectors/queryRefSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
+import getConfig from 'next/config'
 
+const {
+	publicRuntimeConfig : {
+		CANONICAL_URL
+	}
+} = getConfig()
 const baseUrl = typeof CANONICAL_URL !== 'undefined' ? CANONICAL_URL : ''
 
 const makeRefOgSelector = (ref) => createSelector(

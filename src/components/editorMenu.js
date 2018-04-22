@@ -33,7 +33,7 @@ const EditorMenu = ({
 		<button onClick={onSharePress}>
 			<S value='ui.editor.share'/>
 		</button>
-		<button onClick={onUploadPress} disabled={!uploadEnabled}>
+		<button onClick={onUploadPress} >
 			<S value='ui.editor.upload'/>
 		</button>
 	</div>

@@ -5,6 +5,7 @@ import qbmidi from 'src/reducers/qbmidi'
 import editor from 'src/reducers/editor'
 import modal from 'src/reducers/modal'
 import compiler from 'src/reducers/compiler'
+import uploader from 'src/reducers/uploader'
 
 export default combineReducers({
 	setup,
@@ -12,5 +13,6 @@ export default combineReducers({
 	storage,
 	editor,
 	modal,
-	compiler
+	compiler,
+	uploader
 })

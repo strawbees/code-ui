@@ -1,4 +1,5 @@
 import Router from 'next/router'
+import { compileCode } from 'src/actions/compiler'
 import {
 	setFlowName,
 	setFlowSource,
@@ -15,7 +16,10 @@ import {
 	setTextId,
 	setTextProgram
 } from 'src/actions/editor'
-import { openDialogModal } from 'src/actions/modal'
+import {
+	openModal,
+	openDialogModal
+} from 'src/actions/modal'
 import {
 	addProgram,
 	getProgram,
@@ -35,6 +39,8 @@ import resolveLinkUrl from 'src/utils/resolveLinkUrl'
 import generateNewProgramSource from 'src/utils/generateNewProgramSource'
 import FormInput from 'src/components/formInput'
 import S from 'src/containers/sManager'
+import UploadAreaContainer from 'src/containers/uploadAreaContainer'
+
 
 export const resetEditorProgramByType = (type) => (dispatch) => {
 	const program = {
@@ -192,5 +198,14 @@ export const modalDuplicateProgramData = (program) => async (dispatch) => {
 			confirmLabelKey : 'ui.editor.duplicate',
 			onConfirm       : () => dispatch(duplicateProgramData(program, newName))
 		}
+	))
+}
+
+export const modalUploadCode = (code) => async (dispatch) => {
+	dispatch(compileCode(code))
+	dispatch(openModal(
+		<UploadAreaContainer
+			code={code}
+		/>
 	))
 }

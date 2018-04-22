@@ -1,6 +1,8 @@
 .DS_Store
 node_modules
 yarn-error.log
+/config.*.json
+!/config.template.json
 /.env
 /.next
 /out

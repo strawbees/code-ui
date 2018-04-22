@@ -1,21 +1,30 @@
 export default (stateProps, dispatchProps, ownProps) => {
 	const {
-		id
+		generatedCode,
+		...otherStateProps
+	} = stateProps
+
+	const {
+		id,
+		...otherOwnProps
 	} = ownProps
 
 	const {
 		openProgramByIdAndGoToEditor,
 		modalRemoveProgram,
-		modalDuplicateProgramById
+		modalDuplicateProgramById,
+		modalUploadCode,
+		...otherDispatchProps
 	} = dispatchProps
 
 	return {
-		...stateProps,
-		...dispatchProps,
-		...ownProps,
+		...otherStateProps,
+		...otherDispatchProps,
+		...otherOwnProps,
 		onEditPress      : () => openProgramByIdAndGoToEditor(id),
 		onRemovePress    : () => modalRemoveProgram(id),
 		onDuplicatePress : () => modalDuplicateProgramById(id),
 		onSharePress     : () => {},
+		onUploadPress    : () => modalUploadCode(generatedCode)
 	}
 }

@@ -2,12 +2,13 @@ import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToAction
 import {
 	updateCurrentEditorProgramName,
 	resetCurrentEditorProgram,
-	saveCurrentEditorProgram
+	saveCurrentEditorProgram,
+	modalUploadCode
 } from 'src/actions/program'
 
 export default autobindDispatchToActionCreators({
-	onNameChange      : updateCurrentEditorProgramName,
-	onSavePress       : saveCurrentEditorProgram,
-	onNewPress        : resetCurrentEditorProgram,
-	initializeProgram : resetCurrentEditorProgram
+	updateCurrentEditorProgramName,
+	saveCurrentEditorProgram,
+	resetCurrentEditorProgram,
+	modalUploadCode
 })

@@ -13,10 +13,16 @@ export const setModalContent = generateAction(MODAL_SET_CONTENT)
 export const setModalOnRequestClose = generateAction(MODAL_SET_ON_REQUEST_CLOSE)
 
 export const openModal = (content = null, onRequestClose) => (dispatch) => {
-	const hideModalAction = () => dispatch(hideModal())
+	const hideModalAction = () => dispatch(closeModal())
 	dispatch(setModalOnRequestClose(onRequestClose || hideModalAction))
 	dispatch(setModalContent(content))
 	dispatch(showModal())
+}
+
+export const closeModal = () => (dispatch) => {
+	dispatch(setModalOnRequestClose(null))
+	dispatch(setModalContent(null))
+	dispatch(hideModal())
 }
 
 export const openDialogModal = (content = null, dialogProps) => (dispatch) => {
@@ -24,20 +30,22 @@ export const openDialogModal = (content = null, dialogProps) => (dispatch) => {
 		if (dialogProps.onConfirm) {
 			dialogProps.onConfirm()
 		}
-		dispatch(hideModal())
+		dispatch(closeModal())
 	}
 	const onCancel = () => {
 		if (dialogProps.onCancel) {
 			dialogProps.onCancel()
 		}
-		dispatch(hideModal())
+		dispatch(closeModal())
 	}
 	dispatch(setModalOnRequestClose(onCancel))
-	dispatch(setModalContent(<DialogContainer
-		{...dialogProps}
-		onConfirm={onConfirm}
-		onCancel={onCancel}>
-		{content}
-	</DialogContainer>))
+	dispatch(setModalContent(
+		<DialogContainer
+			{...dialogProps}
+			onConfirm={onConfirm}
+			onCancel={onCancel}>
+			{content}
+		</DialogContainer>
+	))
 	dispatch(showModal())
 }

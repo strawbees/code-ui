@@ -14,7 +14,7 @@ export default ({ value, field, next }, structure) => {
 		parseNext(next, structure)
 		return
 	}
-	const type = 'Servo'
+	const type = 'ServoMotor'
 	const instance = computeInstanceName(structure, type, place)
 
 	parseInstaceDefinition(structure, instance, type)

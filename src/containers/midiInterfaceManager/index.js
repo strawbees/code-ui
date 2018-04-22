@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
@@ -31,12 +32,13 @@ class MidiInterfaceManager extends React.Component {
 	}
 	componentDidMount() {
 		const {
-			midiInit
+			midiInit,
+			// midiEnableLogs
 		} = this.props
 		if (process.browser) {
 			midiInit()
 			if (process.env.NODE_ENV !== 'production') {
-				// enableLogs()
+				// midiEnableLogs()
 			}
 			this.timer = window.setInterval(() => this.onTick(), 1000)
 		}
@@ -50,6 +52,12 @@ class MidiInterfaceManager extends React.Component {
 	}
 }
 
+MidiInterfaceManager.propTypes = {
+	setQbmidiLinks : PropTypes.func,
+	midiInit       : PropTypes.func,
+	midiGetLinks   : PropTypes.func,
+	midiEnableLogs : PropTypes.func,
+}
 
 export default connect(
 	mapStateToProps,

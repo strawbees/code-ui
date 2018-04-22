@@ -16,8 +16,11 @@ const BoardsStatus = ({
 				not-connected
 			</div>
 		}
-		{boards.length > 0 && boards.map(id =>
-			<SingleBoardStatusContainer key={id} id={id} />
+		{boards.length > 0 && boards.map(runtimeId =>
+			<SingleBoardStatusContainer
+				key={runtimeId}
+				runtimeId={runtimeId}
+			/>
 		)}
 	</div>
 

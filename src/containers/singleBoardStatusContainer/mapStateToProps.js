@@ -6,13 +6,11 @@ export default createSelector(
 		qbmidiLinkSelector
 	],
 	({
-		runtimeId,
 		midi,
 		uploading,
 		enteringBootloaderMode,
 		exitingBootloaderMode
 	}) => ({
-		id     : runtimeId,
 		status : !midi ?
 			'problem' :
 			(uploading || enteringBootloaderMode || exitingBootloaderMode) ?

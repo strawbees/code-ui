@@ -1,22 +1,17 @@
 import { createSelector } from 'reselect'
-import storageProgramsSelector from 'src/selectors/storageProgramsSelector'
+import storageProgramSelector from 'src/selectors/storageProgramSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 
 export default createSelector(
 	[
-		(_, { id }) => id,
-		storageProgramsSelector,
+		storageProgramSelector,
 		makeStringSelector('ui.editor.program.placeholder_name'),
 	],
 	(
-		id,
-		storagePrograms,
+		storageProgram,
 		placeholderName
-	) => {
-		const program = storagePrograms[id]
-		return {
-			...program,
-			name : program.name || placeholderName
-		}
-	}
+	) => ({
+		...storageProgram,
+		name : storageProgram.name || placeholderName
+	})
 )

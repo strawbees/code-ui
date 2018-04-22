@@ -3,11 +3,11 @@ import qbmidiLinksSelector from 'src/selectors/qbmidiLinksSelector'
 
 export default createSelector(
 	[
-		(_, { id }) => id,
+		(_, { runtimeId }) => runtimeId,
 		qbmidiLinksSelector
 	],
 	(
-		id,
+		runtimeId,
 		qbmidiLinks
-	) => qbmidiLinks[id]
+	) => qbmidiLinks[runtimeId]
 )
