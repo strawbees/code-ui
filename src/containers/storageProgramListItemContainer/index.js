@@ -1,14 +1,14 @@
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import UserProgramListItem from 'src/components/userProgramListItem'
+import StorageProgramListItem from 'src/components/storageProgramListItem'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
-const UserProgramListItemContainer = props =>
-	<UserProgramListItem {...props} />
+const StorageProgramListItemContainer = props =>
+	<StorageProgramListItem {...props} />
 
-UserProgramListItemContainer.propTypes = {
+StorageProgramListItemContainer.propTypes = {
 	id : PropTypes.string
 }
 
@@ -16,4 +16,4 @@ export default connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
-)(UserProgramListItem)
+)(StorageProgramListItem)

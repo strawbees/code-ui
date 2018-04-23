@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import S from 'src/containers/sManager'
 
-const UserProgramListItem = ({
+const StorageProgramListItem = ({
 	name,
 	type,
 	createdAt,
@@ -12,7 +12,7 @@ const UserProgramListItem = ({
 	onSharePress,
 	onUploadPress
 }) =>
-	<div className='root userProgramListItem'>
+	<div className='root storageProgramListItem'>
 		<div className='name'>{name}</div>
 		<div className='type'>{type}</div>
 		<div className='createdAt'>{createdAt}</div>
@@ -33,10 +33,10 @@ const UserProgramListItem = ({
 		</button>
 	</div>
 
-UserProgramListItem.defaultProps = {
+StorageProgramListItem.defaultProps = {
 }
 
-UserProgramListItem.propTypes = {
+StorageProgramListItem.propTypes = {
 	name             : PropTypes.string,
 	type             : PropTypes.string,
 	createdAt        : PropTypes.string,
@@ -48,4 +48,4 @@ UserProgramListItem.propTypes = {
 	onUploadPress    : PropTypes.func,
 }
 
-export default UserProgramListItem
+export default StorageProgramListItem

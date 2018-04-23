@@ -1,5 +1,5 @@
 import React from 'react'
-import UserProgramListContainer from 'src/containers/userProgramListContainer'
+import StorageProgramListContainer from 'src/containers/storageProgramListContainer'
 
 class PageHome extends React.Component {
 	constructor(props) {
@@ -20,7 +20,7 @@ class PageHome extends React.Component {
 		return (
 			<div className='root pageHome'>
 				<div ref={this.localStorageWidget} />
-				<UserProgramListContainer />
+				<StorageProgramListContainer />
 			</div>
 		)
 	}
