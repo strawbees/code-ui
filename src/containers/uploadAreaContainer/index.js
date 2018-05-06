@@ -12,32 +12,32 @@ class UploadAreaContainer extends React.Component {
 	componentDidMount() {
 		const {
 			hex,
-			boards,
+			boardIds,
 			uploadHex
 		} = this.props
 		if (
 			hex &&
-			boards &&
-			boards.length === 1
+			boardIds &&
+			boardIds.length === 1
 		) {
-			uploadHex(boards[0], hex)
+			uploadHex(boardIds[0], hex)
 		}
 	}
-	// In case a hex is compiled and there's only one board connected,
-	// upload straight away
+	// In case a hex get's compiled (and it wasn't before )and there's only
+	// one board connected, upload straight away
 	componentDidUpdate({ hex : prevHex }) {
 		const {
 			hex,
-			boards,
+			boardIds,
 			uploadHex
 		} = this.props
 		if (
 			!prevHex &&
 			hex &&
-			boards &&
-			boards.length === 1
+			boardIds &&
+			boardIds.length === 1
 		) {
-			uploadHex(boards[0], hex)
+			uploadHex(boardIds[0], hex)
 		}
 	}
 	render() {
@@ -49,7 +49,9 @@ class UploadAreaContainer extends React.Component {
 
 
 UploadAreaContainer.propTypes = {
-	code : PropTypes.string
+	code     : PropTypes.string,
+	boardIds : PropTypes.arrayOf(PropTypes.string),
+	hex      : PropTypes.string,
 }
 export default connect(
 	mapStateToProps,

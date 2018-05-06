@@ -19,6 +19,17 @@ const current = (state = null, { type, payload }) => {
 	}
 }
 
+const lastError = (state = null, { type, payload }) => {
+	switch (type) {
+		case UPLOADER_START_UPLOAD:
+			return null
+		case UPLOADER_SET_ERROR:
+			return payload.error
+		default:
+			return state
+	}
+}
+
 const entities = (state = {}, { type, payload }) => {
 	const id = payload ? hashCode(`${payload.hex}${payload.runtimeId}`) : '?'
 	switch (type) {
@@ -34,7 +45,6 @@ const entities = (state = {}, { type, payload }) => {
 			return {
 				...state,
 				[id] : {
-					...state[id],
 					success : false,
 					error   : payload.error,
 				}
@@ -43,7 +53,6 @@ const entities = (state = {}, { type, payload }) => {
 			return {
 				...state,
 				[id] : {
-					...state[id],
 					success : true,
 					error   : null,
 				}
@@ -55,5 +64,6 @@ const entities = (state = {}, { type, payload }) => {
 
 export default combineReducers({
 	current,
+	lastError,
 	entities
 })

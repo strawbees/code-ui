@@ -4,10 +4,6 @@ const SingleBoardStatus = ({
 	status
 }) =>
 	<div className={`root singleBoardStatus ${status}`}>
-		<style jsx>{`
-			.root {
-			}
-		`}</style>
 		{status}
 	</div>
 

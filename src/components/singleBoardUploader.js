@@ -9,12 +9,16 @@ const SingleBoardUpload = ({
 	bootloader,
 	uploading,
 	hex,
+	uploaderBusy,
+	uploadSuccess,
+	uploadError
 }) =>
-	<div className={`root singleBoardUpload ${midi ? 'midi' : 'not-midi'} ${bootloader ? 'bootloader' : ''}`}>
+	<div className='root singleBoardUpload'>
 		<style jsx>{`
 			.root {
 				display: flex;
 				flex-direction: row;
+				border: solid 1px;
 			}
 		`}</style>
 		<div className='uuid'>
@@ -33,10 +37,32 @@ const SingleBoardUpload = ({
 					// There's an ongoing upload
 					<Spinner />
 					:
-					// Upload hasn't start yet
-					<button onClick={onUploadPress}>
-						<S value='ui.editor.upload'/>
-					</button>
+					uploaderBusy ?
+						// Uploader is busy
+						<div>
+							<S value='ui.board.upload.uploader_busy'/>
+						</div>
+						:
+						// Uploader is avaiable
+						(!uploadSuccess && !uploadError) ?
+							// Upload hasn't start yet
+							<button onClick={onUploadPress}>
+								<S value='ui.editor.upload'/>
+							</button>
+							:
+							// Upload has finished
+							uploadSuccess ?
+								// Sucessful upload
+								<div>
+									<S value='ui.board.upload.success'/>
+								</div>
+								:
+								// Upload error
+								<div>
+									<button onClick={onUploadPress}>
+										<S value='ui.editor.upload'/>
+									</button>
+								</div>
 				:
 				// There's no hex to be uploaded
 				<div>
@@ -62,9 +88,12 @@ SingleBoardUpload.propTypes = {
 	onUploadPress : PropTypes.func,
 	uuid          : PropTypes.string,
 	midi          : PropTypes.bool,
+	uploaderBusy  : PropTypes.bool,
 	bootloader    : PropTypes.bool,
 	uploading     : PropTypes.bool,
 	hex           : PropTypes.string,
+	uploadSuccess : PropTypes.bool,
+	uploadError   : PropTypes.string,
 }
 
 export default SingleBoardUpload

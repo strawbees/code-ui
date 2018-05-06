@@ -19,7 +19,12 @@ export const uploadHex = (runtimeId, hex) => async (dispatch) => {
 	try {
 		await uploadHexToLink(link, hex)
 		dispatch(setUploadSuccess({ runtimeId, hex }))
-	} catch (error) {
+	} catch ({ name : errorName, message : errorMessage }) {
+		let error
+		switch (errorMessage) {
+			default:
+				error = 'UNHANDLED'
+		}
 		dispatch(setUploadError({ runtimeId, hex, error }))
 	}
 }

@@ -4,9 +4,10 @@ import SingleBoardUploaderContainer from 'src/containers/singleBoardUploaderCont
 
 
 const UploadArea = ({
-	boards,
+	boardIds,
 	hex,
-	error
+	compilerError,
+	uploaderError
 }) =>
 	<div className='root uploadArea'>
 		<style jsx>{`
@@ -15,22 +16,25 @@ const UploadArea = ({
 				flex-direction: column;
 			}
 		`}</style>
-		{(!hex && !error) &&
+		{(!hex && !compilerError) &&
 			<div>
 				compiling
 				<Spinner/>
 			</div>
 		}
-		{(!hex && error) &&
-			<div>{error}</div>
+		{(!hex && compilerError) &&
+			<div>{compilerError}</div>
+		}
+		{uploaderError &&
+			<div>{uploaderError}</div>
 		}
 		<div>
-			{boards.length === 0 &&
+			{boardIds.length === 0 &&
 				<div className="not-connected">
-					no boards detected
+					no boardIds detected
 				</div>
 			}
-			{boards.length > 0 && boards.map(runtimeId =>
+			{boardIds.length > 0 && boardIds.map(runtimeId =>
 				<SingleBoardUploaderContainer
 					key={runtimeId}
 					runtimeId={runtimeId}
@@ -41,13 +45,14 @@ const UploadArea = ({
 	</div>
 
 UploadArea.defaultProps = {
-	boards : []
+	boardIds : []
 }
 
 UploadArea.propTypes = {
-	boards : PropTypes.arrayOf(PropTypes.string),
-	hex    : PropTypes.string,
-	error  : PropTypes.string
+	boardIds      : PropTypes.arrayOf(PropTypes.string),
+	hex           : PropTypes.string,
+	compilerError : PropTypes.string,
+	uploaderError : PropTypes.string
 }
 
 export default UploadArea

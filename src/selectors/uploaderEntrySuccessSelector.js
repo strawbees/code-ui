@@ -7,5 +7,5 @@ export default createSelector(
 	],
 	(
 		uploaderEntry
-	) => uploaderEntry.error
+	) => uploaderEntry && uploaderEntry.success
 )

@@ -1,21 +1,25 @@
 import { createSelector } from 'reselect'
 import qbmidiRuntimeIdListSelector from 'src/selectors/qbmidiRuntimeIdListSelector'
 import compilerFormatedErrorSelector from 'src/selectors/compilerErrorSelector'
+import uploaderLastErrorSelector from 'src/selectors/uploaderLastErrorSelector'
 import compilerHexSelector from 'src/selectors/compilerHexSelector'
 
 export default createSelector(
 	[
 		qbmidiRuntimeIdListSelector,
 		compilerFormatedErrorSelector,
+		uploaderLastErrorSelector,
 		compilerHexSelector,
 	],
 	(
-		qbmidiRuntimeIdList,
-		compilerFormatedError,
-		compilerHex,
+		boardIds,
+		compilerError,
+		uploaderError,
+		hex,
 	) => ({
-		boards : qbmidiRuntimeIdList,
-		error  : compilerFormatedError,
-		hex    : compilerHex,
+		boardIds,
+		compilerError,
+		uploaderError,
+		hex,
 	})
 )

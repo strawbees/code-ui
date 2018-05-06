@@ -3,7 +3,7 @@ const routes = require('./static/routes')
 const config = {
 	dev : {
 		CANONICAL_URL : 'http://localhost:3000',
-		COMPILER_URL  : 'http://localhost:8080'
+		COMPILER_URL  : 'https://compiler.quirkbot.com'
 	},
 	stage : {
 		CANONICAL_URL : 'https://code.strawbees.com',
