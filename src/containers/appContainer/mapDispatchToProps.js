@@ -1,8 +1,26 @@
 import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
-import * as setupActions from 'src/actions/setup'
-import * as editorActions from 'src/actions/editor'
+import {
+	setQuery,
+	setRoutes,
+	setLocales,
+	setStrings,
+	setAsPath,
+	setUrlVars,
+} from 'src/actions/setup'
+import {
+	setFlowProgram,
+	setScratchProgram,
+	setTextProgram,
+} from 'src/actions/editor'
 
 export default autobindDispatchToActionCreators({
-	...setupActions,
-	...editorActions
+	setQuery,
+	setRoutes,
+	setLocales,
+	setStrings,
+	setAsPath,
+	setUrlVars,
+	setFlowProgram,
+	setScratchProgram,
+	setTextProgram,
 })

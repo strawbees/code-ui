@@ -16,6 +16,7 @@ const config = {
 }
 
 module.exports = {
-	exportPathMap       : () => routes,
-	publicRuntimeConfig : config[process.env.CONFIG || 'dev']
+	exportPathMap             : () => routes,
+	publicRuntimeConfig       : config[process.env.CONFIG || 'dev'],
+	useFileSystemPublicRoutes : false
 }

@@ -6,13 +6,15 @@
 		[
 			"module-resolver",
 			{
-				"root": ["./"],
+				"root": [
+					"./"
+				],
 				"alias": {
-					"root" : "./",
-					"static" : "./static",
+					"root": "./",
+					"static": "./static",
 					"src": "./src"
 				}
 			}
 		]
- 	]
+	]
 }

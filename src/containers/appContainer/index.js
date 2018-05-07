@@ -1,7 +1,7 @@
 import React from 'react'
 import NProgress from 'nprogress'
 import Router from 'next/router'
-import withSetup from 'src/hoc/withSetup'
+import { connect } from 'react-redux'
 import parseUrlVars from 'src/utils/parseUrlVars'
 import loadStaticData from 'src/utils/loadStaticData'
 import HeadContainer from 'src/containers/headContainer'
@@ -16,27 +16,30 @@ import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
 class AppContainer extends React.Component {
-	static async setup({
-		// next props
+	static async getInitialProps({
 		query,
 		asPath,
 		isServer,
-		// state to props
-		routesLoaded,
-		localesLoaded,
-		stringsLoaded,
-		// dispatch to props
-		setQuery,
-		setRoutes,
-		setLocales,
-		setStrings,
-		setAsPath,
-		setUrlVars,
-		// editor action
-		setFlowProgram,
-		setScratchProgram,
-		setTextProgram
+		store
 	}) {
+		const {
+			routesLoaded,
+			localesLoaded,
+			stringsLoaded,
+			setQuery,
+			setRoutes,
+			setLocales,
+			setStrings,
+			setAsPath,
+			setUrlVars,
+			setFlowProgram,
+			setScratchProgram,
+			setTextProgram
+		} = mergeProps(
+			mapStateToProps(store.getState(), {}),
+			mapDispatchToProps(store.dispatch)
+		)
+
 		setQuery(query)
 		if (!routesLoaded) {
 			setRoutes(await loadStaticData('routes.json'))
@@ -149,9 +152,8 @@ class AppContainer extends React.Component {
 	}
 }
 
-export default withSetup(
-	AppContainer,
+export default connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
-)
+)(AppContainer)
