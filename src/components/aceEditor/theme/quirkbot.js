@@ -3,7 +3,7 @@ import {
 	PINK,
 	GREEN,
 	BLUE,
-	GREY,
+	GRAY,
 	YELLOW_LIGHT
 } from 'src/constants/colors'
 
@@ -100,7 +100,7 @@ window.ace.define('ace/theme/quirkbot', ['require', 'exports', 'module', 'ace/li
 		background-color: ${tinycolor(PINK).toRgbString()};
 	}
 	.ace-quirkbot .ace_support.ace_class.ace_debug {
-		background-color: ${tinycolor(GREY).toRgbString()};
+		background-color: ${tinycolor(GRAY).toRgbString()};
 	}
 	.ace-quirkbot .ace_support.ace_parameter,
 	.ace-quirkbot .ace_support.ace_outlet,

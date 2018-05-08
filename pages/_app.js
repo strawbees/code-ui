@@ -1,8 +1,10 @@
 import React from 'react'
+import { Provider } from 'react-redux'
+import App, { Container } from 'next/app'
 import withRedux from 'next-redux-wrapper'
 import makeStore from 'src/store'
 
-class NextApp extends React.Component {
+class NextApp extends App {
 	static async getInitialProps({ Component, ctx }) {
 		return {
 			pageProps : {
@@ -13,9 +15,13 @@ class NextApp extends React.Component {
 	}
 
 	render() {
-		const { Component, pageProps } = this.props
+		const { Component, pageProps, store } = this.props
 		return (
-			<Component {...pageProps} />
+			<Container>
+				<Provider store={store}>
+					<Component {...pageProps} />
+				</Provider>
+			</Container>
 		)
 	}
 }

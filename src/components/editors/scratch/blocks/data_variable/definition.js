@@ -1,12 +1,17 @@
 export default (strings) => ({
-	"message0": "%1",
-	"args0": [
+	message0        : '%1',
+	lastDummyAlign0 : 'CENTRE',
+	args0           : [
 		{
-			"type": "field_variable_getter",
-			"name": "VARIABLE",
-			"variableType": "Number"
+			type         : 'field_variable',
+			name         : 'VARIABLE',
+			variableType : ''
 		}
 	],
-	"output": "Number",
-	"extensions": ["contextMenu_getVariableBlock", "colours_data", "output_string"]
+	output          : 'Number',
+	category        : 'data',
+	outputShape     : 2,
+	colour          : '#FF8C1A',
+	colourSecondary : '#FF8000',
+	colourTertiary  : '#DB6E00'
 })

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import ReactModal from 'react-modal'
 import tinycolor from 'tinycolor2'
-import { GREY } from 'src/constants/colors'
+import { GRAY } from 'src/constants/colors'
 
 if (process.browser) {
 	ReactModal.setAppElement('#__next')
@@ -22,7 +22,7 @@ const Modal = ({
 				flex-direction: row !important;
 				align-items: center !important;
 				justify-content: center !important;
-				background-color: ${tinycolor(GREY).setAlpha(0.5)} !important;
+				background-color: ${tinycolor(GRAY).setAlpha(0.5)} !important;
 			}
 			:global(.ReactModal__Content){
 				position: relative !important;

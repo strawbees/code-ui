@@ -24,6 +24,9 @@
 	"ui.board.bootloader_mode_label" : "recovery mode",
 	"ui.board.upload.disconnect_warning" : "Please don't disconnect your Quirkbot.",
 
+	"flow.menu.toggle.simple" : "simple",
+	"flow.menu.toggle.advanced" : "advanced",
+
 	"scratch.url" : "/scratch",
 	"scratch.og.title" : "Scratch Programming",
 	"scratch.toolbox.category.input" : "Input",

@@ -4,17 +4,20 @@ import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
-const SContainer = ({ string, onChange, render = true }) => {
+const SManager = ({ string, onChange, render = true }) => {
 	if (onChange) {
 		onChange(string)
 	}
 	return render && (string || '')
 }
-SContainer.propTypes = {
-	string : PropTypes.string
+SManager.propTypes = {
+	onChange : PropTypes.func,
+	render   : PropTypes.bool,
+	value    : PropTypes.string,
+	string   : PropTypes.string,
 }
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
-)(SContainer)
+)(SManager)

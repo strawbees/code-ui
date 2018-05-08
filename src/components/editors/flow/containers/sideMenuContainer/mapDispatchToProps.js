@@ -1,6 +1,6 @@
 import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
-import { updateCurrentEditorProgramSource } from 'src/actions/program'
+import { flowEditorDisplayAdancedNodes } from 'src/actions/flowEditor'
 
 export default autobindDispatchToActionCreators({
-	onSourceChange : updateCurrentEditorProgramSource
+	flowEditorDisplayAdancedNodes
 })

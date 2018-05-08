@@ -6,6 +6,7 @@ import editor from 'src/reducers/editor'
 import modal from 'src/reducers/modal'
 import compiler from 'src/reducers/compiler'
 import uploader from 'src/reducers/uploader'
+import flowEditor from 'src/reducers/flowEditor'
 
 export default combineReducers({
 	setup,
@@ -14,5 +15,6 @@ export default combineReducers({
 	editor,
 	modal,
 	compiler,
-	uploader
+	uploader,
+	flowEditor,
 })
