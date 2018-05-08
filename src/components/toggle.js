@@ -21,12 +21,9 @@ const Toggle = ({
 				display: flex;
 				flex-direction: row;
 				align-items: center;
-				font-size: 0.7rem;
-				text-transform: uppercase;
-				letter-spacing: 0.05rem;
 				background-color: white;
 				border-radius: 2rem;
-				padding: 0.2rem 0.4rem;
+				padding: 0.2rem 0.5rem;
 			}
 			.switch {
 				width: 2.25rem;
@@ -79,19 +76,21 @@ const Toggle = ({
 				background-color: ${tinycolor(BLUE).setAlpha(0.5).toRgbString()};
 			}
 			.label {
-				cursor: pointer;
+				font-size: 0.7rem;
+				text-transform: uppercase;
+				letter-spacing: 0.05rem;
 			}
 			.offLabel {
-				margin-right: 0.5rem;
+				margin-right: 0.25rem;
 			}
 			.onLabel {
-				margin-left: 0.5rem;
+				margin-left: 0.25rem;
 			}
 		`}</style>
 		{offLabel &&
-			<div className="label offLabel" onClick={() => onChange(false)}>
+			<button className="label offLabel" onClick={() => onChange(false)}>
 				<S value={offLabel}/>
-			</div>
+			</button>
 		}
 		<div className="switch">
 			<div className="track"></div>
@@ -105,9 +104,9 @@ const Toggle = ({
 			/>
 		</div>
 		{onLabel &&
-			<div className="label onLabel" onClick={() => onChange(true)}>
+			<button className="label onLabel" onClick={() => onChange(true)}>
 				<S value={onLabel}/>
-			</div>
+			</button>
 		}
 	</div>
 

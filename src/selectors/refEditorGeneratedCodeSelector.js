@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import refEditorTypeSelector from 'src/selectors/refEditorTypeSelector'
 import refEditorSourceSelector from 'src/selectors/refEditorSourceSelector'
 
-import generateScratchCode from 'src/components/editors/scratch/utils/generateCode'
+import generateScratchCode from 'src/editors/scratch/utils/generateCode'
 
 export default createSelector(
 	[

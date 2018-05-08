@@ -136,6 +136,26 @@ class AppContainer extends React.Component {
 						overflow-y: scroll;
 						-webkit-overflow-scrolling: touch;
 					}
+					:global(button) {
+						border: none;
+						margin: 0;
+						padding: 0;
+						width: auto;
+						overflow: visible;
+						background: transparent;
+						color: inherit;
+						font: inherit;
+						text-align: inherit;
+						line-height: normal;
+						-webkit-font-smoothing: inherit;
+						-moz-osx-font-smoothing: inherit;
+						-webkit-appearance: none;
+						cursor: pointer;
+					}
+					:global(button::-moz-focus-inner) {
+						border: 0;
+						padding: 0;
+					}
 				`}</style>
 				<div
 					id="remotestorage-widget-container"

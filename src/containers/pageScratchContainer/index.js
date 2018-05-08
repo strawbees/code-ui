@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import VisualToTextEditor from 'src/components/editors/visualToText'
-import ScratchEditor from 'src/components/editors/scratch'
+import VisualToTextEditor from 'src/components/visualToTextEditor'
+import ScratchEditor from 'src/editors/scratch'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'

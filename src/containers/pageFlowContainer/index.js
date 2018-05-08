@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import VisualToTextEditor from 'src/components/editors/visualToText'
-import FlowEditor from 'src/components/editors/flow'
+import VisualToTextEditor from 'src/components/visualToTextEditor'
+import FlowEditor from 'src/editors/flow'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'

@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect'
 import storageProgramSelector from 'src/selectors/storageProgramSelector'
-import generateScratchCode from 'src/components/editors/scratch/utils/generateCode'
+import generateScratchCode from 'src/editors/scratch/utils/generateCode'
 
 export default createSelector(
 	[
