@@ -21,6 +21,7 @@ const Toggle = ({
 				display: flex;
 				flex-direction: row;
 				align-items: center;
+				justify-content: center;
 				background-color: white;
 				border-radius: 2rem;
 				padding: 0.2rem 0.5rem;

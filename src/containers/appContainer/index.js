@@ -117,6 +117,7 @@ class AppContainer extends React.Component {
 						font-family: 'Brandon Text', sans-serif;
 						font-size: 16px;
 						line-height: 1.5;
+						-webkit-font-smoothing: subpixel-antialiased;
 					}
 					:global(*){
 						box-sizing: border-box;

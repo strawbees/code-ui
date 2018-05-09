@@ -3,10 +3,16 @@ import SideMenuContainer from 'src/editors/flow/containers/sideMenuContainer'
 const Editor = (props) =>
 	<div className='root editor'>
 		<style jsx>{`
-			display: grid;
-			grid-template-columns: 12rem auto;
-			grid-template-rows: auto;
-			height: 100%;
+			.root {
+				display: flex;
+				flex-direction: row;
+				height: 100%;
+				position: relative;
+			}
+			.root :global(> *:first-child) {
+				width: 12rem;
+			}
+
 		`}</style>
 		<SideMenuContainer />
 	</div>

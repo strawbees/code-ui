@@ -12,18 +12,30 @@ const SideMenu = ({
 	<div className='root sideMenu'>
 		<style jsx>{`
 			.root {
-				display: grid;
-				grid-template-columns: 1;
-				grid-template-rows: 2rem auto;
-				align-items: start;
+				display: flex;
+				flex-direction: column;
+				align-items: stretch;
 				justify-items: center;
 				background-color: ${tinycolor(GRAY).lighten(35).toRgbString()};
-				padding-top: 0.5rem;
 				box-sizing: border-box;
 				border-right: solid 0.4rem ${tinycolor(GRAY).lighten(20).toRgbString()};;
+				min-height: 0;  /* NEW */
+				min-width: 0;   /* NEW; needed for Firefox */
 			}
-			.categoryMenus {
-				justify-self: stretch;
+			.root :global(>*:nth-child(1)) {
+				min-height: 2rem;
+				margin: 0.5rem;
+			}
+
+			.root :global(>*:nth-child(2)) {
+				overflow-y: scroll;
+				flex-grow: 1;
+				margin-left: 0.5rem;
+				padding-right: 0.5rem;
+			}
+
+			.categoryMenus :global(>*) {
+				margin-bottom: 0.5rem;
 			}
 		`}</style>
 		<Toggle
