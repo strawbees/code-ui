@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect'
-import categoryDefinitionsSelector from 'src/editors/flow/selectors/categoryDefinitionsSelector'
+import baseCategoryDefinitionsSelector from 'src/editors/flow/selectors/baseCategoryDefinitionsSelector'
 
 export default createSelector(
 	[
-		categoryDefinitionsSelector,
+		baseCategoryDefinitionsSelector,
 		(state, { id }) => id
 	],
 	(

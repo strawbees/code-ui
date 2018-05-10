@@ -57,17 +57,23 @@ class VisualToTextEditor extends React.Component {
 						width: 100%;
 						height: 100%;
 					}
+					.editor.text :global(>*:nth-child(1)) {
+						display: none;
+					}
+					.editor.visual :global(>*:nth-child(2)) {
+						/* setting display:none on ace editor will cause
+						* it to not update it's value.
+						* @see: https://github.com/ajaxorg/ace/issues/2497
+						*/
+						transform: translateX(-99999px);
+					}
 				`}</style>
-				<div className='editor'>
-					{displayVisual &&
-						<VisualEditor {...visualEditorProps} />
-					}
-					{!displayVisual &&
-						<AceEditor
-							value={generatedCode}
-							readOnly={false}
-						/>
-					}
+				<div className={`editor ${displayVisual ? 'visual' : 'text'}`}>
+					<VisualEditor {...visualEditorProps} />
+					<AceEditor
+						value={generatedCode}
+						readOnly={false}
+					/>
 				</div>
 				<div className={`switch ${displayVisual ? 'visual' : 'text'}`}>
 					<div onClick={showVisual}

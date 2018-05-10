@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import withScript from 'src/hoc/withScript'
 import Spinner from 'src/components/spinner'
 import toolboxToXmlString from './utils/toolboxToXmlString'
@@ -122,6 +123,12 @@ class ScratchEditor extends React.Component {
 			</div>
 		)
 	}
+}
+
+ScratchEditor.propTypes = {
+	strings        : PropTypes.object,
+	source         : PropTypes.string,
+	onSourceChange : PropTypes.func
 }
 
 const ScratchEditorWithStrings = (props) => {

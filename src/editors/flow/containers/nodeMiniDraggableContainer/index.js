@@ -1,6 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import Draggable, { DraggableCore } from 'react-draggable'
+import Draggable from 'react-draggable'
 import NodeMini from 'src/editors/flow/components/nodeMini'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
@@ -36,7 +37,19 @@ class NodeMiniDraggableContainer extends React.Component {
 			})
 		}
 	}
-	onDragStop = () => {
+	onDragStop = (e, { x, y }) => {
+		const { getDropAreaRect } = this.props
+		const {
+			left,
+			right,
+			top,
+			bottom
+		} = getDropAreaRect()
+
+		if (x > left && x < right && y > top && y < bottom) {
+			
+		}
+
 		this.setState({
 			dragStyle : {
 				top  : null,
@@ -92,6 +105,10 @@ class NodeMiniDraggableContainer extends React.Component {
 			</div>
 		)
 	}
+}
+
+NodeMiniDraggableContainer.propTypes = {
+	getDropAreaRect : PropTypes.func
 }
 
 export default connect(

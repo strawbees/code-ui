@@ -44,11 +44,11 @@ const SideMenu = ({
 			offLabel='flow.menu.toggle.simple'
 			onLabel='flow.menu.toggle.advanced'
 		/>
-		<div className='categoryMenus'>
+		<span className='categoryMenus'>
 			{categoryIds && categoryIds.map(id =>
 				<CategoryMenuContainer key={id} id={id} />
 			)}
-		</div>
+		</span>
 	</div>
 
 SideMenu.propTypes = {

@@ -2,14 +2,14 @@ import { createSelector } from 'reselect'
 import categoryColorSelector from 'src/editors/flow/selectors/categoryColorSelector'
 import categoryNameSelector from 'src/editors/flow/selectors/categoryNameSelector'
 import categoryIsFoldedSelector from 'src/editors/flow/selectors/categoryIsFoldedSelector'
-import categoryNodeIdsSelector from 'src/editors/flow/selectors/categoryNodeIdsSelector'
+import categoryVisibleNodeIdsSelector from 'src/editors/flow/selectors/categoryVisibleNodeIdsSelector'
 
 export default createSelector(
 	[
 		categoryColorSelector,
 		categoryNameSelector,
 		categoryIsFoldedSelector,
-		categoryNodeIdsSelector,
+		categoryVisibleNodeIdsSelector,
 	],
 	(
 		color,

@@ -20,7 +20,7 @@ class EditorContainer extends React.Component {
 	}
 	render() {
 		return (
-			<Editor />
+			<Editor {...this.props}/>
 		)
 	}
 }
