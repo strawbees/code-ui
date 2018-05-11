@@ -40,14 +40,23 @@ class NodeMiniDraggableContainer extends React.Component {
 	onDragStop = (e, { x, y }) => {
 		const { getDropAreaRect } = this.props
 		const {
-			left,
-			right,
-			top,
-			bottom
+			rect,
+			scroll
 		} = getDropAreaRect()
 
-		if (x > left && x < right && y > top && y < bottom) {
-			
+		if (x > rect.left &&
+			x < rect.right &&
+			y > rect.top &&
+			y < rect.bottom) {
+			const {
+				id : nodeId,
+				safeAddInstance
+			} = this.props
+			safeAddInstance({
+				nodeId,
+				x : (x - rect.left) + scroll.left,
+				y : (y - rect.top) + scroll.top,
+			})
 		}
 
 		this.setState({
@@ -108,7 +117,9 @@ class NodeMiniDraggableContainer extends React.Component {
 }
 
 NodeMiniDraggableContainer.propTypes = {
-	getDropAreaRect : PropTypes.func
+	id                   : PropTypes.string,
+	getDropAreaRect      : PropTypes.func,
+	safeAddInstance : PropTypes.func,
 }
 
 export default connect(

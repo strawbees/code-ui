@@ -4,15 +4,10 @@ export default (stateProps, dispatchProps, ownProps) => {
 		...otherDispatchProps
 	} = dispatchProps
 
-	const {
-		id,
-		...otherOwnProps
-	} = ownProps
-
 	return {
 		...stateProps,
 		...otherDispatchProps,
-		...otherOwnProps,
+		...ownProps,
 		toggle : () => toggleFoldedCategory(id)
 	}
 }

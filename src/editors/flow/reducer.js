@@ -9,6 +9,7 @@ import {
 	SET_SOURCE,
 	ADD_INSTANCE,
 	REMOVE_INSTANCE,
+	UPDATE_INSTANCE_POSITION,
 } from './actionTypes'
 
 const nodeDefinitions = generateReducer(SET_NODE_DEFINITIONS)
@@ -48,6 +49,28 @@ const source = (state = [], { type, payload }) => {
 				newState.splice(newState.indexOf(payload), 1)
 			}
 			// TODO: disconnect inputs
+			return newState
+		}
+		case UPDATE_INSTANCE_POSITION: {
+			const newState = [...state]
+			const { id, x, y } = payload
+			// find the instance
+			let instanceIndex = -1
+			for (let i = 0; i < newState.length; i++) {
+				if (newState[i].id === id) {
+					instanceIndex = i
+					break
+				}
+			}
+			if (instanceIndex === -1 || instanceIndex >= newState.length) {
+				return state
+			}
+			// copy and update it
+			newState[instanceIndex] = {
+				...newState[instanceIndex],
+				x,
+				y
+			}
 			return newState
 		}
 		default:

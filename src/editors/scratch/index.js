@@ -68,9 +68,9 @@ class ScratchEditor extends React.Component {
 		// Handle the source changes
 		const {
 			onSourceChange,
-			source
+			refEditorSource
 		} = this.props
-		this.source = source
+		this.source = refEditorSource
 		mainWorkspace.addChangeListener(() => {
 			const xml = Blockly.Xml.workspaceToDom(mainWorkspace)
 			const currentSource = Blockly.Xml.domToText(xml)
@@ -80,7 +80,7 @@ class ScratchEditor extends React.Component {
 			}
 		})
 		// Load the initial source
-		this.loadSource(source)
+		this.loadSource(refEditorSource)
 	}
 
 	compomnentWillUnmount() {
@@ -88,10 +88,10 @@ class ScratchEditor extends React.Component {
 	}
 
 	componentDidUpdate() {
-		const { source } = this.props
+		const { refEditorSource } = this.props
 		const { source : prevSource } = this
-		if (source !== prevSource) {
-			this.loadSource(source)
+		if (refEditorSource !== prevSource) {
+			this.loadSource(refEditorSource)
 		}
 	}
 
@@ -126,9 +126,9 @@ class ScratchEditor extends React.Component {
 }
 
 ScratchEditor.propTypes = {
-	strings        : PropTypes.object,
-	source         : PropTypes.string,
-	onSourceChange : PropTypes.func
+	strings         : PropTypes.object,
+	refEditorSource : PropTypes.string,
+	onSourceChange  : PropTypes.func
 }
 
 const ScratchEditorWithStrings = (props) => {

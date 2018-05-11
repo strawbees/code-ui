@@ -3,11 +3,9 @@ import baseSourceSelector from 'src/editors/flow/selectors/baseSourceSelector'
 
 export default createSelector(
 	[
-		baseSourceSelector,
+		baseSourceSelector
 	],
 	(
-		source,
-	) => ({
-		source,
-	})
+		baseSource
+	) => baseSource.map(({ id }) => id)
 )

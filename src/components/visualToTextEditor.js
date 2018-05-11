@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import S from 'src/containers/sManager'
-import AceEditor from 'src/components/aceEditor'
+import MirrorEditorContainer from 'src/containers/mirrorEditorContainer'
 
 class VisualToTextEditor extends React.Component {
 	state = {
@@ -65,15 +65,12 @@ class VisualToTextEditor extends React.Component {
 						* it to not update it's value.
 						* @see: https://github.com/ajaxorg/ace/issues/2497
 						*/
-						transform: translateX(-99999px);
+						transform: scale3d(0,0,0);
 					}
 				`}</style>
 				<div className={`editor ${displayVisual ? 'visual' : 'text'}`}>
 					<VisualEditor {...visualEditorProps} />
-					<AceEditor
-						value={generatedCode}
-						readOnly={false}
-					/>
+					<MirrorEditorContainer/>
 				</div>
 				<div className={`switch ${displayVisual ? 'visual' : 'text'}`}>
 					<div onClick={showVisual}
@@ -91,8 +88,7 @@ class VisualToTextEditor extends React.Component {
 }
 
 VisualToTextEditor.propTypes = {
-	generatedCode : PropTypes.string,
-	VisualEditor  : PropTypes.func
+	VisualEditor : PropTypes.func
 }
 
 export default VisualToTextEditor
