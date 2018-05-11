@@ -4,6 +4,13 @@ import App, { Container } from 'next/app'
 import withRedux from 'next-redux-wrapper'
 import makeStore from 'src/store'
 
+
+if (process.env.NODE_ENV !== 'production') {
+	/* eslint-disable-next-line global-require */
+	const { whyDidYouUpdate } = require('why-did-you-update')
+	whyDidYouUpdate(React)
+}
+
 class NextApp extends App {
 	static async getInitialProps({ Component, ctx }) {
 		return {
