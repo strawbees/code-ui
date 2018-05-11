@@ -1,4 +1,5 @@
 import generateAction from 'src/utils/generateAction'
+import instanceNodeCodeNameSelector from 'src/editors/flow/selectors/instanceNodeCodeNameSelector'
 import nodeCodeNameSelector from 'src/editors/flow/selectors/nodeCodeNameSelector'
 import instanceSelector from 'src/editors/flow/selectors/instanceSelector'
 import { sanitizeCPPVariableName } from 'src/utils/string'
@@ -11,6 +12,7 @@ import {
 	SET_SOURCE,
 	ADD_INSTANCE,
 	REMOVE_INSTANCE,
+	UPDATE_INSTANCE_ID,
 	UPDATE_INSTANCE_POSITION,
 } from './actionTypes'
 
@@ -22,6 +24,7 @@ export const registerGetDropAreaRect = generateAction(REGISTER_GET_DROP_AREA_REC
 export const setSource = generateAction(SET_SOURCE)
 export const addInstance = generateAction(ADD_INSTANCE)
 export const removeInstance = generateAction(REMOVE_INSTANCE)
+export const updateInstanceId = generateAction(UPDATE_INSTANCE_ID)
 export const updateInstancePosition = generateAction(UPDATE_INSTANCE_POSITION)
 export const safeAddInstance = ({
 	id,
@@ -49,5 +52,41 @@ export const safeAddInstance = ({
 		nodeId,
 		x,
 		y
+	}))
+}
+export const safeUpdateInstanceId = ({
+	id,
+	newId
+}) => async (dispatch, getState) => {
+	const state = getState()
+	if (newId) {
+		newId = sanitizeCPPVariableName(newId)
+	}
+	if (newId === id) {
+		return
+	}
+	if (!newId) {
+		let base = instanceNodeCodeNameSelector(state, { id })
+		base = base.charAt(0).toLowerCase() + base.slice(1)
+		base = sanitizeCPPVariableName(base)
+		let count = 1
+		newId = `${base}${count}`
+		while (instanceSelector(state, { id : newId })) {
+			count++
+			newId = `${base}${count}`
+		}
+	}
+	if (instanceSelector(state, { id : newId })) {
+		const base = newId
+		let count = 1
+		newId = `${base}${count}`
+		while (instanceSelector(state, { id : newId })) {
+			count++
+			newId = `${base}${count}`
+		}
+	}
+	dispatch(updateInstanceId({
+		id,
+		newId
 	}))
 }

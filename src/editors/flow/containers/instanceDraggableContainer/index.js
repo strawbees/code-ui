@@ -14,6 +14,10 @@ class InstanceDraggableContainer extends React.Component {
 	state = {
 		style : {}
 	}
+	constructor(props) {
+		super(props)
+		this.ref = React.createRef()
+	}
 	onDragStart = () => {
 		this.setState({
 			style : {
@@ -29,9 +33,16 @@ class InstanceDraggableContainer extends React.Component {
 			id,
 			updateInstancePosition
 		} = this.props
+		if (x < 10) {
+			x = 10
+		}
+		if (y < 10) {
+			y = 10
+		}
 		updateInstancePosition({ id, x, y })
 	}
-	onKeyUp = ({ keyCode }) => {
+	onKeyUp = ({ keyCode, ...e }) => {
+		console.log(e)
 		const {
 			id,
 			position,
@@ -65,6 +76,9 @@ class InstanceDraggableContainer extends React.Component {
 		} = this.props
 		removeInstance(id)
 	}
+	componentDidMount() {
+		this.ref.current.focus()
+	}
 
 	render() {
 		const {
@@ -81,6 +95,7 @@ class InstanceDraggableContainer extends React.Component {
 		} = this.props
 		return (
 			<Draggable
+				cancel='.button-container,.instanceIdInput'
 				onStart={onDragStart}
 				onDrag={onDragMove}
 				onStop={onDragStop}
@@ -88,10 +103,13 @@ class InstanceDraggableContainer extends React.Component {
 				<div className='root instanceDraggableContainer'
 					style={style}
 					tabIndex="0"
-					onKeyUp={onKeyUp}>
+					ref={this.ref}>
 					<style jsx>{`
 						.root {
 							cursor: grab;
+						}
+						.root:focus {
+							outline: none;
 						}
 						.root.react-draggable-dragging {
 							cursor: grabbing;
