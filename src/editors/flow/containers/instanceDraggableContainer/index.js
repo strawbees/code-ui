@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Draggable from 'react-draggable'
+import CloseButton from 'src/editors/flow/components/closeButton'
 import InstanceContainer from 'src/editors/flow/containers/instanceContainer'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
@@ -30,8 +31,49 @@ class InstanceDraggableContainer extends React.Component {
 		} = this.props
 		updateInstancePosition({ id, x, y })
 	}
+	onKeyUp = ({ keyCode }) => {
+		const {
+			id,
+			position,
+			updateInstancePosition
+		} = this.props
+		let {
+			x,
+			y
+		} = position
+		switch (keyCode) {
+			case 37: // left
+				x -= 10
+				break
+			case 39: // right
+				x += 10
+				break
+			case 38: // up
+				y -= 10
+				break
+			case 40: // down
+				y += 10
+				break
+			default:
+		}
+		updateInstancePosition({ id, x, y })
+	}
+	onCloseClick = () => {
+		const {
+			id,
+			removeInstance
+		} = this.props
+		removeInstance(id)
+	}
 
 	render() {
+		const {
+			onDragStart,
+			onDragMove,
+			onDragStop,
+			onKeyUp,
+			onCloseClick,
+		} = this
 		const { style } = this.state
 		const {
 			position,
@@ -39,12 +81,14 @@ class InstanceDraggableContainer extends React.Component {
 		} = this.props
 		return (
 			<Draggable
-				onStart={this.onDragStart}
-				onDrag={this.onDragMove}
-				onStop={this.onDragStop}
+				onStart={onDragStart}
+				onDrag={onDragMove}
+				onStop={onDragStop}
 				position={position}>
 				<div className='root instanceDraggableContainer'
-					style={style}>
+					style={style}
+					tabIndex="0"
+					onKeyUp={onKeyUp}>
 					<style jsx>{`
 						.root {
 							cursor: grab;
@@ -52,7 +96,20 @@ class InstanceDraggableContainer extends React.Component {
 						.root.react-draggable-dragging {
 							cursor: grabbing;
 						}
+
+						.root .button-container {
+							position: absolute;
+							top: -0.5rem;
+							right: -0.5rem;
+							display: none;
+						}
+						.root:hover .button-container {
+							display: block;
+						}
 					`}</style>
+					<div className='button-container'>
+						<CloseButton onClick={onCloseClick}/>
+					</div>
 					<InstanceContainer id={id}/>
 				</div>
 			</Draggable>

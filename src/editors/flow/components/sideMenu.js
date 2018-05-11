@@ -19,8 +19,9 @@ const SideMenu = ({
 				background-color: ${tinycolor(GRAY).lighten(35).toRgbString()};
 				box-sizing: border-box;
 				border-right: solid 0.4rem ${tinycolor(GRAY).lighten(20).toRgbString()};;
-				min-height: 0;  /* NEW */
-				min-width: 0;   /* NEW; needed for Firefox */
+				min-height: 0;
+				min-width: 0;
+				user-select: none;
 			}
 			.root :global(>*:nth-child(1)) {
 				min-height: 2rem;

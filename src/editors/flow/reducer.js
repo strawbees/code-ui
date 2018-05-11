@@ -45,10 +45,21 @@ const source = (state = [], { type, payload }) => {
 		}
 		case REMOVE_INSTANCE: {
 			const newState = [...state]
-			if (state.indexOf(payload) !== -1) {
-				newState.splice(newState.indexOf(payload), 1)
+			const id = payload
+			// find the instance
+			let instanceIndex = -1
+			for (let i = 0; i < newState.length; i++) {
+				if (newState[i].id === id) {
+					instanceIndex = i
+					break
+				}
 			}
-			// TODO: disconnect inputs
+			if (instanceIndex === -1 || instanceIndex >= newState.length) {
+				return state
+			}
+			// remove the instance
+			newState.splice(instanceIndex, 1)
+			console.warn('TODO: disconnect inputs')
 			return newState
 		}
 		case UPDATE_INSTANCE_POSITION: {

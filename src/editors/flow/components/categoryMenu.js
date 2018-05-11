@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import SvgIcon from 'src/components/svgIcon'
+import generalIcons from 'src/editors/flow/assets/icons/general'
 import NodeMiniDraggableContainer from 'src/editors/flow/containers/nodeMiniDraggableContainer'
-import tinycolor from 'tinycolor2'
-import { GRAY } from 'src/constants/colors'
+
 
 const CategoryMenu = ({
 	name,
@@ -20,14 +21,24 @@ const CategoryMenu = ({
 				width: 100%;
 			}
 			.button {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
 				font-size: 0.7rem;
+				letter-spacing: 0.05rem;
 				text-transform: uppercase;
 				color: white;
+				fill: white;
 				background-color: ${color};
 				width: 100%;
 				height: 2rem;
 				border-radius: 2rem;
 				padding: 0 1rem;
+			}
+			.button :global(.svgIcon) {
+				height: 1.5rem;
+				width:  1.5rem;
 			}
 			.nodes {
 				margin-top: 0.4rem;
@@ -45,6 +56,7 @@ const CategoryMenu = ({
 		`}</style>
 		<button onClick={toggle} className='button'>
 			{name}
+			<SvgIcon icon={folded ? generalIcons.expand : generalIcons.collapse}/>
 		</button>
 		<div className='nodes'>
 			{nodeIds && nodeIds.map(id =>
