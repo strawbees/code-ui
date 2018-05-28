@@ -22,7 +22,34 @@ class Workspace extends React.Component {
 			})
 		)
 	}
+	shouldComponentUpdate(nextProps) {
+		const {
+			instanceIds,
+			registerGetDropAreaRect,
+		} = this.props
+		const {
+			instanceIds             : nextInstanceIds,
+			registerGetDropAreaRect : nextRegisterGetDropAreaRect
+		} = nextProps
+
+		if (registerGetDropAreaRect !== nextRegisterGetDropAreaRect) {
+			return true
+		}
+		// the "instanceIds" may be different by reference, but if content is
+		// the same (even if in different order) there is no need to re-render
+		if (instanceIds.length !== nextInstanceIds.length) {
+			return true
+		}
+		for (let i = 0; i < nextInstanceIds.length; i++) {
+			const id = nextInstanceIds[i]
+			if (instanceIds.indexOf(id) === -1) {
+				return true
+			}
+		}
+		return false
+	}
 	render() {
+		console.log('workspace')
 		const { instanceIds } = this.props
 		return (
 			<div className='root workspace' ref={this.dropArea}>
@@ -49,8 +76,8 @@ class Workspace extends React.Component {
 					}
 				`}</style>
 				<div className='instances' ref={this.instancesArea}>
-					{instanceIds && instanceIds.map(id =>
-						<InstanceDraggableContainer key={id} id={id} />
+					{instanceIds && instanceIds.map((id, i) =>
+						<InstanceDraggableContainer key={i} id={id} />
 					)}
 				</div>
 			</div>

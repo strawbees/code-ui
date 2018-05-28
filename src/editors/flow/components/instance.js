@@ -2,12 +2,6 @@ import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import NodeTypeName from 'src/editors/flow/components/nodeTypeName'
 
-const cancelEvent = (e) => {
-	e.stopPropagation()
-	e.preventDefault()
-	console.log(e,'aaa')
-	return false
-}
 const Instance = ({
 	id,
 	icon,
@@ -36,12 +30,12 @@ const Instance = ({
 			className='instanceIdInput'
 			type='text'
 			value={id}
-			onKeyUp={cancelEvent}
 			onChange={e => onIdInputChange(e.target.value)}
 		/>
 	</div>
 
 Instance.propTypes = {
+	id              : PropTypes.string,
 	icon            : PropTypes.func,
 	name            : PropTypes.string,
 	color           : PropTypes.string,

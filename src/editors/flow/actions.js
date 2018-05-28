@@ -54,6 +54,7 @@ export const safeAddInstance = ({
 		y
 	}))
 }
+
 export const safeUpdateInstanceId = ({
 	id,
 	newId
