@@ -65,6 +65,7 @@ class VisualToTextEditor extends React.Component {
 						* it to not update it's value.
 						* @see: https://github.com/ajaxorg/ace/issues/2497
 						*/
+						transform-origin: top left;
 						transform: scale3d(0,0,0);
 					}
 				`}</style>
