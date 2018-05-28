@@ -2,6 +2,8 @@ import generateAction from 'src/utils/generateAction'
 import instanceNodeCodeNameSelector from 'src/editors/flow/selectors/instanceNodeCodeNameSelector'
 import nodeCodeNameSelector from 'src/editors/flow/selectors/nodeCodeNameSelector'
 import instanceSelector from 'src/editors/flow/selectors/instanceSelector'
+import instanceByNameSelector from 'src/editors/flow/selectors/instanceByNameSelector'
+import nextInstanceIdSelector from 'src/editors/flow/selectors/nextInstanceIdSelector'
 import { sanitizeCPPVariableName } from 'src/utils/string'
 import {
 	SET_NODE_DEFINITIONS,
@@ -12,7 +14,7 @@ import {
 	SET_SOURCE,
 	ADD_INSTANCE,
 	REMOVE_INSTANCE,
-	UPDATE_INSTANCE_ID,
+	UPDATE_INSTANCE_NAME,
 	UPDATE_INSTANCE_POSITION,
 } from './actionTypes'
 
@@ -24,70 +26,73 @@ export const registerGetDropAreaRect = generateAction(REGISTER_GET_DROP_AREA_REC
 export const setSource = generateAction(SET_SOURCE)
 export const addInstance = generateAction(ADD_INSTANCE)
 export const removeInstance = generateAction(REMOVE_INSTANCE)
-export const updateInstanceId = generateAction(UPDATE_INSTANCE_ID)
+export const updateInstanceName = generateAction(UPDATE_INSTANCE_NAME)
 export const updateInstancePosition = generateAction(UPDATE_INSTANCE_POSITION)
 export const safeAddInstance = ({
 	id,
+	name,
 	nodeId,
 	x = 0,
 	y = 0
 }) => async (dispatch, getState) => {
 	const state = getState()
-	if (id) {
-		id = sanitizeCPPVariableName(id)
+	if (typeof id === 'undefined') {
+		id = nextInstanceIdSelector()(state)
 	}
-	if (!id || instanceSelector()(state, { id })) {
+	if (name) {
+		name = sanitizeCPPVariableName(name)
+	}
+	if (!name || instanceByNameSelector()(state, { name })) {
 		let base = nodeCodeNameSelector()(state, { id : nodeId })
 		base = base.charAt(0).toLowerCase() + base.slice(1)
 		base = sanitizeCPPVariableName(base)
 		let count = 1
-		id = `${base}${count}`
-		while (instanceSelector()(state, { id })) {
+		name = `${base}${count}`
+		while (instanceByNameSelector()(state, { name })) {
 			count++
-			id = `${base}${count}`
+			name = `${base}${count}`
 		}
 	}
 	dispatch(addInstance({
 		id,
+		name,
 		nodeId,
 		x,
 		y
 	}))
 }
 
-export const safeUpdateInstanceId = ({
+export const safeupdateInstanceName = ({
 	id,
-	newId
+	name
 }) => async (dispatch, getState) => {
 	const state = getState()
-	if (newId) {
-		newId = sanitizeCPPVariableName(newId)
+	if (name) {
+		name = sanitizeCPPVariableName(name)
 	}
-	if (newId === id) {
-		return
-	}
-	if (!newId) {
+
+	if (!name) {
 		let base = instanceNodeCodeNameSelector()(state, { id })
 		base = base.charAt(0).toLowerCase() + base.slice(1)
 		base = sanitizeCPPVariableName(base)
 		let count = 1
-		newId = `${base}${count}`
-		while (instanceSelector()(state, { id : newId })) {
+		name = `${base}${count}`
+		while (instanceByNameSelector()(state, { name })) {
 			count++
-			newId = `${base}${count}`
+			name = `${base}${count}`
 		}
 	}
-	if (instanceSelector()(state, { id : newId })) {
-		const base = newId
+	if (instanceSelector()(state, { name })) {
+		const base = name
 		let count = 1
-		newId = `${base}${count}`
-		while (instanceSelector()(state, { id : newId })) {
+		name = `${base}${count}`
+		while (instanceByNameSelector()(state, { name })) {
 			count++
-			newId = `${base}${count}`
+			name = `${base}${count}`
 		}
 	}
-	dispatch(updateInstanceId({
+	dispatch(updateInstanceName({
 		id,
-		newId
+		name
 	}))
 }

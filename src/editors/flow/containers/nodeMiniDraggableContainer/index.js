@@ -117,8 +117,8 @@ class NodeMiniDraggableContainer extends React.Component {
 }
 
 NodeMiniDraggableContainer.propTypes = {
-	id                   : PropTypes.string,
-	getDropAreaRect      : PropTypes.func,
+	id              : PropTypes.string,
+	getDropAreaRect : PropTypes.func,
 	safeAddInstance : PropTypes.func,
 }
 

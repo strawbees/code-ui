@@ -25,9 +25,6 @@ class InstanceDraggableContainer extends React.Component {
 			}
 		})
 	}
-	onDragMove = (e, { x, y }) => {
-
-	}
 	onDragStop = (e, { x, y }) => {
 		const {
 			id,
@@ -45,13 +42,10 @@ class InstanceDraggableContainer extends React.Component {
 		console.log(e)
 		const {
 			id,
-			position,
+			x,
+			y,
 			updateInstancePosition
 		} = this.props
-		let {
-			x,
-			y
-		} = position
 		switch (keyCode) {
 			case 37: // left
 				x -= 10
@@ -84,23 +78,22 @@ class InstanceDraggableContainer extends React.Component {
 	render() {
 		const {
 			onDragStart,
-			onDragMove,
 			onDragStop,
 			onKeyUp,
 			onCloseClick,
 		} = this
 		const { style } = this.state
 		const {
-			position,
+			x,
+			y,
 			id
 		} = this.props
 		return (
 			<Draggable
 				cancel='.button-container,.instanceIdInput'
 				onStart={onDragStart}
-				onDrag={onDragMove}
 				onStop={onDragStop}
-				position={position}>
+				position={{ x, y }}>
 				<div className='root instanceDraggableContainer'
 					style={style}
 					tabIndex="0"
@@ -137,11 +130,9 @@ class InstanceDraggableContainer extends React.Component {
 }
 
 InstanceDraggableContainer.propTypes = {
-	id       : PropTypes.string,
-	position : PropTypes.shape({
-		x : PropTypes.number,
-		y : PropTypes.number,
-	}),
+	id                     : PropTypes.string,
+	x                      : PropTypes.number,
+	y                      : PropTypes.number,
 	updateInstancePosition : PropTypes.func,
 	removeInstance         : PropTypes.func,
 }

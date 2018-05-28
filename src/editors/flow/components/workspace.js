@@ -49,7 +49,6 @@ class Workspace extends React.Component {
 		return false
 	}
 	render() {
-		console.log('workspace')
 		const { instanceIds } = this.props
 		return (
 			<div className='root workspace' ref={this.dropArea}>
@@ -76,8 +75,8 @@ class Workspace extends React.Component {
 					}
 				`}</style>
 				<div className='instances' ref={this.instancesArea}>
-					{instanceIds && instanceIds.map((id, i) =>
-						<InstanceDraggableContainer key={i} id={id} />
+					{instanceIds && instanceIds.map((id) =>
+						<InstanceDraggableContainer key={id} id={id} />
 					)}
 				</div>
 			</div>

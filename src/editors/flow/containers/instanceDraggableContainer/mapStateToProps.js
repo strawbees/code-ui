@@ -1,13 +1,17 @@
 import { createSelector } from 'reselect'
-import instancePositionSelector from 'src/editors/flow/selectors/instancePositionSelector'
+import instanceXSelector from 'src/editors/flow/selectors/instanceXSelector'
+import instanceYSelector from 'src/editors/flow/selectors/instanceYSelector'
 
 export default () => createSelector(
 	[
-		instancePositionSelector()
+		instanceXSelector(),
+		instanceYSelector(),
 	],
 	(
-		position
+		x,
+		y,
 	) => ({
-		position
+		x,
+		y
 	})
 )

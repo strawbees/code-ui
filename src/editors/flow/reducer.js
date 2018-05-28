@@ -10,7 +10,7 @@ import {
 	ADD_INSTANCE,
 	REMOVE_INSTANCE,
 	UPDATE_INSTANCE_POSITION,
-	UPDATE_INSTANCE_ID,
+	UPDATE_INSTANCE_NAME,
 } from './actionTypes'
 
 const nodeDefinitions = generateReducer(SET_NODE_DEFINITIONS)
@@ -56,7 +56,7 @@ const source = (state = [], { type, payload }) => {
 					break
 				}
 			}
-			if (instanceIndex === -1 || instanceIndex >= newState.length) {
+			if (instanceIndex === -1) {
 				return state
 			}
 			// remove the instance
@@ -75,7 +75,7 @@ const source = (state = [], { type, payload }) => {
 					break
 				}
 			}
-			if (instanceIndex === -1 || instanceIndex >= newState.length) {
+			if (instanceIndex === -1) {
 				return state
 			}
 			// copy and update it
@@ -86,9 +86,9 @@ const source = (state = [], { type, payload }) => {
 			}
 			return newState
 		}
-		case UPDATE_INSTANCE_ID: {
+		case UPDATE_INSTANCE_NAME: {
 			const newState = [...state]
-			const { id, newId } = payload
+			const { id, name } = payload
 			// find the instance
 			let instanceIndex = -1
 			for (let i = 0; i < newState.length; i++) {
@@ -97,13 +97,13 @@ const source = (state = [], { type, payload }) => {
 					break
 				}
 			}
-			if (instanceIndex === -1 || instanceIndex >= newState.length) {
+			if (instanceIndex === -1) {
 				return state
 			}
 			// copy and update it
 			newState[instanceIndex] = {
 				...newState[instanceIndex],
-				id : newId
+				name
 			}
 			console.warn('TODO: update inputs inputs')
 			return newState

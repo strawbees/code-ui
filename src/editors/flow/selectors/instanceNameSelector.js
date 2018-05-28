@@ -6,6 +6,6 @@ export default () => createSelector(
 		instanceSelector(),
 	],
 	(
-		{ x, y }
-	) => ({ x, y })
+		{ name }
+	) => name
 )
