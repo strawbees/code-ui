@@ -1,13 +1,14 @@
 import { createSelector } from 'reselect'
+import propsIdSelector from 'src/editors/flow/selectors/propsIdSelector'
 import baseNodeDefinitionsSelector from 'src/editors/flow/selectors/baseNodeDefinitionsSelector'
 
 export default createSelector(
 	[
 		baseNodeDefinitionsSelector,
-		(state, { id }) => id
+		propsIdSelector,
 	],
 	(
 		nodeDefinitions,
-		id
+		id,
 	) => nodeDefinitions[id]
 )

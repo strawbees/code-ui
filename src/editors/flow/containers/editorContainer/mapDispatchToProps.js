@@ -2,11 +2,9 @@ import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToAction
 import {
 	setNodeDefinitions,
 	setCategoryDefinitions,
-	setSource,
 } from 'src/editors/flow/actions'
 
 export default autobindDispatchToActionCreators({
 	setNodeDefinitions,
 	setCategoryDefinitions,
-	setSource
 })

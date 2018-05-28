@@ -8,7 +8,7 @@ export default (stateProps, dispatchProps, ownProps) => {
 		id,
 		...otherOwnProps
 	} = ownProps
-
+	console.log('aaa')
 	return {
 		...stateProps,
 		...otherDispatchProps,

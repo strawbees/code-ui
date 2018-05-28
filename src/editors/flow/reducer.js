@@ -39,9 +39,10 @@ const source = (state = [], { type, payload }) => {
 		}
 		case ADD_INSTANCE: {
 			const newState = [...state]
-			if (state.indexOf(payload) === -1) {
-				newState.push(payload)
+			if (state.indexOf(payload) !== -1) {
+				return state
 			}
+			newState.push(payload)
 			return newState
 		}
 		case REMOVE_INSTANCE: {

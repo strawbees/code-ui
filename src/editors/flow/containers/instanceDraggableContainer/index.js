@@ -66,6 +66,7 @@ class InstanceDraggableContainer extends React.Component {
 				y += 10
 				break
 			default:
+				return
 		}
 		updateInstancePosition({ id, x, y })
 	}

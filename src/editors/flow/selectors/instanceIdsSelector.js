@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect'
-import baseSourceSelector from 'src/editors/flow/selectors/baseSourceSelector'
+import sourceSelector from 'src/editors/flow/selectors/sourceSelector'
 
 export default createSelector(
 	[
-		baseSourceSelector
+		sourceSelector
 	],
 	(
-		baseSource
-	) => baseSource.map(({ id }) => id)
+		source
+	) => source.map(({ id }) => id)
 )

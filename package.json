@@ -8,22 +8,23 @@
     "deploy": "node lib/scripts/deploy.js"
   },
   "dependencies": {
-    "@babel/core": "7.0.0-beta.46",
+    "@babel/core": "7.0.0-beta.49",
     "babel-plugin-inline-react-svg": "^0.5.2",
     "babel-plugin-module-resolver": "^3.1.1",
-    "deep-diff": "^1.0.0",
+    "deep-diff": "^1.0.1",
     "dotenv": "^5.0.1",
+    "immutable": "^3.8.2",
     "isomorphic-unfetch": "^2.0.0",
     "mkdirp": "^0.5.1",
     "ncp": "^2.0.0",
-    "next": "^6.0.1-canary.1",
-    "next-redux-wrapper": "^2.0.0-beta.5",
+    "next": "^6.0.3",
+    "next-redux-wrapper": "^2.0.0-beta.6",
     "nprogress": "^0.2.0",
     "prop-types": "^15.6.1",
     "quirkbot-midi-interface": "^0.0.5",
-    "react": "^16.3.2",
-    "react-ace": "^6.1.0",
-    "react-dom": "^16.3.2",
+    "react": "^16.4.0",
+    "react-ace": "^6.1.1",
+    "react-dom": "^16.4.0",
     "react-draggable": "^3.0.5",
     "react-load-script": "^0.0.6",
     "react-modal": "^3.4.4",
@@ -37,11 +38,11 @@
     "reselect": "^3.0.1",
     "rimraf": "^2.6.2",
     "s3": "^4.4.0",
-    "scratch-blocks": "^0.1.0-prerelease.1525467275",
-    "serve": "^6.5.6",
+    "scratch-blocks": "^0.1.0-prerelease.1527277515",
+    "serve": "^6.5.8",
     "tinycolor2": "^1.4.1",
-    "xxhashjs": "^0.2.2",
-    "why-did-you-update": "^0.1.1"
+    "why-did-you-update": "^0.1.1",
+    "xxhashjs": "^0.2.2"
   },
   "author": "Paulo Barcelos <paulo@strawbees.com>",
   "devDependencies": {
@@ -50,8 +51,8 @@
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-import-resolver-babel-module": "^5.0.0-beta.0",
-    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.5.1"
+    "eslint-plugin-react": "^7.8.2"
   }
 }
