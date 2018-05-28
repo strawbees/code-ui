@@ -1,17 +1,8 @@
-import { createSelector } from 'reselect'
+import { createStructuredSelector } from 'reselect'
 import sourceSelector from 'src/editors/flow/selectors/sourceSelector'
 import refEditorSourceSelector from 'src/selectors/refEditorSourceSelector'
 
-export default () => createSelector(
-	[
-		sourceSelector(),
-		refEditorSourceSelector(),
-	],
-	(
-		source,
-		refEditorSource,
-	) => ({
-		source,
-		refEditorSource,
-	})
-)
+export default () => createStructuredSelector({
+	source          : sourceSelector(),
+	refEditorSource : refEditorSourceSelector(),
+})

@@ -1,13 +1,6 @@
-import { createSelector } from 'reselect'
+import { createStructuredSelector } from 'reselect'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 
-export default () => createSelector(
-	[
-		(state, { value }) => makeStringSelector(value)(state),
-	],
-	(
-		string,
-	) => ({
-		string,
-	})
-)
+export default () => createStructuredSelector({
+	string : (state, { value }) => makeStringSelector(value)(state),
+})

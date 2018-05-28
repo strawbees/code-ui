@@ -1,17 +1,8 @@
-import { createSelector } from 'reselect'
+import { createStructuredSelector } from 'reselect'
 import instanceXSelector from 'src/editors/flow/selectors/instanceXSelector'
 import instanceYSelector from 'src/editors/flow/selectors/instanceYSelector'
 
-export default () => createSelector(
-	[
-		instanceXSelector(),
-		instanceYSelector(),
-	],
-	(
-		x,
-		y,
-	) => ({
-		x,
-		y
-	})
-)
+export default () => createStructuredSelector({
+	x : instanceXSelector(),
+	y : instanceYSelector(),
+})

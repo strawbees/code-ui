@@ -1,21 +1,10 @@
-import { createSelector } from 'reselect'
+import { createStructuredSelector } from 'reselect'
 import routesLoadedSelector from 'src/selectors/routesLoadedSelector'
 import stringsLoadedSelector from 'src/selectors/stringsLoadedSelector'
 import localesLoadedSelector from 'src/selectors/localesLoadedSelector'
 
-export default () => createSelector(
-	[
-		routesLoadedSelector(),
-		stringsLoadedSelector(),
-		localesLoadedSelector(),
-	],
-	(
-		routesLoaded,
-		stringsLoaded,
-		localesLoaded,
-	) => ({
-		routesLoaded,
-		stringsLoaded,
-		localesLoaded,
-	})
-)
+export default () => createStructuredSelector({
+	routesLoaded  : routesLoadedSelector(),
+	stringsLoaded : stringsLoadedSelector(),
+	localesLoaded : localesLoadedSelector(),
+})

@@ -1,19 +1,9 @@
-import { createSelector } from 'reselect'
+import { createStructuredSelector } from 'reselect'
 import instanceIdsSelector from 'src/editors/flow/selectors/instanceIdsSelector'
 
-export default () => createSelector(
-	[
-		instanceIdsSelector(),
-	],
-	(
-		instanceIds
-	) => {
-		console.log(instanceIds)
-		return		({
-			instanceIds
-		})
-	}
-)
+export default () => createStructuredSelector({
+	instanceIds : instanceIdsSelector(),
+})
 
 
 // import shallowEqual from 'fbjs/lib/shallowEqual'

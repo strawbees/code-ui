@@ -1,13 +1,6 @@
-import { createSelector } from 'reselect'
+import { createStructuredSelector } from 'reselect'
 import instanceNameSelector from 'src/editors/flow/selectors/instanceNameSelector'
 
-export default () => createSelector(
-	[
-		instanceNameSelector(),
-	],
-	(
-		name,
-	) => ({
-		name,
-	})
-)
+export default () => createStructuredSelector({
+	name : instanceNameSelector(),
+})
