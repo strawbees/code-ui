@@ -1,19 +1,19 @@
 import { createSelector } from 'reselect'
 import modalSelector from 'src/selectors/modalSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		modalSelector
+		modalSelector(),
 	],
 	(
 		{
 			display,
 			content,
-			onRequestClose
+			onRequestClose,
 		}
 	) => ({
 		display,
 		content,
-		onRequestClose
+		onRequestClose,
 	})
 )

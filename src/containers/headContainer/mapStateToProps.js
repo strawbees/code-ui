@@ -39,13 +39,13 @@ const makeRefOgSelector = (ref) => createSelector(
 	})
 )
 
-export default createSelector(
+export default () => createSelector(
 	[
-		queryRefSelector,
-		state => state
+		queryRefSelector(),
+		state => state,
 	],
 	(
 		queryRef,
-		state
+		state,
 	) => makeRefOgSelector(queryRef)(state)
 )

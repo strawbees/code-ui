@@ -3,7 +3,7 @@ import urlVarsSelector from 'src/selectors/urlVarsSelector'
 
 export default (key) => createSelector(
 	[
-		urlVarsSelector
+		urlVarsSelector(),
 	],
 	(
 		urlVars

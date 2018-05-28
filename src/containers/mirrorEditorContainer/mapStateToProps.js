@@ -1,13 +1,13 @@
 import { createSelector } from 'reselect'
 import refEditorGeneratedCodeSelector from 'src/selectors/refEditorGeneratedCodeSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		refEditorGeneratedCodeSelector
+		refEditorGeneratedCodeSelector(),
 	],
 	(
-		value
+		value,
 	) => ({
-		value
+		value,
 	})
 )

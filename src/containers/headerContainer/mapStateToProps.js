@@ -2,9 +2,9 @@ import { createSelector } from 'reselect'
 import queryRefSelector from 'src/selectors/queryRefSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		queryRefSelector,
+		queryRefSelector(),
 		makeStringSelector('home.url'),
 		makeStringSelector('flow.url'),
 		makeStringSelector('scratch.url'),

@@ -2,14 +2,14 @@ import { createSelector } from 'reselect'
 import storageProgramSelector from 'src/selectors/storageProgramSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		storageProgramSelector,
+		storageProgramSelector(),
 		makeStringSelector('ui.editor.program.placeholder_name'),
 	],
 	(
 		storageProgram,
-		placeholderName
+		placeholderName,
 	) => ({
 		...storageProgram,
 		name : storageProgram.name || placeholderName

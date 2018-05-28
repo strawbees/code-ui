@@ -1,12 +1,12 @@
 import { createSelector } from 'reselect'
 import storageProgramsSelector from 'src/selectors/storageProgramsSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		storageProgramsSelector
+		storageProgramsSelector(),
 	],
 	(
-		storagePrograms
+		storagePrograms,
 	) => ({
 		ids : Object.entries(storagePrograms)
 			.sort((a, b) => {

@@ -6,13 +6,13 @@ import refEditorGeneratedCodeSelector from 'src/selectors/refEditorGeneratedCode
 import makeStringSelector from 'src/selectors/makeStringSelector'
 import uploadEnabledSelector from 'src/selectors/uploadEnabledSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		refEditorNameSelector,
-		refEditorSavedSelector,
-		refEditorInitializedSelector,
-		refEditorGeneratedCodeSelector,
-		uploadEnabledSelector,
+		refEditorNameSelector(),
+		refEditorSavedSelector(),
+		refEditorInitializedSelector(),
+		refEditorGeneratedCodeSelector(),
+		uploadEnabledSelector(),
 		makeStringSelector('ui.editor.program.placeholder_name'),
 	],
 	(

@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect'
 import qbmidiLinksSelector from 'src/selectors/qbmidiLinksSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		qbmidiLinksSelector
+		qbmidiLinksSelector(),
 	],
 	(
-		qbmidiLinks
+		qbmidiLinks,
 	) => true//Object.keys(qbmidiLinks).length > 0
 )

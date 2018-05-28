@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
 		makeStringSelector('ui.buttons.cancel'),
 		makeStringSelector('ui.buttons.confirm'),

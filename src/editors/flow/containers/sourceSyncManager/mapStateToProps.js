@@ -5,7 +5,7 @@ import refEditorSourceSelector from 'src/selectors/refEditorSourceSelector'
 export default () => createSelector(
 	[
 		sourceSelector(),
-		refEditorSourceSelector,
+		refEditorSourceSelector(),
 	],
 	(
 		source,

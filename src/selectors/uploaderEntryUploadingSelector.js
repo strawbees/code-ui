@@ -3,16 +3,16 @@ import uploaderEntrySelector from 'src/selectors/uploaderEntrySelector'
 import uploaderEntryErrorSelector from 'src/selectors/uploaderEntryErrorSelector'
 import uploaderEntrySuccessSelector from 'src/selectors/uploaderEntrySuccessSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		uploaderEntrySelector,
-		uploaderEntryErrorSelector,
-		uploaderEntrySuccessSelector
+		uploaderEntrySelector(),
+		uploaderEntryErrorSelector(),
+		uploaderEntrySuccessSelector(),
 	],
 	(
 		entry,
 		error,
-		success
+		success,
 	) => {
 		if (entry) {
 			return !error && !success

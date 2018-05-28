@@ -2,14 +2,14 @@ import { createSelector } from 'reselect'
 import uploaderEntryErrorSelector from 'src/selectors/uploaderEntryErrorSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		uploaderEntryErrorSelector,
-		makeStringSelector('ui.upload.error.unhandled')
+		uploaderEntryErrorSelector(),
+		makeStringSelector('ui.upload.error.unhandled'),
 	],
 	(
 		error,
-		unhandledError
+		unhandledError,
 	) => {
 		if (!error) {
 			return null

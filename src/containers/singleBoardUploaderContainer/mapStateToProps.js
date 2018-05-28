@@ -5,19 +5,19 @@ import uploaderEntrySuccessSelector from 'src/selectors/uploaderEntrySuccessSele
 import uploaderEntryFormatedErrorSelector from 'src/selectors/uploaderEntryFormatedErrorSelector'
 import uploaderBusySelector from 'src/selectors/uploaderBusySelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		qbmidiLinkSelector,
-		uploaderEntryUploadingSelector,
-		uploaderEntrySuccessSelector,
-		uploaderEntryFormatedErrorSelector,
-		uploaderBusySelector,
+		qbmidiLinkSelector(),
+		uploaderEntryUploadingSelector(),
+		uploaderEntrySuccessSelector(),
+		uploaderEntryFormatedErrorSelector(),
+		uploaderBusySelector(),
 	],
 	(
 		{
 			uuid,
 			midi,
-			bootloader
+			bootloader,
 		},
 		uploading,
 		uploadSuccess,

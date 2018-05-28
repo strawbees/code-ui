@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect'
 import compilerErrorSelector from 'src/selectors/compilerErrorSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		compilerErrorSelector
+		compilerErrorSelector(),
 	],
 	(
-		compilerError
+		compilerError,
 	) => compilerError
 )

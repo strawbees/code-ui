@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect'
 import compilerEntrySelector from 'src/selectors/compilerEntrySelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		compilerEntrySelector
+		compilerEntrySelector(),
 	],
 	(
-		compilerEntry
+		compilerEntry,
 	) => compilerEntry.success
 )

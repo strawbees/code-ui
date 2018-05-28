@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect'
 import refEditorDataSelector from 'src/selectors/refEditorDataSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		refEditorDataSelector,
+		refEditorDataSelector(),
 	],
 	(
-		refEditorData
+		refEditorData,
 	) => refEditorData.id
 )

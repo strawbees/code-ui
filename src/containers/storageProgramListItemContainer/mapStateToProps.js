@@ -4,12 +4,12 @@ import storageProgramGeneratedCodeSelector from 'src/selectors/storageProgramGen
 import qbmidiLinksSelector from 'src/selectors/qbmidiLinksSelector'
 import uploadEnabledSelector from 'src/selectors/uploadEnabledSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		formatedProgramSelector,
-		storageProgramGeneratedCodeSelector,
-		qbmidiLinksSelector,
-		uploadEnabledSelector,
+		formatedProgramSelector(),
+		storageProgramGeneratedCodeSelector(),
+		qbmidiLinksSelector(),
+		uploadEnabledSelector(),
 	],
 	(
 		formatedProgram,

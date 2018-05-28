@@ -1,15 +1,15 @@
 import { createSelector } from 'reselect'
 import qbmidiLinkSelector from 'src/selectors/qbmidiLinkSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		qbmidiLinkSelector
+		qbmidiLinkSelector(),
 	],
 	({
 		midi,
 		uploading,
 		enteringBootloaderMode,
-		exitingBootloaderMode
+		exitingBootloaderMode,
 	}) => ({
 		status : !midi ?
 			'problem' :

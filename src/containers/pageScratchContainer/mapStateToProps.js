@@ -3,11 +3,11 @@ import queryLocaleSelector from 'src/selectors/queryLocaleSelector'
 import localeStringsSelector from 'src/selectors/localeStringsSelector'
 import refEditorSourceSelector from 'src/selectors/refEditorSourceSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		refEditorSourceSelector,
-		queryLocaleSelector,
-		localeStringsSelector,
+		refEditorSourceSelector(),
+		queryLocaleSelector(),
+		localeStringsSelector(),
 	],
 	(
 		refEditorSource,

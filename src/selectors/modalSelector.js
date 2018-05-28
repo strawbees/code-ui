@@ -1,2 +1,2 @@
-export default (state) =>
+export default () => (state) =>
 	state.modal

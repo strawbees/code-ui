@@ -4,7 +4,7 @@ import s from 'src/utils/s'
 
 export default (key) => createSelector(
 	[
-		localeStringsSelector
+		localeStringsSelector(),
 	],
 	(
 		localeStrings

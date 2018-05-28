@@ -6,14 +6,14 @@ import queryLocaleSelector from 'src/selectors/queryLocaleSelector'
 import queryRefSelector from 'src/selectors/queryRefSelector'
 import urlVarsStringSelector from 'src/selectors/urlVarsStringSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		currentLocaleSelector,
-		otherLocalesSelector,
-		routesSelector,
-		queryLocaleSelector,
-		queryRefSelector,
-		urlVarsStringSelector,
+		currentLocaleSelector(),
+		otherLocalesSelector(),
+		routesSelector(),
+		queryLocaleSelector(),
+		queryRefSelector(),
+		urlVarsStringSelector(),
 	],
 	(
 		currentLocale,

@@ -80,7 +80,7 @@ const verifyCompilation = async (id) => {
 }
 export const compileCode = (code) => async (dispatch, getState) => {
 	const state = getState()
-	const stateHex = compilerHexSelector(state, { code })
+	const stateHex = compilerHexSelector()(state, { code })
 	if (stateHex) {
 		return
 	}

@@ -1,12 +1,12 @@
 import { createSelector } from 'reselect'
 import uploaderSelector from 'src/selectors/uploaderSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		uploaderSelector
+		uploaderSelector(),
 	],
 	(
-		uploader
+		uploader,
 	) => {
 		if (uploader.current) {
 			return true

@@ -36,7 +36,7 @@ class AppContainer extends React.Component {
 			setScratchProgram,
 			setTextProgram
 		} = mergeProps(
-			mapStateToProps(store.getState(), {}),
+			mapStateToProps()(store.getState(), {}),
 			mapDispatchToProps(store.dispatch)
 		)
 

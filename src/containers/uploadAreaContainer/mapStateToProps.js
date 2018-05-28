@@ -4,12 +4,12 @@ import compilerFormatedErrorSelector from 'src/selectors/compilerErrorSelector'
 import uploaderLastErrorSelector from 'src/selectors/uploaderLastErrorSelector'
 import compilerHexSelector from 'src/selectors/compilerHexSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		qbmidiRuntimeIdListSelector,
-		compilerFormatedErrorSelector,
-		uploaderLastErrorSelector,
-		compilerHexSelector,
+		qbmidiRuntimeIdListSelector(),
+		compilerFormatedErrorSelector(),
+		uploaderLastErrorSelector(),
+		compilerHexSelector(),
 	],
 	(
 		boardIds,

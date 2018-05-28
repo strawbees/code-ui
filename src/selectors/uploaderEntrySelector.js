@@ -2,13 +2,13 @@ import { createSelector } from 'reselect'
 import uploaderEntitiesSelector from 'src/selectors/uploaderEntitiesSelector'
 import hashCode from 'src/utils/hashCode'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		uploaderEntitiesSelector,
-		(state, { hex, runtimeId }) => hashCode(`${hex}${runtimeId}`)
+		uploaderEntitiesSelector(),
+		(state, { hex, runtimeId }) => hashCode(`${hex}${runtimeId}`),
 	],
 	(
 		compilerEntities,
-		id
+		id,
 	) => compilerEntities[id]
 )

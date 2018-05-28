@@ -4,14 +4,14 @@ import refEditorSourceSelector from 'src/selectors/refEditorSourceSelector'
 
 import generateScratchCode from 'src/editors/scratch/utils/generateCode'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		refEditorTypeSelector,
-		refEditorSourceSelector,
+		refEditorTypeSelector(),
+		refEditorSourceSelector(),
 	],
 	(
 		type,
-		source
+		source,
 	) => {
 		switch (type) {
 			case 'flow':

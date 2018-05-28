@@ -3,19 +3,19 @@ import routesLoadedSelector from 'src/selectors/routesLoadedSelector'
 import stringsLoadedSelector from 'src/selectors/stringsLoadedSelector'
 import localesLoadedSelector from 'src/selectors/localesLoadedSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		routesLoadedSelector,
-		stringsLoadedSelector,
-		localesLoadedSelector
+		routesLoadedSelector(),
+		stringsLoadedSelector(),
+		localesLoadedSelector(),
 	],
 	(
 		routesLoaded,
 		stringsLoaded,
-		localesLoaded
+		localesLoaded,
 	) => ({
 		routesLoaded,
 		stringsLoaded,
-		localesLoaded
+		localesLoaded,
 	})
 )
