@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect'
 import categoryNodesSelector from 'src/editors/flow/selectors/categoryNodesSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		categoryNodesSelector
+		categoryNodesSelector(),
 	],
 	(
 		categoryNodes

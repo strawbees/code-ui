@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect'
 import sourceSelector from 'src/editors/flow/selectors/sourceSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		sourceSelector
+		sourceSelector(),
 	],
 	(
 		source

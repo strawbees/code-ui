@@ -1,1 +1,1 @@
-export default (state, { id }) => id
+export default () => (state, { id }) => id

@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect'
 import nodeDefinitionSelector from 'src/editors/flow/selectors/nodeDefinitionSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		nodeDefinitionSelector
+		nodeDefinitionSelector(),
 	],
 	(
 		nodeDefinition

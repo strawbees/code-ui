@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect'
 import categoryDefinitionSelector from 'src/editors/flow/selectors/categoryDefinitionSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		categoryDefinitionSelector,
+		categoryDefinitionSelector(),
 	],
 	(
 		{ color }

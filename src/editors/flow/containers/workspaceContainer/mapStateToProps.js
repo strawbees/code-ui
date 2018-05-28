@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect'
 import instanceIdsSelector from 'src/editors/flow/selectors/instanceIdsSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		instanceIdsSelector
+		instanceIdsSelector(),
 	],
 	(
 		instanceIds

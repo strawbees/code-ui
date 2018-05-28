@@ -1,14 +1,15 @@
 import { createSelector } from 'reselect'
+import propsStateSelector from 'src/editors/flow/selectors/propsStateSelector'
 import instanceSelector from 'src/editors/flow/selectors/instanceSelector'
 import nodeIconSelector from 'src/editors/flow/selectors/nodeIconSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		instanceSelector,
-		state => state
+		instanceSelector(),
+		propsStateSelector(),
 	],
 	(
 		{ nodeId : id },
 		state
-	) => nodeIconSelector(state, { id })
+	) => nodeIconSelector()(state, { id })
 )

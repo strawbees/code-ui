@@ -3,11 +3,11 @@ import instanceNodeNameSelector from 'src/editors/flow/selectors/instanceNodeNam
 import instanceColorSelector from 'src/editors/flow/selectors/instanceColorSelector'
 import instanceIconSelector from 'src/editors/flow/selectors/instanceIconSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		instanceNodeNameSelector,
-		instanceColorSelector,
-		instanceIconSelector
+		instanceNodeNameSelector(),
+		instanceColorSelector(),
+		instanceIconSelector()
 	],
 	(
 		name,

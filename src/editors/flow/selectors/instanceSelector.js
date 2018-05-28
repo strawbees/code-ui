@@ -2,10 +2,10 @@ import { createSelector } from 'reselect'
 import propsIdSelector from 'src/editors/flow/selectors/propsIdSelector'
 import sourceSelector from 'src/editors/flow/selectors/sourceSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		sourceSelector,
-		propsIdSelector
+		sourceSelector(),
+		propsIdSelector(),
 	],
 	(
 		source,

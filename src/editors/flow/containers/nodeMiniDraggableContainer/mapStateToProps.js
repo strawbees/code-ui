@@ -4,12 +4,12 @@ import nodeColorSelector from 'src/editors/flow/selectors/nodeColorSelector'
 import nodeIconSelector from 'src/editors/flow/selectors/nodeIconSelector'
 import dropAreaRectGetterSelector from 'src/editors/flow/selectors/dropAreaRectGetterSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		nodeNameSelector,
-		nodeColorSelector,
-		nodeIconSelector,
-		dropAreaRectGetterSelector
+		nodeNameSelector(),
+		nodeColorSelector(),
+		nodeIconSelector(),
+		dropAreaRectGetterSelector(),
 	],
 	(
 		name,

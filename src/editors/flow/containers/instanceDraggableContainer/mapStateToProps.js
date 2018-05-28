@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect'
 import instancePositionSelector from 'src/editors/flow/selectors/instancePositionSelector'
 
-export default createSelector(
+export default () => createSelector(
 	[
-		instancePositionSelector
+		instancePositionSelector()
 	],
 	(
 		position

@@ -36,13 +36,13 @@ export const safeAddInstance = ({
 	if (id) {
 		id = sanitizeCPPVariableName(id)
 	}
-	if (!id || instanceSelector(state, { id })) {
-		let base = nodeCodeNameSelector(state, { id : nodeId })
+	if (!id || instanceSelector()(state, { id })) {
+		let base = nodeCodeNameSelector()(state, { id : nodeId })
 		base = base.charAt(0).toLowerCase() + base.slice(1)
 		base = sanitizeCPPVariableName(base)
 		let count = 1
 		id = `${base}${count}`
-		while (instanceSelector(state, { id })) {
+		while (instanceSelector()(state, { id })) {
 			count++
 			id = `${base}${count}`
 		}
@@ -66,21 +66,21 @@ export const safeUpdateInstanceId = ({
 		return
 	}
 	if (!newId) {
-		let base = instanceNodeCodeNameSelector(state, { id })
+		let base = instanceNodeCodeNameSelector()(state, { id })
 		base = base.charAt(0).toLowerCase() + base.slice(1)
 		base = sanitizeCPPVariableName(base)
 		let count = 1
 		newId = `${base}${count}`
-		while (instanceSelector(state, { id : newId })) {
+		while (instanceSelector()(state, { id : newId })) {
 			count++
 			newId = `${base}${count}`
 		}
 	}
-	if (instanceSelector(state, { id : newId })) {
+	if (instanceSelector()(state, { id : newId })) {
 		const base = newId
 		let count = 1
 		newId = `${base}${count}`
-		while (instanceSelector(state, { id : newId })) {
+		while (instanceSelector()(state, { id : newId })) {
 			count++
 			newId = `${base}${count}`
 		}
