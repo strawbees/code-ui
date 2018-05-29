@@ -90,7 +90,7 @@ class InstanceDraggableContainer extends React.Component {
 		} = this.props
 		return (
 			<Draggable
-				cancel='.button-container,.instanceIdInput'
+				cancel='.button-container,.instanceName'
 				onStart={onDragStart}
 				onStop={onDragStop}
 				position={{ x, y }}>

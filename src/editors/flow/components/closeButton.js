@@ -23,8 +23,9 @@ const CloseButton = ({ onClick }) =>
 				border: solid 0.1rem ${tinycolor(WHITE).setAlpha(0.5).toRgbString()};
 				fill: ${WHITE};
 				background-color: ${tinycolor(GRAY).setAlpha(0.5).toRgbString()};
+				outline: none;
 			}
-			.root:hover {
+			.root:hover, .root:focus {
 				background-color: ${tinycolor(RED).setAlpha(0.5).toRgbString()};
 			}
 		`}</style>

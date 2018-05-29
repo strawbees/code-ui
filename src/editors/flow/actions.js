@@ -70,23 +70,25 @@ export const safeupdateInstanceName = ({
 	if (name) {
 		name = sanitizeCPPVariableName(name)
 	}
-
+	const getByName = () => instanceByNameSelector()(state, { name })
+	const getById = () => instanceSelector()(state, { id })
+	const getByNameDiff = () => getByName() && (getByName() !== getById())
 	if (!name) {
 		let base = instanceNodeCodeNameSelector()(state, { id })
 		base = base.charAt(0).toLowerCase() + base.slice(1)
 		base = sanitizeCPPVariableName(base)
 		let count = 1
 		name = `${base}${count}`
-		while (instanceByNameSelector()(state, { name })) {
+		while (getByNameDiff()) {
 			count++
 			name = `${base}${count}`
 		}
 	}
-	if (instanceSelector()(state, { name })) {
+	if (getByNameDiff()) {
 		const base = name
 		let count = 1
 		name = `${base}${count}`
-		while (instanceByNameSelector()(state, { name })) {
+		while (getByNameDiff()) {
 			count++
 			name = `${base}${count}`
 		}

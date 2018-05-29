@@ -7,6 +7,20 @@ export const stringEndsWith = (string, searchString, position) => {
 	const lastIndex = subjectString.indexOf(searchString, position)
 	return lastIndex !== -1 && lastIndex === position
 }
+export const lTrimReplaceNumerals = (string, replace = '') => {
+	while (parseInt(string.charAt(0), 10).toString() === string.charAt(0)) {
+		string = replace + string.substring(string.length, 1)
+	}
+	return string
+}
+export const rTrimReplaceNumerals = (string, replace = '') => {
+	while (parseInt(string.charAt(string.length - 1), 10).toString() === string.charAt(0)) {
+		string = string.substring(string.length - 1, 0) + replace
+	}
+	return string
+}
+export const trimReplaceNumerals = (string, replace = '') =>
+	lTrimReplaceNumerals(rTrimReplaceNumerals(string, replace), replace)
 export const lTrimNumerals = string => {
 	while (parseInt(string.charAt(0), 10).toString() === string.charAt(0)) {
 		string = string.substring(string.length, 1)
@@ -134,7 +148,7 @@ export const sanitizeCPPVariableName = (name) => {
 	}
 	let newName = name
 	//newName = trimSpaces(newName)
-	newName = lTrimNumerals(newName)
+	newName = lTrimReplaceNumerals(newName, '_')
 	newName = removeDiacritics(newName)
 	newName = newName.replace(/[^\w]/gi, '_')
 	return newName

@@ -17,7 +17,7 @@ const Instance = ({
 				flex-direction: column;
 				align-items: center;
 				padding: 0.25rem;
-				border-radius: 2rem;
+				border-radius: 1rem;
 				min-width: 10rem;
 			}
 			/* apply syle focus, if moved by draggble container */
