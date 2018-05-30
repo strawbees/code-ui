@@ -5,7 +5,7 @@ import withRedux from 'next-redux-wrapper'
 import makeStore from 'src/store'
 
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.browser && process.env.NODE_ENV !== 'production') {
 	/* eslint-disable-next-line global-require */
 	const { whyDidYouUpdate } = require('why-did-you-update')
 	whyDidYouUpdate(React)

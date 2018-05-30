@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import rawNodes from 'src/editors/flow/data/nodes.json'
 import rawCategories from 'src/editors/flow/data/categories.json'
+import rawConstants from 'src/editors/flow/data/constants.json'
 import Editor from 'src/editors/flow/components/editor'
 import SourceSyncManager from 'src/editors/flow/containers/sourceSyncManager'
 import mapStateToProps from './mapStateToProps'
@@ -15,9 +16,11 @@ class EditorContainer extends React.Component {
 		const {
 			setNodeDefinitions,
 			setCategoryDefinitions,
+			setConstantDefinitions,
 		} = props
 		setNodeDefinitions(rawNodes)
 		setCategoryDefinitions(rawCategories)
+		setConstantDefinitions(rawConstants)
 	}
 	render() {
 		return (
@@ -32,6 +35,7 @@ class EditorContainer extends React.Component {
 EditorContainer.propTypes = {
 	setNodeDefinitions     : PropTypes.func,
 	setCategoryDefinitions : PropTypes.func,
+	setConstantDefinitions : PropTypes.func,
 }
 
 export default connect(

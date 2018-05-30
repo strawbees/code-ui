@@ -1,9 +1,9 @@
-import datalists from './datalists'
+import constants from './constants'
 import general from './general'
 import nodes from './nodes'
 
 export default {
-	datalists,
+	constants,
 	general,
 	nodes,
 }

@@ -3,6 +3,7 @@ import generateReducer from 'src/utils/generateReducer'
 import {
 	SET_NODE_DEFINITIONS,
 	SET_CATEGORY_DEFINITIONS,
+	SET_CONSTANT_DEFINITIONS,
 	SET_DISPLAY_ADVANCED_NODES,
 	TOGGLE_FOLDED_CATEGORY,
 	REGISTER_GET_DROP_AREA_RECT,
@@ -15,6 +16,7 @@ import {
 
 const nodeDefinitions = generateReducer(SET_NODE_DEFINITIONS)
 const categoryDefinitions = generateReducer(SET_CATEGORY_DEFINITIONS)
+const constantDefinitions = generateReducer(SET_CONSTANT_DEFINITIONS)
 const displayAdvancedNodes = generateReducer(SET_DISPLAY_ADVANCED_NODES, false)
 const getDropAreaRect = generateReducer(REGISTER_GET_DROP_AREA_RECT)
 const foldedCategories = (state = [], { type, payload }) => {
@@ -116,6 +118,7 @@ const source = (state = [], { type, payload }) => {
 export default combineReducers({
 	nodeDefinitions,
 	categoryDefinitions,
+	constantDefinitions,
 	displayAdvancedNodes,
 	getDropAreaRect,
 	foldedCategories,

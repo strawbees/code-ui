@@ -101,8 +101,8 @@ class InstanceName extends React.Component {
 					ref={this.input}
 					value={computedName}
 					size={size}
-					spellcheck='false'
-					autocorrect='off'
+					spellCheck='false'
+					autoCorrect='off'
 					onChange={this.localUpdateName}
 				/>
 			</div>

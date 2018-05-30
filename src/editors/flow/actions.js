@@ -8,6 +8,7 @@ import { sanitizeCPPVariableName } from 'src/utils/string'
 import {
 	SET_NODE_DEFINITIONS,
 	SET_CATEGORY_DEFINITIONS,
+	SET_CONSTANT_DEFINITIONS,
 	SET_DISPLAY_ADVANCED_NODES,
 	TOGGLE_FOLDED_CATEGORY,
 	REGISTER_GET_DROP_AREA_RECT,
@@ -20,6 +21,7 @@ import {
 
 export const setNodeDefinitions = generateAction(SET_NODE_DEFINITIONS)
 export const setCategoryDefinitions = generateAction(SET_CATEGORY_DEFINITIONS)
+export const setConstantDefinitions = generateAction(SET_CONSTANT_DEFINITIONS)
 export const setDisplayAdancedNodes = generateAction(SET_DISPLAY_ADVANCED_NODES)
 export const toggleFoldedCategory = generateAction(TOGGLE_FOLDED_CATEGORY)
 export const registerGetDropAreaRect = generateAction(REGISTER_GET_DROP_AREA_RECT)

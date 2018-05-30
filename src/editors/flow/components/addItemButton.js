@@ -5,11 +5,12 @@ import tinycolor from 'tinycolor2'
 import {
 	RED,
 	GRAY,
-	WHITE
+	WHITE,
+	BLACK
 } from 'src/constants/colors'
 
-const CloseButton = ({ onClick }) =>
-	<button className='root closeButton'
+const AddItemButton = ({ onClick }) =>
+	<button className='root addItemButton'
 		onClick={onClick}>
 		<style jsx>{`
 			.root {
@@ -17,23 +18,23 @@ const CloseButton = ({ onClick }) =>
 				flex-direction: row;
 				align-items: center;
 				justify-content: center;
-				width: 1.5rem;
-				height: 1.5rem;
+				width: 1.25rem;
+				height: 1.25rem;
 				border-radius: 1.5rem;
-				border: solid 0.1rem ${tinycolor(WHITE).setAlpha(0.5).toRgbString()};
-				fill: ${WHITE};
-				background-color: ${tinycolor(GRAY).setAlpha(0.5).toRgbString()};
+				fill: ${BLACK};
+				background-color: ${tinycolor(WHITE).toRgbString()};
 				outline: none;
+				transition: transform 0.2s;
 			}
 			.root:hover, .root:focus {
-				background-color: ${tinycolor(RED).toRgbString()};
+				transform: scale3d(1.2,1.2,1.2);
 			}
 		`}</style>
-		<SvgIcon icon={generalIcons.close} />
+		<SvgIcon icon={generalIcons.plus} />
 	</button>
 
-CloseButton.propTypes = {
+AddItemButton.propTypes = {
 	onClick : PropTypes.func
 }
 
-export default CloseButton
+export default AddItemButton
