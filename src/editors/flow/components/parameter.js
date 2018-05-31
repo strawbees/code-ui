@@ -22,7 +22,6 @@ class Parameter extends React.Component {
 			instanceId,
 			name,
 			isMultiple,
-			defaultValue
 		} = this.props
 		return (
 			<div className='root parameter'>
@@ -39,7 +38,7 @@ class Parameter extends React.Component {
 					}
 					.name {
 						color: white;
-						font-size: 0.8rem;
+						font-size: 0.7rem;
 						-webkit-font-smoothing: subpixel-antialiased;
 					}
 					.root :global(.addItemButton) {
@@ -58,7 +57,6 @@ class Parameter extends React.Component {
 					<ParameterHandleContainer
 						id={id}
 						instanceId={instanceId}
-						value={defaultValue}
 					/>
 				}
 			</div>
@@ -67,11 +65,10 @@ class Parameter extends React.Component {
 }
 
 Parameter.propTypes = {
-	id           : PropTypes.string,
-	instanceId   : PropTypes.string,
-	name         : PropTypes.string,
-	isMultiple   : PropTypes.bool,
-	defaultValue : PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	id         : PropTypes.string,
+	instanceId : PropTypes.string,
+	name       : PropTypes.string,
+	isMultiple : PropTypes.bool,
 }
 
 export default Parameter

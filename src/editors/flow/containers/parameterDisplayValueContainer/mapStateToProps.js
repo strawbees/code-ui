@@ -1,3 +1,8 @@
-import parameterDisplayValueSelector from 'src/editors/flow/selectors/parameterDisplayValueSelector'
+import { createStructuredSelector } from 'reselect'
+import parameterValueCodeSelector from 'src/editors/flow/selectors/parameterValueCodeSelector'
+import parameterValueDisplaySelector from 'src/editors/flow/selectors/parameterValueDisplaySelector'
 
-export default () => parameterDisplayValueSelector()
+export default () => createStructuredSelector({
+	valueCode    : parameterValueCodeSelector(),
+	valueDisplay : parameterValueDisplaySelector(),
+})

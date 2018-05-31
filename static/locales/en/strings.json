@@ -123,7 +123,7 @@
 	"flow.constant.wave-ramp-down": "Ramp Down",
 	"flow.constant.servo-bp1": "Servo 1",
 	"flow.constant.servo-bp2": "Servo 2",
-	"flow.constant.no-location": "No Location",
+	"flow.constant.no-location": "Disconnected",
 	"flow.constant.place-left-eye": "Left eye",
 	"flow.constant.place-right-eye": "Right eye",
 	"flow.constant.place-left-mouth": "Left mouth",

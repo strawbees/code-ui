@@ -68,7 +68,10 @@ const source = (state = [], { type, payload }) => {
 		}
 		case UPDATE_INSTANCE_POSITION: {
 			const newState = [...state]
-			const { id, x, y } = payload
+			const { id } = payload
+			let { x, y } = payload
+			x = parseInt(x, 10)
+			y = parseInt(y, 10)
 			// find the instance
 			let instanceIndex = -1
 			for (let i = 0; i < newState.length; i++) {
@@ -107,7 +110,6 @@ const source = (state = [], { type, payload }) => {
 				...newState[instanceIndex],
 				name
 			}
-			console.warn('TODO: update inputs inputs')
 			return newState
 		}
 		default:

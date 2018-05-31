@@ -11,7 +11,6 @@ const ParameterHandleContainer = (props) =>
 ParameterHandleContainer.propTypes = {
 	id         : PropTypes.string,
 	instanceId : PropTypes.string,
-	value      : PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 }
 
 export default connect(

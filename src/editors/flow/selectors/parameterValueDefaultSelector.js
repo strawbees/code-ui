@@ -7,5 +7,6 @@ export default () => createSelector(
 	],
 	(
 		parameterDefinition,
-	) => parameterDefinition.default
+	) => parameterDefinition
+		&& parameterDefinition.default
 )

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import tinycolor from 'tinycolor2'
+import SvgIcon from 'src/components/svgIcon'
 
 const ParameterDisplayValue = ({
 	type,
@@ -9,14 +9,30 @@ const ParameterDisplayValue = ({
 	<div className='root parameterDisplayValue'>
 		<style jsx>{`
 			.root {
-
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				font-size: 0.7rem;
+			}
+			.root :global(>.svgIcon){
+				margin-right: 0.25rem
+			}
+			.text.NUMBER {
+				font-family: 'Code', monospace;
 			}
 		`}</style>
-		{type}
+		{icon &&
+			<SvgIcon icon={icon}/>
+		}
+		{(typeof text !== 'undefined') &&
+			<div className={`text ${type}`}>
+				{text}
+			</div>
+		}
 	</div>
 
 ParameterDisplayValue.propTypes = {
-	type : PropTypes.oneOf(['CONSTANT', 'CONNECTIION', 'VALUE']),
+	type : PropTypes.oneOf(['CONSTANT', 'CONNECTIION', 'NUMBER']),
 	text : PropTypes.string,
 	icon : PropTypes.func,
 }

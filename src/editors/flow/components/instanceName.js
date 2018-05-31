@@ -2,8 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import debounce from 'src/utils/debounce'
-import { GRAY } from 'src/constants/colors'
+import { WHITE } from 'src/constants/colors'
 
+const cancelEvent = e => {
+	e.preventDefault()
+	e.stopPropagation()
+}
 let ID_FACTORY = 0
 class InstanceName extends React.Component {
 	constructor(props) {
@@ -66,7 +70,7 @@ class InstanceName extends React.Component {
 		const {
 			computedName
 		} = this.state
-		const size = computedName ? computedName.length * 1.25 : 1
+		const size = computedName ? computedName.length * 1.1 : 1
 		return (
 			<div className='root instanceName'>
 				<style jsx>{`
@@ -84,7 +88,7 @@ class InstanceName extends React.Component {
 						white-space: normal;
 						min-width: 0;
 						background: none;
-						background-color: ${tinycolor(GRAY).lighten(35).toRgbString()};
+						background-color: ${tinycolor(WHITE).setAlpha(0.5).toRgbString()};
 						line-height: 1;
 						font-family: 'Code', monospace;
 						font-size: 0.7rem;
@@ -93,7 +97,7 @@ class InstanceName extends React.Component {
 						outline: none;
 					}
 					input:focus {
-						background-color: ${tinycolor(GRAY).lighten(25).toRgbString()};
+						background-color: ${tinycolor(WHITE).toRgbString()};
 					}
 				`}</style>
 				<input
@@ -103,6 +107,7 @@ class InstanceName extends React.Component {
 					size={size}
 					spellCheck='false'
 					autoCorrect='off'
+					onKeyUp={cancelEvent}
 					onChange={this.localUpdateName}
 				/>
 			</div>

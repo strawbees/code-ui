@@ -20,7 +20,7 @@ const Instance = ({
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				padding: 0.25rem 0;
+				padding: 0.25rem 0 1rem 0;
 				border-radius: 1rem;
 				min-width: 10rem;
 				animation-duration: 0.1s;
@@ -33,8 +33,12 @@ const Instance = ({
 				to { transform: scale3d(1,1,1); }
 			}
 			/* apply syle focus, if moved by draggble container */
-			:global(.instanceDraggableContainer:focus) .root {
+			:global(.instanceDraggableContainer:focus) .root,
+			:global(.instanceDraggableContainer:focus-within) .root {
 				background-color: ${tinycolor(color).setAlpha(0.75).toRgbString()};
+			}
+			.root :global(.instanceName) {
+				margin-top: 0.25rem;
 			}
 			.connections {
 				display: flex;
@@ -43,6 +47,9 @@ const Instance = ({
 			}
 			.connections > * {
 				flex-grow: 1;
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start
 			}
 		`}</style>
 		<NodeTypeName icon={icon} name={nodeName}/>
@@ -57,15 +64,15 @@ const Instance = ({
 					/>
 				)}
 			</div>
-			{/*<div className='outlets'>
-				{outletIds.map(outletId =>
+			<div className='outlets'>
+				{/*outletIds.map(outletId =>
 					<OutletContainer
 						key={outletId}
 						id={outletId}
 						instanceId={id}
 					/>
-				)}
-			</div>*/}
+				)*/}
+			</div>
 		</div>
 	</div>
 

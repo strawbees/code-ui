@@ -2,22 +2,20 @@ import { createSelector } from 'reselect'
 import stateSelector from 'src/editors/flow/selectors/stateSelector'
 import propsIdSelector from 'src/editors/flow/selectors/propsIdSelector'
 import propsInstanceIdSelector from 'src/editors/flow/selectors/propsInstanceIdSelector'
-import instanceParametersSelector from 'src/editors/flow/selectors/instanceParametersSelector'
+import instanceSelector from 'src/editors/flow/selectors/instanceSelector'
 
 export default () => createSelector(
 	[
-		propsIdSelector(),
-		propsInstanceIdSelector(),
 		stateSelector(),
+		propsIdSelector(),
+		propsInstanceIdSelector()
 	],
 	(
+		state,
 		id,
-		instanceId,
-		state
+		instanceId
 	) => {
-		const [parsedId] = id.split('.')
-		return instanceParametersSelector()(state, { id : instanceId })
-			.filter(parameter => parameter.id === parsedId)
-			.pop()
+		const instance = instanceSelector()(state, { id : instanceId })
+		return instance.parameters && instance.parameters[id]
 	}
 )

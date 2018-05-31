@@ -18,7 +18,11 @@ class InstanceDraggableContainer extends React.Component {
 		super(props)
 		this.ref = React.createRef()
 	}
-	onDragStart = () => {
+	onDragStart = (e, { x, y }) => {
+		this.dragStartPosition = {
+			x,
+			y
+		}
 		this.setState({
 			style : {
 				zIndex : ++ZINDEX
@@ -26,6 +30,10 @@ class InstanceDraggableContainer extends React.Component {
 		})
 	}
 	onDragStop = (e, { x, y }) => {
+		if (this.dragStartPosition.x === x &&
+			this.dragStartPosition.y === y) {
+			return
+		}
 		const {
 			id,
 			updateInstancePosition
@@ -38,13 +46,14 @@ class InstanceDraggableContainer extends React.Component {
 		}
 		updateInstancePosition({ id, x, y })
 	}
-	onKeyUp = ({ keyCode, ...e }) => {
-		console.log(e)
+	onKeyUp = ({ keyCode }) => {
 		const {
 			id,
+			updateInstancePosition
+		} = this.props
+		let {
 			x,
 			y,
-			updateInstancePosition
 		} = this.props
 		switch (keyCode) {
 			case 37: // left
@@ -90,13 +99,14 @@ class InstanceDraggableContainer extends React.Component {
 		} = this.props
 		return (
 			<Draggable
-				cancel='.button-container,.instanceName'
+				cancel='.button-container,.instanceName,.parameterHandle'
 				onStart={onDragStart}
 				onStop={onDragStop}
 				position={{ x, y }}>
 				<div className='root instanceDraggableContainer'
 					style={style}
 					tabIndex="0"
+					onKeyUp={onKeyUp}
 					ref={this.ref}>
 					<style jsx>{`
 						.root {
@@ -115,7 +125,9 @@ class InstanceDraggableContainer extends React.Component {
 							right: -0.5rem;
 							display: none;
 						}
-						.root:hover .button-container {
+						.root:hover .button-container,
+						.root:focus .button-container,
+						.root:focus-within .button-container {
 							display: block;
 						}
 					`}</style>

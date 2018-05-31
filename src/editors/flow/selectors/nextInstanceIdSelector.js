@@ -11,6 +11,6 @@ export default () => createSelector(
 		const current = parseInt(node.id, 10)
 		const parsed = parseInt(acc, 10)
 		acc = parsed <= current ? (current + 1) : parsed
-		return `${acc}`
-	}, '0')
+		return `${acc}_`
+	}, '0_')
 )
