@@ -97,9 +97,9 @@
 	"flow.connection.open"       : "open",
 	"flow.connection.close"      : "close",
 
-	"flow.constant.logic-and": "AND gate",
-	"flow.constant.logic-or": "OR gate",
-	"flow.constant.logic-xor": "XOR gate",
+	"flow.constant.logic-and": "AND",
+	"flow.constant.logic-or": "OR",
+	"flow.constant.logic-xor": "XOR",
 	"flow.constant.math-add": "Add",
 	"flow.constant.math-subtract": "Subtract",
 	"flow.constant.math-multiply": "Multiply",

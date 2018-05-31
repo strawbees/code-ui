@@ -15,7 +15,9 @@ const ParameterDisplayValue = ({
 				font-size: 0.7rem;
 			}
 			.root :global(>.svgIcon){
-				margin-right: 0.25rem
+				width: 1rem;
+				height: 1rem;
+				margin-right: 0.2rem;
 			}
 			.text.NUMBER {
 				font-family: 'Code', monospace;

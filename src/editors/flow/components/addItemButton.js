@@ -3,8 +3,6 @@ import SvgIcon from 'src/components/svgIcon'
 import generalIcons from 'src/editors/flow/assets/icons/general'
 import tinycolor from 'tinycolor2'
 import {
-	RED,
-	GRAY,
 	WHITE,
 	BLACK
 } from 'src/constants/colors'
@@ -18,16 +16,16 @@ const AddItemButton = ({ onClick }) =>
 				flex-direction: row;
 				align-items: center;
 				justify-content: center;
-				width: 1.25rem;
-				height: 1.25rem;
-				border-radius: 1.5rem;
+				width: 1rem;
+				height: 1rem;
+				border-radius: 1rem;
 				fill: ${BLACK};
 				background-color: ${tinycolor(WHITE).toRgbString()};
 				outline: none;
-				transition: transform 0.2s;
+				transition: transform 0.1s;
 			}
 			.root:hover, .root:focus {
-				transform: scale3d(1.2,1.2,1.2);
+				transform: scale3d(1.1,1.1,1.1);
 			}
 		`}</style>
 		<SvgIcon icon={generalIcons.plus} />
