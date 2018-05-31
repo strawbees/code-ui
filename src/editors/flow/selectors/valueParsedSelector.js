@@ -23,7 +23,7 @@ export default () => createSelector(
 		value,
 		state,
 	) => {
-		if (typeof value === 'undefined') {
+		if (typeof value === 'undefined' || value === null) {
 			return null
 		}
 		// Convert value to string

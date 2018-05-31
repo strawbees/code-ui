@@ -7,8 +7,8 @@ import makeStore from 'src/store'
 
 if (process.browser && process.env.NODE_ENV !== 'production') {
 	/* eslint-disable-next-line global-require */
-	const { whyDidYouUpdate } = require('why-did-you-update')
-	whyDidYouUpdate(React)
+	// const { whyDidYouUpdate } = require('why-did-you-update')
+	// whyDidYouUpdate(React)
 }
 
 class NextApp extends App {

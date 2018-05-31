@@ -12,7 +12,18 @@ import {
 	REMOVE_INSTANCE,
 	UPDATE_INSTANCE_POSITION,
 	UPDATE_INSTANCE_NAME,
+	ADD_INSTANCE_PARAMETER_ITEM,
+	REMOVE_INSTANCE_PARAMETER_ITEM,
 } from './actionTypes'
+
+const helperFindInstanceIndex = (state, id) => {
+	for (let i = 0; i < state.length; i++) {
+		if (state[i].id === id) {
+			return i
+		}
+	}
+	return -1
+}
 
 const nodeDefinitions = generateReducer(SET_NODE_DEFINITIONS)
 const categoryDefinitions = generateReducer(SET_CATEGORY_DEFINITIONS)
@@ -34,6 +45,7 @@ const foldedCategories = (state = [], { type, payload }) => {
 			return state
 	}
 }
+
 const source = (state = [], { type, payload }) => {
 	switch (type) {
 		case SET_SOURCE: {
@@ -51,13 +63,7 @@ const source = (state = [], { type, payload }) => {
 			const newState = [...state]
 			const id = payload
 			// find the instance
-			let instanceIndex = -1
-			for (let i = 0; i < newState.length; i++) {
-				if (newState[i].id === id) {
-					instanceIndex = i
-					break
-				}
-			}
+			const instanceIndex = helperFindInstanceIndex(state, id)
 			if (instanceIndex === -1) {
 				return state
 			}
@@ -73,13 +79,7 @@ const source = (state = [], { type, payload }) => {
 			x = parseInt(x, 10)
 			y = parseInt(y, 10)
 			// find the instance
-			let instanceIndex = -1
-			for (let i = 0; i < newState.length; i++) {
-				if (newState[i].id === id) {
-					instanceIndex = i
-					break
-				}
-			}
+			const instanceIndex = helperFindInstanceIndex(state, id)
 			if (instanceIndex === -1) {
 				return state
 			}
@@ -95,13 +95,7 @@ const source = (state = [], { type, payload }) => {
 			const newState = [...state]
 			const { id, name } = payload
 			// find the instance
-			let instanceIndex = -1
-			for (let i = 0; i < newState.length; i++) {
-				if (newState[i].id === id) {
-					instanceIndex = i
-					break
-				}
-			}
+			const instanceIndex = helperFindInstanceIndex(state, id)
 			if (instanceIndex === -1) {
 				return state
 			}
@@ -109,6 +103,77 @@ const source = (state = [], { type, payload }) => {
 			newState[instanceIndex] = {
 				...newState[instanceIndex],
 				name
+			}
+			return newState
+		}
+		case ADD_INSTANCE_PARAMETER_ITEM: {
+			const newState = [...state]
+			const { id, parameterId } = payload
+			// find the instance
+			const instanceIndex = helperFindInstanceIndex(state, id)
+			if (instanceIndex === -1) {
+				return state
+			}
+			// manage the parameters map
+			const parameters = {
+				...(newState[instanceIndex].parameters || {})
+			}
+			// find how many items are already there
+			const numItems = Object.keys(parameters).reduce((acc, key) => {
+				if (key.indexOf(`${parameterId}.`) === 0) {
+					acc++
+				}
+				return acc
+			}, 0)
+			parameters[`${parameterId}.${numItems}`] = null
+			// copy and update it
+			newState[instanceIndex] = {
+				...newState[instanceIndex],
+				parameters
+			}
+			return newState
+		}
+		case REMOVE_INSTANCE_PARAMETER_ITEM: {
+			const newState = [...state]
+			const { id, parameterId, parameterIndex } = payload
+			const parameterKey = `${parameterId}.${parameterIndex}`
+			// find the instance
+			const instanceIndex = helperFindInstanceIndex(state, id)
+			if (instanceIndex === -1) {
+				return state
+			}
+			// manage the parameters map
+			const parameters = {
+				...(newState[instanceIndex].parameters || {})
+			}
+			// check if parameters exists
+			if (typeof parameters[parameterKey] === 'undefined') {
+				return state
+			}
+			// update the index of the parameters that follow
+			Object.keys(parameters)
+				.filter(key => key.indexOf(`${parameterId}.`) === 0)
+				.filter(key => parseInt(key.split('.')[1], 10) >= parameterIndex)
+				.sort((a, b) => {
+					const ai = parseInt(a.split('.')[1], 10)
+					const bi = parseInt(b.split('.')[1], 10)
+					return ai < bi ? -1 : 1
+				})
+				.forEach((key, i, arr) => {
+					// shift the indexes up
+					const keyParameterIndex = key.split('.')[1]
+					if (keyParameterIndex > 0) {
+						parameters[`${parameterId}.${keyParameterIndex - 1}`] = parameters[key]
+					}
+					if (i === arr.length - 1) {
+						// remove last item
+						delete parameters[key]
+					}
+				})
+			// copy and update it
+			newState[instanceIndex] = {
+				...newState[instanceIndex],
+				parameters
 			}
 			return newState
 		}

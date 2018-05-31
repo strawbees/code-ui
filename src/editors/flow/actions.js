@@ -17,6 +17,8 @@ import {
 	REMOVE_INSTANCE,
 	UPDATE_INSTANCE_NAME,
 	UPDATE_INSTANCE_POSITION,
+	ADD_INSTANCE_PARAMETER_ITEM,
+	REMOVE_INSTANCE_PARAMETER_ITEM,
 } from './actionTypes'
 
 export const setNodeDefinitions = generateAction(SET_NODE_DEFINITIONS)
@@ -30,12 +32,14 @@ export const addInstance = generateAction(ADD_INSTANCE)
 export const removeInstance = generateAction(REMOVE_INSTANCE)
 export const updateInstanceName = generateAction(UPDATE_INSTANCE_NAME)
 export const updateInstancePosition = generateAction(UPDATE_INSTANCE_POSITION)
+export const addInstanceParameterItem = generateAction(ADD_INSTANCE_PARAMETER_ITEM)
+export const removeInstanceParameterItem = generateAction(REMOVE_INSTANCE_PARAMETER_ITEM)
 export const safeAddInstance = ({
 	id,
 	name,
 	nodeId,
 	x = 0,
-	y = 0
+	y = 0,
 }) => async (dispatch, getState) => {
 	const state = getState()
 	if (typeof id === 'undefined') {
