@@ -9,7 +9,8 @@ const ParameterDisplayValueContainer = (props) =>
 	<ParameterDisplayValue {...props} />
 
 ParameterDisplayValueContainer.propTypes = {
-	value : PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	id         : PropTypes.string,
+	instanceId : PropTypes.string,
 }
 
 export default connect(

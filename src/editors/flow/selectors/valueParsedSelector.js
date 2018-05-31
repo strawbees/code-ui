@@ -3,6 +3,7 @@ import sourceSelector from 'src/editors/flow/selectors/sourceSelector'
 import instanceOutletIdsSelector from 'src/editors/flow/selectors/instanceOutletIdsSelector'
 import instanceIconSelector from 'src/editors/flow/selectors/instanceIconSelector'
 import instanceNameSelector from 'src/editors/flow/selectors/instanceNameSelector'
+import instanceNodeNameSelector from 'src/editors/flow/selectors/instanceNodeNameSelector'
 import baseConstantDefinitionsSelector from 'src/editors/flow/selectors/baseConstantDefinitionsSelector'
 import propsValueSelector from 'src/editors/flow/selectors/propsValueSelector'
 import stateSelector from 'src/editors/flow/selectors/stateSelector'
@@ -66,7 +67,7 @@ export default () => createSelector(
 			// Ok! valid connection
 			return {
 				type    : 'OUTLET',
-				display : `${instanceNameSelector()(state, { id : instanceId })}.${outletId}`,
+				display : instanceNodeNameSelector()(state, { id : instanceId }),
 				code    : `${instanceNameSelector()(state, { id : instanceId })}.${outletId}`,
 				icon    : instanceIconSelector()(state, { id : instanceId })
 			}
@@ -86,7 +87,7 @@ export default () => createSelector(
 			}
 			// aestetics cleanup (remove trailing '0's)
 			if (text % 1 === 0) {
-				text.toFixed(0)
+				text = text.toFixed(0)
 			} else {
 				text = text.toFixed(3)
 				while (text[text.length - 1] === '0') {

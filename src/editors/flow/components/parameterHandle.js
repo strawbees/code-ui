@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
-import ParameterDisplayValue from 'src/editors/flow/components/parameterDisplayValue'
+import ParameterDisplayValueContainer from 'src/editors/flow/containers/parameterDisplayValueContainer'
 import {
 	GRAY,
 	YELLOW,
@@ -12,10 +12,12 @@ const cancelEvent = (e) => {
 }
 
 const ParameterHandle = ({
-	valueDisplay,
+	id,
+	instanceId,
+	connected,
 	valueCode,
 }) =>
-	<div className={`root parameterHandle ${valueDisplay.type}`}
+	<div className={`root parameterHandle ${connected ? 'connected' : ''}`}
 		tabIndex='0'
 		onKeyUp={cancelEvent}>
 		<style jsx>{`
@@ -44,7 +46,7 @@ const ParameterHandle = ({
 				left: -0.5rem;
 				top: 0;
 			}
-			.root.CONNECTION .value .circle {
+			.root.connected .value .circle {
 				background-color: ${tinycolor(YELLOW).toRgbString()};
 			}
 			.value :global(> .parameterDisplayValue) {
@@ -68,7 +70,7 @@ const ParameterHandle = ({
 		`}</style>
 		<div className='value'>
 			<div className='circle'></div>
-			<ParameterDisplayValue {...valueDisplay} />
+			<ParameterDisplayValueContainer id={id} instanceId={instanceId} />
 		</div>
 		<div className='control'>
 			{valueCode}
@@ -76,12 +78,10 @@ const ParameterHandle = ({
 	</div>
 
 ParameterHandle.propTypes = {
-	valueCode    : PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-	valueDisplay : PropTypes.shape({
-		type : PropTypes.oneOf(['OUTLET', 'CONSTANT', 'NUMBER']),
-		text : PropTypes.string,
-		icon : PropTypes.func,
-	})
+	id         : PropTypes.string,
+	instanceId : PropTypes.string,
+	connected  : PropTypes.bool,
+	valueCode  : PropTypes.string,
 }
 
 export default ParameterHandle

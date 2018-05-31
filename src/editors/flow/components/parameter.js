@@ -1,13 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import tinycolor from 'tinycolor2'
-import debounce from 'src/utils/debounce'
 import ParameterHandleContainer from 'src/editors/flow/containers/parameterHandleContainer'
 import AddItemButton from 'src/editors/flow/components/addItemButton'
-import {
-	GRAY,
-	YELLOW
-} from 'src/constants/colors'
 
 class Parameter extends React.Component {
 	constructor(props) {

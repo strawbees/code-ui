@@ -1,8 +1,17 @@
-import { createStructuredSelector } from 'reselect'
-import parameterValueCodeSelector from 'src/editors/flow/selectors/parameterValueCodeSelector'
+import { createSelector } from 'reselect'
 import parameterValueDisplaySelector from 'src/editors/flow/selectors/parameterValueDisplaySelector'
+import parameterValueCodeSelector from 'src/editors/flow/selectors/parameterValueCodeSelector'
 
-export default () => createStructuredSelector({
-	valueCode    : parameterValueCodeSelector(),
-	valueDisplay : parameterValueDisplaySelector(),
-})
+export default () => createSelector(
+	[
+		parameterValueDisplaySelector(),
+		parameterValueCodeSelector()
+	],
+	(
+		valueDisplay,
+		valueCode,
+	) => ({
+		connected : valueDisplay.type === 'OUTLET',
+		valueCode
+	})
+)
