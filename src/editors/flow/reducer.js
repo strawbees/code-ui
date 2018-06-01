@@ -12,6 +12,7 @@ import {
 	REMOVE_INSTANCE,
 	UPDATE_INSTANCE_POSITION,
 	UPDATE_INSTANCE_NAME,
+	SET_INSTANCE_PARAMETER,
 	ADD_INSTANCE_PARAMETER_ITEM,
 	REMOVE_INSTANCE_PARAMETER_ITEM,
 } from './actionTypes'
@@ -103,6 +104,27 @@ const source = (state = [], { type, payload }) => {
 			newState[instanceIndex] = {
 				...newState[instanceIndex],
 				name
+			}
+			return newState
+		}
+		case SET_INSTANCE_PARAMETER: {
+			const newState = [...state]
+			const { id, parameterId, value } = payload
+			// find the instance
+			const instanceIndex = helperFindInstanceIndex(state, id)
+			if (instanceIndex === -1) {
+				return state
+			}
+			// manage the parameters map
+			const parameters = {
+				...(newState[instanceIndex].parameters || {})
+			}
+			// set the value
+			parameters[parameterId] = value
+			// copy and update it
+			newState[instanceIndex] = {
+				...newState[instanceIndex],
+				parameters
 			}
 			return newState
 		}

@@ -1,16 +1,21 @@
 export default (stateProps, dispatchProps, ownProps) => {
 	const {
-		id,
+		id : parameterId,
+		instanceId : id,
 		...otherOwnProps
 	} = ownProps
 	const {
-		safeUpdateInstanceName,
+		safeUpdateInstanceParameterByValueCode,
 		...otherDispatchProps
 	} = dispatchProps
 	return {
 		...stateProps,
 		...otherDispatchProps,
 		...otherOwnProps,
-		onNameInputChange : (name) => safeUpdateInstanceName({ id, name })
+		onValueCodeChange : (valueCode) => safeUpdateInstanceParameterByValueCode({
+			id,
+			parameterId,
+			valueCode
+		})
 	}
 }

@@ -3,7 +3,10 @@ import instanceNodeCodeNameSelector from 'src/editors/flow/selectors/instanceNod
 import nodeCodeNameSelector from 'src/editors/flow/selectors/nodeCodeNameSelector'
 import instanceSelector from 'src/editors/flow/selectors/instanceSelector'
 import instanceByNameSelector from 'src/editors/flow/selectors/instanceByNameSelector'
+import instanceOutletIdsSelector from 'src/editors/flow/selectors/instanceOutletIdsSelector'
+import parameterValueDefaultSelector from 'src/editors/flow/selectors/parameterValueDefaultSelector'
 import nextInstanceIdSelector from 'src/editors/flow/selectors/nextInstanceIdSelector'
+import valueParsedSelector from 'src/editors/flow/selectors/valueParsedSelector'
 import { sanitizeCPPVariableName } from 'src/utils/string'
 import {
 	SET_NODE_DEFINITIONS,
@@ -17,6 +20,7 @@ import {
 	REMOVE_INSTANCE,
 	UPDATE_INSTANCE_NAME,
 	UPDATE_INSTANCE_POSITION,
+	SET_INSTANCE_PARAMETER,
 	ADD_INSTANCE_PARAMETER_ITEM,
 	REMOVE_INSTANCE_PARAMETER_ITEM,
 } from './actionTypes'
@@ -32,6 +36,7 @@ export const addInstance = generateAction(ADD_INSTANCE)
 export const removeInstance = generateAction(REMOVE_INSTANCE)
 export const updateInstanceName = generateAction(UPDATE_INSTANCE_NAME)
 export const updateInstancePosition = generateAction(UPDATE_INSTANCE_POSITION)
+export const setInstanceParameter = generateAction(SET_INSTANCE_PARAMETER)
 export const addInstanceParameterItem = generateAction(ADD_INSTANCE_PARAMETER_ITEM)
 export const removeInstanceParameterItem = generateAction(REMOVE_INSTANCE_PARAMETER_ITEM)
 export const safeAddInstance = ({
@@ -67,7 +72,7 @@ export const safeAddInstance = ({
 		y
 	}))
 }
-export const safeupdateInstanceName = ({
+export const safeUpdateInstanceName = ({
 	id,
 	name
 }) => async (dispatch, getState) => {
@@ -101,5 +106,49 @@ export const safeupdateInstanceName = ({
 	dispatch(updateInstanceName({
 		id,
 		name
+	}))
+}
+export const safeUpdateInstanceParameterByValueCode = ({
+	id,
+	parameterId,
+	valueCode
+}) => async (dispatch, getState) => {
+	const state = getState()
+	// When valueCode represents an outlet, it uses the instance "name", and not
+	// it's "id". So first thing we do is to try to convert anything that looks
+	// like {name}.{outlet} to {id}.{outlet}
+	let value = valueCode
+	{
+		const valueArray = value.split('.')
+		if (valueArray.length === 2) {
+			const [instanceName, outletId] = valueArray
+			// Try to find and instance with this name
+			const instance = instanceByNameSelector()(state, { name : instanceName })
+			if (instance) {
+				// Try to find the outlet
+				const outletIds = instanceOutletIdsSelector()(state, { id : instance.id })
+				if (outletIds.indexOf(outletId) !== -1) {
+					// Ok! this is a valid, outlet. Update the value!
+					value = `${instance.id}.${outletId}`
+				}
+			}
+		}
+	}
+
+	// Now we try to parse the value
+	const parsedValue = valueParsedSelector()(state, { value })
+
+	if (parsedValue) {
+		// If we manage to parse it, update to the raw value
+		value = parsedValue.raw
+	} else {
+		// If we couldn't parse it, use the default value instead
+		value = parameterValueDefaultSelector()(state, { id : parameterId, instanceId : id })
+	}
+	// Ready to dispatch
+	dispatch(setInstanceParameter({
+		id,
+		parameterId,
+		value
 	}))
 }

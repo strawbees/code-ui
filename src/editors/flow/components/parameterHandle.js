@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import ParameterDisplayValueContainer from 'src/editors/flow/containers/parameterDisplayValueContainer'
+import ParameterControlContainer from 'src/editors/flow/containers/parameterControlContainer'
 import {
 	GRAY,
 	YELLOW,
@@ -15,7 +16,6 @@ const ParameterHandle = ({
 	id,
 	instanceId,
 	connected,
-	valueCode,
 }) =>
 	<div className={`root parameterHandle ${connected ? 'connected' : ''}`}
 		tabIndex='0'
@@ -58,7 +58,6 @@ const ParameterHandle = ({
 				cursor: pointer;
 			}
 			.control {
-				background-color: white;
 				display: none;
 				z-index: 2;
 			}
@@ -66,6 +65,20 @@ const ParameterHandle = ({
 			.root:focus-within .control {
 				display: block;
 				position: absolute;
+				animation-duration: 0.1s;
+				animation-name: slide;
+				animation-timing-function: ease-out;
+				transform-origin: top center;
+			}
+			@keyframes slide {
+				from {
+					opacity: 0;
+					transform: scale3d(1,0,1);
+				}
+				to {
+					opacity: 1;
+					transform: scale3d(1,1,1);
+				}
 			}
 		`}</style>
 		<div className='value'>
@@ -73,7 +86,7 @@ const ParameterHandle = ({
 			<ParameterDisplayValueContainer id={id} instanceId={instanceId} />
 		</div>
 		<div className='control'>
-			{valueCode}
+			<ParameterControlContainer id={id} instanceId={instanceId} />
 		</div>
 	</div>
 
@@ -81,7 +94,6 @@ ParameterHandle.propTypes = {
 	id         : PropTypes.string,
 	instanceId : PropTypes.string,
 	connected  : PropTypes.bool,
-	valueCode  : PropTypes.string,
 }
 
 export default ParameterHandle

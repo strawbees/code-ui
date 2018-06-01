@@ -31,14 +31,16 @@ export default () => createSelector(
 		let result
 		// Check if it is a constant
 		const getConstant = () => {
-			const id = constants[value]
+			const uppercaseValue = value.toUpperCase()
+			const id = constants[uppercaseValue]
 			if (!id) {
 				return null
 			}
 			return {
 				type    : 'CONSTANT',
 				display : makeStringSelector(`flow.constant.${id}`)(state),
-				code    : value,
+				code    : uppercaseValue,
+				raw     : uppercaseValue,
 				icon    : icons.constants[id]
 			}
 		}
@@ -69,6 +71,7 @@ export default () => createSelector(
 				type    : 'OUTLET',
 				display : instanceNodeNameSelector()(state, { id : instanceId }),
 				code    : `${instanceNameSelector()(state, { id : instanceId })}.${outletId}`,
+				raw     : value,
 				icon    : instanceIconSelector()(state, { id : instanceId })
 			}
 		}
@@ -98,6 +101,7 @@ export default () => createSelector(
 				type    : 'NUMBER',
 				display : text,
 				code    : text,
+				raw     : value,
 				icon    : null
 			}
 		}
