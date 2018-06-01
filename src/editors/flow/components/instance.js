@@ -2,16 +2,14 @@ import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import NodeTypeName from 'src/editors/flow/components/nodeTypeName'
 import InstanceNameContainer from 'src/editors/flow/containers/instanceNameContainer'
-import ParameterContainer from 'src/editors/flow/containers/parameterContainer'
-//import OutletContainer from 'src/editors/flow/containers/outletContainer'
+import ParameterListContainer from 'src/editors/flow/containers/parameterListContainer'
+// import OutletListContainer from 'src/editors/flow/containers/outletListContainer'
 
 const Instance = ({
 	id,
 	icon,
 	nodeName,
 	color,
-	parameterIds,
-	outletIds,
 }) =>
 	<div className='root instance'>
 		<style jsx>{`
@@ -56,33 +54,23 @@ const Instance = ({
 		<InstanceNameContainer id={id}/>
 		<div className='connections'>
 			<div className='parameters'>
-				{parameterIds.map(parameterId =>
-					<ParameterContainer
-						key={parameterId}
-						id={parameterId}
-						instanceId={id}
-					/>
-				)}
+				<ParameterListContainer
+					id={id}
+				/>
 			</div>
 			<div className='outlets'>
-				{/*outletIds.map(outletId =>
-					<OutletContainer
-						key={outletId}
-						id={outletId}
-						instanceId={id}
-					/>
-				)*/}
+				{/* <OutletListContainer
+					id={id}
+				/> */}
 			</div>
 		</div>
 	</div>
 
 Instance.propTypes = {
-	id           : PropTypes.string,
-	icon         : PropTypes.func,
-	nodeName     : PropTypes.string,
-	color        : PropTypes.string,
-	parameterIds : PropTypes.arrayOf(PropTypes.string),
-	outletIds    : PropTypes.arrayOf(PropTypes.string),
+	id       : PropTypes.string,
+	icon     : PropTypes.func,
+	nodeName : PropTypes.string,
+	color    : PropTypes.string,
 }
 
 export default Instance

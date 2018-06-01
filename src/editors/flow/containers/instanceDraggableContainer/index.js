@@ -23,11 +23,13 @@ class InstanceDraggableContainer extends React.Component {
 			x,
 			y
 		}
-		this.setState({
-			style : {
-				zIndex : ++ZINDEX
-			}
-		})
+		if (this.state.style.zIndex !== ZINDEX) {
+			this.setState({
+				style : {
+					zIndex : ++ZINDEX
+				}
+			})
+		}
 	}
 	onDragStop = (e, { x, y }) => {
 		if (this.dragStartPosition.x === x &&

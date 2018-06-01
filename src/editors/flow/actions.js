@@ -67,7 +67,6 @@ export const safeAddInstance = ({
 		y
 	}))
 }
-
 export const safeupdateInstanceName = ({
 	id,
 	name
