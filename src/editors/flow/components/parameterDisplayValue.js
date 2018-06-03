@@ -12,11 +12,11 @@ const ParameterDisplayValue = ({
 				display: flex;
 				flex-direction: row;
 				align-items: center;
-				font-size: 0.7rem;
+				font-size: 0.75rem;
 			}
 			.root :global(>.svgIcon){
-				width: 1rem;
-				height: 1rem;
+				width: 1.25rem;
+				height: 1.25rem;
 				margin-right: 0.2rem;
 			}
 			.text.NUMBER {
@@ -34,7 +34,7 @@ const ParameterDisplayValue = ({
 	</div>
 
 ParameterDisplayValue.propTypes = {
-	type : PropTypes.oneOf(['CONSTANT', 'CONNECTIION', 'NUMBER']),
+	type : PropTypes.oneOf(['CONSTANT', 'OUTLET', 'NUMBER']),
 	text : PropTypes.string,
 	icon : PropTypes.func,
 }

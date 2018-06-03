@@ -24,6 +24,10 @@ class DelayedInput extends React.Component {
 		}
 	}
 	componentDidUpdate(prevProps, prevState, { caret }) {
+		// handle external updates
+		if (!this.cancelDebounce && this.props.value !== prevProps.value) {
+			this.setState({ computedValue : this.props.value })
+		}
 		const { input } = this
 		if (caret && input && input.current) {
 			input.current.setSelectionRange(caret, caret)
@@ -45,12 +49,18 @@ class DelayedInput extends React.Component {
 	}
 
 	onKeyDown = (e) => {
-		if (e.keyCode === 13 && this.cancelDebounce) {
+		if (e.keyCode !== 13) {
+			return
+		}
+		if (this.cancelDebounce) {
 			this.cancelDebounce()
 			this.debounceFn()
 			if (this.props.onEnter) {
 				this.props.onEnter()
 			}
+		}
+		if (this.props.blurOnEnter) {
+			this.input.current.blur()
 		}
 	}
 
@@ -120,16 +130,18 @@ class DelayedInput extends React.Component {
 }
 
 DelayedInput.defaultProps = {
-	autoResize : false,
-	color      : WHITE,
+	autoResize  : false,
+	blurOnEnter : false,
+	color       : WHITE,
 }
 
 DelayedInput.propTypes = {
-	value      : PropTypes.string,
-	onChange   : PropTypes.func,
-	onEnter    : PropTypes.func,
-	autoResize : PropTypes.bool,
-	color      : PropTypes.string,
+	value       : PropTypes.string,
+	onChange    : PropTypes.func,
+	onEnter     : PropTypes.func,
+	autoResize  : PropTypes.bool,
+	blurOnEnter : PropTypes.bool,
+	color       : PropTypes.string,
 }
 
 export default DelayedInput

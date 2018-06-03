@@ -11,6 +11,16 @@ const cancelEvent = (e) => {
 	e.preventDefault()
 	e.stopPropagation()
 }
+const focusInput = (e) => {
+	// if the click is on the parameterHandle, focus on the first input inside
+	if (e.target.className.indexOf('parameterHandle') !== -1) {
+		const input = e.target.querySelector('.parameterControl input')
+		if (input) {
+			input.focus()
+			input.select()
+		}
+	}
+}
 
 const ParameterHandle = ({
 	id,
@@ -19,7 +29,8 @@ const ParameterHandle = ({
 }) =>
 	<div className={`root parameterHandle ${connected ? 'connected' : ''}`}
 		tabIndex='0'
-		onKeyUp={cancelEvent}>
+		onKeyUp={cancelEvent}
+		onFocus={focusInput}>
 		<style jsx>{`
 			.root {
 				position: relative;
@@ -34,16 +45,16 @@ const ParameterHandle = ({
 				display: flex;
 				flex-direction: row;
 				align-items: center;
-				height: 1rem;
+				height: 1.25rem;
 				position: relative;
 			}
 			.value .circle {
-				width: 1rem;
-				height: 1rem;
+				width: 1.25rem;
+				height: 1.25rem;
 				border-radius: 1rem;
 				background-color: ${tinycolor(GRAY).lighten(20).toRgbString()};
 				position: absolute;
-				left: -0.5rem;
+				left: -0.625rem;
 				top: 0;
 			}
 			.root.connected .value .circle {
@@ -54,7 +65,7 @@ const ParameterHandle = ({
 				padding: 0 0.5rem 0 0.75rem;
 				border-top-right-radius: 1rem;
 				border-bottom-right-radius: 1rem;
-				height: 1rem;
+				height: 1.25rem;
 				cursor: pointer;
 			}
 			.control {
