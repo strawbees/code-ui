@@ -58,7 +58,7 @@ class Range extends React.Component {
 					.container .progress {
 						position: absolute;
 						height: 100%;
-						width: ${100 * ((value - min) / (max - min))}%;
+						width: ${Math.min(100 * ((value - min) / (max - min)), 100)}%;
 						background-color: ${tinycolor(YELLOW).darken(5).toRgbString()};
 						border-radius: 0.5rem;
 					}
