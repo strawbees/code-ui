@@ -73,6 +73,12 @@ class InstanceDraggableContainer extends React.Component {
 			default:
 				return
 		}
+		if (x < 10) {
+			x = 10
+		}
+		if (y < 10) {
+			y = 10
+		}
 		updateInstancePosition({ id, x, y })
 	}
 	onCloseClick = () => {

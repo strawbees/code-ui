@@ -117,7 +117,7 @@ export const safeUpdateInstanceParameterByValueCode = ({
 	// When valueCode represents an outlet, it uses the instance "name", and not
 	// it's "id". So first thing we do is to try to convert anything that looks
 	// like {name}.{outlet} to {id}.{outlet}
-	let value = valueCode
+	let value = valueCode.toString()
 	{
 		const valueArray = value.split('.')
 		if (valueArray.length === 2) {

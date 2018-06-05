@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
+import Range from 'src/editors/flow/components/range'
 import DelayedInput from 'src/editors/flow/components/delayedInput'
 import ParameterDisplayValueList from 'src/editors/flow/components/parameterDisplayValueList'
 import {
@@ -29,6 +30,11 @@ const ParameterControl = ({
 			.root :global(>.delayedInput input) {
 				text-align: left;
 				padding-left: 0.75rem;
+				background-color: ${tinycolor(YELLOW).toRgbString()};
+			}
+			.root :global(>.parameterDisplayValueList),
+			.root :global(>.range) {
+				margin-top: 0.25rem;
 			}
 		`}</style>
 		<DelayedInput
@@ -42,6 +48,15 @@ const ParameterControl = ({
 				value={valueCode}
 				onChange={onValueCodeChange}
 				items={validation.data}
+			/>
+		}
+		{validation && validation.type === 'range' &&
+			<Range
+				value={valueCode}
+				onChange={onValueCodeChange}
+				min={validation.data.min}
+				max={validation.data.max}
+				blurOnEnter={true}
 			/>
 		}
 	</div>

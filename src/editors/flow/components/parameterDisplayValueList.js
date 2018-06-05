@@ -16,7 +16,6 @@ const ParameterDisplayValueList = ({
 			.root {
 				height: ${items.length > 6 ? `${6.5 * 1.25}rem` : `${items.length * 1.25}rem`};
 				overflow-y: scroll;
-				margin-top: 0.25rem;
 			}
 			.items {
 				display: flex;
