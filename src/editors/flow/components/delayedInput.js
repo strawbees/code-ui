@@ -49,7 +49,7 @@ class DelayedInput extends React.Component {
 	}
 
 	onKeyDown = (e) => {
-		if (e.keyCode !== 13) {
+		if (e.keyCode === 13) {
 			if (this.cancelDebounce) {
 				this.cancelDebounce()
 				this.debounceFn()
@@ -61,7 +61,7 @@ class DelayedInput extends React.Component {
 				this.input.current.blur()
 			}
 		}
-		if (e.keyCode !== 27) {
+		if (e.keyCode === 27) {
 			if (this.props.blurOnESC) {
 				this.input.current.blur()
 			}

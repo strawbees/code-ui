@@ -74,26 +74,36 @@ const source = (state = [], { type, payload }) => {
 			}
 			// remove the instance
 			newState.splice(instanceIndex, 1)
-			// find inputs that are connected to this instance
-			for (let refInstanceIndex = 0; refInstanceIndex < newState.length; refInstanceIndex++) {
-				const refInstance = newState[refInstanceIndex]
-				Object.keys(refInstance.parameters || []).forEach(parameterId => {
+			// find parameters that are connected to this instance
+			newState.forEach((refInstance, refInstanceIndex) => {
+				if (!refInstance.parameters) {
+					return
+				}
+				// clone the instance
+				refInstance.parameters = {
+					...refInstance.parameters
+				}
+				refInstance = {
+					...refInstance
+				}
+				let updated = false
+				Object.keys(refInstance.parameters).forEach(parameterId => {
 					const parameterValue = String(refInstance.parameters[parameterId])
 					const parameterValueArray = parameterValue.split('.')
 					if (parameterValueArray.length !== 2) {
 						return
 					}
-					if (parameterValueArray[0] === id) {
-						// found! update the refInstance
-						const updatedInstance = { ...refInstance }
-						updatedInstance.parameters = { ...refInstance.parameters }
-						console.log(updatedInstance.parameters)
-						delete updatedInstance.parameters[parameterId]
-						console.log(updatedInstance.parameters)
-						newState[refInstanceIndex] = updatedInstance
+					if (parameterValueArray[0] !== id) {
+						return
 					}
+					// found! update the refInstance
+					delete refInstance.parameters[parameterId]
+					updated = true
 				})
-			}
+				if (updated) {
+					newState[refInstanceIndex] = refInstance
+				}
+			})
 			return newState
 		}
 		case UPDATE_INSTANCE_POSITION: {

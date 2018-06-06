@@ -65,6 +65,7 @@ const ParameterHandle = ({
 				position: absolute;
 				top: 0;
 				left: -0.625rem;
+				cursor: pointer;
 			}
 			.value :global(> .parameterDisplayValue) {
 				background-color: white;
@@ -99,6 +100,7 @@ const ParameterHandle = ({
 			}
 			.root.connected .value .circle {
 				background-color: ${tinycolor(YELLOW).toRgbString()};
+				cursor: grab;
 			}
 			.root.highlighted .value :global(> .parameterDisplayValue),
 			.root.highlighted .value .circle {

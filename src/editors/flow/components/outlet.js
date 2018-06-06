@@ -66,7 +66,6 @@ class Outlet extends React.Component {
 			this.props.onConnect(parameter)
 		}
 		this.props.onHover(null)
-		console.warn('TODO: deleting instance and disconnecting inputs')
 	}
 
 	render() {
