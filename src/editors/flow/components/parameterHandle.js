@@ -33,6 +33,9 @@ class ParameterHandle extends React.Component {
 		// preventDefault on the event, so we don't focus the parameter handler
 		e.preventDefault()
 
+		// as we are trasnfering the drag from a element that is in a different
+		// position, we need to calculate the diff, that will be applied to
+		// all drag methods
 		const destRect = this.props.outletTransferDragMethods
 			.getDragRef().current.getBoundingClientRect()
 		const sourceRect = this.outletDragRef
@@ -41,19 +44,37 @@ class ParameterHandle extends React.Component {
 			x : sourceRect.left - destRect.left,
 			y : sourceRect.top - destRect.top,
 		}
+
+		// apply diff and forward event
 		data.x += this.outletDragDiff.x
 		data.y += this.outletDragDiff.y
 		this.props.outletTransferDragMethods.onDragStart(e, data)
 	}
 	onDragMove = (e, data) => {
+		// apply diff and forward event
 		data.x += this.outletDragDiff.x
 		data.y += this.outletDragDiff.y
 		this.props.outletTransferDragMethods.onDragMove(e, data)
 	}
 	onDragStop = (e, data) => {
+		// apply diff and forward event
 		data.x += this.outletDragDiff.x
 		data.y += this.outletDragDiff.y
-		this.props.outletTransferDragMethods.onDragStop(e, data)
+
+		// store a reference to the possibly found parameter
+		const parameter = this.props.outletTransferDragMethods.onDragStop(e, data)
+
+		// "disconnect" the parameter, by setting an empty code value, but only
+		// of if the new found paramenter it's not this parameter itself
+		if (!parameter) {
+			this.props.onValueCodeChange('')
+			return
+		}
+		if (parameter.parameterId !== this.props.id ||
+			parameter.instanceId !== this.props.instanceId
+		) {
+			this.props.onValueCodeChange('')
+		}
 	}
 	render() {
 		const {
@@ -169,17 +190,16 @@ class ParameterHandle extends React.Component {
 				`}</style>
 				<div className='value'>
 					<div className='circle'></div>
-					{connected &&
-						<Draggable
-							onStart={onDragStart}
-							onDrag={onDragMove}
-							onStop={onDragStop}
-							position={{ x : 0, y : 0 }}>
-							<div className='circle'
-								ref={this.outletDragRef}>
-							</div>
-						</Draggable>
-					}
+					<Draggable
+						onStart={onDragStart}
+						onDrag={onDragMove}
+						onStop={onDragStop}
+						disabled={!connected}
+						position={{ x : 0, y : 0 }}>
+						<div className='circle'
+							ref={this.outletDragRef}>
+						</div>
+					</Draggable>
 					<ParameterDisplayValueContainer id={id} instanceId={instanceId} />
 				</div>
 				<div className='control'>
@@ -197,6 +217,7 @@ ParameterHandle.propTypes = {
 	connected                 : PropTypes.bool,
 	highlighted               : PropTypes.bool,
 	recommeded                : PropTypes.bool,
+	onValueCodeChange         : PropTypes.func,
 	outletTransferDragMethods : PropTypes.shape({
 		getDragRef  : PropTypes.func,
 		onDragStart : PropTypes.func,

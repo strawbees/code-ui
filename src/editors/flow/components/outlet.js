@@ -92,6 +92,11 @@ class Outlet extends React.Component {
 			this.props.onConnect(parameter)
 		}
 		this.props.onHover(null)
+
+		// important to return the parameter, in case the parameterHandle is
+		// transfering the drag methods, and need to know if it was dropped
+		// over itself
+		return parameter
 	}
 	render() {
 		const {

@@ -1,12 +1,13 @@
 import thunkMiddleware from 'redux-thunk'
 import { createStore, applyMiddleware, compose } from 'redux'
-import { createLogger } from 'redux-logger'
 import reducer from 'src/reducers/index'
 
 export default (state = {}) => {
 	const middlewares = []
 	middlewares.push(thunkMiddleware)
-	if (process.browser && process.NODE_EN !== 'production') {
+	if (process.browser && process.env.NODE_ENV !== 'production') {
+		// eslint-disable-next-line global-require
+		const { createLogger } = require('redux-logger')
 		middlewares.push(createLogger({
 			collapsed : true,
 			diff      : true
