@@ -16,6 +16,7 @@ import {
 	ADD_INSTANCE_PARAMETER_ITEM,
 	REMOVE_INSTANCE_PARAMETER_ITEM,
 	HIGHLIGHT_INSTANCE_PARAMETER_DROP_AREA,
+	SET_IS_DRAGGING_OUTLET,
 } from './actionTypes'
 
 const helperFindInstanceIndex = (state, id) => {
@@ -33,6 +34,7 @@ const constantDefinitions = generateReducer(SET_CONSTANT_DEFINITIONS)
 const displayAdvancedNodes = generateReducer(SET_DISPLAY_ADVANCED_NODES, false)
 const getDropAreaRect = generateReducer(REGISTER_GET_DROP_AREA_RECT)
 const highlightedInstanceParameter = generateReducer(HIGHLIGHT_INSTANCE_PARAMETER_DROP_AREA)
+const isDraggingOutlet = generateReducer(SET_IS_DRAGGING_OUTLET, false)
 const foldedCategories = (state = [], { type, payload }) => {
 	switch (type) {
 		case TOGGLE_FOLDED_CATEGORY: {
@@ -234,4 +236,5 @@ export default combineReducers({
 	foldedCategories,
 	source,
 	highlightedInstanceParameter,
+	isDraggingOutlet,
 })

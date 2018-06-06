@@ -17,6 +17,7 @@ const Parameter = ({
 			.root {
 				display: flex;
 				flex-direction: column;
+				align-items: flex-start;
 			}
 			.nameContainer {
 				display: flex;

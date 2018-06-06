@@ -7,13 +7,16 @@ export default (stateProps, dispatchProps, ownProps) => {
 	const {
 		setInstanceParameter,
 		highlightInstanceParameterDropArea,
+		setIsDraggingOutlet,
 		...otherDispatchProps
 	} = dispatchProps
 	return {
 		...stateProps,
 		...otherDispatchProps,
 		...otherOwnProps,
-		onConnect : (parameter) => setInstanceParameter({
+		onDragStart : () => setIsDraggingOutlet(true),
+		onDragStop  : () => setIsDraggingOutlet(false),
+		onConnect   : (parameter) => setInstanceParameter({
 			id          : parameter.instanceId,
 			parameterId : parameter.parameterId,
 			value       : `${instanceId}.${id}`

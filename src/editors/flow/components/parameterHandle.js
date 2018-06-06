@@ -27,9 +27,10 @@ const ParameterHandle = ({
 	instanceId,
 	connected,
 	highlighted,
+	recommeded,
 }) =>
 	/* Class "parameterHandle" necessary for drag-drop outlets */
-	<div className={`root parameterHandle ${connected ? 'connected' : ''} ${highlighted ? 'highlighted' : ''}`}
+	<div className={`root parameterHandle ${connected ? 'connected' : ''} ${highlighted ? 'highlighted' : ''} ${recommeded ? 'recommeded' : ''}`}
 		tabIndex='0'
 		onKeyUp={cancelEvent}
 		onFocus={focusInput}
@@ -59,14 +60,11 @@ const ParameterHandle = ({
 			.value .circle {
 				width: 1.25rem;
 				height: 1.25rem;
-				border-radius: 1rem;
+				border-radius: 1.25rem;
 				background-color: ${tinycolor(GRAY).lighten(20).toRgbString()};
 				position: absolute;
 				top: 0;
 				left: -0.625rem;
-			}
-			.root.connected .value .circle {
-				background-color: ${tinycolor(YELLOW).toRgbString()};
 			}
 			.value :global(> .parameterDisplayValue) {
 				background-color: white;
@@ -75,10 +73,6 @@ const ParameterHandle = ({
 				border-bottom-right-radius: 1rem;
 				height: 1.25rem;
 				cursor: pointer;
-			}
-			.root.highlighted .value :global(> .parameterDisplayValue),
-			.root.highlighted .value .circle {
-				background-color: ${tinycolor(YELLOW).toRgbString()};
 			}
 			.control {
 				display: none;
@@ -103,6 +97,29 @@ const ParameterHandle = ({
 					transform: scale3d(1,1,1);
 				}
 			}
+			.root.connected .value .circle {
+				background-color: ${tinycolor(YELLOW).toRgbString()};
+			}
+			.root.highlighted .value :global(> .parameterDisplayValue),
+			.root.highlighted .value .circle {
+				background-color: ${tinycolor(YELLOW).toRgbString()};
+			}
+			.root.recommeded:not(:focus):not(:focus-within) {
+				border-radius: 1.25rem;
+				animation-duration: 0.5s;
+				animation-name: glow;
+				animation-timing-function: ease-out;
+				animation-iteration-count: infinite;
+				animation-direction: alternate;
+			}
+			@keyframes glow {
+				from {
+					box-shadow: 0 0 0 0 ${tinycolor(YELLOW).setAlpha(0).toRgbString()};
+				}
+				to {
+					box-shadow: 0 0 0 0.15rem ${tinycolor(YELLOW).toRgbString()};
+				}
+			}
 		`}</style>
 		<div className='value'>
 			<div className='circle'></div>
@@ -118,6 +135,7 @@ ParameterHandle.propTypes = {
 	instanceId  : PropTypes.string,
 	connected   : PropTypes.bool,
 	highlighted : PropTypes.bool,
+	recommeded  : PropTypes.bool,
 }
 
 export default ParameterHandle

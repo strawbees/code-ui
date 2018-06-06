@@ -24,6 +24,7 @@ import {
 	ADD_INSTANCE_PARAMETER_ITEM,
 	REMOVE_INSTANCE_PARAMETER_ITEM,
 	HIGHLIGHT_INSTANCE_PARAMETER_DROP_AREA,
+	SET_IS_DRAGGING_OUTLET,
 } from './actionTypes'
 
 export const setNodeDefinitions = generateAction(SET_NODE_DEFINITIONS)
@@ -41,6 +42,7 @@ export const setInstanceParameter = generateAction(SET_INSTANCE_PARAMETER)
 export const addInstanceParameterItem = generateAction(ADD_INSTANCE_PARAMETER_ITEM)
 export const removeInstanceParameterItem = generateAction(REMOVE_INSTANCE_PARAMETER_ITEM)
 export const highlightInstanceParameterDropArea = generateAction(HIGHLIGHT_INSTANCE_PARAMETER_DROP_AREA)
+export const setIsDraggingOutlet = generateAction(SET_IS_DRAGGING_OUTLET)
 export const safeAddInstance = ({
 	id,
 	name,

@@ -2,28 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import Draggable from 'react-draggable'
-import { GRAY } from 'src/constants/colors'
+import {
+	GRAY,
+	YELLOW
+} from 'src/constants/colors'
 
 class Outlet extends React.Component {
 	constructor(props) {
 		super(props)
 		this.drag = React.createRef()
-	}
-
-	onDragStart = () => {
-		this.drag.current.focus()
-		this.startDragRect = this.drag.current.getBoundingClientRect()
-		// cache the position of all the targets
-		this.dragTargets = Array.from(document.querySelectorAll('.parameterHandle'))
-			.filter(element => element.dataset &&
-				element.dataset.id &&
-				element.dataset.instanceId
-			)
-			.map(element => ({
-				rect        : element.getBoundingClientRect(),
-				parameterId : element.dataset.id,
-				instanceId  : element.dataset.instanceId
-			}))
 	}
 	getInstanceParameter = (x, y) => {
 		const {
@@ -49,7 +36,22 @@ class Outlet extends React.Component {
 			r2.top > r1.bottom ||
 			r2.bottom < r1.top)
 		).pop()
-
+	onDragStart = () => {
+		this.props.onDragStart()
+		this.drag.current.focus()
+		this.startDragRect = this.drag.current.getBoundingClientRect()
+		// cache the position of all the targets
+		this.dragTargets = Array.from(document.querySelectorAll('.parameterHandle'))
+			.filter(element => element.dataset &&
+				element.dataset.id &&
+				element.dataset.instanceId
+			)
+			.map(element => ({
+				rect        : element.getBoundingClientRect(),
+				parameterId : element.dataset.id,
+				instanceId  : element.dataset.instanceId
+			}))
+	}
 	onDragMove = (e, { x, y }) => {
 		const parameter = this.getInstanceParameter(x, y)
 		if (this.lastHoveredParameter !== parameter) {
@@ -58,6 +60,7 @@ class Outlet extends React.Component {
 		}
 	}
 	onDragStop = (e, { x, y }) => {
+		this.props.onDragStop()
 		const parameter = this.getInstanceParameter(x, y)
 		if (parameter) {
 			this.props.onConnect(parameter)
@@ -115,6 +118,9 @@ class Outlet extends React.Component {
 
 					.outletHandle .drag.react-draggable-dragging {
 						cursor: grabbing;
+						transition: background-color 0.5s;
+						background-color: ${tinycolor(YELLOW).toRgbString()};
+
 					}
 				`}</style>
 				<div className='name'>
@@ -139,9 +145,11 @@ class Outlet extends React.Component {
 }
 
 Outlet.propTypes = {
-	name      : PropTypes.string,
-	onConnect : PropTypes.func,
-	onHover   : PropTypes.func,
+	name        : PropTypes.string,
+	onDragStart : PropTypes.func,
+	onDragStop  : PropTypes.func,
+	onConnect   : PropTypes.func,
+	onHover     : PropTypes.func,
 }
 
 export default Outlet
