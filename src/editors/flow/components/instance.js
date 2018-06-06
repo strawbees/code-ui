@@ -21,10 +21,10 @@ const Instance = ({
 				padding: 0.25rem 0 1rem 0;
 				border-radius: 1rem;
 				min-width: 10rem;
-				animation-duration: 0.1s;
+				/*animation-duration: 0.1s;
 				animation-name: pop;
 				animation-timing-function: ease-out;
-				transform-origin: top center;
+				transform-origin: top center;*/
 			}
 			@keyframes pop {
 				from { transform: scale3d(0,0,0); }

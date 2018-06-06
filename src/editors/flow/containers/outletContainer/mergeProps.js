@@ -8,6 +8,7 @@ export default (stateProps, dispatchProps, ownProps) => {
 		setInstanceParameter,
 		highlightInstanceParameterDropArea,
 		setIsDraggingOutlet,
+		setOutletTransferDragMethods,
 		...otherDispatchProps
 	} = dispatchProps
 	return {
@@ -27,6 +28,11 @@ export default (stateProps, dispatchProps, ownProps) => {
 				parameterId : parameter.parameterId
 			} : null
 			highlightInstanceParameterDropArea(parameter)
-		}
+		},
+		setDragMethods : (methods) => setOutletTransferDragMethods({
+			outletId : id,
+			instanceId,
+			methods
+		})
 	}
 }

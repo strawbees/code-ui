@@ -8,9 +8,24 @@ import {
 } from 'src/constants/colors'
 
 class Outlet extends React.Component {
+	state = {
+		dragging : false,
+		position : { x : 0, y : 0 }
+	}
 	constructor(props) {
 		super(props)
 		this.drag = React.createRef()
+	}
+	componentDidMount() {
+		this.props.setDragMethods({
+			getDragRef  : () => this.drag,
+			onDragStart : this.onDragStart,
+			onDragMove  : this.onDragMove,
+			onDragStop  : this.onDragStop,
+		})
+	}
+	componentWillUnmount() {
+		this.props.setDragMethods(null)
 	}
 	getInstanceParameter = (x, y) => {
 		const {
@@ -36,7 +51,11 @@ class Outlet extends React.Component {
 			r2.top > r1.bottom ||
 			r2.bottom < r1.top)
 		).pop()
-	onDragStart = () => {
+	onDragStart = (e, { x, y }) => {
+		this.setState({
+			dragging : true,
+			position : { x, y }
+		})
 		this.props.onDragStart()
 		this.drag.current.focus()
 		this.startDragRect = this.drag.current.getBoundingClientRect()
@@ -53,6 +72,9 @@ class Outlet extends React.Component {
 			}))
 	}
 	onDragMove = (e, { x, y }) => {
+		this.setState({
+			position : { x, y }
+		})
 		const parameter = this.getInstanceParameter(x, y)
 		if (this.lastHoveredParameter !== parameter) {
 			this.lastHoveredParameter = parameter
@@ -60,6 +82,10 @@ class Outlet extends React.Component {
 		}
 	}
 	onDragStop = (e, { x, y }) => {
+		this.setState({
+			dragging : false,
+			position : { x : 0, y : 0 }
+		})
 		this.props.onDragStop()
 		const parameter = this.getInstanceParameter(x, y)
 		if (parameter) {
@@ -67,7 +93,6 @@ class Outlet extends React.Component {
 		}
 		this.props.onHover(null)
 	}
-
 	render() {
 		const {
 			onDragStart,
@@ -77,6 +102,10 @@ class Outlet extends React.Component {
 		const {
 			name,
 		} = this.props
+		const {
+			dragging,
+			position
+		} = this.state
 		return (
 			<div className='root outlet'>
 				<style jsx>{`
@@ -114,12 +143,10 @@ class Outlet extends React.Component {
 					.outletHandle .drag:focus{
 						outline: none;
 					}
-
-					.outletHandle .drag.react-draggable-dragging {
+					.outletHandle .drag.dragging {
 						cursor: grabbing;
-						transition: background-color 0.5s;
+						/*transition: background-color 0.5s;*/
 						background-color: ${tinycolor(YELLOW).toRgbString()};
-
 					}
 				`}</style>
 				<div className='name'>
@@ -131,8 +158,8 @@ class Outlet extends React.Component {
 						onStart={onDragStart}
 						onDrag={onDragMove}
 						onStop={onDragStop}
-						position={{ x : 0, y : 0 }}>
-						<div className='circle drag'
+						position={position}>
+						<div className={`circle drag ${dragging ? 'dragging' : ''}`}
 							tabIndex='0'
 							ref={this.drag}>
 						</div>
@@ -144,11 +171,12 @@ class Outlet extends React.Component {
 }
 
 Outlet.propTypes = {
-	name        : PropTypes.string,
-	onDragStart : PropTypes.func,
-	onDragStop  : PropTypes.func,
-	onConnect   : PropTypes.func,
-	onHover     : PropTypes.func,
+	name           : PropTypes.string,
+	onDragStart    : PropTypes.func,
+	onDragStop     : PropTypes.func,
+	onConnect      : PropTypes.func,
+	onHover        : PropTypes.func,
+	setDragMethods : PropTypes.func,
 }
 
 export default Outlet

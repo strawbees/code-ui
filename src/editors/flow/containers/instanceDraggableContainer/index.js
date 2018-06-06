@@ -131,6 +131,10 @@ class InstanceDraggableContainer extends React.Component {
 						.root:focus {
 							outline: none;
 						}
+						.root:focus,
+						.root:focus-within {
+							z-index: 99999 !important;
+						}
 						.root.react-draggable-dragging {
 							cursor: grabbing;
 						}

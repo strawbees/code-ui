@@ -17,6 +17,7 @@ import {
 	REMOVE_INSTANCE_PARAMETER_ITEM,
 	HIGHLIGHT_INSTANCE_PARAMETER_DROP_AREA,
 	SET_IS_DRAGGING_OUTLET,
+	SET_OUTLET_TRANSFER_DRAG_METHODS,
 } from './actionTypes'
 
 const helperFindInstanceIndex = (state, id) => {
@@ -50,7 +51,6 @@ const foldedCategories = (state = [], { type, payload }) => {
 			return state
 	}
 }
-
 const source = (state = [], { type, payload }) => {
 	switch (type) {
 		case SET_SOURCE: {
@@ -217,7 +217,7 @@ const source = (state = [], { type, payload }) => {
 				.forEach((key, i, arr) => {
 					// shift the indexes up
 					const keyParameterIndex = key.split('.')[1]
-					if (keyParameterIndex > 0) {
+					if (keyParameterIndex > 0 && keyParameterIndex > parameterIndex) {
 						parameters[`${parameterId}.${keyParameterIndex - 1}`] = parameters[key]
 					}
 					if (i === arr.length - 1) {
@@ -236,6 +236,29 @@ const source = (state = [], { type, payload }) => {
 			return state
 	}
 }
+const outletTransferDragMethods = (state = {}, { type, payload }) => {
+	switch (type) {
+		case SET_OUTLET_TRANSFER_DRAG_METHODS: {
+			const newState = { ...state }
+			const {
+				outletId,
+				instanceId,
+				methods,
+			} = payload
+			const id = `${instanceId}.${outletId}`
+			if (methods) {
+				newState[id] = {
+					...methods
+				}
+			} else {
+				delete newState[id]
+			}
+			return newState
+		}
+		default:
+			return state
+	}
+}
 
 export default combineReducers({
 	nodeDefinitions,
@@ -243,8 +266,9 @@ export default combineReducers({
 	constantDefinitions,
 	displayAdvancedNodes,
 	getDropAreaRect,
-	foldedCategories,
-	source,
 	highlightedInstanceParameter,
 	isDraggingOutlet,
+	foldedCategories,
+	source,
+	outletTransferDragMethods,
 })

@@ -56,6 +56,7 @@ class Workspace extends React.Component {
 					.root {
 						background-color: white;
 						position: relative;
+						user-select: none;
 					}
 					.instances {
 						position: absolute;
