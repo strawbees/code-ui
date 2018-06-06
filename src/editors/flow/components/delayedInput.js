@@ -50,17 +50,21 @@ class DelayedInput extends React.Component {
 
 	onKeyDown = (e) => {
 		if (e.keyCode !== 13) {
-			return
-		}
-		if (this.cancelDebounce) {
-			this.cancelDebounce()
-			this.debounceFn()
-			if (this.props.onEnter) {
-				this.props.onEnter()
+			if (this.cancelDebounce) {
+				this.cancelDebounce()
+				this.debounceFn()
+				if (this.props.onEnter) {
+					this.props.onEnter()
+				}
+			}
+			if (this.props.blurOnEnter) {
+				this.input.current.blur()
 			}
 		}
-		if (this.props.blurOnEnter) {
-			this.input.current.blur()
+		if (e.keyCode !== 27) {
+			if (this.props.blurOnESC) {
+				this.input.current.blur()
+			}
 		}
 	}
 
@@ -141,6 +145,7 @@ DelayedInput.propTypes = {
 	onEnter     : PropTypes.func,
 	autoResize  : PropTypes.bool,
 	blurOnEnter : PropTypes.bool,
+	blurOnESC   : PropTypes.bool,
 	color       : PropTypes.string,
 }
 

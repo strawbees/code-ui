@@ -26,17 +26,25 @@ const ParameterHandle = ({
 	id,
 	instanceId,
 	connected,
+	highlighted,
 }) =>
-	<div className={`root parameterHandle ${connected ? 'connected' : ''}`}
+	/* Class "parameterHandle" necessary for drag-drop outlets */
+	<div className={`root parameterHandle ${connected ? 'connected' : ''} ${highlighted ? 'highlighted' : ''}`}
 		tabIndex='0'
 		onKeyUp={cancelEvent}
-		onFocus={focusInput}>
+		onFocus={focusInput}
+		/* Data ids necessary for drag-drop outlets */
+		data-id={id}
+		data-instance-id={instanceId}>
 		<style jsx>{`
 			.root {
 				position: relative;
 				display: flex;
 				flex-direction: column;
-				align-items: flex-start
+				align-items: flex-start;
+				margin-left: -0.625rem;
+				padding-left: 0.625rem;
+				box-sizing: border-box;
 			}
 			.root:focus {
 				outline: none;
@@ -54,8 +62,8 @@ const ParameterHandle = ({
 				border-radius: 1rem;
 				background-color: ${tinycolor(GRAY).lighten(20).toRgbString()};
 				position: absolute;
-				left: -0.625rem;
 				top: 0;
+				left: -0.625rem;
 			}
 			.root.connected .value .circle {
 				background-color: ${tinycolor(YELLOW).toRgbString()};
@@ -67,6 +75,10 @@ const ParameterHandle = ({
 				border-bottom-right-radius: 1rem;
 				height: 1.25rem;
 				cursor: pointer;
+			}
+			.root.highlighted .value :global(> .parameterDisplayValue),
+			.root.highlighted .value .circle {
+				background-color: ${tinycolor(YELLOW).toRgbString()};
 			}
 			.control {
 				display: none;
@@ -102,9 +114,10 @@ const ParameterHandle = ({
 	</div>
 
 ParameterHandle.propTypes = {
-	id         : PropTypes.string,
-	instanceId : PropTypes.string,
-	connected  : PropTypes.bool,
+	id          : PropTypes.string,
+	instanceId  : PropTypes.string,
+	connected   : PropTypes.bool,
+	highlighted : PropTypes.bool,
 }
 
 export default ParameterHandle

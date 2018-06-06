@@ -17,6 +17,8 @@ const ParameterDisplayValue = ({
 			.root :global(>.svgIcon){
 				width: 1.25rem;
 				height: 1.25rem;
+			}
+			.root :global(>.svgIcon+.text){
 				margin-right: 0.2rem;
 			}
 			.text.NUMBER {
@@ -26,7 +28,7 @@ const ParameterDisplayValue = ({
 		{icon &&
 			<SvgIcon icon={icon}/>
 		}
-		{(typeof text !== 'undefined') &&
+		{(typeof text !== 'undefined') && type !== 'OUTLET' &&
 			<div className={`text ${type}`}>
 				{text}
 			</div>

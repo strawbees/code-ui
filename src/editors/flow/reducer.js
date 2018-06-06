@@ -15,6 +15,7 @@ import {
 	SET_INSTANCE_PARAMETER,
 	ADD_INSTANCE_PARAMETER_ITEM,
 	REMOVE_INSTANCE_PARAMETER_ITEM,
+	HIGHLIGHT_INSTANCE_PARAMETER_DROP_AREA,
 } from './actionTypes'
 
 const helperFindInstanceIndex = (state, id) => {
@@ -31,6 +32,7 @@ const categoryDefinitions = generateReducer(SET_CATEGORY_DEFINITIONS)
 const constantDefinitions = generateReducer(SET_CONSTANT_DEFINITIONS)
 const displayAdvancedNodes = generateReducer(SET_DISPLAY_ADVANCED_NODES, false)
 const getDropAreaRect = generateReducer(REGISTER_GET_DROP_AREA_RECT)
+const highlightedInstanceParameter = generateReducer(HIGHLIGHT_INSTANCE_PARAMETER_DROP_AREA)
 const foldedCategories = (state = [], { type, payload }) => {
 	switch (type) {
 		case TOGGLE_FOLDED_CATEGORY: {
@@ -70,7 +72,26 @@ const source = (state = [], { type, payload }) => {
 			}
 			// remove the instance
 			newState.splice(instanceIndex, 1)
-			console.warn('TODO: disconnect inputs')
+			// find inputs that are connected to this instance
+			for (let refInstanceIndex = 0; refInstanceIndex < newState.length; refInstanceIndex++) {
+				const refInstance = newState[refInstanceIndex]
+				Object.keys(refInstance.parameters || []).forEach(parameterId => {
+					const parameterValue = String(refInstance.parameters[parameterId])
+					const parameterValueArray = parameterValue.split('.')
+					if (parameterValueArray.length !== 2) {
+						return
+					}
+					if (parameterValueArray[0] === id) {
+						// found! update the refInstance
+						const updatedInstance = { ...refInstance }
+						updatedInstance.parameters = { ...refInstance.parameters }
+						console.log(updatedInstance.parameters)
+						delete updatedInstance.parameters[parameterId]
+						console.log(updatedInstance.parameters)
+						newState[refInstanceIndex] = updatedInstance
+					}
+				})
+			}
 			return newState
 		}
 		case UPDATE_INSTANCE_POSITION: {
@@ -212,4 +233,5 @@ export default combineReducers({
 	getDropAreaRect,
 	foldedCategories,
 	source,
+	highlightedInstanceParameter,
 })

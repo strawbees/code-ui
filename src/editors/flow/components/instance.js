@@ -3,7 +3,7 @@ import tinycolor from 'tinycolor2'
 import NodeTypeName from 'src/editors/flow/components/nodeTypeName'
 import InstanceNameContainer from 'src/editors/flow/containers/instanceNameContainer'
 import ParameterListContainer from 'src/editors/flow/containers/parameterListContainer'
-// import OutletListContainer from 'src/editors/flow/containers/outletListContainer'
+import OutletListContainer from 'src/editors/flow/containers/outletListContainer'
 
 const Instance = ({
 	id,
@@ -43,11 +43,16 @@ const Instance = ({
 				flex-direction: row;
 				width: 100%;
 			}
-			.connections > * {
+			.connections .parameters,
+			.connections .outlets {
 				flex-grow: 1;
 				display: flex;
 				flex-direction: column;
-				align-items: flex-start
+				align-items: flex-start;
+				justify-content: center;
+			}
+			.connections .outlets {
+				align-items: flex-end;
 			}
 		`}</style>
 		<NodeTypeName icon={icon} name={nodeName}/>
@@ -59,9 +64,9 @@ const Instance = ({
 				/>
 			</div>
 			<div className='outlets'>
-				{/* <OutletListContainer
+				<OutletListContainer
 					id={id}
-				/> */}
+				/>
 			</div>
 		</div>
 	</div>
