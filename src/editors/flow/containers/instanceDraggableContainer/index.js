@@ -126,6 +126,7 @@ class InstanceDraggableContainer extends React.Component {
 				onDrag={onDragMove}
 				onStop={onDragStop}
 				onMouseDown={onMouseDown}
+				bounds={{ left : 10, top : 10 }}
 				position={{ x, y }}>
 				<div className='root instanceDraggableContainer'
 					style={style}
