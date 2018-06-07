@@ -414,8 +414,8 @@
 					"type": "list",
 					"data": [
 						"NO_LOCATION",
-						"SERVO_BP1",
-						"SERVO_BP2"
+						"SERVO_MOTOR_1",
+						"SERVO_MOTOR_2"
 					]
 				},
 				"code": "place"
@@ -1167,8 +1167,8 @@
 					"type": "list",
 					"data": [
 						"NO_LOCATION",
-						"SERVO_BP1",
-						"SERVO_BP2"
+						"SERVO_MOTOR_1",
+						"SERVO_MOTOR_2"
 					]
 				},
 				"code": "place"
@@ -1436,8 +1436,8 @@
 					"type": "list",
 					"data": [
 						"WAVE_SINE",
-						"WAVE_SQUARE",
 						"WAVE_TRIANGLE",
+						"WAVE_SQUARE",
 						"WAVE_PULSE",
 						"WAVE_RAMP_UP",
 						"WAVE_RAMP_DOWN"

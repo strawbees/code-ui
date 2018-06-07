@@ -55,7 +55,7 @@ class InstanceDraggableContainer extends React.Component {
 		this.ref.current.focus()
 	}
 	onDragMove = (e, { x, y }) => {
-		// this.moveInstance(x, y)
+		this.moveInstance(x, y)
 	}
 	onDragStop = (e, { x, y }) => {
 		this.moveInstance(x, y)

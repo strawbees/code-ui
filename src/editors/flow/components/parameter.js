@@ -27,7 +27,7 @@ const Parameter = ({
 			}
 			.name {
 				color: white;
-				font-size: 0.75rem;
+				font-size: 0.8rem;
 				-webkit-font-smoothing: subpixel-antialiased;
 			}
 			.root .nameContainer :global(>.addItemButton) {

@@ -13,18 +13,18 @@ const NodeTypeName = ({
 				align-items: center;
 				background-color: white;
 				border-radius: 2rem;
-				padding: 0 0.4rem;
+				padding: 0 0.6rem 0 0.4rem;
 				height: 1.25rem;
 				position: relative;
 			}
 			.root :global(.svgIcon) {
-				height: 1.5rem;
-				width:  1.5rem;
+				height: 1.7rem;
+				width:  1.7rem;
 				margin-left: -0.4rem;
-				margin-right: 0.2rem;
+				margin-right: 0.25rem;
 			}
 			.name {
-				font-size: 0.7rem;
+				font-size: 0.8rem;
 			}
 		`}</style>
 		<SvgIcon icon={icon}/>

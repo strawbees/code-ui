@@ -20,13 +20,23 @@ class ParameterHandle extends React.Component {
 		e.stopPropagation()
 	}
 	focusInput = (e) => {
+		const { target } = e
 		// if the click is on the parameterHandle, focus on the first input inside
-		if (e.target.className.indexOf('parameterHandle') !== -1) {
-			const input = e.target.querySelector('.parameterControl input')
+		if (target.className.indexOf('parameterHandle') !== -1) {
+			const input = target.querySelector('.parameterControl input')
 			if (input) {
 				input.focus()
 				input.select()
 			}
+			setTimeout(() => {
+				// use this hack to make it scroll into the view
+				const scroll = target.querySelector('.parameterControl .scrollIntoView')
+				if (scroll) {
+					scroll.scrollIntoView({
+						behavior : 'smooth',
+					})
+				}
+			}, 300)
 		}
 	}
 	onDragStart = (e, data) => {
@@ -141,21 +151,24 @@ class ParameterHandle extends React.Component {
 					}
 					.control {
 						display: none;
+						position: absolute;
+						left: 1.65rem;
+						top: -0.37rem;
+						transform-origin: -0.6rem 0.8rem;
 						z-index: 2;
 					}
 					.root:focus .control,
 					.root:focus-within .control {
 						display: block;
-						position: absolute;
 						animation-duration: 0.1s;
 						animation-name: slide;
 						animation-timing-function: ease-out;
-						transform-origin: top center;
+
 					}
 					@keyframes slide {
 						from {
 							opacity: 0;
-							transform: scale3d(1,0,1);
+							transform: scale3d(0,0,1);
 						}
 						to {
 							opacity: 1;

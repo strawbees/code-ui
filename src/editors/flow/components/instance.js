@@ -18,7 +18,7 @@ const Instance = ({
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				padding: 0.25rem 0 1rem 0;
+				padding: 0.5rem 0 1rem 0;
 				border-radius: 1rem;
 				min-width: 10rem;
 				/*animation-duration: 0.1s;
@@ -42,6 +42,7 @@ const Instance = ({
 				display: flex;
 				flex-direction: row;
 				width: 100%;
+				padding-top: 0.25rem;
 			}
 			.connections .parameters,
 			.connections .outlets {
@@ -53,6 +54,10 @@ const Instance = ({
 			}
 			.connections .outlets {
 				align-items: flex-end;
+			}
+			.connections .parameters :global(>*),
+			.connections .outlets :global(>*) {
+				margin: 0.1rem 0;
 			}
 		`}</style>
 		<NodeTypeName icon={icon} name={nodeName}/>

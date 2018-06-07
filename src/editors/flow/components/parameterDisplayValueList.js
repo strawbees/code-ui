@@ -14,7 +14,7 @@ const ParameterDisplayValueList = ({
 	<div className='root parameterDisplayValueList'>
 		<style jsx>{`
 			.root {
-				height: ${items.length > 6 ? `${6.5 * 1.25}rem` : `${items.length * 1.25}rem`};
+				height: ${items.length > 4 ? `${4.5 * 1.7}rem` : `${items.length * 1.7}rem`};
 				overflow-y: scroll;
 			}
 			.items {
@@ -23,7 +23,7 @@ const ParameterDisplayValueList = ({
 			}
 			.root button {
 				background-color: white;
-				height: 1.25rem;
+				height: 1.7rem;
 			}
 			.root button .focus{
 				padding-left: 0.25rem;
@@ -37,11 +37,17 @@ const ParameterDisplayValueList = ({
 			.root button:focus {
 				outline: none;
 			}
-			.root button:focus .focus{
+
+			.root button:hover .focus,
+			.root button:focus .focus {
 				background-color: ${tinycolor(YELLOW).setAlpha(0.3).toRgbString()};
 			}
-			.root button.selected :focus .focus{
-				background-color: ${tinycolor(YELLOW).darken(20).setAlpha(0.3).toRgbString()};
+			.root button.selected:hover .focus,
+			.root button.selected:focus .focus{
+				background-color: ${tinycolor(YELLOW).darken(15).setAlpha(0.3).toRgbString()};
+			}
+			.root button:active .focus {
+				background-color: ${tinycolor(YELLOW).darken(25).setAlpha(0.3).toRgbString()};
 			}
 		`}</style>
 		<div className='items'>

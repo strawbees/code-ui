@@ -9,6 +9,7 @@ import logicOr from './logic-or.svg'
 import logicXor from './logic-xor.svg'
 import mathAdd from './math-add.svg'
 import mathDivide from './math-divide.svg'
+import mathModulo from './math-modulo.svg'
 import mathMultiply from './math-multiply.svg'
 import mathSubtract from './math-subtract.svg'
 import noKey from './no-key.svg'
@@ -24,11 +25,13 @@ import placeRightArm from './place-right-arm.svg'
 import placeRightEye from './place-right-eye.svg'
 import placeRightLeg from './place-right-leg.svg'
 import placeRightMouth from './place-right-mouth.svg'
-import pulseWave from './pulse-wave.svg'
+import servoMotor1 from './servo-motor-1.svg'
+import servoMotor2 from './servo-motor-2.svg'
 import statisticsAvg from './statistics-avg.svg'
 import statisticsMax from './statistics-max.svg'
 import statisticsMin from './statistics-min.svg'
 import statisticsSum from './statistics-sum.svg'
+import wavePulse from './wave-pulse.svg'
 import waveRampDown from './wave-ramp-down.svg'
 import waveRampUp from './wave-ramp-up.svg'
 import waveSine from './wave-sine.svg'
@@ -47,6 +50,7 @@ export default {
 	'logic-xor'                : logicXor,
 	'math-add'                 : mathAdd,
 	'math-divide'              : mathDivide,
+	'math-modulo'              : mathModulo,
 	'math-multiply'            : mathMultiply,
 	'math-subtract'            : mathSubtract,
 	'no-key'                   : noKey,
@@ -62,11 +66,13 @@ export default {
 	'place-right-eye'          : placeRightEye,
 	'place-right-leg'          : placeRightLeg,
 	'place-right-mouth'        : placeRightMouth,
-	'pulse-wave'               : pulseWave,
+	'servo-motor-1'            : servoMotor1,
+	'servo-motor-2'            : servoMotor2,
 	'statistics-avg'           : statisticsAvg,
 	'statistics-max'           : statisticsMax,
 	'statistics-min'           : statisticsMin,
 	'statistics-sum'           : statisticsSum,
+	'wave-pulse'               : wavePulse,
 	'wave-ramp-down'           : waveRampDown,
 	'wave-ramp-up'             : waveRampUp,
 	'wave-sine'                : waveSine,

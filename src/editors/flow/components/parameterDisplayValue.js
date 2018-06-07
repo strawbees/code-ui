@@ -12,16 +12,17 @@ const ParameterDisplayValue = ({
 				display: flex;
 				flex-direction: row;
 				align-items: center;
-				font-size: 0.75rem;
+				font-size: 0.8rem;
 			}
 			.root :global(>.svgIcon){
-				width: 1.25rem;
-				height: 1.25rem;
+				width: 1.7rem;
+				height: 1.7rem;
 			}
-			.root :global(>.svgIcon+.text){
-				margin-right: 0.2rem;
+			.root :global(.svgIcon+.text){
+				margin-left: 0.25rem;
 			}
 			.text.NUMBER {
+				padding: 0 0.2rem;
 				font-family: 'Code', monospace;
 			}
 		`}</style>

@@ -14,7 +14,7 @@ const NodeMini = ({
 				display: flex;
 				flex-direction: row;
 				align-items: flex-start;
-				padding: 0.25rem;
+				padding: 0.3rem;
 				border-radius: 2rem;
 			}
 		`}</style>

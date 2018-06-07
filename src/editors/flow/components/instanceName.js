@@ -12,6 +12,9 @@ const InstanceName = ({
 				flex-direction: row;
 				align-items: center;
 			}
+			.root :global(>.delayedInput input) {
+				font-size: 0.7rem;
+			}
 		`}</style>
 		<DelayedInput
 			value={name}

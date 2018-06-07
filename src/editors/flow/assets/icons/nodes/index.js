@@ -4,6 +4,7 @@ import comparison from './comparison.svg'
 import constrain from './constrain.svg'
 import continuousServo from './continuous-servo.svg'
 import converter from './converter.svg'
+import counter from './counter.svg'
 import dualColorLed from './dual-color-led.svg'
 import gate from './gate.svg'
 import irProximity from './ir-proximity.svg'
@@ -21,6 +22,7 @@ import servoMotor from './servo-motor.svg'
 import sonar from './sonar.svg'
 import squeezeSensor from './squeeze-sensor.svg'
 import statistics from './statistics.svg'
+import time from './time.svg'
 import voltageOutput from './voltage-output.svg'
 import wave from './wave.svg'
 
@@ -31,6 +33,7 @@ export default {
 	constrain,
 	'continuous-servo' : continuousServo,
 	converter,
+	counter,
 	'dual-color-led'   : dualColorLed,
 	gate,
 	'ir-proximity'     : irProximity,
@@ -48,6 +51,7 @@ export default {
 	sonar,
 	'squeeze-sensor'   : squeezeSensor,
 	statistics,
+	time,
 	'voltage-output'   : voltageOutput,
 	wave,
 }

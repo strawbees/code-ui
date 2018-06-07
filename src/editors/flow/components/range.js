@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
-import { GRAY, BLACK, WHITE, YELLOW } from 'src/constants/colors'
+import { GRAY, WHITE, YELLOW } from 'src/constants/colors'
 
 class Range extends React.Component {
 	constructor(props) {
@@ -26,6 +26,7 @@ class Range extends React.Component {
 			min,
 			max,
 			step,
+			color,
 		} = this.props
 
 		return (
@@ -51,7 +52,7 @@ class Range extends React.Component {
 						width: calc(100% - 1.25rem);
 						box-sizing: border-box;
 						height: 0.25rem;
-						background-color: ${tinycolor(GRAY).lighten(20).toRgbString()};
+						background-color: ${tinycolor(GRAY).toRgbString()};
 						margin: 0 0.625rem;
 						border-radius: 0.5rem;
 					}
@@ -79,7 +80,7 @@ class Range extends React.Component {
 						height: 1rem;
 						width: 1rem;
 						border-radius: 1rem;
-						background: ${tinycolor(BLACK).toRgbString()};
+						background: ${tinycolor(color).toRgbString()};
 						cursor: pointer;
 						margin-top: 0;
 					}
@@ -88,7 +89,7 @@ class Range extends React.Component {
 						height: 1rem;
 						width: 1rem;
 						border-radius: 1rem;
-						background: ${tinycolor(BLACK).toRgbString()};
+						background: ${tinycolor(color).toRgbString()};
 						cursor: pointer;
 						margin-top: 0;
 					}
@@ -97,7 +98,7 @@ class Range extends React.Component {
 						height: 1rem;
 						width: 1rem;
 						border-radius: 1rem;
-						background: ${tinycolor(BLACK).toRgbString()};
+						background: ${tinycolor(color).toRgbString()};
 						cursor: pointer;
 						margin-top: 0;
 					}
@@ -166,6 +167,7 @@ Range.propTypes = {
 	min         : PropTypes.number,
 	max         : PropTypes.number,
 	step        : PropTypes.number,
+	color       : PropTypes.string,
 	value       : PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	onChange    : PropTypes.func,
 	blurOnEnter : PropTypes.bool,

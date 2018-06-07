@@ -123,7 +123,7 @@ class Outlet extends React.Component {
 					}
 					.name {
 						color: white;
-						font-size: 0.75rem;
+						font-size: 0.8rem;
 						margin-right: 0.5rem;
 						-webkit-font-smoothing: subpixel-antialiased;
 					}

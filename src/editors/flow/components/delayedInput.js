@@ -99,6 +99,7 @@ class DelayedInput extends React.Component {
 						appearance: none;
 						border: 0;
 						padding: 0;
+						border-radius: 0;
 						display: block;
 						vertical-align: middle;
 						white-space: normal;
@@ -107,7 +108,7 @@ class DelayedInput extends React.Component {
 						background-color: ${tinycolor(color).setAlpha(0.5).toRgbString()};
 						line-height: 1;
 						font-family: 'Code', monospace;
-						font-size: 0.7rem;
+						font-size: 0.8rem;
 						text-align: center;
 						padding: 0.1rem 0.2rem;
 						outline: none;
