@@ -1,8 +1,7 @@
 export default (stateProps, dispatchProps, ownProps) => {
 	const {
 		id,
-		instanceId,
-		...otherOwnProps
+		instanceId
 	} = ownProps
 	const {
 		setInstanceParameter,
@@ -14,7 +13,7 @@ export default (stateProps, dispatchProps, ownProps) => {
 	return {
 		...stateProps,
 		...otherDispatchProps,
-		...otherOwnProps,
+		...ownProps,
 		onDragStart : () => setIsDraggingOutlet(true),
 		onDragStop  : () => setIsDraggingOutlet(false),
 		onConnect   : (parameter) => setInstanceParameter({

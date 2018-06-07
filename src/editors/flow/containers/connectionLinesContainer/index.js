@@ -1,14 +1,14 @@
 import { connect } from 'react-redux'
-import Workspace from 'src/editors/flow/components/workspace'
+import ConnectionLines from 'src/editors/flow/components/connectionLines'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
-const WorkspaceContainer = (props) =>
-	<Workspace {...props} />
+const ConnectionLinesContainer = (props) =>
+	<ConnectionLines {...props} />
 
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
-)(WorkspaceContainer)
+)(ConnectionLinesContainer)

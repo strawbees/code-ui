@@ -2,5 +2,5 @@ import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToAction
 import { registerGetDropAreaRect } from 'src/editors/flow/actions'
 
 export default autobindDispatchToActionCreators({
-	registerGetDropAreaRect
+	registerGetDropAreaRect,
 })

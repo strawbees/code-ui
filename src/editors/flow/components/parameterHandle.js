@@ -189,7 +189,10 @@ class ParameterHandle extends React.Component {
 					}
 				`}</style>
 				<div className='value'>
-					<div className='circle'></div>
+					<div className='circle'
+						/* the id s needed for the ConnectionLines */
+						id={`${instanceId}.${id}`}>
+					</div>
 					<Draggable
 						onStart={onDragStart}
 						onDrag={onDragMove}

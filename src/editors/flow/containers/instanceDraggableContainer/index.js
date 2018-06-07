@@ -27,17 +27,7 @@ class InstanceDraggableContainer extends React.Component {
 			})
 		}
 	}
-	onMouseDown = () => {
-		this.bumpZ()
-	}
-	onDragStart = (e, { x, y }) => {
-		this.dragStartPosition = {
-			x,
-			y
-		}
-		this.ref.current.focus()
-	}
-	onDragStop = (e, { x, y }) => {
+	moveInstance = (x, y) => {
 		if (this.dragStartPosition.x === x &&
 			this.dragStartPosition.y === y) {
 			return
@@ -53,6 +43,22 @@ class InstanceDraggableContainer extends React.Component {
 			y = 10
 		}
 		updateInstancePosition({ id, x, y })
+	}
+	onMouseDown = () => {
+		this.bumpZ()
+	}
+	onDragStart = (e, { x, y }) => {
+		this.dragStartPosition = {
+			x,
+			y
+		}
+		this.ref.current.focus()
+	}
+	onDragMove = (e, { x, y }) => {
+		// this.moveInstance(x, y)
+	}
+	onDragStop = (e, { x, y }) => {
+		this.moveInstance(x, y)
 	}
 	onKeyUp = ({ keyCode }) => {
 		const {
@@ -102,6 +108,7 @@ class InstanceDraggableContainer extends React.Component {
 		const {
 			onMouseDown,
 			onDragStart,
+			onDragMove,
 			onDragStop,
 			onKeyUp,
 			onCloseClick,
@@ -116,6 +123,7 @@ class InstanceDraggableContainer extends React.Component {
 			<Draggable
 				cancel='.button-container,.instanceName,.parameterHandle,.outletHandle'
 				onStart={onDragStart}
+				onDrag={onDragMove}
 				onStop={onDragStop}
 				onMouseDown={onMouseDown}
 				position={{ x, y }}>

@@ -106,6 +106,8 @@ class Outlet extends React.Component {
 		} = this
 		const {
 			name,
+			id,
+			instanceId,
 		} = this.props
 		const {
 			dragging,
@@ -158,7 +160,10 @@ class Outlet extends React.Component {
 					{name}
 				</div>
 				<div className='outletHandle'>
-					<div className='circle'></div>
+					<div className='circle'
+						/* the id s needed for the ConnectionLines */
+						id={`${instanceId}.${id}`}>
+					</div>
 					<Draggable
 						onStart={onDragStart}
 						onDrag={onDragMove}
@@ -176,6 +181,8 @@ class Outlet extends React.Component {
 }
 
 Outlet.propTypes = {
+	id             : PropTypes.string,
+	instanceId     : PropTypes.string,
 	name           : PropTypes.string,
 	onDragStart    : PropTypes.func,
 	onDragStop     : PropTypes.func,
