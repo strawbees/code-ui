@@ -9,6 +9,7 @@ const Editor = () =>
 				flex-direction: row;
 				height: 100%;
 				position: relative;
+				overflow: hidden;
 			}
 			.root :global(> *:nth-child(2)) {
 				width: 12rem;

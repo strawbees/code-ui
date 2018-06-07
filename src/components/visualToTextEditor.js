@@ -34,6 +34,7 @@ class VisualToTextEditor extends React.Component {
 						position: relative;
 						width: 100%;
 						height: 100%;
+						overflow: hidden;
 					}
 					.switch {
 						background-color: white;
