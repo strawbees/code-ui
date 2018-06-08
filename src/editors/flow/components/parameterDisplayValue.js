@@ -6,7 +6,7 @@ const ParameterDisplayValue = ({
 	text,
 	icon
 }) =>
-	<div className='root parameterDisplayValue'>
+	<div className={`root parameterDisplayValue ${type}`}>
 		<style jsx>{`
 			.root {
 				display: flex;
@@ -17,11 +17,12 @@ const ParameterDisplayValue = ({
 			.root :global(>.svgIcon){
 				width: 1.7rem;
 				height: 1.7rem;
+				margin-left: -0.1rem;
 			}
-			.root :global(.svgIcon+.text){
-				margin-left: 0.25rem;
+			.text {
+				padding: 0 0 0 0.2rem;
 			}
-			.text.NUMBER {
+			.root.NUMBER .text {
 				padding: 0 0.2rem;
 				font-family: 'Code', monospace;
 			}
@@ -30,7 +31,7 @@ const ParameterDisplayValue = ({
 			<SvgIcon icon={icon}/>
 		}
 		{(typeof text !== 'undefined') && type !== 'OUTLET' &&
-			<div className={`text ${type}`}>
+			<div className='text'>
 				{text}
 			</div>
 		}

@@ -124,7 +124,7 @@ class Outlet extends React.Component {
 					.name {
 						color: white;
 						font-size: 0.8rem;
-						margin-right: 0.5rem;
+						margin-right: 0.25rem;
 						-webkit-font-smoothing: subpixel-antialiased;
 					}
 					.outletHandle {

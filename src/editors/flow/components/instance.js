@@ -20,7 +20,7 @@ const Instance = ({
 				align-items: center;
 				padding: 0.5rem 0 1rem 0;
 				border-radius: 1rem;
-				min-width: 10rem;
+				min-width: 10.5rem;
 				/*animation-duration: 0.1s;
 				animation-name: pop;
 				animation-timing-function: ease-out;
@@ -54,6 +54,7 @@ const Instance = ({
 			}
 			.connections .outlets {
 				align-items: flex-end;
+				margin-left: 0.2rem;
 			}
 			.connections .parameters :global(>*),
 			.connections .outlets :global(>*) {

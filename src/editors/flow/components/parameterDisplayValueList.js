@@ -27,6 +27,10 @@ const ParameterDisplayValueList = ({
 			}
 			.root button .focus{
 				padding-left: 0.25rem;
+				height: 1.7rem;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
 			}
 			.root button:nth-child(odd) {
 				background-color: ${tinycolor(GRAY).lighten(35).toRgbString()};

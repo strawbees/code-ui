@@ -14,6 +14,7 @@ const InstanceName = ({
 			}
 			.root :global(>.delayedInput input) {
 				font-size: 0.7rem;
+				max-width: 10rem;
 			}
 		`}</style>
 		<DelayedInput
