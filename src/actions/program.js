@@ -56,13 +56,11 @@ export const resetEditorProgramByType = (type) => (dispatch) => {
 		dispatch(setTextProgram(program))
 	}
 }
-
 export const resetCurrentEditorProgram = () => (dispatch, getState) => {
 	const state = getState()
 	const type = refEditorTypeSelector()(state)
 	dispatch(resetEditorProgramByType(type))
 }
-
 export const saveCurrentEditorProgram = () => async (dispatch, getState) => {
 	const state = getState()
 	const name = refEditorNameSelector()(state)
@@ -77,7 +75,6 @@ export const saveCurrentEditorProgram = () => async (dispatch, getState) => {
 		dispatch(setTextId(id))
 	}
 }
-
 export const updateCurrentEditorProgramName = (name) => async (dispatch, getState) => {
 	const state = getState()
 	const id = refEditorIdSelector()(state)
@@ -94,7 +91,6 @@ export const updateCurrentEditorProgramName = (name) => async (dispatch, getStat
 		await updateProgramName(id, name)
 	}
 }
-
 export const updateCurrentEditorProgramSource = (source) => async (dispatch, getState) => {
 	const state = getState()
 	const id = refEditorIdSelector()(state)
@@ -111,12 +107,10 @@ export const updateCurrentEditorProgramSource = (source) => async (dispatch, get
 		await updateProgramSource(id, source)
 	}
 }
-
 export const duplicateProgramById = (id, newName) => async (dispatch) => {
 	const program = await getProgram(id)
 	dispatch(duplicateProgramData(program, newName))
 }
-
 export const duplicateProgramData = (program, newName) => async () => {
 	const { type, source } = program
 	await addProgram(
@@ -125,7 +119,6 @@ export const duplicateProgramData = (program, newName) => async () => {
 		source
 	)
 }
-
 export const removeProgramByIdAndClearEditor = (id) => async (dispatch, getState) => {
 	const state = getState()
 	const { type } = await getProgram(id)
@@ -135,7 +128,6 @@ export const removeProgramByIdAndClearEditor = (id) => async (dispatch, getState
 		dispatch(resetEditorProgramByType(type))
 	}
 }
-
 export const openProgramByIdAndGoToEditor = (id) => async (dispatch) => {
 	const { type, name, source } = await getProgram(id)
 	const program = {
@@ -146,7 +138,6 @@ export const openProgramByIdAndGoToEditor = (id) => async (dispatch) => {
 	}
 	dispatch(openProgramDataAndGoToEditor(program))
 }
-
 export const openProgramDataAndGoToEditor = (program) => (dispatch, getState) => {
 	const state = getState()
 	const editorUrl = makeStringSelector(`${program.type}.url`)(state)
@@ -165,7 +156,6 @@ export const modalRemoveProgram = (id) => async (dispatch) => {
 		}
 	))
 }
-
 export const modalDuplicateProgramById = (id) => async (dispatch, getState) => {
 	const state = getState()
 	const { name } = formatedProgramSelector()(state, { id })
@@ -183,7 +173,6 @@ export const modalDuplicateProgramById = (id) => async (dispatch, getState) => {
 		}
 	))
 }
-
 export const modalDuplicateProgramData = (program) => async (dispatch) => {
 	const { name } = program
 
@@ -200,7 +189,6 @@ export const modalDuplicateProgramData = (program) => async (dispatch) => {
 		}
 	))
 }
-
 export const modalUploadCode = (code) => async (dispatch) => {
 	dispatch(compileCode(code))
 	dispatch(openModal(
