@@ -58,7 +58,7 @@ const ParameterDisplayValueList = ({
 			{items && items.map(item =>
 				<button
 					key={item.code}
-					className={`${item.code === value ? 'selected' : ''}`}
+					className={`item ${item.code === value ? 'selected' : ''}`}
 					onClick={(e) => {
 						onChange(item.code)
 						const target = e.currentTarget

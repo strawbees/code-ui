@@ -29,10 +29,17 @@ class ParameterHandle extends React.Component {
 				input.select()
 			}
 			setTimeout(() => {
-				// use this hack to make it scroll into the view
+				// use this hack to make it scroll the control into the view
 				const scroll = target.querySelector('.parameterControl .scrollIntoView')
 				if (scroll) {
 					scroll.scrollIntoView({
+						behavior : 'smooth',
+					})
+				}
+				// use this hack to make it scroll the selected option into the view
+				const option = target.querySelector('.parameterControl .parameterDisplayValueList .item.selected')
+				if (option) {
+					option.scrollIntoView({
 						behavior : 'smooth',
 					})
 				}
