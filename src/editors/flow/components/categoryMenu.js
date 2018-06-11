@@ -17,7 +17,7 @@ const CategoryMenu = ({
 			.root {
 				display: flex;
 				flex-direction: column;
-				align-items: strech;
+				align-items: stretch;
 				width: 100%;
 			}
 			.button {
@@ -43,6 +43,9 @@ const CategoryMenu = ({
 			.nodes {
 				margin-top: 0.4rem;
 				padding: 0 1rem 0 0;
+				display: flex;
+				flex-direction: column;
+				align-items: stretch;
 			}
 			.folded .nodes {
 				overflow-y: hidden;
@@ -50,12 +53,28 @@ const CategoryMenu = ({
 			}
 			.nodes :global(> *) {
 				margin-bottom: 0.4rem;
-			}.nodes :global(>*:last-child) {
+			}
+			.nodes :global(>*:last-child) {
 				margin-bottom: 0;
+			}
+			@media (max-width: 600px) {
+				.nodes {
+					align-items: flex-start;
+					padding: 0;
+				}
+				.button {
+					padding: 0;
+					justify-content: center;
+				}
+				.button .name {
+					display: none;
+				}
 			}
 		`}</style>
 		<button onClick={toggle} className='button'>
-			{name}
+			<div className='name'>
+				{name}
+			</div>
 			<SvgIcon icon={folded ? generalIcons.expand : generalIcons.collapse}/>
 		</button>
 		<div className='nodes'>

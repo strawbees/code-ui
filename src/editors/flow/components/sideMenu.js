@@ -38,6 +38,15 @@ const SideMenu = ({
 			.categoryMenus :global(>*) {
 				margin-bottom: 0.5rem;
 			}
+			@media (max-width: 600px) {
+				.root :global(>.toggle) {
+					padding: 0.2rem;
+					margin: 0.5rem 0.2rem;
+				}
+				.root :global(>.toggle .label) {
+					display: none;
+				}
+			}
 		`}</style>
 		<Toggle
 			on={displayAdvancedNodes}

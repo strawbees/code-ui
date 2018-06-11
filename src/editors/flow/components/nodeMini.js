@@ -17,6 +17,17 @@ const NodeMini = ({
 				padding: 0.3rem;
 				border-radius: 2rem;
 			}
+			@media (max-width: 600px) {
+				.root :global(>.nodeTypeName) {
+					padding-right: 0.4rem;
+				}
+				.root :global(>.nodeTypeName .name) {
+					display: none;
+				}
+				.root :global(>.nodeTypeName .svgIcon) {
+					margin-right: -0.4rem;
+				}
+			}
 		`}</style>
 		<NodeTypeName icon={icon} name={name}/>
 	</div>

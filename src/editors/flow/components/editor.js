@@ -11,13 +11,17 @@ const Editor = () =>
 				position: relative;
 				overflow: hidden;
 			}
-			.root :global(> *:nth-child(2)) {
+			.root :global(> *:nth-child(1)) {
 				width: 12rem;
 			}
 			.root :global(> *:nth-child(2)) {
 				flex-grow: 1;
 			}
-
+			@media (max-width: 600px) {
+				.root :global(> *:nth-child(1)) {
+					width: 3.75rem;
+				}
+			}
 		`}</style>
 		<SideMenuContainer />
 		<WorkspaceContainer />

@@ -97,6 +97,12 @@ class NodeMiniDraggableContainer extends React.Component {
 						width: 10rem;
 						z-index: 2;
 					}
+					@media (max-width: 600px) {
+						.drag.drag-start,
+						.drag.drag-move {
+							width: 2.4rem;
+						}
+					}
 				`}</style>
 				<NodeMini {...this.props}/>
 				<Draggable
