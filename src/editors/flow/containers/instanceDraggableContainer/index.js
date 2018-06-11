@@ -47,14 +47,23 @@ class InstanceDraggableContainer extends React.Component {
 	onMouseDown = () => {
 		this.bumpZ()
 	}
+	onTouchStart = (e) => {
+		e.preventDefault()
+		e.stopPropagation()
+	}
 	onDragStart = (e, { x, y }) => {
 		this.dragStartPosition = {
 			x,
 			y
 		}
+		// starting the drag won't give focus on touch devices, so we need to
+		// force it here.
+		this.ref.current.focus()
 	}
 	onDragMove = (e, { x, y }) => {
 		this.moveInstance(x, y)
+		e.preventDefault()
+		e.stopPropagation()
 	}
 	onDragStop = (e, { x, y }) => {
 		this.moveInstance(x, y)
@@ -102,18 +111,15 @@ class InstanceDraggableContainer extends React.Component {
 	componentDidMount() {
 		this.ref.current.focus({ preventScroll : true })
 	}
-	onFocus = (e) => {
-		//console.log('instance', e.target)
-	}
 	render() {
 		const {
 			onMouseDown,
+			onTouchStart,
 			onDragStart,
 			onDragMove,
 			onDragStop,
 			onKeyUp,
 			onCloseClick,
-			onFocus,
 		} = this
 		const { style } = this.state
 		const {
@@ -128,13 +134,15 @@ class InstanceDraggableContainer extends React.Component {
 				onDrag={onDragMove}
 				onStop={onDragStop}
 				onMouseDown={onMouseDown}
+				onTouchStart={onTouchStart}
+				onTouchMove={onTouchStart}
+				enableUserSelectHack={false}
 				bounds={{ left : 10, top : 10 }}
 				position={{ x, y }}>
 				<div className='root instanceDraggableContainer'
 					style={style}
 					tabIndex='0'
 					onKeyUp={onKeyUp}
-					onFocus={onFocus}
 					ref={this.ref}>
 					<style jsx>{`
 						.root {

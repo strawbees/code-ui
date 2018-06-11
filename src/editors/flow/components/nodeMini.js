@@ -7,7 +7,7 @@ const NodeMini = ({
 	name,
 	color
 }) =>
-	<div className='root menuItemNode'>
+	<div className='root nodeMini'>
 		<style jsx>{`
 			.root {
 				background-color: ${tinycolor(color).setAlpha(0.5).toRgbString()};
@@ -16,6 +16,7 @@ const NodeMini = ({
 				align-items: flex-start;
 				padding: 0.3rem;
 				border-radius: 2rem;
+				z-index: 10;
 			}
 			@media (max-width: 600px) {
 				.root :global(>.nodeTypeName) {

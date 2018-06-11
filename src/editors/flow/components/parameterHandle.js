@@ -176,7 +176,6 @@ class ParameterHandle extends React.Component {
 						top: -0.37rem;
 						transform-origin: -0.6rem 0.8rem;
 						z-index: 2;
-
 						transition: opacity 0.1s ease-out, transform 0.1s ease-out;
 					}
 					.root:focus .control,
