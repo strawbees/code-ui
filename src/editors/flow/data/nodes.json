@@ -9,11 +9,11 @@
 		"parameters": [
 			{
 				"id": "place",
-				"default": "NO_LOCATION",
+				"default": "DISCONNECTED",
 				"validation": {
 					"type": "list",
 					"data": [
-						"NO_LOCATION",
+						"DISCONNECTED",
 						"HB",
 						"LAB",
 						"RAB",
@@ -164,7 +164,7 @@
 				"validation": {
 					"type": "list",
 					"data": [
-						"NO_LOCATION",
+						"DISCONNECTED",
 						"BP1",
 						"BP2",
 						"BP3",
@@ -189,11 +189,11 @@
 		"parameters": [
 			{
 				"id": "place",
-				"default": "NO_LOCATION",
+				"default": "DISCONNECTED",
 				"validation": {
 					"type": "list",
 					"data": [
-						"NO_LOCATION",
+						"DISCONNECTED",
 						"H",
 						"LA",
 						"RA",
@@ -409,11 +409,11 @@
 			},
 			{
 				"id": "place",
-				"default": "NO_LOCATION",
+				"default": "DISCONNECTED",
 				"validation": {
 					"type": "list",
 					"data": [
-						"NO_LOCATION",
+						"DISCONNECTED",
 						"SERVO_MOTOR_1",
 						"SERVO_MOTOR_2"
 					]
@@ -562,11 +562,11 @@
 			},
 			{
 				"id": "place",
-				"default": "NO_LOCATION",
+				"default": "DISCONNECTED",
 				"validation": {
 					"type": "list",
 					"data": [
-						"NO_LOCATION",
+						"DISCONNECTED",
 						"H",
 						"LA",
 						"RA",
@@ -831,11 +831,11 @@
 			},
 			{
 				"id": "place",
-				"default": "NO_LOCATION",
+				"default": "DISCONNECTED",
 				"validation": {
 					"type": "list",
 					"data": [
-						"NO_LOCATION",
+						"DISCONNECTED",
 						"LE",
 						"RE",
 						"LM",
@@ -863,11 +863,11 @@
 		"parameters": [
 			{
 				"id": "place",
-				"default": "NO_LOCATION",
+				"default": "DISCONNECTED",
 				"validation": {
 					"type": "list",
 					"data": [
-						"NO_LOCATION",
+						"DISCONNECTED",
 						"H",
 						"LA",
 						"RA",
@@ -1162,11 +1162,11 @@
 			},
 			{
 				"id": "place",
-				"default": "NO_LOCATION",
+				"default": "DISCONNECTED",
 				"validation": {
 					"type": "list",
 					"data": [
-						"NO_LOCATION",
+						"DISCONNECTED",
 						"SERVO_MOTOR_1",
 						"SERVO_MOTOR_2"
 					]
@@ -1187,11 +1187,11 @@
 		"parameters": [
 			{
 				"id": "place",
-				"default": "NO_LOCATION",
+				"default": "DISCONNECTED",
 				"validation": {
 					"type": "list",
 					"data": [
-						"NO_LOCATION",
+						"DISCONNECTED",
 						"BP1",
 						"BP2",
 						"BP3",
@@ -1257,11 +1257,11 @@
 		"parameters": [
 			{
 				"id": "place",
-				"default": "NO_LOCATION",
+				"default": "DISCONNECTED",
 				"validation": {
 					"type": "list",
 					"data": [
-						"NO_LOCATION",
+						"DISCONNECTED",
 						"H",
 						"LA",
 						"RA",
@@ -1379,11 +1379,11 @@
 			},
 			{
 				"id": "place",
-				"default": "NO_LOCATION",
+				"default": "DISCONNECTED",
 				"validation": {
 					"type": "list",
 					"data": [
-						"NO_LOCATION",
+						"DISCONNECTED",
 						"HB",
 						"LAB",
 						"RAB",

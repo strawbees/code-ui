@@ -4,6 +4,7 @@ import comparisonGreaterEqual from './comparison-greater-equal.svg'
 import comparisonGreater from './comparison-greater.svg'
 import comparisonLessEqual from './comparison-less-equal.svg'
 import comparisonLess from './comparison-less.svg'
+import disconnected from './disconnected.svg'
 import logicAnd from './logic-and.svg'
 import logicOr from './logic-or.svg'
 import logicXor from './logic-xor.svg'
@@ -13,7 +14,6 @@ import mathModulo from './math-modulo.svg'
 import mathMultiply from './math-multiply.svg'
 import mathSubtract from './math-subtract.svg'
 import noKey from './no-key.svg'
-import noLocation from './no-location.svg'
 import noNote from './no-note.svg'
 import placeHorn from './place-horn.svg'
 import placeLeftArm from './place-left-arm.svg'
@@ -45,6 +45,7 @@ export default {
 	'comparison-greater'       : comparisonGreater,
 	'comparison-less-equal'    : comparisonLessEqual,
 	'comparison-less'          : comparisonLess,
+	disconnected,
 	'logic-and'                : logicAnd,
 	'logic-or'                 : logicOr,
 	'logic-xor'                : logicXor,
@@ -54,7 +55,6 @@ export default {
 	'math-multiply'            : mathMultiply,
 	'math-subtract'            : mathSubtract,
 	'no-key'                   : noKey,
-	'no-location'              : noLocation,
 	'no-note'                  : noNote,
 	'place-horn'               : placeHorn,
 	'place-left-arm'           : placeLeftArm,
