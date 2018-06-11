@@ -2,17 +2,20 @@ import { createSelector } from 'reselect'
 import propsIdSelector from 'src/editors/flow/selectors/propsIdSelector'
 import connectionLineInfosSelector from 'src/editors/flow/selectors/connectionLineInfosSelector'
 import dropAreaRectGetterSelector from 'src/editors/flow/selectors/dropAreaRectGetterSelector'
+import disconnectingParameterIdSelector from 'src/editors/flow/selectors/disconnectingParameterIdSelector'
 
 export default () => createSelector(
 	[
 		propsIdSelector(),
 		connectionLineInfosSelector(),
 		dropAreaRectGetterSelector(),
+		disconnectingParameterIdSelector(),
 	],
 	(
 		id,
 		connectionLineInfos,
 		dropAreaRectGetter,
+		disconnectingParameterId,
 	) => {
 		const info = connectionLineInfos[id]
 
@@ -34,6 +37,7 @@ export default () => createSelector(
 			x2,
 			y1,
 			y2,
+			inactive : toId === disconnectingParameterId
 		}
 	}
 )

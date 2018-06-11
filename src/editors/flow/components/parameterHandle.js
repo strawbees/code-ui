@@ -10,6 +10,9 @@ import {
 } from 'src/constants/colors'
 
 class ParameterHandle extends React.Component {
+	state = {
+		disconnecting : false
+	}
 	constructor(props) {
 		super(props)
 		this.selfRef = React.createRef()
@@ -51,6 +54,10 @@ class ParameterHandle extends React.Component {
 		// preventDefault on the event, so we don't focus the parameter handler
 		e.preventDefault()
 
+		// anounce that the disconnect has started
+		this.props.onDisconnectStart()
+		this.setState({ disconnecting : true })
+
 		// as we are trasnfering the drag from a element that is in a different
 		// position, we need to calculate the diff, that will be applied to
 		// all drag methods
@@ -79,6 +86,10 @@ class ParameterHandle extends React.Component {
 		data.x += this.outletDragDiff.x
 		data.y += this.outletDragDiff.y
 
+		// anounce that the disconnect has started
+		this.props.onDisconnectStop()
+		this.setState({ disconnecting : false })
+
 		// store a reference to the possibly found parameter
 		const parameter = this.props.outletTransferDragMethods.onDragStop(e, data)
 
@@ -105,6 +116,9 @@ class ParameterHandle extends React.Component {
 			selfRef,
 		} = this
 		const {
+			disconnecting
+		} = this.state
+		const {
 			id,
 			instanceId,
 			connected,
@@ -112,9 +126,14 @@ class ParameterHandle extends React.Component {
 			recommeded,
 		} = this.props
 
+		let classes = connected ? 'connected ' : ''
+		classes += highlighted ? 'highlighted ' : ''
+		classes += recommeded ? 'recommeded ' : ''
+		classes += disconnecting ? 'disconnecting ' : ''
+
 		return (
 			/* Class "parameterHandle" necessary for drag-drop outlets */
-			<div className={`root parameterHandle ${connected ? 'connected' : ''} ${highlighted ? 'highlighted' : ''} ${recommeded ? 'recommeded' : ''}`}
+			<div className={`root parameterHandle ${classes}`}
 				tabIndex='0'
 				onKeyUp={cancelEvent}
 				onFocus={onFocus}
@@ -195,7 +214,7 @@ class ParameterHandle extends React.Component {
 							transform: scale3d(1,1,1);
 						}
 					}
-					.root.connected .value .circle {
+					.root.connected:not(.disconnecting) .value .circle {
 						background-color: ${tinycolor(YELLOW).toRgbString()};
 						cursor: grab;
 					}
@@ -206,11 +225,11 @@ class ParameterHandle extends React.Component {
 					.root.recommeded:not(:focus):not(:focus-within) {
 						border-radius: 1.25rem;
 						box-shadow: 0 0 0 0.15rem ${tinycolor(YELLOW).toRgbString()};
-						/*animation-duration: 0.5s;
+						animation-duration: 0.5s;
 						animation-name: glow;
 						animation-timing-function: ease-out;
 						animation-iteration-count: infinite;
-						animation-direction: alternate;*/
+						animation-direction: alternate;
 					}
 					@keyframes glow {
 						from {
@@ -223,9 +242,9 @@ class ParameterHandle extends React.Component {
 				`}</style>
 				<div className='value'>
 					<div className='circle'
-						/* the id s needed for the ConnectionLines */
-						id={`${instanceId}.${id}`}>
-					</div>
+						/* the id is needed for the ConnectionLines */
+						id={`${instanceId}.${id}`}
+					/>
 					<Draggable
 						onStart={onDragStart}
 						onDrag={onDragMove}
@@ -259,6 +278,8 @@ ParameterHandle.propTypes = {
 	connected                 : PropTypes.bool,
 	highlighted               : PropTypes.bool,
 	recommeded                : PropTypes.bool,
+	onDisconnectStart         : PropTypes.func,
+	onDisconnectStop          : PropTypes.func,
 	onValueCodeChange         : PropTypes.func,
 	outletTransferDragMethods : PropTypes.shape({
 		getDragRef  : PropTypes.func,

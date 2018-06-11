@@ -14,11 +14,12 @@ class Outlet extends React.Component {
 	}
 	constructor(props) {
 		super(props)
-		this.drag = React.createRef()
+		this.dragRef = React.createRef()
+		this.dragToRef = React.createRef()
 	}
 	componentDidMount() {
 		this.props.setDragMethods({
-			getDragRef  : () => this.drag,
+			getDragRef  : () => this.dragRef,
 			onDragStart : this.onDragStart,
 			onDragMove  : this.onDragMove,
 			onDragStop  : this.onDragStop,
@@ -57,8 +58,8 @@ class Outlet extends React.Component {
 			position : { x, y }
 		})
 		this.props.onDragStart()
-		this.drag.current.focus()
-		this.startDragRect = this.drag.current.getBoundingClientRect()
+		this.dragRef.current.focus()
+		this.startDragRect = this.dragRef.current.getBoundingClientRect()
 		// cache the position of all the targets
 		this.dragTargets = Array.from(document.querySelectorAll('.parameterHandle'))
 			.filter(element => element.dataset &&
@@ -80,6 +81,10 @@ class Outlet extends React.Component {
 			this.lastHoveredParameter = parameter
 			this.props.onHover(parameter)
 		}
+		this.props.setActiveLineRects({
+			from : this.startDragRect,
+			to   : this.dragToRef.current.getBoundingClientRect()
+		})
 	}
 	onDragStop = (e, { x, y }) => {
 		this.setState({
@@ -87,6 +92,7 @@ class Outlet extends React.Component {
 			position : { x : 0, y : 0 }
 		})
 		this.props.onDragStop()
+		this.props.setActiveLineRects(null)
 		const parameter = this.getInstanceParameter(x, y)
 		if (parameter) {
 			this.props.onConnect(parameter)
@@ -103,6 +109,8 @@ class Outlet extends React.Component {
 			onDragStart,
 			onDragMove,
 			onDragStop,
+			dragRef,
+			dragToRef,
 		} = this
 		const {
 			name,
@@ -161,6 +169,7 @@ class Outlet extends React.Component {
 				</div>
 				<div className='outletHandle'>
 					<div className='circle'
+						ref={dragRef}
 						/* the id s needed for the ConnectionLines */
 						id={`${instanceId}.${id}`}>
 					</div>
@@ -170,9 +179,9 @@ class Outlet extends React.Component {
 						onStop={onDragStop}
 						position={position}>
 						<div className={`circle drag ${dragging ? 'dragging' : ''}`}
+							ref={dragToRef}
 							tabIndex='0'
-							ref={this.drag}>
-						</div>
+						/>
 					</Draggable>
 				</div>
 			</div>
@@ -181,14 +190,15 @@ class Outlet extends React.Component {
 }
 
 Outlet.propTypes = {
-	id             : PropTypes.string,
-	instanceId     : PropTypes.string,
-	name           : PropTypes.string,
-	onDragStart    : PropTypes.func,
-	onDragStop     : PropTypes.func,
-	onConnect      : PropTypes.func,
-	onHover        : PropTypes.func,
-	setDragMethods : PropTypes.func,
+	id                 : PropTypes.string,
+	instanceId         : PropTypes.string,
+	name               : PropTypes.string,
+	onDragStart        : PropTypes.func,
+	onDragStop         : PropTypes.func,
+	onConnect          : PropTypes.func,
+	onHover            : PropTypes.func,
+	setDragMethods     : PropTypes.func,
+	setActiveLineRects : PropTypes.func,
 }
 
 export default Outlet

@@ -17,6 +17,8 @@ import {
 	REMOVE_INSTANCE_PARAMETER_ITEM,
 	HIGHLIGHT_INSTANCE_PARAMETER_DROP_AREA,
 	SET_IS_DRAGGING_OUTLET,
+	SET_ACTIVE_OUTLET_LINE_RECTS,
+	SET_DISCONNECTING_PARAMETER_ID,
 	SET_OUTLET_TRANSFER_DRAG_METHODS,
 } from './actionTypes'
 
@@ -36,6 +38,8 @@ const displayAdvancedNodes = generateReducer(SET_DISPLAY_ADVANCED_NODES, false)
 const getDropAreaRect = generateReducer(REGISTER_GET_DROP_AREA_RECT)
 const highlightedInstanceParameter = generateReducer(HIGHLIGHT_INSTANCE_PARAMETER_DROP_AREA)
 const isDraggingOutlet = generateReducer(SET_IS_DRAGGING_OUTLET, false)
+const activeOutletLineRects = generateReducer(SET_ACTIVE_OUTLET_LINE_RECTS)
+const disconnectingParameterId = generateReducer(SET_DISCONNECTING_PARAMETER_ID)
 const foldedCategories = (state = [], { type, payload }) => {
 	switch (type) {
 		case TOGGLE_FOLDED_CATEGORY: {
@@ -268,6 +272,8 @@ export default combineReducers({
 	getDropAreaRect,
 	highlightedInstanceParameter,
 	isDraggingOutlet,
+	activeOutletLineRects,
+	disconnectingParameterId,
 	foldedCategories,
 	source,
 	outletTransferDragMethods,

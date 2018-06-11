@@ -25,6 +25,8 @@ import {
 	REMOVE_INSTANCE_PARAMETER_ITEM,
 	HIGHLIGHT_INSTANCE_PARAMETER_DROP_AREA,
 	SET_IS_DRAGGING_OUTLET,
+	SET_ACTIVE_OUTLET_LINE_RECTS,
+	SET_DISCONNECTING_PARAMETER_ID,
 	SET_OUTLET_TRANSFER_DRAG_METHODS,
 } from './actionTypes'
 
@@ -44,6 +46,8 @@ export const addInstanceParameterItem = generateAction(ADD_INSTANCE_PARAMETER_IT
 export const removeInstanceParameterItem = generateAction(REMOVE_INSTANCE_PARAMETER_ITEM)
 export const highlightInstanceParameterDropArea = generateAction(HIGHLIGHT_INSTANCE_PARAMETER_DROP_AREA)
 export const setIsDraggingOutlet = generateAction(SET_IS_DRAGGING_OUTLET)
+export const setActiveOutletLineRects = generateAction(SET_ACTIVE_OUTLET_LINE_RECTS)
+export const setDisconnectingParameterId = generateAction(SET_DISCONNECTING_PARAMETER_ID)
 export const setOutletTransferDragMethods = generateAction(SET_OUTLET_TRANSFER_DRAG_METHODS)
 export const safeAddInstance = ({
 	id,

@@ -2,11 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import ConnectionLineContainer from 'src/editors/flow/containers/connectionLineContainer'
+import ConnectionLine from 'src/editors/flow/components/connectionLine'
+
 import { GRAY } from 'src/constants/colors'
 
 class ConnectionLines extends React.Component {
 	render() {
-		const { connectionLineIds } = this.props
+		const {
+			connectionLineIds,
+			activeLineCoordinates,
+		} = this.props
 		return (
 			<svg className='root connectionLines'>
 				<style jsx>{`
@@ -39,13 +44,22 @@ class ConnectionLines extends React.Component {
 				{connectionLineIds && connectionLineIds.map(id =>
 					<ConnectionLineContainer key={id} id={id}/>
 				)}
+				{activeLineCoordinates &&
+					<ConnectionLine {...activeLineCoordinates}/>
+				}
 			</svg>
 		)
 	}
 }
 
 ConnectionLines.propTypes = {
-	connectionLineIds : PropTypes.array,
+	connectionLineIds     : PropTypes.array,
+	activeLineCoordinates : PropTypes.shape({
+		x1 : PropTypes.number,
+		x2 : PropTypes.number,
+		y1 : PropTypes.number,
+		y2 : PropTypes.number,
+	})
 }
 
 export default ConnectionLines

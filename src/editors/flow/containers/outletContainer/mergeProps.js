@@ -7,6 +7,7 @@ export default (stateProps, dispatchProps, ownProps) => {
 		setInstanceParameter,
 		highlightInstanceParameterDropArea,
 		setIsDraggingOutlet,
+		setActiveOutletLineRects,
 		setOutletTransferDragMethods,
 		...otherDispatchProps
 	} = dispatchProps
@@ -27,6 +28,9 @@ export default (stateProps, dispatchProps, ownProps) => {
 				parameterId : parameter.parameterId
 			} : null
 			highlightInstanceParameterDropArea(parameter)
+		},
+		setActiveLineRects : (coordinates) => {
+			setActiveOutletLineRects(coordinates)
 		},
 		setDragMethods : (methods) => setOutletTransferDragMethods({
 			outletId : id,
