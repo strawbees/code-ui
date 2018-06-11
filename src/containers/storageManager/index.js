@@ -4,6 +4,7 @@ import RemoteStorage from 'remotestoragejs'
 import RemoteStorageDocuments from 'remotestorage-module-documents'
 import RemoteStorageWidget from 'remotestorage-widget'
 import { registerRemoteStorage } from 'src/utils/storage'
+import debounce from 'src/utils/debounce'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
@@ -48,6 +49,13 @@ class StorageManager extends React.Component {
 				removeProgram({ id })
 			} else if (newValue && oldValue) {
 				updateProgram({ id, data })
+				// // programs can update *very* frequently (like when dragging a
+				// // node around), so we wanna debounce this call
+				// debounce(
+				// 	`StorageManager.update.${id}`,
+				// 	() => updateProgram({ id, data }),
+				// 	1000
+				// )
 			}
 		})
 

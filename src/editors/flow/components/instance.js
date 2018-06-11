@@ -32,7 +32,8 @@ const Instance = ({
 			}
 			/* apply syle focus, if moved by draggble container */
 			:global(.instanceDraggableContainer:focus) .root,
-			:global(.instanceDraggableContainer:focus-within) .root {
+			:global(.instanceDraggableContainer:focus-within) .root,
+			.root:focus-within {
 				background-color: ${tinycolor(color).setAlpha(0.75).toRgbString()};
 			}
 			.root :global(.instanceName) {

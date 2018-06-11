@@ -20,7 +20,7 @@ class ConnectionLines extends React.Component {
 					}
 					.arrow {
 						fill: none;
-						stroke-dasharray: none;
+						stroke-dasharray: 100;
 					}
 				`}</style>
 				<defs>

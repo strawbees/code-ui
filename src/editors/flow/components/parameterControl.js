@@ -10,6 +10,7 @@ const ParameterControl = ({
 	valueCode,
 	validation,
 	onValueCodeChange,
+	disabled,
 }) =>
 	<div className='root parameterControl'>
 		<style jsx>{`
@@ -56,6 +57,7 @@ const ParameterControl = ({
 			onChange={onValueCodeChange}
 			blurOnEnter={true}
 			color={YELLOW}
+			disabled={disabled}
 		/>
 		{validation && validation.type === 'list' &&
 			<ParameterDisplayValueList
@@ -72,6 +74,7 @@ const ParameterControl = ({
 				min={validation.data.min}
 				max={validation.data.max}
 				blurOnEnter={true}
+				disabled={disabled}
 			/>
 		}
 		<div className='triangle'/>
@@ -94,6 +97,7 @@ ParameterControl.propTypes = {
 		]),
 	}),
 	onValueCodeChange : PropTypes.func,
+	disabled          : PropTypes.bool,
 }
 
 export default ParameterControl

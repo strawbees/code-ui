@@ -84,6 +84,10 @@ class DelayedInput extends React.Component {
 		const {
 			autoResize,
 			color,
+			spellCheck,
+			autoCorrect,
+			autoFocus,
+			disabled,
 		} = this.props
 		const size = autoResize ? (computedValue ? computedValue.length : 1) : null
 		return (
@@ -95,7 +99,7 @@ class DelayedInput extends React.Component {
 						align-items: center;
 						position: relative;
 					}
-					input {
+					.input {
 						appearance: none;
 						border: 0;
 						padding: 0;
@@ -114,17 +118,20 @@ class DelayedInput extends React.Component {
 						outline: none;
 						width: ${autoResize ? 'auto' : '100%'};
 					}
-					input:focus {
+					.input:focus {
 						background-color: ${tinycolor(color).toRgbString()};
 					}
 				`}</style>
 				<input
+					className='input'
 					type='text'
 					ref={this.input}
 					value={computedValue}
 					size={size}
-					spellCheck='false'
-					autoCorrect='off'
+					spellCheck={spellCheck}
+					autoCorrect={autoCorrect}
+					autoFocus={autoFocus}
+					disabled={disabled}
 					onKeyUp={onKeyUp}
 					onKeyDown={onKeyDown}
 					onChange={this.localUpdateValue}
@@ -138,6 +145,10 @@ DelayedInput.defaultProps = {
 	autoResize  : false,
 	blurOnEnter : false,
 	color       : WHITE,
+	spellCheck  : 'false',
+	autoCorrect : 'off',
+	autoFocus   : false,
+	disabled    : false
 }
 
 DelayedInput.propTypes = {
@@ -148,6 +159,10 @@ DelayedInput.propTypes = {
 	blurOnEnter : PropTypes.bool,
 	blurOnESC   : PropTypes.bool,
 	color       : PropTypes.string,
+	spellCheck  : PropTypes.string,
+	autoCorrect : PropTypes.string,
+	autoFocus   : PropTypes.bool,
+	disabled    : PropTypes.bool,
 }
 
 export default DelayedInput

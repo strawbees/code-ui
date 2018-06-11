@@ -52,7 +52,6 @@ class InstanceDraggableContainer extends React.Component {
 			x,
 			y
 		}
-		this.ref.current.focus()
 	}
 	onDragMove = (e, { x, y }) => {
 		this.moveInstance(x, y)
@@ -101,9 +100,11 @@ class InstanceDraggableContainer extends React.Component {
 		removeInstance(id)
 	}
 	componentDidMount() {
-		this.ref.current.focus()
+		this.ref.current.focus({ preventScroll : true })
 	}
-
+	onFocus = (e) => {
+		//console.log('instance', e.target)
+	}
 	render() {
 		const {
 			onMouseDown,
@@ -112,6 +113,7 @@ class InstanceDraggableContainer extends React.Component {
 			onDragStop,
 			onKeyUp,
 			onCloseClick,
+			onFocus,
 		} = this
 		const { style } = this.state
 		const {
@@ -132,6 +134,7 @@ class InstanceDraggableContainer extends React.Component {
 					style={style}
 					tabIndex='0'
 					onKeyUp={onKeyUp}
+					onFocus={onFocus}
 					ref={this.ref}>
 					<style jsx>{`
 						.root {

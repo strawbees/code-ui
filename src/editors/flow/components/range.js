@@ -16,9 +16,14 @@ class Range extends React.Component {
 			this.input.current.blur()
 		}
 	}
+	cancelEvent = (e) => {
+		e.preventDefault()
+		e.stopPropagation()
+	}
 	render() {
 		const {
-			onKeyDown
+			onKeyDown,
+			cancelEvent
 		} = this
 		const {
 			value,
@@ -148,6 +153,7 @@ class Range extends React.Component {
 						step={step}
 						value={value}
 						onKeyDown={onKeyDown}
+						onFocus={cancelEvent}
 						onChange={(e) => onChange(e.target.value)}
 					/>
 				</div>

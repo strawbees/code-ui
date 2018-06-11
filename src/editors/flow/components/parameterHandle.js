@@ -9,23 +9,24 @@ import {
 	YELLOW,
 } from 'src/constants/colors'
 
-
 class ParameterHandle extends React.Component {
 	constructor(props) {
 		super(props)
+		this.selfRef = React.createRef()
 		this.outletDragRef = React.createRef()
 	}
 	cancelEvent = (e) => {
 		e.preventDefault()
 		e.stopPropagation()
 	}
-	focusInput = (e) => {
+	onFocus = (e) => {
 		const { target } = e
 		// if the click is on the parameterHandle, focus on the first input inside
 		if (target.className.indexOf('parameterHandle') !== -1) {
 			const input = target.querySelector('.parameterControl input')
+
 			if (input) {
-				input.focus()
+				input.focus({ preventScroll : true })
 				input.select()
 			}
 			setTimeout(() => {
@@ -96,10 +97,12 @@ class ParameterHandle extends React.Component {
 	render() {
 		const {
 			cancelEvent,
-			focusInput,
+			onFocus,
 			onDragStart,
 			onDragMove,
-			onDragStop
+			onDragStop,
+			outletDragRef,
+			selfRef,
 		} = this
 		const {
 			id,
@@ -114,7 +117,10 @@ class ParameterHandle extends React.Component {
 			<div className={`root parameterHandle ${connected ? 'connected' : ''} ${highlighted ? 'highlighted' : ''} ${recommeded ? 'recommeded' : ''}`}
 				tabIndex='0'
 				onKeyUp={cancelEvent}
-				onFocus={focusInput}
+				onFocus={onFocus}
+				role='menubutton'
+				aria-haspopup='true'
+				ref={selfRef}
 				/* Data ids necessary for drag-drop outlets */
 				data-id={id}
 				data-instance-id={instanceId}>
@@ -157,20 +163,28 @@ class ParameterHandle extends React.Component {
 						cursor: pointer;
 					}
 					.control {
-						display: none;
+						/* for some crazy reason, this NEEDS to be
+						** visibility:hidden, and not display:none, otherwise
+						** safary will have wierd bug that autoFocus on the
+						** text field.
+						**/
+						visibility: hidden;
+						opacity: 0;
+						transform: scale3d(0,0,1);
 						position: absolute;
 						left: 1.65rem;
 						top: -0.37rem;
 						transform-origin: -0.6rem 0.8rem;
 						z-index: 2;
+
+						transition: opacity 0.1s ease-out, transform 0.1s ease-out;
 					}
 					.root:focus .control,
-					.root:focus-within .control {
-						display: block;
-						animation-duration: 0.1s;
-						animation-name: slide;
-						animation-timing-function: ease-out;
-
+					.root:focus-within .control,
+					.control:focus-within {
+						visibility: visible;
+						opacity: 1;
+						transform: scale3d(1,1,1);
 					}
 					@keyframes slide {
 						from {
@@ -220,13 +234,19 @@ class ParameterHandle extends React.Component {
 						disabled={!connected}
 						position={{ x : 0, y : 0 }}>
 						<div className='circle'
-							ref={this.outletDragRef}>
+							ref={outletDragRef}>
 						</div>
 					</Draggable>
-					<ParameterDisplayValueContainer id={id} instanceId={instanceId} />
+					<ParameterDisplayValueContainer
+						id={id}
+						instanceId={instanceId}
+					/>
 				</div>
 				<div className='control'>
-					<ParameterControlContainer id={id} instanceId={instanceId} />
+					<ParameterControlContainer
+						id={id}
+						instanceId={instanceId}
+					/>
 				</div>
 			</div>
 		)

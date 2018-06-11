@@ -54,16 +54,15 @@ const ParameterDisplayValueList = ({
 				background-color: ${tinycolor(YELLOW).darken(25).setAlpha(0.3).toRgbString()};
 			}
 		`}</style>
-		<div className='items'>
+		<div className='items' role='menu'>
 			{items && items.map(item =>
 				<button
 					key={item.code}
+					role='menuitem'
 					className={`item ${item.code === value ? 'selected' : ''}`}
-					onClick={(e) => {
+					onClick={() => {
 						onChange(item.code)
-						const target = e.currentTarget
-						// setTimeout(() => target.blur(), 500)
-						target.blur()
+						document.activeElement.blur()
 					}}>
 					<div className='focus'>
 						<ParameterDisplayValue

@@ -11,6 +11,7 @@ const ParameterControlContainer = (props) =>
 ParameterControlContainer.propTypes = {
 	id         : PropTypes.string,
 	instanceId : PropTypes.string,
+	disabled   : PropTypes.bool,
 }
 
 export default connect(
