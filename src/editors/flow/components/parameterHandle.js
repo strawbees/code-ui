@@ -218,6 +218,9 @@ class ParameterHandle extends React.Component {
 						background-color: ${tinycolor(YELLOW).toRgbString()};
 						cursor: grab;
 					}
+					.circle.react-draggable-dragging {
+						opacity: 0;
+					}
 					.root.highlighted .value :global(> .parameterDisplayValue),
 					.root.highlighted .value .circle {
 						background-color: ${tinycolor(YELLOW).toRgbString()};
