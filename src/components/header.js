@@ -19,6 +19,12 @@ const Header = ({
 				flex-direction: row;
 				background-color: ${tinycolor(BLUE).setAlpha(0.5).toRgbString()};
 			}
+			@media (max-width: 600px) {
+				.root {
+					width: 100px;
+					overflow: hidden;;
+				}
+			}
 		`}</style>
 
 		<Link to={homeUrl}>

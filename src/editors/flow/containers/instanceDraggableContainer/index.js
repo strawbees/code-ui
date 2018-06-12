@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDom from 'react-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Draggable from 'react-draggable'
@@ -44,26 +45,23 @@ class InstanceDraggableContainer extends React.Component {
 		}
 		updateInstancePosition({ id, x, y })
 	}
-	onMouseDown = () => {
-		this.bumpZ()
-	}
-	onTouchStart = (e) => {
-		e.preventDefault()
-		e.stopPropagation()
+	documentOnTouchMove = (e) => {
+		console.log(e)
 	}
 	onDragStart = (e, { x, y }) => {
+		// cache the start position
 		this.dragStartPosition = {
 			x,
 			y
 		}
+		// bring the instance to the front
+		this.bumpZ()
 		// starting the drag won't give focus on touch devices, so we need to
 		// force it here.
-		this.ref.current.focus()
+		this.ref.current.focus({ preventScroll : true })
 	}
 	onDragMove = (e, { x, y }) => {
 		this.moveInstance(x, y)
-		e.preventDefault()
-		e.stopPropagation()
 	}
 	onDragStop = (e, { x, y }) => {
 		this.moveInstance(x, y)
@@ -113,8 +111,6 @@ class InstanceDraggableContainer extends React.Component {
 	}
 	render() {
 		const {
-			onMouseDown,
-			onTouchStart,
 			onDragStart,
 			onDragMove,
 			onDragStop,
@@ -125,7 +121,7 @@ class InstanceDraggableContainer extends React.Component {
 		const {
 			x,
 			y,
-			id
+			id,
 		} = this.props
 		return (
 			<Draggable
@@ -133,9 +129,6 @@ class InstanceDraggableContainer extends React.Component {
 				onStart={onDragStart}
 				onDrag={onDragMove}
 				onStop={onDragStop}
-				onMouseDown={onMouseDown}
-				onTouchStart={onTouchStart}
-				onTouchMove={onTouchStart}
 				enableUserSelectHack={false}
 				bounds={{ left : 10, top : 10 }}
 				position={{ x, y }}>

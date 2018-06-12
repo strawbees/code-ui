@@ -58,7 +58,7 @@ class Outlet extends React.Component {
 			position : { x, y }
 		})
 		this.props.onDragStart()
-		this.dragRef.current.focus()
+		this.dragRef.current.focus({ preventScroll : true })
 		this.startDragRect = this.dragRef.current.getBoundingClientRect()
 		// cache the position of all the targets
 		this.dragTargets = Array.from(document.querySelectorAll('.parameterHandle'))
@@ -177,6 +177,7 @@ class Outlet extends React.Component {
 						onStart={onDragStart}
 						onDrag={onDragMove}
 						onStop={onDragStop}
+						enableUserSelectHack={false}
 						position={position}>
 						<div className={`circle drag ${dragging ? 'dragging' : ''}`}
 							ref={dragToRef}

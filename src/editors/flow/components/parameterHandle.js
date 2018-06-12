@@ -28,10 +28,10 @@ class ParameterHandle extends React.Component {
 		if (target.className.indexOf('parameterHandle') !== -1) {
 			const input = target.querySelector('.parameterControl input')
 
-			if (input) {
-				input.focus({ preventScroll : true })
-				input.select()
-			}
+			// if (input) {
+			// 	input.focus({ preventScroll : true })
+			// 	input.select()
+			// }
 			setTimeout(() => {
 				// use this hack to make it scroll the control into the view
 				const scroll = target.querySelector('.parameterControl .scrollIntoView')
@@ -253,6 +253,7 @@ class ParameterHandle extends React.Component {
 						onDrag={onDragMove}
 						onStop={onDragStop}
 						disabled={!connected}
+						enableUserSelectHack={false}
 						position={{ x : 0, y : 0 }}>
 						<div className='circle'
 							ref={outletDragRef}>

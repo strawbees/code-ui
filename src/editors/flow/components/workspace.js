@@ -6,13 +6,7 @@ import ConnectionLinesContainer from 'src/editors/flow/containers/connectionLine
 class Workspace extends React.Component {
 	constructor(props) {
 		super(props)
-		this.ref = React.createRef()
-		this.state = {
-			linesStyle : {
-				width  : '100%',
-				height : '100%',
-			}
-		}
+		this.selfRef = React.createRef()
 	}
 	componentDidMount() {
 		const {
@@ -20,37 +14,78 @@ class Workspace extends React.Component {
 		} = this.props
 		registerGetDropAreaRect(
 			() => ({
-				rect   : this.ref.current.getBoundingClientRect(),
+				rect   : this.selfRef.current.getBoundingClientRect(),
 				scroll : {
-					top  : this.ref.current.scrollTop,
-					left : this.ref.current.scrollLeft,
+					top  : this.selfRef.current.scrollTop,
+					left : this.selfRef.current.scrollLeft,
 				}
 			})
 		)
 	}
-	resizeLines = () => {
-		this.setState({
-			linesStyle : {
-				width  : `calc(100% + ${this.ref.current.scrollLeft}px)`,
-				height : `calc(100% + ${this.ref.current.scrollTop}px)`,
+	onDown = (e) => {
+		if (e.type === 'mousedown' && this.isTouch) {
+			this.isTouch = false
+			return
+		}
+		if (e.type === 'touchstart') {
+			this.isTouch = true
+		}
+		if (e.type === 'mousedown') {
+			this.startDragMove = {
+				x : e.clientX,
+				y : e.clientY,
 			}
-		})
+		} else if (e.type === 'touchstart') {
+			this.startDragMove = {
+				x : e.touches[0].clientX,
+				y : e.touches[0].clientY,
+			}
+		}
+		this.startDragOffset = {
+			x : this.selfRef.current.scrollLeft,
+			y : this.selfRef.current.scrollTop,
+		}
+		e.preventDefault()
+		window.addEventListener('mousemove', this.onMove, { passive : false })
+		window.addEventListener('mouseup', this.onUp)
+		window.addEventListener('touchmove', this.onMove, { passive : false })
+		window.addEventListener('touchend', this.onUp)
 	}
+	onMove = (e) => {
+		e.preventDefault()
+		const diff = { x : 0, y : 0 }
+		if (e.type === 'mousemove') {
+			diff.x = this.startDragMove.x - e.clientX
+			diff.y = this.startDragMove.y - e.clientY
+		} else if (e.type === 'touchmove') {
+			diff.x = this.startDragMove.x - e.touches[0].clientX
+			diff.y = this.startDragMove.y - e.touches[0].clientY
+		}
+		this.selfRef.current.scrollLeft = diff.x + this.startDragOffset.x
+		this.selfRef.current.scrollTop = diff.y + this.startDragOffset.y
+	}
+	onUp = (e) => {
+		e.preventDefault()
+		this.startDragMove = null
+		window.removeEventListener('mousemove', this.onMove)
+		window.removeEventListener('mouseup', this.onUp)
+		window.removeEventListener('touchmove', this.onMove)
+		window.removeEventListener('touchend', this.onUp)
+	}
+
 	render() {
 		const {
-			ref,
-			resizeLines,
+			selfRef,
+			onDown,
 		} = this
 		const {
-			linesStyle
-		} = this.state
-		const {
-			instanceIds
+			instanceIds,
+			width,
+			height,
 		} = this.props
 		return (
 			<div className='root workspace'
-				ref={ref}
-				onScroll={resizeLines}>
+				ref={selfRef}>
 				<style jsx>{`
 					.root {
 						background-color: white;
@@ -58,46 +93,55 @@ class Workspace extends React.Component {
 						display: flex;
 						flex-direction: column;
 						position: relative;
-						overflow: scroll;
+						overflow: auto;
+						overscroll-behavior: none;
+						touch-action: none;
 					}
 					.lines {
 						position: absolute;
 						top: 0;
 						left: 0;
-						right: 0;
-						bottom: 0;
-						width: 100%;
-						height: 100%;
+						min-width: 100%;
+						min-height: 100%;
+						background-size: 1rem 1rem;
+						//background-image: radial-gradient(circle, rgba(0,0,0,0.2) 1px, rgba(0, 0, 0, 0) 1px);
+						background-image: linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+						overflow: hidden;
+						touch-action: none;
 					}
 					.lines :global(>.connectionLines) {
 						position: absolute;
 						top: 0;
 						left: 0;
-						right: 0;
-						bottom: 0;
 						width: 100%;
 						height: 100%;
+						overflow: hidden;
 					}
 					.instances {
 						position: relative;
-						top: 0;
-						left: 0;
 						display: flex;
 						flex-direction: column;
 						align-items: flex-start;
 					}
 					.instances :global(>*) {
 						position: absolute;
-						top:0;
+						top: 0;
 						left: 0;
 					}
 				`}</style>
-				<div className='lines' style={linesStyle}>
+				<div className='lines'
+					style={{ width, height }}
+					onMouseDown={onDown}
+					onTouchStart={onDown}
+				>
 					<ConnectionLinesContainer />
 				</div>
 				<div className='instances'>
 					{instanceIds && instanceIds.map((id) =>
-						<InstanceDraggableContainer key={id} id={id} />
+						<InstanceDraggableContainer
+							key={id}
+							id={id}
+						/>
 					)}
 				</div>
 			</div>
@@ -108,6 +152,8 @@ class Workspace extends React.Component {
 Workspace.propTypes = {
 	registerGetDropAreaRect : PropTypes.func,
 	instanceIds             : PropTypes.arrayOf(PropTypes.string),
+	width                   : PropTypes.number,
+	height                  : PropTypes.number,
 }
 
 export default Workspace

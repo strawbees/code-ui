@@ -11,7 +11,9 @@ const Instance = ({
 	nodeName,
 	color,
 }) =>
-	<div className='root instance'>
+	<div className='root instance'
+		/* id needed for correctly resizing the workspace */
+		id={`instance${id}`}>
 		<style jsx>{`
 			.root {
 				background-color: ${tinycolor(color).setAlpha(0.5).toRgbString()};

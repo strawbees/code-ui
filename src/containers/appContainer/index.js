@@ -161,6 +161,8 @@ class AppContainer extends React.Component {
 						font-family: 'Text', sans-serif;
 						font-size: 16px;
 						line-height: 1.5;
+						overscroll-behavior: none;
+						touch-action: none;
 						-webkit-font-smoothing: antialiased;
 					}
 					:global(*){
@@ -169,10 +171,15 @@ class AppContainer extends React.Component {
 					:global(a) {
 						color: inherit;
 					}
+					:global(html),
+					:global(body),
 					.root {
 						position: fixed;
 						height: 100vh;
 						width: 100vw;
+						overflow: hidden;
+					}
+					.root {
 						display: grid;
 						grid-template-columns: 1fr;
 						grid-template-rows: 2rem auto 2rem;

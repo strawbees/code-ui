@@ -10,16 +10,20 @@ const Editor = () =>
 				height: 100%;
 				position: relative;
 				overflow: hidden;
+				overscroll-behavior: none;
 			}
 			.root :global(> *:nth-child(1)) {
 				width: 12rem;
 			}
 			.root :global(> *:nth-child(2)) {
-				flex-grow: 1;
+				width: calc(100% - 12rem);
 			}
 			@media (max-width: 600px) {
 				.root :global(> *:nth-child(1)) {
 					width: 3.75rem;
+				}
+				.root :global(> *:nth-child(2)) {
+					width: calc(100% - 3.75rem);
 				}
 			}
 		`}</style>

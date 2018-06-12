@@ -24,11 +24,12 @@ const ParameterControl = ({
 				border: solid 0.4rem ${tinycolor(color).toRgbString()};
 				box-sizing: content-box;
 				border-radius: 0.25rem;
+				cursor: default;
 			}
 			.root :global(>.delayedInput input) {
 				text-align: left;
 				padding-left: 0.75rem;
-				background-color: ${tinycolor(YELLOW).toRgbString()};
+				//background-color: ${tinycolor(YELLOW).toRgbString()};
 			}
 			.root :global(>.parameterDisplayValueList),
 			.root :global(>.range) {
@@ -56,7 +57,7 @@ const ParameterControl = ({
 			value={valueCode}
 			onChange={onValueCodeChange}
 			blurOnEnter={true}
-			color={YELLOW}
+			//color={YELLOW}
 			disabled={disabled}
 		/>
 		{validation && validation.type === 'list' &&
