@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
-import { GRAY, WHITE, YELLOW } from 'src/constants/colors'
+import { GRAY, WHITE } from 'src/constants/colors'
 
 class Range extends React.Component {
 	constructor(props) {
@@ -38,15 +38,16 @@ class Range extends React.Component {
 			<div className='root range'>
 				<style jsx>{`
 					.root {
-						height: 1.25rem;
+						height: 2rem;
 						position: relative;
 						background-color: ${tinycolor(WHITE).toRgbString()};
 						display: flex;
 						flex-direction: column;
+						border-radius: 1rem;
 					}
 					.container {
 						height: 100%;
-						margin: 0 0.25rem;
+						margin: 0 0.3rem;
 						position: relative;
 						display: flex;
 						flex-direction: row;
@@ -56,8 +57,8 @@ class Range extends React.Component {
 						position: absolute;
 						width: calc(100% - 1.25rem);
 						box-sizing: border-box;
-						height: 0.25rem;
-						background-color: ${tinycolor(GRAY).toRgbString()};
+						height: 0.5rem;
+						background-color: ${tinycolor(GRAY).lighten(10).toRgbString()};
 						margin: 0 0.625rem;
 						border-radius: 0.5rem;
 					}
@@ -65,7 +66,7 @@ class Range extends React.Component {
 						position: absolute;
 						height: 100%;
 						width: ${Math.min(100 * ((value - min) / (max - min)), 100)}%;
-						background-color: ${tinycolor(YELLOW).darken(5).toRgbString()};
+						background-color: ${tinycolor(color).darken(15).toRgbString()};
 						border-radius: 0.5rem;
 					}
 					input[type=range] {
@@ -82,33 +83,33 @@ class Range extends React.Component {
 					input[type=range]::-webkit-slider-thumb {
 						-webkit-appearance: none;
 						border: none;
-						height: 1rem;
-						width: 1rem;
-						border-radius: 1rem;
+						height: 1.5rem;
+						width: 1.5rem;
+						border-radius: 1.5rem;
 						background: ${tinycolor(color).toRgbString()};
 						cursor: pointer;
 						margin-top: 0;
 					}
 					input[type=range]::-moz-range-thumb {
 						border: none;
-						height: 1rem;
-						width: 1rem;
-						border-radius: 1rem;
+						height:1.5rem;
+						width: 1.5rem;
+						border-radius: 1.5rem;
 						background: ${tinycolor(color).toRgbString()};
 						cursor: pointer;
 						margin-top: 0;
 					}
 					input[type=range]::-ms-thumb {
 						border: none;
-						height: 1rem;
-						width: 1rem;
-						border-radius: 1rem;
+						height: 1.5rem;
+						width: 1.5rem;
+						border-radius: 1.5rem;
 						background: ${tinycolor(color).toRgbString()};
 						cursor: pointer;
 						margin-top: 0;
 					}
 					input[type=range]:focus::-webkit-slider-thumb{
-						border: solid 0.1rem ${tinycolor(YELLOW).darken(5).toRgbString()};
+						border: solid 0.2rem ${tinycolor(color).darken(15).toRgbString()};
 					}
 
 					input[type=range]::-webkit-slider-runnable-track {

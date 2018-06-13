@@ -26,27 +26,32 @@ class ParameterHandle extends React.Component {
 		const { target } = e
 		// if the click is on the parameterHandle, focus on the first input inside
 		if (target.className.indexOf('parameterHandle') !== -1) {
-			const input = target.querySelector('.parameterControl input')
-
+			// const input = target.querySelector('.parameterControl input')
 			// if (input) {
 			// 	input.focus({ preventScroll : true })
 			// 	input.select()
 			// }
 			setTimeout(() => {
 				// use this hack to make it scroll the control into the view
-				const scroll = target.querySelector('.parameterControl .scrollIntoView')
-				if (scroll) {
-					scroll.scrollIntoView({
+				const control = target.querySelector('.parameterControl')
+				if (control) {
+					control.scrollIntoView({
 						behavior : 'smooth',
+						block    : 'nearest',
+						inline   : 'nearest',
 					})
 				}
-				// use this hack to make it scroll the selected option into the view
-				const option = target.querySelector('.parameterControl .parameterDisplayValueList .item.selected')
-				if (option) {
-					option.scrollIntoView({
-						behavior : 'smooth',
-					})
-				}
+				setTimeout(() => {
+					// use this hack to make it scroll the selected option into the view
+					const option = target.querySelector('.parameterControl .parameterDisplayValueList .item.selected')
+					if (option) {
+						option.scrollIntoView({
+							behavior : 'smooth',
+							block    : 'nearest',
+							inline   : 'nearest',
+						})
+					}
+				}, 300)
 			}, 300)
 		}
 	}
@@ -192,7 +197,7 @@ class ParameterHandle extends React.Component {
 						transform: scale3d(0,0,1);
 						position: absolute;
 						left: 1.65rem;
-						top: -0.37rem;
+						top: -0.25rem;
 						transform-origin: -0.6rem 0.8rem;
 						z-index: 2;
 						transition: opacity 0.1s ease-out, transform 0.1s ease-out;

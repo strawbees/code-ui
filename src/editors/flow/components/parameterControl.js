@@ -3,7 +3,6 @@ import tinycolor from 'tinycolor2'
 import Range from 'src/editors/flow/components/range'
 import DelayedInput from 'src/editors/flow/components/delayedInput'
 import ParameterDisplayValueList from 'src/editors/flow/components/parameterDisplayValueList'
-import { YELLOW } from 'src/constants/colors'
 
 const ParameterControl = ({
 	color,
@@ -20,16 +19,15 @@ const ParameterControl = ({
 				flex-direction: column;
 				align-items: stretch;
 				background-color: ${tinycolor(color).toRgbString()};
-				min-width: 10rem;
+				min-width: 11rem;
 				border: solid 0.4rem ${tinycolor(color).toRgbString()};
 				box-sizing: content-box;
-				border-radius: 0.25rem;
+				border-radius: 0.375rem;
 				cursor: default;
 			}
 			.root :global(>.delayedInput input) {
 				text-align: left;
 				padding-left: 0.75rem;
-				//background-color: ${tinycolor(YELLOW).toRgbString()};
 			}
 			.root :global(>.parameterDisplayValueList),
 			.root :global(>.range) {
@@ -38,30 +36,23 @@ const ParameterControl = ({
 			.triangle {
 				position: absolute;
 				left: -0.9rem;
-				top: 0.1rem;
+				top: 0rem;
 				width: 0;
 				height: 0;
 				border-top: 0.5rem solid transparent;
 				border-bottom: 0.5rem solid transparent;
 				border-right: 0.6rem solid ${tinycolor(color).toRgbString()};;
 			}
-			.scrollIntoView {
-				position: absolute;
-				width: 1px;
-				height: 1px;
-				bottom: -10px;
-				right: -10px;
-			}
 		`}</style>
 		<DelayedInput
 			value={valueCode}
 			onChange={onValueCodeChange}
 			blurOnEnter={true}
-			//color={YELLOW}
 			disabled={disabled}
 		/>
 		{validation && validation.type === 'list' &&
 			<ParameterDisplayValueList
+				color={color}
 				value={valueCode}
 				onChange={onValueCodeChange}
 				items={validation.data}
@@ -79,12 +70,6 @@ const ParameterControl = ({
 			/>
 		}
 		<div className='triangle'/>
-		{/*
-			A hack to put this element in the bottom, so we call
-			element.scrollIntoView() when we display the control, in that way,
-			if the control is in the bottom of the screen, it it will be bumped up
-		*/}
-		<div className='scrollIntoView'/>
 	</div>
 
 ParameterControl.propTypes = {

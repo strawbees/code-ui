@@ -7,6 +7,7 @@ import {
 } from 'src/constants/colors'
 
 const ParameterDisplayValueList = ({
+	color,
 	value,
 	onChange,
 	items
@@ -14,20 +15,22 @@ const ParameterDisplayValueList = ({
 	<div className='root parameterDisplayValueList'>
 		<style jsx>{`
 			.root {
-				height: ${items.length > 4 ? `${4.5 * 1.7}rem` : `${items.length * 1.7}rem`};
+				height: ${items.length > 4 ? `${4.5 * 2}rem` : `${items.length * 2}rem`};
 				overflow-y: scroll;
+				border-radius: 0.25rem;
 			}
 			.items {
 				display: flex;
 				flex-direction: column;
+				background-color: white;
 			}
 			.root button {
 				background-color: white;
-				height: 1.7rem;
+				height: 2rem;
 			}
-			.root button .focus{
-				padding-left: 0.25rem;
-				height: 1.7rem;
+			.root button .wrapper{
+				padding-left: 0.4rem;
+				height: 2rem;
 				display: flex;
 				flex-direction: row;
 				align-items: center;
@@ -36,22 +39,25 @@ const ParameterDisplayValueList = ({
 				background-color: ${tinycolor(GRAY).lighten(35).toRgbString()};
 			}
 			.root button.selected {
-				background-color: ${tinycolor(YELLOW).toRgbString()};
+				background-color: ${tinycolor(color).setAlpha(0.5).toRgbString()};
 			}
 			.root button:focus {
 				outline: none;
 			}
-
-			.root button:hover .focus,
-			.root button:focus .focus {
-				background-color: ${tinycolor(YELLOW).setAlpha(0.3).toRgbString()};
+			.root button:hover .wrapper,
+			.root button:focus .wrapper {
+				background-color: ${tinycolor(color).setAlpha(0.2).toRgbString()};
 			}
-			.root button.selected:hover .focus,
-			.root button.selected:focus .focus{
-				background-color: ${tinycolor(YELLOW).darken(15).setAlpha(0.3).toRgbString()};
+			.root button.selected:hover .wrapper,
+			.root button.selected:focus .wrapper{
+				background-color: ${tinycolor(color).darken(15).setAlpha(0.2).toRgbString()};
 			}
-			.root button:active .focus {
-				background-color: ${tinycolor(YELLOW).darken(25).setAlpha(0.3).toRgbString()};
+			.root button:active .wrapper {
+				background-color: ${tinycolor(color).darken(15).setAlpha(0.5).toRgbString()};
+			}
+			.root :global(.parameterDisplayValue) {
+				transform-origin: center left;
+				transform: scale3d(1.25,1.25,1.25);
 			}
 		`}</style>
 		<div className='items' role='menu'>
@@ -64,7 +70,7 @@ const ParameterDisplayValueList = ({
 						onChange(item.code)
 						document.activeElement.blur()
 					}}>
-					<div className='focus'>
+					<div className='wrapper'>
 						<ParameterDisplayValue
 							type={item.type}
 							text={item.display}
@@ -77,6 +83,7 @@ const ParameterDisplayValueList = ({
 	</div>
 
 ParameterDisplayValueList.propTypes = {
+	color    : PropTypes.string,
 	value    : PropTypes.string,
 	onChange : PropTypes.func,
 	items    : PropTypes.arrayOf(PropTypes.shape({

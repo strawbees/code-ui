@@ -42,8 +42,8 @@ export default () => createSelector(
 		const nodeY = instanceNodeSelector()(state, { id : instanceY.id })
 		// "header"
 		height += 100
-		// "margin"
-		height += 50
+		// "footer"
+		height += 130
 		// parameters
 		height += nodeY.parameters.length * 45
 		// "multiple" parameters

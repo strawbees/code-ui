@@ -24,8 +24,15 @@ export default () => createSelector(
 
 		const dropArea = dropAreaRectGetter()
 
-		const fromRect = document.getElementById(fromId).getBoundingClientRect()
-		const toRect = document.getElementById(toId).getBoundingClientRect()
+		const fromEl = document.getElementById(fromId)
+		const toEl = document.getElementById(toId)
+
+		if (!fromEl || !toEl) {
+			return {}
+		}
+
+		const fromRect = fromEl.getBoundingClientRect()
+		const toRect = toEl.getBoundingClientRect()
 
 		const x1 = (fromRect.left + (fromRect.width * 0.5) + dropArea.scroll.left) - dropArea.rect.x
 		const y1 = (fromRect.top + (fromRect.height * 0.5) + dropArea.scroll.top) - dropArea.rect.y

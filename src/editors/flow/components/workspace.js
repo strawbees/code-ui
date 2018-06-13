@@ -14,10 +14,13 @@ class Workspace extends React.Component {
 		} = this.props
 		registerGetDropAreaRect(
 			() => ({
-				rect   : this.selfRef.current.getBoundingClientRect(),
+				rect : this.selfRef.current &&
+					this.selfRef.current.getBoundingClientRect(),
 				scroll : {
-					top  : this.selfRef.current.scrollTop,
-					left : this.selfRef.current.scrollLeft,
+					top : this.selfRef.current &&
+						this.selfRef.current.scrollTop,
+					left : this.selfRef.current &&
+						this.selfRef.current.scrollLeft,
 				}
 			})
 		)
@@ -45,7 +48,6 @@ class Workspace extends React.Component {
 			x : this.selfRef.current.scrollLeft,
 			y : this.selfRef.current.scrollTop,
 		}
-		e.preventDefault()
 		window.addEventListener('mousemove', this.onMove, { passive : false })
 		window.addEventListener('mouseup', this.onUp)
 		window.addEventListener('touchmove', this.onMove, { passive : false })
@@ -61,11 +63,16 @@ class Workspace extends React.Component {
 			diff.x = this.startDragMove.x - e.touches[0].clientX
 			diff.y = this.startDragMove.y - e.touches[0].clientY
 		}
-		this.selfRef.current.scrollLeft = diff.x + this.startDragOffset.x
-		this.selfRef.current.scrollTop = diff.y + this.startDragOffset.y
+		diff.x += this.startDragOffset.x
+		diff.y += this.startDragOffset.y
+
+		diff.x = diff.x < 0 ? 0 : diff.x
+		diff.y = diff.y < 0 ? 0 : diff.y
+
+		this.selfRef.current.scrollLeft = diff.x
+		this.selfRef.current.scrollTop = diff.y
 	}
 	onUp = (e) => {
-		e.preventDefault()
 		this.startDragMove = null
 		window.removeEventListener('mousemove', this.onMove)
 		window.removeEventListener('mouseup', this.onUp)
@@ -133,6 +140,7 @@ class Workspace extends React.Component {
 					style={{ width, height }}
 					onMouseDown={onDown}
 					onTouchStart={onDown}
+					tabIndex='0'
 				>
 					<ConnectionLinesContainer />
 				</div>

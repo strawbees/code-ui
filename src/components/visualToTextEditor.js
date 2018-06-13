@@ -72,7 +72,9 @@ class VisualToTextEditor extends React.Component {
 				`}</style>
 				<div className={`editor ${displayVisual ? 'visual' : 'text'}`}>
 					<VisualEditor {...visualEditorProps} />
-					<MirrorEditorContainer/>
+					<MirrorEditorContainer
+						readOnly={true}
+					/>
 				</div>
 				<div className={`switch ${displayVisual ? 'visual' : 'text'}`}>
 					<div onClick={showVisual}

@@ -25,7 +25,7 @@ window.ace.define('ace/theme/quirkbot', ['require', 'exports', 'module', 'ace/li
 	}
 	.ace-quirkbot .ace_punctuation,
 	.ace-quirkbot .ace_paren{
-		color: rgba(255,255,255,0.4);
+		color: rgba(255,255,255,0.25);
 	}
 	.ace-quirkbot .ace_cursor {
 		color: #f8f8f0;
@@ -91,16 +91,16 @@ window.ace.define('ace/theme/quirkbot', ['require', 'exports', 'module', 'ace/li
 		border-radius: 3px;
 	}
 	.ace-quirkbot .ace_support.ace_class.ace_input {
-		background-color: ${tinycolor(BLUE).toRgbString()};
+		background-color: ${tinycolor(BLUE).setAlpha(0.5).toRgbString()};
 	}
 	.ace-quirkbot .ace_support.ace_class.ace_brains {
-		background-color: ${tinycolor(GREEN).toRgbString()};
+		background-color: ${tinycolor(GREEN).setAlpha(0.5).toRgbString()};
 	}
 	.ace-quirkbot .ace_support.ace_class.ace_output {
-		background-color: ${tinycolor(PINK).toRgbString()};
+		background-color: ${tinycolor(PINK).setAlpha(0.5).toRgbString()};
 	}
 	.ace-quirkbot .ace_support.ace_class.ace_debug {
-		background-color: ${tinycolor(GRAY).toRgbString()};
+		background-color: ${tinycolor(GRAY).setAlpha(0.5).toRgbString()};
 	}
 	.ace-quirkbot .ace_support.ace_parameter,
 	.ace-quirkbot .ace_support.ace_outlet,

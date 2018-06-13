@@ -17,11 +17,14 @@ class DelayedInput extends React.Component {
 
 	getSnapshotBeforeUpdate() {
 		const { input } = this
-		return {
-			caret : input &&
-				input.current &&
-				input.current.selectionStart
+		if (input &&
+			input.current &&
+			input.current.selectionStart) {
+			return {
+				caret : input.current.selectionStart
+			}
 		}
+		return {}
 	}
 	componentDidUpdate(prevProps, prevState, { caret }) {
 		// handle external updates
@@ -29,8 +32,11 @@ class DelayedInput extends React.Component {
 			this.setState({ computedValue : this.props.value })
 		}
 		const { input } = this
-		if (caret && input && input.current) {
-			input.current.setSelectionRange(caret, caret)
+		if (typeof caret !== 'undefined' && input && input.current) {
+			if (input.current.selectionStart !== caret &&
+				document.activeElement === input.current) {
+				input.current.setSelectionRange(caret, caret)
+			}
 		}
 	}
 
@@ -112,7 +118,7 @@ class DelayedInput extends React.Component {
 						background-color: ${tinycolor(color).setAlpha(0.5).toRgbString()};
 						line-height: 1;
 						font-family: 'Code', monospace;
-						font-size: 0.8rem;
+						font-size: 1rem;
 						text-align: center;
 						padding: 0.1rem 0.2rem;
 						outline: none;

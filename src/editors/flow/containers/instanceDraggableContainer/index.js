@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDom from 'react-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Draggable from 'react-draggable'
@@ -37,16 +36,13 @@ class InstanceDraggableContainer extends React.Component {
 			id,
 			updateInstancePosition
 		} = this.props
-		if (x < 10) {
-			x = 10
+		if (x < 16) {
+			x = 16
 		}
-		if (y < 10) {
-			y = 10
+		if (y < 16) {
+			y = 16
 		}
 		updateInstancePosition({ id, x, y })
-	}
-	documentOnTouchMove = (e) => {
-		console.log(e)
 	}
 	onDragStart = (e, { x, y }) => {
 		// cache the start position
@@ -91,11 +87,11 @@ class InstanceDraggableContainer extends React.Component {
 			default:
 				return
 		}
-		if (x < 10) {
-			x = 10
+		if (x < 16) {
+			x = 16
 		}
-		if (y < 10) {
-			y = 10
+		if (y < 16) {
+			y = 16
 		}
 		updateInstancePosition({ id, x, y })
 	}
@@ -130,7 +126,7 @@ class InstanceDraggableContainer extends React.Component {
 				onDrag={onDragMove}
 				onStop={onDragStop}
 				enableUserSelectHack={false}
-				bounds={{ left : 10, top : 10 }}
+				bounds={{ left : 16, top : 16 }}
 				position={{ x, y }}>
 				<div className='root instanceDraggableContainer'
 					style={style}
