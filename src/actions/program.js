@@ -143,6 +143,7 @@ export const openProgramDataAndGoToEditor = (program) => (dispatch, getState) =>
 	const editorUrl = makeStringSelector(`${program.type}.url`)(state)
 	const { href, as } = resolveLinkUrl(editorUrl)
 	href.query.program = JSON.stringify(program)
+	// Router.push(href, `${as}/${program.id}`)
 	Router.push(href, as)
 }
 
