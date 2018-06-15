@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import withScript from 'src/hoc/withScript'
 import Spinner from 'src/components/spinner'
+import debounce from 'src/utils/debounce'
 import toolboxToXmlString from './utils/toolboxToXmlString'
 import blocks from './blocks/index'
 import toolbox from './toolbox'
@@ -16,10 +17,10 @@ class ScratchEditor extends React.Component {
 		const {
 			Blockly
 		} = window
-		this.mainWorkspace.clear()
+		Blockly.getMainWorkspace().clear()
 		Blockly.Xml.domToWorkspace(
 			Blockly.Xml.textToDom(source),
-			this.mainWorkspace
+			Blockly.getMainWorkspace()
 		)
 	}
 
@@ -43,6 +44,10 @@ class ScratchEditor extends React.Component {
 					/* eslint-enable func-names */
 				}
 			}
+			delete Blockly.Blocks.data_showvariable
+			delete Blockly.Blocks.data_hidevariable
+			delete Blockly.Blocks.data_showlist
+			delete Blockly.Blocks.data_hidelist
 		})
 		// Load toolbox
 		const toolboxXmlString = toolboxToXmlString(toolbox(strings))
@@ -56,14 +61,13 @@ class ScratchEditor extends React.Component {
 			zoom    : {
 				controls   : true,
 				wheel      : true,
-				startScale : 0.65
+				startScale : 0.8
 			},
 			trashcan : true,
 			colours  : {
 				scrollbar : 'rgba(0, 0, 0, 0.05)',
 			}
 		})
-		const { mainWorkspace } = this
 
 		// Handle the source changes
 		const {
@@ -71,26 +75,36 @@ class ScratchEditor extends React.Component {
 			refEditorSource
 		} = this.props
 		this.source = refEditorSource
-		mainWorkspace.addChangeListener(() => {
-			const xml = Blockly.Xml.workspaceToDom(mainWorkspace)
-			const currentSource = Blockly.Xml.domToText(xml)
-			if (this.source !== currentSource) {
-				this.source = currentSource
-				onSourceChange(currentSource)
+		Blockly.getMainWorkspace().addChangeListener((e) => {
+			// It seems that if we call .workspaceToDom on ALL changes, lots
+			// of spurious variables are created. I could not single out what
+			// is the offending event, but UI seems a obvious one to avoid.
+			// Still, it's not 100% solid, so added a debounce, that seems to
+			// solve the issue.
+			if (e.type === 'ui') {
+				return
 			}
+			debounce('update scratch source', () => {
+				const xml = Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace())
+				const currentSource = Blockly.Xml.domToText(xml)
+				if (this.source !== currentSource) {
+					this.source = currentSource
+					onSourceChange(currentSource)
+				}
+			}, 1000)
 		})
 		// Load the initial source
 		this.loadSource(refEditorSource)
 	}
 
 	compomnentWillUnmount() {
-		this.mainWorkspace.dispose()
+		window.Blockly.getMainWorkspace().dispose()
 	}
 
 	componentDidUpdate() {
 		const { refEditorSource } = this.props
-		const { source : prevSource } = this
-		if (refEditorSource !== prevSource) {
+		const { source } = this
+		if (refEditorSource !== source) {
 			this.loadSource(refEditorSource)
 		}
 	}

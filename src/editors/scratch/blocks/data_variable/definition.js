@@ -3,7 +3,7 @@ export default (strings) => ({
 	lastDummyAlign0 : 'CENTRE',
 	args0           : [
 		{
-			type         : 'field_variable',
+			type         : 'field_variable_getter',
 			name         : 'VARIABLE',
 			variableType : ''
 		}

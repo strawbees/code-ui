@@ -66,7 +66,7 @@ var c_quirkbotHighlightRules = function() {
         "Converter|Comparison|Constrain|Counter|Gate|List|Logic|Math|Randomizer|Sequence|Statistics|Wave|Time"
     );
     var supportClassesOutput = (
-        "Led|DualColorLed|ServoMotor|ContinuousServo|RGBLed|KeyPress|KeySequence|VoltageOutput"
+        "Led|DualColorLed|Buzzer|ServoMotor|ContinuousServo|RGBLed|KeyPress|KeySequence|VoltageOutput"
     );
     var supportClassesDebug = (
         "SystemMemory|SerialMonitor|Time"
@@ -90,10 +90,10 @@ var c_quirkbotHighlightRules = function() {
         "out|outlet"
     );
     var supportFunctions = (
-        "setup|loop|disableSerialReport|enableSerialReport|connect"
+        "setup|loop|disableSerialReport|enableSerialReport|set"
     );
     var supportConnection = (
-        "get"
+        "connect"
     )
 
     var keywordControls = (

@@ -4,7 +4,7 @@ import {
 	GREEN,
 	BLUE,
 	GRAY,
-	YELLOW_LIGHT
+	YELLOW
 } from 'src/constants/colors'
 
 window.ace.define('ace/theme/quirkbot', ['require', 'exports', 'module', 'ace/lib/dom'], (acequire, exports) => {
@@ -104,9 +104,11 @@ window.ace.define('ace/theme/quirkbot', ['require', 'exports', 'module', 'ace/li
 	}
 	.ace-quirkbot .ace_support.ace_parameter,
 	.ace-quirkbot .ace_support.ace_outlet,
-	.ace-quirkbot .ace_support.ace_function,
-	.ace-quirkbot .ace_support.ace_connection {
+	.ace-quirkbot .ace_support.ace_function{
 		color: rgba(255,255,255,0.6);
+	}
+	.ace-quirkbot .ace_support.ace_connection {
+		color: ${tinycolor(YELLOW).setAlpha(0.6).toRgbString()};
 	}
 	.ace-quirkbot .ace_support.ace_constant {
 		color: #bd93f9;

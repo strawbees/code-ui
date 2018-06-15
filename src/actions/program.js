@@ -41,7 +41,6 @@ import FormInput from 'src/components/formInput'
 import S from 'src/containers/sManager'
 import UploadAreaContainer from 'src/containers/uploadAreaContainer'
 
-
 export const resetEditorProgramByType = (type) => (dispatch) => {
 	const program = {
 		id     : null,

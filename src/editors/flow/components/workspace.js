@@ -111,8 +111,10 @@ class Workspace extends React.Component {
 						min-width: 100%;
 						min-height: 100%;
 						background-size: 1rem 1rem;
-						//background-image: radial-gradient(circle, rgba(0,0,0,0.2) 1px, rgba(0, 0, 0, 0) 1px);
-						background-image: linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+						/* background-image: radial-gradient(circle, rgba(0,0,0,0.1) 1.5px, rgba(0, 0, 0, 0) 1px);*/
+						background-image:
+							linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+							linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
 						overflow: hidden;
 						touch-action: none;
 					}

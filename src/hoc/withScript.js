@@ -36,6 +36,7 @@ export default (scripts, Child, Preloader) => {
 						<Script
 							key={key}
 							url={script}
+							async={false}
 							onLoad={() => this.handleScriptLoad(script)}
 						/>
 					)}

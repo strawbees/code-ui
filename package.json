@@ -8,7 +8,7 @@
     "deploy": "node lib/scripts/deploy.js"
   },
   "dependencies": {
-    "@babel/core": "7.0.0-beta.49",
+    "@babel/core": "7.0.0-beta.51",
     "babel-plugin-inline-react-svg": "^0.5.2",
     "babel-plugin-module-resolver": "^3.1.1",
     "deep-diff": "^1.0.1",
@@ -22,9 +22,9 @@
     "nprogress": "^0.2.0",
     "prop-types": "^15.6.1",
     "quirkbot-midi-interface": "^0.0.5",
-    "react": "^16.4.0",
+    "react": "^16.4.1",
     "react-ace": "^6.1.1",
-    "react-dom": "^16.4.0",
+    "react-dom": "^16.4.1",
     "react-draggable": "^3.0.5",
     "react-load-script": "^0.0.6",
     "react-modal": "^3.4.5",
@@ -38,8 +38,8 @@
     "reselect": "^3.0.1",
     "rimraf": "^2.6.2",
     "s3": "^4.4.0",
-    "scratch-blocks": "^0.1.0-prerelease.1528492670",
-    "serve-handler": "^3.1.1",
+    "scratch-blocks": "^0.1.0-prerelease.1528907522",
+    "serve-handler": "^3.2.0",
     "tinycolor2": "^1.4.1",
     "why-did-you-update": "^0.1.1",
     "xxhashjs": "^0.2.2"
