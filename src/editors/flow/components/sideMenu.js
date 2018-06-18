@@ -34,9 +34,12 @@ const SideMenu = ({
 				margin-left: 0.5rem;
 				padding-right: 0.5rem;
 			}
-
+			.categoryMenus {
+				overflow: visible;
+			}
 			.categoryMenus :global(>*) {
 				margin-bottom: 0.5rem;
+				position: relative;
 			}
 			@media (max-width: 600px) {
 				.root :global(>.toggle) {

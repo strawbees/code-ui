@@ -95,7 +95,7 @@ class Workspace extends React.Component {
 				ref={selfRef}>
 				<style jsx>{`
 					.root {
-						background-color: white;
+						background-color: transparent;
 						user-select: none;
 						display: flex;
 						flex-direction: column;

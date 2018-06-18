@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import IconButton from 'src/components/iconButton'
 import S from 'src/containers/sManager'
 
 const EditorMenu = ({
@@ -17,6 +18,7 @@ const EditorMenu = ({
 			.root {
 				display: flex;
 				flex-direction: row;
+				align-items: center;
 			}
 		`}</style>
 		<input
@@ -36,9 +38,10 @@ const EditorMenu = ({
 		<button onClick={onSharePress}>
 			<S value='ui.editor.share'/>
 		</button>
-		<button onClick={onUploadPress} >
-			<S value='ui.editor.upload'/>
-		</button>
+		<IconButton
+			textKey='ui.editor.upload'
+			onClick={onUploadPress}
+		/>
 	</div>
 
 EditorMenu.defaultProps = {}

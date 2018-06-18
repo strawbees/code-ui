@@ -101,6 +101,7 @@ export const assembleStructure = structure => {
 		definitions,
 		oneTimeAssignments
 	} = structure
+
 	definitions = Object.values(definitions).sort().join('')
 	oneTimeAssignments = Object.values(oneTimeAssignments).sort().join('')
 
@@ -125,7 +126,7 @@ const indent = string => {
 	let formated = ''
 	for (let i = 0; i < string.length; i++) {
 		let char = string[i]
-		let nextChar = string[i + 1]
+		const nextChar = string[i + 1]
 		if (char === '{') {
 			braces++
 		}

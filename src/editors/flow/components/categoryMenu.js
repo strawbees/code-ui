@@ -19,6 +19,7 @@ const CategoryMenu = ({
 				flex-direction: column;
 				align-items: stretch;
 				width: 100%;
+				overflow: visible;
 			}
 			.button {
 				display: flex;
@@ -46,10 +47,12 @@ const CategoryMenu = ({
 				display: flex;
 				flex-direction: column;
 				align-items: stretch;
+				overflow: visible;
 			}
 			.folded .nodes {
 				overflow-y: hidden;
 				height: 0;
+				margin-top: 0;
 			}
 			.nodes :global(> *) {
 				margin-bottom: 0.4rem;

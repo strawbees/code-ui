@@ -209,16 +209,6 @@ class ParameterHandle extends React.Component {
 						opacity: 1;
 						transform: scale3d(1,1,1);
 					}
-					@keyframes slide {
-						from {
-							opacity: 0;
-							transform: scale3d(0,0,1);
-						}
-						to {
-							opacity: 1;
-							transform: scale3d(1,1,1);
-						}
-					}
 					.root.connected:not(.disconnecting) .value .circle {
 						background-color: ${tinycolor(YELLOW).toRgbString()};
 						cursor: grab;

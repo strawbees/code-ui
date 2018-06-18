@@ -17,13 +17,10 @@ const Header = ({
 			.root {
 				display: flex;
 				flex-direction: row;
+				align-items: center;
 				background-color: ${tinycolor(BLUE).setAlpha(0.5).toRgbString()};
-			}
-			@media (max-width: 600px) {
-				.root {
-					width: 100px;
-					overflow: hidden;;
-				}
+				position: relative;
+				width: 100%;
 			}
 		`}</style>
 

@@ -2,6 +2,8 @@ import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import S from 'src/containers/sManager'
 import {
+	GRAY,
+	GREEN,
 	PINK,
 	YELLOW,
 	BLUE
@@ -28,8 +30,11 @@ const Toggle = ({
 			}
 			.switch {
 				width: 2.25rem;
-				height: 1.25rem;
+				height: 1rem;
 				position: relative;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
 			}
 			.switch .checkbox {
 				display: block;
@@ -48,33 +53,27 @@ const Toggle = ({
 				cursor: pointer;
 			}
 			.switch .track {
-				position: absolute;
-				left: 0;
-				top: 0;
-				width: calc(100% - 0.2rem);
-				height: calc(100% - 0.4rem);
+				width: calc(100% - 0.8rem);
+				margin: 0 0.4rem;
+				height: 0.4rem;
 				box-sizing: border-box;
-				background-color: ${tinycolor(PINK).setAlpha(0.5).toRgbString()};
-				margin: 0.2rem 0.1rem;
+				background-color: ${tinycolor(GRAY).toRgbString()};
 				border-radius: 1.5rem;
 			}
 			.switch .pin {
 				position: absolute;
 				left: 0;
 				top: 0;
-				width: 1.25rem;
-				height: 1.25rem;
-				border-radius: 1.25rem;
+				width: 1rem;
+				height: 1rem;
+				border-radius: 1rem;
 				box-sizing: border-box;
-				background-color: ${tinycolor(YELLOW).toRgbString()};
-				border: solid 0.2rem ${tinycolor(PINK).setAlpha(0.5).toRgbString()};
+				background-color: ${tinycolor(GREEN).setAlpha(0.7).toRgbString()};
+				transition: left 0.2s, background-color 0.2s;
 			}
 			.root.on .switch .pin {
-				right: 0;
-				left: auto;
-			}
-			.root.on .switch .track {
-				background-color: ${tinycolor(BLUE).setAlpha(0.5).toRgbString()};
+				left: calc(100% - 1rem);
+				background-color: ${tinycolor(PINK).setAlpha(0.7).toRgbString()};
 			}
 			.label {
 				font-size: 0.7rem;
