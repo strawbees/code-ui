@@ -47,17 +47,18 @@ class LocalesMenu extends React.Component {
 						position: relative;
 					}
 					.root :global(>.button) {
-						padding: 0.2rem;
+						padding: 0.1rem;
 					}
 					.root :global(>.button .svgIcon) {
-						width: 1.5rem;
-						height: 1.5rem;
+						width: 1.75rem;
+						height: 1.75rem;
 					}
 					.list {
 						display: flex;
 						flex-direction: column;
 						position: absolute;
 						top: 2.25rem;
+						right: -0.25rem;;
 						z-index: 3;
 						padding: 0;
 						margin: 0;
@@ -66,7 +67,7 @@ class LocalesMenu extends React.Component {
 						border-radius: 0.5rem;
 						opacity: 0;
 						transform: scale3d(0,0,1);
-						transform-origin: top center;
+						transform-origin: top right;
 						width: 8rem;
 						border: solid 0.1rem ${tinycolor(GRAY).toRgbString()};
 					}
@@ -94,8 +95,8 @@ class LocalesMenu extends React.Component {
 					.list:before {
 						content: '';
 						position: absolute;
-						left: calc(50% - 0.7rem);
-						top: -0.65rem;
+						right: 0.4rem;
+						top: -0.7rem;
 						width: 0;
 						height: 0;
 						border-bottom: 0.7rem solid ${tinycolor(GRAY).toRgbString()};
@@ -105,8 +106,8 @@ class LocalesMenu extends React.Component {
 					.list:after {
 						content: '';
 						position: absolute;
-						left: calc(50% - 0.5rem);
-						top: -0.45rem;
+						right: 0.6rem;
+						top: -0.5rem;
 						width: 0;
 						height: 0;
 						border-bottom: 0.5rem solid white;
