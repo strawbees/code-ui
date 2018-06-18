@@ -5,9 +5,9 @@ import S from 'src/containers/sManager'
 const EditorMenu = ({
 	name,
 	saved,
-	uploadEnabled,
 	placeholderName,
 	onNameChange,
+	onNewPress,
 	onSavePress,
 	onSharePress,
 	onUploadPress
@@ -30,6 +30,9 @@ const EditorMenu = ({
 				<S value='ui.editor.save'/>
 			</button>
 		}
+		<button onClick={onNewPress}>
+			<S value='ui.editor.new'/>
+		</button>
 		<button onClick={onSharePress}>
 			<S value='ui.editor.share'/>
 		</button>
@@ -44,8 +47,8 @@ EditorMenu.propTypes = {
 	name            : PropTypes.string,
 	saved           : PropTypes.bool,
 	placeholderName : PropTypes.string,
-	uploadEnabled   : PropTypes.bool,
 	onNameChange    : PropTypes.func,
+	onNewPress      : PropTypes.func,
 	onSavePress     : PropTypes.func,
 	onSharePress    : PropTypes.func,
 	onUploadPress   : PropTypes.func,

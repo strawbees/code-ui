@@ -1,83 +1,139 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import RemoteStorage from 'remotestoragejs'
-import RemoteStorageDocuments from 'remotestorage-module-documents'
-import RemoteStorageWidget from 'remotestorage-widget'
-import { registerRemoteStorage } from 'src/utils/storage'
-import debounce from 'src/utils/debounce'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
+const localStorageGet = (key) => {
+	try {
+		return JSON.parse(localStorage.getItem(key))
+	} catch (e) {
+		return null
+	}
+}
+const localStorageSet = (key, value) => {
+	try {
+		return localStorage.setItem(key, JSON.stringify(value))
+	} catch (e) {
+		return null
+	}
+}
+
+const localStorageRemove = (key) => {
+	try {
+		return localStorage.removeItem(key)
+	} catch (e) {
+		return null
+	}
+}
+
 class StorageManager extends React.Component {
-	componentDidMount() {
+	async componentDidMount() {
 		const {
-			setReady,
-			// setPrograms,
-			addProgram,
-			updateProgram,
-			removeProgram,
-			removeAllPrograms
+			setStatus,
+			setCredentials,
+			setTempProgram,
+			setPrograms,
 		} = this.props
 
-		RemoteStorageDocuments.name = 'strawbeescode'
-		const rs = new RemoteStorage({
-			changeEvents : {
-				local     : true,
-				window    : true,
-				remote    : true,
-				conflicts : true
-			},
-			// logging : true,
-			modules : [RemoteStorageDocuments]
-		})
-		registerRemoteStorage(rs)
-		rs.setApiKeys({
-			dropbox     : 'zd6wx3xxewwjdf5',
-			googledrive : '797731471383-guaj6k58h14fp8g787o210m533m5scng.apps.googleusercontent.com'
-		})
-		rs.access.claim('strawbeescode', 'rw')
-		rs.caching.enable('/strawbeescode/')
-		const client = rs.strawbeescode.privateList('programs')
-		client.on('change', ({ newValue, oldValue, relativePath }) => {
-			const data = { ...newValue }
-			delete data['@context']
-			const id = relativePath
-			if (newValue && !oldValue) {
-				addProgram({ id, data })
-			} else if (!newValue && oldValue) {
-				removeProgram({ id })
-			} else if (newValue && oldValue) {
-				updateProgram({ id, data })
-				// // programs can update *very* frequently (like when dragging a
-				// // node around), so we wanna debounce this call
-				// debounce(
-				// 	`StorageManager.update.${id}`,
-				// 	() => updateProgram({ id, data }),
-				// 	1000
-				// )
+		// Load data from local storage
+		this.temp = localStorageGet('storage_temp')
+		this.credentials = localStorageGet('storage_credentials')
+		this.programs = {}
+		Object.keys(localStorage).forEach(key => {
+			if (key.indexOf('storage_program_') === -1) {
+				return
+			}
+			const program = localStorageGet(key)
+			if (program) {
+				this.programs[key.replace('storage_program_', '')] = program
 			}
 		})
+		// Pass it to the state
+		setTempProgram(this.temp)
+		setPrograms(this.programs)
+		setCredentials(this.credentials)
 
-		// hookup to storage actions
-		rs.on('ready', async () => {
-			setReady(true)
+		if (!this.credentials) {
+			// If there are no credentials, storage is ready
+			setStatus('READY')
+		} else {
+			// If the are credentials, mark as syncing
+			setStatus('SYNCING')
+		}
+
+		// monitor localStorage for changes
+		window.addEventListener('storage', this.onStorage)
+	}
+
+	componentWillUnmout() {
+		// stop monitoring localStorage for changes
+		window.removeEventListener('storage', this.onStorage)
+	}
+
+	// Monitor changes done by the state, if there are any, update local storage
+	componetDidUpdate() {
+		const {
+			credentials,
+			tempProgram,
+			programs,
+
+			setStatus,
+		} = this.props
+
+		let needsUpdate = false
+		if (this.credentials !== credentials) {
+			localStorageSet('storage_credentials', credentials)
+			this.credentials = credentials
+			needsUpdate = true
+		}
+		if (this.tempProgram !== tempProgram) {
+			localStorageSet('storage_temp', tempProgram)
+			this.tempProgram = tempProgram
+			needsUpdate = true
+		}
+		Object.keys(programs).forEach(id => {
+			if (!this.programs[id]) {
+				// program was added by the state
+				localStorageSet(`storage_program_${id}`, programs[id])
+				this.programs[id] = programs[id]
+				needsUpdate = true
+			} else if (this.programs[id] !== programs[id]) {
+				// program updated by the state
+				localStorageSet(`storage_program_${id}`, programs[id])
+				this.programs[id] = programs[id]
+				needsUpdate = true
+			}
 		})
-		rs.on('disconnected', () => {
-			// remove all programs
-			removeAllPrograms()
-			// mark the storage as not ready
-			setReady(false)
+		Object.keys(this.programs).forEach(id => {
+			// program was deleted by the state
+			if (!programs[id]) {
+				localStorageRemove(`storage_program_${id}`)
+				delete this.programs[id]
+				needsUpdate = true
+			}
 		})
-		const widget = new RemoteStorageWidget(rs, {
-			leaveOpen : true
-		})
-		widget.attach('remotestorage-widget-container')
+		if (needsUpdate) {
+			setStatus('NEEDS_UPDATE')
+		}
+	}
+
+	// Monitor changes done by the storage, if there are any, update the state
+	onStorage = (e) => {
+		console.log(e)
 	}
 
 	render() {
 		return null
 	}
+}
+
+StorageManager.propTypes = {
+	setStatus      : PropTypes.func,
+	setCredentials : PropTypes.func,
+	setTempProgram : PropTypes.func,
+	setPrograms    : PropTypes.func,
 }
 
 export default connect(

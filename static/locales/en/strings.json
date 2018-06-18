@@ -1,15 +1,10 @@
 {
 	"locale.code" : "en",
 	"locale.name" : "English",
-
 	"home.url"      : "/",
 	"home.og.title" : "Strawbees CODE",
 
-	"flow.url"      : "/flow",
-	"flow.og.title" : "Flow Programming",
-
-	"text.url" : "/text",
-
+	"ui.program_creator.title"           : "Creat new program",
 	"ui.editor.program.placeholder_name" : "untitled program",
 	"ui.editor.edit"                     : "edit",
 	"ui.editor.remove"                   : "remove",
@@ -19,21 +14,19 @@
 	"ui.editor.upload"                   : "upload",
 	"ui.editor.switch.visual"            : "visual",
 	"ui.editor.switch.text"              : "text",
-
-
 	"ui.buttons.cancel"  : "cancel",
 	"ui.buttons.confirm" : "ok",
-
 	"ui.board.bootloader_mode_label"     : "recovery mode",
 	"ui.board.upload.disconnect_warning" : "Please don't disconnect your Quirkbot.",
 
+	"flow.url"      : "/flow",
+	"flow.og.title" : "Flow Programming",
+	"flow.base.title" : "Flow",
 	"flow.menu.toggle.simple"   : "simple",
 	"flow.menu.toggle.advanced" : "advanced",
-
 	"flow.category.brains": "Brains",
 	"flow.category.input" : "Input",
 	"flow.category.output": "Output",
-
 	"flow.node.analog-sensor"   : "Analog Sensor",
 	"flow.node.buzzer"          : "Buzzer",
 	"flow.node.continuous-servo": "Continuous Servo",
@@ -61,7 +54,6 @@
 	"flow.node.voltage-output"  : "Voltage Output",
 	"flow.node.wave"            : "Wave",
 	"flow.node.time"            : "Time",
-
 	"flow.parameter.in"         : "in",
 	"flow.parameter.light"      : "light intensity",
 	"flow.parameter.color"      : "color",
@@ -95,9 +87,7 @@
 	"flow.parameter.amount"     : "amount",
 	"flow.parameter.open"       : "open",
 	"flow.parameter.close"      : "close",
-
 	"flow.outlet.out" : "outlet",
-
 	"flow.constant.logic-and": "AND",
 	"flow.constant.logic-or": "OR",
 	"flow.constant.logic-xor": "XOR",
@@ -343,6 +333,7 @@
 
 	"scratch.url" : "/scratch",
 	"scratch.og.title" : "Scratch Programming",
+	"scratch.base.title" : "Scratch",
 	"scratch.toolbox.category.input" : "Input",
 	"scratch.toolbox.category.output" : "Output",
 	"scratch.toolbox.category.control" : "Control",
@@ -355,5 +346,9 @@
 	"scratch.blocks.places.left_leg" : "left leg",
 	"scratch.blocks.places.right_arm" : "right arm",
 	"scratch.blocks.places.right_leg" : "right leg",
-	"scratch.blocks.places.horn" : "horn"
+	"scratch.blocks.places.horn" : "horn",
+
+	"text.url" : "/text",
+	"text.og.title" : "Text Programming",
+	"text.base.title" : "Text"
 }

@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux'
+import generateReducer from 'src/utils/generateReducer'
 import {
 	STORAGE_SET_READY,
+	STORAGE_SET_STATUS,
+	STORAGE_SET_CREDENTIALS,
+	STORAGE_SET_TEMP_PROGRAM,
 	STORAGE_SET_PROGRAMS,
 	STORAGE_ADD_PROGRAM,
 	STORAGE_UPDATE_PROGRAM,
@@ -17,7 +21,9 @@ const ready = (state = false, { type, payload }) => {
 			return state
 	}
 }
-
+const status = generateReducer(STORAGE_SET_STATUS)
+const credentials = generateReducer(STORAGE_SET_TEMP_PROGRAM)
+const tempProgram = generateReducer(STORAGE_SET_TEMP_PROGRAM)
 const programs = (state = {}, { type, payload }) => {
 	switch (type) {
 		case STORAGE_SET_PROGRAMS:
@@ -48,5 +54,8 @@ const programs = (state = {}, { type, payload }) => {
 
 export default combineReducers({
 	ready,
-	programs
+	status,
+	credentials,
+	tempProgram,
+	programs,
 })
