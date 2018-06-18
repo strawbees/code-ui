@@ -39,7 +39,6 @@ class AppContainer extends React.Component {
 			mapStateToProps()(store.getState(), {}),
 			mapDispatchToProps(store.dispatch)
 		)
-
 		setQuery(query)
 		if (!routesLoaded) {
 			setRoutes(await loadStaticData('routes.json'))

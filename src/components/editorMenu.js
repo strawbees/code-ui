@@ -20,9 +20,19 @@ const EditorMenu = ({
 				flex-direction: row;
 				align-items: center;
 			}
+			.name {
+				-webkit-appearance: none;
+				border: none;
+				border-radius: none;
+				font-size: 1rem;
+				font-family: Text;
+				padding: 0 0.2rem;
+				max-width: 15rem;
+			}
 		`}</style>
 		<input
-			type="text"
+			className='name'
+			type='text'
 			value={name}
 			placeholder={placeholderName}
 			onChange={e => onNameChange(e.target.value)}

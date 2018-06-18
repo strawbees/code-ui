@@ -21,6 +21,10 @@ const Header = ({
 				background-color: ${tinycolor(BLUE).setAlpha(0.5).toRgbString()};
 				position: relative;
 				width: 100%;
+				padding: 0 0.5rem;
+			}
+			.root .editor {
+				flex: 1;
 			}
 		`}</style>
 
@@ -36,10 +40,12 @@ const Header = ({
 		<Link to={textUrl}>
 			text/
 		</Link>
+		<div className='editor'>
+			{editorMenu &&
+				<EditorMenuContainer />
+			}
+		</div>
 		<LocalesMenuContainer />
-		{editorMenu &&
-			<EditorMenuContainer />
-		}
 	</div>
 
 Header.propTypes = {
