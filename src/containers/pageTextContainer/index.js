@@ -1,12 +1,11 @@
 import { connect } from 'react-redux'
+import TextEditor from 'src/editors/text'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
-const PageTextContainer = () =>
-	<div>
-		Text!
-	</div>
+const PageTextContainer = (props) =>
+	<TextEditor {...props}/>
 
 export default connect(
 	mapStateToProps,
