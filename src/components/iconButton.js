@@ -6,9 +6,9 @@ import S from 'src/containers/sManager'
 const IconButtonContent = ({
 	icon,
 	labelKey,
-	hideLabelOnSmallScreen,
+	hideLabelOnMediaQuery,
 }) =>
-	<div className={`root ${hideLabelOnSmallScreen ? 'hide-label' : ''} ${icon ? 'has-icon' : ''} ${labelKey ? 'has-label' : ''}`}>
+	<div className={`root ${hideLabelOnMediaQuery ? 'hide-label' : ''} ${icon ? 'has-icon' : ''} ${labelKey ? 'has-label' : ''}`}>
 		<style jsx>{`
 			.root {
 				display: flex;
@@ -26,7 +26,7 @@ const IconButtonContent = ({
 			.root:not(.has-label) :global(>.svgIcon) {
 				margin: -0.1rem -0.85rem;
 			}
-			@media (max-width: 600px){
+			@media (${hideLabelOnMediaQuery}){
 				.root.hide-label .label {
 					display: none;
 				}
@@ -49,7 +49,7 @@ const IconButton = ({
 	icon,
 	labelKey,
 	disabled,
-	hideLabelOnSmallScreen,
+	hideLabelOnMediaQuery,
 	onClick = () => {},
 	...otherProps
 }) =>
@@ -60,7 +60,7 @@ const IconButton = ({
 		<IconButtonContent
 			icon={icon}
 			labelKey={labelKey}
-			hideLabelOnSmallScreen={hideLabelOnSmallScreen}
+			hideLabelOnMediaQuery={hideLabelOnMediaQuery}
 		/>
 	</Button>
 
@@ -70,7 +70,7 @@ IconButton.propTypes = {
 	disabled : PropTypes.bool,
 	onClick  : PropTypes.func,
 
-	hideLabelOnSmallScreen : PropTypes.bool,
+	hideLabelOnMediaQuery : PropTypes.string,
 }
 
 export default IconButton

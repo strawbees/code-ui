@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import SingleBoardStatus from 'src/components/singleBoardStatus'
 import SingleBoardStatusContainer from 'src/containers/singleBoardStatusContainer'
 
 const BoardsStatus = ({
@@ -12,9 +13,9 @@ const BoardsStatus = ({
 			}
 		`}</style>
 		{boards.length === 0 &&
-			<div className="not-connected">
-				not-connected
-			</div>
+			<SingleBoardStatus
+				status='notConnected'
+			/>
 		}
 		{boards.length > 0 && boards.map(runtimeId =>
 			<SingleBoardStatusContainer

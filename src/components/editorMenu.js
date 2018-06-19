@@ -3,10 +3,14 @@ import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import IconButton from 'src/components/iconButton'
 import DropdownMenu from 'src/components/dropdownMenu'
-import globe from 'src/assets/icons/general/globe.svg'
+import SvgIcon from 'src/components/svgIcon'
+import saveIcon from 'src/assets/icons/file/save.svg'
+import uploadIcon from 'src/assets/icons/file/upload.svg'
+import editorIcons from 'src/assets/icons/editors/small'
 import { WHITE } from 'src/constants/colors'
 
 const EditorMenu = ({
+	type,
 	name,
 	saved,
 	placeholderName,
@@ -27,19 +31,22 @@ const EditorMenu = ({
 				align-items: center;
 				position: relative;
 			}
+			.root :global(>*),
+			.buttons :global(>*) {
+				margin-right: 0.5rem;
+			}
+			.buttons {
+				margin-right: 0;
+			}
+			.type {
+				margin-right: 0.5rem;
+			}
+			.type :global(>.svgIcon) {
+				width: 3.5rem;
+				height: 2.25rem;
+			}
 			.root :global(> .dropdownMenu) {
 				height: 100%;
-			}
-			.main {
-				flex: 1;
-				display: flex;
-				flex-direction: row;
-				align-items: center;
-				position: relative;
-				justify-content: center;
-			}
-			.main :global(> *) {
-				margin-right: 0.5rem;
 			}
 			.name {
 				-webkit-appearance: none;
@@ -51,12 +58,28 @@ const EditorMenu = ({
 				padding: 0 0.2rem;
 				max-width: 15rem;
 				height: 2rem;
+				margin-right: 0.5rem;
 			}
 			.name:focus {
 				outline: none;
 				background-color: ${tinycolor(WHITE).toRgbString()};
 			}
+			.buttons {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+			@media (max-width: 600px){
+				.buttons {
+					display: none;
+				}
+			}
 		`}</style>
+		<div className='type'>
+			<SvgIcon
+				icon={editorIcons[type]}
+			/>
+		</div>
 		<DropdownMenu
 			labelKey='ui.editor.file.title'
 			options={[
@@ -93,27 +116,27 @@ const EditorMenu = ({
 				},
 			]}
 		/>
-		<div className='main'>
-			<input
-				className='name'
-				type='text'
-				value={name}
-				placeholder={placeholderName}
-				onChange={e => onNameChange(e.target.value)}
-			/>
+		<input
+			className='name'
+			type='text'
+			value={name}
+			placeholder={placeholderName}
+			onChange={e => onNameChange(e.target.value)}
+		/>
+		<div className='buttons'>
 			{!saved &&
 				<IconButton
-					icon={globe}
+					icon={saveIcon}
 					labelKey='ui.editor.save'
 					onClick={onSavePress}
-					hideLabelOnSmallScreen={true}
+					hideLabelOnMediaQuery={'max-width: 800px'}
 				/>
 			}
 			<IconButton
-				icon={globe}
+				icon={uploadIcon}
 				labelKey='ui.editor.upload'
 				onClick={onUploadPress}
-				hideLabelOnSmallScreen={true}
+				hideLabelOnMediaQuery={'max-width: 800px'}
 			/>
 		</div>
 	</div>
@@ -121,6 +144,7 @@ const EditorMenu = ({
 EditorMenu.defaultProps = {}
 
 EditorMenu.propTypes = {
+	type             : PropTypes.string,
 	name             : PropTypes.string,
 	saved            : PropTypes.bool,
 	placeholderName  : PropTypes.string,

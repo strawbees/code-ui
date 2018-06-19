@@ -11,6 +11,7 @@ import PageContainer from 'src/containers/pageContainer'
 import ModalContainer from 'src/containers/modalContainer'
 import MidiInterfaceManager from 'src/containers/midiInterfaceManager'
 import StorageManager from 'src/containers/storageManager'
+import { BLACK } from 'src/constants/colors'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
@@ -166,6 +167,7 @@ class AppContainer extends React.Component {
 						-moz-osx-font-smoothing: grayscale;
 						font-smoothing: antialiased;
 						font-weight: 400;
+						color: ${BLACK};
 					}
 					:global(*){
 						box-sizing: border-box;

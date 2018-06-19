@@ -61,8 +61,15 @@ class DropdownMenu extends React.Component {
 						outline: none;
 						background-color: ${tinycolor(BLUE).toRgbString()};
 					}
+					.label:hover::before,
+					.label:focus::before,
+					.root:focus-within .label::before {
+						display: none;
+					}
 					.label :global(.svgIcon) {
 						margin-left: 0.25rem;
+						width: 0.8rem;
+						height: 0.8rem;
 					}
 					.list {
 						display: flex;
@@ -75,7 +82,6 @@ class DropdownMenu extends React.Component {
 						margin: 0;
 						background-color: ${tinycolor(BLUE).toRgbString()};
 						color: ${tinycolor(WHITE).toRgbString()};
-						border-top: solid 0.1rem ${tinycolor(WHITE).toRgbString()};
 						padding: 0.5rem;
 						border-radius: 0.5rem;
 						border-top-left-radius: 0;
@@ -96,7 +102,6 @@ class DropdownMenu extends React.Component {
 						list-style: none;
 						cursor: pointer;
 						padding: 0 0.25rem;
-						border-top: solid 1px rgba(0,0,0, 0.1);
 					}
 					.list .option:hover,
 					.list .option:focus {
@@ -104,16 +109,13 @@ class DropdownMenu extends React.Component {
 						background-color: rgba(255,255,255, 0.2);
 						border-radius: 0.2rem;
 					}
-					.list .option:first-child,
-					.list .option.divider {
-						border-top: none;
-					}
 					.list .option.disabled {
 						cursor: auto;
 						color: rgba(255,255,255,0.4);
 					}
 					.list .option.divider {
-						margin-top: 1rem;
+						margin-top: 0.25rem;
+						border-top: solid 1px rgba(0,0,0, 0.1);
 					}
 					.list .option.disabled:hover {
 						font-weight: normal;

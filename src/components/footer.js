@@ -9,6 +9,8 @@ const Footer = () =>
 			.root {
 				display: flex;
 				flex-direction: row;
+				align-items: center;
+				padding: 0 0.5rem;
 				background-color: ${tinycolor(PINK).setAlpha(0.5).toRgbString()};
 				position: relative;
 			}

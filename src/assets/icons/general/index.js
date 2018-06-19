@@ -1,11 +1,13 @@
 import close from './close.svg'
 import collapse from './collapse.svg'
 import expand from './expand.svg'
-import globe from './globe.svg'
+import language from './language.svg'
+import preferences from './preferences.svg'
 
 export default {
 	close,
 	collapse,
 	expand,
-	globe,
+	language,
+	preferences,
 }

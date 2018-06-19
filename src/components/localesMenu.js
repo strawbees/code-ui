@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import IconButton from 'src/components/iconButton'
 import Link from 'src/components/link'
-import globe from 'src/assets/icons/general/globe.svg'
+import languageIcon from 'src/assets/icons/general/language.svg'
 import { WHITE, BLACK } from 'src/constants/colors'
 
 class LocalesMenu extends React.Component {
@@ -77,7 +77,17 @@ class LocalesMenu extends React.Component {
 					}
 					.list .option {
 						list-style: none;
+						padding: 0 0.25rem;
 						border-bottom: solid 1px rgba(0,0,0,0.1);
+					}
+					.list .option:not(.current) {
+						cursor: pointer;
+					}
+					.list .option:not(.current):hover,
+					.list .option:not(.current):focus {
+						outline: none;
+						background-color: rgba(0,0,0, 0.1);
+						border-radius: 0.2rem;
 					}
 					.list .option:last-child {
 						border-bottom: none;
@@ -109,31 +119,9 @@ class LocalesMenu extends React.Component {
 						top: 0.15rem;
 						left: -0.4rem;
 					}
-					/*.list:before {
-						content: '';
-						position: absolute;
-						top: 0.41rem;
-						right: -0.7rem;
-						width: 0;
-						height: 0;
-						border-left: 0.7rem solid ${tinycolor(BLACK).toRgbString()};
-						border-top: 0.7rem solid transparent;
-						border-bottom: 0.7rem solid transparent;
-					}
-					.list:after {
-						content: '';
-						position: absolute;
-						top: 0.6rem;
-						right: -0.5rem;
-						width: 0;
-						height: 0;
-						border-left: 0.5rem solid ${tinycolor(WHITE).toRgbString()};
-						border-top: 0.5rem solid transparent;
-						border-bottom: 0.5rem solid transparent;
-					}*/
 				`}</style>
 				<IconButton
-					icon={globe}
+					icon={languageIcon}
 					aria-haspopup='listbox'
 					aria-expanded={open}
 					onClick={openList}>

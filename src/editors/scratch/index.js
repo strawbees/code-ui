@@ -4,10 +4,10 @@ import tinycolor from 'tinycolor2'
 import withScript from 'src/hoc/withScript'
 import Spinner from 'src/components/spinner'
 import debounce from 'src/utils/debounce'
+import { WHITE } from 'src/constants/colors'
 import toolboxToXmlString from './utils/toolboxToXmlString'
 import blocks from './blocks/index'
 import toolbox from './toolbox'
-import { WHITE } from 'src/constants/colors'
 
 class ScratchEditor extends React.Component {
 	constructor(props) {
@@ -63,7 +63,7 @@ class ScratchEditor extends React.Component {
 			zoom    : {
 				controls   : true,
 				wheel      : true,
-				startScale : 0.8
+				startScale : 0.66
 			},
 			trashcan : true,
 			colours  : {
