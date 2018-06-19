@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import tinycolor from 'tinycolor2'
 import S from 'src/containers/sManager'
 import MirrorEditorContainer from 'src/containers/mirrorEditorContainer'
+import { WHITE } from 'src/constants/colors'
 
 const TextEditor = () =>
 	<div className='root'>
@@ -15,7 +17,7 @@ const TextEditor = () =>
 				border-radius: 1rem;
 				overflow: hidden;
 			}
-			@media (max-width : 500px) {
+			@media (max-width: 500px) {
 				.editor {
 					width: 100%;
 				}
@@ -43,7 +45,7 @@ const VisualToTextEditor = ({
 				overflow: hidden;
 			}
 			.button {
-				background-color: white;
+				background-color: ${tinycolor(WHITE).toRgbString()};
 				position: absolute;
 				top: 0;
 				right: 0;

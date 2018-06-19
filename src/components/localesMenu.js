@@ -1,14 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
-import Button from 'src/components/button'
-import SvgIcon from 'src/components/svgIcon'
+import IconButton from 'src/components/iconButton'
 import Link from 'src/components/link'
 import globe from 'src/assets/icons/general/globe.svg'
-import {
-	GRAY,
-	BLACK
-} from 'src/constants/colors'
+import { WHITE, BLACK } from 'src/constants/colors'
 
 class LocalesMenu extends React.Component {
 	state = {
@@ -46,30 +42,30 @@ class LocalesMenu extends React.Component {
 						align-items: center;
 						position: relative;
 					}
-					.root :global(>.button) {
-						padding: 0.1rem;
-					}
-					.root :global(>.button .svgIcon) {
-						width: 1.75rem;
-						height: 1.75rem;
-					}
 					.list {
 						display: flex;
 						flex-direction: column;
 						position: absolute;
-						top: 2.25rem;
-						right: -0.25rem;;
-						z-index: 3;
+						top: 0rem;
+						right: 2.5rem;
+						z-index: 1;
 						padding: 0;
 						margin: 0;
-						background-color: white;
+						background-color: ${tinycolor(WHITE).toRgbString()};
 						padding: 0.5rem;
 						border-radius: 0.5rem;
 						opacity: 0;
 						transform: scale3d(0,0,1);
-						transform-origin: top right;
-						width: 8rem;
-						border: solid 0.1rem ${tinycolor(GRAY).toRgbString()};
+						transform-origin: 100% 1.5rem;
+						min-width: 6rem;
+						border: solid 0.1rem ${tinycolor(BLACK).toRgbString()};
+					}
+					.list ul {
+						padding: 0;
+						margin: 0;
+					}
+					.list ul li {
+						list-style: none;
 					}
 
 					.list:focus,
@@ -92,59 +88,83 @@ class LocalesMenu extends React.Component {
 					.list .option :global(a) {
 						text-decoration: none;
 					}
-					.list:before {
+					.list .arrow {
+						position: absolute;
+						right: -1rem;
+						width: 1rem;
+						height: 1rem;
+						overflow: hidden;
+						box-sizing: border-box;
+					}
+					.list .arrow:before {
+						position: absolute;
+						content: '';
+						background-color: ${tinycolor(WHITE).toRgbString()};
+						border: solid 0.1rem ${tinycolor(BLACK).toRgbString()};
+						width: 0.7071rem;
+						height: 0.7071rem;
+						box-sizing: border-box;
+						display: block;
+						transform: rotateZ(45deg);
+						top: 0.15rem;
+						left: -0.4rem;
+					}
+					/*.list:before {
 						content: '';
 						position: absolute;
-						right: 0.4rem;
-						top: -0.7rem;
+						top: 0.41rem;
+						right: -0.7rem;
 						width: 0;
 						height: 0;
-						border-bottom: 0.7rem solid ${tinycolor(GRAY).toRgbString()};
-						border-left: 0.7rem solid transparent;
-						border-right: 0.7rem solid transparent;
+						border-left: 0.7rem solid ${tinycolor(BLACK).toRgbString()};
+						border-top: 0.7rem solid transparent;
+						border-bottom: 0.7rem solid transparent;
 					}
 					.list:after {
 						content: '';
 						position: absolute;
-						right: 0.6rem;
-						top: -0.5rem;
+						top: 0.6rem;
+						right: -0.5rem;
 						width: 0;
 						height: 0;
-						border-bottom: 0.5rem solid white;
-						border-left: 0.5rem solid transparent;
-						border-right: 0.5rem solid transparent;
-					}
+						border-left: 0.5rem solid ${tinycolor(WHITE).toRgbString()};
+						border-top: 0.5rem solid transparent;
+						border-bottom: 0.5rem solid transparent;
+					}*/
 				`}</style>
-				<Button
+				<IconButton
+					icon={globe}
 					aria-haspopup='listbox'
 					aria-expanded={open}
 					onClick={openList}>
-					<SvgIcon icon={globe}/>
-				</Button>
-				<ul className='list'
+				</IconButton>
+				<div className='list'
 					role='listbox'
 					tabIndex='0'
 					ref={listRef}>
-					{current &&
-						<li className='option current'
-							aria-selected='true'
-							role='option'
-							onClick={blurActiveElement}>
-							{current.name}
-						</li>
-					}
-					{alternatives.map(({ name, url }, key) =>
-						<li key={key}
-							className='option'
-							role='option'
-							onClick={blurActiveElement}>
-							<Link
-								to={url}>
-								{name}
-							</Link>
-						</li>
-					)}
-				</ul>
+					<div className='arrow'></div>
+					<ul>
+						{current &&
+							<li className='option current'
+								aria-selected='true'
+								role='option'
+								onClick={blurActiveElement}>
+								{current.name}
+							</li>
+						}
+						{alternatives.map(({ name, url }, key) =>
+							<li key={key}
+								className='option'
+								role='option'
+								onClick={blurActiveElement}>
+								<Link
+									to={url}>
+									{name}
+								</Link>
+							</li>
+						)}
+					</ul>
+				</div>
 			</div>
 		)
 	}

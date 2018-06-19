@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types'
+import tinycolor from 'tinycolor2'
 import SvgIcon from 'src/components/svgIcon'
+import { WHITE } from 'src/constants/colors'
 
 const NodeTypeName = ({
 	icon,
@@ -11,7 +13,7 @@ const NodeTypeName = ({
 				display: flex;
 				flex-direction: row;
 				align-items: center;
-				background-color: white;
+				background-color: ${tinycolor(WHITE).toRgbString()};
 				border-radius: 2rem;
 				padding: 0 0.6rem 0 0.4rem;
 				height: 1.25rem;

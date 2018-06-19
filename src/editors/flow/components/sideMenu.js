@@ -18,7 +18,7 @@ const SideMenu = ({
 				justify-items: center;
 				background-color: ${tinycolor(GRAY).lighten(35).toRgbString()};
 				box-sizing: border-box;
-				border-right: solid 0.4rem ${tinycolor(GRAY).lighten(20).toRgbString()};;
+				border-right: solid 0.4rem ${tinycolor(GRAY).lighten(20).toRgbString()};
 				min-height: 0;
 				min-width: 0;
 				user-select: none;

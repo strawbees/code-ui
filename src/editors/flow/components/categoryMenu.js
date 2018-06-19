@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import tinycolor from 'tinycolor2'
 import SvgIcon from 'src/components/svgIcon'
 import generalIcons from 'src/editors/flow/assets/icons/general'
 import NodeMiniDraggableContainer from 'src/editors/flow/containers/nodeMiniDraggableContainer'
-
+import { WHITE } from 'src/constants/colors'
 
 const CategoryMenu = ({
 	name,
@@ -29,8 +30,8 @@ const CategoryMenu = ({
 				font-size: 0.7rem;
 				letter-spacing: 0.05rem;
 				text-transform: uppercase;
-				color: white;
-				fill: white;
+				color: ${tinycolor(WHITE).toRgbString()};
+				fill: ${tinycolor(WHITE).toRgbString()};
 				background-color: ${color};
 				width: 100%;
 				height: 2rem;

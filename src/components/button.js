@@ -28,17 +28,15 @@ const Button = ({
 				cursor: pointer;
 				color: ${tinycolor(BLACK).toRgbString()};
 				background-color: ${tinycolor(WHITE).toRgbString()};
-				transition: transform 0.1s,background-color 0.1s;
+				transition: background-color 0.1s;
 			}
 			.root:not(.disabled):hover,
 			.root:focus {
 				outline: none;
-				transform: scale3d(1.1,1.1,1.1);
-				background-color: ${tinycolor(YELLOW).lighten(30).toRgbString()};
+				background-color: ${tinycolor(YELLOW).toRgbString()};
 			}
 			.root:active {
 				transition: none;
-				transform: scale3d(1,1,1);
 				background-color: ${tinycolor(YELLOW).toRgbString()};
 			}
 			.root.disabled {

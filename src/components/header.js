@@ -21,10 +21,14 @@ const Header = ({
 				background-color: ${tinycolor(BLUE).setAlpha(0.5).toRgbString()};
 				position: relative;
 				width: 100%;
-				padding: 0 0.5rem;
+				padding: 0 1rem;
 			}
 			.root .editor {
 				flex: 1;
+				height: 100%;
+			}
+			.root .editor :global(>*){
+				height: 100%;
 			}
 		`}</style>
 

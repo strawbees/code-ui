@@ -163,6 +163,9 @@ class AppContainer extends React.Component {
 						overscroll-behavior: none;
 						touch-action: none;
 						-webkit-font-smoothing: antialiased;
+						-moz-osx-font-smoothing: grayscale;
+						font-smoothing: antialiased;
+						font-weight: 400;
 					}
 					:global(*){
 						box-sizing: border-box;

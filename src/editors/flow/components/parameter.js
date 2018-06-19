@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types'
+import tinycolor from 'tinycolor2'
 import ParameterHandleContainer from 'src/editors/flow/containers/parameterHandleContainer'
 import AddItemButton from 'src/editors/flow/components/addItemButton'
 import RemoveItemButton from 'src/editors/flow/components/removeItemButton'
+import { WHITE } from 'src/constants/colors'
 
 const Parameter = ({
 	id,
@@ -26,7 +28,7 @@ const Parameter = ({
 				margin-left: 0.5rem;
 			}
 			.name {
-				color: white;
+				color: ${tinycolor(WHITE).toRgbString()};
 				font-size: 0.8rem;
 				-webkit-font-smoothing: subpixel-antialiased;
 			}
@@ -49,7 +51,7 @@ const Parameter = ({
 				margin-left: 0.25rem;
 			}
 			.item-index {
-				color: white;
+				color: ${tinycolor(WHITE).toRgbString()};
 				font-size: 0.7rem;
 				margin-left: 0.25rem;
 				width: 0.6rem;

@@ -5,8 +5,7 @@ import {
 	GRAY,
 	GREEN,
 	PINK,
-	YELLOW,
-	BLUE
+	WHITE
 } from 'src/constants/colors'
 
 
@@ -24,7 +23,7 @@ const Toggle = ({
 				flex-direction: row;
 				align-items: center;
 				justify-content: center;
-				background-color: white;
+				background-color: ${tinycolor(WHITE).toRgbString()};
 				border-radius: 2rem;
 				padding: 0.2rem 0.5rem;
 			}
