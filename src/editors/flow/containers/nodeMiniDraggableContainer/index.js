@@ -94,8 +94,8 @@ class NodeMiniDraggableContainer extends React.Component {
 						opacity: 1;
 						position: fixed;
 						cursor: grabbing;
-						width: 10rem;
-						z-index: 10;
+						width: 9.5rem;
+						z-index: 1;
 					}
 					@media (max-width: 600px) {
 						.drag.drag-start,

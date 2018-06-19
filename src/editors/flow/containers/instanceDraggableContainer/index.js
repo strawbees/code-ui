@@ -42,6 +42,11 @@ class InstanceDraggableContainer extends React.Component {
 		if (y < 16) {
 			y = 16
 		}
+		if (this.lastDragX === x && this.lastDragY === y) {
+			return
+		}
+		this.lastDragX = x
+		this.lastDragY = y
 		updateInstancePosition({ id, x, y })
 	}
 	onDragStart = (e, { x, y }) => {
@@ -95,6 +100,9 @@ class InstanceDraggableContainer extends React.Component {
 		}
 		updateInstancePosition({ id, x, y })
 	}
+	cancelEvent = (e) => {
+		e.preventDefault()
+	}
 	onCloseClick = () => {
 		const {
 			id,
@@ -111,6 +119,7 @@ class InstanceDraggableContainer extends React.Component {
 			onDragMove,
 			onDragStop,
 			onKeyUp,
+			cancelEvent,
 			onCloseClick,
 		} = this
 		const { style } = this.state
@@ -132,6 +141,8 @@ class InstanceDraggableContainer extends React.Component {
 					style={style}
 					tabIndex='0'
 					onKeyUp={onKeyUp}
+					onTouchStart={cancelEvent}
+					onTouchMove={cancelEvent}
 					ref={this.ref}>
 					<style jsx>{`
 						.root {

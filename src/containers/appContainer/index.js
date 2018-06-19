@@ -39,7 +39,6 @@ class AppContainer extends React.Component {
 			mapStateToProps()(store.getState(), {}),
 			mapDispatchToProps(store.dispatch)
 		)
-
 		setQuery(query)
 		if (!routesLoaded) {
 			setRoutes(await loadStaticData('routes.json'))
@@ -164,6 +163,9 @@ class AppContainer extends React.Component {
 						overscroll-behavior: none;
 						touch-action: none;
 						-webkit-font-smoothing: antialiased;
+						-moz-osx-font-smoothing: grayscale;
+						font-smoothing: antialiased;
+						font-weight: 400;
 					}
 					:global(*){
 						box-sizing: border-box;
@@ -175,18 +177,31 @@ class AppContainer extends React.Component {
 					:global(body),
 					.root {
 						position: fixed;
-						height: 100vh;
+						height: 100%;
 						width: 100vw;
 						overflow: hidden;
 					}
 					.root {
-						display: grid;
-						grid-template-columns: 1fr;
-						grid-template-rows: 2rem auto 2rem;
+						display: flex;
+						flex-direction: column;
+					}
+					.root :global(> *:nth-child(1)) {
+						position: relative;
+						z-index: 2;
+						height: 3rem;
+					}
+					.root :global(> *:nth-child(2)) {
+						position: relative;
+						z-index: 1;
+						height: calc(100% - 5rem);
+					}
+					.root :global(> *:nth-child(3)) {
+						position: relative;
+						z-index: 2;
+						height: 2rem;
 					}
 					.root :global(> .page) {
 						overflow-y: scroll;
-						-webkit-overflow-scrolling: touch;
 					}
 					:global(button) {
 						border: none;
@@ -209,9 +224,6 @@ class AppContainer extends React.Component {
 						padding: 0;
 					}
 				`}</style>
-				<div
-					id="remotestorage-widget-container"
-					style={{ display : 'none' }}/>
 				<HeadContainer />
 				<HeaderContainer />
 				<PageContainer />

@@ -9,6 +9,10 @@ class AceEditor extends React.Component {
 	}
 	render() {
 		const { isMounted } = this.state
+		const {
+			fontSize,
+			...otherProps
+		} = this.props
 		// Ace does not support SSR, so it can only be displayed after mounting
 		// on client side.
 		if (isMounted && typeof window !== 'undefined') {
@@ -23,15 +27,19 @@ class AceEditor extends React.Component {
 					theme='quirkbot'
 					height='100%'
 					width='100%'
-					fontSize={14}
+					fontSize={fontSize}
 					showPrintMargin={false}
 					editorProps={{ $blockScrolling : true }}
-					{...this.props}
+					{...otherProps}
 				/>
 			)
 		}
 		return null
 	}
+}
+
+AceEditor.defaultProps = {
+	fontSize : 14
 }
 
 export default AceEditor

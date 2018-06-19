@@ -6,6 +6,16 @@ import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
 class SourceSyncManager extends React.Component {
+	componentDidMount() {
+		const {
+			source,
+			setSource,
+			refEditorSource,
+		} = this.props
+		if (refEditorSource !== source) {
+			setSource(refEditorSource)
+		}
+	}
 	componentDidUpdate({
 		source : prevSource,
 		refEditorSource : prevRefEditorSource,

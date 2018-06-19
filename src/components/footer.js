@@ -10,11 +10,20 @@ const Footer = () =>
 				display: flex;
 				flex-direction: row;
 				background-color: ${tinycolor(PINK).setAlpha(0.5).toRgbString()};
+				position: relative;
+			}
+			.version {
+				position: absolute;
+				bottom: 2px;
+				right: 2px;
+				font-family: Code;
+				font-size: 6px;
+				color: rgba(255,255,255,0.6);
 			}
 		`}</style>
 		<BoardsStatusContainer />
 		<div className='version'>
-			v{Package.version}
+			{Package.version}
 		</div>
 	</div>
 

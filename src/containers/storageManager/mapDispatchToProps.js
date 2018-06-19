@@ -1,4 +1,14 @@
 import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
-import * as storageActions from 'src/actions/storage'
+import {
+	setStatus,
+	setCredentials,
+	setTempProgram,
+	setPrograms,
+} from 'src/actions/storage'
 
-export default autobindDispatchToActionCreators(storageActions)
+export default autobindDispatchToActionCreators({
+	setStatus,
+	setCredentials,
+	setTempProgram,
+	setPrograms
+})

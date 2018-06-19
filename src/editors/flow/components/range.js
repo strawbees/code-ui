@@ -80,6 +80,9 @@ class Range extends React.Component {
 					input[type=range]:focus {
 						outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
 					}
+					input[type='range']::-moz-focus-outer {
+						border: 0;
+					}
 					input[type=range]::-webkit-slider-thumb {
 						-webkit-appearance: none;
 						border: none;
@@ -89,6 +92,7 @@ class Range extends React.Component {
 						background: ${tinycolor(color).toRgbString()};
 						cursor: pointer;
 						margin-top: 0;
+						box-sizing: border-box;
 					}
 					input[type=range]::-moz-range-thumb {
 						border: none;
@@ -98,6 +102,7 @@ class Range extends React.Component {
 						background: ${tinycolor(color).toRgbString()};
 						cursor: pointer;
 						margin-top: 0;
+						box-sizing: border-box;
 					}
 					input[type=range]::-ms-thumb {
 						border: none;
@@ -107,8 +112,15 @@ class Range extends React.Component {
 						background: ${tinycolor(color).toRgbString()};
 						cursor: pointer;
 						margin-top: 0;
+						box-sizing: border-box;
 					}
-					input[type=range]:focus::-webkit-slider-thumb{
+					input[type=range]:focus::-webkit-slider-thumb {
+						border: solid 0.2rem ${tinycolor(color).darken(15).toRgbString()};
+					}
+					input[type=range]:focus::-moz-range-thumb {
+						border: solid 0.2rem ${tinycolor(color).darken(15).toRgbString()};
+					}
+					input[type=range]:focus::-ms-thumb {
 						border: solid 0.2rem ${tinycolor(color).darken(15).toRgbString()};
 					}
 

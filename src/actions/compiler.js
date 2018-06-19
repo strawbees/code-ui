@@ -86,9 +86,23 @@ export const compileCode = (code) => async (dispatch, getState) => {
 	}
 	dispatch(addCompilerCode(code))
 	try {
+		// Enter the compilation queue and get an id
 		const id = await tryToExecute(() => enterCompilationQueue(code), 5, 500)
 		await delay(2000)
-		const hex = await tryToExecute(() => verifyCompilation(id), 5, 2000)
+		// Start verifying the compilation, try several times
+		const hex = await tryToExecute(async (earlyExit) => {
+			try {
+				const result = await verifyCompilation(id)
+				return result
+			} catch (error) {
+				// If there is a proper compilaton error, we can call the early
+				// exit, cause there's no point in waiting any further
+				if (error.message === 'COMPILATION_ERROR') {
+					earlyExit()
+				}
+				throw error
+			}
+		}, 5, 2000)
 		dispatch(setCompilerHex({ code, hex }))
 	} catch ({ message : error }) {
 		dispatch(setCompilerCompilationError({ code, error }))

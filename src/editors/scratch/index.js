@@ -1,11 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import tinycolor from 'tinycolor2'
 import withScript from 'src/hoc/withScript'
 import Spinner from 'src/components/spinner'
 import debounce from 'src/utils/debounce'
 import toolboxToXmlString from './utils/toolboxToXmlString'
 import blocks from './blocks/index'
 import toolbox from './toolbox'
+import { WHITE } from 'src/constants/colors'
 
 class ScratchEditor extends React.Component {
 	constructor(props) {
@@ -122,7 +124,7 @@ class ScratchEditor extends React.Component {
 						position: absolute;
 						width: 100%;
 						height: 100%;
-						background-color: white;
+						background-color: ${tinycolor(WHITE).toRgbString()};
 					}
 					.workspace :global(.blocklyFlyout) {
 						border: solid 1px rgba(0,0,0,0.1);

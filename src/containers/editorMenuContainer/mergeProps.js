@@ -1,5 +1,6 @@
 export default (stateProps, dispatchProps, ownProps) => {
 	const {
+		id,
 		generatedCode,
 		...otherStateProps
 	} = stateProps
@@ -8,6 +9,7 @@ export default (stateProps, dispatchProps, ownProps) => {
 		saveCurrentEditorProgram,
 		resetCurrentEditorProgram,
 		modalUploadCode,
+		modalDuplicateProgramById,
 		...otherDispatchProps
 	} = dispatchProps
 	return {
@@ -18,6 +20,7 @@ export default (stateProps, dispatchProps, ownProps) => {
 		onSavePress       : saveCurrentEditorProgram,
 		onNewPress        : resetCurrentEditorProgram,
 		initializeProgram : resetCurrentEditorProgram,
-		onUploadPress     : () => modalUploadCode(generatedCode)
+		onUploadPress     : () => modalUploadCode(generatedCode),
+		onDuplicatePress  : () => modalDuplicateProgramById(id)
 	}
 }

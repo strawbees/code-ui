@@ -3,6 +3,7 @@ import tinycolor from 'tinycolor2'
 import ParameterDisplayValue from 'src/editors/flow/components/parameterDisplayValue'
 import {
 	GRAY,
+	WHITE,
 	YELLOW,
 } from 'src/constants/colors'
 
@@ -22,10 +23,10 @@ const ParameterDisplayValueList = ({
 			.items {
 				display: flex;
 				flex-direction: column;
-				background-color: white;
+				background-color: ${tinycolor(WHITE).toRgbString()};
 			}
 			.root button {
-				background-color: white;
+				background-color: ${tinycolor(WHITE).toRgbString()};
 				height: 2rem;
 			}
 			.root button .wrapper{

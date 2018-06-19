@@ -48,10 +48,10 @@ const blocksIds = [
 	'undefined'
 ]
 
-/*const setLocale = locale => {}
+/* const setLocale = locale => {}
 const load = xml => {}
 const save = () => xml
-const getCode = () => {}*/
+const getCode = () => {} */
 const init = async () => {
 	// Load and register all blocks
 	const [definitions, generators] = await Promise.all([
@@ -94,7 +94,7 @@ const init = async () => {
 			scrollbar: 'rgba(0, 0, 0, 0.05)',
 		}
 	})
-	/*let callback = null
+	/* let callback = null
 	let mutationRoot = null
 	const proceduresWorkspaceContainer = document.getElementById('proceduresWorkspace')
 	const proceduresWorkspace = Blockly.inject(proceduresWorkspaceContainer, {
@@ -169,14 +169,7 @@ const init = async () => {
 	  mainWorkspace.clear();
 	  proceduresWorkspace.refreshToolboxSelection_()
 	  proceduresWorkspaceContainer.style.visibility = 'hidden';
-	}
-
-
-
-
-
-
-*/
+	} */
 
 	Blockly.Xml.domToWorkspace(
 		Blockly.Xml.textToDom(`<xml><block type="event_power_on" deletable="false" x="50" y="50"></xml>`),

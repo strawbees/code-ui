@@ -36,16 +36,16 @@ const Modal = ({
 				min-height: calc(200px - 2rem) !important;
 				border: none !important;
 			}
-			@media (max-width : 400px) {
+			@media (max-width: 400px) {
 				:global(.ReactModal__Content){
 					min-width: 0 !important;
-					width: calc(100vw - 2rem);
+					width: calc(100vw - 1rem);
 				}
 			}
 			@media (max-height : 200px) {
 				:global(.ReactModal__Content){
 					min-height: 0 !important;
-					height: calc(100vh - 2rem);
+					height: calc(100vh - 1rem);
 				}
 			}
 			.close {

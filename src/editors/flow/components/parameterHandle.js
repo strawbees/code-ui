@@ -7,6 +7,7 @@ import ParameterControlContainer from 'src/editors/flow/containers/parameterCont
 import {
 	GRAY,
 	YELLOW,
+	WHITE,
 } from 'src/constants/colors'
 
 class ParameterHandle extends React.Component {
@@ -179,7 +180,7 @@ class ParameterHandle extends React.Component {
 						cursor: pointer;
 					}
 					.value :global(> .parameterDisplayValue) {
-						background-color: white;
+						background-color: ${tinycolor(WHITE).toRgbString()};
 						padding: 0 0.5rem 0 0.75rem;
 						border-top-right-radius: 1rem;
 						border-bottom-right-radius: 1rem;
@@ -208,16 +209,6 @@ class ParameterHandle extends React.Component {
 						visibility: visible;
 						opacity: 1;
 						transform: scale3d(1,1,1);
-					}
-					@keyframes slide {
-						from {
-							opacity: 0;
-							transform: scale3d(0,0,1);
-						}
-						to {
-							opacity: 1;
-							transform: scale3d(1,1,1);
-						}
 					}
 					.root.connected:not(.disconnecting) .value .circle {
 						background-color: ${tinycolor(YELLOW).toRgbString()};

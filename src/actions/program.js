@@ -127,6 +127,13 @@ export const removeProgramByIdAndClearEditor = (id) => async (dispatch, getState
 		dispatch(resetEditorProgramByType(type))
 	}
 }
+export const createNewProgramByTypeAndGoToEditor = (type) => (dispatch, getState) => {
+	dispatch(resetEditorProgramByType(type))
+	const state = getState()
+	const editorUrl = makeStringSelector(`${type}.url`)(state)
+	const { href, as } = resolveLinkUrl(editorUrl)
+	Router.push(href, as)
+}
 export const openProgramByIdAndGoToEditor = (id) => async (dispatch) => {
 	const { type, name, source } = await getProgram(id)
 	const program = {

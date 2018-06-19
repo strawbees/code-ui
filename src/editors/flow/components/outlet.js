@@ -4,7 +4,8 @@ import tinycolor from 'tinycolor2'
 import Draggable from 'react-draggable'
 import {
 	GRAY,
-	YELLOW
+	YELLOW,
+	WHITE
 } from 'src/constants/colors'
 
 class Outlet extends React.Component {
@@ -130,13 +131,13 @@ class Outlet extends React.Component {
 						align-items: center;
 					}
 					.name {
-						color: white;
+						color: ${tinycolor(WHITE).toRgbString()};
 						font-size: 0.8rem;
 						margin-right: 0.25rem;
 						-webkit-font-smoothing: subpixel-antialiased;
 					}
 					.outletHandle {
-						background-color: white;
+						background-color: ${tinycolor(WHITE).toRgbString()};
 						border-top-left-radius: 1.25rem;
 						border-bottom-left-radius: 1.25rem;
 						height: 1.25rem;

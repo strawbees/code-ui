@@ -41,7 +41,7 @@ const ParameterControl = ({
 				height: 0;
 				border-top: 0.5rem solid transparent;
 				border-bottom: 0.5rem solid transparent;
-				border-right: 0.6rem solid ${tinycolor(color).toRgbString()};;
+				border-right: 0.6rem solid ${tinycolor(color).toRgbString()};
 			}
 		`}</style>
 		<DelayedInput

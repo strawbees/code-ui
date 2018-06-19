@@ -3,12 +3,14 @@ import {
 	updateCurrentEditorProgramName,
 	resetCurrentEditorProgram,
 	saveCurrentEditorProgram,
-	modalUploadCode
+	modalUploadCode,
+	modalDuplicateProgramById,
 } from 'src/actions/program'
 
 export default autobindDispatchToActionCreators({
 	updateCurrentEditorProgramName,
 	saveCurrentEditorProgram,
 	resetCurrentEditorProgram,
-	modalUploadCode
+	modalUploadCode,
+	modalDuplicateProgramById,
 })
