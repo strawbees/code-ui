@@ -3,6 +3,7 @@ import tinycolor from 'tinycolor2'
 import { BLUE } from 'src/constants/colors'
 import Link from 'src/components/link'
 import SvgIcon from 'src/components/svgIcon'
+import UserHeaderAvatarContainer from 'src/containers/userHeaderAvatarContainer'
 import LocalesMenuContainer from 'src/containers/localesMenuContainer'
 import EditorMenuContainer from 'src/containers/editorMenuContainer'
 import logoIcon from 'src/assets/icons/logos/strawbeesCode.svg'
@@ -11,9 +12,6 @@ import logoCompactIcon from 'src/assets/icons/logos/strawbeesCodeCompact.svg'
 const Header = ({
 	editorMenu,
 	homeUrl,
-	flowUrl,
-	scratchUrl,
-	textUrl
 }) =>
 	<div className='root header'>
 		<style jsx>{`
@@ -24,7 +22,7 @@ const Header = ({
 				background-color: ${tinycolor(BLUE).setAlpha(0.5).toRgbString()};
 				position: relative;
 				width: 100%;
-				padding: 0 1rem;
+				padding: 0 0.5rem 0 1rem;
 			}
 			.root .editor {
 				flex: 1;
@@ -44,7 +42,10 @@ const Header = ({
 			}
 			.root .logo :global(>.svgIcon),
 			.root .logo-compact :global(>.svgIcon) {
-				margin-right: 1rem;
+				margin-right: 0.5rem;
+			}
+			.root :global(>.userHeaderAvatar) {
+				margin-right: 0.5rem;
 			}
 			@media (max-width: 600px) {
 				.root {
@@ -73,15 +74,13 @@ const Header = ({
 				<EditorMenuContainer />
 			}
 		</div>
+		<UserHeaderAvatarContainer />
 		<LocalesMenuContainer />
 	</div>
 
 Header.propTypes = {
 	editorMenu : PropTypes.bool,
 	homeUrl    : PropTypes.string,
-	flowUrl    : PropTypes.string,
-	scratchUrl : PropTypes.string,
-	textUrl    : PropTypes.string,
 }
 
 export default Header

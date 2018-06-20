@@ -8,7 +8,6 @@ import {
 	WHITE
 } from 'src/constants/colors'
 
-
 const Toggle = ({
 	on,
 	onLabel,
@@ -67,12 +66,12 @@ const Toggle = ({
 				height: 1rem;
 				border-radius: 1rem;
 				box-sizing: border-box;
-				background-color: ${tinycolor(GREEN).setAlpha(0.7).toRgbString()};
+				background-color: ${tinycolor(GREEN).toRgbString()};
 				transition: left 0.2s, background-color 0.2s;
 			}
 			.root.on .switch .pin {
 				left: calc(100% - 1rem);
-				background-color: ${tinycolor(PINK).setAlpha(0.7).toRgbString()};
+				background-color: ${tinycolor(PINK).toRgbString()};
 			}
 			.label {
 				font-size: 0.7rem;

@@ -23,10 +23,10 @@ const UploadArea = ({
 			</div>
 		}
 		{(!hex && compilerError) &&
-			<div>{compilerError}</div>
+			<div>compile error:{compilerError}</div>
 		}
 		{uploaderError &&
-			<div>{uploaderError}</div>
+			<div>upload error:{uploaderError}</div>
 		}
 		<div>
 			{boardIds.length === 0 &&

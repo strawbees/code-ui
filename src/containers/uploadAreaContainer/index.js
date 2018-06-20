@@ -13,7 +13,8 @@ class UploadAreaContainer extends React.Component {
 		const {
 			hex,
 			boardIds,
-			uploadHex
+			uploadHex,
+			clearUploadError,
 		} = this.props
 		if (
 			hex &&
@@ -22,6 +23,8 @@ class UploadAreaContainer extends React.Component {
 		) {
 			uploadHex(boardIds[0], hex)
 		}
+		// Always clean upload errors on mount
+		clearUploadError()
 	}
 	// In case a hex get's compiled (and it wasn't before )and there's only
 	// one board connected, upload straight away
@@ -49,9 +52,11 @@ class UploadAreaContainer extends React.Component {
 
 
 UploadAreaContainer.propTypes = {
-	code     : PropTypes.string,
-	boardIds : PropTypes.arrayOf(PropTypes.string),
-	hex      : PropTypes.string,
+	code             : PropTypes.string,
+	boardIds         : PropTypes.arrayOf(PropTypes.string),
+	hex              : PropTypes.string,
+	uploadHex        : PropTypes.func,
+	clearUploadError : PropTypes.func,
 }
 export default connect(
 	mapStateToProps,

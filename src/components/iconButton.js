@@ -6,9 +6,10 @@ import S from 'src/containers/sManager'
 const IconButtonContent = ({
 	icon,
 	labelKey,
+	label,
 	hideLabelOnMediaQuery,
 }) =>
-	<div className={`root ${hideLabelOnMediaQuery ? 'hide-label' : ''} ${icon ? 'has-icon' : ''} ${labelKey ? 'has-label' : ''}`}>
+	<div className={`root ${hideLabelOnMediaQuery ? 'hide-label' : ''} ${icon ? 'has-icon' : ''} ${(labelKey || label) ? 'has-label' : ''}`}>
 		<style jsx>{`
 			.root {
 				display: flex;
@@ -24,21 +25,26 @@ const IconButtonContent = ({
 				margin: -0.25rem 0.25rem -0.25rem -0.5rem;
 			}
 			.root:not(.has-label) :global(>.svgIcon) {
-				margin: -0.1rem -0.85rem;
+				margin: -0.1rem -0.85rem -0.1rem -0.84rem;
 			}
 			@media (${hideLabelOnMediaQuery}){
 				.root.hide-label .label {
 					display: none;
 				}
 				.root.hide-label.has-label :global(>.svgIcon) {
-					margin: -0.1rem -0.85rem;
+					margin: -0.1rem -0.85rem -0.1rem -0.84rem;
 				}
 			}
 		`}</style>
 		{icon &&
 			<SvgIcon icon={icon}/>
 		}
-		{labelKey &&
+		{label &&
+			<span className='label'>
+				{label}
+			</span>
+		}
+		{(labelKey && !label) &&
 			<span className='label'>
 				<S value={labelKey}/>
 			</span>
@@ -66,6 +72,7 @@ const IconButton = ({
 
 IconButton.propTypes = {
 	icon     : PropTypes.func,
+	label    : PropTypes.string,
 	labelKey : PropTypes.string,
 	disabled : PropTypes.bool,
 	onClick  : PropTypes.func,

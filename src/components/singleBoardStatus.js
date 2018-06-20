@@ -25,7 +25,7 @@ const SingleBoardStatus = ({
 				font-size: 0.8rem;
 				color: ${tinycolor(BLACK).toRgbString()};
 				background-color: ${tinycolor(WHITE).setAlpha(0.5).toRgbString()};
-				padding: 0 1rem 0 1.5rem;
+				padding: 0 0.5rem 0 1.25rem;
 				border-radius: 1rem;
 				margin-left: -1rem;
 			}

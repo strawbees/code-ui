@@ -69,9 +69,20 @@ const EditorMenu = ({
 				flex-direction: row;
 				align-items: center;
 			}
-			@media (max-width: 600px){
+			@media (max-width: 700px){
 				.buttons {
 					display: none;
+				}
+			}
+			@media (max-width: 500px){
+				.type {
+					display: none;
+				}
+			}
+			@media (max-width: 450px){
+				.name {
+					flex: 1;
+					width: 5rem;
 				}
 			}
 		`}</style>
@@ -120,6 +131,7 @@ const EditorMenu = ({
 			className='name'
 			type='text'
 			value={name}
+			size={0}
 			placeholder={placeholderName}
 			onChange={e => onNameChange(e.target.value)}
 		/>

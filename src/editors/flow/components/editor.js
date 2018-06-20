@@ -11,6 +11,7 @@ const Editor = () =>
 				position: relative;
 				overflow: hidden;
 				overscroll-behavior: none;
+				z-index: 1;
 			}
 			.root :global(> *:nth-child(1)) {
 				width: 12rem;

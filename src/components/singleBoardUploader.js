@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types'
+import tinycolor from 'tinycolor2'
 import Spinner from 'src/components/spinner'
 import S from 'src/containers/sManager'
+import SvgIcon from 'src/components/svgIcon'
+import boardIcon from 'src/assets/icons/boardStatus/notConnected.svg'
 
 const SingleBoardUpload = ({
 	onUploadPress,
@@ -18,17 +21,32 @@ const SingleBoardUpload = ({
 			.root {
 				display: flex;
 				flex-direction: row;
+				align-items: center;
 				border: solid 1px;
 			}
+			.board :global(.svgIcon) {
+				width: 5rem;
+				height: 5rem;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			.board .uuid {
+				font-family: Code;
+				font-size: 0.5rem;
+			}
 		`}</style>
-		<div className='uuid'>
-			{uuid}
+		<div className='board'>
+			<SvgIcon icon={boardIcon}/>
+			<div className='uuid'>
+				{uuid}
+			</div>
 		</div>
-		{bootloader &&
+		{/* bootloader &&
 			<div className='recovery-mode'>
 				<S value='ui.board.bootloader_mode_label'/>
 			</div>
-		}
+		*/}
 		{midi ?
 			// Board is midi compatible
 			hex ?
@@ -71,7 +89,7 @@ const SingleBoardUpload = ({
 			:
 			// Board is not midi compatible
 			<div>
-				<S value='ui.board.upload.no_hex'/>
+				<S value='ui.board.upload.not_midi'/>
 			</div>
 		}
 		{uploading &&

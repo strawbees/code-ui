@@ -7,10 +7,12 @@ import {
 	UPLOADER_START_UPLOAD,
 	UPLOADER_SET_ERROR,
 	UPLOADER_SET_SUCCESS,
+	UPLOADER_CLEAR_ERROR,
 } from 'src/constants/actionTypes'
 
 export const startUpload = generateAction(UPLOADER_START_UPLOAD)
 export const setUploadError = generateAction(UPLOADER_SET_ERROR)
+export const clearUploadError = generateAction(UPLOADER_CLEAR_ERROR)
 export const setUploadSuccess = generateAction(UPLOADER_SET_SUCCESS)
 
 export const uploadHex = (runtimeId, hex) => async (dispatch) => {

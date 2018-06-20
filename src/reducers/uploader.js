@@ -3,6 +3,7 @@ import {
 	UPLOADER_START_UPLOAD,
 	UPLOADER_SET_ERROR,
 	UPLOADER_SET_SUCCESS,
+	UPLOADER_CLEAR_ERROR,
 } from 'src/constants/actionTypes'
 import hashCode from 'src/utils/hashCode'
 
@@ -22,6 +23,8 @@ const current = (state = null, { type, payload }) => {
 const lastError = (state = null, { type, payload }) => {
 	switch (type) {
 		case UPLOADER_START_UPLOAD:
+		case UPLOADER_CLEAR_ERROR:
+		case UPLOADER_SET_SUCCESS:
 			return null
 		case UPLOADER_SET_ERROR:
 			return payload.error
