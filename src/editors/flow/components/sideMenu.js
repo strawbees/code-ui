@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import Toggle from 'src/components/toggle'
+import Toggle from 'src/editors/flow/components/toggle'
 import CategoryMenuContainer from 'src/editors/flow/containers/categoryMenuContainer'
 import tinycolor from 'tinycolor2'
 import { GRAY } from 'src/constants/colors'

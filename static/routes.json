@@ -6,49 +6,49 @@
 			"ref" : "home"
 		}
 	},
-	"/flow": {
+	"/flow/": {
 		"page": "/",
 		"query": {
 			"locale" : "en",
 			"ref" : "flow"
 		}
 	},
-	"/scratch": {
+	"/scratch/": {
 		"page": "/",
 		"query": {
 			"locale" : "en",
 			"ref" : "scratch"
 		}
 	},
-	"/text": {
+	"/text/": {
 		"page": "/",
 		"query": {
 			"locale" : "en",
 			"ref" : "text"
 		}
 	},
-	"/sv": {
+	"/sv/": {
 		"page": "/",
 		"query": {
 			"locale" : "sv",
 			"ref" : "home"
 		}
 	},
-	"/sv/flow": {
+	"/sv/flow/": {
 		"page": "/",
 		"query": {
 			"locale" : "sv",
 			"ref" : "flow"
 		}
 	},
-	"/sv/scratch": {
+	"/sv/scratch/": {
 		"page": "/",
 		"query": {
 			"locale" : "sv",
 			"ref" : "scratch"
 		}
 	},
-	"/sv/text": {
+	"/sv/text/": {
 		"page": "/",
 		"query": {
 			"locale" : "sv",

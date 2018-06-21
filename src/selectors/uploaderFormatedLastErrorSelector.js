@@ -1,23 +1,25 @@
 import { createSelector } from 'reselect'
-import uploaderEntryErrorSelector from 'src/selectors/uploaderEntryErrorSelector'
+import stateSelector from 'src/selectors/stateSelector'
+import uploaderLastErrorSelector from 'src/selectors/uploaderLastErrorSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 
 export default () => createSelector(
 	[
-		uploaderEntryErrorSelector(),
-		makeStringSelector('ui.upload.error.unhandled'),
+		stateSelector(),
+		uploaderLastErrorSelector(),
 	],
 	(
+		state,
 		error,
-		unhandledError,
 	) => {
 		if (!error) {
 			return null
 		}
 		switch (error) {
 			case 'UNHANDLED':
+				return makeStringSelector(`ui.board.upload.uploader.error.${error}`)(state)
 			default:
-				return unhandledError
+				return makeStringSelector('ui.board.upload.uploader.error.UNHANDLED')(state)
 		}
 	}
 )

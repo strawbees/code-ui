@@ -3,7 +3,8 @@ import SingleBoardStatus from 'src/components/singleBoardStatus'
 import SingleBoardStatusContainer from 'src/containers/singleBoardStatusContainer'
 
 const BoardsStatus = ({
-	boards
+	boards,
+	scale,
 }) =>
 	<div className='root boardsStatus'>
 		<style jsx>{`
@@ -14,6 +15,7 @@ const BoardsStatus = ({
 		`}</style>
 		{boards.length === 0 &&
 			<SingleBoardStatus
+				scale={scale}
 				status='notConnected'
 			/>
 		}
@@ -21,16 +23,18 @@ const BoardsStatus = ({
 			<SingleBoardStatusContainer
 				key={runtimeId}
 				runtimeId={runtimeId}
+				scale={scale}
 			/>
 		)}
 	</div>
 
 BoardsStatus.defaultProps = {
-	boards : []
+	boards : [],
 }
 
 BoardsStatus.propTypes = {
-	boards : PropTypes.arrayOf(PropTypes.string)
+	boards : PropTypes.arrayOf(PropTypes.string),
+	scale  : PropTypes.number,
 }
 
 export default BoardsStatus

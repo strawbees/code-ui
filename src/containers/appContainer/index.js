@@ -225,6 +225,45 @@ class AppContainer extends React.Component {
 						border: 0;
 						padding: 0;
 					}
+					/* Typogrphy */
+					:global(.global-type) {
+						vertical-align: baseline;
+						font-family: inherit;
+						font-weight: inherit;
+						font-style: inherit;
+						font-size: 100%;
+						outline: 0;
+						padding: 0;
+						margin: 0;
+						border: 0;
+					}
+					:global(.global-type p:first-child) {
+						margin-top: 0;
+					}
+					:global(.global-type p:last-child) {
+						margin-bottom: 0;
+					}
+					:global(.global-type-h1),
+					:global(.global-type-h2),
+					:global(.global-type-h3),
+					:global(.global-type-h4) {
+						font-weight: bold;
+						text-transform: uppercase;
+						line-height: 1;
+						margin-bottom: 1rem;
+					}
+					:global(.global-type-h1) {
+						font-size: 2.5rem;
+					}
+					:global(.global-type-h2) {
+						font-size: 2.0rem;
+					}
+					:global(.global-type-h3) {
+						font-size: 1.5rem;
+					}
+					:global(.global-type-h4) {
+						font-size: 1rem;
+					}
 				`}</style>
 				<HeadContainer />
 				<HeaderContainer />

@@ -72,7 +72,7 @@ class Workspace extends React.Component {
 		this.selfRef.current.scrollLeft = diff.x
 		this.selfRef.current.scrollTop = diff.y
 	}
-	onUp = (e) => {
+	onUp = () => {
 		this.startDragMove = null
 		window.removeEventListener('mousemove', this.onMove)
 		window.removeEventListener('mouseup', this.onUp)

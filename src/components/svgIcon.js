@@ -1,9 +1,9 @@
-const SvgIcon = ({ icon : Icon }) => {
+const SvgIcon = ({ icon : Icon, className = '' }) => {
 	if (!Icon) {
 		return null
 	}
 	return (
-		<div className='root svgIcon'>
+		<div className={`root svgIcon ${className}`}>
 			<style jsx>{`
 				.root {
 					display: flex;

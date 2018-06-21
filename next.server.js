@@ -1,5 +1,5 @@
 const { createServer } = require('http')
-const { parse } = require('url')
+const { parse, format } = require('url')
 const next = require('next')
 const routes = require('./static/routes')
 
@@ -13,6 +13,15 @@ const init = async () => {
 	createServer((req, res) => {
 		const parsedUrl = parse(req.url, true)
 		const { pathname } = parsedUrl
+		// Redirect to trailing slash version of the route
+		if (routes[`${pathname}/`]) {
+			res.writeHead(301, {
+				Location : req.url.replace(pathname, `${pathname}/`)
+			})
+			res.end()
+			return
+		}
+
 		if (routes[pathname]) {
 			app.render(
 				req,

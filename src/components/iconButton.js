@@ -57,11 +57,13 @@ const IconButton = ({
 	disabled,
 	hideLabelOnMediaQuery,
 	onClick = () => {},
+	className = '',
 	...otherProps
 }) =>
 	<Button
 		disabled={disabled}
 		onClick={onClick}
+		className={`${className} iconButton`}
 		{...otherProps}>
 		<IconButtonContent
 			icon={icon}
@@ -71,11 +73,12 @@ const IconButton = ({
 	</Button>
 
 IconButton.propTypes = {
-	icon     : PropTypes.func,
-	label    : PropTypes.string,
-	labelKey : PropTypes.string,
-	disabled : PropTypes.bool,
-	onClick  : PropTypes.func,
+	icon      : PropTypes.func,
+	label     : PropTypes.string,
+	labelKey  : PropTypes.string,
+	disabled  : PropTypes.bool,
+	onClick   : PropTypes.func,
+	className : PropTypes.string,
 
 	hideLabelOnMediaQuery : PropTypes.string,
 }

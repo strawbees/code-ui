@@ -3,8 +3,7 @@ import tinycolor from 'tinycolor2'
 import S from 'src/containers/sManager'
 import {
 	GRAY,
-	GREEN,
-	PINK,
+	RED,
 	WHITE
 } from 'src/constants/colors'
 
@@ -27,8 +26,8 @@ const Toggle = ({
 				padding: 0.2rem 0.5rem;
 			}
 			.switch {
-				width: 2.25rem;
-				height: 1rem;
+				width: 2rem;
+				height: 0.9rem;
 				position: relative;
 				display: flex;
 				flex-direction: row;
@@ -55,23 +54,27 @@ const Toggle = ({
 				margin: 0 0.4rem;
 				height: 0.4rem;
 				box-sizing: border-box;
-				background-color: ${tinycolor(GRAY).toRgbString()};
+				background-color: ${tinycolor(GRAY).setAlpha(0.5).toRgbString()};
 				border-radius: 1.5rem;
+				transition: background-color 0.2s;
+			}
+			.root.on .switch .track {
+				background-color: ${tinycolor(RED).setAlpha(0.5).toRgbString()};
 			}
 			.switch .pin {
 				position: absolute;
 				left: 0;
 				top: 0;
-				width: 1rem;
-				height: 1rem;
-				border-radius: 1rem;
+				width: 0.9rem;
+				height: 0.9rem;
+				border-radius: 0.9rem;
 				box-sizing: border-box;
-				background-color: ${tinycolor(GREEN).toRgbString()};
+				background-color: ${tinycolor(GRAY).toRgbString()};
 				transition: left 0.2s, background-color 0.2s;
 			}
 			.root.on .switch .pin {
-				left: calc(100% - 1rem);
-				background-color: ${tinycolor(PINK).toRgbString()};
+				left: calc(100% - 0.9rem);
+				background-color: ${tinycolor(RED).toRgbString()};
 			}
 			.label {
 				font-size: 0.7rem;

@@ -8,6 +8,7 @@ import mergeProps from './mergeProps'
 const PageFlowContainer = (props) =>
 	<VisualToTextEditorContainer
 		VisualEditor={FlowEditor}
+		type='flow'
 		{...props}
 	/>
 

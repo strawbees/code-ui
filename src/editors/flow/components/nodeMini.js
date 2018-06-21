@@ -18,6 +18,9 @@ const NodeMini = ({
 				border-radius: 2rem;
 				z-index: 10;
 			}
+			.root:hover {
+				background-color: ${tinycolor(color).setAlpha(0.75).toRgbString()};
+			}
 			@media (max-width: 600px) {
 				.root :global(>.nodeTypeName) {
 					padding-right: 0.4rem;

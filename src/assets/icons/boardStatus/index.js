@@ -1,11 +1,9 @@
-import busy from './busy.svg'
-import notConnected from './notConnected.svg'
-import ok from './ok.svg'
-import problem from './problem.svg'
+import base from './base.svg'
+import statusCircle from './statusCircle.svg'
+import statusX from './statusX.svg'
 
 export default {
-	busy,
-	notConnected,
-	ok,
-	problem,
+	base,
+	statusCircle,
+	statusX,
 }

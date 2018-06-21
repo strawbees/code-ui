@@ -3,10 +3,18 @@ import tinycolor from 'tinycolor2'
 import SvgIcon from 'src/components/svgIcon'
 import S from 'src/containers/sManager'
 import icons from 'src/assets/icons/boardStatus'
-import { WHITE, BLACK } from 'src/constants/colors'
+import {
+	WHITE,
+	BLACK,
+	RED,
+	GREEN,
+	YELLOW
+} from 'src/constants/colors'
 
 const SingleBoardStatus = ({
-	status
+	status,
+	scale,
+	labelKey,
 }) =>
 	<div className={`root singleBoardStatus ${status}`}>
 		<style jsx>{`
@@ -17,17 +25,36 @@ const SingleBoardStatus = ({
 				flex-direction: row;
 				align-items: center;
 			}
-			.root :global(.svgIcon) {
-				width: 1.75rem;
-				height: 1.75rem;
+			.icon {
+				width: ${scale * 2.6}rem;
+				height: ${scale * 1.8}rem;
+				overflow: hidden;
+				position: relative;
+			}
+			.icon :global(.svgIcon) {
+				width: ${scale * 2.6}rem;
+				height: ${scale * 1.8}rem;
+				position: absolute;
+				top: 0;
+				left: ${scale * -0.2}rem;
+			}
+			.icon.notConnected,
+			.icon.problem {
+				fill: ${tinycolor(RED).toRgbString()};
+			}
+			.icon.ok {
+				fill: ${tinycolor(GREEN).toRgbString()};
+			}
+			.icon.busy {
+				fill: ${tinycolor(YELLOW).toRgbString()};
 			}
 			.text {
-				font-size: 0.8rem;
+				font-size: ${scale * 0.8}rem;
 				color: ${tinycolor(BLACK).toRgbString()};
-				background-color: ${tinycolor(WHITE).setAlpha(0.5).toRgbString()};
-				padding: 0 0.5rem 0 1.25rem;
-				border-radius: 1rem;
-				margin-left: -1rem;
+				background-color: ${tinycolor(WHITE).setAlpha(0.75).toRgbString()};
+				padding: 0 ${scale * 0.5}rem 0 ${scale * 1.2}rem;
+				border-radius: ${scale * 1}rem;
+				margin-left: ${scale * -1.2}rem;
 			}
 			@media (max-width: 600px) {
 				.text {
@@ -35,19 +62,36 @@ const SingleBoardStatus = ({
 				}
 			}
 		`}</style>
-		<SvgIcon icon={icons[status]}/>
+		<div className={`icon ${status}`}>
+			<SvgIcon
+				className='base'
+				icon={icons.base}
+			/>
+			<SvgIcon
+				className={status}
+				icon={(status === 'ok' ||
+					status === 'busy' ||
+					status === 'problem') ?
+					icons.statusCircle : icons.statusX
+				}
+			/>
+		</div>
+
 		<div className='text'>
-			<S value={`ui.board_status.${status}`}/>
+			<S value={labelKey || `ui.board.status.${status}`}/>
 		</div>
 	</div>
 
 SingleBoardStatus.defaultProps = {
-	status : 'busy'
+	status : 'busy',
+	scale  : 1
 }
 
 SingleBoardStatus.propTypes = {
-	id     : PropTypes.string,
-	status : PropTypes.oneOf(['notConnected', 'ok', 'busy', 'problem']),
+	id       : PropTypes.string,
+	status   : PropTypes.oneOf(['notConnected', 'ok', 'busy', 'problem']),
+	scale    : PropTypes.number,
+	labelKey : PropTypes.string,
 }
 
 

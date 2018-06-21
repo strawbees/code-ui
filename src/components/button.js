@@ -7,13 +7,19 @@ import {
 } from 'src/constants/colors'
 
 const Button = ({
+	className,
 	children,
 	disabled,
 	onClick = () => {},
+	textColor,
+	bgColor,
+	textHoverColor,
+	bgHoverColor,
+	borderColor,
 	...otherProps
 }) =>
 	<button
-		className={`root button ${disabled ? 'disabled' : ''}`}
+		className={`root button ${className} ${disabled ? 'disabled' : ''}`}
 		disabled={disabled}
 		onClick={onClick}
 		{...otherProps}>
@@ -26,18 +32,18 @@ const Button = ({
 				padding: 0.25rem 1rem;
 				border-radius: 1rem;
 				cursor: pointer;
-				color: ${tinycolor(BLACK).toRgbString()};
-				background-color: ${tinycolor(WHITE).toRgbString()};
+				color: ${tinycolor(textColor).toRgbString()};
+				fill: ${tinycolor(textColor).toRgbString()};
+				background-color: ${tinycolor(bgColor).toRgbString()};
 				transition: background-color 0.1s;
 			}
 			.root:not(.disabled):hover,
 			.root:focus {
 				outline: none;
-				background-color: ${tinycolor(YELLOW).toRgbString()};
-			}
-			.root:active {
-				transition: none;
-				background-color: ${tinycolor(YELLOW).toRgbString()};
+				box-shadow: 0 0 0 0.15rem ${tinycolor(borderColor).toRgbString()};
+				color: ${tinycolor(textHoverColor).toRgbString()};
+				fill: ${tinycolor(textHoverColor).toRgbString()};
+				background-color: ${tinycolor(bgHoverColor).toRgbString()};
 			}
 			.root.disabled {
 				opacity: 0.7;
@@ -46,11 +52,25 @@ const Button = ({
 		`}</style>
 		{children}
 	</button>
+Button.defaultProps = {
+	className      : '',
+	textColor      : BLACK,
+	bgColor        : WHITE,
+	textHoverColor : BLACK,
+	bgHoverColor   : WHITE,
+	borderColor    : YELLOW,
+}
 
 Button.propTypes = {
-	children : PropTypes.node.isRequired,
-	disabled : PropTypes.bool,
-	onClick  : PropTypes.func,
+	className      : PropTypes.string,
+	children       : PropTypes.node.isRequired,
+	disabled       : PropTypes.bool,
+	onClick        : PropTypes.func,
+	textColor      : PropTypes.string,
+	bgColor        : PropTypes.string,
+	textHoverColor : PropTypes.string,
+	bgHoverColor   : PropTypes.string,
+	borderColor    : PropTypes.string,
 }
 
 export default Button

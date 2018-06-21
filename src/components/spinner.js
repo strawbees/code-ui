@@ -17,7 +17,7 @@ const Spinner = ({
 			.circles {
 				width: 1rem;
 				height: 1rem;
-				margin: 0.25 0.75rem;
+				margin: 0.25rem 0.75rem;
 				position: relative;
 				isolation: isolate;
 			}

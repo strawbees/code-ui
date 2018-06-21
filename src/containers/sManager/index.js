@@ -1,14 +1,26 @@
 import { connect } from 'react-redux'
+import Markdown from 'react-remarkable'
 import PropTypes from 'prop-types'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
-const SManager = ({ string, onChange, render = true }) => {
+const SManager = ({
+	string,
+	onChange,
+	render = true,
+	markdown = false
+}) => {
 	if (onChange) {
 		onChange(string)
 	}
-	return render && (string || '')
+	if (render) {
+		if (markdown) {
+			return <Markdown source={string}/>
+		}
+		return string || ''
+	}
+	return null
 }
 SManager.propTypes = {
 	onChange : PropTypes.func,

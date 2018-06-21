@@ -8,6 +8,7 @@ import mergeProps from './mergeProps'
 const PageHomeContainer = (props) =>
 	<VisualToTextEditorContainer
 		VisualEditor={ScratchEditor}
+		type='scratch'
 		{...props}
 	/>
 

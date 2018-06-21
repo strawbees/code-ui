@@ -1,7 +1,15 @@
 import PropTypes from 'prop-types'
 import ReactModal from 'react-modal'
 import tinycolor from 'tinycolor2'
-import { GRAY } from 'src/constants/colors'
+import IconButton from 'src/components/iconButton'
+import closeIcon from 'src/assets/icons/general/close.svg'
+import {
+	GRAY,
+	RED,
+	WHITE,
+} from 'src/constants/colors'
+
+const LIGHT_GRAY = tinycolor(GRAY).lighten(20).toRgbString()
 
 if (process.browser) {
 	ReactModal.setAppElement('#__next')
@@ -35,6 +43,7 @@ const Modal = ({
 				max-height: calc(100vh - 2rem) !important;
 				min-height: calc(200px - 2rem) !important;
 				border: none !important;
+				border-radius: 1rem !important;
 			}
 			@media (max-width: 400px) {
 				:global(.ReactModal__Content){
@@ -48,15 +57,23 @@ const Modal = ({
 					height: calc(100vh - 1rem);
 				}
 			}
-			.close {
+			:global(.ReactModal__Content) :global(>.close) {
 				position: absolute;
-				top: 0;
-				right: 0;
+				top: 0.5rem;
+				right: 0.5rem;
+				z-index: 1;
 			}
 		`}</style>
-		<div className="close" onClick={onRequestClose}>
-			close
-		</div>
+		<IconButton
+			className='close'
+			icon={closeIcon}
+			textColor={WHITE}
+			textHoverColor={WHITE}
+			bgColor={LIGHT_GRAY}
+			bgHoverColor={RED}
+			borderColor={'transparent'}
+			onClick={onRequestClose}
+		/>
 		<div className="content">
 			{content}
 		</div>

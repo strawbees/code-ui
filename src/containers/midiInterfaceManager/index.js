@@ -33,13 +33,13 @@ class MidiInterfaceManager extends React.Component {
 	componentDidMount() {
 		const {
 			midiInit,
-			// midiEnableLogs
+			midiEnableLogs,
+			midiDisableLogs,
 		} = this.props
 		if (process.browser) {
 			midiInit()
-			if (process.env.NODE_ENV !== 'production') {
-				// midiEnableLogs()
-			}
+			window.midiEnableLogs = midiEnableLogs
+			window.midiDisableLogs = midiDisableLogs
 			this.timer = window.setInterval(() => this.onTick(), 1000)
 		}
 	}

@@ -9,8 +9,11 @@ const SingleBoardStatusContainer = props =>
 	<SingleBoardStatus {...props} />
 
 SingleBoardStatusContainer.propTypes = {
-	runtimeId : PropTypes.string
+	runtimeId : PropTypes.string,
+	scale     : PropTypes.number,
+	labelKey  : PropTypes.string,
 }
+
 
 export default connect(
 	mapStateToProps,

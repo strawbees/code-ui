@@ -14,6 +14,9 @@ const Footer = () =>
 				background-color: ${tinycolor(PINK).setAlpha(0.5).toRgbString()};
 				position: relative;
 			}
+			.root :global(>.boardsStatus) {
+				margin-left: -0.5rem;
+			}
 			.version {
 				position: absolute;
 				bottom: 2px;
