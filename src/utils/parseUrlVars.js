@@ -3,5 +3,10 @@ export default (url) => {
 	url.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m, key, value) => {
 		vars[key] = value
 	})
+	url.replace(/[?&]+([^=&]+)/gi, (m, key) => {
+		if (!vars[key]) {
+			vars[key] = true
+		}
+	})
 	return vars
 }
