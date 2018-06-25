@@ -16,6 +16,7 @@ const SingleBoardStatus = ({
 	status,
 	scale,
 	labelKey,
+	uuid,
 }) => <div className={`root singleBoardStatus ${status}`}>
 	<style jsx>{`
 		.root {
@@ -59,6 +60,20 @@ const SingleBoardStatus = ({
 			border-radius: ${scale * 1}rem;
 			margin-left: ${scale * -1.2}rem;
 		}
+		.uuid {
+			position: absolute;
+			color: ${tinycolor(BLACK).setAlpha(0.5).toRgbString()};
+			z-index: 1;
+			font-family: Code;
+			font-size: ${scale * 0.45}rem;
+			letter-spacing: ${scale * 0.05}rem;
+			top: ${scale * 1.4}rem;
+			left: ${scale * 2}rem;
+			display: none;
+		}
+		.root:hover .uuid {
+			display: block;
+		}
 		@media (max-width: 600px) {
 			.text {
 				display: none;
@@ -81,9 +96,11 @@ const SingleBoardStatus = ({
 			}
 		/>
 	</div>
-
 	<div className='text'>
 		<S value={labelKey || `ui.board.status.${status}`}/>
+	</div>
+	<div className='uuid'>
+		{uuid}
 	</div>
 </div>
 
@@ -93,7 +110,7 @@ SingleBoardStatus.defaultProps = {
 }
 
 SingleBoardStatus.propTypes = {
-	id     : PropTypes.string,
+	uuid   : PropTypes.string,
 	status : PropTypes.oneOf([
 		'notConnected',
 		'ok',

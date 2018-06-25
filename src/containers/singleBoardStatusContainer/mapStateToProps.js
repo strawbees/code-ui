@@ -7,11 +7,13 @@ export default () => createSelector(
 	],
 	({
 		midi,
+		uuid,
 		bootloader,
 		uploading,
 		enteringBootloaderMode,
 		exitingBootloaderMode,
 	}) => ({
+		uuid,
 		status : !midi
 			? 'problem'
 			: (uploading || enteringBootloaderMode || exitingBootloaderMode)
