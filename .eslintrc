@@ -53,6 +53,7 @@
     "no-param-reassign": 0,
     "prefer-template": 2,
     "class-methods-use-this": 0,
+    "operator-linebreak": 0,
     "semi": [
       2,
       "never"

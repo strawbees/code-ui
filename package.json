@@ -20,8 +20,8 @@
     "next": "^6.0.3",
     "next-redux-wrapper": "^2.0.0-beta.6",
     "nprogress": "^0.2.0",
-    "prop-types": "^15.6.1",
-    "quirkbot-midi-interface": "^0.0.5",
+    "prop-types": "^15.6.2",
+    "quirkbot-midi-interface": "^0.0.6",
     "react": "^16.4.1",
     "react-ace": "^6.1.1",
     "react-dom": "^16.4.1",
@@ -39,21 +39,21 @@
     "reselect": "^3.0.1",
     "rimraf": "^2.6.2",
     "s3": "^4.4.0",
-    "scratch-blocks": "^0.1.0-prerelease.1529342508",
-    "serve-handler": "^3.2.1",
+    "scratch-blocks": "^0.1.0-prerelease.1529676337",
+    "serve-handler": "^3.2.2",
     "tinycolor2": "^1.4.1",
     "why-did-you-update": "^0.1.1",
     "xxhashjs": "^0.2.2"
   },
   "author": "Paulo Barcelos <paulo@strawbees.com>",
   "devDependencies": {
-    "babel-eslint": "^8.2.3",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-config-airbnb-base": "^12.1.0",
+    "babel-eslint": "^8.2.5",
+    "eslint": "^5.0.0",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-airbnb-base": "^13.0.0",
     "eslint-import-resolver-babel-module": "^5.0.0-beta.0",
-    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.9.1"
+    "eslint-plugin-react": "^7.10.0"
   }
 }

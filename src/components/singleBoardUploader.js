@@ -7,6 +7,7 @@ import IconButton from 'src/components/iconButton'
 import SingleBoardStatusContainer from 'src/containers/singleBoardStatusContainer'
 import S from 'src/containers/sManager'
 import QuirkbotIllustration from 'src/assets/illustrations/quirkbotUploadIsometric.svg'
+import uploadIcon from 'src/assets/icons/file/upload.svg'
 import generalIcons from 'src/assets/icons/general'
 import {
 	WHITE,
@@ -53,7 +54,7 @@ const SingleBoardUploader = ({
 			type = 'NO_HEX'
 		}
 	} else {
-		type = 'UNAVAIABLE'
+		type = 'NOT_COMPATIBLE'
 	}
 
 	let statusIcon
@@ -62,6 +63,7 @@ const SingleBoardUploader = ({
 			statusIcon = generalIcons.sync
 			break
 		case 'ERROR':
+		case 'NOT_COMPATIBLE':
 			statusIcon = generalIcons.error
 			break
 		case 'SUCCESS':
@@ -84,7 +86,6 @@ const SingleBoardUploader = ({
 					height: 13rem;
 				}
 				.root.IDDLE .container,
-				.root.UNAVAIABLE .container,
 				.root.NO_HEX .container,
 				.root.BUSY .container {
 					background-color: ${tinycolor(GRAY).setAlpha(0.5).toRgbString()};
@@ -95,6 +96,7 @@ const SingleBoardUploader = ({
 				.root.SUCCESS .container {
 					background-color: ${tinycolor(GREEN).setAlpha(0.75).toRgbString()};
 				}
+				.root.NOT_COMPATIBLE .container,
 				.root.ERROR .container {
 					background-color: ${tinycolor(RED).toRgbString()};
 				}
@@ -116,24 +118,19 @@ const SingleBoardUploader = ({
 					width: 50%;
 					height: 100%;
 				}
-				.container :global(.disconnect-warning)  {
+				.container :global(.disconnect-warning),
+				.container :global(.not-compatible-warning),
+				.container :global(.compilation-status),
+				.container :global(.start-upload-button) {
 					position: absolute;
 					bottom: 0.5rem;
 					right: 0.5rem;
 				}
 
 				.container :global(.compilation-status){
-					position: absolute;
-					bottom: 0.5rem;
-					right: 0.5rem;
 					display: flex;
 					flex-direction: row;
 					align-items: center;
-				}
-				.container :global(.start-upload-button){
-					position: absolute;
-					bottom: 0.5rem;
-					right: 0.5rem;
 				}
 				/* ANIMATIONS */
 				.root.UPLOADING .container :global(.status)  {
@@ -221,8 +218,10 @@ const SingleBoardUploader = ({
 					labelKey={`ui.board.upload.status.${type}`}
 					scale={1.25}
 				/>
-				{type === 'UNAVAIABLE' &&
-					<S value='ui.board.upload.not_midi'/>
+				{type === 'NOT_COMPATIBLE' &&
+					<Message type='error' className='not-compatible-warning'>
+						<S value='ui.board.upload.not_compatible_warning'/>
+					</Message>
 				}
 				{type === 'UPLOADING' &&
 					<Message type='error' className='disconnect-warning'>
@@ -240,8 +239,13 @@ const SingleBoardUploader = ({
 				{(type === 'IDDLE' || type === 'ERROR') &&
 					<IconButton
 						onClick={onUploadPress}
-						labelKey='ui.board.upload.start'
+						icon={uploadIcon}
+						labelKey={type === 'ERROR' ? 'ui.board.upload.restart' : 'ui.board.upload.start'}
 						className='start-upload-button'
+						textColor={WHITE}
+						textHoverColor={WHITE}
+						bgColor={GREEN}
+						bgHoverColor={GREEN}
 					/>
 				}
 			</div>
