@@ -47,25 +47,25 @@ class DropdownMenu extends React.Component {
 						color: ${tinycolor(WHITE).toRgbString()};
 						fill: ${tinycolor(WHITE).toRgbString()};
 					}
-					.label::before {
+					/*.label::before {
 						content: '';
 						height: 1rem;
 						position: absolute;
 						left: 0;
 						width: 0;
 						border-left: solid 1px ${tinycolor(WHITE).toRgbString()};
-					}
+					}*/
 					.label:hover,
 					.label:focus,
 					.root:focus-within .label{
 						outline: none;
 						background-color: ${tinycolor(BLUE).toRgbString()};
 					}
-					.label:hover::before,
+					/*.label:hover::before,
 					.label:focus::before,
 					.root:focus-within .label::before {
 						display: none;
-					}
+					}*/
 					.label :global(.svgIcon) {
 						margin-left: 0.25rem;
 						width: 0.8rem;

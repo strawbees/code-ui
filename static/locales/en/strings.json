@@ -40,7 +40,7 @@
 	"ui.board.upload.status.BUSY"                      : "Waiting upload to finish...",
 	"ui.board.upload.status.UPLOADING"                 : "Uploading...",
 	"ui.board.upload.status.UNAVAIABLE"                : "Board not compatible.",
-	"ui.board.upload.status.SUCCESS"                   : "Upload complete",
+	"ui.board.upload.status.SUCCESS"                   : "Upload complete!",
 	"ui.board.upload.status.ERROR"                     : "Upload failed",
 	"ui.board.upload.compiler.progress"                : "Preparing program...",
 	"ui.board.upload.compiler.error.UNHANDLED"         : "This is embarrassing... could you please try again?",
