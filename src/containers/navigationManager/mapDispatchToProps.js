@@ -1,14 +1,8 @@
 import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
 import {
-	setStatus,
-	setCredentials,
-	setTempProgram,
-	setPrograms,
-} from 'src/actions/storage'
+	resetCurrentEditorProgram,
+} from 'src/actions/program'
 
 export default autobindDispatchToActionCreators({
-	setStatus,
-	setCredentials,
-	setTempProgram,
-	setPrograms
+	resetCurrentEditorProgram,
 })

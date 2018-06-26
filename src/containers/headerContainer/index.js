@@ -4,8 +4,11 @@ import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
+const HeaderContainer = (props) =>
+	<Header {...props} />
+
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
-)(Header)
+)(HeaderContainer)

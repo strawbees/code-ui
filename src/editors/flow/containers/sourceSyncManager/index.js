@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import shallowCompareArrays from 'src/utils/shallowCompareArrays'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
@@ -16,6 +17,7 @@ class SourceSyncManager extends React.Component {
 			setSource(refEditorSource)
 		}
 	}
+
 	componentDidUpdate({
 		source : prevSource,
 		refEditorSource : prevRefEditorSource,
@@ -26,15 +28,16 @@ class SourceSyncManager extends React.Component {
 			refEditorSource,
 			setRefEditorSource
 		} = this.props
-		if (source !== prevSource &&
-			source !== refEditorSource) {
+		if (!shallowCompareArrays(source, prevSource) &&
+			!shallowCompareArrays(source, refEditorSource)) {
 			setRefEditorSource(source)
 		}
-		if (refEditorSource !== prevRefEditorSource &&
-			refEditorSource !== source) {
+		if (!shallowCompareArrays(refEditorSource, prevRefEditorSource) &&
+			!shallowCompareArrays(refEditorSource, source)) {
 			setSource(refEditorSource)
 		}
 	}
+
 	render() {
 		return null
 	}

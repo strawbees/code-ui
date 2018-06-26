@@ -23,6 +23,13 @@ export const removeGlobalEventListener = (name, fn) => {
 		LISTENERS.delete(name)
 	}
 }
+export const removeAllGlobalEventListeners = (name) => {
+	const handle = LISTENERS.get(name)
+	if (!handle) {
+		return
+	}
+	LISTENERS.delete(name)
+}
 export const fireGlobalEvent = (name, e) => {
 	const handle = LISTENERS.get(name)
 	if (!handle) {

@@ -22,6 +22,7 @@ class EditorContainer extends React.Component {
 		setCategoryDefinitions(rawCategories)
 		setConstantDefinitions(rawConstants)
 	}
+
 	render() {
 		return (
 			<React.Fragment>

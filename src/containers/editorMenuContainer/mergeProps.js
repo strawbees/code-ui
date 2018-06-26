@@ -16,11 +16,10 @@ export default (stateProps, dispatchProps, ownProps) => {
 		...otherStateProps,
 		...otherDispatchProps,
 		...ownProps,
-		onNameChange      : updateCurrentEditorProgramName,
-		onSavePress       : saveCurrentEditorProgram,
-		onNewPress        : resetCurrentEditorProgram,
-		initializeProgram : resetCurrentEditorProgram,
-		onUploadPress     : () => modalUploadCode(generatedCode),
-		onDuplicatePress  : () => modalDuplicateProgramById(id)
+		onNameChange     : updateCurrentEditorProgramName,
+		onSavePress      : saveCurrentEditorProgram,
+		onNewPress       : resetCurrentEditorProgram,
+		onUploadPress    : () => modalUploadCode(generatedCode),
+		onDuplicatePress : () => modalDuplicateProgramById(id)
 	}
 }

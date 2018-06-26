@@ -5,17 +5,23 @@ import resolveLinkUrl from 'src/utils/resolveLinkUrl'
 import { connect } from 'react-redux'
 import {
 	addGlobalEventListener,
-	removeGlobalEventListener
+	removeGlobalEventListener,
+	removeAllGlobalEventListeners,
 } from 'src/utils/globalEvents'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
-class NavigationManager extends React.Component {
+class NavigationManager extends React.PureComponent {
 	async componentDidMount() {
 		// Monitor Links clicks and popState
+		removeAllGlobalEventListeners('link') // removing all here just for HRM
 		addGlobalEventListener('link', this.onLinkClicked)
 		Router.beforePopState(this.onBeforePopState)
+
+		// Call manually componentDidUpdate, since that is not called on first
+		// render, and we want to act on the initial loaded values
+		this.componentDidUpdate({}) // empty prevProps
 	}
 
 	componentWillUnmout() {
@@ -80,14 +86,48 @@ class NavigationManager extends React.Component {
 
 	}
 
+	// Monitor the page and url var changes to load programs
+	componentDidUpdate(prevProps) {
+		const {
+			queryRef   : prevQueryRef,
+			urlVarP    : prevUrlVarP,
+			urlVarData : prevUrlVarData,
+		} = prevProps
+
+		const {
+			queryRef,
+			urlVarP,
+			urlVarData,
+
+			resetCurrentEditorProgram,
+		} = this.props
+
+		// Only act on the editor pages
+		if (queryRef !== 'flow' &&
+			queryRef !== 'block' &&
+			queryRef !== 'text') {
+			return
+		}
+
+		// Reset editor, since there's no program to show
+		if (queryRef !== prevQueryRef &&
+			!urlVarP && !urlVarData) {
+			console.log('new!')
+			resetCurrentEditorProgram()
+		}
+	}
+
 	render() {
 		return null
 	}
 }
 
 NavigationManager.propTypes = {
-	queryRef : PropTypes.string,
-	urlVars  : PropTypes.object,
+	queryRef   : PropTypes.string,
+	urlVarP    : PropTypes.string,
+	urlVarData : PropTypes.string,
+
+	resetCurrentEditorProgram : PropTypes.func,
 }
 
 export default connect(

@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types'
+import Link from 'src/components/link'
 import S from 'src/containers/sManager'
 
 const ProgramCreator = ({
-	createNewFlow,
-	createNewBlock,
-	createNewText,
+	flowUrl,
+	blockUrl,
+	textUrl,
 }) =>
 	<div className='root programCreator'>
 		<style jsx>{`
@@ -21,22 +22,22 @@ const ProgramCreator = ({
 			<S value='ui.program_creator.title'/>
 		</h3>
 		<div className='types'>
-			<button onClick={createNewFlow}>
+			<Link to={flowUrl}>
 				<S value='flow.base.title'/>
-			</button>
-			<button onClick={createNewBlock}>
+			</Link>
+			<Link to={blockUrl}>
 				<S value='block.base.title'/>
-			</button>
-			<button onClick={createNewText}>
+			</Link>
+			<Link to={textUrl}>
 				<S value='text.base.title'/>
-			</button>
+			</Link>
 		</div>
 	</div>
 
 ProgramCreator.propTypes = {
-	createNewFlow    : PropTypes.func,
-	createNewBlock : PropTypes.func,
-	createNewText    : PropTypes.func,
+	flowUrl  : PropTypes.string,
+	blockUrl : PropTypes.string,
+	textUrl  : PropTypes.string,
 }
 
 export default ProgramCreator

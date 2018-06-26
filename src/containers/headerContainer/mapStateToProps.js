@@ -6,21 +6,12 @@ export default () => createSelector(
 	[
 		queryRefSelector(),
 		makeStringSelector('home.url'),
-		makeStringSelector('flow.url'),
-		makeStringSelector('block.url'),
-		makeStringSelector('text.url')
 	],
 	(
 		queryRef,
 		homeUrl,
-		flowUrl,
-		blockUrl,
-		textUrl
 	) => ({
 		editorMenu : queryRef === 'flow' || queryRef === 'block' || queryRef === 'text',
 		homeUrl,
-		flowUrl,
-		blockUrl,
-		textUrl
 	})
 )

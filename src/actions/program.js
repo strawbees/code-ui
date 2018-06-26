@@ -1,4 +1,3 @@
-import Router from 'next/router'
 import { compileCode } from 'src/actions/compiler'
 import {
 	setFlowName,
@@ -29,12 +28,10 @@ import refEditorNameSelector from 'src/selectors/refEditorNameSelector'
 import refEditorSourceSelector from 'src/selectors/refEditorSourceSelector'
 import refEditorIdSelector from 'src/selectors/refEditorIdSelector'
 import refEditorTypeSelector from 'src/selectors/refEditorTypeSelector'
-import formatedProgramSelector from 'src/selectors/formatedProgramSelector'
+import formatedProgramSelector from 'src/selectors/storageFormatedProgramSelector'
 import editorSelector from 'src/selectors/editorSelector'
 import refEditorSavedSelector from 'src/selectors/refEditorSavedSelector'
 import storageProgramSelector from 'src/selectors/storageProgramSelector'
-import makeStringSelector from 'src/selectors/makeStringSelector'
-import resolveLinkUrl from 'src/utils/resolveLinkUrl'
 import generateNewProgramSource from 'src/utils/generateNewProgramSource'
 import FormInput from 'src/components/formInput'
 import S from 'src/containers/sManager'
@@ -131,32 +128,7 @@ export const removeProgramByIdAndClearEditor = (id) => async (dispatch, getState
 		dispatch(resetEditorProgramByType(type))
 	}
 }
-export const createNewProgramByTypeAndGoToEditor = (type) => (dispatch, getState) => {
-	dispatch(resetEditorProgramByType(type))
-	const state = getState()
-	const editorUrl = makeStringSelector(`${type}.url`)(state)
-	const { href, as } = resolveLinkUrl(editorUrl)
-	Router.push(href, as)
-}
-export const openProgramByIdAndGoToEditor = (id) => async (dispatch, getState) => {
-	const state = getState()
-	const { type, name, source } = storageProgramSelector(state)({ id })
-	const program = {
-		id,
-		type,
-		name,
-		source
-	}
-	dispatch(openProgramDataAndGoToEditor(program))
-}
-export const openProgramDataAndGoToEditor = (program) => (dispatch, getState) => {
-	const state = getState()
-	const editorUrl = makeStringSelector(`${program.type}.url`)(state)
-	const { href, as } = resolveLinkUrl(editorUrl)
-	href.query.program = JSON.stringify(program)
-	// Router.push(href, `${as}/${program.id}`)
-	Router.push(href, as)
-}
+
 
 // Modal actions
 export const modalRemoveProgram = (id) => async (dispatch) => {

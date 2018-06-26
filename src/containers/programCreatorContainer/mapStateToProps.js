@@ -1,20 +1,8 @@
-import { createSelector } from 'reselect'
-import storageProgramsSelector from 'src/selectors/storageProgramsSelector'
+import { createStructuredSelector } from 'reselect'
+import makeStringSelector from 'src/selectors/makeStringSelector'
 
-export default () => createSelector(
-	[
-		storageProgramsSelector(),
-	],
-	(
-		storagePrograms,
-	) => ({
-		ids : Object.entries(storagePrograms)
-			.sort((a, b) => {
-				if (a[1].createdAt < b[1].createdAt) {
-					return -1
-				}
-				return 1
-			})
-			.map(([id]) => id)
-	})
-)
+export default () => createStructuredSelector({
+	flowUrl  : makeStringSelector('flow.url'),
+	blockUrl : makeStringSelector('block.url'),
+	textUrl  : makeStringSelector('text.url'),
+})

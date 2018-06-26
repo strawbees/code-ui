@@ -34,9 +34,9 @@ class AppContainer extends React.Component {
 			setStrings,
 			setAsPath,
 			setUrlVars,
-			setFlowProgram,
-			setBlockProgram,
-			setTextProgram
+			// setFlowProgram,
+			// setBlockProgram,
+			// setTextProgram
 		} = mergeProps(
 			mapStateToProps()(store.getState(), {}),
 			mapDispatchToProps(store.dispatch)
@@ -59,21 +59,21 @@ class AppContainer extends React.Component {
 			setUrlVars(parseUrlVars(asPath))
 		}
 		// if there is a "program" query, deal with it
-		if (query.program) {
-			try {
-				const program = JSON.parse(query.program)
-				if (program.type === 'flow') {
-					setFlowProgram(program)
-				} else if (program.type === 'block') {
-					setBlockProgram(program)
-				} else if (program.type === 'text') {
-					setTextProgram(program)
-				}
-			} catch (e) {
-				// eslint-disable-next-line no-console
-				console.log('Error try to handle program query', e)
-			}
-		}
+		// if (query.program) {
+		// 	try {
+		// 		const program = JSON.parse(query.program)
+		// 		if (program.type === 'flow') {
+		// 			setFlowProgram(program)
+		// 		} else if (program.type === 'block') {
+		// 			setBlockProgram(program)
+		// 		} else if (program.type === 'text') {
+		// 			setTextProgram(program)
+		// 		}
+		// 	} catch (e) {
+		// 		// eslint-disable-next-line no-console
+		// 		console.log('Error try to handle program query', e)
+		// 	}
+		// }
 	}
 
 	async componentDidMount() {
