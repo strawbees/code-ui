@@ -13,11 +13,11 @@
 			"ref" : "flow"
 		}
 	},
-	"/scratch/": {
+	"/block/": {
 		"page": "/",
 		"query": {
 			"locale" : "en",
-			"ref" : "scratch"
+			"ref" : "block"
 		}
 	},
 	"/text/": {
@@ -41,11 +41,11 @@
 			"ref" : "flow"
 		}
 	},
-	"/sv/scratch/": {
+	"/sv/block/": {
 		"page": "/",
 		"query": {
 			"locale" : "sv",
-			"ref" : "scratch"
+			"ref" : "block"
 		}
 	},
 	"/sv/text/": {

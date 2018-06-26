@@ -10,7 +10,7 @@ export default (stateProps, dispatchProps, ownProps) => {
 		...otherDispatchProps,
 		...ownProps,
 		createNewFlow    : () => createNewProgramByTypeAndGoToEditor('flow'),
-		createNewScratch : () => createNewProgramByTypeAndGoToEditor('scratch'),
+		createNewBlock : () => createNewProgramByTypeAndGoToEditor('block'),
 		createNewText    : () => createNewProgramByTypeAndGoToEditor('text'),
 	}
 }

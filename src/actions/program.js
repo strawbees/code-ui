@@ -6,10 +6,10 @@ import {
 	setFlowId,
 	setFlowProgram,
 
-	setScratchName,
-	setScratchSource,
-	setScratchId,
-	setScratchProgram,
+	setBlockName,
+	setBlockSource,
+	setBlockId,
+	setBlockProgram,
 
 	setTextName,
 	setTextSource,
@@ -48,8 +48,8 @@ export const resetEditorProgramByType = (type) => (dispatch) => {
 	}
 	if (type === 'flow') {
 		dispatch(setFlowProgram(program))
-	} else if (type === 'scratch') {
-		dispatch(setScratchProgram(program))
+	} else if (type === 'block') {
+		dispatch(setBlockProgram(program))
 	} else if (type === 'text') {
 		dispatch(setTextProgram(program))
 	}
@@ -67,8 +67,8 @@ export const saveCurrentEditorProgram = () => async (dispatch, getState) => {
 	const { id } = await dispatch(safeAddProgram(type, name, source))
 	if (type === 'flow') {
 		dispatch(setFlowId(id))
-	} else if (type === 'scratch') {
-		dispatch(setScratchId(id))
+	} else if (type === 'block') {
+		dispatch(setBlockId(id))
 	} else if (type === 'text') {
 		dispatch(setTextId(id))
 	}
@@ -80,8 +80,8 @@ export const updateCurrentEditorProgramName = (name) => async (dispatch, getStat
 	const saved = refEditorSavedSelector()(state)
 	if (type === 'flow') {
 		dispatch(setFlowName(name))
-	} else if (type === 'scratch') {
-		dispatch(setScratchName(name))
+	} else if (type === 'block') {
+		dispatch(setBlockName(name))
 	} else if (type === 'text') {
 		dispatch(setTextName(name))
 	}
@@ -98,8 +98,8 @@ export const updateCurrentEditorProgramSource = (source) => async (dispatch, get
 	const saved = refEditorSavedSelector()(state)
 	if (type === 'flow') {
 		dispatch(setFlowSource(source))
-	} else if (type === 'scratch') {
-		dispatch(setScratchSource(source))
+	} else if (type === 'block') {
+		dispatch(setBlockSource(source))
 	} else if (type === 'text') {
 		dispatch(setTextSource(source))
 	}

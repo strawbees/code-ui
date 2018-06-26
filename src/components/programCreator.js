@@ -3,7 +3,7 @@ import S from 'src/containers/sManager'
 
 const ProgramCreator = ({
 	createNewFlow,
-	createNewScratch,
+	createNewBlock,
 	createNewText,
 }) =>
 	<div className='root programCreator'>
@@ -24,8 +24,8 @@ const ProgramCreator = ({
 			<button onClick={createNewFlow}>
 				<S value='flow.base.title'/>
 			</button>
-			<button onClick={createNewScratch}>
-				<S value='scratch.base.title'/>
+			<button onClick={createNewBlock}>
+				<S value='block.base.title'/>
 			</button>
 			<button onClick={createNewText}>
 				<S value='text.base.title'/>
@@ -35,7 +35,7 @@ const ProgramCreator = ({
 
 ProgramCreator.propTypes = {
 	createNewFlow    : PropTypes.func,
-	createNewScratch : PropTypes.func,
+	createNewBlock : PropTypes.func,
 	createNewText    : PropTypes.func,
 }
 

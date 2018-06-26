@@ -2,7 +2,7 @@ import s from 'src/utils/s'
 
 export default (strings) => ([
 	{
-		name            : s(strings, 'scratch.toolbox.category.input'),
+		name            : s(strings, 'block.toolbox.category.input'),
 		colour          : '#7fd5f0',
 		secondaryColour : '#01adee',
 		blocks          : [
@@ -15,7 +15,7 @@ export default (strings) => ([
 		]
 	},
 	{
-		name            : s(strings, 'scratch.toolbox.category.output'),
+		name            : s(strings, 'block.toolbox.category.output'),
 		colour          : '#f580c5',
 		secondaryColour : '#f75abb',
 		blocks          : [
@@ -88,7 +88,7 @@ export default (strings) => ([
 		]
 	},
 	{
-		name            : s(strings, 'scratch.toolbox.category.control'),
+		name            : s(strings, 'block.toolbox.category.control'),
 		colour          : '#FFAB19',
 		secondaryColour : '#CF8B17',
 		blocks          : [
@@ -132,7 +132,7 @@ export default (strings) => ([
 		]
 	},
 	{
-		name            : s(strings, 'scratch.toolbox.category.operators'),
+		name            : s(strings, 'block.toolbox.category.operators'),
 		colour          : '#40BF4A',
 		secondaryColour : '#389438',
 		blocks          : [
@@ -323,13 +323,13 @@ export default (strings) => ([
 		]
 	},
 	{
-		name            : s(strings, 'scratch.toolbox.category.variables'),
+		name            : s(strings, 'block.toolbox.category.variables'),
 		colour          : '#FF8C1A',
 		secondaryColour : '#DB6E00',
 		custom          : 'VARIABLE'
 	},
 	{
-		name            : s(strings, 'scratch.toolbox.category.procedures'),
+		name            : s(strings, 'block.toolbox.category.procedures'),
 		colour          : '#FF6680',
 		secondaryColour : '#FF4D6A',
 		custom          : 'PROCEDURE'

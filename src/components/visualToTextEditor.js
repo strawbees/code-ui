@@ -84,7 +84,7 @@ const TextEditor = ({ type }) =>
 		</div>
 		<div className='new'>
 			<div className='icon'>
-				<SvgIcon icon={type === 'scratch' ? editorIcons.scratch : editorIcons.flow }/>
+				<SvgIcon icon={type === 'block' ? editorIcons.block : editorIcons.flow }/>
 				<SvgIcon icon={arrowIcon} className='arrow'/>
 				<SvgIcon icon={editorIcons.text}/>
 			</div>

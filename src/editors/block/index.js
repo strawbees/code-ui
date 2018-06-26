@@ -9,7 +9,7 @@ import toolboxToXmlString from './utils/toolboxToXmlString'
 import blocks from './blocks/index'
 import toolbox from './toolbox'
 
-class ScratchEditor extends React.Component {
+class BlockEditor extends React.Component {
 	constructor(props) {
 		super(props)
 		this.mainWorkspaceContainer = React.createRef()
@@ -86,7 +86,7 @@ class ScratchEditor extends React.Component {
 			if (e.type === 'ui') {
 				return
 			}
-			debounce('update scratch source', () => {
+			debounce('update block source', () => {
 				const xml = Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace())
 				const currentSource = Blockly.Xml.domToText(xml)
 				if (this.source !== currentSource) {
@@ -113,7 +113,7 @@ class ScratchEditor extends React.Component {
 
 	render() {
 		return (
-			<div className='root editor scratch'>
+			<div className='root editor block'>
 				<style jsx>{`
 					.root {
 						position: relative;
@@ -141,26 +141,26 @@ class ScratchEditor extends React.Component {
 	}
 }
 
-ScratchEditor.propTypes = {
+BlockEditor.propTypes = {
 	strings         : PropTypes.object,
 	refEditorSource : PropTypes.string,
 	onSourceChange  : PropTypes.func
 }
 
-const ScratchEditorWithStrings = (props) => {
+const BlockEditorWithStrings = (props) => {
 	// as the editor breaks if the correct strings are not in place,
 	// we need to make sure they are loaded before diplaying it
 	if (!props.strings) {
 		return <Spinner />
 	}
 	return (
-		<ScratchEditor {...props}/>
+		<BlockEditor {...props}/>
 	)
 }
 
-const ScratchEditorWithScript = withScript(
+const BlockEditorWithScript = withScript(
 	['/static/lib/scratch-blocks/vertical.js'],
-	ScratchEditorWithStrings,
+	BlockEditorWithStrings,
 	Spinner
 )
-export default ScratchEditorWithScript
+export default BlockEditorWithScript

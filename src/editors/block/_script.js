@@ -83,7 +83,7 @@ const init = async () => {
 	const mainWorkspaceContainer = document.getElementById('mainWorkspace')
 	const mainWorkspace = Blockly.inject(mainWorkspaceContainer, {
 		toolbox: toolboxXml,
-		media: '../node_modules/scratch-blocks/media/',
+		media: '../node_modules/block-blocks/media/',
 		zoom: {
 			controls: true,
 			wheel: true,
@@ -99,7 +99,7 @@ const init = async () => {
 	const proceduresWorkspaceContainer = document.getElementById('proceduresWorkspace')
 	const proceduresWorkspace = Blockly.inject(proceduresWorkspaceContainer, {
 		toolbox: 'aaa',
-		media: '../node_modules/scratch-blocks/media/',
+		media: '../node_modules/block-blocks/media/',
 		colours: {
 			scrollbar: 'rgba(0, 0, 0, 0.05)',
 		}

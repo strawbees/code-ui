@@ -14,8 +14,8 @@ const PageFlowContainer = dynamic(
 	import('src/containers/pageFlowContainer'),
 	{ loading : () => <Spinner/> }
 )
-const PageScratchContainer = dynamic(
-	import('src/containers/pageScratchContainer'),
+const PageBlockContainer = dynamic(
+	import('src/containers/pageBlockContainer'),
 	{ loading : () => <Spinner/> }
 )
 const PageTextContainer = dynamic(
@@ -24,14 +24,14 @@ const PageTextContainer = dynamic(
 )
 // import PageHomeContainer from 'src/containers/pageHomeContainer'
 // import PageFlowContainer from 'src/containers/pageFlowContainer'
-// import PageScratchContainer from 'src/containers/pageScratchContainer'
+// import PageBlockContainer from 'src/containers/pageBlockContainer'
 // import PageTextContainer from 'src/containers/pageTextContainer'
 
 const PageContainer = (props) => {
 	const components = {
 		home    : PageHomeContainer,
 		flow    : PageFlowContainer,
-		scratch : PageScratchContainer,
+		block : PageBlockContainer,
 		text    : PageTextContainer,
 	}
 	const RefComponent = components[props.queryRef]
@@ -46,7 +46,7 @@ PageContainer.propTypes = {
 	queryRef : PropTypes.oneOf([
 		'home',
 		'flow',
-		'scratch',
+		'block',
 		'text'
 	])
 }

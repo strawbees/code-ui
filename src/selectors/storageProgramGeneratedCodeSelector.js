@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect'
 import storageProgramSelector from 'src/selectors/storageProgramSelector'
-import generateScratchCode from 'src/editors/scratch/utils/generateCode'
+import generateBlockCode from 'src/editors/block/utils/generateCode'
 
 export default () => createSelector(
 	[
@@ -12,8 +12,8 @@ export default () => createSelector(
 		switch (type) {
 			case 'flow':
 				return ''
-			case 'scratch':
-				return generateScratchCode(source)
+			case 'block':
+				return generateBlockCode(source)
 			case 'text':
 				return source
 			default:

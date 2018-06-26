@@ -18,7 +18,7 @@ export default combineReducers({
 		id     : generateReducer(EDITOR_SET_FLOW_ID),
 		source : generateReducer(EDITOR_SET_FLOW_SOURCE),
 	}),
-	scratch : combineReducers({
+	block : combineReducers({
 		name   : generateReducer(EDITOR_SET_SCRATCH_NAME),
 		id     : generateReducer(EDITOR_SET_SCRATCH_ID),
 		source : generateReducer(EDITOR_SET_SCRATCH_SOURCE),

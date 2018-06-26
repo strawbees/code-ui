@@ -73,7 +73,7 @@ class NavigationManager extends React.Component {
 
 		// we only care about monitoring changes *from* the editor
 		if (queryRef !== 'flow' ||
-			queryRef !== 'scratch' ||
+			queryRef !== 'block' ||
 			queryRef !== 'text') {
 			return
 		}

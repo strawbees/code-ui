@@ -9,7 +9,7 @@ import {
 } from 'src/actions/setup'
 import {
 	setFlowProgram,
-	setScratchProgram,
+	setBlockProgram,
 	setTextProgram,
 } from 'src/actions/editor'
 
@@ -21,6 +21,6 @@ export default autobindDispatchToActionCreators({
 	setAsPath,
 	setUrlVars,
 	setFlowProgram,
-	setScratchProgram,
+	setBlockProgram,
 	setTextProgram,
 })

@@ -24,14 +24,14 @@ export const setFlowProgram = ({ id, name, source }) => (dispatch) => {
 	dispatch(setFlowSource(source))
 }
 
-export const setScratchName = generateAction(EDITOR_SET_SCRATCH_NAME)
-export const setScratchId = generateAction(EDITOR_SET_SCRATCH_ID)
-export const setScratchSource = generateAction(EDITOR_SET_SCRATCH_SOURCE)
-export const setScratchGeneratedCode = generateAction(EDITOR_SET_SCRATCH_GENERATED_CODE)
-export const setScratchProgram = ({ id, name, source }) => (dispatch) => {
-	dispatch(setScratchId(id))
-	dispatch(setScratchName(name))
-	dispatch(setScratchSource(source))
+export const setBlockName = generateAction(EDITOR_SET_SCRATCH_NAME)
+export const setBlockId = generateAction(EDITOR_SET_SCRATCH_ID)
+export const setBlockSource = generateAction(EDITOR_SET_SCRATCH_SOURCE)
+export const setBlockGeneratedCode = generateAction(EDITOR_SET_SCRATCH_GENERATED_CODE)
+export const setBlockProgram = ({ id, name, source }) => (dispatch) => {
+	dispatch(setBlockId(id))
+	dispatch(setBlockName(name))
+	dispatch(setBlockSource(source))
 }
 
 export const setTextName = generateAction(EDITOR_SET_TEXT_NAME)

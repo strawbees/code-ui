@@ -35,7 +35,7 @@ class AppContainer extends React.Component {
 			setAsPath,
 			setUrlVars,
 			setFlowProgram,
-			setScratchProgram,
+			setBlockProgram,
 			setTextProgram
 		} = mergeProps(
 			mapStateToProps()(store.getState(), {}),
@@ -64,8 +64,8 @@ class AppContainer extends React.Component {
 				const program = JSON.parse(query.program)
 				if (program.type === 'flow') {
 					setFlowProgram(program)
-				} else if (program.type === 'scratch') {
-					setScratchProgram(program)
+				} else if (program.type === 'block') {
+					setBlockProgram(program)
 				} else if (program.type === 'text') {
 					setTextProgram(program)
 				}
