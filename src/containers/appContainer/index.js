@@ -10,6 +10,7 @@ import FooterContainer from 'src/containers/footerContainer'
 import PageContainer from 'src/containers/pageContainer'
 import ModalContainer from 'src/containers/modalContainer'
 import MidiInterfaceManager from 'src/containers/midiInterfaceManager'
+import NavigationManager from 'src/containers/navigationManager'
 import StorageManager from 'src/containers/storageManager'
 import { BLACK } from 'src/constants/colors'
 import mapStateToProps from './mapStateToProps'
@@ -271,6 +272,7 @@ class AppContainer extends React.Component {
 				<FooterContainer />
 				<ModalContainer />
 				<MidiInterfaceManager />
+				<NavigationManager />
 				<StorageManager />
 			</div>
 		)

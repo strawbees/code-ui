@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types'
 import NextLink from 'next/link'
+import { fireGlobalEvent } from 'src/utils/globalEvents'
 import resolveLinkUrl from 'src/utils/resolveLinkUrl'
-import generateClassnames from 'src/utils/generateClassnames'
 
 const Link = ({ children, ...props }) => {
 	const {
 		to,
 		external,
+		onClick,
 		...otherProps
 	} = props
 
@@ -17,13 +18,20 @@ const Link = ({ children, ...props }) => {
 
 	if (to) {
 		return (
-			<NextLink href={href} as={as} {...otherProps}>
+			<NextLink
+				href={href}
+				as={as}
+				{...otherProps}>
 				<a
-					className={`root link ${generateClassnames({
-						to,
-						external
-					})}`}
-					target={external && '_blank'}>
+					className='root link'
+					target={external && '_blank'}
+					onClick={(nativeEvent) => {
+						const evt = { href, as, nativeEvent }
+						if (onClick) {
+							onClick(nativeEvent)
+						}
+						fireGlobalEvent('link', evt)
+					}}>
 					<style jsx>{`
 						.root {
 							display: block;
@@ -37,10 +45,16 @@ const Link = ({ children, ...props }) => {
 	}
 
 	return (
-		<span className={`root link ${generateClassnames({
-			to,
-			external
-		})}`}>
+		<span
+			className='root link'
+			onClick={(nativeEvent) => {
+				const evt = { href, as, nativeEvent }
+				if (onClick) {
+					onClick(nativeEvent)
+				}
+				fireGlobalEvent('link', evt)
+			}}
+			{...otherProps}>
 			<style jsx>{`
 				.root {
 					display: block;

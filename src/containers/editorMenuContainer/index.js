@@ -8,6 +8,7 @@ import mergeProps from './mergeProps'
 
 class EditorMenuContainer extends React.Component {
 	state = {}
+
 	static getDerivedStateFromProps({ initialized, initializeProgram }) {
 		if (
 			typeof initialized !== 'undefined' &&
@@ -18,6 +19,7 @@ class EditorMenuContainer extends React.Component {
 		}
 		return null
 	}
+
 	render() {
 		return <EditorMenu {...this.props}/>
 	}

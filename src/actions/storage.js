@@ -1,4 +1,5 @@
 import generateAction from 'src/utils/generateAction'
+import generateUniqueId from 'src/utils/generateUniqueId'
 import {
 	STORAGE_SET_READY,
 	STORAGE_SET_STATUS,
@@ -20,3 +21,19 @@ export const addProgram = generateAction(STORAGE_ADD_PROGRAM)
 export const updateProgram = generateAction(STORAGE_UPDATE_PROGRAM)
 export const removeProgram = generateAction(STORAGE_REMOVE_PROGRAM)
 export const removeAllPrograms = generateAction(STORAGE_REMOVE_ALL_PROGRAMS)
+
+export const safeAddProgram = (type, name, source) => async (dispatch) => {
+	const id = generateUniqueId()
+	const data = {
+		id,
+		type,
+		name,
+		source,
+		createdAt : Date.now(),
+		updatedAt : Date.now(),
+		version   : 0
+	}
+	dispatch(addProgram({ id, data }))
+	// important to return the program, as this will be consumed by other actions
+	return data
+}

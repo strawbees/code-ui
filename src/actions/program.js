@@ -21,12 +21,10 @@ import {
 	openDialogModal
 } from 'src/actions/modal'
 import {
-	addProgram,
-	getProgram,
-	updateProgramName,
-	updateProgramSource,
-	removeProgram
-} from 'src/utils/storage'
+	safeAddProgram,
+	updateProgram,
+	removeProgram,
+} from 'src/actions/storage'
 import refEditorNameSelector from 'src/selectors/refEditorNameSelector'
 import refEditorSourceSelector from 'src/selectors/refEditorSourceSelector'
 import refEditorIdSelector from 'src/selectors/refEditorIdSelector'
@@ -34,6 +32,7 @@ import refEditorTypeSelector from 'src/selectors/refEditorTypeSelector'
 import formatedProgramSelector from 'src/selectors/formatedProgramSelector'
 import editorSelector from 'src/selectors/editorSelector'
 import refEditorSavedSelector from 'src/selectors/refEditorSavedSelector'
+import storageProgramSelector from 'src/selectors/storageProgramSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 import resolveLinkUrl from 'src/utils/resolveLinkUrl'
 import generateNewProgramSource from 'src/utils/generateNewProgramSource'
@@ -65,7 +64,7 @@ export const saveCurrentEditorProgram = () => async (dispatch, getState) => {
 	const name = refEditorNameSelector()(state)
 	const source = refEditorSourceSelector()(state)
 	const type = refEditorTypeSelector()(state)
-	const { id } = await addProgram(type, name, source)
+	const { id } = await dispatch(safeAddProgram(type, name, source))
 	if (type === 'flow') {
 		dispatch(setFlowId(id))
 	} else if (type === 'scratch') {
@@ -87,7 +86,9 @@ export const updateCurrentEditorProgramName = (name) => async (dispatch, getStat
 		dispatch(setTextName(name))
 	}
 	if (saved) {
-		await updateProgramName(id, name)
+		const data = { ...storageProgramSelector(state)({ id }) }
+		data.name = name
+		await updateProgram(id, data)
 	}
 }
 export const updateCurrentEditorProgramSource = (source) => async (dispatch, getState) => {
@@ -103,16 +104,19 @@ export const updateCurrentEditorProgramSource = (source) => async (dispatch, get
 		dispatch(setTextSource(source))
 	}
 	if (saved) {
-		await updateProgramSource(id, source)
+		const data = { ...storageProgramSelector(state)({ id }) }
+		data.source = source
+		await updateProgram(id, data)
 	}
 }
-export const duplicateProgramById = (id, newName) => async (dispatch) => {
-	const program = await getProgram(id)
+export const duplicateProgramById = (id, newName) => async (dispatch, getState) => {
+	const state = getState()
+	const program = storageProgramSelector(state)({ id })
 	dispatch(duplicateProgramData(program, newName))
 }
 export const duplicateProgramData = (program, newName) => async () => {
 	const { type, source } = program
-	await addProgram(
+	await safeAddProgram(
 		type,
 		newName,
 		source
@@ -120,8 +124,8 @@ export const duplicateProgramData = (program, newName) => async () => {
 }
 export const removeProgramByIdAndClearEditor = (id) => async (dispatch, getState) => {
 	const state = getState()
-	const { type } = await getProgram(id)
-	await removeProgram(id)
+	const { type } = storageProgramSelector(state)({ id })
+	dispatch(removeProgram(id))
 	const editorId = editorSelector()(state)[type].id
 	if (editorId === id) {
 		dispatch(resetEditorProgramByType(type))
@@ -134,8 +138,9 @@ export const createNewProgramByTypeAndGoToEditor = (type) => (dispatch, getState
 	const { href, as } = resolveLinkUrl(editorUrl)
 	Router.push(href, as)
 }
-export const openProgramByIdAndGoToEditor = (id) => async (dispatch) => {
-	const { type, name, source } = await getProgram(id)
+export const openProgramByIdAndGoToEditor = (id) => async (dispatch, getState) => {
+	const state = getState()
+	const { type, name, source } = storageProgramSelector(state)({ id })
 	const program = {
 		id,
 		type,
