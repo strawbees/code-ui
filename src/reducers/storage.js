@@ -28,7 +28,7 @@ const programs = (state = {}, { type, payload }) => {
 	switch (type) {
 		case STORAGE_SET_PROGRAMS:
 			return {
-				...payload.data
+				...payload
 			}
 		case STORAGE_ADD_PROGRAM:
 		case STORAGE_UPDATE_PROGRAM: {

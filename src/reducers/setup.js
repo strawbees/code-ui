@@ -1,11 +1,14 @@
 import { combineReducers } from 'redux'
+import generateReducer from 'src/utils/generateReducer'
 import {
 	SETUP_SET_QUERY,
 	SETUP_SET_AS_PATH,
 	SETUP_SET_URL_VARS,
 	SETUP_SET_LOCALES,
 	SETUP_SET_ROUTES,
-	SETUP_SET_STRINGS
+	SETUP_SET_STRINGS,
+	SETUP_SET_DISPLAY_PAGE_LOADER,
+	SETUP_SET_DISPLAY_ERROR,
 } from 'src/constants/actionTypes'
 
 const query = (state = null, { type, payload }) => {
@@ -99,6 +102,9 @@ const stringsLoaded = (state = {}, { type, payload }) => {
 	}
 }
 
+const displayPageLoader = generateReducer(SETUP_SET_DISPLAY_PAGE_LOADER, false)
+const displayError = generateReducer(SETUP_SET_DISPLAY_ERROR, false)
+
 export default combineReducers({
 	query,
 	asPath,
@@ -108,5 +114,7 @@ export default combineReducers({
 	routes,
 	routesLoaded,
 	strings,
-	stringsLoaded
+	stringsLoaded,
+	displayPageLoader,
+	displayError,
 })

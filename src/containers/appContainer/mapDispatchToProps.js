@@ -6,6 +6,7 @@ import {
 	setStrings,
 	setAsPath,
 	setUrlVars,
+	setDisplayPageLoader,
 } from 'src/actions/setup'
 import {
 	setup as setupEditor
@@ -18,5 +19,6 @@ export default autobindDispatchToActionCreators({
 	setStrings,
 	setAsPath,
 	setUrlVars,
+	setDisplayPageLoader,
 	setupEditor,
 })

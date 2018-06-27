@@ -2,9 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import NProgress from 'nprogress'
 import Router from 'next/router'
+import ErrorPage from 'next/error'
 import { connect } from 'react-redux'
 import parseUrlVars from 'src/utils/parseUrlVars'
 import loadStaticData from 'src/utils/loadStaticData'
+import Spinner from 'src/components/spinner'
 import HeadContainer from 'src/containers/headContainer'
 import HeaderContainer from 'src/containers/headerContainer'
 import FooterContainer from 'src/containers/footerContainer'
@@ -35,6 +37,7 @@ class AppContainer extends React.Component {
 			setStrings,
 			setAsPath,
 			setUrlVars,
+			setDisplayPageLoader,
 			setupEditor,
 		} = mergeProps(
 			mapStateToProps()(store.getState(), {}),
@@ -57,8 +60,10 @@ class AppContainer extends React.Component {
 				data   : await loadStaticData(`locales/${query.locale}/computed.json`)
 			})
 		}
-		// Editor setup only needs to happen once, in server
 		if (isServer) {
+			// shoe the initial page loader
+			setDisplayPageLoader(true)
+			// Editor setup only needs to happen once, in server
 			setupEditor()
 		}
 	}
@@ -71,10 +76,14 @@ class AppContainer extends React.Component {
 		// adjust as path on first render
 		const {
 			setAsPath,
-			setUrlVars
+			setUrlVars,
+			setDisplayPageLoader,
 		} = this.props
 		setAsPath(Router.router.asPath)
 		setUrlVars(parseUrlVars(Router.router.asPath))
+
+		// hide the initial page loader
+		setDisplayPageLoader(false)
 	}
 
 	componentWillUnmount() {
@@ -84,13 +93,24 @@ class AppContainer extends React.Component {
 		Router.router.events.off('routeChangeError', NProgress.done)
 	}
 
-	shouldComponentUpdate() {
-		// Since we don't really pass down any props/state, we just need
-		// to render once.
-		return false
-	}
+	// shouldComponentUpdate() {
+	// 	// Since we don't really pass down any props/state, we just need
+	// 	// to render once.
+	// 	return false
+	// }
 
 	render() {
+		const {
+			displayPageLoader,
+			displayError,
+		} = this.props
+
+		if (displayError) {
+			return (
+				<ErrorPage statusCode={displayError} />
+			)
+		}
+
 		return (
 			<div className="root app">
 				<style jsx>{`
@@ -252,28 +272,48 @@ class AppContainer extends React.Component {
 					:global(.global-type-h4) {
 						font-size: 1rem;
 					}
+					/* Page loader */
+					.page-loader {
+						position: fixed;
+						width: 100%;
+						height: 100%;
+						background-color: rgba(255,255,255,0.6);
+						z-index: 999;
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						justify-content: center;
+					}
 				`}</style>
-				<MidiInterfaceManager />
-				<NavigationManager />
 				<StorageManager />
+				<NavigationManager />
+				<MidiInterfaceManager />
 				<HeadContainer />
 				<HeaderContainer />
 				<PageContainer />
 				<FooterContainer />
 				<ModalContainer />
+				{displayPageLoader &&
+					<div className='page-loader'>
+						<Spinner/>
+					</div>
+				}
 			</div>
 		)
 	}
 }
 
 AppContainer.propTypes = {
-	setQuery    : PropTypes.func,
-	setRoutes   : PropTypes.func,
-	setLocales  : PropTypes.func,
-	setStrings  : PropTypes.func,
-	setAsPath   : PropTypes.func,
-	setUrlVars  : PropTypes.func,
-	setupEditor : PropTypes.func,
+	setQuery             : PropTypes.func,
+	setRoutes            : PropTypes.func,
+	setLocales           : PropTypes.func,
+	setStrings           : PropTypes.func,
+	setAsPath            : PropTypes.func,
+	setUrlVars           : PropTypes.func,
+	setDisplayPageLoader : PropTypes.func,
+	setupEditor          : PropTypes.func,
+	displayPageLoader    : PropTypes.bool,
+	displayError         : PropTypes.PropTypes.oneOf([false, 404, 500]),
 }
 
 export default connect(

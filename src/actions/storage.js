@@ -1,5 +1,6 @@
 import generateAction from 'src/utils/generateAction'
-import generateUniqueId from 'src/utils/generateUniqueId'
+import { generateUniqueId } from 'src/storage'
+import storageCredentialsSelector from 'src/selectors/storageCredentialsSelector'
 import {
 	STORAGE_SET_READY,
 	STORAGE_SET_STATUS,
@@ -22,8 +23,10 @@ export const updateProgram = generateAction(STORAGE_UPDATE_PROGRAM)
 export const removeProgram = generateAction(STORAGE_REMOVE_PROGRAM)
 export const removeAllPrograms = generateAction(STORAGE_REMOVE_ALL_PROGRAMS)
 
-export const safeAddProgram = (type, name, source) => async (dispatch) => {
-	const id = generateUniqueId()
+export const safeAddProgram = (type, name, source) => async (dispatch, getState) => {
+	const state = getState()
+	const credentials = storageCredentialsSelector()(state)
+	const id = generateUniqueId(credentials)
 	const data = {
 		id,
 		type,

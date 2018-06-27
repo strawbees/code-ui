@@ -2,8 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import LZString from 'lz-string'
 import Router from 'next/router'
-import debounce from 'src/utils/debounce'
 import resolveLinkUrl from 'src/utils/resolveLinkUrl'
+import {
+	isIdValid,
+	loadProgram,
+} from 'src/storage'
 import { connect } from 'react-redux'
 import {
 	addGlobalEventListener,
@@ -98,6 +101,8 @@ class NavigationManager extends React.PureComponent {
 		const {
 			resetCurrentEditorProgram,
 			setCurrentEditorProgram,
+			setDisplayPageLoader,
+			setDisplayError,
 		} = this.props
 		const { queryRef, urlVarP } = this.props
 		let { urlVarData } = this.props
@@ -115,9 +120,13 @@ class NavigationManager extends React.PureComponent {
 			return
 		}
 
+		// Show the loader
+		setDisplayPageLoader(true)
+
 		// Reset editor, since there's no program to show
 		if (queryRef && !urlVarP && !urlVarData) {
 			resetCurrentEditorProgram()
+			setDisplayPageLoader(false)
 			return
 		}
 
@@ -126,7 +135,8 @@ class NavigationManager extends React.PureComponent {
 			// First try to decompress the string
 			const decompressed = LZString.decompressFromEncodedURIComponent(urlVarData)
 			if (!decompressed) {
-				// TODO: show error
+				setDisplayError(404)
+				setDisplayPageLoader(false)
 				return
 			}
 			// Then try to parse it to json
@@ -134,12 +144,14 @@ class NavigationManager extends React.PureComponent {
 			try {
 				json = JSON.parse(decompressed)
 			} catch (e) {
-				// TODO: show error
+				setDisplayError(404)
+				setDisplayPageLoader(false)
 				return
 			}
 			// Check if the json is valid
 			if (json.type !== queryRef) {
-				// TODO: show error
+				setDisplayError(404)
+				setDisplayPageLoader(false)
 				return
 			}
 
@@ -149,13 +161,37 @@ class NavigationManager extends React.PureComponent {
 				source : json.source
 			}
 			setCurrentEditorProgram(program)
+			setDisplayPageLoader(false)
 			return
 		}
 
-		// If theres data, parse it and try to load it into a program
+		// If theres a program id...
 		if (urlVarP) {
-
+			// Check if it is valid...
+			if (!isIdValid(urlVarP)) {
+				setDisplayError(404)
+				setDisplayPageLoader(false)
+				return
+			}
+			// Try to load it
+			let program
+			try {
+				program = await loadProgram(urlVarP)
+			} catch (e) {
+				setDisplayError(e)
+				setDisplayPageLoader(false)
+				return
+			}
+			if (program) {
+				setCurrentEditorProgram(program)
+				setDisplayPageLoader(false)
+				return
+			}
 		}
+
+		// If we got here, I am not sure what to do :)
+		setDisplayError(404)
+		setDisplayPageLoader(false)
 	}
 
 	render() {
@@ -170,6 +206,8 @@ NavigationManager.propTypes = {
 
 	resetCurrentEditorProgram : PropTypes.func,
 	setCurrentEditorProgram   : PropTypes.func,
+	setDisplayPageLoader      : PropTypes.func,
+	setDisplayError           : PropTypes.func,
 }
 
 export default connect(

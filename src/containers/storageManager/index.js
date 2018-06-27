@@ -1,32 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import * as browserStorage from 'src/utils/browserStorage'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
-const localStorageGet = (key) => {
-	try {
-		return JSON.parse(localStorage.getItem(key))
-	} catch (e) {
-		return null
-	}
-}
-const localStorageSet = (key, value) => {
-	try {
-		return localStorage.setItem(key, JSON.stringify(value))
-	} catch (e) {
-		return null
-	}
-}
-
-const localStorageRemove = (key) => {
-	try {
-		return localStorage.removeItem(key)
-	} catch (e) {
-		return null
-	}
-}
 
 class StorageManager extends React.Component {
 	async componentDidMount() {
@@ -38,18 +17,16 @@ class StorageManager extends React.Component {
 		} = this.props
 
 		// Load data from local storage
-		this.temp = localStorageGet('storage_temp')
-		this.credentials = localStorageGet('storage_credentials')
+		this.temp = browserStorage.get('temp', 'program')
+		this.credentials = browserStorage.get('creadentials', 'data')
 		this.programs = {}
-		Object.keys(localStorage).forEach(key => {
-			if (key.indexOf('storage_program_') === -1) {
-				return
-			}
-			const program = localStorageGet(key)
+		browserStorage.getProgramsIds().forEach(id => {
+			const program = browserStorage.get('program', id)
 			if (program) {
-				this.programs[key.replace('storage_program_', '')] = program
+				this.programs[id] = program
 			}
 		})
+
 		// Pass it to the state
 		setTempProgram(this.temp)
 		setPrograms(this.programs)
@@ -73,7 +50,7 @@ class StorageManager extends React.Component {
 	}
 
 	// Monitor changes done by the state, if there are any, update local storage
-	componetDidUpdate() {
+	componentDidUpdate() {
 		const {
 			credentials,
 			tempProgram,
@@ -84,24 +61,20 @@ class StorageManager extends React.Component {
 
 		let needsUpdate = false
 		if (this.credentials !== credentials) {
-			localStorageSet('storage_credentials', credentials)
+			browserStorage.set('credentials', 'data')
 			this.credentials = credentials
 			needsUpdate = true
 		}
 		if (this.tempProgram !== tempProgram) {
-			localStorageSet('storage_temp', tempProgram)
+			browserStorage.set('temp', 'program')
 			this.tempProgram = tempProgram
 			needsUpdate = true
 		}
 		Object.keys(programs).forEach(id => {
-			if (!this.programs[id]) {
-				// program was added by the state
-				localStorageSet(`storage_program_${id}`, programs[id])
-				this.programs[id] = programs[id]
-				needsUpdate = true
-			} else if (this.programs[id] !== programs[id]) {
-				// program updated by the state
-				localStorageSet(`storage_program_${id}`, programs[id])
+			// program was added/updated by the state
+			console.log(!this.programs[id], this.programs[id] !== programs[id])
+			if (!this.programs[id] || this.programs[id] !== programs[id]) {
+				browserStorage.set('program', id, programs[id])
 				this.programs[id] = programs[id]
 				needsUpdate = true
 			}
@@ -109,7 +82,7 @@ class StorageManager extends React.Component {
 		Object.keys(this.programs).forEach(id => {
 			// program was deleted by the state
 			if (!programs[id]) {
-				localStorageRemove(`storage_program_${id}`)
+				browserStorage.remove('program', id)
 				delete this.programs[id]
 				needsUpdate = true
 			}
@@ -134,6 +107,7 @@ StorageManager.propTypes = {
 	setCredentials : PropTypes.func,
 	setTempProgram : PropTypes.func,
 	setPrograms    : PropTypes.func,
+	programs       : PropTypes.object,
 }
 
 export default connect(

@@ -91,7 +91,7 @@ export const updateCurrentEditorProgramName = (name) => async (dispatch, getStat
 		dispatch(setTextName(name))
 	}
 	if (saved) {
-		const data = { ...storageProgramSelector(state)({ id }) }
+		const data = { ...storageProgramSelector()(state, { id }) }
 		data.name = name
 		await updateProgram(id, data)
 	}
@@ -109,14 +109,14 @@ export const updateCurrentEditorProgramSource = (source) => async (dispatch, get
 		dispatch(setTextSource(source))
 	}
 	if (saved) {
-		const data = { ...storageProgramSelector(state)({ id }) }
+		const data = { ...storageProgramSelector()(state, { id }) }
 		data.source = source
 		await updateProgram(id, data)
 	}
 }
 export const duplicateProgramById = (id, newName) => async (dispatch, getState) => {
 	const state = getState()
-	const program = storageProgramSelector(state)({ id })
+	const program = storageProgramSelector()(state, { id })
 	dispatch(duplicateProgramData(program, newName))
 }
 export const duplicateProgramData = (program, newName) => async () => {
@@ -129,14 +129,13 @@ export const duplicateProgramData = (program, newName) => async () => {
 }
 export const removeProgramByIdAndClearEditor = (id) => async (dispatch, getState) => {
 	const state = getState()
-	const { type } = storageProgramSelector(state)({ id })
-	dispatch(removeProgram(id))
+	const { type } = storageProgramSelector()(state, { id })
+	dispatch(removeProgram({ id }))
 	const editorId = editorSelector()(state)[type].id
 	if (editorId === id) {
 		dispatch(resetEditorProgramByType(type))
 	}
 }
-
 
 // Modal actions
 export const modalRemoveProgram = (id) => async (dispatch) => {
