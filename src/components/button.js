@@ -38,7 +38,8 @@ const Button = ({
 				transition: background-color 0.1s;
 			}
 			.root:not(.disabled):hover,
-			.root:focus {
+			.root:focus,
+			:global(.link:focus) .root {
 				outline: none;
 				box-shadow: 0 0 0 0.15rem ${tinycolor(borderColor).toRgbString()};
 				color: ${tinycolor(textHoverColor).toRgbString()};

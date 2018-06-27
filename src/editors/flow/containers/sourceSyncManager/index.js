@@ -13,7 +13,7 @@ class SourceSyncManager extends React.Component {
 			setSource,
 			refEditorSource,
 		} = this.props
-		if (refEditorSource !== source) {
+		if (!shallowCompareArrays(refEditorSource, source)) {
 			setSource(refEditorSource)
 		}
 	}

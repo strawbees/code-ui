@@ -9,6 +9,7 @@ const DialogContainer = (props) =>
 	<Dialog {...props}/>
 
 DialogContainer.propTypes = {
+	titleLabelKey   : PropTypes.string,
 	cancelLabelKey  : PropTypes.string,
 	confirmLabelKey : PropTypes.string
 }

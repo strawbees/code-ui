@@ -3,8 +3,7 @@ import stateSelector from 'src/selectors/stateSelector'
 import refEditorTypeSelector from 'src/selectors/refEditorTypeSelector'
 import refEditorSourceSelector from 'src/selectors/refEditorSourceSelector'
 
-import flowGeneratedCodeSelector from 'src/editors/flow/selectors/generatedCodeSelector'
-
+import generateFlowCode from 'src/editors/flow/utils/generateCode'
 import generateBlockCode from 'src/editors/block/utils/generateCode'
 
 export default () => createSelector(
@@ -20,9 +19,9 @@ export default () => createSelector(
 	) => {
 		switch (type) {
 			case 'flow':
-				return flowGeneratedCodeSelector()(state)
+				return generateFlowCode(source, state)
 			case 'block':
-				return generateBlockCode(source)
+				return generateBlockCode(source, state)
 			case 'text':
 				return source
 			default:

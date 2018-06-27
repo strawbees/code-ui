@@ -13,7 +13,11 @@ import {
 	EDITOR_SET_TEXT_SOURCE,
 	EDITOR_SET_TEXT_GENERATED_CODE
 } from 'src/constants/actionTypes'
+import { setup as setupFlow } from 'src/editors/flow/actions'
 
+export const setup = () => async (dispatch) => {
+	dispatch(setupFlow())
+}
 export const setFlowName = generateAction(EDITOR_SET_FLOW_NAME)
 export const setFlowId = generateAction(EDITOR_SET_FLOW_ID)
 export const setFlowSource = generateAction(EDITOR_SET_FLOW_SOURCE)

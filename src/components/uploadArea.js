@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import Markdown from 'react-remarkable'
 import Message from 'src/components/message'
-import Spinner from 'src/components/spinner'
 import SingleBoardStatus from 'src/components/singleBoardStatus'
 import SingleBoardUploaderContainer from 'src/containers/singleBoardUploaderContainer'
 import S from 'src/containers/sManager'
@@ -44,19 +43,8 @@ const UploadArea = ({
 			}
 		`}</style>
 		<div className='title global-type global-type-h3'>
-			<S value='ui.board.upload.modal.title' />
+			<S value='ui.editor.file.dialog.upload' />
 		</div>
-		{/* (!hex && !compilerError) &&
-			<div className='compilation-status'>
-				<Spinner/>
-				<div>
-					<S
-						value='ui.board.upload.compiler.progress'
-						markdown={true}
-					/>
-				</div>
-			</div>
-		*/ }
 		{(!hex && compilerError) &&
 			<Message type='error'>
 				<Markdown source={compilerError}/>

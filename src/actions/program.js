@@ -37,12 +37,7 @@ import FormInput from 'src/components/formInput'
 import S from 'src/containers/sManager'
 import UploadAreaContainer from 'src/containers/uploadAreaContainer'
 
-export const resetEditorProgramByType = (type) => (dispatch) => {
-	const program = {
-		id     : null,
-		name   : null,
-		source : generateNewProgramSource(type)
-	}
+export const setEditorProgramByType = (type, program) => (dispatch) => {
 	if (type === 'flow') {
 		dispatch(setFlowProgram(program))
 	} else if (type === 'block') {
@@ -50,6 +45,19 @@ export const resetEditorProgramByType = (type) => (dispatch) => {
 	} else if (type === 'text') {
 		dispatch(setTextProgram(program))
 	}
+}
+export const resetEditorProgramByType = (type) => (dispatch) => {
+	const program = {
+		id     : null,
+		name   : null,
+		source : generateNewProgramSource(type)
+	}
+	dispatch(setEditorProgramByType(type, program))
+}
+export const setCurrentEditorProgram = (program) => (dispatch, getState) => {
+	const state = getState()
+	const type = refEditorTypeSelector()(state)
+	dispatch(setEditorProgramByType(type, program))
 }
 export const resetCurrentEditorProgram = () => (dispatch, getState) => {
 	const state = getState()
@@ -135,6 +143,7 @@ export const modalRemoveProgram = (id) => async (dispatch) => {
 	dispatch(openDialogModal(
 		<S value='modal.program.remove-confirmation'/>,
 		{
+			titleLabelKey   : 'ui.editor.file.dialog.remove',
 			confirmLabelKey : 'ui.editor.remove',
 			onConfirm       : () => dispatch(removeProgramByIdAndClearEditor(id))
 		}
@@ -152,6 +161,7 @@ export const modalDuplicateProgramById = (id) => async (dispatch, getState) => {
 			onChange={e => newName = e}
 		/>,
 		{
+			titleLabelKey   : 'ui.editor.file.dialog.duplicate',
 			confirmLabelKey : 'ui.editor.duplicate',
 			onConfirm       : () => dispatch(duplicateProgramById(id, newName))
 		}
@@ -168,6 +178,7 @@ export const modalDuplicateProgramData = (program) => async (dispatch) => {
 			onChange={e => newName = e}
 		/>,
 		{
+			titleLabelKey   : 'ui.editor.file.dialog.duplicate',
 			confirmLabelKey : 'ui.editor.duplicate',
 			onConfirm       : () => dispatch(duplicateProgramData(program, newName))
 		}

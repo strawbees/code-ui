@@ -14,10 +14,12 @@ class InstanceDraggableContainer extends React.Component {
 	state = {
 		style : {}
 	}
+
 	constructor(props) {
 		super(props)
 		this.ref = React.createRef()
 	}
+
 	bumpZ = () => {
 		if (this.state.style.zIndex !== ZINDEX) {
 			this.setState({
@@ -27,6 +29,7 @@ class InstanceDraggableContainer extends React.Component {
 			})
 		}
 	}
+
 	moveInstance = (x, y) => {
 		if (this.dragStartPosition.x === x &&
 			this.dragStartPosition.y === y) {
@@ -49,6 +52,7 @@ class InstanceDraggableContainer extends React.Component {
 		this.lastDragY = y
 		updateInstancePosition({ id, x, y })
 	}
+
 	onDragStart = (e, { x, y }) => {
 		// cache the start position
 		this.dragStartPosition = {
@@ -61,12 +65,15 @@ class InstanceDraggableContainer extends React.Component {
 		// force it here.
 		this.ref.current.focus({ preventScroll : true })
 	}
+
 	onDragMove = (e, { x, y }) => {
 		this.moveInstance(x, y)
 	}
+
 	onDragStop = (e, { x, y }) => {
 		this.moveInstance(x, y)
 	}
+
 	onKeyUp = ({ keyCode }) => {
 		const {
 			id,
@@ -100,9 +107,11 @@ class InstanceDraggableContainer extends React.Component {
 		}
 		updateInstancePosition({ id, x, y })
 	}
+
 	cancelEvent = (e) => {
 		e.preventDefault()
 	}
+
 	onCloseClick = () => {
 		const {
 			id,
@@ -110,9 +119,11 @@ class InstanceDraggableContainer extends React.Component {
 		} = this.props
 		removeInstance(id)
 	}
+
 	componentDidMount() {
 		this.ref.current.focus({ preventScroll : true })
 	}
+
 	render() {
 		const {
 			onDragStart,

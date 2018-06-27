@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import LZString from 'lz-string'
 import Router from 'next/router'
+import debounce from 'src/utils/debounce'
 import resolveLinkUrl from 'src/utils/resolveLinkUrl'
 import { connect } from 'react-redux'
 import {
@@ -19,9 +21,9 @@ class NavigationManager extends React.PureComponent {
 		addGlobalEventListener('link', this.onLinkClicked)
 		Router.beforePopState(this.onBeforePopState)
 
-		// Call manually componentDidUpdate, since that is not called on first
-		// render, and we want to act on the initial loaded values
-		this.componentDidUpdate({}) // empty prevProps
+		// Call manually processNavigation, since componentDidUpdate is not
+		// called on first render
+		this.processNavigation()
 	}
 
 	componentWillUnmout() {
@@ -76,31 +78,35 @@ class NavigationManager extends React.PureComponent {
 		const {
 			queryRef
 		} = this.props
+		const url = resolveLinkUrl(as)
 
 		// we only care about monitoring changes *from* the editor
-		if (queryRef !== 'flow' ||
-			queryRef !== 'block' ||
+		if (queryRef !== 'flow' &&
+			queryRef !== 'block' &&
 			queryRef !== 'text') {
 			return
 		}
+	}
 
+	// process the naviation on prop changes
+	componentDidUpdate() {
+		this.processNavigation()
 	}
 
 	// Monitor the page and url var changes to load programs
-	componentDidUpdate(prevProps) {
+	processNavigation = async () => {
 		const {
-			queryRef   : prevQueryRef,
-			urlVarP    : prevUrlVarP,
-			urlVarData : prevUrlVarData,
-		} = prevProps
-
-		const {
-			queryRef,
-			urlVarP,
-			urlVarData,
-
 			resetCurrentEditorProgram,
+			setCurrentEditorProgram,
 		} = this.props
+		const { queryRef, urlVarP } = this.props
+		let { urlVarData } = this.props
+
+
+		// if there's both ?data and ?p, ignore ?data
+		if (urlVarP && urlVarData) {
+			urlVarData = null
+		}
 
 		// Only act on the editor pages
 		if (queryRef !== 'flow' &&
@@ -110,10 +116,45 @@ class NavigationManager extends React.PureComponent {
 		}
 
 		// Reset editor, since there's no program to show
-		if (queryRef !== prevQueryRef &&
-			!urlVarP && !urlVarData) {
-			console.log('new!')
+		if (queryRef && !urlVarP && !urlVarData) {
 			resetCurrentEditorProgram()
+			return
+		}
+
+		// If theres data, parse it and try to load it into a program
+		if (urlVarData) {
+			// First try to decompress the string
+			const decompressed = LZString.decompressFromEncodedURIComponent(urlVarData)
+			if (!decompressed) {
+				// TODO: show error
+				return
+			}
+			// Then try to parse it to json
+			let json
+			try {
+				json = JSON.parse(decompressed)
+			} catch (e) {
+				// TODO: show error
+				return
+			}
+			// Check if the json is valid
+			if (json.type !== queryRef) {
+				// TODO: show error
+				return
+			}
+
+			// Finaly load the program
+			const program = {
+				name   : json.name,
+				source : json.source
+			}
+			setCurrentEditorProgram(program)
+			return
+		}
+
+		// If theres data, parse it and try to load it into a program
+		if (urlVarP) {
+
 		}
 	}
 
@@ -128,6 +169,7 @@ NavigationManager.propTypes = {
 	urlVarData : PropTypes.string,
 
 	resetCurrentEditorProgram : PropTypes.func,
+	setCurrentEditorProgram   : PropTypes.func,
 }
 
 export default connect(

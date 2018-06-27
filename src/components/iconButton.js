@@ -53,6 +53,7 @@ const IconButtonContent = ({
 
 const IconButton = ({
 	icon,
+	label,
 	labelKey,
 	disabled,
 	hideLabelOnMediaQuery,
@@ -67,6 +68,7 @@ const IconButton = ({
 		{...otherProps}>
 		<IconButtonContent
 			icon={icon}
+			label={label}
 			labelKey={labelKey}
 			hideLabelOnMediaQuery={hideLabelOnMediaQuery}
 		/>

@@ -13,6 +13,9 @@ const UserHeaderAvatar = ({
 			.root :global(a) {
 				text-decoration: none;
 			}
+			.root :global(.link:focus) {
+				outline: none;
+			}
 		`}</style>
 		<Link to={profileUrl}>
 			{isAnon &&
@@ -20,6 +23,7 @@ const UserHeaderAvatar = ({
 					icon={userAnonIcon}
 					labelKey={'ui.user.anon'}
 					hideLabelOnMediaQuery={'max-width: 950px'}
+					tabIndex='-1'
 				/>
 			}
 			{!isAnon &&
@@ -27,6 +31,7 @@ const UserHeaderAvatar = ({
 					icon={userIcon}
 					label='Fake user'
 					hideLabelOnMediaQuery={'max-width: 950px'}
+					tabIndex='-1'
 				/>
 			}
 		</Link>

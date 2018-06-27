@@ -1,6 +1,19 @@
-export default () => (state) =>
+import { createSelector } from 'reselect'
+import rawSourceSelector from 'src/editors/flow/selectors/rawSourceSelector'
+import propsSourceSelector from 'src/editors/flow/selectors/propsSourceSelector'
+
+export default () => createSelector(
+	[
+		rawSourceSelector(),
+		propsSourceSelector(),
+	],
 	(
-		state &&
-		state.flowEditor &&
-		state.flowEditor.source
-	) || []
+		rawSource,
+		propsSource
+	) => {
+		if (propsSource) {
+			return propsSource
+		}
+		return rawSource
+	}
+)

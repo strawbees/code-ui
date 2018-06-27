@@ -8,6 +8,9 @@ import parameterValueDefaultSelector from 'src/editors/flow/selectors/parameterV
 import nextInstanceIdSelector from 'src/editors/flow/selectors/nextInstanceIdSelector'
 import valueParsedSelector from 'src/editors/flow/selectors/valueParsedSelector'
 import { sanitizeCPPVariableName } from 'src/utils/string'
+import rawNodes from 'src/editors/flow/data/nodes.json'
+import rawCategories from 'src/editors/flow/data/categories.json'
+import rawConstants from 'src/editors/flow/data/constants.json'
 import {
 	SET_NODE_DEFINITIONS,
 	SET_CATEGORY_DEFINITIONS,
@@ -30,6 +33,11 @@ import {
 	SET_OUTLET_TRANSFER_DRAG_METHODS,
 } from './actionTypes'
 
+export const setup = () => async (dispatch) => {
+	dispatch(setNodeDefinitions(rawNodes))
+	dispatch(setCategoryDefinitions(rawCategories))
+	dispatch(setConstantDefinitions(rawConstants))
+}
 export const setNodeDefinitions = generateAction(SET_NODE_DEFINITIONS)
 export const setCategoryDefinitions = generateAction(SET_CATEGORY_DEFINITIONS)
 export const setConstantDefinitions = generateAction(SET_CONSTANT_DEFINITIONS)

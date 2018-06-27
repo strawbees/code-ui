@@ -2,6 +2,12 @@ import thunkMiddleware from 'redux-thunk'
 import { createStore, applyMiddleware, compose } from 'redux'
 import reducer from 'src/reducers/index'
 
+const composeEnhancers = (
+	typeof window !== 'undefined' &&
+	/* eslint-disable-next-line no-underscore-dangle */
+	window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+) || compose
+
 export default (state = {}) => {
 	const middlewares = []
 	middlewares.push(thunkMiddleware)
@@ -17,7 +23,7 @@ export default (state = {}) => {
 	const store = createStore(
 		reducer,
 		state,
-		compose(applyMiddleware(...middlewares))
+		composeEnhancers(applyMiddleware(...middlewares))
 	)
 
 	if (module.hot) {

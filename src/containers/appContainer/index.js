@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import NProgress from 'nprogress'
 import Router from 'next/router'
 import { connect } from 'react-redux'
@@ -34,14 +35,16 @@ class AppContainer extends React.Component {
 			setStrings,
 			setAsPath,
 			setUrlVars,
-			// setFlowProgram,
-			// setBlockProgram,
-			// setTextProgram
+			setupEditor,
 		} = mergeProps(
 			mapStateToProps()(store.getState(), {}),
 			mapDispatchToProps(store.dispatch)
 		)
 		setQuery(query)
+		if (!isServer) {
+			setAsPath(asPath)
+			setUrlVars(parseUrlVars(asPath))
+		}
 		if (!routesLoaded) {
 			setRoutes(await loadStaticData('routes.json'))
 		}
@@ -54,26 +57,10 @@ class AppContainer extends React.Component {
 				data   : await loadStaticData(`locales/${query.locale}/computed.json`)
 			})
 		}
-		if (!isServer) {
-			setAsPath(asPath)
-			setUrlVars(parseUrlVars(asPath))
+		// Editor setup only needs to happen once, in server
+		if (isServer) {
+			setupEditor()
 		}
-		// if there is a "program" query, deal with it
-		// if (query.program) {
-		// 	try {
-		// 		const program = JSON.parse(query.program)
-		// 		if (program.type === 'flow') {
-		// 			setFlowProgram(program)
-		// 		} else if (program.type === 'block') {
-		// 			setBlockProgram(program)
-		// 		} else if (program.type === 'text') {
-		// 			setTextProgram(program)
-		// 		}
-		// 	} catch (e) {
-		// 		// eslint-disable-next-line no-console
-		// 		console.log('Error try to handle program query', e)
-		// 	}
-		// }
 	}
 
 	async componentDidMount() {
@@ -266,17 +253,27 @@ class AppContainer extends React.Component {
 						font-size: 1rem;
 					}
 				`}</style>
+				<MidiInterfaceManager />
+				<NavigationManager />
+				<StorageManager />
 				<HeadContainer />
 				<HeaderContainer />
 				<PageContainer />
 				<FooterContainer />
 				<ModalContainer />
-				<MidiInterfaceManager />
-				<NavigationManager />
-				<StorageManager />
 			</div>
 		)
 	}
+}
+
+AppContainer.propTypes = {
+	setQuery    : PropTypes.func,
+	setRoutes   : PropTypes.func,
+	setLocales  : PropTypes.func,
+	setStrings  : PropTypes.func,
+	setAsPath   : PropTypes.func,
+	setUrlVars  : PropTypes.func,
+	setupEditor : PropTypes.func,
 }
 
 export default connect(

@@ -8,9 +8,7 @@ import {
 	setUrlVars,
 } from 'src/actions/setup'
 import {
-	setFlowProgram,
-	setBlockProgram,
-	setTextProgram,
+	setup as setupEditor
 } from 'src/actions/editor'
 
 export default autobindDispatchToActionCreators({
@@ -20,7 +18,5 @@ export default autobindDispatchToActionCreators({
 	setStrings,
 	setAsPath,
 	setUrlVars,
-	setFlowProgram,
-	setBlockProgram,
-	setTextProgram,
+	setupEditor,
 })

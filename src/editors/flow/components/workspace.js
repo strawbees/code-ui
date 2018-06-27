@@ -8,6 +8,7 @@ class Workspace extends React.Component {
 		super(props)
 		this.selfRef = React.createRef()
 	}
+
 	componentDidMount() {
 		const {
 			registerGetDropAreaRect,
@@ -25,6 +26,7 @@ class Workspace extends React.Component {
 			})
 		)
 	}
+
 	onDown = (e) => {
 		if (e.type === 'mousedown' && this.isTouch) {
 			this.isTouch = false
@@ -53,6 +55,7 @@ class Workspace extends React.Component {
 		window.addEventListener('touchmove', this.onMove, { passive : false })
 		window.addEventListener('touchend', this.onUp)
 	}
+
 	onMove = (e) => {
 		e.preventDefault()
 		const diff = { x : 0, y : 0 }
@@ -72,6 +75,7 @@ class Workspace extends React.Component {
 		this.selfRef.current.scrollLeft = diff.x
 		this.selfRef.current.scrollTop = diff.y
 	}
+
 	onUp = () => {
 		this.startDragMove = null
 		window.removeEventListener('mousemove', this.onMove)
