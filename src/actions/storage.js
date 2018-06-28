@@ -42,6 +42,11 @@ export const safeAddProgram = (type, name, source) => async (dispatch, getState)
 }
 
 export const safeUpdateProgram = (id, data) => async (dispatch) => {
+	data = {
+		...data,
+		updatedAt : Date.now(),
+		version   : data.version + 1,
+	}
 	dispatch(updateProgram({ id, data }))
 }
 

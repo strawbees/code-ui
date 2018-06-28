@@ -23,6 +23,7 @@ export const generateUniqueId = (credentials) => {
 }
 
 export const resolveBackendFromId = (id) => {
+	id = id.toString()
 	const prefix = id.substring(0, 2)
 	if (id.length === 18) {
 		return Object.values(backends)

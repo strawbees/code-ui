@@ -104,9 +104,8 @@ class NavigationManager extends React.PureComponent {
 			setDisplayPageLoader,
 			setDisplayError,
 		} = this.props
-		const { queryRef, urlVarP } = this.props
+		const { urlVarP, queryRef } = this.props
 		let { urlVarData } = this.props
-
 
 		// if there's both ?data and ?p, ignore ?data
 		if (urlVarP && urlVarData) {

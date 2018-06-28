@@ -40,6 +40,7 @@ import refEditorSavedSelector from 'src/selectors/refEditorSavedSelector'
 import storageProgramSelector from 'src/selectors/storageProgramSelector'
 import generateNewProgramSource from 'src/utils/generateNewProgramSource'
 import parseUrlVars from 'src/utils/parseUrlVars'
+import resolveLinkUrl from 'src/utils/resolveLinkUrl'
 import FormInput from 'src/components/formInput'
 import S from 'src/containers/sManager'
 import UploadAreaContainer from 'src/containers/uploadAreaContainer'
@@ -85,10 +86,10 @@ export const saveCurrentEditorProgram = () => async (dispatch, getState) => {
 		dispatch(setTextId(id))
 	}
 	// Update the url
-	const as = `${Router.asPath}?p=${id}`
+	const { as, href } = resolveLinkUrl(`${Router.asPath.split('?')[0]}?p=${id}`)
+	Router.replace(href, as)
 	dispatch(setAsPath(as))
 	dispatch(setUrlVars(parseUrlVars(as)))
-	window.history.replaceState(null, null, as)
 }
 export const updateCurrentEditorProgramName = (name) => async (dispatch, getState) => {
 	const state = getState()

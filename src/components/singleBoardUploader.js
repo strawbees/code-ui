@@ -76,6 +76,9 @@ const SingleBoardUploader = ({
 	return (
 		<div className={`root singleBoardUploader ${type}`}>
 			<style jsx>{`
+				.root {
+					overflow: hidden;
+				}
 				.container {
 					display: flex;
 					flex-direction: column;
@@ -84,6 +87,7 @@ const SingleBoardUploader = ({
 					padding: 0.5rem 1rem;
 					border-radius: 0.5rem;
 					height: 13rem;
+					overflow: hidden;
 				}
 				.root.IDDLE .container,
 				.root.NO_HEX .container,

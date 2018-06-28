@@ -5,7 +5,7 @@ export default (url) => {
 	})
 	url.replace(/[?&]+([^=&]+)/gi, (m, key) => {
 		if (!vars[key]) {
-			vars[key] = true
+			vars[key] = '1'
 		}
 	})
 	return vars
