@@ -27,7 +27,9 @@ export default () => createSelector(
 		const fromEl = document.getElementById(fromId)
 		const toEl = document.getElementById(toId)
 
-		if (!fromEl || !toEl) {
+		if (!dropArea.rect ||
+			!fromEl ||
+			!toEl) {
 			return {}
 		}
 

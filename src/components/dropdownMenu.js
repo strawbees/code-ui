@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import S from 'src/containers/sManager'
+import Link from 'src/components/link'
 import SvgIcon from 'src/components/svgIcon'
 import expandIcon from 'src/assets/icons/general/expand.svg'
 import { WHITE, BLUE } from 'src/constants/colors'
@@ -11,12 +12,15 @@ class DropdownMenu extends React.Component {
 		super(props)
 		this.listRef = React.createRef()
 	}
+
 	openList = () => {
 		this.listRef.current.focus()
 	}
+
 	blurActiveElement = () => {
 		document.activeElement.blur()
 	}
+
 	render() {
 		const {
 			labelKey,
@@ -103,11 +107,18 @@ class DropdownMenu extends React.Component {
 						cursor: pointer;
 						padding: 0 0.25rem;
 					}
-					.list .option:hover,
-					.list .option:focus {
+					.list .option:not(.disabled):hover,
+					.list .option:not(.disabled):focus,
+					.list .option:not(.disabled):focus-within {
 						outline: none;
 						background-color: rgba(255,255,255, 0.2);
 						border-radius: 0.2rem;
+					}
+					.list .option :global(a) {
+						text-decoration: none;
+					}
+					.list .option :global(.link:focus) {
+						outline: none;
 					}
 					.list .option.disabled {
 						cursor: auto;
@@ -136,16 +147,24 @@ class DropdownMenu extends React.Component {
 						<li key={option.labelKey}
 							className={`option ${option.disabled ? 'disabled' : ''} ${option.divider ? 'divider' : ''}`}
 							role='option'
-							tabIndex={`${option.disabled ? '-1' : '0'}`}
+							tabIndex={`${(option.disabled || option.link) ? '-1' : '0'}`}
 							onClick={option.disabled ? null : () => {
 								blurActiveElement()
-								option.onClick()
+								if (option.onClick) {
+									option.onClick()
+								}
 							}}>
-							<S value={
-								(option.disabled && option.disabledLabelKey) ?
-									option.disabledLabelKey :
-									option.labelKey
-							}/>
+							{(option.disabled && option.disabledLabelKey) &&
+								<S value={option.disabledLabelKey}/>
+							}
+							{(!option.disabled && !option.link) &&
+								<S value={option.labelKey}/>
+							}
+							{(!option.disabled && option.link) &&
+								<Link to={option.link}>
+									<S value={option.labelKey}/>
+								</Link>
+							}
 						</li>
 					)}
 				</ul>
@@ -165,6 +184,7 @@ DropdownMenu.propTypes = {
 		disabledLabelKey : PropTypes.string,
 		onClick          : PropTypes.func,
 		disabled         : PropTypes.bool,
+		link             : PropTypes.string,
 	}))
 }
 

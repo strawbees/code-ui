@@ -41,12 +41,12 @@ class StorageManager extends React.Component {
 		}
 
 		// monitor localStorage for changes
-		window.addEventListener('storage', this.onStorage)
+		browserStorage.setExternalChangeListener(this.onExternalChange)
 	}
 
 	componentWillUnmout() {
 		// stop monitoring localStorage for changes
-		window.removeEventListener('storage', this.onStorage)
+		browserStorage.setExternalChangeListener(null)
 	}
 
 	// Monitor changes done by the state, if there are any, update local storage
@@ -72,7 +72,6 @@ class StorageManager extends React.Component {
 		}
 		Object.keys(programs).forEach(id => {
 			// program was added/updated by the state
-			console.log(!this.programs[id], this.programs[id] !== programs[id])
 			if (!this.programs[id] || this.programs[id] !== programs[id]) {
 				browserStorage.set('program', id, programs[id])
 				this.programs[id] = programs[id]
@@ -93,8 +92,13 @@ class StorageManager extends React.Component {
 	}
 
 	// Monitor changes done by the storage, if there are any, update the state
-	onStorage = (e) => {
-		console.log(e)
+	onExternalChange = (id, data) => {
+		// Update if there is data
+		if (data) {
+			console.log('update', id)
+		} else {
+			console.log('delete', id)
+		}
 	}
 
 	render() {

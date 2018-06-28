@@ -40,3 +40,11 @@ export const safeAddProgram = (type, name, source) => async (dispatch, getState)
 	// important to return the program, as this will be consumed by other actions
 	return data
 }
+
+export const safeUpdateProgram = (id, data) => async (dispatch) => {
+	dispatch(updateProgram({ id, data }))
+}
+
+export const safeRemoveProgram = (id) => async (dispatch) => {
+	dispatch(removeProgram({ id }))
+}

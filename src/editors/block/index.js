@@ -99,7 +99,7 @@ class BlockEditor extends React.Component {
 		this.loadSource(refEditorSource)
 	}
 
-	compomnentWillUnmount() {
+	componentWillUnmount() {
 		window.Blockly.getMainWorkspace().dispose()
 	}
 

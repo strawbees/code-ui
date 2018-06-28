@@ -88,7 +88,7 @@ const SingleBoardUploader = ({
 				.root.IDDLE .container,
 				.root.NO_HEX .container,
 				.root.BUSY .container {
-					background-color: ${tinycolor(GRAY).setAlpha(0.5).toRgbString()};
+					background-color: ${tinycolor(GRAY).setAlpha(0.25).toRgbString()};
 				}
 				.root.UPLOADING .container {
 					background-color: ${tinycolor(YELLOW).toRgbString()};

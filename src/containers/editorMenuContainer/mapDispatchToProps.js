@@ -1,7 +1,6 @@
 import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
 import {
 	updateCurrentEditorProgramName,
-	resetCurrentEditorProgram,
 	saveCurrentEditorProgram,
 	modalUploadCode,
 	modalDuplicateProgramById,
@@ -10,7 +9,6 @@ import {
 export default autobindDispatchToActionCreators({
 	updateCurrentEditorProgramName,
 	saveCurrentEditorProgram,
-	resetCurrentEditorProgram,
 	modalUploadCode,
 	modalDuplicateProgramById,
 })

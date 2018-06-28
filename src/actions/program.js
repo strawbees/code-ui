@@ -1,4 +1,10 @@
+import Router from 'next/router'
+
 import { compileCode } from 'src/actions/compiler'
+import {
+	setAsPath,
+	setUrlVars,
+} from 'src/actions/setup'
 import {
 	setFlowName,
 	setFlowSource,
@@ -21,8 +27,8 @@ import {
 } from 'src/actions/modal'
 import {
 	safeAddProgram,
-	updateProgram,
-	removeProgram,
+	safeUpdateProgram,
+	safeRemoveProgram,
 } from 'src/actions/storage'
 import refEditorNameSelector from 'src/selectors/refEditorNameSelector'
 import refEditorSourceSelector from 'src/selectors/refEditorSourceSelector'
@@ -33,6 +39,7 @@ import editorSelector from 'src/selectors/editorSelector'
 import refEditorSavedSelector from 'src/selectors/refEditorSavedSelector'
 import storageProgramSelector from 'src/selectors/storageProgramSelector'
 import generateNewProgramSource from 'src/utils/generateNewProgramSource'
+import parseUrlVars from 'src/utils/parseUrlVars'
 import FormInput from 'src/components/formInput'
 import S from 'src/containers/sManager'
 import UploadAreaContainer from 'src/containers/uploadAreaContainer'
@@ -77,6 +84,11 @@ export const saveCurrentEditorProgram = () => async (dispatch, getState) => {
 	} else if (type === 'text') {
 		dispatch(setTextId(id))
 	}
+	// Update the url
+	const as = `${Router.asPath}?p=${id}`
+	dispatch(setAsPath(as))
+	dispatch(setUrlVars(parseUrlVars(as)))
+	window.history.replaceState(null, null, as)
 }
 export const updateCurrentEditorProgramName = (name) => async (dispatch, getState) => {
 	const state = getState()
@@ -93,7 +105,7 @@ export const updateCurrentEditorProgramName = (name) => async (dispatch, getStat
 	if (saved) {
 		const data = { ...storageProgramSelector()(state, { id }) }
 		data.name = name
-		await updateProgram(id, data)
+		await dispatch(safeUpdateProgram(id, data))
 	}
 }
 export const updateCurrentEditorProgramSource = (source) => async (dispatch, getState) => {
@@ -111,7 +123,7 @@ export const updateCurrentEditorProgramSource = (source) => async (dispatch, get
 	if (saved) {
 		const data = { ...storageProgramSelector()(state, { id }) }
 		data.source = source
-		await updateProgram(id, data)
+		await dispatch(safeUpdateProgram(id, data))
 	}
 }
 export const duplicateProgramById = (id, newName) => async (dispatch, getState) => {
@@ -130,7 +142,7 @@ export const duplicateProgramData = (program, newName) => async () => {
 export const removeProgramByIdAndClearEditor = (id) => async (dispatch, getState) => {
 	const state = getState()
 	const { type } = storageProgramSelector()(state, { id })
-	dispatch(removeProgram({ id }))
+	await dispatch(safeRemoveProgram(id))
 	const editorId = editorSelector()(state)[type].id
 	if (editorId === id) {
 		dispatch(resetEditorProgramByType(type))

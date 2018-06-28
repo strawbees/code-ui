@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import Draggable from 'react-draggable'
-import ParameterDisplayValueContainer from 'src/editors/flow/containers/parameterDisplayValueContainer'
 import ParameterControlContainer from 'src/editors/flow/containers/parameterControlContainer'
+import ParameterDisplayValueContainer from 'src/editors/flow/containers/parameterDisplayValueContainer'
 import {
 	GRAY,
 	YELLOW,
@@ -14,24 +14,27 @@ class ParameterHandle extends React.Component {
 	state = {
 		disconnecting : false
 	}
+
 	constructor(props) {
 		super(props)
 		this.selfRef = React.createRef()
 		this.outletDragRef = React.createRef()
 	}
+
 	cancelEvent = (e) => {
 		e.preventDefault()
 		e.stopPropagation()
 	}
+
 	onFocus = (e) => {
 		const { target } = e
 		// if the click is on the parameterHandle, focus on the first input inside
 		if (target.className.indexOf('parameterHandle') !== -1) {
-			// const input = target.querySelector('.parameterControl input')
-			// if (input) {
-			// 	input.focus({ preventScroll : true })
-			// 	input.select()
-			// }
+			const input = target.querySelector('.parameterControl input[type=text]')
+			if (input) {
+				input.focus({ preventScroll : true })
+				input.select()
+			}
 			setTimeout(() => {
 				// use this hack to make it scroll the control into the view
 				const control = target.querySelector('.parameterControl')
@@ -56,6 +59,7 @@ class ParameterHandle extends React.Component {
 			}, 300)
 		}
 	}
+
 	onDragStart = (e, data) => {
 		// preventDefault on the event, so we don't focus the parameter handler
 		e.preventDefault()
@@ -81,12 +85,14 @@ class ParameterHandle extends React.Component {
 		data.y += this.outletDragDiff.y
 		this.props.outletTransferDragMethods.onDragStart(e, data)
 	}
+
 	onDragMove = (e, data) => {
 		// apply diff and forward event
 		data.x += this.outletDragDiff.x
 		data.y += this.outletDragDiff.y
 		this.props.outletTransferDragMethods.onDragMove(e, data)
 	}
+
 	onDragStop = (e, data) => {
 		// apply diff and forward event
 		data.x += this.outletDragDiff.x
@@ -111,6 +117,7 @@ class ParameterHandle extends React.Component {
 			this.props.onValueCodeChange('')
 		}
 	}
+
 	render() {
 		const {
 			cancelEvent,

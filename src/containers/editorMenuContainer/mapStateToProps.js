@@ -8,11 +8,14 @@ import makeStringSelector from 'src/selectors/makeStringSelector'
 import uploadEnabledSelector from 'src/selectors/uploadEnabledSelector'
 
 export default () => createStructuredSelector({
-	type            : refEditorTypeSelector(),
-	id              : refEditorIdSelector(),
-	name            : refEditorNameSelector(),
-	saved           : refEditorSavedSelector(),
-	generatedCode   : refEditorGeneratedCodeSelector(),
-	uploadEnabled   : uploadEnabledSelector(),
-	placeholderName : makeStringSelector('ui.editor.program.placeholder_name'),
+	type               : refEditorTypeSelector(),
+	id                 : refEditorIdSelector(),
+	name               : refEditorNameSelector(),
+	saved              : refEditorSavedSelector(),
+	generatedCode      : refEditorGeneratedCodeSelector(),
+	uploadEnabled      : uploadEnabledSelector(),
+	placeholderName    : makeStringSelector('ui.editor.program.placeholder_name'),
+	newFlowProgramUrl  : makeStringSelector('flow.url'),
+	newBlockProgramUrl : makeStringSelector('block.url'),
+	newTextProgramUrl  : makeStringSelector('text.url'),
 })
