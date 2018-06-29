@@ -26,6 +26,7 @@ class UploadAreaContainer extends React.Component {
 		// Always clean upload errors on mount
 		clearUploadError()
 	}
+
 	// In case a hex get's compiled (and it wasn't before )and there's only
 	// one board connected, upload straight away
 	componentDidUpdate({ hex : prevHex }) {
@@ -43,6 +44,7 @@ class UploadAreaContainer extends React.Component {
 			uploadHex(boardIds[0], hex)
 		}
 	}
+
 	render() {
 		return (
 			<UploadArea {...this.props} />

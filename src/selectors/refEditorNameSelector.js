@@ -7,5 +7,5 @@ export default () => createSelector(
 	],
 	(
 		refEditorData,
-	) => refEditorData.name || ''
+	) => (refEditorData && refEditorData.name) || ''
 )

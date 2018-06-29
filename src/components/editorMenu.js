@@ -133,46 +133,46 @@ const EditorMenu = ({
 			/>
 		</div>
 		<DropdownMenu
-			labelKey='ui.editor.file.title'
+			labelKey='ui.file_menu.title'
 			options={[
 				{
-					labelKey : 'ui.editor.file.new.flow',
+					labelKey : 'ui.file_menu.options.new_flow',
 					link     : newFlowProgramUrl
 				},
 				{
-					labelKey : 'ui.editor.file.new.block',
+					labelKey : 'ui.file_menu.options.new_block',
 					link     : newBlockProgramUrl
 				},
 				{
-					labelKey : 'ui.editor.file.new.text',
+					labelKey : 'ui.file_menu.options.new_text',
 					link     : newTextProgramUrl
 				},
 				{
-					labelKey         : 'ui.editor.file.save',
-					disabledLabelKey : 'ui.editor.file.autosaved',
+					labelKey         : 'ui.file_menu.options.save',
+					disabledLabelKey : 'ui.file_menu.options.autosaved',
 					onClick          : onSavePress,
 					disabled         : saved,
 					divider          : true
 				},
 				{
-					labelKey : 'ui.editor.file.duplicate',
+					labelKey : 'ui.file_menu.options.duplicate',
 					onClick  : onDuplicatePress,
 				},
 				{
-					labelKey : 'ui.editor.file.upload',
+					labelKey : 'ui.file_menu.options.upload',
 					onClick  : onUploadPress,
 				},
 				{
-					labelKey : 'ui.editor.file.share',
+					labelKey : 'ui.file_menu.options.share',
 					onClick  : onSharePress,
 					divider  : true
 				},
 				{
-					labelKey : 'ui.editor.file.export',
+					labelKey : 'ui.file_menu.options.export',
 					onClick  : onExportPress,
 				},
 				{
-					labelKey : 'ui.editor.file.import',
+					labelKey : 'ui.file_menu.import',
 					onClick  : onImportPress,
 				},
 			]}
@@ -194,21 +194,21 @@ const EditorMenu = ({
 						/>
 					</div>
 					<div className='label'>
-						<S value='ui.editor.file.autosaved'/>
+						<S value='ui.file_menu.options.autosaved'/>
 					</div>
 				</div>
 			}
 			{!saved &&
 				<IconButton
 					icon={saveIcon}
-					labelKey='ui.editor.save'
+					labelKey='ui.header_menu.options.save'
 					onClick={onSavePress}
 					hideLabelOnMediaQuery={'max-width: 800px'}
 				/>
 			}
 			<IconButton
 				icon={uploadIcon}
-				labelKey='ui.editor.upload'
+				labelKey='ui.header_menu.options.upload'
 				onClick={onUploadPress}
 				hideLabelOnMediaQuery={'max-width: 800px'}
 			/>

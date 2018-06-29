@@ -22,8 +22,8 @@ import {
 	setTextProgram
 } from 'src/actions/editor'
 import {
-	openModal,
-	openDialogModal
+	safeOpenModal,
+	safeOpenDialogModal
 } from 'src/actions/modal'
 import {
 	safeAddProgram,
@@ -34,7 +34,8 @@ import refEditorNameSelector from 'src/selectors/refEditorNameSelector'
 import refEditorSourceSelector from 'src/selectors/refEditorSourceSelector'
 import refEditorIdSelector from 'src/selectors/refEditorIdSelector'
 import refEditorTypeSelector from 'src/selectors/refEditorTypeSelector'
-import formatedProgramSelector from 'src/selectors/storageFormatedProgramSelector'
+import storageFormatedProgramSelector from 'src/selectors/storageFormatedProgramSelector'
+import storageProgramsSelector from 'src/selectors/storageProgramsSelector'
 import editorSelector from 'src/selectors/editorSelector'
 import refEditorSavedSelector from 'src/selectors/refEditorSavedSelector'
 import storageProgramSelector from 'src/selectors/storageProgramSelector'
@@ -130,15 +131,11 @@ export const updateCurrentEditorProgramSource = (source) => async (dispatch, get
 export const duplicateProgramById = (id, newName) => async (dispatch, getState) => {
 	const state = getState()
 	const program = storageProgramSelector()(state, { id })
-	dispatch(duplicateProgramData(program, newName))
+	return dispatch(duplicateProgramData(program, newName))
 }
-export const duplicateProgramData = (program, newName) => async () => {
+export const duplicateProgramData = (program, newName) => async (dispatch) => {
 	const { type, source } = program
-	await safeAddProgram(
-		type,
-		newName,
-		source
-	)
+	return dispatch(safeAddProgram(type, newName, source))
 }
 export const removeProgramByIdAndClearEditor = (id) => async (dispatch, getState) => {
 	const state = getState()
@@ -152,53 +149,72 @@ export const removeProgramByIdAndClearEditor = (id) => async (dispatch, getState
 
 // Modal actions
 export const modalRemoveProgram = (id) => async (dispatch) => {
-	dispatch(openDialogModal(
-		<S value='modal.program.remove-confirmation'/>,
+	const onConfirm = () => dispatch(removeProgramByIdAndClearEditor(id))
+	// important to return the dispatch, so this can be used as a promise
+	return dispatch(safeOpenDialogModal(
 		{
-			titleLabelKey   : 'ui.editor.file.dialog.remove',
-			confirmLabelKey : 'ui.editor.remove',
-			onConfirm       : () => dispatch(removeProgramByIdAndClearEditor(id))
+			titleKey        : 'ui.dialog.remove.title',
+			descriptionKey  : 'ui.dialog.remove.description',
+			confirmLabelKey : 'ui.dialog.remove.confirm',
+			onConfirm
 		}
 	))
 }
 export const modalDuplicateProgramById = (id) => async (dispatch, getState) => {
 	const state = getState()
-	const { name } = formatedProgramSelector()(state, { id })
-
-	let newName = `${name} copy`
-	dispatch(openDialogModal(
+	const { name } = storageFormatedProgramSelector()(state, { id })
+	const allPrograms = storageProgramsSelector()(state)
+	const allProgramsByName = Object.keys(allPrograms).reduce((acc, programId) => {
+		const program = allPrograms[programId]
+		acc[program.name] = program
+		return acc
+	}, {})
+	const regex = / \(([0-9]{1,2})\)$/
+	const base = name.replace(regex, '')
+	let count = 2
+	const composeName = () => `${base} (${count})`
+	let newName = composeName()
+	while (allProgramsByName[newName]) {
+		count++
+		newName = composeName()
+	}
+	const onConfirm = () => {
+		dispatch(duplicateProgramById(id, newName))
+	}
+	return dispatch(safeOpenDialogModal(
+		{
+			titleKey        : 'ui.dialog.duplicate.title',
+			confirmLabelKey : 'ui.dialog.duplicate.confirm',
+			onConfirm
+		},
 		<FormInput
 			defaultValue={newName}
-			labelKey={'modal.program.duplicate-confirmation'}
+			labelKey={'ui.dialog.duplicate.field'}
 			onChange={e => newName = e}
 		/>,
-		{
-			titleLabelKey   : 'ui.editor.file.dialog.duplicate',
-			confirmLabelKey : 'ui.editor.duplicate',
-			onConfirm       : () => dispatch(duplicateProgramById(id, newName))
-		}
 	))
 }
 export const modalDuplicateProgramData = (program) => async (dispatch) => {
 	const { name } = program
 
 	let newName = `${name} copy`
-	dispatch(openDialogModal(
+	const onConfirm = () => dispatch(duplicateProgramData(program, newName))
+	return dispatch(safeOpenDialogModal(
+		{
+			titleKey        : 'ui.dialog.duplicate.title',
+			confirmLabelKey : 'ui.editor.duplicate',
+			onConfirm
+		},
 		<FormInput
 			defaultValue={newName}
 			labelKey={'modal.program.duplicate-confirmation'}
 			onChange={e => newName = e}
 		/>,
-		{
-			titleLabelKey   : 'ui.editor.file.dialog.duplicate',
-			confirmLabelKey : 'ui.editor.duplicate',
-			onConfirm       : () => dispatch(duplicateProgramData(program, newName))
-		}
 	))
 }
 export const modalUploadCode = (code) => async (dispatch) => {
 	dispatch(compileCode(code))
-	dispatch(openModal(
+	return dispatch(safeOpenModal(
 		<UploadAreaContainer
 			code={code}
 		/>

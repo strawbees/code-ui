@@ -99,7 +99,7 @@ const TextEditor = ({ type }) =>
 	</div>
 
 const VisualToTextEditor = ({
-	openModal,
+	safeOpenModal,
 	VisualEditor,
 	type,
 	...visualEditorProps
@@ -172,7 +172,7 @@ const VisualToTextEditor = ({
 			onClick={() => {
 				// lose focus
 				document.activeElement.blur()
-				openModal(<TextEditor type={type}/>)
+				safeOpenModal(<TextEditor type={type}/>)
 			}}>
 			<SvgIcon icon={editorIcons.textWhite} />
 			<div className='text'>
@@ -183,9 +183,9 @@ const VisualToTextEditor = ({
 	</div>
 
 VisualToTextEditor.propTypes = {
-	VisualEditor : PropTypes.func,
-	openModal    : PropTypes.func,
-	type         : PropTypes.string,
+	VisualEditor  : PropTypes.func,
+	safeOpenModal : PropTypes.func,
+	type          : PropTypes.string,
 }
 
 export default VisualToTextEditor

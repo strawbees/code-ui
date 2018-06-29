@@ -1,6 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import tinycolor from 'tinycolor2'
 import S from 'src/containers/sManager'
+import {
+	GRAY,
+	RED,
+	BLACK,
+} from 'src/constants/colors'
 
 class FormInput extends React.Component {
 	state = {}
@@ -15,9 +21,30 @@ class FormInput extends React.Component {
 		return (
 			<div className='root formInput'>
 				<style jsx>{`
-					.buttons {
+					.root {
 						display: flex;
 						flex-direction: column;
+						position: relative;
+					}
+					.label {
+						font-size: 0.8rem;
+						font-weight: bold;
+					}
+					input {
+						-webkit-appearance: none;
+						border: none;
+						border-radius: 0.2rem;
+						background-color: ${tinycolor(GRAY).lighten(25).toRgbString()};
+						color: ${tinycolor(BLACK).toRgbString()};
+						font-size: 1rem;
+						font-family: Text;
+						padding: 0 0.2rem;
+						height: 2rem;
+						margin-right: 0.5rem;
+					}
+					input:focus {
+						outline: none;
+						background-color: ${tinycolor(GRAY).lighten(35).toRgbString()};
 					}
 				`}</style>
 				{labelKey &&
@@ -42,8 +69,6 @@ class FormInput extends React.Component {
 		)
 	}
 }
-
-FormInput.defaultProps = {}
 
 FormInput.propTypes = {
 	labelKey       : PropTypes.string,

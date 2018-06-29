@@ -1,4 +1,4 @@
-export default (objA, objB) => {
+export default (objA, objB, interestKeys) => {
 	if (objA === objB) {
 		return true
 	}
@@ -7,8 +7,12 @@ export default (objA, objB) => {
 		return false
 	}
 
-	const aKeys = Object.keys(objA)
-	const bKeys = Object.keys(objB)
+	let aKeys = Object.keys(objA)
+	let bKeys = Object.keys(objB)
+	if (interestKeys && interestKeys.length) {
+		aKeys = aKeys.filter(key => interestKeys.indexOf(key) !== -1)
+		bKeys = bKeys.filter(key => interestKeys.indexOf(key) !== -1)
+	}
 	const len = aKeys.length
 
 	if (bKeys.length !== len) {

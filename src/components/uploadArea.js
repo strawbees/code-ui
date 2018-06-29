@@ -43,7 +43,7 @@ const UploadArea = ({
 			}
 		`}</style>
 		<div className='title global-type global-type-h3'>
-			<S value='ui.editor.file.dialog.upload' />
+			<S value='ui.dialog.upload.title' />
 		</div>
 		{(!hex && compilerError) &&
 			<Message type='error'>

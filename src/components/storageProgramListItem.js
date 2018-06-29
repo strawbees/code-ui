@@ -27,16 +27,16 @@ const StorageProgramListItem = ({
 			<div className='createdAt'>{createdAt}</div>
 		</Link>
 		<button onClick={onRemovePress}>
-			<S value='ui.editor.remove'/>
+			<S value='ui.file_menu.options.remove'/>
 		</button>
 		<button onClick={onDuplicatePress}>
-			<S value='ui.editor.duplicate'/>
+			<S value='ui.file_menu.options.duplicate'/>
 		</button>
 		<button onClick={onSharePress}>
-			<S value='ui.editor.share'/>
+			<S value='ui.file_menu.options.share'/>
 		</button>
 		<button onClick={onUploadPress}>
-			<S value='ui.editor.upload'/>
+			<S value='ui.file_menu.options.upload'/>
 		</button>
 	</div>
 

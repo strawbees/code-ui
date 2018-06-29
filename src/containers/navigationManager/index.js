@@ -13,6 +13,7 @@ import {
 	removeGlobalEventListener,
 	removeAllGlobalEventListeners,
 } from 'src/utils/globalEvents'
+import shallowCompareObjects from 'src/utils/shallowCompareObjects'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
@@ -26,7 +27,7 @@ class NavigationManager extends React.PureComponent {
 
 		// Call manually processNavigation, since componentDidUpdate is not
 		// called on first render
-		this.processNavigation()
+		this.processNavigation({})
 	}
 
 	componentWillUnmout() {
@@ -79,9 +80,12 @@ class NavigationManager extends React.PureComponent {
 	// Unified call that will run before the page changes
 	onBeforeNavigation = async (as) => {
 		const {
-			queryRef
+			queryRef,
+			urlVarP,
+			urlVarData,
+			refEditorHasChanges,
 		} = this.props
-		const url = resolveLinkUrl(as)
+		//const url = resolveLinkUrl(as)
 
 		// we only care about monitoring changes *from* the editor
 		if (queryRef !== 'flow' &&
@@ -89,21 +93,42 @@ class NavigationManager extends React.PureComponent {
 			queryRef !== 'text') {
 			return
 		}
+
+		// if the program has no changes, or if it is currently loaded by a program
+		// id or program data, we don't need to care about it
+		if (!refEditorHasChanges || urlVarP || urlVarData) {
+			return
+		}
+
+		// If we got here it means the user is about to leave the editor with
+		// unsaved progress, so we show a dialog asking if they want cancel the
+		// naviation or to proceed
+		//return safeOpenDialogModal()
 	}
 
 	// process the naviation on prop changes
-	componentDidUpdate() {
-		this.processNavigation()
+	componentDidUpdate(prevProps) {
+		this.processNavigation(prevProps)
 	}
 
 	// Monitor the page and url var changes to load programs
-	processNavigation = async () => {
+	processNavigation = async (prevProps) => {
+		// Only proceef if there are changes to the props that we care about
+		if (shallowCompareObjects(
+			this.props,
+			prevProps,
+			['queryRef', 'urlVarP', 'urlVarData'])) {
+			return
+		}
+		// Actions used
 		const {
 			resetCurrentEditorProgram,
 			setCurrentEditorProgram,
 			setDisplayPageLoader,
 			setDisplayError,
 		} = this.props
+
+		// Props that we care about
 		const { urlVarP, queryRef } = this.props
 		let { urlVarData } = this.props
 
@@ -199,9 +224,10 @@ class NavigationManager extends React.PureComponent {
 }
 
 NavigationManager.propTypes = {
-	queryRef   : PropTypes.string,
-	urlVarP    : PropTypes.string,
-	urlVarData : PropTypes.string,
+	queryRef            : PropTypes.string,
+	urlVarP             : PropTypes.string,
+	urlVarData          : PropTypes.string,
+	refEditorHasChanges : PropTypes.bool,
 
 	resetCurrentEditorProgram : PropTypes.func,
 	setCurrentEditorProgram   : PropTypes.func,

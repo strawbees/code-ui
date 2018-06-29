@@ -6,6 +6,6 @@ export default () => createSelector(
 		refEditorDataSelector(),
 	],
 	(
-		{ source },
-	) => source
+		data,
+	) => data && data.source
 )

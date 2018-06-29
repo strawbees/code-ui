@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import tinycolor from 'tinycolor2'
 import IconButton from 'src/components/iconButton'
+import S from 'src/containers/sManager'
 import {
 	WHITE,
 	GREEN,
@@ -10,13 +10,15 @@ import {
 
 const Dialog = ({
 	children,
-	titleLabel,
+	titleKey,
+	descriptionKey,
+	cancelLabelKey,
+	confirmLabelKey,
+	descriptionIsMarkdown,
 	displayConfirm,
 	displayCancel,
-	confirmLabel,
-	cancelLabel,
 	onConfirm,
-	onCancel
+	onCancel,
 }) =>
 	<div className='root dialog'>
 		<style jsx>{`
@@ -38,9 +40,14 @@ const Dialog = ({
 				margin-right: 0;
 			}
 		`}</style>
-		{titleLabel &&
+		{titleKey &&
 			<div className='title global-type global-type-h3'>
-				{titleLabel}
+				<S value={titleKey} />
+			</div>
+		}
+		{descriptionKey &&
+			<div className='description global-type'>
+				<S value={descriptionKey} markdown={descriptionIsMarkdown} />
 			</div>
 		}
 		{children}
@@ -49,7 +56,7 @@ const Dialog = ({
 				{displayCancel &&
 					<IconButton
 						className='cancel'
-						label={cancelLabel}
+						labelKey={cancelLabelKey || 'ui.buttons.cancel'}
 						onClick={onCancel}
 						textColor={WHITE}
 						textHoverColor={WHITE}
@@ -60,7 +67,7 @@ const Dialog = ({
 				{displayConfirm &&
 					<IconButton
 						className='confirm'
-						label={confirmLabel}
+						labelKey={confirmLabelKey || 'ui.buttons.confirm'}
 						onClick={onConfirm}
 						textColor={WHITE}
 						textHoverColor={WHITE}
@@ -72,9 +79,11 @@ const Dialog = ({
 		}
 	</div>
 
+
 Dialog.defaultProps = {
-	displayConfirm : true,
-	displayCancel  : true
+	displayConfirm        : true,
+	displayCancel         : true,
+	descriptionIsMarkdown : true,
 }
 
 Dialog.propTypes = {
@@ -82,13 +91,15 @@ Dialog.propTypes = {
 		PropTypes.string,
 		PropTypes.element
 	]),
-	titleLabel     : PropTypes.string,
-	displayConfirm : PropTypes.bool,
-	displayCancel  : PropTypes.bool,
-	confirmLabel   : PropTypes.string,
-	cancelLabel    : PropTypes.string,
-	onConfirm      : PropTypes.func,
-	onCancel       : PropTypes.func,
+	titleKey              : PropTypes.string,
+	descriptionKey        : PropTypes.string,
+	cancelLabelKey        : PropTypes.string,
+	confirmLabelKey       : PropTypes.string,
+	descriptionIsMarkdown : PropTypes.bool,
+	displayConfirm        : PropTypes.bool,
+	displayCancel         : PropTypes.bool,
+	onConfirm             : PropTypes.func,
+	onCancel              : PropTypes.func,
 }
 
 export default Dialog

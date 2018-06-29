@@ -10,11 +10,9 @@ export default () => createSelector(
 	) => {
 		switch (queryRef) {
 			case 'flow':
-				return 'flow'
 			case 'block':
-				return 'block'
 			case 'text':
-				return 'text'
+				return queryRef
 			default:
 				return null
 		}
