@@ -43,7 +43,6 @@ import generateNewProgramSource from 'src/utils/generateNewProgramSource'
 import parseUrlVars from 'src/utils/parseUrlVars'
 import resolveLinkUrl from 'src/utils/resolveLinkUrl'
 import FormInput from 'src/components/formInput'
-import S from 'src/containers/sManager'
 import UploadAreaContainer from 'src/containers/uploadAreaContainer'
 
 export const setEditorProgramByType = (type, program) => (dispatch) => {

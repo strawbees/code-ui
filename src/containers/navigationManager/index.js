@@ -84,6 +84,7 @@ class NavigationManager extends React.PureComponent {
 			urlVarP,
 			urlVarData,
 			refEditorHasChanges,
+			safeOpenDialogModal,
 		} = this.props
 		//const url = resolveLinkUrl(as)
 
@@ -103,7 +104,13 @@ class NavigationManager extends React.PureComponent {
 		// If we got here it means the user is about to leave the editor with
 		// unsaved progress, so we show a dialog asking if they want cancel the
 		// naviation or to proceed
-		//return safeOpenDialogModal()
+		await safeOpenDialogModal(
+			{
+				titleKey        : 'ui.dialog.discart.title',
+				descriptionKey  : 'ui.dialog.discart.description',
+				confirmLabelKey : 'ui.dialog.discart.confirm',
+			}
+		)
 	}
 
 	// process the naviation on prop changes

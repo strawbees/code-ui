@@ -25,6 +25,7 @@ const Dialog = ({
 			.root {
 				display: flex;
 				flex-direction: column;
+				max-width: 25rem;
 			}
 			.buttons {
 				display: flex;
