@@ -7,7 +7,7 @@ const TextEditor = ({
 	onSourceChange,
 }) =>
 	<AceEditor
-		value={source}
+		value={source || ''}
 		fontSize={16}
 		onChange={onSourceChange}
 	/>

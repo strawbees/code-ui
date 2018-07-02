@@ -1,11 +1,9 @@
 import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
 import {
-	setQuery,
+	setSetup,
 	setRoutes,
 	setLocales,
 	setStrings,
-	setAsPath,
-	setUrlVars,
 	setDisplayPageLoader,
 } from 'src/actions/setup'
 import {
@@ -13,12 +11,10 @@ import {
 } from 'src/actions/editor'
 
 export default autobindDispatchToActionCreators({
-	setQuery,
+	setSetup,
 	setRoutes,
 	setLocales,
 	setStrings,
-	setAsPath,
-	setUrlVars,
 	setDisplayPageLoader,
 	setupEditor,
 })

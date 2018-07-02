@@ -31,22 +31,26 @@ class AppContainer extends React.Component {
 			routesLoaded,
 			localesLoaded,
 			stringsLoaded,
-			setQuery,
+			setSetup,
 			setRoutes,
 			setLocales,
 			setStrings,
-			setAsPath,
-			setUrlVars,
 			setDisplayPageLoader,
 			setupEditor,
 		} = mergeProps(
 			mapStateToProps()(store.getState(), {}),
 			mapDispatchToProps(store.dispatch)
 		)
-		setQuery(query)
 		if (!isServer) {
-			setAsPath(asPath)
-			setUrlVars(parseUrlVars(asPath))
+			setSetup({
+				query,
+				asPath,
+				urlVars : parseUrlVars(asPath)
+			})
+		} else {
+			setSetup({
+				query,
+			})
 		}
 		if (!routesLoaded) {
 			setRoutes(await loadStaticData('routes.json'))
@@ -75,12 +79,13 @@ class AppContainer extends React.Component {
 		Router.router.events.on('routeChangeError', NProgress.done)
 		// adjust as path on first render
 		const {
-			setAsPath,
-			setUrlVars,
+			setSetup,
 			setDisplayPageLoader,
 		} = this.props
-		setAsPath(Router.router.asPath)
-		setUrlVars(parseUrlVars(Router.router.asPath))
+		setSetup({
+			asPath  : Router.router.asPath,
+			urlVars : parseUrlVars(Router.router.asPath),
+		})
 
 		// hide the initial page loader
 		setDisplayPageLoader(false)
@@ -304,12 +309,10 @@ class AppContainer extends React.Component {
 }
 
 AppContainer.propTypes = {
-	setQuery             : PropTypes.func,
+	setSetup             : PropTypes.func,
 	setRoutes            : PropTypes.func,
 	setLocales           : PropTypes.func,
 	setStrings           : PropTypes.func,
-	setAsPath            : PropTypes.func,
-	setUrlVars           : PropTypes.func,
 	setDisplayPageLoader : PropTypes.func,
 	setupEditor          : PropTypes.func,
 	displayPageLoader    : PropTypes.bool,

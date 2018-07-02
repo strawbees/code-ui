@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import LZString from 'lz-string'
 import Router from 'next/router'
-import resolveLinkUrl from 'src/utils/resolveLinkUrl'
 import {
 	isIdValid,
 	loadProgram,
@@ -78,7 +77,7 @@ class NavigationManager extends React.PureComponent {
 	}
 
 	// Unified call that will run before the page changes
-	onBeforeNavigation = async (as) => {
+	onBeforeNavigation = async () => {
 		const {
 			queryRef,
 			urlVarP,
@@ -86,7 +85,6 @@ class NavigationManager extends React.PureComponent {
 			refEditorHasChanges,
 			safeOpenDialogModal,
 		} = this.props
-		//const url = resolveLinkUrl(as)
 
 		// we only care about monitoring changes *from* the editor
 		if (queryRef !== 'flow' &&
@@ -152,6 +150,7 @@ class NavigationManager extends React.PureComponent {
 		}
 
 		// Show the loader
+		setDisplayError(false)
 		setDisplayPageLoader(true)
 
 		// Reset editor, since there's no program to show

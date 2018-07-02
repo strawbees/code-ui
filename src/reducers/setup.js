@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import generateReducer from 'src/utils/generateReducer'
 import {
+	SETUP_SET,
 	SETUP_SET_QUERY,
 	SETUP_SET_AS_PATH,
 	SETUP_SET_URL_VARS,
@@ -17,6 +18,13 @@ const query = (state = null, { type, payload }) => {
 			return {
 				...payload
 			}
+		case SETUP_SET:
+			if (typeof payload.query !== 'undefined') {
+				return {
+					...payload.query
+				}
+			}
+			return state
 		default:
 			return state
 	}
@@ -25,6 +33,13 @@ const asPath = (state = null, { type, payload }) => {
 	switch (type) {
 		case SETUP_SET_AS_PATH:
 			return payload
+		case SETUP_SET:
+			if (typeof payload.type !== 'undefined') {
+				return {
+					...payload.type
+				}
+			}
+			return state
 		default:
 			return state
 	}
@@ -35,6 +50,13 @@ const urlVars = (state = null, { type, payload }) => {
 			return {
 				...payload
 			}
+		case SETUP_SET:
+			if (typeof payload.urlVars !== 'undefined') {
+				return {
+					...payload.urlVars
+				}
+			}
+			return state
 		default:
 			return state
 	}
@@ -45,6 +67,13 @@ const locales = (state = null, { type, payload }) => {
 			return [
 				...payload
 			]
+		case SETUP_SET:
+			if (typeof payload.locales !== 'undefined') {
+				return [
+					...payload.locales
+				]
+			}
+			return state
 		default:
 			return state
 	}
@@ -63,6 +92,13 @@ const routes = (state = null, { type, payload }) => {
 			return {
 				...payload
 			}
+		case SETUP_SET:
+			if (typeof payload.routes !== 'undefined') {
+				return {
+					...payload.routes
+				}
+			}
+			return state
 		default:
 			return state
 	}

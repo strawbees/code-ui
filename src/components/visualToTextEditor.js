@@ -2,14 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import SvgIcon from 'src/components/svgIcon'
-import IconButton from 'src/components/iconButton'
 import S from 'src/containers/sManager'
 import MirrorEditorContainer from 'src/containers/mirrorEditorContainer'
+import OpenInTextEditorButtonContainer from 'src/containers/openInTextEditorButtonContainer'
 import { WHITE, BLACK } from 'src/constants/colors'
 import editorIcons from 'src/assets/icons/editors/small'
 import arrowIcon from 'src/assets/icons/general/arrowRight.svg'
 
-const TextEditor = ({ type }) =>
+const TextEditor = ({
+	type,
+	closeModal,
+}) =>
 	<div className='root'>
 		<style jsx>{`
 			.root {
@@ -88,18 +91,13 @@ const TextEditor = ({ type }) =>
 				<SvgIcon icon={arrowIcon} className='arrow'/>
 				<SvgIcon icon={editorIcons.text}/>
 			</div>
-			<IconButton
-				labelKey='ui.editor.text_preview.create'
-				textColor={WHITE}
-				textHoverColor={WHITE}
-				bgColor={BLACK}
-				bgHoverColor={BLACK}
-			/>
+			<OpenInTextEditorButtonContainer onClick={closeModal} />
 		</div>
 	</div>
 
 const VisualToTextEditor = ({
 	safeOpenModal,
+	closeModal,
 	VisualEditor,
 	type,
 	...visualEditorProps
@@ -172,7 +170,7 @@ const VisualToTextEditor = ({
 			onClick={() => {
 				// lose focus
 				document.activeElement.blur()
-				safeOpenModal(<TextEditor type={type}/>)
+				safeOpenModal(<TextEditor type={type} closeModal={closeModal}/>)
 			}}>
 			<SvgIcon icon={editorIcons.textWhite} />
 			<div className='text'>

@@ -172,7 +172,7 @@ const EditorMenu = ({
 					onClick  : onExportPress,
 				},
 				{
-					labelKey : 'ui.file_menu.import',
+					labelKey : 'ui.file_menu.options.import',
 					onClick  : onImportPress,
 				},
 			]}
