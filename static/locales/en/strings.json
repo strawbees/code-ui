@@ -36,6 +36,12 @@
 	"ui.dialog.discart.description"   : "You are about to leave the current editor and your changes will be lost. Do you want to proceed?",
 	"ui.dialog.discart.confirm"       : "Proceed",
 
+	"ui.program_list.empty"         : "No programs yet",
+	"ui.program_list.sort.type"     : "type",
+	"ui.program_list.sort.name"     : "name",
+	"ui.program_list.sort.modified" : "last modified",
+
+
 	"ui.editor.text_preview.button"      : "Preview text program",
 	"ui.editor.text_preview.title"       : "Text program preview",
 	"ui.editor.text_preview.description" : "This is the text version of your visual program. To modify it, open it in the Text editor.",

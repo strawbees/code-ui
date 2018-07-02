@@ -30,7 +30,7 @@ const Button = ({
 				align-items: center;
 				box-sizing: border-box;
 				padding: 0.25rem 1rem;
-				border-radius: 1rem;
+				border-radius: 2rem;
 				cursor: pointer;
 				color: ${tinycolor(textColor).toRgbString()};
 				fill: ${tinycolor(textColor).toRgbString()};

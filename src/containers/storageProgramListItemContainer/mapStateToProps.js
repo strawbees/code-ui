@@ -1,10 +1,10 @@
 import { createSelector } from 'reselect'
-import formatedProgramSelector from 'src/selectors/storageFormatedProgramSelector'
+import storageFormatedProgramSelector from 'src/selectors/storageFormatedProgramSelector'
 import storageProgramGeneratedCodeSelector from 'src/selectors/storageProgramGeneratedCodeSelector'
 
 export default () => createSelector(
 	[
-		formatedProgramSelector(),
+		storageFormatedProgramSelector(),
 		storageProgramGeneratedCodeSelector(),
 	],
 	(
@@ -12,14 +12,14 @@ export default () => createSelector(
 			name,
 			url,
 			type,
-			createdAt,
+			updatedAt,
 		},
 		generatedCode,
 	) => ({
 		name,
 		url,
 		type,
-		createdAt,
+		updatedAt,
 		generatedCode,
 	})
 )
