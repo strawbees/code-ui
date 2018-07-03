@@ -2,6 +2,8 @@ import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToAction
 import {
 	updateCurrentEditorProgramName,
 	saveCurrentEditorProgram,
+} from 'src/actions/editor'
+import {
 	modalUploadCode,
 	modalDuplicateProgramById,
 } from 'src/actions/program'

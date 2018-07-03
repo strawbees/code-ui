@@ -1,132 +1,24 @@
-import Router from 'next/router'
-
 import { compileCode } from 'src/actions/compiler'
-import {
-	setAsPath,
-	setUrlVars,
-} from 'src/actions/setup'
-import {
-	setFlowName,
-	setFlowSource,
-	setFlowId,
-	setFlowProgram,
-
-	setBlockName,
-	setBlockSource,
-	setBlockId,
-	setBlockProgram,
-
-	setTextName,
-	setTextSource,
-	setTextId,
-	setTextProgram
-} from 'src/actions/editor'
 import {
 	safeOpenModal,
 	safeOpenDialogModal
 } from 'src/actions/modal'
 import {
 	safeAddProgram,
-	safeUpdateProgram,
 	safeRemoveProgram,
 } from 'src/actions/storage'
-import refEditorNameSelector from 'src/selectors/refEditorNameSelector'
-import refEditorSourceSelector from 'src/selectors/refEditorSourceSelector'
-import refEditorIdSelector from 'src/selectors/refEditorIdSelector'
-import refEditorTypeSelector from 'src/selectors/refEditorTypeSelector'
+import {
+	resetEditorProgramByType
+} from 'src/actions/editor'
+
 import storageFormatedProgramSelector from 'src/selectors/storageFormatedProgramSelector'
 import storageProgramsSelector from 'src/selectors/storageProgramsSelector'
 import editorSelector from 'src/selectors/editorSelector'
-import refEditorSavedSelector from 'src/selectors/refEditorSavedSelector'
 import storageProgramSelector from 'src/selectors/storageProgramSelector'
-import generateNewProgramSource from 'src/utils/generateNewProgramSource'
-import parseUrlVars from 'src/utils/parseUrlVars'
-import resolveLinkUrl from 'src/utils/resolveLinkUrl'
 import FormInput from 'src/components/formInput'
 import UploadAreaContainer from 'src/containers/uploadAreaContainer'
 
-export const setEditorProgramByType = (type, program) => (dispatch) => {
-	if (type === 'flow') {
-		dispatch(setFlowProgram(program))
-	} else if (type === 'block') {
-		dispatch(setBlockProgram(program))
-	} else if (type === 'text') {
-		dispatch(setTextProgram(program))
-	}
-}
-export const resetEditorProgramByType = (type) => (dispatch) => {
-	const program = {
-		id     : null,
-		name   : null,
-		source : generateNewProgramSource(type)
-	}
-	dispatch(setEditorProgramByType(type, program))
-}
-export const setCurrentEditorProgram = (program) => (dispatch, getState) => {
-	const state = getState()
-	const type = refEditorTypeSelector()(state)
-	dispatch(setEditorProgramByType(type, program))
-}
-export const resetCurrentEditorProgram = () => (dispatch, getState) => {
-	const state = getState()
-	const type = refEditorTypeSelector()(state)
-	dispatch(resetEditorProgramByType(type))
-}
-export const saveCurrentEditorProgram = () => async (dispatch, getState) => {
-	const state = getState()
-	const name = refEditorNameSelector()(state)
-	const source = refEditorSourceSelector()(state)
-	const type = refEditorTypeSelector()(state)
-	const { id } = await dispatch(safeAddProgram(type, name, source))
-	if (type === 'flow') {
-		dispatch(setFlowId(id))
-	} else if (type === 'block') {
-		dispatch(setBlockId(id))
-	} else if (type === 'text') {
-		dispatch(setTextId(id))
-	}
-	// Update the url
-	const { as, href } = resolveLinkUrl(`${Router.asPath.split('?')[0]}?p=${id}`)
-	Router.replace(href, as)
-	dispatch(setAsPath(as))
-	dispatch(setUrlVars(parseUrlVars(as)))
-}
-export const updateCurrentEditorProgramName = (name) => async (dispatch, getState) => {
-	const state = getState()
-	const id = refEditorIdSelector()(state)
-	const type = refEditorTypeSelector()(state)
-	const saved = refEditorSavedSelector()(state)
-	if (type === 'flow') {
-		dispatch(setFlowName(name))
-	} else if (type === 'block') {
-		dispatch(setBlockName(name))
-	} else if (type === 'text') {
-		dispatch(setTextName(name))
-	}
-	if (saved) {
-		const data = { ...storageProgramSelector()(state, { id }) }
-		data.name = name
-		await dispatch(safeUpdateProgram(id, data))
-	}
-}
-export const updateCurrentEditorProgramSource = (source) => async (dispatch, getState) => {
-	const state = getState()
-	const id = refEditorIdSelector()(state)
-	const type = refEditorTypeSelector()(state)
-	const saved = refEditorSavedSelector()(state)
-	if (type === 'flow') {
-		dispatch(setFlowSource(source))
-	} else if (type === 'block') {
-		dispatch(setBlockSource(source))
-	} else if (type === 'text') {
-		dispatch(setTextSource(source))
-	}
-	if (saved) {
-		const data = { ...storageProgramSelector()(state, { id }) }
-		data.source = source
-		await dispatch(safeUpdateProgram(id, data))
-	}
-}
+
 export const duplicateProgramById = (id, newName) => async (dispatch, getState) => {
 	const state = getState()
 	const program = storageProgramSelector()(state, { id })

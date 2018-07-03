@@ -5,7 +5,7 @@ import {
 import {
 	setCurrentEditorProgram,
 	resetCurrentEditorProgram,
-} from 'src/actions/program'
+} from 'src/actions/editor'
 import {
 	setDisplayPageLoader,
 	setDisplayError,
