@@ -36,7 +36,7 @@ const externalChangeListener = ({ key, newValue }) => {
 	if (newValue) {
 		try {
 			const data = JSON.parse(newValue)
-			externalChangeListenerFn(id, data)
+			externalChangeListenerFn(id, data, newValue)
 			return
 		} catch (e) {
 			// eslint-disable-next-line no-console

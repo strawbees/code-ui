@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import NProgress from 'nprogress'
 import Router from 'next/router'
-import ErrorPage from 'next/error'
 import { connect } from 'react-redux'
 import parseUrlVars from 'src/utils/parseUrlVars'
 import loadStaticData from 'src/utils/loadStaticData'
@@ -11,6 +10,7 @@ import HeadContainer from 'src/containers/headContainer'
 import HeaderContainer from 'src/containers/headerContainer'
 import FooterContainer from 'src/containers/footerContainer'
 import PageContainer from 'src/containers/pageContainer'
+import PageError from 'src/components/pageError'
 import ModalContainer from 'src/containers/modalContainer'
 import MidiInterfaceManager from 'src/containers/midiInterfaceManager'
 import NavigationManager from 'src/containers/navigationManager'
@@ -109,12 +109,6 @@ class AppContainer extends React.Component {
 			displayPageLoader,
 			displayError,
 		} = this.props
-
-		if (displayError) {
-			return (
-				<ErrorPage statusCode={displayError} />
-			)
-		}
 
 		return (
 			<div className="root app">
@@ -277,6 +271,13 @@ class AppContainer extends React.Component {
 					:global(.global-type-h4) {
 						font-size: 1rem;
 					}
+					/* Page error */
+					.root :global(.pageError) {
+						position: fixed !important;
+						width: 100% !important;
+						height: 100% !important;
+						z-index: 999 !important;
+					}
 					/* Page loader */
 					.page-loader {
 						position: fixed;
@@ -290,6 +291,7 @@ class AppContainer extends React.Component {
 						justify-content: center;
 					}
 				`}</style>
+				{displayError && <PageError statusCode={displayError} />}
 				<StorageManager />
 				<NavigationManager />
 				<MidiInterfaceManager />

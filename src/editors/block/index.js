@@ -86,7 +86,7 @@ class BlockEditor extends React.Component {
 			if (e.type === 'ui') {
 				return
 			}
-			debounce('update block source', () => {
+			this.cancelSourceUpdate = debounce('update block source', () => {
 				const xml = Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace())
 				const currentSource = Blockly.Xml.domToText(xml)
 				if (this.source !== currentSource) {
@@ -100,6 +100,9 @@ class BlockEditor extends React.Component {
 	}
 
 	componentWillUnmount() {
+		if (this.cancelSourceUpdate) {
+			this.cancelSourceUpdate()
+		}
 		window.Blockly.getMainWorkspace().dispose()
 	}
 

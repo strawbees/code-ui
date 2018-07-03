@@ -66,6 +66,24 @@ export const setTextProgram = ({ id, name, source }) => (dispatch) => {
 	dispatch(setTextSource(source))
 }
 
+export const setEditorProgramNameByType = (type, name) => (dispatch) => {
+	if (type === 'flow') {
+		dispatch(setFlowName(name))
+	} else if (type === 'block') {
+		dispatch(setBlockName(name))
+	} else if (type === 'text') {
+		dispatch(setTextName(name))
+	}
+}
+export const setEditorProgramSourceByType = (type, source) => (dispatch) => {
+	if (type === 'flow') {
+		dispatch(setFlowSource(source))
+	} else if (type === 'block') {
+		dispatch(setBlockSource(source))
+	} else if (type === 'text') {
+		dispatch(setTextSource(source))
+	}
+}
 export const setEditorProgramByType = (type, program) => (dispatch) => {
 	if (type === 'flow') {
 		dispatch(setFlowProgram(program))
@@ -126,8 +144,10 @@ export const updateCurrentEditorProgramName = (name) => async (dispatch, getStat
 	}
 	if (saved) {
 		const data = { ...storageProgramSelector()(state, { id }) }
-		data.name = name
-		await dispatch(safeUpdateProgram(id, data))
+		if (data.name !== name) {
+			data.name = name
+			await dispatch(safeUpdateProgram(id, data))
+		}
 	}
 }
 export const updateCurrentEditorProgramSource = (source) => async (dispatch, getState) => {
@@ -144,7 +164,9 @@ export const updateCurrentEditorProgramSource = (source) => async (dispatch, get
 	}
 	if (saved) {
 		const data = { ...storageProgramSelector()(state, { id }) }
-		data.source = source
-		await dispatch(safeUpdateProgram(id, data))
+		if (JSON.stringify(data.source) !== JSON.stringify(source)) {
+			data.source = source
+			await dispatch(safeUpdateProgram(id, data))
+		}
 	}
 }

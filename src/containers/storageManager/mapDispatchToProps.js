@@ -5,8 +5,10 @@ import {
 	setTempProgram,
 	setPrograms,
 	safeUpdateProgram,
-	safeRemoveProgram,
 } from 'src/actions/storage'
+import {
+	removeProgramByIdAndClearEditor,
+} from 'src/actions/program'
 
 export default autobindDispatchToActionCreators({
 	setStatus,
@@ -14,5 +16,5 @@ export default autobindDispatchToActionCreators({
 	setTempProgram,
 	setPrograms,
 	safeUpdateProgram,
-	safeRemoveProgram,
+	removeProgramByIdAndClearEditor,
 })

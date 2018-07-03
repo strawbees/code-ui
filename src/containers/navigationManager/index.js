@@ -142,6 +142,8 @@ class NavigationManager extends React.PureComponent {
 			urlVarData = null
 		}
 
+		// Start by always cleaning the error
+
 		// Only act on the editor pages
 		if (queryRef !== 'flow' &&
 			queryRef !== 'block' &&
@@ -150,7 +152,6 @@ class NavigationManager extends React.PureComponent {
 		}
 
 		// Show the loader
-		setDisplayError(false)
 		setDisplayPageLoader(true)
 
 		// Reset editor, since there's no program to show

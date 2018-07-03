@@ -72,7 +72,7 @@ class StorageManager extends React.Component {
 		}
 		Object.keys(programs).forEach(id => {
 			// program was added/updated by the state
-			if (!this.programs[id] || this.programs[id] !== programs[id]) {
+			if (!this.programs[id] || JSON.stringify(this.programs[id]) !== JSON.stringify(programs[id])) {
 				browserStorage.set('program', id, programs[id])
 				this.programs[id] = programs[id]
 				needsUpdate = true
@@ -92,18 +92,22 @@ class StorageManager extends React.Component {
 	}
 
 	// Monitor changes done by the storage, if there are any, update the state
-	onExternalChange = (id, data) => {
-		console.log('aaaa')
+	onExternalChange = (id, data, dataRaw) => {
+		// exit early if data hasn't changed
+		if (id && dataRaw === JSON.stringify(this.programs[id])) {
+			return
+		}
 		const {
 			safeUpdateProgram,
-			safeRemoveProgram,
+			removeProgramByIdAndClearEditor,
 		} = this.props
 		// Update if there is data
 		if (data) {
-			console.log('update', id)
-			safeUpdateProgram(id, data, false)
+			this.programs[id] = data
+			safeUpdateProgram(id, data, true)
 		} else {
-			console.log('delete', id)
+			delete this.programs[id]
+			removeProgramByIdAndClearEditor(id)
 		}
 	}
 
@@ -113,13 +117,13 @@ class StorageManager extends React.Component {
 }
 
 StorageManager.propTypes = {
-	setStatus         : PropTypes.func,
-	setCredentials    : PropTypes.func,
-	setTempProgram    : PropTypes.func,
-	setPrograms       : PropTypes.func,
-	safeUpdateProgram : PropTypes.func,
-	safeRemoveProgram : PropTypes.func,
-	programs          : PropTypes.object,
+	setStatus                       : PropTypes.func,
+	setCredentials                  : PropTypes.func,
+	setTempProgram                  : PropTypes.func,
+	setPrograms                     : PropTypes.func,
+	safeUpdateProgram               : PropTypes.func,
+	removeProgramByIdAndClearEditor : PropTypes.func,
+	programs                        : PropTypes.object,
 }
 
 export default connect(
