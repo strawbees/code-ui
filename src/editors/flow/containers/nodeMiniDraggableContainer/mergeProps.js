@@ -8,6 +8,6 @@ export default (stateProps, dispatchProps, ownProps) => {
 		...stateProps,
 		...otherDispatchProps,
 		...ownProps,
-		toggle : () => toggleFoldedCategory(id)
+		toggle : () => toggleFoldedCategory()
 	}
 }

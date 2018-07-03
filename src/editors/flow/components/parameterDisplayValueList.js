@@ -4,7 +4,6 @@ import ParameterDisplayValue from 'src/editors/flow/components/parameterDisplayV
 import {
 	GRAY,
 	WHITE,
-	YELLOW,
 } from 'src/constants/colors'
 
 const ParameterDisplayValueList = ({

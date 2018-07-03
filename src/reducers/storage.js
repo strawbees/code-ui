@@ -22,7 +22,7 @@ const ready = (state = false, { type, payload }) => {
 	}
 }
 const status = generateReducer(STORAGE_SET_STATUS)
-const credentials = generateReducer(STORAGE_SET_TEMP_PROGRAM)
+const credentials = generateReducer(STORAGE_SET_CREDENTIALS)
 const tempProgram = generateReducer(STORAGE_SET_TEMP_PROGRAM)
 const programs = (state = {}, { type, payload }) => {
 	switch (type) {

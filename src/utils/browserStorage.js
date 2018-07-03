@@ -1,5 +1,3 @@
-import debounce from 'src/utils/debounce'
-
 export const get = (base, key) => {
 	try {
 		return JSON.parse(localStorage.getItem(`_storage_${base}_${key}`))

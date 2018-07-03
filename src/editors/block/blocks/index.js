@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import control_forever from './control_forever/index'
 import control_if from './control_if/index'
 import control_if_else from './control_if_else/index'
@@ -36,6 +37,7 @@ import output_led_dual_color_light from './output_led_dual_color_light/index'
 import output_servo from './output_servo/index'
 import text from './text/index'
 import undefined from './undefined/index'
+/* eslint-enable camelcase */
 
 export default {
 	control_forever,

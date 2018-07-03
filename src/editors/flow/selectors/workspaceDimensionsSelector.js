@@ -12,14 +12,12 @@ export default () => createSelector(
 		state,
 		source,
 	) => {
-		let instanceX
 		let instanceY
 		let width = 0
 		let height = 0
 		source.forEach(instance => {
 			if (instance.x > width) {
 				width = instance.x
-				instanceX = instance
 			}
 			if (instance.y > height) {
 				height = instance.y

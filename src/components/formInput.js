@@ -4,7 +4,6 @@ import tinycolor from 'tinycolor2'
 import S from 'src/containers/sManager'
 import {
 	GRAY,
-	RED,
 	BLACK,
 } from 'src/constants/colors'
 
