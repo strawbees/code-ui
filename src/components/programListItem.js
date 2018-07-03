@@ -45,6 +45,7 @@ const ProgramMenu = ({
 		<div className='container'>
 			{items && items.map(({ icon, labelKey, onClick }) =>
 				<IconButton
+					key={labelKey}
 					icon={icon}
 					labelKey={labelKey}
 					onClick={onClick}

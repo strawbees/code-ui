@@ -1,5 +1,8 @@
 import generateAction from 'src/utils/generateAction'
 import { generateUniqueId } from 'src/storage'
+import refEditorIdSelector from 'src/selectors/refEditorIdSelector'
+import refEditorNameSelector from 'src/selectors/refEditorNameSelector'
+import refEditorSourceSelector from 'src/selectors/refEditorSourceSelector'
 import storageCredentialsSelector from 'src/selectors/storageCredentialsSelector'
 import {
 	STORAGE_SET_READY,
@@ -41,13 +44,22 @@ export const safeAddProgram = (type, name, source) => async (dispatch, getState)
 	return data
 }
 
-export const safeUpdateProgram = (id, data) => async (dispatch) => {
+export const safeUpdateProgram = (id, data, bumpChange = true) => async (dispatch, getState) => {
 	data = {
-		...data,
-		updatedAt : Date.now(),
-		version   : data.version + 1,
+		...data
+	}
+	if (bumpChange) {
+		data.updatedAt = Date.now()
+		data.version += 1
 	}
 	dispatch(updateProgram({ id, data }))
+	const state = getState()
+	const editorId = refEditorIdSelector()(state)
+	if (editorId === id) {
+		const editorName = refEditorNameSelector()(state)
+		const editorSource = refEditorSourceSelector()(state)
+		console.log('opa',data, editorName, editorSource)
+	}
 }
 
 export const safeRemoveProgram = (id) => async (dispatch) => {

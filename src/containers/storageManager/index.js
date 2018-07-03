@@ -93,9 +93,15 @@ class StorageManager extends React.Component {
 
 	// Monitor changes done by the storage, if there are any, update the state
 	onExternalChange = (id, data) => {
+		console.log('aaaa')
+		const {
+			safeUpdateProgram,
+			safeRemoveProgram,
+		} = this.props
 		// Update if there is data
 		if (data) {
 			console.log('update', id)
+			safeUpdateProgram(id, data, false)
 		} else {
 			console.log('delete', id)
 		}
@@ -107,11 +113,13 @@ class StorageManager extends React.Component {
 }
 
 StorageManager.propTypes = {
-	setStatus      : PropTypes.func,
-	setCredentials : PropTypes.func,
-	setTempProgram : PropTypes.func,
-	setPrograms    : PropTypes.func,
-	programs       : PropTypes.object,
+	setStatus         : PropTypes.func,
+	setCredentials    : PropTypes.func,
+	setTempProgram    : PropTypes.func,
+	setPrograms       : PropTypes.func,
+	safeUpdateProgram : PropTypes.func,
+	safeRemoveProgram : PropTypes.func,
+	programs          : PropTypes.object,
 }
 
 export default connect(
