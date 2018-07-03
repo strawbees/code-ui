@@ -13,11 +13,13 @@ class Outlet extends React.Component {
 		dragging : false,
 		position : { x : 0, y : 0 }
 	}
+
 	constructor(props) {
 		super(props)
 		this.dragRef = React.createRef()
 		this.dragToRef = React.createRef()
 	}
+
 	componentDidMount() {
 		this.props.setDragMethods({
 			getDragRef  : () => this.dragRef,
@@ -26,9 +28,11 @@ class Outlet extends React.Component {
 			onDragStop  : this.onDragStop,
 		})
 	}
+
 	componentWillUnmount() {
 		this.props.setDragMethods(null)
 	}
+
 	getInstanceParameter = (x, y) => {
 		const {
 			left,
@@ -46,6 +50,7 @@ class Outlet extends React.Component {
 		}
 		return this.getInstanceParameterFromRectangle(rect)
 	}
+
 	getInstanceParameterFromRectangle = (r1) =>
 		this.dragTargets.filter(({ rect : r2 }) =>
 			!(r2.left > r1.right ||
@@ -53,6 +58,7 @@ class Outlet extends React.Component {
 			r2.top > r1.bottom ||
 			r2.bottom < r1.top)
 		).pop()
+
 	onDragStart = (e, { x, y }) => {
 		this.setState({
 			dragging : true,
@@ -73,6 +79,7 @@ class Outlet extends React.Component {
 				instanceId  : element.dataset.instanceId
 			}))
 	}
+
 	onDragMove = (e, { x, y }) => {
 		this.setState({
 			position : { x, y }
@@ -87,6 +94,7 @@ class Outlet extends React.Component {
 			to   : this.dragToRef.current.getBoundingClientRect()
 		})
 	}
+
 	onDragStop = (e, { x, y }) => {
 		this.setState({
 			dragging : false,
@@ -105,6 +113,7 @@ class Outlet extends React.Component {
 		// over itself
 		return parameter
 	}
+
 	render() {
 		const {
 			onDragStart,

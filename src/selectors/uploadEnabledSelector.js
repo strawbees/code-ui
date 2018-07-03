@@ -7,5 +7,5 @@ export default () => createSelector(
 	],
 	(
 		qbmidiLinks,
-	) => true//Object.keys(qbmidiLinks).length > 0
+	) => true// Object.keys(qbmidiLinks).length > 0
 )

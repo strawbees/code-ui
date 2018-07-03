@@ -29,10 +29,10 @@ const PageTextContainer = dynamic(
 
 const PageContainer = (props) => {
 	const components = {
-		home    : PageHomeContainer,
-		flow    : PageFlowContainer,
+		home  : PageHomeContainer,
+		flow  : PageFlowContainer,
 		block : PageBlockContainer,
-		text    : PageTextContainer,
+		text  : PageTextContainer,
 	}
 	const RefComponent = components[props.queryRef]
 	return (

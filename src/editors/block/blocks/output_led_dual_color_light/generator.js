@@ -5,7 +5,7 @@ import {
 	parseInstaceDefinition,
 	parseInstacePropertyAssignment,
 	setInstacePropertyOneTimeAssignment
-} from './../../utils/parsing'
+} from '../../utils/parsing'
 
 export default ({ value, field, next }, structure) => {
 	const place = field && field[0]

@@ -4,9 +4,11 @@ class AceEditor extends React.Component {
 	state = {
 		isMounted : false
 	}
+
 	componentDidMount() {
 		this.setState({ isMounted : true })
 	}
+
 	render() {
 		const { isMounted } = this.state
 		const {

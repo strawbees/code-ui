@@ -16,6 +16,7 @@ class NodeMiniDraggableContainer extends React.Component {
 			dragStyle : {}
 		}
 	}
+
 	onDragStart = (e, ui) => {
 		const bounding = ui.node.getBoundingClientRect()
 		this.setState({
@@ -26,6 +27,7 @@ class NodeMiniDraggableContainer extends React.Component {
 			dragClass : 'drag-start'
 		})
 	}
+
 	onDragMove = () => {
 		if (this.state.dragClass !== 'drag-move') {
 			this.setState({
@@ -37,6 +39,7 @@ class NodeMiniDraggableContainer extends React.Component {
 			})
 		}
 	}
+
 	onDragStop = (e, { x, y }) => {
 		const { getDropAreaRect } = this.props
 		const {

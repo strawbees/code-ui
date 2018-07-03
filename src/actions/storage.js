@@ -58,7 +58,7 @@ export const safeUpdateProgram = (id, data, bumpChange = true) => async (dispatc
 	if (editorId === id) {
 		const editorName = refEditorNameSelector()(state)
 		const editorSource = refEditorSourceSelector()(state)
-		console.log('opa',data, editorName, editorSource)
+		console.log('opa', data, editorName, editorSource)
 	}
 }
 

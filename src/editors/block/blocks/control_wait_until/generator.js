@@ -2,7 +2,7 @@ import {
 	parseNext,
 	getValueBlockByAttributeName,
 	getBlockBody
-} from './../../utils/parsing'
+} from '../../utils/parsing'
 
 export default ({ value, next }, structure) => {
 	const conditionBlock = getValueBlockByAttributeName(value, 'CONDITION')

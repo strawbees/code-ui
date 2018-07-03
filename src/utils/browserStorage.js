@@ -13,9 +13,9 @@ export const set = (base, key, value) => {
 		return
 	}
 	localStorage.setItem(`_storage_${base}_${key}`, JSON.stringify(value))
-	//debounce(`_storage_${base}_${key}`, () => {
+	// debounce(`_storage_${base}_${key}`, () => {
 	//	localStorage.setItem(`_storage_${base}_${key}`, JSON.stringify(value))
-	//}, 300)
+	// }, 300)
 }
 
 export const remove = (base, key) => {

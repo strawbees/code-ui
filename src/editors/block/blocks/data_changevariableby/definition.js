@@ -2,9 +2,9 @@ export default (strings) => ({
 	message0 : 'change %1 by %2',
 	args0    : [
 		{
-			type         : 'field_variable',
-			name         : 'VARIABLE',
-			//variableType : 'Number'
+			type : 'field_variable',
+			name : 'VARIABLE',
+			// variableType : 'Number'
 		},
 		{
 			type : 'input_value',

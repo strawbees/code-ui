@@ -10,16 +10,20 @@ class LocalesMenu extends React.Component {
 	state = {
 		open : false
 	}
+
 	constructor(props) {
 		super(props)
 		this.listRef = React.createRef()
 	}
+
 	openList = () => {
 		this.listRef.current.focus()
 	}
+
 	blurActiveElement = () => {
 		document.activeElement.blur()
 	}
+
 	render() {
 		const {
 			current,

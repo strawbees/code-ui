@@ -6,7 +6,7 @@
     "build": "node lib/scripts/build.js",
     "build-serve": "node lib/scripts/buildServe.js",
     "deploy": "node lib/scripts/deploy.js",
-    "lint": "eslint src/** pages/** lib/**"
+    "lint": "eslint --fix src/** pages/** lib/**"
   },
   "dependencies": {
     "@babel/core": "7.0.0-beta.51",

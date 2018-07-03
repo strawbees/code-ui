@@ -2,7 +2,7 @@ import {
 	parseNext,
 	getValueBlockByAttributeName,
 	getBlockBody
-} from './../../utils/parsing'
+} from '../../utils/parsing'
 
 export default ({ value, field, next }, structure) => {
 	const numBlock = getValueBlockByAttributeName(value, 'NUM')

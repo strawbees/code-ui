@@ -1,7 +1,7 @@
 import {
 	parseNext,
 	parseInstaceDefinition
-} from './../../utils/parsing'
+} from '../../utils/parsing'
 
 export default ({ field, next }, structure) => {
 	const name = field && field[0]

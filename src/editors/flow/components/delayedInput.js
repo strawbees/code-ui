@@ -26,6 +26,7 @@ class DelayedInput extends React.Component {
 		}
 		return {}
 	}
+
 	componentDidUpdate(prevProps, prevState, { caret }) {
 		// handle external updates
 		if (!this.cancelDebounce && this.props.value !== prevProps.value) {

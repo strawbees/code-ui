@@ -8,6 +8,7 @@ class Range extends React.Component {
 		super(props)
 		this.input = React.createRef()
 	}
+
 	onKeyDown = (e) => {
 		if (e.keyCode !== 13) {
 			return
@@ -16,10 +17,12 @@ class Range extends React.Component {
 			this.input.current.blur()
 		}
 	}
+
 	cancelEvent = (e) => {
 		e.preventDefault()
 		e.stopPropagation()
 	}
+
 	render() {
 		const {
 			onKeyDown,

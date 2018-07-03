@@ -147,7 +147,7 @@ export const sanitizeCPPVariableName = (name) => {
 		return '_'
 	}
 	let newName = name
-	//newName = trimSpaces(newName)
+	// newName = trimSpaces(newName)
 	newName = lTrimReplaceNumerals(newName, '_')
 	newName = removeDiacritics(newName)
 	newName = newName.replace(/[^\w]/gi, '_')

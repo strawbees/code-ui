@@ -3,7 +3,7 @@ import {
 	getValueBlockByAttributeName,
 	parseInstaceDefinition,
 	getBlockBody
-} from './../../utils/parsing'
+} from '../../utils/parsing'
 
 export default ({ value, field, next }, structure) => {
 	const valueBlock = getValueBlockByAttributeName(value, 'VALUE')

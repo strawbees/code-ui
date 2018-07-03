@@ -1,4 +1,4 @@
-import { parseNext } from './../../utils/parsing'
+import { parseNext } from '../../utils/parsing'
 
 export default ({ next, attributes }, structure) => {
 	structure.body += `/* ${attributes.type} */`

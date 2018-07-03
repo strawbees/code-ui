@@ -1,4 +1,4 @@
-import { parseNext } from './../../utils/parsing'
+import { parseNext } from '../../utils/parsing'
 
 export default ({ next, statement }, structure) => {
 	structure.body += 'while(true) {\n'

@@ -1,6 +1,7 @@
 import xmlToJson from './xmlToJson.js'
 import toolboxToXmlString from './toolboxToXmlString.js'
 import parsing from './parsing.js'
+
 const {
 	assembleStructure,
 	parseBlock,
@@ -67,7 +68,7 @@ const init = async () => {
 		const generator = generators[index].default
 		if (definition) {
 			Blockly.Blocks[id] = {
-				init : function() { this.jsonInit(definition) }
+				init() { this.jsonInit(definition) }
 			}
 		}
 		if (generator) {
@@ -82,16 +83,16 @@ const init = async () => {
 	// Setup workspace
 	const mainWorkspaceContainer = document.getElementById('mainWorkspace')
 	const mainWorkspace = Blockly.inject(mainWorkspaceContainer, {
-		toolbox: toolboxXml,
-		media: '../node_modules/block-blocks/media/',
-		zoom: {
-			controls: true,
-			wheel: true,
-			startScale: 0.65
+		toolbox : toolboxXml,
+		media   : '../node_modules/block-blocks/media/',
+		zoom    : {
+			controls   : true,
+			wheel      : true,
+			startScale : 0.65
 		},
-		trashcan: true,
-		colours: {
-			scrollbar: 'rgba(0, 0, 0, 0.05)',
+		trashcan : true,
+		colours  : {
+			scrollbar : 'rgba(0, 0, 0, 0.05)',
 		}
 	})
 	/* let callback = null
@@ -172,7 +173,7 @@ const init = async () => {
 	} */
 
 	Blockly.Xml.domToWorkspace(
-		Blockly.Xml.textToDom(`<xml><block type="event_power_on" deletable="false" x="50" y="50"></xml>`),
+		Blockly.Xml.textToDom('<xml><block type="event_power_on" deletable="false" x="50" y="50"></xml>'),
 		mainWorkspace
 	)
 
@@ -185,14 +186,14 @@ init()
 const generateCode = (workspace) => {
 	console.clear()
 	const xml = Blockly.Xml.workspaceToDom(workspace)
-	console.log('xml',xml)
+	console.log('xml', xml)
 	const json = xmlToJson(xml)
-	console.log('json',json)
+	console.log('json', json)
 	const structure = {
-		header : '#include "Quirkbot.h"\n',
-		definitions : {},
-		oneTimeAssignments: {},
-		body : ''
+		header             : '#include "Quirkbot.h"\n',
+		definitions        : {},
+		oneTimeAssignments : {},
+		body               : ''
 	}
 	const start = json && json.block && json.block[0]
 	parseBlock(start, structure)

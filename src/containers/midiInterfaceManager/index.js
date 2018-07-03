@@ -30,6 +30,7 @@ class MidiInterfaceManager extends React.Component {
 			setQbmidiLinks(links)
 		}
 	}
+
 	componentDidMount() {
 		const {
 			midiInit,
@@ -43,6 +44,7 @@ class MidiInterfaceManager extends React.Component {
 			this.timer = window.setInterval(() => this.onTick(), 1000)
 		}
 	}
+
 	componentWillUnmount() {
 		clearInterval(this.timer)
 	}
