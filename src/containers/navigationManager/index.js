@@ -143,6 +143,7 @@ class NavigationManager extends React.PureComponent {
 		}
 
 		// Start by always cleaning the error
+		setDisplayError(null)
 
 		// Only act on the editor pages
 		if (queryRef !== 'flow' &&

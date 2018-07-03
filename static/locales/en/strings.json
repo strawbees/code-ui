@@ -4,6 +4,8 @@
 	"home.url"      : "/",
 	"home.og.title" : "Strawbees CODE",
 
+	"error.og.title" : "Not found",
+
 	"ui.program_creator.title" : "Creat new program",
 	"ui.editor.program.placeholder_name" : "Untitled Program",
 

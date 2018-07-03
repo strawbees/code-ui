@@ -65,7 +65,7 @@ class AppContainer extends React.Component {
 			})
 		}
 		if (isServer) {
-			// shoe the initial page loader
+			// show the initial page loader
 			setDisplayPageLoader(true)
 			// Editor setup only needs to happen once, in server
 			setupEditor()
@@ -272,12 +272,12 @@ class AppContainer extends React.Component {
 						font-size: 1rem;
 					}
 					/* Page error */
-					.root :global(.pageError) {
+					/*.root :global(.pageError) {
 						position: fixed !important;
 						width: 100% !important;
 						height: 100% !important;
 						z-index: 999 !important;
-					}
+					}*/
 					/* Page loader */
 					.page-loader {
 						position: fixed;
@@ -291,13 +291,17 @@ class AppContainer extends React.Component {
 						justify-content: center;
 					}
 				`}</style>
-				{displayError && <PageError statusCode={displayError} />}
+
 				<StorageManager />
 				<NavigationManager />
 				<MidiInterfaceManager />
 				<HeadContainer />
 				<HeaderContainer />
-				<PageContainer />
+				{displayError ?
+					<PageError statusCode={displayError} />
+					:
+					<PageContainer />
+				}
 				<FooterContainer />
 				<ModalContainer />
 				{displayPageLoader &&
