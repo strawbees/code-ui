@@ -6,24 +6,25 @@ import {
 } from 'src/constants/colors'
 
 const Spinner = ({
-	status
+	scale
 }) =>
-	<div className={`root spinner ${status}`}>
+	<div className='root spinner'>
 		<style jsx>{`
 			.root {
-				min-width: 2.5rem;
-				min-height: 1.5rem;
+				min-width: ${scale * 2.5}rem;
+				min-height: ${scale * 1.5}rem;
 			}
 			.circles {
-				width: 1rem;
-				height: 1rem;
-				margin: 0.25rem 0.75rem;
+				width: ${scale * 1}rem;
+				height: ${scale * 1}rem;
+				margin: ${scale * 0.25}rem ${scale * 0.75}rem;
 				position: relative;
 				isolation: isolate;
+				opacity: 0.7;
 			}
 			.circles > * {
 				position: absolute;
-				border-radius: 1rem;
+				border-radius: ${scale * 1}rem;
 				width: 100%;
 				height: 100%;
 				mix-blend-mode: multiply;
@@ -34,18 +35,26 @@ const Spinner = ({
 			}
 			.circles > .a {
 				background-color: ${tinycolor(YELLOW).toRgbString()};
-				animation-direction: normal;
+				animation-name: slide;
 			}
 			.circles > .b {
 				background-color: ${tinycolor(BLUE).toRgbString()};
-				animation-direction: reverse;
+				animation-name: slide_alt;
+
 			}
 			@keyframes slide {
-				0% { transform: translate3d(0,0,0); }
-				25% { transform: translate3d(40%,0,0) scale3d(0.6,0.6,1); }
-				50% { transform: translate3d(0,0,0); }
-				75% { transform: translate3d(-40%,0,0) scale3d(0.6,0.6,1); }
-				100% { transform: translate3d(0,0,0); }
+				0% { transform:   translate3d(0,0,0)    scale3d(1.0,1.0,1.0); }
+				25% { transform:  translate3d(40%,0,0)  scale3d(0.6,0.6,1.0); }
+				50% { transform:  translate3d(0,0,0)    scale3d(0.4,0.4,1.0); }
+				75% { transform:  translate3d(-40%,0,0) scale3d(0.6,0.6,1.0); }
+				100% { transform: translate3d(0,0,0)    scale3d(1.0,1.0,1.0); }
+			}
+			@keyframes slide_alt {
+				0% { transform:   translate3d(0,0,0)    scale3d(0.4,0.4,0.4); }
+				25% { transform:  translate3d(-40%,0,0)  scale3d(0.6,0.6,1.0); }
+				50% { transform:  translate3d(0,0,0)    scale3d(1.0,1.0,1.0); }
+				75% { transform:  translate3d(40%,0,0) scale3d(0.6,0.6,1.0); }
+				100% { transform: translate3d(0,0,0)    scale3d(0.4,0.4,0.4); }
 			}
 		`}</style>
 		<div className='circles'>
@@ -55,10 +64,10 @@ const Spinner = ({
 	</div>
 
 Spinner.defaultProps = {
-	status : 'iddle'
+	scale : 1
 }
 Spinner.propTypes = {
-	status : PropTypes.oneOf(['iddle', 'success', 'fail']),
+	scale : PropTypes.number,
 }
 
 export default Spinner

@@ -96,7 +96,7 @@ const ProgramListItem = ({
 			/>
 		</Link>
 		<IconButton
-			icon={fileIcons.folder}
+			icon={fileIcons.menu}
 			onClick={() => safeOpenModal(
 				<ProgramMenu
 					name={name}

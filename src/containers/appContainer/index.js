@@ -299,7 +299,7 @@ class AppContainer extends React.Component {
 				<ModalContainer />
 				{displayPageLoader &&
 					<div className='page-loader'>
-						<Spinner/>
+						<Spinner scale={4}/>
 					</div>
 				}
 			</div>
