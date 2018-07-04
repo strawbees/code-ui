@@ -15,8 +15,13 @@ const config = {
 	}
 }
 
+const configMode = process.env.CONFIG || 'dev'
+
+// eslint-disable-next-line no-console
+console.log('Using config -> ', process.env.CONFIG || 'dev')
+
 module.exports = {
 	exportPathMap             : () => routes,
-	publicRuntimeConfig       : config[process.env.CONFIG || 'dev'],
+	publicRuntimeConfig       : config[configMode],
 	useFileSystemPublicRoutes : false
 }
