@@ -6,7 +6,7 @@
     "build": "node lib/scripts/build.js",
     "build-serve": "node lib/scripts/buildServe.js",
     "deploy:stage": "CONFIG=stage node lib/scripts/deploy.js",
-    "deploy:production": "CONFIG=stage node lib/scripts/deploy.js",
+    "deploy:production": "CONFIG=production node lib/scripts/deploy.js",
     "lint": "eslint --fix src/** pages/** lib/**"
   },
   "dependencies": {
@@ -23,7 +23,7 @@
     "prop-types": "^15.6.2",
     "quirkbot-midi-interface": "^0.1.0",
     "react": "^16.4.1",
-    "react-ace": "^6.1.3",
+    "react-ace": "^6.1.4",
     "react-dom": "^16.4.1",
     "react-draggable": "^3.0.5",
     "react-load-script": "^0.0.6",
@@ -37,9 +37,10 @@
     "rimraf": "^2.6.2",
     "s3": "^4.4.0",
     "scratch-blocks": "^0.1.0-prerelease.1530135682",
-    "serve-handler": "^3.2.2",
+    "serve-handler": "^3.2.3",
     "tinycolor2": "^1.4.1",
     "why-did-you-update": "^0.1.1",
+    "workbox-build": "^3.3.1",
     "xxhashjs": "^0.2.2"
   },
   "author": "Paulo Barcelos <paulo@strawbees.com>",
@@ -50,7 +51,7 @@
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-import-resolver-babel-module": "^5.0.0-beta.0",
     "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-jsx-a11y": "^6.1.0",
     "eslint-plugin-react": "^7.10.0"
   }
 }

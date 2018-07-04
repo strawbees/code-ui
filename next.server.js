@@ -1,5 +1,5 @@
 const { createServer } = require('http')
-const { parse, format } = require('url')
+const { parse } = require('url')
 const next = require('next')
 const routes = require('./static/routes')
 
@@ -21,8 +21,8 @@ const init = async () => {
 			res.end()
 			return
 		}
-
 		if (routes[pathname]) {
+			// render the known routes
 			app.render(
 				req,
 				res,

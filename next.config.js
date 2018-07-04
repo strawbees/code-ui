@@ -1,6 +1,7 @@
 const routes = require('./static/routes')
 
-const config = {
+const configMode = process.env.CONFIG || 'dev'
+const publicRuntimeConfig = {
 	dev : {
 		CANONICAL_URL : 'http://localhost:3000',
 		COMPILER_URL  : 'https://compiler.quirkbot.com'
@@ -14,14 +15,11 @@ const config = {
 		COMPILER_URL  : 'https://compiler.quirkbot.com'
 	}
 }
-
-const configMode = process.env.CONFIG || 'dev'
-
 // eslint-disable-next-line no-console
 console.log('Using config -> ', process.env.CONFIG || 'dev')
 
 module.exports = {
 	exportPathMap             : () => routes,
-	publicRuntimeConfig       : config[configMode],
-	useFileSystemPublicRoutes : false
+	publicRuntimeConfig       : publicRuntimeConfig[configMode],
+	useFileSystemPublicRoutes : false,
 }

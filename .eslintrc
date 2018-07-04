@@ -1,7 +1,8 @@
 {
   "parser": "babel-eslint",
   "extends": [
-    "airbnb-base"
+    "airbnb-base",
+    "plugin:jsx-a11y/recommended"
   ],
   "env": {
     "browser": true,
@@ -16,7 +17,8 @@
     }
   },
   "plugins": [
-    "react"
+    "react",
+    "jsx-a11y"
   ],
   "rules": {
     "arrow-parens": 0,

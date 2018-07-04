@@ -10,6 +10,15 @@ if (process.browser && process.env.NODE_ENV !== 'production') {
 	// const { whyDidYouUpdate } = require('why-did-you-update')
 	// whyDidYouUpdate(React)
 }
+// register the service worker
+if (process.browser && process.env.NODE_ENV === 'production') {
+	if ('serviceWorker' in navigator) {
+		// Use the window load event to keep the page load performant
+		window.addEventListener('load', () => {
+			navigator.serviceWorker.register('/service-worker.js')
+		})
+	}
+}
 
 class NextApp extends App {
 	static async getInitialProps({ Component, ctx }) {
