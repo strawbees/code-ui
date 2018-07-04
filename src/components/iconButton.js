@@ -25,14 +25,14 @@ const IconButtonContent = ({
 				margin: -0.25rem 0.25rem -0.25rem -0.5rem;
 			}
 			.root:not(.has-label) :global(>.svgIcon) {
-				margin: -0.1rem -0.85rem -0.1rem -0.84rem;
+				margin: -0.1rem -0.85rem -0.1rem -0.9rem;
 			}
 			@media (${hideLabelOnMediaQuery}){
 				.root.hide-label .label {
 					display: none;
 				}
 				.root.hide-label.has-label :global(>.svgIcon) {
-					margin: -0.1rem -0.85rem -0.1rem -0.84rem;
+					margin: -0.1rem -0.85rem -0.1rem -0.9rem;
 				}
 			}
 		`}</style>

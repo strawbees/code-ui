@@ -28,6 +28,7 @@ const Button = ({
 				display: flex;
 				flex-direction: row;
 				align-items: center;
+				justify-content: center;
 				box-sizing: border-box;
 				padding: 0.25rem 1rem;
 				border-radius: 2rem;
