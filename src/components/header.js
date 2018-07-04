@@ -19,7 +19,7 @@ const Header = ({
 				display: flex;
 				flex-direction: row;
 				align-items: center;
-				background-color: ${tinycolor(BLUE).setAlpha(0.5).toRgbString()};
+				background-color: ${tinycolor(BLUE).setAlpha(0.75).toRgbString()};
 				position: relative;
 				width: 100%;
 				padding: 0 0.5rem 0 1rem;

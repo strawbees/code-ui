@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import Link from 'src/components/link'
 import SvgIcon from 'src/components/svgIcon'
+import IconButton from 'src/components/iconButton'
 import S from 'src/containers/sManager'
 import createIcons from 'src/assets/icons/editors/create'
 import {
@@ -53,7 +54,6 @@ const ProgramCreator = ({
 				height: 7rem;
 			}
 			@media (max-width: 400px) {
-
 				.types :global(.link .svgIcon){
 					width: 5rem;
 					height: 5rem;

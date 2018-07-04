@@ -30,10 +30,7 @@ const Head = ({
 		{ogType &&
 			<meta property="og:type" content={ogType} />
 		}
-
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<link rel="stylesheet" href="/static/lib/nprogress.css"/>
-
 		<link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png"/>
 		<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png"/>
 		<link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png"/>
@@ -43,6 +40,7 @@ const Head = ({
 		<meta name="msapplication-TileColor" content="#da532c"/>
 		<meta name="msapplication-config" content="/static/favicon/browserconfig.xml"/>
 		<meta name="theme-color" content="#ffffff"/>
+		<link rel="preload" href="/static/lib/nprogress.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
 	</DocumentHead>
 
 

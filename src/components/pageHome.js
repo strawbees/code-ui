@@ -26,7 +26,7 @@ const PageHome = () =>
 				max-width: 40rem;
 			}
 			.section.top {
-				background-color: ${tinycolor(GRAY).darken(15).toRgbString()};
+				background-color: ${tinycolor(GRAY).darken(25).toRgbString()};
 			}
 			.section.bottom {
 				flex: 1;

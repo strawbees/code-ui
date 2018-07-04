@@ -47,7 +47,7 @@ const EditorMenu = ({
 				margin-right: 0;
 			}
 			.type {
-				margin-right: 0.5rem;
+				margin-right: 0;
 			}
 			.type :global(>.svgIcon) {
 				width: 3.5rem;
