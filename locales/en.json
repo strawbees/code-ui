@@ -6,11 +6,16 @@
 
 	"error.og.title" : "Not found",
 
-	"ui.program_creator.title" : "Creat new program",
+	"ui.program_creator.title" : "Start programming",
 	"ui.editor.program.placeholder_name" : "Untitled Program",
 
 	"ui.header_menu.options.upload"  : "Upload",
 	"ui.header_menu.options.save"    : "Save",
+
+	"ui.program_list.controls.type"    : "type",
+	"ui.program_list.controls.name"    : "name",
+	"ui.program_list.controls.updated" : "last modified",
+
 	"ui.file_menu.title"             : "File",
 	"ui.file_menu.options.new_flow"  : "New Flow program",
 	"ui.file_menu.options.new_block" : "New Block program",

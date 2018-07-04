@@ -1,0 +1,18 @@
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150">
+    <style>
+        .st0,.st2{stroke-width:3;stroke-linecap:round;stroke-miterlimit:10}.st0{stroke-linejoin:round;fill:#fff;stroke:#333}.st2{fill:none;stroke:#fff}
+    </style>
+    <path class="st0" d="M111.3 127h-85V10.6h58.8l26.2 26.3z"/>
+    <path class="st0" d="M111.3 36.9L85.1 10.6v26.3z"/>
+    <circle class="st0" cx="104.1" cy="119.8" r="19.6"/>
+    <path class="st0" d="M93.5 119.8h21.3M104.1 109.1v21.3"/>
+    <g>
+        <path d="M90.1 98.5H43.5c-3.9 0-7-3.1-7-7V48.7c0-3.9 3.1-7 7-7h46.6c3.9 0 7 3.1 7 7v42.8c0 3.9-3.2 7-7 7z" fill="#333"/>
+        <path class="st2" d="M63.6 61h21.2M46.6 79.1H87"/>
+        <path fill="none" stroke="#87d98c" stroke-width="3" stroke-linecap="round" stroke-miterlimit="10" d="M46.6 61h10.3"/>
+        <path class="st2" d="M65.1 70.1h7.3"/>
+        <path fill="none" stroke="#f382c4" stroke-width="3" stroke-linecap="round" stroke-miterlimit="10" d="M46.6 70.1h12.2"/>
+        <path class="st2" d="M46.6 88.2h36.3M67.6 52h14.3"/>
+        <path fill="none" stroke="#54b9e5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M46.6 52h14.9"/>
+    </g>
+</svg>

@@ -1,6 +1,14 @@
 import PropTypes from 'prop-types'
+import tinycolor from 'tinycolor2'
 import Link from 'src/components/link'
+import SvgIcon from 'src/components/svgIcon'
 import S from 'src/containers/sManager'
+import createIcons from 'src/assets/icons/editors/create'
+import {
+	WHITE,
+	BLACK,
+	YELLOW
+} from 'src/constants/colors'
 
 const ProgramCreator = ({
 	flowUrl,
@@ -12,29 +20,63 @@ const ProgramCreator = ({
 			.root {
 				display: flex;
 				flex-direction: column;
+				align-items: center;
+				color: ${WHITE};
+				padding: 0.5rem;
+			}
+			.title {
+				text-align: center;
 			}
 			.types {
 				display: flex;
 				flex-direction: row;
 			}
+			.types :global(> .link){
+				text-decoration: none;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				margin: 0 0.5rem;
+				padding: 0.25rem 0 ;
+				border-radius: 0.5rem;
+				text-transform: uppercase;
+				font-weight: bold;
+			}
+			.types :global(> .link:hover),
+			.types :global(> .link:focus){
+				background-color: ${tinycolor(YELLOW).toRgbString()};
+				color: ${tinycolor(BLACK).toRgbString()};
+				outline: none;
+			}
+			.types :global(.link .svgIcon){
+				width: 7rem;
+				height: 7rem;
+			}
+			@media (max-width: 400px) {
+
+				.types :global(.link .svgIcon){
+					width: 5rem;
+					height: 5rem;
+				}
+			}
 		`}</style>
-		<h3 className='title'>
+		<div className='title global-type global-type-h2'>
 			<S value='ui.program_creator.title'/>
-		</h3>
+		</div>
 		<div className='types'>
 			<Link to={flowUrl}>
+				<SvgIcon icon={createIcons.flow} />
 				<S value='flow.base.title'/>
 			</Link>
 			<Link to={blockUrl}>
+				<SvgIcon icon={createIcons.block} />
 				<S value='block.base.title'/>
 			</Link>
 			<Link to={textUrl}>
+				<SvgIcon icon={createIcons.text} />
 				<S value='text.base.title'/>
 			</Link>
 		</div>
-		<Link to={'/flow/?data=N4IgdghgtgpiBcIDK0AOAbGACVAnA9gOa7QgA0IAlgCYJgCu66FAzvvbgMZzwDaoNBCAAMAfXLhoPEJ0pd6lAC4AVdpwAWARglh81GAElaiKBADWMAJ4BaRWvUSAHggDsmipYQBmAKwA6LwBOYQA2ACYfClQIElhFGFwWBFAMCG4hAAkQAF9ssgFjEE1xCkhYIUxqbVK9Q0LKp28Qrw8EABZ-LzCADk0IqJipeMTkkHRKQnVFITE-dmmo9DTpABkAURy8gqEwkslyxEqwnVqjCphaCmd4LxcQ1vgwzRcAnr7IkGjYmGGk+FBxpNpohZvMJKl0ogAEobXL5KiFLx7MrSADuEAAbjBquBToV0VjGvAfIFAg9NCEtgihG1kVIhCwEhj8ABZfB2XA43T6M6IRm4ZnWKDs-C4IndMJtB6+AbfX6jVD4FhKSj4MBCJFzegLT5LSHINZQgBqAHlRCyTcoTVDRNo4dtED46QcQCQwNR8FBKAAvBJcvFCN0er2+sVXBA+FzdaVtSnwwSIELO6ScNWKSgMdgsJBM-D+nmFVNgdOZ+gsaz85nitouB4RF7CWPdFwfL5DBJ-UAsVAwC5CJ1anUQ6RIQ2m82W62iY65AC6FEUlh7QgAZuh8KickA'}>
-			Sample
-		</Link>
 	</div>
 
 ProgramCreator.propTypes = {

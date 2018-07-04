@@ -264,13 +264,14 @@ class AppContainer extends React.Component {
 					:global(.global-type-h4) {
 						font-size: 1rem;
 					}
-					/* Page error */
-					/*.root :global(.pageError) {
-						position: fixed !important;
-						width: 100% !important;
-						height: 100% !important;
-						z-index: 999 !important;
-					}*/
+					@media (max-width: 400px) {
+						:global(.global-type-h1) {
+							font-size: 2rem;
+						}
+						:global(.global-type-h2) {
+							font-size: 1.5rem;
+						}
+					}
 					/* Page loader */
 					.page-loader {
 						position: fixed;
