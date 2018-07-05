@@ -40,7 +40,7 @@ const Head = ({
 		<meta name="msapplication-TileColor" content="#da532c"/>
 		<meta name="msapplication-config" content="/static/favicon/browserconfig.xml"/>
 		<meta name="theme-color" content="#ffffff"/>
-		<link rel="preload" href="/static/lib/nprogress.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+		<link rel="preload" href="/static/lib/nprogress.css" as="style" onLoad="this.onload=null;this.rel='stylesheet'"/>
 	</DocumentHead>
 
 
