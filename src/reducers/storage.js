@@ -4,7 +4,6 @@ import {
 	STORAGE_SET_READY,
 	STORAGE_SET_STATUS,
 	STORAGE_SET_CREDENTIALS,
-	STORAGE_SET_TEMP_PROGRAM,
 	STORAGE_SET_PROGRAMS,
 	STORAGE_ADD_PROGRAM,
 	STORAGE_UPDATE_PROGRAM,
@@ -23,7 +22,6 @@ const ready = (state = false, { type, payload }) => {
 }
 const status = generateReducer(STORAGE_SET_STATUS)
 const credentials = generateReducer(STORAGE_SET_CREDENTIALS)
-const tempProgram = generateReducer(STORAGE_SET_TEMP_PROGRAM)
 const programs = (state = {}, { type, payload }) => {
 	switch (type) {
 		case STORAGE_SET_PROGRAMS:
@@ -56,6 +54,5 @@ export default combineReducers({
 	ready,
 	status,
 	credentials,
-	tempProgram,
 	programs,
 })

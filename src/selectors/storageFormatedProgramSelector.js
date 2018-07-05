@@ -23,7 +23,7 @@ export default () => createSelector(
 	[
 		stateSelector(),
 		storageProgramSelector(),
-		makeStringSelector('ui.editor.program.placeholder_name'),
+		makeStringSelector('ui.editor.program_placeholder_name'),
 	],
 	(
 		state,

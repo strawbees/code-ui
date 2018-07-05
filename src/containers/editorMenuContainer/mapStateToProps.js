@@ -12,7 +12,7 @@ export default () => createStructuredSelector({
 	name               : refEditorNameSelector(),
 	saved              : refEditorSavedSelector(),
 	generatedCode      : refEditorGeneratedCodeSelector(),
-	placeholderName    : makeStringSelector('ui.editor.program.placeholder_name'),
+	placeholderName    : makeStringSelector('ui.editor.program_placeholder_name'),
 	newFlowProgramUrl  : makeStringSelector('flow.url'),
 	newBlockProgramUrl : makeStringSelector('block.url'),
 	newTextProgramUrl  : makeStringSelector('text.url'),

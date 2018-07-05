@@ -6,15 +6,21 @@ import {
 
 const StorageProgramList = ({
 	ids,
-	ItemContainer
+	ItemContainer,
+	title
 }) =>
 	<div className='root programList'>
 		<style jsx>{`
 			.root {
 				padding: 0.5rem;
+				display: flex;
+				flex-direction: column;
 			}
 			.root :global(.programListItem) {
 				margin: 0.5rem 0;
+			}
+			.title {
+				text-align: center;
 			}
 			.controls {
 				display: grid;
@@ -59,6 +65,11 @@ const StorageProgramList = ({
 				}
 			}
 		`}</style>
+		{title &&
+			<div className='title global-type global-type-h3'>
+				{title}
+			</div>
+		}
 		{ids && ids.length > 0 &&
 			<div className='controls'>
 				<div className='type'>
@@ -78,9 +89,13 @@ const StorageProgramList = ({
 				</div>
 			</div>
 		}
-		{ids && ids.map(id =>
-			<ItemContainer key={id} id={id}/>
-		)}
+		{ids &&
+			<div className='list'>
+				{ids.map(id =>
+					<ItemContainer key={id} id={id}/>
+				)}
+			</div>
+		}
 		{(!ids || !ids.length) &&
 			<div className='empty'>
 				<S value='ui.program_list.empty'/>
@@ -94,7 +109,8 @@ StorageProgramList.defaultProps = {
 
 StorageProgramList.propTypes = {
 	ItemContainer : PropTypes.func,
-	ids           : PropTypes.arrayOf(PropTypes.string)
+	ids           : PropTypes.arrayOf(PropTypes.string),
+	title         : PropTypes.string
 }
 
 export default StorageProgramList

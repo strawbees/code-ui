@@ -21,7 +21,7 @@ const UserHeaderAvatar = ({
 			{isAnon &&
 				<IconButton
 					icon={userAnonIcon}
-					labelKey={'ui.user.anon'}
+					labelKey={'ui.user.anon_username'}
 					hideLabelOnMediaQuery={'max-width: 950px'}
 					tabIndex='-1'
 				/>

@@ -7,7 +7,6 @@
 	"error.og.title" : "Not found",
 
 	"ui.program_creator.title" : "Start programming",
-	"ui.editor.program.placeholder_name" : "Untitled Program",
 
 	"ui.header_menu.options.upload"  : "Upload",
 	"ui.header_menu.options.save"    : "Save",
@@ -43,24 +42,33 @@
 	"ui.dialog.discart.description"   : "You are about to leave the current editor and your changes will be lost. Do you want to proceed?",
 	"ui.dialog.discart.confirm"       : "Proceed",
 
+	"ui.program_list.title.storage" : "My programs",
 	"ui.program_list.empty"         : "No programs yet",
 	"ui.program_list.sort.type"     : "type",
 	"ui.program_list.sort.name"     : "name",
 	"ui.program_list.sort.modified" : "last modified",
 
+	"ui.editor.program_placeholder_name" : "Untitled Program",
+
+	"ui.user.anon_username" : "Anonymous user",
+	"ui.user.anon_warning"  : "**You are not logged in.** Your programs will be saved locally, but they won't be published to the web. If you need online access, *please connect your account*.",
+	"ui.user.account_settings.button" : "Account settings",
+	"ui.user.account_settings.annon"  : "Create/Connect account",
 
 	"ui.editor.text_preview.button"      : "Preview text program",
 	"ui.editor.text_preview.title"       : "Text program preview",
 	"ui.editor.text_preview.description" : "This is the text version of your visual program. To modify it, open it in the Text editor.",
 	"ui.editor.text_preview.create"      : "Open in text editor",
-	"ui.user.anon" : "Anonymous",
+
 	"ui.buttons.cancel"  : "cancel",
 	"ui.buttons.confirm" : "ok",
+
 	"ui.board.status.notConnected" : "Not detected",
 	"ui.board.status.ok"           : "Ready",
 	"ui.board.status.busy"         : "Busy",
 	"ui.board.status.problem"      : "Error",
 	"ui.board.status.bootloader"   : "Recovery Mode",
+
 	"ui.board.upload.start"                            : "Start upload",
 	"ui.board.upload.restart"                          : "Restart upload",
 	"ui.board.upload.error.notConnected"               : "Is your Quirkbot is turned ON and connected to a working USB port?\n\nIf the problem persists, check HELP > \"Recovery Mode\".",
@@ -82,7 +90,6 @@
 	"ui.board.upload.uploader.error.UNHANDLED"         : "Weird... something went wrong. If the problem persists check HELP > Troubleshooting.",
 	"ui.board.upload.disconnect_warning"               : "Please don't disconnect your Quirkbot.",
 	"ui.board.upload.not_compatible_warning"           : "Your board model is not compatible with this uploader.",
-	"ui.board.bootloader_mode_label"                   : "recovery mode",
 
 	"flow.url"      : "/flow/",
 	"flow.og.title" : "Flow Programming",

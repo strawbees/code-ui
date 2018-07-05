@@ -12,7 +12,6 @@ class StorageManager extends React.Component {
 		const {
 			setStatus,
 			setCredentials,
-			setTempProgram,
 			setPrograms,
 		} = this.props
 
@@ -28,7 +27,6 @@ class StorageManager extends React.Component {
 		})
 
 		// Pass it to the state
-		setTempProgram(this.temp)
 		setPrograms(this.programs)
 		setCredentials(this.credentials)
 
@@ -53,7 +51,6 @@ class StorageManager extends React.Component {
 	componentDidUpdate() {
 		const {
 			credentials,
-			tempProgram,
 			programs,
 
 			setStatus,
@@ -63,11 +60,6 @@ class StorageManager extends React.Component {
 		if (this.credentials !== credentials) {
 			browserStorage.set('credentials', 'data')
 			this.credentials = credentials
-			needsUpdate = true
-		}
-		if (this.tempProgram !== tempProgram) {
-			browserStorage.set('temp', 'program')
-			this.tempProgram = tempProgram
 			needsUpdate = true
 		}
 		Object.keys(programs).forEach(id => {
@@ -119,7 +111,6 @@ class StorageManager extends React.Component {
 StorageManager.propTypes = {
 	setStatus                       : PropTypes.func,
 	setCredentials                  : PropTypes.func,
-	setTempProgram                  : PropTypes.func,
 	setPrograms                     : PropTypes.func,
 	safeUpdateProgram               : PropTypes.func,
 	removeProgramByIdAndClearEditor : PropTypes.func,

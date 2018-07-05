@@ -1,5 +1,6 @@
 import React from 'react'
 import tinycolor from 'tinycolor2'
+import UserArea from 'src/components/userArea'
 import StorageProgramListContainer from 'src/containers/storageProgramListContainer'
 import ProgramCreatorContainer from 'src/containers/programCreatorContainer'
 import {
@@ -32,6 +33,9 @@ const PageHome = () =>
 				flex: 1;
 				background-color: ${tinycolor(GRAY).lighten(25).toRgbString()};
 			}
+			.section :global(.userArea) {
+				margin-bottom: 1rem;
+			}
 			@media (max-width: 400px) {
 				.section {
 					padding: 1rem 0;
@@ -47,6 +51,7 @@ const PageHome = () =>
 			<ProgramCreatorContainer/>
 		</div>
 		<div className='section bottom'>
+			<UserArea/>
 			<StorageProgramListContainer/>
 		</div>
 	</div>
