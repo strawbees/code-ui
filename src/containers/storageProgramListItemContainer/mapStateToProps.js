@@ -10,6 +10,7 @@ export default () => createSelector(
 	(
 		{
 			name,
+			source,
 			url,
 			type,
 			updatedAt,
@@ -17,6 +18,7 @@ export default () => createSelector(
 		generatedCode,
 	) => ({
 		name,
+		source,
 		url,
 		type,
 		updatedAt,

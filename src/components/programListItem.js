@@ -4,6 +4,7 @@ import tinycolor from 'tinycolor2'
 import Link from 'src/components/link'
 import IconButton from 'src/components/iconButton'
 import ProgramTitle from 'src/components/programTitle'
+import ProgramButton from 'src/components/programButton'
 import fileIcons from 'src/assets/icons/file'
 import { GRAY } from 'src/constants/colors'
 
@@ -74,27 +75,17 @@ const ProgramListItem = ({
 				flex-direction: row;
 				align-items: center;
 			}
-			.root :global(>.link) {
+			.root :global(>.programButton) {
 				flex: 1;
-				display: flex;
-				flex-direction: column;
-				align-items: stretch;
 				margin-right: 0.5rem;
 			}
-			.root :global(>.link:focus) {
-				outline: none;
-			}
-			.root :global(>.link) {
-				text-decoration: none;
-			}
 		`}</style>
-		<Link to={url}>
-			<ProgramTitle
-				name={name}
-				type={type}
-				updatedAt={updatedAt}
-			/>
-		</Link>
+		<ProgramButton
+			url={url}
+			name={name}
+			type={type}
+			updatedAt={updatedAt}
+		/>
 		<IconButton
 			icon={fileIcons.menu}
 			onClick={() => safeOpenModal(

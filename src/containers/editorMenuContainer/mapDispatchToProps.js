@@ -6,6 +6,8 @@ import {
 import {
 	modalUploadCode,
 	modalDuplicateProgramById,
+	modalImportProgram,
+	exportProgramToFile,
 } from 'src/actions/program'
 
 export default autobindDispatchToActionCreators({
@@ -13,4 +15,6 @@ export default autobindDispatchToActionCreators({
 	saveCurrentEditorProgram,
 	modalUploadCode,
 	modalDuplicateProgramById,
+	modalImportProgram,
+	exportProgramToFile,
 })

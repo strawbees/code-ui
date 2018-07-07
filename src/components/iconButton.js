@@ -15,7 +15,6 @@ const IconButtonContent = ({
 				display: flex;
 				flex-direction: row;
 				align-items: center;
-				text-transform: capitalize;
 			}
 			.root :global(>.svgIcon) {
 				width: 1.75rem;
