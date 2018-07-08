@@ -5,6 +5,7 @@ import SvgIcon from 'src/components/svgIcon'
 import IconButton from 'src/components/iconButton'
 import S from 'src/containers/sManager'
 import createIcons from 'src/assets/icons/editors/create'
+import fileIcons from 'src/assets/icons/file'
 import {
 	WHITE,
 	BLACK,
@@ -15,6 +16,7 @@ const ProgramCreator = ({
 	flowUrl,
 	blockUrl,
 	textUrl,
+	onImportPress,
 }) =>
 	<div className='root programCreator'>
 		<style jsx>{`
@@ -31,6 +33,7 @@ const ProgramCreator = ({
 			.types {
 				display: flex;
 				flex-direction: row;
+				margin-bottom: 1rem;
 			}
 			.types :global(> .link){
 				text-decoration: none;
@@ -77,12 +80,18 @@ const ProgramCreator = ({
 				<S value='text.base.title'/>
 			</Link>
 		</div>
+		<IconButton
+			icon={fileIcons.import}
+			labelKey='ui.program_creator.import'
+			onClick={onImportPress}
+		/>
 	</div>
 
 ProgramCreator.propTypes = {
-	flowUrl  : PropTypes.string,
-	blockUrl : PropTypes.string,
-	textUrl  : PropTypes.string,
+	flowUrl       : PropTypes.string,
+	blockUrl      : PropTypes.string,
+	textUrl       : PropTypes.string,
+	onImportPress : PropTypes.func,
 }
 
 export default ProgramCreator

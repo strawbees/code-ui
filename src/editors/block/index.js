@@ -83,9 +83,13 @@ class BlockEditor extends React.Component {
 			// is the offending event, but UI seems a obvious one to avoid.
 			// Still, it's not 100% solid, so added a debounce, that seems to
 			// solve the issue.
-			if (e.type === 'ui') {
+			if (e.type === 'ui' ||
+				e.type === 'var_create' ||
+				e.type === 'create'
+			) {
 				return
 			}
+
 			this.cancelSourceUpdate = debounce('update block source', () => {
 				const xml = Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace())
 				const currentSource = Blockly.Xml.domToText(xml)

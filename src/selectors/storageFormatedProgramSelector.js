@@ -32,6 +32,7 @@ export default () => createSelector(
 			name,
 			type,
 			updatedAt,
+			source,
 		},
 		placeholderName,
 	) => ({
@@ -39,5 +40,6 @@ export default () => createSelector(
 		url       : `${makeStringSelector(`${type}.url`)(state)}?p=${id}`,
 		updatedAt : formatDate(updatedAt),
 		type,
+		source,
 	})
 )

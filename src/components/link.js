@@ -22,6 +22,7 @@ const Link = ({ children, ...props }) => {
 				href={href}
 				as={as}
 				{...otherProps}>
+
 				<a
 					className='root link'
 					target={external && '_blank'}

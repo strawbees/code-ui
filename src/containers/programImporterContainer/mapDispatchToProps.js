@@ -1,8 +1,6 @@
 import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
-import {
-	modalImportProgram,
-} from 'src/actions/program'
+import { closeModal } from 'src/actions/modal'
 
 export default autobindDispatchToActionCreators({
-	modalImportProgram,
+	onProgramClick : closeModal
 })
