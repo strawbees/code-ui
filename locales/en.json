@@ -6,6 +6,9 @@
 
 	"error.og.title" : "Not found",
 
+	"ui.sb_cloud.nav.join"  : "Create account",
+	"ui.sb_cloud.nav.login" : "Login",
+
 	"ui.program_creator.title" : "Start programming",
 	"ui.program_creator.import" : "Import program",
 
@@ -60,7 +63,7 @@
 	"ui.user.anon_username" : "Anonymous user",
 	"ui.user.anon_warning"  : "**You are not logged in.** Your programs will be saved locally, but they won't be published to the web. If you need online access, *please connect your account*.",
 	"ui.user.account_settings.button" : "Account settings",
-	"ui.user.account_settings.annon"  : "Create/Connect account",
+	"ui.user.account_settings.annon"  : "Login/Create Account",
 
 	"ui.editor.text_preview.button"      : "Preview text program",
 	"ui.editor.text_preview.title"       : "Text program preview",

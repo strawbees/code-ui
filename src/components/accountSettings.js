@@ -5,6 +5,7 @@ import SvgIcon from 'src/components/svgIcon'
 import IconButton from 'src/components/iconButton'
 import Message from 'src/components/message'
 import S from 'src/containers/sManager'
+import StrawbeesCloudConnectContainer from 'src/containers/strawbeesCloudConnectContainer'
 import arrowIcon from 'src/assets/icons/general/arrowRight.svg'
 import {
 	WHITE
@@ -12,7 +13,7 @@ import {
 
 class AccountSettings extends React.Component {
 	state = {
-		open : false
+		open : true
 	}
 
 	toggleOpen = () => {
@@ -48,6 +49,16 @@ class AccountSettings extends React.Component {
 					.root.opened .expand {
 						background-color: ${tinycolor(WHITE).toRgbString()};
 					}
+					.expand .content {
+						display: none;
+						align-self: stretch;
+						flex-direction: column;
+						align-items: stretch;
+						padding: 1rem;
+					}
+					.root.opened .expand .content {
+						display: flex;
+					}
 				`}</style>
 				<div className='expand'>
 					{isAnon &&
@@ -57,6 +68,9 @@ class AccountSettings extends React.Component {
 								labelKey='ui.user.account_settings.annon'
 								onClick={this.toggleOpen}
 							/>
+							<div className='content'>
+								<StrawbeesCloudConnectContainer />
+							</div>
 						</React.Fragment>
 					}
 				</div>
