@@ -23,7 +23,8 @@ const Modal = ({
 }) =>
 	<ReactModal
 		isOpen={display}
-		onRequestClose={onRequestClose}>
+		onRequestClose={onRequestClose}
+		shouldCloseOnOverlayClick={false}>
 		<style jsx>{`
 			:global(.ReactModal__Overlay){
 				display: flex !important;
@@ -38,30 +39,36 @@ const Modal = ({
 				left: auto !important;
 				bottom: auto !important;
 				right: auto !important;
-				max-width: calc(100vw - 2rem) !important;
-				min-width: calc(400px - 2rem) !important;
-				max-height: calc(100vh - 2rem) !important;
-				min-height: calc(200px - 2rem) !important;
+				padding: 1rem !important;
 				border: none !important;
 				border-radius: 1rem !important;
 			}
+			:global(.ReactModal__Content) :global(>.close) {
+				position: absolute;
+				top: 0.1rem;
+				right: 0.1rem;
+				z-index: 1;
+				transform: scale3d(0.7,0.7,0.7);
+			}
+			:global(.ReactModal__Content) :global(>.content) {
+				position: relative;
+				max-height: calc(100vh - 4rem);
+				max-width: calc(100vw - 4rem);
+				min-width: calc(400px - 4rem);
+				min-height: calc(200px - 4rem);
+				overflow-y: scroll;
+			}
 			@media (max-width: 400px) {
-				:global(.ReactModal__Content){
-					min-width: 0 !important;
-					width: calc(100vw - 1rem);
+				:global(.ReactModal__Content) :global(>.content) {
+					min-width: 0;
+					width: calc(100vw - 4rem);
 				}
 			}
 			@media (max-height : 200px) {
-				:global(.ReactModal__Content){
-					min-height: 0 !important;
-					height: calc(100vh - 1rem);
+				:global(.ReactModal__Content) :global(>.content) {
+					min-height: 0;
+					height: calc(100vh - 4rem);
 				}
-			}
-			:global(.ReactModal__Content) :global(>.close) {
-				position: absolute;
-				top: 0.5rem;
-				right: 0.5rem;
-				z-index: 1;
 			}
 		`}</style>
 		<IconButton
@@ -69,9 +76,8 @@ const Modal = ({
 			icon={closeIcon}
 			textColor={WHITE}
 			textHoverColor={WHITE}
-			bgColor={LIGHT_GRAY}
+			bgColor={RED}
 			bgHoverColor={RED}
-			borderColor={'transparent'}
 			onClick={onRequestClose}
 		/>
 		<div className="content">

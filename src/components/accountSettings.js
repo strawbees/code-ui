@@ -1,19 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
-import SvgIcon from 'src/components/svgIcon'
 import IconButton from 'src/components/iconButton'
 import Message from 'src/components/message'
 import S from 'src/containers/sManager'
 import StrawbeesCloudConnectContainer from 'src/containers/strawbeesCloudConnectContainer'
 import arrowIcon from 'src/assets/icons/general/arrowRight.svg'
 import {
-	WHITE
+	WHITE,
+	GRAY,
 } from 'src/constants/colors'
 
 class AccountSettings extends React.Component {
 	state = {
-		open : true
+		open : false
 	}
 
 	toggleOpen = () => {
@@ -52,13 +52,20 @@ class AccountSettings extends React.Component {
 					.expand .content {
 						display: none;
 						align-self: stretch;
-						flex-direction: column;
-						align-items: stretch;
+						flex-direction: row;
+						align-items: center;
+						justify-content: center;
 						padding: 1rem;
 					}
 					.root.opened .expand .content {
 						display: flex;
 					}
+					.expand .content :global(> *){
+						border: solid 0.05rem ${tinycolor(GRAY).toRgbString()};
+						border-radius: 0.5rem;
+						padding: 1rem;
+					}
+
 				`}</style>
 				<div className='expand'>
 					{isAnon &&
