@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import IconButton from 'src/components/iconButton'
 import StrawbeesCloudSignup from 'src/components/strawbeesCloudSignup'
+import StrawbeesCloudSignin from 'src/components/strawbeesCloudSignin'
 import {
 	WHITE,
 	PINK,
@@ -11,13 +12,21 @@ import {
 
 class StrawbeesCloudConnect extends React.Component {
 	openSignin = () => {
-		const { safeOpenDialogModal } = this.props
+		const {
+			safeOpenDialogModal,
+			authenticateUser,
+			requestPasswordReset,
+		} = this.props
 		safeOpenDialogModal(
 			{
 				titleKey       : 'ui.sb_cloud.nav.signin',
 				displayConfirm : false,
 				displayCancel  : false
 			},
+			<StrawbeesCloudSignin
+				authenticateUser={authenticateUser}
+				requestPasswordReset={requestPasswordReset}
+			/>
 		)
 	}
 
@@ -94,8 +103,10 @@ class StrawbeesCloudConnect extends React.Component {
 }
 
 StrawbeesCloudConnect.propTypes = {
-	safeOpenDialogModal : PropTypes.func,
-	createUser          : PropTypes.func,
+	safeOpenDialogModal  : PropTypes.func,
+	createUser           : PropTypes.func,
+	authenticateUser     : PropTypes.func,
+	requestPasswordReset : PropTypes.func,
 }
 
 export default StrawbeesCloudConnect

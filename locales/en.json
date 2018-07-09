@@ -40,6 +40,26 @@
 	"ui.sb_cloud.signup.submit.error.server"              : "Server is not responding",
 	"ui.sb_cloud.signup.submit.error.unhandled"           : "We are having problems, please try again later",
 
+	"ui.sb_cloud.signin.username.label"              : "Username",
+	"ui.sb_cloud.signin.username.error.blank"        : "You need to fill in your username",
+	"ui.sb_cloud.signin.password.label"              : "Password",
+	"ui.sb_cloud.signin.password.error.blank"        : "You need to fill in your password",
+	"ui.sb_cloud.signin.submit"                      : "Sign in",
+	"ui.sb_cloud.signin.submit.error.network"        : "There seems to be a connection problem",
+	"ui.sb_cloud.signin.submit.error.server"         : "Server is not responding",
+	"ui.sb_cloud.signin.submit.error.unhandled"      : "We are having problems, please try again later",
+	"ui.sb_cloud.signin.submit.error.not_authorized" : "Invalid username or password",
+
+	"ui.sb_cloud.forgot.title"                       : "Forgot password?",
+	"ui.sb_cloud.forgot.username.label"              : "Username",
+	"ui.sb_cloud.forgot.username.error.blank"        : "You need to fill in your username",
+	"ui.sb_cloud.forgot.submit"                      : "Reset password",
+	"ui.sb_cloud.forgot.submit.error.network"        : "There seems to be a connection problem",
+	"ui.sb_cloud.forgot.submit.error.server"         : "Server is not responding",
+	"ui.sb_cloud.forgot.submit.error.unhandled"      : "We are having problems, please try again later",
+	"ui.sb_cloud.forgot.submit.error.user_not_found" : "This username is not registered",
+	"ui.sb_cloud.forgot.submit.success"              : "Check your email for instructions on how to reset your password.",
+
 	"ui.program_creator.title" : "Start programming",
 	"ui.program_creator.import" : "Import program",
 
@@ -92,9 +112,9 @@
 	"ui.editor.program_placeholder_name" : "Untitled Program",
 
 	"ui.user.anon_username" : "Anonymous user",
-	"ui.user.anon_warning"  : "**You are not logged in.** Your programs will be saved locally, but they won't be published to the web. If you need online access, *please connect your account*.",
+	"ui.user.anon_warning"  : "**You are not signed in.** Your programs will be saved locally, but they won't be published to the web. If you need online access, *please sign in*.",
 	"ui.user.account_settings.button" : "Account settings",
-	"ui.user.account_settings.annon"  : "Login/Create Account",
+	"ui.user.account_settings.annon"  : "Sign up / Sign in",
 
 	"ui.editor.text_preview.button"      : "Preview text program",
 	"ui.editor.text_preview.title"       : "Text program preview",

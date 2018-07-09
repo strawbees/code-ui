@@ -53,12 +53,20 @@ class Form extends React.Component {
 						align-self: flex-end;
 						flex-grow: 1;
 						margin-right: 1rem;
+						max-width: 11rem;
+					}
+					.root :global(form .submit-area .submit){
+						margin: 0 0.25rem 0.25rem 0;
 					}
 					.root :global(.field) {
 						display: flex;
 						flex-direction: column;
 						padding-bottom: 0.5rem;
 						border-bottom: solid 1px ${tinycolor(GRAY).lighten(30).toRgbString()};
+					}
+					.root :global(.field:last-of-type) {
+						padding-bottom: 0;
+						border-bottom: none;
 					}
 					.root :global(.field .label) {
 						font-size: 0.8rem;
@@ -122,43 +130,32 @@ class Form extends React.Component {
 					getApi={getApi}>
 					{({ formState, formApi }) => (
 						<React.Fragment>
-							{fields.map(field => {
-								const error = field.errorKeys &&
-									formState.errors &&
-									formState.errors[field.name] &&
-									field.errorKeys[formState.errors[field.name]]
+							<div>
+								{fields.map(field => {
+									const error = field.errorKeys &&
+										formState.errors &&
+										formState.errors[field.name] &&
+										field.errorKeys[formState.errors[field.name]]
 
-								return (
-									<div className={`field ${error ? 'error' : ''}`} key={field.id}>
-										{field.labelKey &&
-											<label className='label' htmlFor={field.id}>
-												<S value={field.labelKey} />
-											</label>
-										}
-										{(field.tipKey && field.type !== 'checkbox') &&
-											<div className='tip'>
-												<S value={field.tipKey} />
-											</div>
-										}
-										{(
-											field.type === 'text' ||
-											field.type === 'number' ||
-											field.type === 'password' ||
-											field.type === 'email') &&
-											<Text
-												type={field.type}
-												field={field.name}
-												validateOnChange={field.validateOnChange}
-												validateOnBlur={field.validateOnBlur}
-												validate={field.validate}
-												notify={field.notify}
-												id={field.id}
-											/>
-										}
-										{field.type === 'checkbox' &&
-											<div className='checkbox-container'>
-												<Checkbox
-													type={field.type }
+									return (
+										<div className={`field ${error ? 'error' : ''}`} key={field.id}>
+											{field.labelKey &&
+												<label className='label' htmlFor={field.id}>
+													<S value={field.labelKey} />
+												</label>
+											}
+											{(field.tipKey && field.type !== 'checkbox') &&
+												<div className='tip'>
+													<S value={field.tipKey} />
+												</div>
+											}
+											{(
+												field.type === 'text' ||
+												field.type === 'number' ||
+												field.type === 'password' ||
+												field.type === 'email') &&
+												<Text
+													type={field.type}
 													field={field.name}
 													validateOnChange={field.validateOnChange}
 													validateOnBlur={field.validateOnBlur}
@@ -166,26 +163,39 @@ class Form extends React.Component {
 													notify={field.notify}
 													id={field.id}
 												/>
-												{field.tipKey &&
-													<label htmlFor={field.id}>
-														<div className='tip'>
-															<S
-																value={field.tipKey}
-																markdown={field.tipIsMarkdown}
-															/>
-														</div>
-													</label>
-												}
-											</div>
-										}
-										{error &&
-											<Message className='error' type='warning'>
-												<S value={error} />
-											</Message>
-										}
-									</div>
-								)
-							})}
+											}
+											{field.type === 'checkbox' &&
+												<div className='checkbox-container'>
+													<Checkbox
+														type={field.type }
+														field={field.name}
+														validateOnChange={field.validateOnChange}
+														validateOnBlur={field.validateOnBlur}
+														validate={field.validate}
+														notify={field.notify}
+														id={field.id}
+													/>
+													{field.tipKey &&
+														<label htmlFor={field.id}>
+															<div className='tip'>
+																<S
+																	value={field.tipKey}
+																	markdown={field.tipIsMarkdown}
+																/>
+															</div>
+														</label>
+													}
+												</div>
+											}
+											{error &&
+												<Message className='error' type='warning'>
+													<S value={error} />
+												</Message>
+											}
+										</div>
+									)
+								})}
+							</div>
 							<div className='submit-area'>
 								{/* this invisible _form_error_ field, is a hack
 								  * so we can attach "global" errors to the form
