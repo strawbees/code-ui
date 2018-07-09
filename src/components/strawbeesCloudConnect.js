@@ -2,44 +2,44 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import IconButton from 'src/components/iconButton'
-import FormInput from 'src/components/formInput'
-import S from 'src/containers/sManager'
+import StrawbeesCloudSignup from 'src/components/strawbeesCloudSignup'
 import {
-	GRAY,
-	BLACK,
 	WHITE,
 	PINK,
 	BLUE,
 } from 'src/constants/colors'
 
 class StrawbeesCloudConnect extends React.Component {
-	state = {
-		tab : null
+	openSignin = () => {
+		const { safeOpenDialogModal } = this.props
+		safeOpenDialogModal(
+			{
+				titleKey       : 'ui.sb_cloud.nav.signin',
+				displayConfirm : false,
+				displayCancel  : false
+			},
+		)
 	}
 
-	toggleJoinTab = () => {
-		let tab = null
-		if (this.state.tab !== 'join') {
-			tab = 'join'
-		}
-		this.setState({ tab })
-	}
-
-	toggleLoginTab = () => {
-		let tab = null
-		if (this.state.tab !== 'login') {
-			tab = 'login'
-		}
-		this.setState({ tab })
+	openSignup = () => {
+		const {
+			safeOpenDialogModal,
+			createUser,
+		} = this.props
+		safeOpenDialogModal(
+			{
+				titleKey       : 'ui.sb_cloud.nav.signup',
+				displayConfirm : false,
+				displayCancel  : false
+			},
+			<StrawbeesCloudSignup createUser={createUser} />
+		)
 	}
 
 	render() {
 		const {
-			tab
-		} = this.state
-		const {
-			toggleJoinTab,
-			toggleLoginTab,
+			openSignin,
+			openSignup,
 		} = this
 		return (
 			<div className='root strawbeesCloudConnect'>
@@ -66,51 +66,36 @@ class StrawbeesCloudConnect extends React.Component {
 					.nav :global(> *) {
 						margin: 0 0.5rem;
 					}
-					.tab {
-						display: flex;
-						margin-top: 1rem;
-						padding: 0.5rem;
-						border-radius: 0.5rem;
-						align-self: stretch;
-						background-color: ${tinycolor(GRAY).lighten(35).toRgbString()};
-					}
 				`}</style>
 				<div className='logo'>
 					Strawbees Cloud
 				</div>
 				<div className='nav'>
 					<IconButton
-						labelKey='ui.sb_cloud.nav.join'
+						labelKey='ui.sb_cloud.nav.signup'
 						bgColor={PINK}
 						bgHoverColor={PINK}
 						textColor={WHITE}
 						textHoverColor={WHITE}
-						onClick={toggleJoinTab}
+						onClick={openSignup}
 					/>
 					<IconButton
-						labelKey='ui.sb_cloud.nav.login'
+						labelKey='ui.sb_cloud.nav.signin'
 						bgColor={BLUE}
 						bgHoverColor={BLUE}
 						textColor={WHITE}
 						textHoverColor={WHITE}
-						onClick={toggleLoginTab}
+						onClick={openSignin}
 					/>
 				</div>
-				{tab === 'join' &&
-					<div className='tab join'>
-						
-					</div>
-				}
-				{tab === 'login' &&
-				<div className='tab login'>
-				</div>
-				}
 			</div>
 		)
 	}
 }
 
 StrawbeesCloudConnect.propTypes = {
+	safeOpenDialogModal : PropTypes.func,
+	createUser          : PropTypes.func,
 }
 
 export default StrawbeesCloudConnect

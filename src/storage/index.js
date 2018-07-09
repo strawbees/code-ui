@@ -1,9 +1,10 @@
 import baseGenerateUniqueId from 'src/utils/generateUniqueId'
 import * as backendLocal from './backendLocal'
+import * as backendStrawbees from './backendStrawbees'
 
 const backends = {
-	local : backendLocal,
-	// strawbees : backendStrawbees,
+	local     : backendLocal,
+	strawbees : backendStrawbees,
 	// gdrive    : backendGDrive,
 	// dropbox   : backendDropbox,
 	// github    : backendGithub,

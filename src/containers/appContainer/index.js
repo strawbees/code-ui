@@ -41,6 +41,7 @@ class AppContainer extends React.Component {
 			mapStateToProps()(store.getState(), {}),
 			mapDispatchToProps(store.dispatch)
 		)
+
 		if (!isServer) {
 			setSetup({
 				query,
@@ -89,6 +90,15 @@ class AppContainer extends React.Component {
 
 		// hide the initial page loader
 		setDisplayPageLoader(false)
+
+		// monitor the hash
+		window.onhashchange = this.onHashChange
+		// fire the first change manually
+		this.onHashChange()
+	}
+
+	onHashChange = () => {
+		console.log(window.location.hash)
 	}
 
 	componentWillUnmount() {
