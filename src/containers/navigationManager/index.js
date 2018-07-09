@@ -107,6 +107,7 @@ class NavigationManager extends React.PureComponent {
 				titleKey        : 'ui.dialog.discart.title',
 				descriptionKey  : 'ui.dialog.discart.description',
 				confirmLabelKey : 'ui.dialog.discart.confirm',
+				limitWidth      : true
 			}
 		)
 	}

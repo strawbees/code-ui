@@ -176,7 +176,11 @@ class StrawbeesCloudSignup extends React.Component {
 		this.submitting = true
 		this.setState({ disabled : true })
 		try {
-			await this.props.createUser(values)
+			await this.props.onSignup(values)
+			// safe check in case the component has been unmounted meanwhile
+			if (this.unmounted) {
+				return
+			}
 		} catch (error) {
 			if (error.message === 'VALIDATION_UNIQUE_USERNAME') {
 				this.formApi.setError('username', 'unique')
@@ -189,6 +193,12 @@ class StrawbeesCloudSignup extends React.Component {
 		await new Promise(r => setTimeout(r, 200))
 		this.submitting = false
 		this.setState({ disabled : false })
+	}
+
+	componentWillUnmount() {
+		// add this flag so we can exit early, the submit methods.
+		// yeah, this is code smell... but works
+		this.unmounted = true
 	}
 
 	render() {
@@ -225,7 +235,7 @@ class StrawbeesCloudSignup extends React.Component {
 }
 
 StrawbeesCloudSignup.propTypes = {
-	createUser : PropTypes.func
+	onSignup : PropTypes.func
 }
 
 export default StrawbeesCloudSignup

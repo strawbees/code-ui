@@ -94,7 +94,11 @@ class StrawbeesCloudSignin extends React.Component {
 		this.signinSubmitting = true
 		this.setState({ signinDisabled : true })
 		try {
-			await this.props.authenticateUser(values)
+			await this.props.onSignin(values)
+			// safe check in case the component has been unmounted meanwhile
+			if (this.unmounted) {
+				return
+			}
 		} catch (error) {
 			this.signinFormApi.setError('_form_error_', error.message)
 		}
@@ -118,6 +122,10 @@ class StrawbeesCloudSignin extends React.Component {
 		this.setState({ forgotDisabled : true })
 		try {
 			await this.props.requestPasswordReset(values)
+			// safe check in case the component has been unmounted meanwhile
+			if (this.unmounted) {
+				return
+			}
 			this.setState({
 				displayForgotSuccess : true,
 				displayForgot        : false,
@@ -136,6 +144,12 @@ class StrawbeesCloudSignin extends React.Component {
 
 	toggleForgotForm = () => {
 		this.setState({ displayForgot : !this.state.displayForgot })
+	}
+
+	componentWillUnmount() {
+		// add this flag so we can exit early, the submit methods.
+		// yeah, this is code smell... but works
+		this.unmounted = true
 	}
 
 	render() {
@@ -227,7 +241,7 @@ class StrawbeesCloudSignin extends React.Component {
 }
 
 StrawbeesCloudSignin.propTypes = {
-	authenticateUser     : PropTypes.func,
+	onSignin             : PropTypes.func,
 	requestPasswordReset : PropTypes.func,
 }
 

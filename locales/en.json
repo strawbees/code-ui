@@ -115,6 +115,7 @@
 	"ui.user.anon_warning"  : "**You are not signed in.** Your programs will be saved locally, but they won't be published to the web. If you need online access, *please sign in*.",
 	"ui.user.account_settings.button" : "Account settings",
 	"ui.user.account_settings.annon"  : "Sign up / Sign in",
+	"ui.user.account_settings.logout" : "Logout",
 
 	"ui.editor.text_preview.button"      : "Preview text program",
 	"ui.editor.text_preview.title"       : "Text program preview",

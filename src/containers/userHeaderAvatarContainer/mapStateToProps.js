@@ -1,18 +1,10 @@
-import { createSelector } from 'reselect'
-import storageCredentialsSelector from 'src/selectors/storageCredentialsSelector'
+import { createStructuredSelector } from 'reselect'
+import storageUsernameSelector from 'src/selectors/storageUsernameSelector'
+import storageIsAnonSelector from 'src/selectors/storageIsAnonSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 
-export default () => createSelector(
-	[
-		makeStringSelector('home.url'),
-		storageCredentialsSelector(),
-	],
-	(
-		homeUrl,
-		storageCredentials,
-	) => ({
-		profileUrl : homeUrl,
-		// eslint-disable-next-line no-unneeded-ternary
-		isAnon     : storageCredentials ? false : true
-	})
-)
+export default () => createStructuredSelector({
+	profileUrl : makeStringSelector('home.url'),
+	username   : storageUsernameSelector(),
+	isAnon     : storageIsAnonSelector(),
+})

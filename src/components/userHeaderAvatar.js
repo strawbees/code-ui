@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types'
 import Link from 'src/components/link'
 import IconButton from 'src/components/iconButton'
-import userAnonIcon from 'src/assets/icons/user/anon.svg'
-import userIcon from 'src/assets/icons/user/user.svg'
+import userIcons from 'src/assets/icons/user'
 
 const UserHeaderAvatar = ({
 	profileUrl,
+	username,
 	isAnon,
 }) =>
 	<div className='root userHeaderAvatar'>
@@ -18,31 +18,18 @@ const UserHeaderAvatar = ({
 			}
 		`}</style>
 		<Link to={profileUrl}>
-			{isAnon &&
-				<IconButton
-					icon={userAnonIcon}
-					labelKey={'ui.user.anon_username'}
-					hideLabelOnMediaQuery={'max-width: 950px'}
-					tabIndex='-1'
-				/>
-			}
-			{!isAnon &&
-				<IconButton
-					icon={userIcon}
-					label='Fake user'
-					hideLabelOnMediaQuery={'max-width: 950px'}
-					tabIndex='-1'
-				/>
-			}
+			<IconButton
+				icon={isAnon ? userIcons.anon : userIcons.user}
+				labelKey={username}
+				hideLabelOnMediaQuery={'max-width: 950px'}
+				tabIndex='-1'
+			/>
 		</Link>
 	</div>
 
-UserHeaderAvatar.defaultProps = {
-	isAnon : true
-}
-
 UserHeaderAvatar.propTypes = {
 	profileUrl : PropTypes.string,
+	username   : PropTypes.string,
 	isAnon     : PropTypes.bool,
 }
 

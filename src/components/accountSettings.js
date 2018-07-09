@@ -6,6 +6,8 @@ import Message from 'src/components/message'
 import S from 'src/containers/sManager'
 import StrawbeesCloudConnectContainer from 'src/containers/strawbeesCloudConnectContainer'
 import arrowIcon from 'src/assets/icons/general/arrowRight.svg'
+import userIcons from 'src/assets/icons/user'
+import preferencesIcon from 'src/assets/icons/general/preferences.svg'
 import {
 	WHITE,
 	GRAY,
@@ -22,7 +24,10 @@ class AccountSettings extends React.Component {
 
 	render() {
 		const { open } = this.state
-		const { isAnon } = this.props
+		const {
+			isAnon,
+			logout,
+		} = this.props
 		return (
 			<div className={`root accountSettings ${open ? 'opened' : 'closed'}`}>
 				<style jsx>{`
@@ -30,8 +35,8 @@ class AccountSettings extends React.Component {
 						display: flex;
 						flex-direction: column;
 						align-items: center;
-						width: 50rem;
-						max-width: 100%;
+						//width: 50rem;
+						//max-width: 100%;
 					}
 					.root :global(.message) {
 						max-width: 30rem;
@@ -49,23 +54,29 @@ class AccountSettings extends React.Component {
 					.root.opened .expand {
 						background-color: ${tinycolor(WHITE).toRgbString()};
 					}
-					.expand .content {
+					.expand .account-providers,
+					.expand .settings {
 						display: none;
+						background-color: ${tinycolor(GRAY).lighten(35).toRgbString()};
+						flex-direction: column;
 						align-self: stretch;
-						flex-direction: row;
 						align-items: center;
 						justify-content: center;
 						padding: 1rem;
+						margin-top: 0.5rem;
+						border-radius: 0.5rem;
 					}
-					.root.opened .expand .content {
+					.root.opened .expand .account-providers,
+					.root.opened .expand .settings {
 						display: flex;
 					}
-					.expand .content :global(> *){
+					.expand .account-providers :global(> *){
 						border: solid 0.05rem ${tinycolor(GRAY).toRgbString()};
+						background-color: ${tinycolor(WHITE).toRgbString()};
 						border-radius: 0.5rem;
 						padding: 1rem;
+						box-shadow: 0.15rem 0.15rem 0 0 rgba(0,0,0,0.2);
 					}
-
 				`}</style>
 				<div className='expand'>
 					{isAnon &&
@@ -75,8 +86,24 @@ class AccountSettings extends React.Component {
 								labelKey='ui.user.account_settings.annon'
 								onClick={this.toggleOpen}
 							/>
-							<div className='content'>
+							<div className='account-providers'>
 								<StrawbeesCloudConnectContainer />
+							</div>
+						</React.Fragment>
+					}
+					{!isAnon &&
+						<React.Fragment>
+							<IconButton
+								icon={preferencesIcon}
+								labelKey='ui.user.account_settings.button'
+								onClick={this.toggleOpen}
+							/>
+							<div className='settings'>
+								<IconButton
+									icon={userIcons.logout}
+									labelKey='ui.user.account_settings.logout'
+									onClick={logout}
+								/>
 							</div>
 						</React.Fragment>
 					}
@@ -101,6 +128,7 @@ AccountSettings.defaultProps = {
 
 AccountSettings.propTypes = {
 	isAnon : PropTypes.bool,
+	logout : PropTypes.func,
 }
 
 

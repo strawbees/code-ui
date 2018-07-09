@@ -19,12 +19,14 @@ const Dialog = ({
 	displayCancel,
 	onConfirm,
 	onCancel,
+	limitWidth,
 }) =>
 	<div className='root dialog'>
 		<style jsx>{`
 			.root {
 				display: flex;
 				flex-direction: column;
+				${limitWidth ? 'width: 25rem;' : ''}
 			}
 			.buttons {
 				display: flex;
@@ -100,6 +102,7 @@ Dialog.propTypes = {
 	displayCancel         : PropTypes.bool,
 	onConfirm             : PropTypes.func,
 	onCancel              : PropTypes.func,
+	limitWidth            : PropTypes.bool,
 }
 
 export default Dialog

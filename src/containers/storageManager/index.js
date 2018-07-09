@@ -17,7 +17,7 @@ class StorageManager extends React.Component {
 
 		// Load data from local storage
 		this.temp = browserStorage.get('temp', 'program')
-		this.credentials = browserStorage.get('creadentials', 'data')
+		this.credentials = browserStorage.get('credentials', 'data')
 		this.programs = {}
 		browserStorage.getProgramsIds().forEach(id => {
 			const program = browserStorage.get('program', id)
@@ -58,7 +58,7 @@ class StorageManager extends React.Component {
 
 		let needsUpdate = false
 		if (this.credentials !== credentials) {
-			browserStorage.set('credentials', 'data')
+			browserStorage.set('credentials', 'data', credentials)
 			this.credentials = credentials
 			needsUpdate = true
 		}
@@ -115,6 +115,7 @@ StorageManager.propTypes = {
 	safeUpdateProgram               : PropTypes.func,
 	removeProgramByIdAndClearEditor : PropTypes.func,
 	programs                        : PropTypes.object,
+	credentials                     : PropTypes.object,
 }
 
 export default connect(

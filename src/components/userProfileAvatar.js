@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import SvgIcon from 'src/components/svgIcon'
-import userAnonIcon from 'src/assets/icons/user/anon.svg'
-import userIcon from 'src/assets/icons/user/user.svg'
+import userIcons from 'src/assets/icons/user'
 
 const UserProfileAvatar = ({
 	username,
@@ -43,9 +42,7 @@ const UserProfileAvatar = ({
 		`}</style>
 
 		<div className='name'>
-			{isAnon &&
-				<SvgIcon icon={userAnonIcon}/>
-			}
+			<SvgIcon icon={isAnon ? userIcons.anon : userIcons.user}/>
 			<div className='username global-type global-type-h2'>
 				{username}
 			</div>

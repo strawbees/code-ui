@@ -12,7 +12,10 @@ const backends = {
 
 export const resolveBackend = (credentials) => {
 	if (!credentials) {
-		return backendLocal
+		return backends.local
+	}
+	if (credentials.backend === 'strawbees') {
+		return backends.strawbees
 	}
 	// TODO: properly resolve the credentials
 	throw new Error(`Cannot resolve backend for: ${credentials}`)

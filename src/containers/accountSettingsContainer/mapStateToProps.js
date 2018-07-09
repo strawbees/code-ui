@@ -1,14 +1,6 @@
-import { createSelector } from 'reselect'
-import storageCredentialsSelector from 'src/selectors/storageCredentialsSelector'
+import { createStructuredSelector } from 'reselect'
+import storageIsAnonSelector from 'src/selectors/storageIsAnonSelector'
 
-export default () => createSelector(
-	[
-		storageCredentialsSelector(),
-	],
-	(
-		storageCredentials,
-	) => ({
-		// eslint-disable-next-line no-unneeded-ternary
-		isAnon : storageCredentials ? false : true,
-	})
-)
+export default () => createStructuredSelector({
+	isAnon : storageIsAnonSelector()
+})

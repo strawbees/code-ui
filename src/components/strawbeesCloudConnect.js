@@ -14,7 +14,7 @@ class StrawbeesCloudConnect extends React.Component {
 	openSignin = () => {
 		const {
 			safeOpenDialogModal,
-			authenticateUser,
+			onSignin,
 			requestPasswordReset,
 		} = this.props
 		safeOpenDialogModal(
@@ -24,7 +24,7 @@ class StrawbeesCloudConnect extends React.Component {
 				displayCancel  : false
 			},
 			<StrawbeesCloudSignin
-				authenticateUser={authenticateUser}
+				onSignin={onSignin}
 				requestPasswordReset={requestPasswordReset}
 			/>
 		)
@@ -33,7 +33,7 @@ class StrawbeesCloudConnect extends React.Component {
 	openSignup = () => {
 		const {
 			safeOpenDialogModal,
-			createUser,
+			onSignup,
 		} = this.props
 		safeOpenDialogModal(
 			{
@@ -41,7 +41,7 @@ class StrawbeesCloudConnect extends React.Component {
 				displayConfirm : false,
 				displayCancel  : false
 			},
-			<StrawbeesCloudSignup createUser={createUser} />
+			<StrawbeesCloudSignup onSignup={onSignup} />
 		)
 	}
 
@@ -104,8 +104,8 @@ class StrawbeesCloudConnect extends React.Component {
 
 StrawbeesCloudConnect.propTypes = {
 	safeOpenDialogModal  : PropTypes.func,
-	createUser           : PropTypes.func,
-	authenticateUser     : PropTypes.func,
+	onSignup             : PropTypes.func,
+	onSignin             : PropTypes.func,
 	requestPasswordReset : PropTypes.func,
 }
 

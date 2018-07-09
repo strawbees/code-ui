@@ -1,56 +1,51 @@
 import {
-	createUser as strawbeesCreateUser,
-	authenticateUser as strawbeesAuthenticateUser,
+	signin,
+	signup,
 	requestPasswordReset as strawbeesRequestPasswordReset,
 } from 'src/storage/backendStrawbees'
 
-const createUser = async (values) => {
-	const birth = new Date(new Date().setYear(new Date().getFullYear() - values.age))
-	const month = birth.getUTCMonth() + 1 // months from 1-12
-	const day = birth.getUTCDate()
-	const year = birth.getUTCFullYear()
-	const birthdate = `${year}-${month}-${day}`
-	try {
-		const user = await strawbeesCreateUser({
-			username : values.username,
-			email    : values.email,
-			password : values.password,
-			birthdate
-		})
-		console.log('todo: do somthing with wuser', user)
-	} catch (error) {
-		throw error
+export default (stateProps, dispatchProps, ownProps) => {
+	const {
+		closeModal,
+		setCredentials,
+		...otherDispatchProps
+	} = dispatchProps
+
+	const onSignup = async (values) => {
+		try {
+			const data = await signup(values)
+			setCredentials(data)
+			closeModal()
+		} catch (error) {
+			throw error
+		}
+	}
+
+	const onSignin = async (values) => {
+		try {
+			const data = await signin(values)
+			setCredentials(data)
+			closeModal()
+		} catch (error) {
+			throw error
+		}
+	}
+
+	const requestPasswordReset = async (values) => {
+		try {
+			const result = await strawbeesRequestPasswordReset(values)
+			console.log('todo: do somthing with result', result)
+		} catch (error) {
+			throw error
+		}
+	}
+
+	return {
+		...stateProps,
+		...otherDispatchProps,
+		...ownProps,
+		onSignup,
+		onSignin,
+		requestPasswordReset,
 	}
 }
-
-const authenticateUser = async (values) => {
-	try {
-		const credentials = await strawbeesAuthenticateUser({
-			username : values.username,
-			password : values.password,
-		})
-		console.log('todo: do somthing with credentials', credentials)
-	} catch (error) {
-		throw error
-	}
-}
-
-const requestPasswordReset = async (values) => {
-	try {
-		const result = await strawbeesRequestPasswordReset({
-			username : values.username
-		})
-		console.log('todo: do somthing with result', result)
-	} catch (error) {
-		throw error
-	}
-}
-
-export default (stateProps, dispatchProps, ownProps) => ({
-	...stateProps,
-	...dispatchProps,
-	...ownProps,
-	createUser,
-	authenticateUser,
-	requestPasswordReset,
-})

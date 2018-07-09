@@ -9,25 +9,27 @@ import { WHITE, BLACK } from 'src/constants/colors'
 import editorIcons from 'src/assets/icons/editors/small'
 import arrowIcon from 'src/assets/icons/general/arrowRight.svg'
 
-const TextEditor = ({
+const TextEditorPreview = ({
 	type,
 	closeModal,
 }) =>
-	<div className='root'>
+	<div className='root textEditorPreview'>
 		<style jsx>{`
 			.root {
 				display: flex;
 				flex-direction: column;
-				width: 40rem;
-				height: 85vh;
+				width: 100%;
+				height: calc(100vh - 4rem);
+			}
+			.title,
+			.description,
+			.new {
+				flex-shrink: 0;
 			}
 			.editor {
 				flex: 1;
-				border-radius: 1rem;
 				overflow: hidden;
 				margin-bottom: 1rem;
-				margin-left: -0.25rem;
-				margin-right: -0.25rem;
 			}
 			.description {
 				margin-bottom: 1rem;
@@ -37,7 +39,7 @@ const TextEditor = ({
 				flex-direction: row;
 				align-items: center;
 				justify-content: space-between;
-				margin: -1rem 0;
+				margin: 0 0;
 			}
 			.new .icon {
 				display: flex;
@@ -170,7 +172,7 @@ const VisualToTextEditor = ({
 			onClick={() => {
 				// lose focus
 				document.activeElement.blur()
-				safeOpenModal(<TextEditor type={type} closeModal={closeModal}/>)
+				safeOpenModal(<TextEditorPreview type={type} closeModal={closeModal}/>)
 			}}>
 			<SvgIcon icon={editorIcons.textWhite} />
 			<div className='text'>
