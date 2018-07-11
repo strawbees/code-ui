@@ -6,6 +6,7 @@ import refEditorIdSelector from 'src/selectors/refEditorIdSelector'
 import refEditorTypeSelector from 'src/selectors/refEditorTypeSelector'
 import refEditorSavedSelector from 'src/selectors/refEditorSavedSelector'
 import storageProgramSelector from 'src/selectors/storageProgramSelector'
+import urlVarsSelector from 'src/selectors/urlVarsSelector'
 import generateNewProgramSource from 'src/utils/generateNewProgramSource'
 import parseUrlVars from 'src/utils/parseUrlVars'
 import resolveLinkUrl from 'src/utils/resolveLinkUrl'
@@ -168,5 +169,25 @@ export const updateCurrentEditorProgramSource = (source) => async (dispatch, get
 			data.source = source
 			await dispatch(safeUpdateProgram(id, data))
 		}
+	}
+}
+export const updateCurrentEditorProgramId = (newId) => async (dispatch, getState) => {
+	const state = getState()
+	const id = refEditorIdSelector()(state)
+	const type = refEditorTypeSelector()(state)
+	if (type === 'flow') {
+		dispatch(setFlowId(newId))
+	} else if (type === 'block') {
+		dispatch(setBlockId(newId))
+	} else if (type === 'text') {
+		dispatch(setTextId(newId))
+	}
+	// Update the url if needed
+	const urlVarProgramId = urlVarsSelector()(getState()).p
+	if (id === urlVarProgramId) {
+		const { as, href } = resolveLinkUrl(`${Router.asPath.split('?')[0]}?p=${newId}`)
+		Router.replace(href, as)
+		dispatch(setAsPath(as))
+		dispatch(setUrlVars(parseUrlVars(as)))
 	}
 }

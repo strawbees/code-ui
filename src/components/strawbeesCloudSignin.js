@@ -121,7 +121,7 @@ class StrawbeesCloudSignin extends React.Component {
 		this.forgotSubmitting = true
 		this.setState({ forgotDisabled : true })
 		try {
-			await this.props.requestPasswordReset(values)
+			await this.props.onForgotPassword(values)
 			// safe check in case the component has been unmounted meanwhile
 			if (this.unmounted) {
 				return
@@ -241,8 +241,8 @@ class StrawbeesCloudSignin extends React.Component {
 }
 
 StrawbeesCloudSignin.propTypes = {
-	onSignin             : PropTypes.func,
-	requestPasswordReset : PropTypes.func,
+	onSignin         : PropTypes.func,
+	onForgotPassword : PropTypes.func,
 }
 
 export default StrawbeesCloudSignin

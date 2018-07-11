@@ -92,13 +92,9 @@ class AppContainer extends React.Component {
 		setDisplayPageLoader(false)
 
 		// monitor the hash
-		window.onhashchange = this.onHashChange
-		// fire the first change manually
-		this.onHashChange()
-	}
-
-	onHashChange = () => {
-		console.log(window.location.hash)
+		// document.addEventListener('click', (e) => {
+		// 	console.log(e.target.hash)
+		// })
 	}
 
 	componentWillUnmount() {

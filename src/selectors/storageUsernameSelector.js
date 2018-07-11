@@ -1,15 +1,14 @@
 import { createSelector } from 'reselect'
-import { resolveBackend } from 'src/storage'
 import makeStringSelector from 'src/selectors/makeStringSelector'
-import storageCredentialsSelector from 'src/selectors/storageCredentialsSelector'
+import storageUserSelector from 'src/selectors/storageUserSelector'
 
 export default () => createSelector(
 	[
 		makeStringSelector('ui.user.anon_username'),
-		storageCredentialsSelector(),
+		storageUserSelector(),
 	],
 	(
 		anonUsername,
-		credentials,
-	) => resolveBackend(credentials).resolveUsername(credentials) || anonUsername
+		user,
+	) => (user && user.username) || anonUsername
 )

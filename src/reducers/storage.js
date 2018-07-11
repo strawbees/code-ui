@@ -1,28 +1,61 @@
 import { combineReducers } from 'redux'
-import generateReducer from 'src/utils/generateReducer'
 import {
-	STORAGE_SET_READY,
 	STORAGE_SET_STATUS,
 	STORAGE_SET_CREDENTIALS,
+	STORAGE_SET_USER,
 	STORAGE_SET_PROGRAMS,
 	STORAGE_ADD_PROGRAM,
 	STORAGE_UPDATE_PROGRAM,
 	STORAGE_REMOVE_PROGRAM,
-	STORAGE_REMOVE_ALL_PROGRAMS
+	STORAGE_REMOVE_ALL_PROGRAMS,
+	STORAGE_SET_REMOTE_MIRROR,
+	STORAGE_CLEAR
 } from 'src/constants/actionTypes'
 
-const ready = (state = false, { type, payload }) => {
+
+const status = (state = null, { type, payload }) => {
 	switch (type) {
-		case STORAGE_SET_READY: {
-			return payload
-		}
+		case STORAGE_SET_STATUS:
+			return typeof payload === 'undefined' ? null : payload
+		case STORAGE_CLEAR:
+			return null
 		default:
 			return state
 	}
 }
-const status = generateReducer(STORAGE_SET_STATUS)
-const credentials = generateReducer(STORAGE_SET_CREDENTIALS)
-const programs = (state = {}, { type, payload }) => {
+const credentials = (state = null, { type, payload }) => {
+	switch (type) {
+		case STORAGE_SET_CREDENTIALS:
+			return typeof payload === 'undefined' ? null : payload
+		case STORAGE_CLEAR:
+			return null
+		default:
+			return state
+	}
+}
+const user = (state = null, { type, payload }) => {
+	switch (type) {
+		case STORAGE_SET_USER:
+			return typeof payload === 'undefined' ? null : payload
+		case STORAGE_CLEAR:
+			return null
+		default:
+			return state
+	}
+}
+const defaultRemoteMirror = { programs : {}, user : null }
+const remoteMirror = (state = defaultRemoteMirror, { type, payload }) => {
+	switch (type) {
+		case STORAGE_SET_REMOTE_MIRROR:
+			return !payload ? defaultRemoteMirror : payload
+		case STORAGE_CLEAR:
+			return defaultRemoteMirror
+		default:
+			return state
+	}
+}
+const defaultPrograms = {}
+const programs = (state = defaultPrograms, { type, payload }) => {
 	switch (type) {
 		case STORAGE_SET_PROGRAMS:
 			return {
@@ -42,8 +75,9 @@ const programs = (state = {}, { type, payload }) => {
 			delete newState[payload.id]
 			return newState
 		}
-		case STORAGE_REMOVE_ALL_PROGRAMS: {
-			return {}
+		case STORAGE_REMOVE_ALL_PROGRAMS:
+		case STORAGE_CLEAR: {
+			return defaultPrograms
 		}
 		default:
 			return state
@@ -51,8 +85,9 @@ const programs = (state = {}, { type, payload }) => {
 }
 
 export default combineReducers({
-	ready,
 	status,
 	credentials,
+	user,
+	remoteMirror,
 	programs,
 })

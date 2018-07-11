@@ -10,7 +10,7 @@ const backends = {
 	// github    : backendGithub,
 }
 
-export const resolveBackend = (credentials) => {
+export const resolveBackendFromCredentials = (credentials) => {
 	if (!credentials) {
 		return backends.local
 	}
@@ -22,11 +22,11 @@ export const resolveBackend = (credentials) => {
 }
 
 export const generateUniqueId = (credentials) => {
-	const backend = resolveBackend(credentials)
+	const backend = resolveBackendFromCredentials(credentials)
 	return `${backend.prefix}${baseGenerateUniqueId()}`
 }
 
-export const resolveBackendFromId = (id) => {
+export const resolveBackendFromProgramId = (id) => {
 	id = id.toString()
 	const prefix = id.substring(0, 2)
 	if (id.length === 18) {
@@ -44,12 +44,12 @@ export const resolveBackendFromId = (id) => {
 }
 
 export const loadProgram = async (id) => {
-	const backend = resolveBackendFromId(id)
+	const backend = resolveBackendFromProgramId(id)
 	return backend.loadProgram(id)
 }
 
-export const isIdValid = (id) => {
-	if (resolveBackendFromId(id)) {
+export const isProgramIdValid = (id) => {
+	if (resolveBackendFromProgramId(id)) {
 		return true
 	}
 	return false

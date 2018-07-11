@@ -1,20 +1,22 @@
 import {
 	signin,
 	signup,
-	requestPasswordReset as strawbeesRequestPasswordReset,
+	forgotPassword ,
 } from 'src/storage/backendStrawbees'
 
 export default (stateProps, dispatchProps, ownProps) => {
 	const {
 		closeModal,
 		setCredentials,
+		setUser,
 		...otherDispatchProps
 	} = dispatchProps
 
 	const onSignup = async (values) => {
 		try {
-			const data = await signup(values)
-			setCredentials(data)
+			const { credentials, user } = await signup(values)
+			setCredentials(credentials)
+			setUser(user)
 			closeModal()
 		} catch (error) {
 			throw error
@@ -23,17 +25,18 @@ export default (stateProps, dispatchProps, ownProps) => {
 
 	const onSignin = async (values) => {
 		try {
-			const data = await signin(values)
-			setCredentials(data)
+			const { credentials, user } = await signin(values)
+			setCredentials(credentials)
+			setUser(user)
 			closeModal()
 		} catch (error) {
 			throw error
 		}
 	}
 
-	const requestPasswordReset = async (values) => {
+	const onForgotPassword = async (values) => {
 		try {
-			const result = await strawbeesRequestPasswordReset(values)
+			const result = await forgotPassword(values)
 			console.log('todo: do somthing with result', result)
 		} catch (error) {
 			throw error
@@ -46,6 +49,6 @@ export default (stateProps, dispatchProps, ownProps) => {
 		...ownProps,
 		onSignup,
 		onSignin,
-		requestPasswordReset,
+		onForgotPassword,
 	}
 }

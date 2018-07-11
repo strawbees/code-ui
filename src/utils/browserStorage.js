@@ -11,46 +11,46 @@ export const set = (base, key, value) => {
 		return
 	}
 	localStorage.setItem(`_storage_${base}_${key}`, JSON.stringify(value))
-	// debounce(`_storage_${base}_${key}`, () => {
-	//	localStorage.setItem(`_storage_${base}_${key}`, JSON.stringify(value))
-	// }, 300)
 }
 
 export const remove = (base, key) => {
 	localStorage.removeItem(`_storage_${base}_${key}`)
 }
 
-export const getProgramsIds = () =>
+export const getKeys = (base) =>
 	Object.keys(localStorage)
-		.filter(key => key.indexOf('_storage_program_') === 0)
-		.map(key => key.replace('_storage_program_', ''))
+		.filter(key => key.indexOf(`_storage_${base}_`) === 0)
+		.map(key => key.replace(`_storage_${base}_`, ''))
 
-const externalChangeListener = ({ key, newValue }) => {
-	if (!externalChangeListenerFn || !key) {
+// External program change
+/* eslint-disable no-underscore-dangle */
+export const setExternalChangeListener = (fn) => {
+	if (!fn) {
+		window.removeEventListener('storage', _externalChangeListener)
 		return
 	}
-	if (key.indexOf('_storage_program_') !== 0) {
+	_externalChangeListenerFn = fn
+	window.addEventListener('storage', _externalChangeListener)
+}
+
+let _externalChangeListenerFn
+const _externalChangeListener = ({ key, newValue : rawValue }) => {
+	if (!_externalChangeListenerFn || !key) {
 		return
 	}
-	const id = key.replace('_storage_program_', '')
-	if (newValue) {
+	if (key.indexOf('_storage_') !== 0) {
+		return
+	}
+	const [,, base, id] = key.split('_')
+	let value
+	if (rawValue) {
 		try {
-			const data = JSON.parse(newValue)
-			externalChangeListenerFn(id, data, newValue)
-			return
+			value = JSON.parse(rawValue)
 		} catch (e) {
 			// eslint-disable-next-line no-console
 			console.error('Error trying to update storage', e)
 		}
 	}
-	externalChangeListenerFn(id)
+	_externalChangeListenerFn(base, id, value, rawValue)
 }
-let externalChangeListenerFn
-export const setExternalChangeListener = (fn) => {
-	if (!fn) {
-		window.removeEventListener('storage', externalChangeListener)
-		return
-	}
-	externalChangeListenerFn = fn
-	window.addEventListener('storage', externalChangeListener)
-}
+/* eslint-disable no-underscore-dangle */

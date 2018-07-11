@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import LZString from 'lz-string'
 import Router from 'next/router'
 import {
-	isIdValid,
+	isProgramIdValid,
 	loadProgram,
 } from 'src/storage'
 import { connect } from 'react-redux'
@@ -201,7 +201,7 @@ class NavigationManager extends React.PureComponent {
 		// If theres a program id...
 		if (urlVarP) {
 			// Check if it is valid...
-			if (!isIdValid(urlVarP)) {
+			if (!isProgramIdValid(urlVarP)) {
 				setDisplayError(404)
 				setDisplayPageLoader(false)
 				return
@@ -211,7 +211,7 @@ class NavigationManager extends React.PureComponent {
 			try {
 				program = await loadProgram(urlVarP)
 			} catch (e) {
-				setDisplayError(e)
+				setDisplayError(404)
 				setDisplayPageLoader(false)
 				return
 			}

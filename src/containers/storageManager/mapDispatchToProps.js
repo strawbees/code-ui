@@ -1,18 +1,24 @@
 import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
 import {
-	setStatus,
 	setCredentials,
 	setPrograms,
+	setRemoteMirror,
+	setStatus,
+	setUser,
 	safeUpdateProgram,
+	safeSync,
 } from 'src/actions/storage'
 import {
 	removeProgramByIdAndClearEditor,
 } from 'src/actions/program'
 
 export default autobindDispatchToActionCreators({
-	setStatus,
 	setCredentials,
 	setPrograms,
+	setRemoteMirror,
+	setStatus,
+	setUser,
 	safeUpdateProgram,
 	removeProgramByIdAndClearEditor,
+	safeSync,
 })

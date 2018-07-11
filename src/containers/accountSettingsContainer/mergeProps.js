@@ -1,6 +1,6 @@
 export default (stateProps, dispatchProps, ownProps) => {
 	const {
-		setCredentials,
+		clearStorage,
 		...otherDispatchProps
 	} = dispatchProps
 
@@ -8,6 +8,6 @@ export default (stateProps, dispatchProps, ownProps) => {
 		...stateProps,
 		...otherDispatchProps,
 		...ownProps,
-		logout : () => setCredentials(null),
+		logout : () => clearStorage(),
 	}
 }

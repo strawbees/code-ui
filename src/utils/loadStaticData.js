@@ -7,7 +7,7 @@ export default async file => {
 		if (process.browser) {
 			data = await (await fetch(`/static/${file}`)).json()
 		} else {
-			data = await (await nodeFecth(`http://localhost:1337/${file}`)).json()
+			data = await (await nodeFecth(`http://localhost:1338/${file}`)).json()
 		}
 		CACHE[file] = data
 	}
