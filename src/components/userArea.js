@@ -8,6 +8,8 @@ const UserArea = () =>
 				display: flex;
 				flex-direction: column;
 				align-items: center;
+				position: relative;
+				flex-shrink: 0;
 			}
 			.root :global(.userProfileAvatar) {
 				margin-bottom: 0.5rem;

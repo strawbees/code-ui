@@ -10,7 +10,7 @@ const publicRuntimeConfig = {
 	stage : {
 		CANONICAL_URL          : 'https://code-stage.strawbees.com',
 		COMPILER_URL           : 'https://compiler-stage.quirkbot.com',
-		STRAWBEES_CODE_API_URL : 'https://api.quirkbot.com'
+		STRAWBEES_CODE_API_URL : 'https://api-stage.quirkbot.com'
 	},
 	production : {
 		CANONICAL_URL          : 'https://code.strawbees.com',

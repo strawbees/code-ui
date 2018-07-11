@@ -32,11 +32,10 @@ class AccountSettings extends React.Component {
 			<div className={`root accountSettings ${open ? 'opened' : 'closed'}`}>
 				<style jsx>{`
 					.root {
+						position: relative;
 						display: flex;
 						flex-direction: column;
 						align-items: center;
-						//width: 50rem;
-						//max-width: 100%;
 					}
 					.root :global(.message) {
 						max-width: 30rem;

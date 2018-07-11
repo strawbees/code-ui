@@ -34,6 +34,7 @@ const ProgramCreator = ({
 				display: flex;
 				flex-direction: row;
 				margin-bottom: 1rem;
+				flex-shrink: 0;
 			}
 			.types :global(> .link){
 				text-decoration: none;
@@ -62,6 +63,11 @@ const ProgramCreator = ({
 					height: 5rem;
 				}
 			}
+			/*@media (min-width: 1080px) {
+				.types {
+					flex-direction: column;
+				}
+			}*/
 		`}</style>
 		<div className='title global-type global-type-h2'>
 			<S value='ui.program_creator.title'/>

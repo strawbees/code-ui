@@ -11,7 +11,7 @@ const PageHome = () =>
 	<div className='root pageHome'>
 		<style jsx>{`
 			.root {
-				min-height: 100%;;
+				min-height: 100%;
 				display: flex;
 				flex-direction: column;
 				align-items: stretch;
@@ -20,6 +20,7 @@ const PageHome = () =>
 				display: flex;
 				flex-direction: column;
 				align-items: center;
+				justify-content: center;
 				padding: 3rem 0;
 			}
 			.section :global(> *) {
@@ -44,6 +45,21 @@ const PageHome = () =>
 			@media (max-height: 550px) {
 				.section {
 					padding: 1rem 0;
+				}
+			}
+			@media (min-width: 1080px) {
+				.root {
+					flex-direction: row;
+					height: 100%;
+				}
+				.section {
+					height: 100%;
+				}
+				.section.top {
+					overflow-y: scroll;
+				}
+				.section.bottom {
+					overflow-y: scroll;
 				}
 			}
 		`}</style>
