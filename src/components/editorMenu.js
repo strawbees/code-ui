@@ -6,13 +6,22 @@ import IconButton from 'src/components/iconButton'
 import SvgIcon from 'src/components/svgIcon'
 import S from 'src/containers/sManager'
 import checkIcon from 'src/assets/icons/general/check.svg'
+import syncIcon from 'src/assets/icons/general/sync.svg'
 import editorIcons from 'src/assets/icons/editors/small'
 import saveIcon from 'src/assets/icons/file/save.svg'
 import uploadIcon from 'src/assets/icons/file/upload.svg'
+import {
+	ERROR,
+	NEEDS_SYNC,
+	READY,
+	SYNCING,
+} from 'src/constants/storage'
 
 import {
-	WHITE,
+	BLACK,
 	GREEN,
+	WHITE,
+	YELLOW,
 } from 'src/constants/colors'
 
 const EditorMenu = ({
@@ -24,6 +33,7 @@ const EditorMenu = ({
 	onSavePress,
 	onDuplicatePress,
 	onSharePress,
+	storageStatus,
 	onExportPress,
 	onImportPress,
 	onUploadPress,
@@ -101,6 +111,23 @@ const EditorMenu = ({
 				fill: ${tinycolor(WHITE).toRgbString()};
 				width: 1.5rem;
 				height: 1.5rem;
+			}
+			.saved-status.SYNCING .circle,
+			.saved-status.NEEDS_SYNC .circle {
+				background-color: ${tinycolor(YELLOW).toRgbString()};
+			}
+			.saved-status.SYNCING .circle :global(.svgIcon),
+			.saved-status.NEEDS_SYNC .circle :global(.svgIcon) {
+				fill: ${tinycolor(BLACK).toRgbString()};
+				animation: spin-animation 2s linear infinite reverse;
+			}
+			@keyframes spin-animation {
+				from {
+					transform: rotateZ(0);
+				}
+				to {
+					transform: rotateZ(360deg);
+				}
 			}
 			@media (max-width: 800px){
 				.saved-status .circle {
@@ -187,10 +214,16 @@ const EditorMenu = ({
 		/>
 		<div className='buttons'>
 			{saved &&
-				<div className='saved-status'>
+				<div className={`saved-status ${storageStatus}`}>
 					<div className='circle'>
 						<SvgIcon
-							icon={checkIcon}
+							icon={(
+								storageStatus === SYNCING ||
+								storageStatus === NEEDS_SYNC) ?
+								syncIcon
+								:
+								checkIcon
+							}
 						/>
 					</div>
 					<div className='label'>
@@ -218,10 +251,16 @@ const EditorMenu = ({
 EditorMenu.defaultProps = {}
 
 EditorMenu.propTypes = {
-	type               : PropTypes.string,
-	name               : PropTypes.string,
-	saved              : PropTypes.bool,
-	placeholderName    : PropTypes.string,
+	type            : PropTypes.string,
+	name            : PropTypes.string,
+	saved           : PropTypes.bool,
+	placeholderName : PropTypes.string,
+	storageStatus   : PropTypes.oneOf([
+		NEEDS_SYNC,
+		SYNCING,
+		READY,
+		ERROR
+	]),
 	onNameChange       : PropTypes.func,
 	onSavePress        : PropTypes.func,
 	onDuplicatePress   : PropTypes.func,
