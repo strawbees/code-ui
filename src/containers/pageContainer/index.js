@@ -20,6 +20,13 @@ const PageContainer = (props) => {
 	const RefComponent = components[props.queryRef] || PageError
 	return (
 		<div className='root page'>
+			<style jsx>{`
+				.root {
+					overflow-y: scroll;
+					-webkit-overflow-scrolling: touch;
+					overscroll-behavior: none;
+				}
+			`}</style>
 			<RefComponent {...props}/>
 		</div>
 	)

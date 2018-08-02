@@ -122,8 +122,8 @@
 	"ui.editor.text_preview.description" : "This is the text version of your visual program. To modify it, open it in the Text editor.",
 	"ui.editor.text_preview.create"      : "Open in text editor",
 
-	"ui.buttons.cancel"  : "cancel",
-	"ui.buttons.confirm" : "ok",
+	"ui.buttons.cancel"  : "Cancel",
+	"ui.buttons.confirm" : "OK",
 
 	"ui.board.status.notConnected" : "Not detected",
 	"ui.board.status.ok"           : "Ready",

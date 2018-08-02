@@ -17,7 +17,7 @@ class LocalesMenu extends React.Component {
 	}
 
 	openList = () => {
-		this.listRef.current.focus()
+		//this.listRef.current.focus()
 	}
 
 	blurActiveElement = () => {
@@ -72,9 +72,10 @@ class LocalesMenu extends React.Component {
 						list-style: none;
 					}
 
+					.root :global(.button:focus) + .list,
 					.list:focus,
 					.list:focus-within{
-						transition: opacity 0.1s ease-out, transform 0.1s ease-out;
+						/*transition: opacity 0.1s ease-out, transform 0.1s ease-out;*/
 						outline: none;
 						opacity: 1;
 						transform: scale3d(1,1,1);
@@ -87,8 +88,8 @@ class LocalesMenu extends React.Component {
 					.list .option:not(.current) {
 						cursor: pointer;
 					}
-					.list .option:not(.current):hover,
-					.list .option:not(.current):focus {
+					.list .option:not(.current) :global(.link:hover),
+					.list .option:not(.current) :global(.link:focus) {
 						outline: none;
 						background-color: rgba(0,0,0, 0.1);
 						border-radius: 0.2rem;
@@ -125,14 +126,16 @@ class LocalesMenu extends React.Component {
 					}
 				`}</style>
 				<IconButton
+					className='button'
 					icon={languageIcon}
 					aria-haspopup='listbox'
 					aria-expanded={open}
-					onClick={openList}>
+					onClick={openList}
+					keepFocusAfterClick={true}>
 				</IconButton>
 				<div className='list'
 					role='listbox'
-					tabIndex='0'
+					tabIndex='-1'
 					ref={listRef}>
 					<div className='arrow'></div>
 					<ul>
@@ -140,6 +143,7 @@ class LocalesMenu extends React.Component {
 							<li className='option current'
 								aria-selected='true'
 								role='option'
+								tabIndex='-1'
 								onClick={blurActiveElement}>
 								{current.name}
 							</li>

@@ -19,7 +19,7 @@ const TextEditorPreview = ({
 				display: flex;
 				flex-direction: column;
 				width: 100%;
-				height: calc(100vh - 4rem);
+				height: calc(90vh - 4rem);
 			}
 			.title,
 			.description,
@@ -30,6 +30,7 @@ const TextEditorPreview = ({
 				flex: 1;
 				overflow: hidden;
 				margin-bottom: 1rem;
+				min-height: 10rem;
 			}
 			.description {
 				margin-bottom: 1rem;
@@ -65,6 +66,7 @@ const TextEditorPreview = ({
 					margin-bottom: 0;
 					justify-content: flex-end;
 				}
+				.description,
 				.new .icon {
 					display: none;
 				}

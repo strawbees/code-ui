@@ -19,6 +19,7 @@ import {
 
 import {
 	BLACK,
+	GRAY,
 	GREEN,
 	WHITE,
 	YELLOW,
@@ -81,6 +82,9 @@ const EditorMenu = ({
 			.name:focus {
 				outline: none;
 				background-color: ${tinycolor(WHITE).toRgbString()};
+			}
+			.name::placeholder {
+				color: ${tinycolor(GRAY).darken(30).toRgbString()};
 			}
 			.buttons {
 				display: flex;

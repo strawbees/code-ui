@@ -162,6 +162,7 @@ class Form extends React.Component {
 													validate={field.validate}
 													notify={field.notify}
 													id={field.id}
+													autoCapitalize={false}
 												/>
 											}
 											{field.type === 'checkbox' &&
@@ -188,7 +189,7 @@ class Form extends React.Component {
 												</div>
 											}
 											{error &&
-												<Message className='error' type='warning'>
+												<Message className='error' type='error'>
 													<S value={error} />
 												</Message>
 											}

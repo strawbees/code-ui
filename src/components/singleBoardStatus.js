@@ -74,11 +74,11 @@ const SingleBoardStatus = ({
 		.root:hover .uuid {
 			display: block;
 		}
-		@media (max-width: 600px) {
+		/* @media (max-width: 600px) {
 			.text {
 				display: none;
 			}
-		}
+		} */
 	`}</style>
 	<div className={`icon ${status}`}>
 		<SvgIcon

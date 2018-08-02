@@ -104,7 +104,8 @@ class Workspace extends React.Component {
 						display: flex;
 						flex-direction: column;
 						position: relative;
-						overflow: auto;
+						overflow: scroll;
+						-webkit-overflow-scrolling: touch;
 						overscroll-behavior: none;
 						touch-action: none;
 					}

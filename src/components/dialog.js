@@ -41,6 +41,11 @@ const Dialog = ({
 			.buttons :global(.iconButton:last-child) {
 				margin-right: 0;
 			}
+			@media (max-width: 480px) {
+				.root {
+					width: 100%;
+				}
+			}
 		`}</style>
 		{titleKey &&
 			<div className='title global-type global-type-h3'>

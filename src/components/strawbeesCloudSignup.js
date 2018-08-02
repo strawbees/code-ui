@@ -184,8 +184,9 @@ class StrawbeesCloudSignup extends React.Component {
 		} catch (error) {
 			if (error.message === 'VALIDATION_UNIQUE_USERNAME') {
 				this.formApi.setError('username', 'unique')
+			} else {
+				this.formApi.setError('_form_error_', error.message)
 			}
-			this.formApi.setError('_form_error_', error.message)
 		}
 
 		// add a safe delay (submit is being called twice when clicking on the

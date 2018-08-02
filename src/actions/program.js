@@ -118,6 +118,7 @@ export const modalRemoveProgram = (id) => async (dispatch) => {
 			titleKey        : 'ui.dialog.remove.title',
 			descriptionKey  : 'ui.dialog.remove.description',
 			confirmLabelKey : 'ui.dialog.remove.confirm',
+			limitWidth      : true,
 			onConfirm
 		}
 	))
@@ -147,6 +148,7 @@ export const modalDuplicateProgramById = (id) => async (dispatch, getState) => {
 		{
 			titleKey        : 'ui.dialog.duplicate.title',
 			confirmLabelKey : 'ui.dialog.duplicate.confirm',
+			// limitWidth      : true,
 			onConfirm
 		},
 		<FormInput
@@ -165,6 +167,7 @@ export const modalDuplicateProgramData = (program) => async (dispatch) => {
 		{
 			titleKey        : 'ui.dialog.duplicate.title',
 			confirmLabelKey : 'ui.editor.duplicate',
+			// limitWidth      : true,
 			onConfirm
 		},
 		<FormInput

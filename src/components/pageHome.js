@@ -57,9 +57,11 @@ const PageHome = () =>
 				}
 				.section.top {
 					overflow-y: scroll;
+					-webkit-overflow-scrolling: touch;
 				}
 				.section.bottom {
 					overflow-y: scroll;
+					-webkit-overflow-scrolling: touch;
 				}
 			}
 		`}</style>

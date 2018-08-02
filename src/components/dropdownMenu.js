@@ -11,10 +11,13 @@ class DropdownMenu extends React.Component {
 	constructor(props) {
 		super(props)
 		this.listRef = React.createRef()
+		this.buttonRef = React.createRef()
 	}
 
 	openList = () => {
-		this.listRef.current.focus()
+		console.log(document.activeElement, document.activeElement === this.buttonRef.current)
+		//this.listRef.current.focus()
+		//console.log(document.activeElement, document.activeElement === this.buttonRef.current)
 	}
 
 	blurActiveElement = () => {
@@ -28,6 +31,7 @@ class DropdownMenu extends React.Component {
 		} = this.props
 		const {
 			listRef,
+			buttonRef,
 			openList,
 			blurActiveElement,
 		} = this
@@ -51,25 +55,12 @@ class DropdownMenu extends React.Component {
 						color: ${tinycolor(WHITE).toRgbString()};
 						fill: ${tinycolor(WHITE).toRgbString()};
 					}
-					/*.label::before {
-						content: '';
-						height: 1rem;
-						position: absolute;
-						left: 0;
-						width: 0;
-						border-left: solid 1px ${tinycolor(WHITE).toRgbString()};
-					}*/
 					.label:hover,
 					.label:focus,
 					.root:focus-within .label{
 						outline: none;
 						background-color: ${tinycolor(BLUE).toRgbString()};
 					}
-					/*.label:hover::before,
-					.label:focus::before,
-					.root:focus-within .label::before {
-						display: none;
-					}*/
 					.label :global(.svgIcon) {
 						margin-left: 0.25rem;
 						width: 0.8rem;
@@ -95,9 +86,10 @@ class DropdownMenu extends React.Component {
 						transform-origin: top left;
 						width: 12rem;
 					}
+					.label:focus + .list,
 					.list:focus,
 					.list:focus-within{
-						transition: opacity 0.1s ease-out, transform 0.1s ease-out;
+						/*transition: opacity 0.1s ease-out, transform 0.1s ease-out;*/
 						outline: none;
 						opacity: 1;
 						transform: scale3d(1,1,1);
@@ -135,6 +127,7 @@ class DropdownMenu extends React.Component {
 				<button
 					className='label'
 					aria-haspopup='listbox'
+					ref={buttonRef}
 					onClick={openList}>
 					<S value={labelKey}/>
 					<SvgIcon icon={expandIcon}/>

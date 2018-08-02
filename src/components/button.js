@@ -44,6 +44,7 @@ class Button extends React.Component {
 			...otherProps
 		} = this.props
 		delete otherProps.onClick
+		delete otherProps.keepFocusAfterClick
 
 		return (
 			<button
