@@ -50,6 +50,7 @@ class BlockEditor extends React.Component {
 			delete Blockly.Blocks.data_hidevariable
 			delete Blockly.Blocks.data_showlist
 			delete Blockly.Blocks.data_hidelist
+			delete Blockly.Blocks.data_listcontents
 		})
 		// Load toolbox
 		const toolboxXmlString = toolboxToXmlString(toolbox(strings))

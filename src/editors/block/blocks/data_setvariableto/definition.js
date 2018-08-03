@@ -4,7 +4,6 @@ export default (strings) => ({
 		{
 			type : 'field_variable',
 			name : 'VARIABLE',
-			// variableType : 'Number'
 		},
 		{
 			type : 'input_value',

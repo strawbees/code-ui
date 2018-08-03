@@ -6,7 +6,16 @@ import control_repeat from './control_repeat/index'
 import control_repeat_until from './control_repeat_until/index'
 import control_wait from './control_wait/index'
 import control_wait_until from './control_wait_until/index'
+import data_addtolist from './data_addtolist/index'
 import data_changevariableby from './data_changevariableby/index'
+import data_deletealloflist from './data_deletealloflist/index'
+import data_deleteoflist from './data_deleteoflist/index'
+import data_insertatlist from './data_insertatlist/index'
+import data_replaceitemoflist from './data_replaceitemoflist/index'
+import data_itemoflist from './data_itemoflist/index'
+import data_itemnumoflist from './data_itemnumoflist/index'
+import data_lengthoflist from './data_lengthoflist/index'
+import data_listcontainsitem from './data_listcontainsitem/index'
 import data_setvariableto from './data_setvariableto/index'
 import data_variable from './data_variable/index'
 import event_power_on from './event_power_on/index'
@@ -47,7 +56,16 @@ export default {
 	control_repeat_until,
 	control_wait,
 	control_wait_until,
+	data_addtolist,
 	data_changevariableby,
+	data_deletealloflist,
+	data_deleteoflist,
+	data_insertatlist,
+	data_replaceitemoflist,
+	data_itemoflist,
+	data_itemnumoflist,
+	data_lengthoflist,
+	data_listcontainsitem,
 	data_setvariableto,
 	data_variable,
 	event_power_on,
