@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form as Informed, Text, Checkbox } from 'informed'
+import * as Informed from 'informed'
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import Message from 'src/components/message'
@@ -123,7 +123,7 @@ class Form extends React.Component {
 						justify-content: center;
 					}
 				`}</style>
-				<Informed
+				<Informed.Form
 					id={formId}
 					onSubmit={onSubmit}
 					preSubmit={onPreSubmit}
@@ -154,7 +154,7 @@ class Form extends React.Component {
 												field.type === 'number' ||
 												field.type === 'password' ||
 												field.type === 'email') &&
-												<Text
+												<Informed.Text
 													type={field.type}
 													field={field.name}
 													validateOnChange={field.validateOnChange}
@@ -162,12 +162,12 @@ class Form extends React.Component {
 													validate={field.validate}
 													notify={field.notify}
 													id={field.id}
-													autoCapitalize={false}
+													autoCapitalize='false'
 												/>
 											}
 											{field.type === 'checkbox' &&
 												<div className='checkbox-container'>
-													<Checkbox
+													<Informed.Checkbox
 														type={field.type }
 														field={field.name}
 														validateOnChange={field.validateOnChange}
@@ -202,7 +202,7 @@ class Form extends React.Component {
 								  * so we can attach "global" errors to the form
 								  * that don't belong to any other field (eg: network error)
 							 	*/}
-								<Text
+								<Informed.Text
 									type='text'
 									field='_form_error_'
 									style={{ display : 'none' }}
@@ -228,7 +228,8 @@ class Form extends React.Component {
 							</div>
 						</React.Fragment>
 					)}
-				</Informed>
+				</Informed.Form>
+
 				{disabled &&
 					<div className='blocker'>
 						<Spinner scale={2}/>

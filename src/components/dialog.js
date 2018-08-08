@@ -11,6 +11,7 @@ import {
 const Dialog = ({
 	children,
 	titleKey,
+	titleValue,
 	descriptionKey,
 	cancelLabelKey,
 	confirmLabelKey,
@@ -47,9 +48,14 @@ const Dialog = ({
 				}
 			}
 		`}</style>
-		{titleKey &&
+		{titleKey && !titleValue &&
 			<div className='title global-type global-type-h3'>
 				<S value={titleKey} />
+			</div>
+		}
+		{titleValue &&
+			<div className='title global-type global-type-h3'>
+				{titleValue}
 			</div>
 		}
 		{descriptionKey &&
@@ -99,6 +105,7 @@ Dialog.propTypes = {
 		PropTypes.element
 	]),
 	titleKey              : PropTypes.string,
+	titleValue            : PropTypes.string,
 	descriptionKey        : PropTypes.string,
 	cancelLabelKey        : PropTypes.string,
 	confirmLabelKey       : PropTypes.string,

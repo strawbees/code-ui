@@ -198,6 +198,7 @@ StorageManager.propTypes = {
 	setStatus                       : PropTypes.func,
 	setUser                         : PropTypes.func,
 	safeUpdateProgram               : PropTypes.func,
+	safeSync                        : PropTypes.func,
 	removeProgramByIdAndClearEditor : PropTypes.func,
 	credentials                     : PropTypes.object,
 	programs                        : PropTypes.object,

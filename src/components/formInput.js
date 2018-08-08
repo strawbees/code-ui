@@ -13,6 +13,7 @@ class FormInput extends React.Component {
 	render() {
 		const {
 			labelKey,
+			labelValue,
 			placeholderKey,
 			defaultValue,
 			onChange
@@ -46,9 +47,14 @@ class FormInput extends React.Component {
 						background-color: ${tinycolor(GRAY).lighten(35).toRgbString()};
 					}
 				`}</style>
-				{labelKey &&
+				{labelKey && !labelValue &&
 					<div className='label'>
 						<S value={labelKey} />
+					</div>
+				}
+				{labelValue &&
+					<div className='label'>
+						{labelValue}
 					</div>
 				}
 				<input
@@ -71,6 +77,7 @@ class FormInput extends React.Component {
 
 FormInput.propTypes = {
 	labelKey       : PropTypes.string,
+	labelValue     : PropTypes.string,
 	placeholderKey : PropTypes.string,
 	defaultValue   : PropTypes.string,
 	onChange       : PropTypes.func,

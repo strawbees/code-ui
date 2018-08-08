@@ -1,4 +1,5 @@
 import Dialog from 'src/components/dialog'
+import FormInput from 'src/components/formInput'
 import generateAction from 'src/utils/generateAction'
 import {
 	MODAL_SHOW_MODAL,
@@ -59,3 +60,18 @@ export const safeOpenDialogModal = (dialogProps = {}, content = null) => (dispat
 		))
 		dispatch(showModal())
 	})
+
+export const safeOpenPromptAlternative = (message, defaultValue = '', callback) => (dispatch) => {
+	let text = ''
+	return dispatch(safeOpenDialogModal(
+		{
+			onConfirm : () => callback(text),
+			onCancel  : () => callback(null),
+		},
+		<FormInput
+			labelValue={message}
+			defaultValue={defaultValue}
+			onChange={e => text = e}
+		/>,
+	))
+}

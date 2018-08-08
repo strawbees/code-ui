@@ -57,10 +57,12 @@ const PageHome = () =>
 				}
 				.section.top {
 					overflow-y: scroll;
+					flex: 1;
 					-webkit-overflow-scrolling: touch;
 				}
 				.section.bottom {
 					overflow-y: scroll;
+					flex: 1;
 					-webkit-overflow-scrolling: touch;
 				}
 			}

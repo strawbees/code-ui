@@ -108,14 +108,14 @@ class AccountSettings extends React.Component {
 					}
 				</div>
 
-				{isAnon &&
+				{/* isAnon &&
 					<Message type='warning'>
 						<S
 							value='ui.user.anon_warning'
 							markdown={true}
 						/>
 					</Message>
-				}
+				*/}
 			</div>
 		)
 	}

@@ -19,10 +19,10 @@ class BlockEditor extends React.Component {
 		const {
 			Blockly
 		} = window
-		Blockly.getMainWorkspace().clear()
+		this.mainWorkspace.clear()
 		Blockly.Xml.domToWorkspace(
 			Blockly.Xml.textToDom(source),
-			Blockly.getMainWorkspace()
+			this.mainWorkspace
 		)
 	}
 
@@ -78,7 +78,7 @@ class BlockEditor extends React.Component {
 			refEditorSource
 		} = this.props
 		this.source = refEditorSource
-		Blockly.getMainWorkspace().addChangeListener((e) => {
+		this.mainWorkspace.addChangeListener((e) => {
 			// It seems that if we call .workspaceToDom on ALL changes, lots
 			// of spurious variables are created. I could not single out what
 			// is the offending event, but UI seems a obvious one to avoid.
@@ -92,7 +92,7 @@ class BlockEditor extends React.Component {
 			}
 
 			this.cancelSourceUpdate = debounce('update block source', () => {
-				const xml = Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace())
+				const xml = Blockly.Xml.workspaceToDom(this.mainWorkspace)
 				const currentSource = Blockly.Xml.domToText(xml)
 				if (this.source !== currentSource) {
 					this.source = currentSource
@@ -102,13 +102,34 @@ class BlockEditor extends React.Component {
 		})
 		// Load the initial source
 		this.loadSource(refEditorSource)
+
+		// Override blockly prompt with custom dialogue
+		this.originalBlocklyPrompt = window.Blockly.prompt
+		window.Blockly.prompt = this.props.prompt
+
+		// Handle custom blocks creation
+		window.Blockly.Procedures.externalProcedureDefCallback = async (mutation, cb) => {
+			/* editorActions.style.visibility = 'visible';
+			callback = cb;
+			declarationWorkspace.clear();
+			mutationRoot = declarationWorkspace.newBlock('procedures_declaration');
+			mutationRoot.domToMutation(mutation);
+			mutationRoot.initSvg();
+			mutationRoot.render(false); */
+		}
 	}
 
 	componentWillUnmount() {
 		if (this.cancelSourceUpdate) {
 			this.cancelSourceUpdate()
 		}
-		window.Blockly.getMainWorkspace().dispose()
+		this.mainWorkspace.dispose()
+
+		// restore blockly prompt
+		if (this.originalBlocklyPrompt) {
+			window.Blockly.prompt = this.originalBlocklyPrompt
+			delete this.originalBlocklyPrompt
+		}
 	}
 
 	componentDidUpdate() {
@@ -152,7 +173,8 @@ class BlockEditor extends React.Component {
 BlockEditor.propTypes = {
 	strings         : PropTypes.object,
 	refEditorSource : PropTypes.string,
-	onSourceChange  : PropTypes.func
+	onSourceChange  : PropTypes.func,
+	prompt          : PropTypes.func,
 }
 
 const BlockEditorWithStrings = (props) => {

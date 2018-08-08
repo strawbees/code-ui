@@ -20,6 +20,9 @@ export default (source, state) => {
 	const sortedSource = source.slice(0).sort((instanceA, instanceB) => {
 		const nodeA = instanceNodeSelector()(state, { id : instanceA.id })
 		const nodeB = instanceNodeSelector()(state, { id : instanceB.id })
+		if (!nodeA || !nodeB) {
+			return 0
+		}
 		const categoryA = nodeA.taxonomy.category
 		const categoryB = nodeB.taxonomy.category
 		if (categoryA === 'input' && categoryB !== 'input') {
@@ -56,6 +59,9 @@ export default (source, state) => {
 	// declares
 	code += sortedSource.map(instance => {
 		const node = instanceNodeSelector()(state, { id : instance.id })
+		if (!node) {
+			return ''
+		}
 		return `${node.code} ${instance.name};`
 	}).join('\n')
 	code += '\n'
@@ -65,7 +71,7 @@ export default (source, state) => {
 	// connections
 	code += sortedSource.map(instance => {
 		const node = instanceNodeSelector()(state, { id : instance.id })
-		if (!node.parameters) {
+		if (!node || !node.parameters) {
 			return null
 		}
 		return node.parameters.map(parameter => {

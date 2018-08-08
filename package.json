@@ -10,11 +10,11 @@
     "lint": "eslint --fix src/** pages/** lib/**"
   },
   "dependencies": {
-    "@babel/core": "7.0.0-beta.55",
+    "@babel/core": "^7.0.0-beta.53",
     "babel-plugin-inline-react-svg": "^0.5.4",
     "babel-plugin-module-resolver": "^3.1.1",
     "file-saver": "^1.3.8",
-    "informed": "^1.8.1",
+    "informed": "1.4.0",
     "isomorphic-unfetch": "^2.1.1",
     "lz-string": "^1.4.4",
     "mkdirp": "^0.5.1",
@@ -39,7 +39,7 @@
     "reselect": "^3.0.1",
     "rimraf": "^2.6.2",
     "s3": "^4.4.0",
-    "scratch-blocks": "^0.1.0-prerelease.1533046967",
+    "scratch-blocks": "^0.1.0-prerelease.1533301486",
     "serve-handler": "^3.6.1",
     "tinycolor2": "^1.4.1",
     "why-did-you-update": "^0.1.1",

@@ -22,7 +22,7 @@ const Header = ({
 				background-color: ${tinycolor(BLUE).setAlpha(0.75).toRgbString()};
 				position: relative;
 				width: 100%;
-				padding: 0 0.5rem 0 1rem;
+				padding: 0 0.5rem;
 			}
 			.root .editor {
 				flex: 1;
@@ -32,7 +32,7 @@ const Header = ({
 				height: 100%;
 			}
 			.root .logo :global(>.svgIcon) {
-				width: 10rem;
+				width: 11rem;
 				height: 2rem;
 			}
 			.root .logo-compact :global(>.svgIcon) {
