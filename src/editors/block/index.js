@@ -2,12 +2,83 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import withScript from 'src/hoc/withScript'
+import IconButton from 'src/components/iconButton'
 import Spinner from 'src/components/spinner'
+import plusIcon from 'src/assets/icons/general/plus.svg'
 import debounce from 'src/utils/debounce'
-import { WHITE } from 'src/constants/colors'
+import {
+	GRAY,
+	WHITE,
+	BLUE
+} from 'src/constants/colors'
 import toolboxToXmlString from './utils/toolboxToXmlString'
 import blocks from './blocks/index'
 import toolbox from './toolbox'
+
+class Container extends React.Component {
+	constructor(props) {
+		super(props)
+		this.ref = React.createRef()
+	}
+
+	componentDidMount() {
+		this.props.onMount(this.ref.current)
+	}
+
+	render() {
+		return (
+			<React.Fragment>
+				<style jsx>{`
+					.workspace {
+						box-sizing: border-box;
+						width: calc(100%);
+						height: 100px;
+					}
+					.controls {
+						display: flex;
+						flex-direction: row;
+						align-items: center;
+						justify-content: center;
+						margin-bottom: 0.5rem;
+					}
+					.controls :global(> *) {
+						margin: 0 0.25rem;
+					}
+				`}</style>
+				<div className='controls'>
+					<IconButton
+						icon={plusIcon}
+						labelKey='block.procedures.add_number'
+						onClick={this.props.onAddNumber}
+						textColor={WHITE}
+						textHoverColor={WHITE}
+						bgColor={BLUE}
+						bgHoverColor={BLUE}
+					/>
+					<IconButton
+						icon={plusIcon}
+						labelKey='block.procedures.add_boolean'
+						onClick={this.props.onAddBoolean}
+						textColor={WHITE}
+						textHoverColor={WHITE}
+						bgColor={BLUE}
+						bgHoverColor={BLUE}
+					/>
+					<IconButton
+						icon={plusIcon}
+						labelKey='block.procedures.add_label'
+						onClick={this.props.onAddLabel}
+						textColor={WHITE}
+						textHoverColor={WHITE}
+						bgColor={BLUE}
+						bgHoverColor={BLUE}
+					/>
+				</div>
+				<div className='workspace' ref={this.ref}/>
+			</React.Fragment>
+		)
+	}
+}
 
 class BlockEditor extends React.Component {
 	constructor(props) {
@@ -24,6 +95,8 @@ class BlockEditor extends React.Component {
 			Blockly.Xml.textToDom(source),
 			this.mainWorkspace
 		)
+		// eslint-disable-next-line no-underscore-dangle
+		this.mainWorkspace.refreshToolboxSelection_()
 	}
 
 	componentDidMount() {
@@ -55,6 +128,7 @@ class BlockEditor extends React.Component {
 		// Load toolbox
 		const toolboxXmlString = toolboxToXmlString(toolbox(strings))
 		const toolboxXml = Blockly.Xml.textToDom(toolboxXmlString)
+		delete window.Blockly.Blocks.defaultToolbox
 
 		// Setup workspace
 		const { mainWorkspaceContainer } = this
@@ -105,17 +179,69 @@ class BlockEditor extends React.Component {
 
 		// Override blockly prompt with custom dialogue
 		this.originalBlocklyPrompt = window.Blockly.prompt
-		window.Blockly.prompt = this.props.prompt
+		window.Blockly.prompt = this.props.openPrompt
 
 		// Handle custom blocks creation
+		// Setup workspace
+		this.proceduresMutationRoot = null
+		this.proceduresCallback = null
 		window.Blockly.Procedures.externalProcedureDefCallback = async (mutation, cb) => {
-			/* editorActions.style.visibility = 'visible';
-			callback = cb;
-			declarationWorkspace.clear();
-			mutationRoot = declarationWorkspace.newBlock('procedures_declaration');
-			mutationRoot.domToMutation(mutation);
-			mutationRoot.initSvg();
-			mutationRoot.render(false); */
+			const setup = (container) => {
+				if (this.proceduresWorkspace) {
+					this.proceduresWorkspace.dispose()
+				}
+				this.proceduresWorkspace = Blockly.inject(container, {
+					media : '/static/lib/scratch-blocks/media/',
+					zoom  : {
+						startScale : 0.66
+					},
+					colours : {
+						scrollbar : 'rgba(0, 0, 0, 0)',
+					},
+					scrollbars : true
+				})
+				this.proceduresWorkspace.addChangeListener(() => {
+					if (this.proceduresMutationRoot) {
+						this.proceduresMutationRoot.onChangeFn()
+					}
+				})
+				this.proceduresCallback = cb
+				this.proceduresWorkspace.clear()
+				this.proceduresMutationRoot = this.proceduresWorkspace.newBlock('procedures_declaration')
+				this.proceduresMutationRoot.translate(20, 45)
+				// this.proceduresMutationRoot.setMovable(false)
+				this.proceduresMutationRoot.domToMutation(mutation)
+				this.proceduresMutationRoot.initSvg()
+				this.proceduresMutationRoot.render(false)
+			}
+			this.props.openDialog(
+				{
+					titleKey        : 'block.procedures.title',
+					confirmLabelKey : 'block.procedures.confirm',
+					onConfirm       : () => {
+						const newMutation = this.proceduresMutationRoot.mutationToDom(/* opt_generateShadows */ true)
+						this.proceduresCallback(newMutation)
+						this.proceduresCallback = null
+						this.proceduresMutationRoot = null
+						this.proceduresWorkspace.clear()
+						// eslint-disable-next-line no-underscore-dangle
+						this.mainWorkspace.refreshToolboxSelection_()
+					},
+					onCancel : () => {
+						this.proceduresCallback = null
+						this.proceduresMutationRoot = null
+						this.proceduresWorkspace.clear()
+						// eslint-disable-next-line no-underscore-dangle
+						this.mainWorkspace.refreshToolboxSelection_()
+					}
+				},
+				<Container
+					onMount={setup}
+					onAddNumber={() => this.proceduresMutationRoot.addStringNumberExternal()}
+					onAddBoolean={() => this.proceduresMutationRoot.addBooleanExternal()}
+					onAddLabel={() => this.proceduresMutationRoot.addLabelExternal()}
+				/>
+			)
 		}
 	}
 
@@ -160,6 +286,18 @@ class BlockEditor extends React.Component {
 						border-top: none;
 						border-bottom: none;
 					}
+					.procedures {
+						position: fixed;
+						top: 0;
+						left: 0;
+						bottom: 0;
+						right: 0;
+						display: flex;
+						flex-direction: row;
+						align-items: center;
+						justify-content: center;
+						background-color: ${tinycolor(GRAY).setAlpha(0.5)};
+					}
 				`}</style>
 				<div
 					className='workspace'
@@ -174,7 +312,8 @@ BlockEditor.propTypes = {
 	strings         : PropTypes.object,
 	refEditorSource : PropTypes.string,
 	onSourceChange  : PropTypes.func,
-	prompt          : PropTypes.func,
+	openDialog      : PropTypes.func,
+	openPrompt      : PropTypes.func,
 }
 
 const BlockEditorWithStrings = (props) => {

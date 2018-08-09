@@ -34,6 +34,7 @@ const Header = ({
 			.root .logo :global(>.svgIcon) {
 				width: 11rem;
 				height: 2rem;
+				margin-top: -0.3rem;
 			}
 			.root .logo-compact :global(>.svgIcon) {
 				display: none;

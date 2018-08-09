@@ -39,7 +39,7 @@
     "reselect": "^3.0.1",
     "rimraf": "^2.6.2",
     "s3": "^4.4.0",
-    "scratch-blocks": "^0.1.0-prerelease.1533301486",
+    "scratch-blocks": "^0.1.0-prerelease.1533592374",
     "serve-handler": "^3.6.1",
     "tinycolor2": "^1.4.1",
     "why-did-you-update": "^0.1.1",

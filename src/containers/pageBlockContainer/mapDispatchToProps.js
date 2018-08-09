@@ -1,9 +1,13 @@
 import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
 import { updateCurrentEditorProgramSource } from 'src/actions/editor'
-import { safeOpenPromptAlternative } from 'src/actions/modal'
+import {
+	safeOpenPromptAlternative,
+	safeOpenDialogModal
+} from 'src/actions/modal'
 
 
 export default autobindDispatchToActionCreators({
-	prompt         : safeOpenPromptAlternative,
+	openDialog     : safeOpenDialogModal,
+	openPrompt     : safeOpenPromptAlternative,
 	onSourceChange : updateCurrentEditorProgramSource
 })

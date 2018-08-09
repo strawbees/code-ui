@@ -104,9 +104,9 @@ class NavigationManager extends React.PureComponent {
 		// naviation or to proceed
 		await safeOpenDialogModal(
 			{
-				titleKey        : 'ui.dialog.discart.title',
-				descriptionKey  : 'ui.dialog.discart.description',
-				confirmLabelKey : 'ui.dialog.discart.confirm',
+				titleKey        : 'ui.dialog.discard.title',
+				descriptionKey  : 'ui.dialog.discard.description',
+				confirmLabelKey : 'ui.dialog.discard.confirm',
 				limitWidth      : true
 			}
 		)
