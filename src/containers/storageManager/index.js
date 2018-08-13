@@ -173,6 +173,11 @@ class StorageManager extends React.Component {
 
 	// Syncs the storage
 	syncStorage = async () => {
+		if (this.isSyncing) {
+			this.cancelSync = debounce('syncStorage', this.syncStorage, 2000)
+			return
+		}
+		this.isSyncing = true
 		const {
 			safeSync,
 		} = this.props
@@ -184,6 +189,7 @@ class StorageManager extends React.Component {
 		await safeSync()
 		// Schedule next sync
 		this.cancelSync = debounce('syncStorage', this.syncStorage, 15000)
+		this.isSyncing = false
 	}
 
 	render() {

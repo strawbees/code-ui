@@ -30,6 +30,7 @@ import {
 import {
 	READY,
 	SYNCING,
+	NEEDS_SYNC,
 	ERROR,
 } from 'src/constants/storage'
 
@@ -115,19 +116,32 @@ export const safeRemoveProgram = (id) => async (dispatch) => {
 }
 
 export const safeSync = () => async (dispatch, getState) => {
-	const user = storageUserSelector()(getState())
-	const programs = storageProgramsSelector()(getState())
-	const remoteMirror = storageRemoteMirrorSelector()(getState())
+
+
+	const sync = async () => {
+		const data = {
+			user         : storageUserSelector()(getState()),
+			programs     : storageProgramsSelector()(getState()),
+			remoteMirror : storageRemoteMirrorSelector()(getState()),
+		}
+		const result = await dispatch(safeBackendCall('sync', data))
+		if (JSON.stringify(data.programs) !== JSON.stringify(storageProgramsSelector()(getState()))) {
+			return null
+		}
+		return result
+	}
+
 	dispatch(setStatus(SYNCING))
 	try {
+		let result
+		while (!result) {
+			result = await sync()
+		}
 		const {
 			mirror,
-			programIdChanges,
-		} = await dispatch(safeBackendCall('sync', {
-			user,
-			programs,
-			remoteMirror
-		}))
+			programIdChanges
+		} = result
+
 		// update the storage based on the results
 		dispatch(setRemoteMirror(mirror))
 		dispatch(setUser(mirror.user))
