@@ -39,6 +39,7 @@ import operator_or from './operator_or/index'
 import operator_random from './operator_random/index'
 import operator_round from './operator_round/index'
 import operator_subtract from './operator_subtract/index'
+import procedures_definition from './procedures_definition/index'
 import output_continuous_servo_direction from './output_continuous_servo_direction/index'
 import output_continuous_servo_speed from './output_continuous_servo_speed/index'
 import output_led from './output_led/index'
@@ -90,6 +91,7 @@ export default {
 	operator_random,
 	operator_round,
 	operator_subtract,
+	//procedures_definition,
 	output_continuous_servo_direction,
 	output_continuous_servo_speed,
 	output_led,
