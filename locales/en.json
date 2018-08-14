@@ -84,6 +84,16 @@
 	"ui.file_menu.options.remove"    : "Delete...",
 
 	"ui.help_menu.title"                         : "Help",
+	"ui.help_menu.options.intro_code.title"      : "Using Strawbees CODE",
+	"ui.help_menu.options.intro_code.video"      : "https://www.youtube.com/watch?v=-D9FhCw9OVA",
+	"ui.help_menu.options.intro_flow.title"      : "Flow programming",
+	"ui.help_menu.options.intro_flow.video"      : "https://www.youtube.com/watch?v=-D9FhCw9OVA",
+	"ui.help_menu.options.intro_block.title"     : "Block programming",
+	"ui.help_menu.options.intro_block.video"     : "https://www.youtube.com/watch?v=-D9FhCw9OVA",
+	"ui.help_menu.options.intro_text.title"      : "Text programming",
+	"ui.help_menu.options.intro_text.video"      : "https://www.youtube.com/watch?v=-D9FhCw9OVA",
+	"ui.help_menu.options.troubleshooting.title" : "Troubleshooting",
+	"ui.help_menu.options.troubleshooting.video" : "https://www.youtube.com/watch?v=-D9FhCw9OVA",
 	"ui.help_menu.options.learning_platform"     : "Visit Learning Platform",
 	"ui.help_menu.options.learning_platform.url" : "https://learning.strawbees.com",
 

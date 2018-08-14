@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import DropdownMenu from 'src/components/dropdownMenu'
-import HelpMenu from 'src/components/helpMenu'
+import HelpMenuContainer from 'src/containers/helpMenuContainer'
 import IconButton from 'src/components/iconButton'
 import SvgIcon from 'src/components/svgIcon'
 import S from 'src/containers/sManager'
@@ -219,7 +219,7 @@ const EditorMenu = ({
 				},
 			]}
 		/>
-		<HelpMenu/>
+		<HelpMenuContainer />
 		<input
 			className='name'
 			type='text'

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import { BLUE } from 'src/constants/colors'
-import HelpMenu from 'src/components/helpMenu'
+import HelpMenuContainer from 'src/containers/helpMenuContainer'
 import Link from 'src/components/link'
 import SvgIcon from 'src/components/svgIcon'
 import UserHeaderAvatarContainer from 'src/containers/userHeaderAvatarContainer'
@@ -81,7 +81,7 @@ const Header = ({
 		</Link>
 
 		{!editorMenu &&
-			<HelpMenu />
+			<HelpMenuContainer />
 		}
 
 		<div className='editor'>

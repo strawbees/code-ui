@@ -1,5 +1,6 @@
 import Dialog from 'src/components/dialog'
 import FormInput from 'src/components/formInput'
+import VideoPlayer from 'src/components/videoPlayer'
 import generateAction from 'src/utils/generateAction'
 import {
 	MODAL_SHOW_MODAL,
@@ -30,6 +31,21 @@ export const safeOpenModal = (content = null) => async (dispatch) =>
 		}
 		dispatch(setModalOnRequestClose(closeModalAndResolve))
 		dispatch(setModalContent(content))
+		dispatch(showModal())
+	})
+
+export const safeOpenVideoModal = (videoProps = {}) => async (dispatch) =>
+	new Promise(resolve => {
+		const closeModalAndResolve = () => {
+			dispatch(closeModal())
+			resolve()
+		}
+		dispatch(setModalOnRequestClose(closeModalAndResolve))
+		dispatch(setModalContent(
+			<VideoPlayer
+				{...videoProps}
+			/>
+		))
 		dispatch(showModal())
 	})
 
