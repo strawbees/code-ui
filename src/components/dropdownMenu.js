@@ -8,6 +8,10 @@ import expandIcon from 'src/assets/icons/general/expand.svg'
 import { WHITE, BLUE } from 'src/constants/colors'
 
 class DropdownMenu extends React.Component {
+	state = {
+		linkFromKey : ''
+	}
+
 	constructor(props) {
 		super(props)
 		this.listRef = React.createRef()
@@ -123,6 +127,16 @@ class DropdownMenu extends React.Component {
 					.list .option.disabled:hover {
 						font-weight: normal;
 					}
+					@media (max-width: 750px) {
+						.label :global(.svgIcon) {
+							display: none;
+						}
+					}
+					@media (max-width: 450px) {
+						.label {
+							font-size: 0.8rem;
+						}
+					}
 				`}</style>
 				<button
 					className='label'
@@ -150,13 +164,29 @@ class DropdownMenu extends React.Component {
 							{(option.disabled && option.disabledLabelKey) &&
 								<S value={option.disabledLabelKey}/>
 							}
-							{(!option.disabled && !option.link) &&
+							{(!option.disabled && !option.link && !option.linkKey) &&
 								<S value={option.labelKey}/>
 							}
-							{(!option.disabled && option.link) &&
-								<Link to={option.link}>
+							{(!option.disabled && option.link && !option.linkKey) &&
+								<Link to={option.link} external={option.linkExternal}>
 									<S value={option.labelKey}/>
 								</Link>
+							}
+							{(!option.disabled && !option.link && option.linkKey) &&
+								<React.Fragment>
+									<S
+										value={option.linkKey}
+										render={false}
+										onChange={(linkFromKey) => {
+											if (this.state.linkFromKey !== linkFromKey) {
+												this.setState({ linkFromKey })
+											}
+										}}
+									/>
+									<Link to={this.state.linkFromKey} external={option.linkExternal}>
+										<S value={option.labelKey}/>
+									</Link>
+								</React.Fragment>
 							}
 						</li>
 					)}
@@ -178,6 +208,8 @@ DropdownMenu.propTypes = {
 		onClick          : PropTypes.func,
 		disabled         : PropTypes.bool,
 		link             : PropTypes.string,
+		linkKey          : PropTypes.string,
+		linkExternal     : PropTypes.bool,
 	}))
 }
 

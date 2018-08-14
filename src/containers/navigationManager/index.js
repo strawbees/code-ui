@@ -52,7 +52,16 @@ class NavigationManager extends React.PureComponent {
 	}
 
 	// Forward the link cliks, with a custom cancel handle
-	onLinkClicked = async ({ as, href, nativeEvent }) => {
+	onLinkClicked = async ({
+		as,
+		href,
+		nativeEvent,
+		inApp
+	}) => {
+		if (!inApp) {
+			// ignore links that are not from inside the app
+			return
+		}
 		if (nativeEvent.currentTarget.nodeName === 'A' &&
 			(
 				nativeEvent.metaKey ||

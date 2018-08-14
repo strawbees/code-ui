@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import DropdownMenu from 'src/components/dropdownMenu'
+import HelpMenu from 'src/components/helpMenu'
 import IconButton from 'src/components/iconButton'
 import SvgIcon from 'src/components/svgIcon'
 import S from 'src/containers/sManager'
@@ -157,6 +158,16 @@ const EditorMenu = ({
 					width: 5rem;
 				}
 			}
+			@media (max-width: 450px){
+				.root :global(>*),
+				.buttons :global(>*) {
+					margin-right: 0.25rem;
+				}
+				.root :global(.dropdownMenu) {
+					margin-right: 0;
+				}
+			}
+
 		`}</style>
 		<div className='type'>
 			<SvgIcon
@@ -208,6 +219,7 @@ const EditorMenu = ({
 				},
 			]}
 		/>
+		<HelpMenu/>
 		<input
 			className='name'
 			type='text'

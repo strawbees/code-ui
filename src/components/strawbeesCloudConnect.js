@@ -4,10 +4,13 @@ import tinycolor from 'tinycolor2'
 import IconButton from 'src/components/iconButton'
 import StrawbeesCloudSignup from 'src/components/strawbeesCloudSignup'
 import StrawbeesCloudSignin from 'src/components/strawbeesCloudSignin'
+import SvgIcon from 'src/components/svgIcon'
+import strawbeesIcon from 'src/assets/icons/storage/strawbees.svg'
 import {
 	WHITE,
 	PINK,
 	BLUE,
+	BLACK,
 } from 'src/constants/colors'
 
 class StrawbeesCloudConnect extends React.Component {
@@ -63,7 +66,16 @@ class StrawbeesCloudConnect extends React.Component {
 					.logo {
 						font-weight: bold;
 						font-size: 1.5rem;
-						color: ${tinycolor(BLUE).toRgbString()};
+						color: ${tinycolor(BLACK).toRgbString()};
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						justify-content: center;
+						position: relative;
+					}
+					.logo :global(.svgIcon) {
+						width: 7rem;
+						height: 6rem;
 					}
 					.nav {
 						margin-top: 1rem;
@@ -77,6 +89,7 @@ class StrawbeesCloudConnect extends React.Component {
 					}
 				`}</style>
 				<div className='logo'>
+					<SvgIcon icon={strawbeesIcon}/>
 					Strawbees Cloud
 				</div>
 				<div className='nav'>

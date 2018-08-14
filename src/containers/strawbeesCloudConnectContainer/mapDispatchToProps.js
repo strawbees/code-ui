@@ -6,6 +6,7 @@ import {
 import {
 	setCredentials,
 	setUser,
+	setRemoteMirror,
 } from 'src/actions/storage'
 
 export default autobindDispatchToActionCreators({
@@ -13,4 +14,5 @@ export default autobindDispatchToActionCreators({
 	closeModal,
 	setCredentials,
 	setUser,
+	setRemoteMirror,
 })

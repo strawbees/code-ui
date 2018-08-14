@@ -1,37 +1,50 @@
 import {
 	signin,
 	signup,
-	forgotPassword ,
+	forgotPassword,
 } from 'src/storage/backendStrawbees'
 
 export default (stateProps, dispatchProps, ownProps) => {
 	const {
+		programs
+	} = stateProps
+	const {
 		closeModal,
 		setCredentials,
 		setUser,
+		setRemoteMirror,
 		...otherDispatchProps
 	} = dispatchProps
+	const {
+		safeOpenDialogModal
+	} = dispatchProps
+
+	const onConnect = async ({ credentials, user }) => {
+		if (Object.keys(programs).length) {
+			try {
+				await safeOpenDialogModal({
+					titleKey        : 'ui.dialog.anonymous_copy_programs.title',
+					descriptionKey  : 'ui.dialog.anonymous_copy_programs.description',
+					confirmLabelKey : 'ui.dialog.anonymous_copy_programs.confirm',
+					cancelLabelKey  : 'ui.dialog.anonymous_copy_programs.cancel',
+					limitWidth      : true
+				})
+				setRemoteMirror(null)
+			} catch (e) {}
+		}
+		setCredentials(credentials)
+		setUser(user)
+		closeModal()
+	}
 
 	const onSignup = async (values) => {
-		try {
-			const { credentials, user } = await signup(values)
-			setCredentials(credentials)
-			setUser(user)
-			closeModal()
-		} catch (error) {
-			throw error
-		}
+		const result = await signup(values)
+		await onConnect(result)
 	}
 
 	const onSignin = async (values) => {
-		try {
-			const { credentials, user } = await signin(values)
-			setCredentials(credentials)
-			setUser(user)
-			closeModal()
-		} catch (error) {
-			throw error
-		}
+		const result = await signin(values)
+		await onConnect(result)
 	}
 
 	const onForgotPassword = async (values) => {

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import { BLUE } from 'src/constants/colors'
+import HelpMenu from 'src/components/helpMenu'
 import Link from 'src/components/link'
 import SvgIcon from 'src/components/svgIcon'
 import UserHeaderAvatarContainer from 'src/containers/userHeaderAvatarContainer'
@@ -24,6 +25,9 @@ const Header = ({
 				width: 100%;
 				padding: 0 0.5rem;
 			}
+			.root :global(> .dropdownMenu) {
+				height: 100%;
+			}
 			.root .editor {
 				flex: 1;
 				height: 100%;
@@ -39,7 +43,7 @@ const Header = ({
 			.root .logo-compact :global(>.svgIcon) {
 				display: none;
 				height: 2.5rem;
-				width: 3.5rem;
+				width: 3.4rem;
 			}
 			.root .logo :global(>.svgIcon),
 			.root .logo-compact :global(>.svgIcon) {
@@ -48,7 +52,7 @@ const Header = ({
 			.root :global(>.userHeaderAvatar) {
 				margin-right: 0.5rem;
 			}
-			@media (max-width: 600px) {
+			@media (max-width: 650px) {
 				.root {
 					padding: 0 0.5rem;
 				}
@@ -57,6 +61,12 @@ const Header = ({
 				}
 				.root .logo-compact :global(>.svgIcon) {
 					display: inherit;
+				}
+			}
+			@media (max-width: 450px) {
+				.root .logo :global(>.svgIcon),
+				.root .logo-compact :global(>.svgIcon) {
+					margin-right: 0;
 				}
 			}
 		`}</style>
@@ -69,6 +79,10 @@ const Header = ({
 				<SvgIcon icon={logoCompactIcon} />
 			</div>
 		</Link>
+
+		{!editorMenu &&
+			<HelpMenu />
+		}
 
 		<div className='editor'>
 			{editorMenu &&

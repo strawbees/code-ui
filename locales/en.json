@@ -83,6 +83,10 @@
 	"ui.file_menu.options.export"    : "Export to computer",
 	"ui.file_menu.options.remove"    : "Delete...",
 
+	"ui.help_menu.title"                         : "Help",
+	"ui.help_menu.options.learning_platform"     : "Visit Learning Platform",
+	"ui.help_menu.options.learning_platform.url" : "https://learning.strawbees.com",
+
 	"ui.dialog.upload.title"          : "Upload to Quirkbot",
 	"ui.dialog.duplicate.title"       : "Save as a copy",
 	"ui.dialog.duplicate.field"       : "New name",
@@ -105,6 +109,10 @@
 	"ui.dialog.anonymous_save.title"       : "Anonymous user - saving",
 	"ui.dialog.anonymous_save.description" : "When you save a program as an *Anonymous user*, the program is only saved locally on your device and is not published on the web.",
 	"ui.dialog.anonymous_save.confirm"     : "Ok, got it",
+	"ui.dialog.anonymous_copy_programs.title"       : "Copy local programs?",
+	"ui.dialog.anonymous_copy_programs.description" : "There are programs saved locally by an *Anonymous user* on this device. Would you like to copy them to your online account?",
+	"ui.dialog.anonymous_copy_programs.confirm"     : "Yes, copy programs",
+	"ui.dialog.anonymous_copy_programs.cancel"      : "No, discard programs",
 
 	"ui.program_list.title.storage" : "My programs",
 	"ui.program_list.empty"         : "No programs yet",

@@ -116,8 +116,6 @@ export const safeRemoveProgram = (id) => async (dispatch) => {
 }
 
 export const safeSync = () => async (dispatch, getState) => {
-
-
 	const sync = async () => {
 		const data = {
 			user         : storageUserSelector()(getState()),

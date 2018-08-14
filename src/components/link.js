@@ -28,6 +28,7 @@ const Link = ({ children, ...props }) => {
 					target={external && '_blank'}
 					onClick={(nativeEvent) => {
 						const evt = { href, as, nativeEvent }
+						evt.inApp = as === to
 						if (onClick) {
 							onClick(nativeEvent)
 						}
