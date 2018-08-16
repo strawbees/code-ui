@@ -13,6 +13,7 @@ export default (stateProps, dispatchProps, ownProps) => {
 		setCredentials,
 		setUser,
 		setRemoteMirror,
+		collapseAccountSettings,
 		...otherDispatchProps
 	} = dispatchProps
 	const {
@@ -35,6 +36,7 @@ export default (stateProps, dispatchProps, ownProps) => {
 		setCredentials(credentials)
 		setUser(user)
 		closeModal()
+		collapseAccountSettings()
 	}
 
 	const onSignup = async (values) => {

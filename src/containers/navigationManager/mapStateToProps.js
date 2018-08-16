@@ -7,5 +7,6 @@ export default () => createStructuredSelector({
 	refEditorHasChanges : refEditorHasChangesSelector(),
 	queryRef            : queryRefSelector(),
 	urlVarP             : makeUrlVarSelector('p'),
+	urlVarU             : makeUrlVarSelector('u'),
 	urlVarData          : makeUrlVarSelector('data'),
 })

@@ -1,20 +1,16 @@
 import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
 import {
-	updateCurrentEditorProgramName,
-	saveCurrentEditorProgram,
-} from 'src/actions/editor'
+	safeOpenModal,
+} from 'src/actions/modal'
 import {
-	modalUploadCode,
 	modalDuplicateProgramData,
-	modalImportProgram,
+	modalUploadCode,
 	exportProgramToFile,
 } from 'src/actions/program'
 
 export default autobindDispatchToActionCreators({
-	updateCurrentEditorProgramName,
-	saveCurrentEditorProgram,
-	modalUploadCode,
+	safeOpenModal,
 	modalDuplicateProgramData,
-	modalImportProgram,
+	modalUploadCode,
 	exportProgramToFile,
 })

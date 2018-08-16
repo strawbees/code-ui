@@ -10,6 +10,9 @@ import {
 	setDisplayPageLoader,
 	setDisplayError,
 } from 'src/actions/setup'
+import {
+	setPublicProfile,
+} from 'src/actions/storage'
 
 export default autobindDispatchToActionCreators({
 	safeOpenDialogModal,
@@ -17,4 +20,5 @@ export default autobindDispatchToActionCreators({
 	resetCurrentEditorProgram,
 	setDisplayPageLoader,
 	setDisplayError,
+	setPublicProfile,
 })

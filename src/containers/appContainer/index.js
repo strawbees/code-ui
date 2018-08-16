@@ -25,7 +25,7 @@ class AppContainer extends React.Component {
 		query,
 		asPath,
 		isServer,
-		store
+		store,
 	}) {
 		const {
 			routesLoaded,

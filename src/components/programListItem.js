@@ -44,7 +44,7 @@ const ProgramMenu = ({
 			displayAsButton={false}
 		/>
 		<div className='container'>
-			{items && items.map(({ icon, labelKey, onClick }) =>
+			{items && items.filter(item => item).map(({ icon, labelKey, onClick }) =>
 				<IconButton
 					key={labelKey}
 					icon={icon}
@@ -93,27 +93,27 @@ const ProgramListItem = ({
 					name={name}
 					type={type}
 					items={[
-						{
+						onUploadPress && {
 							icon     : fileIcons.upload,
 							labelKey : 'ui.file_menu.options.upload',
 							onClick  : onUploadPress,
 						},
-						{
+						onDuplicatePress && {
 							icon     : fileIcons.duplicate,
 							labelKey : 'ui.file_menu.options.duplicate',
 							onClick  : onDuplicatePress,
 						},
-						{
+						onSharePress && {
 							icon     : fileIcons.share,
 							labelKey : 'ui.file_menu.options.share',
 							onClick  : onSharePress,
 						},
-						{
+						onExportPress && {
 							icon     : fileIcons.export,
 							labelKey : 'ui.file_menu.options.export',
 							onClick  : onExportPress,
 						},
-						{
+						onRemovePress && {
 							icon     : fileIcons.remove,
 							labelKey : 'ui.file_menu.options.remove',
 							onClick  : onRemovePress,

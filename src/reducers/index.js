@@ -1,20 +1,22 @@
 import { combineReducers } from 'redux'
+import compiler from 'src/reducers/compiler'
+import editor from 'src/reducers/editor'
+import flowEditor from 'src/editors/flow/reducer'
+import modal from 'src/reducers/modal'
+import qbmidi from 'src/reducers/qbmidi'
 import setup from 'src/reducers/setup'
 import storage from 'src/reducers/storage'
-import qbmidi from 'src/reducers/qbmidi'
-import editor from 'src/reducers/editor'
-import modal from 'src/reducers/modal'
-import compiler from 'src/reducers/compiler'
+import ui from 'src/reducers/ui'
 import uploader from 'src/reducers/uploader'
-import flowEditor from 'src/editors/flow/reducer'
 
 export default combineReducers({
-	setup,
-	qbmidi,
-	storage,
-	editor,
-	modal,
 	compiler,
-	uploader,
+	editor,
 	flowEditor,
+	modal,
+	qbmidi,
+	setup,
+	storage,
+	ui,
+	uploader,
 })

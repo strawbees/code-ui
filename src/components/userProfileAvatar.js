@@ -19,16 +19,16 @@ const UserProfileAvatar = ({
 				align-items: center;
 			}
 			.name :global(.svgIcon) {
-				width: 4.5rem;
+				width: 3.5rem;
 				height: 3.5rem;
+				margin-right: 0.5rem;
 			}
 			.name .username {
 				text-transform: none;
 				margin-bottom: 0;
 			}
-			.root :global(.message) {
-				max-width: 30rem;
-				margin: 0 0.5rem;
+			.profile-url {
+				font-size: 0.8rem;
 			}
 			@media (max-width: 300px){
 				.name .username {

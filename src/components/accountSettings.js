@@ -2,34 +2,39 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import IconButton from 'src/components/iconButton'
-import Message from 'src/components/message'
-import S from 'src/containers/sManager'
+import Link from 'src/components/link'
 import StrawbeesCloudConnectContainer from 'src/containers/strawbeesCloudConnectContainer'
-import arrowIcon from 'src/assets/icons/general/arrowRight.svg'
+import S from 'src/containers/sManager'
 import userIcons from 'src/assets/icons/user'
 import preferencesIcon from 'src/assets/icons/general/preferences.svg'
 import {
 	WHITE,
 	GRAY,
+	BLACK,
 } from 'src/constants/colors'
 
 class AccountSettings extends React.Component {
-	state = {
-		open : false
+	constructor(props) {
+		super(props)
+		this.publicProfileUrlContainer = React.createRef()
 	}
 
-	toggleOpen = () => {
-		this.setState({ open : !this.state.open })
+	selectPublicProfileUrlContainer = () => {
+		this.publicProfileUrlContainer.current.focus()
+		window.getSelection().selectAllChildren(this.publicProfileUrlContainer.current)
 	}
 
 	render() {
-		const { open } = this.state
 		const {
 			isAnon,
+			publicProfileUrl,
 			logout,
+			isOpen,
+			expandAccountSettings,
+			collapseAccountSettings
 		} = this.props
 		return (
-			<div className={`root accountSettings ${open ? 'opened' : 'closed'}`}>
+			<div className={`root accountSettings ${isOpen ? 'opened' : 'closed'}`}>
 				<style jsx>{`
 					.root {
 						position: relative;
@@ -76,14 +81,32 @@ class AccountSettings extends React.Component {
 						padding: 1rem;
 						box-shadow: 0.15rem 0.15rem 0 0 rgba(0,0,0,0.2);
 					}
+					.public-profile-url {
+						margin-bottom: 1rem;
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+					}
+					.public-profile-url .title {
+						font-weight: bold;
+					}
+					.public-profile-url :global(.url){
+						font-size: 0.65rem;
+						font-family: Code;
+						background-color: ${tinycolor(WHITE).toRgbString()};
+						color: ${tinycolor(BLACK).setAlpha(0.7).toRgbString()};
+						padding: 0.25rem 0.5rem;
+						border-radius: 0.2rem;
+
+					}
 				`}</style>
 				<div className='expand'>
 					{isAnon &&
 						<React.Fragment>
 							<IconButton
-								icon={arrowIcon}
+								icon={userIcons.login}
 								labelKey='ui.user.account_settings.annon'
-								onClick={this.toggleOpen}
+								onClick={isOpen ? collapseAccountSettings : expandAccountSettings}
 							/>
 							<div className='account-providers'>
 								<StrawbeesCloudConnectContainer />
@@ -95,9 +118,20 @@ class AccountSettings extends React.Component {
 							<IconButton
 								icon={preferencesIcon}
 								labelKey='ui.user.account_settings.button'
-								onClick={this.toggleOpen}
+								onClick={isOpen ? collapseAccountSettings : expandAccountSettings}
 							/>
 							<div className='settings'>
+								<div className='public-profile-url'>
+									<div className='title'>
+										<S value='ui.user.account_settings.public_profile.title' />
+									</div>
+									<div
+										className='url'
+										ref={this.publicProfileUrlContainer}
+										onClick={this.selectPublicProfileUrlContainer}>
+										{publicProfileUrl}
+									</div>
+								</div>
 								<IconButton
 									icon={userIcons.logout}
 									labelKey='ui.user.account_settings.logout'
@@ -107,15 +141,6 @@ class AccountSettings extends React.Component {
 						</React.Fragment>
 					}
 				</div>
-
-				{/* isAnon &&
-					<Message type='warning'>
-						<S
-							value='ui.user.anon_warning'
-							markdown={true}
-						/>
-					</Message>
-				*/}
 			</div>
 		)
 	}
@@ -126,8 +151,12 @@ AccountSettings.defaultProps = {
 }
 
 AccountSettings.propTypes = {
-	isAnon : PropTypes.bool,
-	logout : PropTypes.func,
+	isAnon                  : PropTypes.bool,
+	publicProfileUrl        : PropTypes.string,
+	logout                  : PropTypes.func,
+	isOpen                  : PropTypes.bool,
+	expandAccountSettings   : PropTypes.func,
+	collapseAccountSettings : PropTypes.func,
 }
 
 

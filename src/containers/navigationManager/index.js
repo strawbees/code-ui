@@ -5,6 +5,8 @@ import Router from 'next/router'
 import {
 	isProgramIdValid,
 	loadProgram,
+	isUserIdValid,
+	loadUserPublicProfile,
 } from 'src/storage'
 import { connect } from 'react-redux'
 import {
@@ -126,13 +128,13 @@ class NavigationManager extends React.PureComponent {
 		this.processNavigation(prevProps)
 	}
 
-	// Monitor the page and url var changes to load programs
+	// Monitor the page and url var changes to load programs, users, etc
 	processNavigation = async (prevProps) => {
 		// Only proceef if there are changes to the props that we care about
 		if (shallowCompareObjects(
 			this.props,
 			prevProps,
-			['queryRef', 'urlVarP', 'urlVarData'])) {
+			['queryRef', 'urlVarP', 'urlVarU', 'urlVarData'])) {
 			return
 		}
 		// Actions used
@@ -141,25 +143,71 @@ class NavigationManager extends React.PureComponent {
 			setCurrentEditorProgram,
 			setDisplayPageLoader,
 			setDisplayError,
+			setPublicProfile,
 		} = this.props
 
 		// Props that we care about
-		const { urlVarP, queryRef } = this.props
-		let { urlVarData } = this.props
-
-		// if there's both ?data and ?p, ignore ?data
-		if (urlVarP && urlVarData) {
-			urlVarData = null
-		}
+		const { queryRef } = this.props
 
 		// Start by always cleaning the error
 		setDisplayError(null)
+
+		// Check if this is a user page
+		if (queryRef === 'user') {
+			const { urlVarU } = this.props
+			// Show the loader
+			setDisplayPageLoader(true)
+
+			// Reset the current public profile
+			setPublicProfile(null)
+
+			// If there's no user id, there's nothing to show
+			if (queryRef && !urlVarU) {
+				setDisplayError(404)
+				setDisplayPageLoader(false)
+				return
+			}
+
+			// If theres a program id...
+			// Check if it is valid...
+			if (!isUserIdValid(urlVarU)) {
+				setDisplayError(404)
+				setDisplayPageLoader(false)
+				return
+			}
+			// Try to load it
+			let profile
+			try {
+				profile = await loadUserPublicProfile(urlVarU)
+			} catch (e) {
+				setDisplayError(404)
+				setDisplayPageLoader(false)
+				return
+			}
+			if (profile) {
+				setPublicProfile(profile)
+				setDisplayPageLoader(false)
+				return
+			}
+			// If we got here, I am not sure what to do :)
+			setDisplayError(404)
+			setDisplayPageLoader(false)
+			return
+		}
 
 		// Only act on the editor pages
 		if (queryRef !== 'flow' &&
 			queryRef !== 'block' &&
 			queryRef !== 'text') {
 			return
+		}
+
+		const { urlVarP } = this.props
+		let { urlVarData } = this.props
+
+		// if there's both ?data and ?p, ignore ?data
+		if (urlVarP && urlVarData) {
+			urlVarData = null
 		}
 
 		// Show the loader
@@ -244,6 +292,7 @@ class NavigationManager extends React.PureComponent {
 NavigationManager.propTypes = {
 	queryRef            : PropTypes.string,
 	urlVarP             : PropTypes.string,
+	urlVarU             : PropTypes.string,
 	urlVarData          : PropTypes.string,
 	refEditorHasChanges : PropTypes.bool,
 
@@ -251,6 +300,7 @@ NavigationManager.propTypes = {
 	setCurrentEditorProgram   : PropTypes.func,
 	setDisplayPageLoader      : PropTypes.func,
 	setDisplayError           : PropTypes.func,
+	setPublicProfile          : PropTypes.func,
 }
 
 export default connect(

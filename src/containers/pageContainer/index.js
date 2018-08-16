@@ -5,6 +5,7 @@ import PageHomeContainer from 'src/containers/pageHomeContainer'
 import PageFlowContainer from 'src/containers/pageFlowContainer'
 import PageBlockContainer from 'src/containers/pageBlockContainer'
 import PageTextContainer from 'src/containers/pageTextContainer'
+import PageUserContainer from 'src/containers/pageUserContainer'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
@@ -16,6 +17,7 @@ const PageContainer = (props) => {
 		flow  : PageFlowContainer,
 		block : PageBlockContainer,
 		text  : PageTextContainer,
+		user  : PageUserContainer,
 	}
 	const RefComponent = components[props.queryRef] || PageError
 	return (
@@ -25,6 +27,9 @@ const PageContainer = (props) => {
 					overflow-y: scroll;
 					-webkit-overflow-scrolling: touch;
 					overscroll-behavior: none;
+				}
+				.root :global(> *) {
+					min-height: 100%;
 				}
 			`}</style>
 			<RefComponent {...props}/>
@@ -38,7 +43,8 @@ PageContainer.propTypes = {
 		'flow',
 		'block',
 		'text',
-		'error'
+		'error',
+		'user'
 	])
 }
 
