@@ -156,27 +156,33 @@ export const generateCode = source => {
 		header             : '#include "Quirkbot.h"\n',
 		types              : {},
 		instances          : {},
+		procedures         : {},
 		definitions        : {},
 		oneTimeAssignments : {},
 		body               : ''
 	}
 
 	if (json && json.block) {
-		json.block.sort((a, b) => {
-			if (a.type === 'procedures_definition' && b.type !== 'procedures_definition') {
-				return -1
-			}
-			if (b.type === 'procedures_definition' && a.type !== 'procedures_definition') {
-				return 1
-			}
-			return 0
-		}).filter(block =>
-			block.attributes &&
-			(
-				block.attributes.type === 'event_power_on' ||
-				block.attributes.type === 'procedures_definition'
+		json.block
+			.filter(block =>
+				block.attributes &&
+				(
+					block.attributes.type === 'event_power_on' ||
+					block.attributes.type === 'procedures_definition'
+				)
 			)
-		).forEach(block => parseBlock(block, structure))
+			.sort((a, b) => {
+				if (a.attributes.type === 'procedures_definition' &&
+					b.attributes.type !== 'procedures_definition') {
+					return -1
+				}
+				if (b.attributes.type === 'procedures_definition' &&
+					a.attributes.type !== 'procedures_definition') {
+					return 1
+				}
+				return 0
+			})
+			.forEach(block => parseBlock(block, structure))
 	}
 
 	return assembleStructure(structure)
