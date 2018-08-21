@@ -24,7 +24,7 @@ const HelpMenu = ({
 			divider  : true,
 			labelKey : 'ui.help_menu.options.intro_flow.title',
 			onClick  : () => safeOpenVideoModal({
-				url      : videoIntroCODE,
+				url      : videoIntroFlow,
 				autoplay : true
 			})
 		},
