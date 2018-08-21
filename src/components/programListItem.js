@@ -25,7 +25,7 @@ const ProgramMenu = ({
 				margin-top: 0.5rem;
 				display: flex;
 				flex-direction: column;
-				align-items: flex-end;
+				align-items: flex-start;
 				background-color: ${tinycolor(GRAY).lighten(35).toRgbString()};
 				padding: 0.5rem;
 				border-radius: 0.5rem;
