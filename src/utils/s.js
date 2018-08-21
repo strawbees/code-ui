@@ -1,4 +1,4 @@
-export default (strings, key) => {
+export default (strings, key, showKeyIfMissing = true) => {
 	if (!strings) {
 		// strings are not loaded
 		return ''
@@ -11,5 +11,8 @@ export default (strings, key) => {
 		// console.warn(`missing translation: ${key}`)
 		/* eslint-enable no-console */
 	}
-	return key
+	if (showKeyIfMissing) {
+		return key
+	}
+	return ''
 }

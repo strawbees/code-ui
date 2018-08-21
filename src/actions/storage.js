@@ -25,6 +25,7 @@ import {
 	STORAGE_REMOVE_PROGRAM,
 	STORAGE_REMOVE_ALL_PROGRAMS,
 	STORAGE_SET_REMOTE_MIRROR,
+	STORAGE_SET_PUBLIC_PROFILE,
 	STORAGE_CLEAR
 } from 'src/constants/actionTypes'
 import {
@@ -62,6 +63,7 @@ export const setCredentials = generateAction(STORAGE_SET_CREDENTIALS)
 export const setUser = generateAction(STORAGE_SET_USER)
 export const setPrograms = generateAction(STORAGE_SET_PROGRAMS)
 export const setRemoteMirror = generateAction(STORAGE_SET_REMOTE_MIRROR)
+export const setPublicProfile = generateAction(STORAGE_SET_PUBLIC_PROFILE)
 export const addProgram = generateAction(STORAGE_ADD_PROGRAM)
 export const updateProgram = generateAction(STORAGE_UPDATE_PROGRAM)
 export const removeProgram = generateAction(STORAGE_REMOVE_PROGRAM)

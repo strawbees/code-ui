@@ -11,10 +11,11 @@ const PageHome = () =>
 	<div className='root pageHome'>
 		<style jsx>{`
 			.root {
-				min-height: 100%;
-				display: flex;
-				flex-direction: column;
-				align-items: stretch;
+				display: block;
+				position: relative;
+			}
+			.banner {
+				position: absolute;
 			}
 			.section {
 				display: flex;
@@ -49,6 +50,9 @@ const PageHome = () =>
 			}
 			@media (min-width: 1080px) {
 				.root {
+					display: flex;
+					flex-direction: column;
+					align-items: stretch;
 					flex-direction: row;
 					height: 100%;
 				}

@@ -45,6 +45,23 @@ export const loadProgram = async (id) => {
 	return remoteCopy
 }
 
+export const loadUserPublicProfile = async (id) => {
+	// remove the prefix if present
+	if (id.indexOf('sb/') === 0) {
+		id = id.replace('sb/', '')
+	}
+
+	// Get the user
+	const user = await loadRemoteUserByUsername({}, { username : id })
+	// Get a fresh copy of all the programs
+	const programs = await loadRemoteProgramsByUserId({}, { userId : user.id })
+
+	return {
+		user,
+		programs
+	}
+}
+
 export const sync = async (
 	credentials,
 	{
@@ -260,9 +277,10 @@ const loadRemoteUserByUsername = async (credentials, { username }) => {
 	if (!ok) {
 		throw new Error('UNHADLED')
 	}
-	if (!json.lenght) {
+	if (!json.length) {
 		throw new Error('USER_NOT_FOUND')
 	}
+
 	return {
 		username : json[0].nickname,
 		id       : json[0].id,

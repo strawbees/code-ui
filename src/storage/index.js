@@ -43,13 +43,39 @@ export const resolveBackendFromProgramId = (id) => {
 	return null
 }
 
+export const resolveBackendFromUserId = (id) => {
+	id = id.toString()
+	const prefix = id.substring(0, 3)
+	let backend = Object.values(backends)
+		.filter(b => `${b.prefix}/` === prefix)
+		.pop() || null
+
+	// Fallback to strawbees
+	if (!backend && id.indexOf('/') === -1) {
+		backend = backends.strawbees
+	}
+	return backend
+}
+
 export const loadProgram = async (id) => {
 	const backend = resolveBackendFromProgramId(id)
 	return backend.loadProgram(id)
 }
 
+export const loadUserPublicProfile = async (id) => {
+	const backend = resolveBackendFromUserId(id)
+	return backend.loadUserPublicProfile(id)
+}
+
 export const isProgramIdValid = (id) => {
 	if (resolveBackendFromProgramId(id)) {
+		return true
+	}
+	return false
+}
+
+export const isUserIdValid = (id) => {
+	if (resolveBackendFromUserId(id)) {
 		return true
 	}
 	return false

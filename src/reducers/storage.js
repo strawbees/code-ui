@@ -9,6 +9,7 @@ import {
 	STORAGE_REMOVE_PROGRAM,
 	STORAGE_REMOVE_ALL_PROGRAMS,
 	STORAGE_SET_REMOTE_MIRROR,
+	STORAGE_SET_PUBLIC_PROFILE,
 	STORAGE_CLEAR
 } from 'src/constants/actionTypes'
 
@@ -84,10 +85,23 @@ const programs = (state = defaultPrograms, { type, payload }) => {
 	}
 }
 
+const defaultPublicProfile = { programs : {}, user : null }
+const publicProfile = (state = defaultPublicProfile, { type, payload }) => {
+	switch (type) {
+		case STORAGE_SET_PUBLIC_PROFILE:
+			return !payload ? defaultPublicProfile : payload
+		case STORAGE_CLEAR:
+			return defaultPublicProfile
+		default:
+			return state
+	}
+}
+
 export default combineReducers({
 	status,
 	credentials,
 	user,
 	remoteMirror,
 	programs,
+	publicProfile,
 })

@@ -166,7 +166,7 @@ export const modalDuplicateProgramData = (program) => async (dispatch) => {
 	return dispatch(safeOpenDialogModal(
 		{
 			titleKey        : 'ui.dialog.duplicate.title',
-			confirmLabelKey : 'ui.editor.duplicate',
+			confirmLabelKey : 'ui.dialog.duplicate.confirm',
 			// limitWidth      : true,
 			onConfirm
 		},

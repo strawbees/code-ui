@@ -1,5 +1,5 @@
 export default (strings) => ({
-	message0        : 'when power is ON',
+	message0        : 'when program starts',
 	inputsInline    : true,
 	nextStatement   : null,
 	colour          : '#FFBF00',

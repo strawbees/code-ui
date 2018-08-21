@@ -1,0 +1,12 @@
+[
+	{
+		"id" : "en",
+		"name" : "English",
+		"default" : true
+	},
+	{
+		"id" : "sv",
+		"name" : "Svenska",
+		"fallback" : "en"
+	}
+]
