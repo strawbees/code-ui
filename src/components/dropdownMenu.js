@@ -161,8 +161,8 @@ class DropdownMenu extends React.Component {
 									option.onClick()
 								}
 							}}>
-							{(option.disabled && option.disabledLabelKey) &&
-								<S value={option.disabledLabelKey}/>
+							{option.disabled &&
+								<S value={option.disabledLabelKey || option.labelKey}/>
 							}
 							{(!option.disabled && !option.link && !option.linkKey) &&
 								<S value={option.labelKey}/>

@@ -12,6 +12,7 @@ const HelpMenu = ({
 }) => {
 	const options = [
 		{
+			disabled : true,
 			labelKey : 'ui.help_menu.options.intro_code.title',
 			onClick  : () => safeOpenVideoModal({
 				url      : videoIntroCODE,
@@ -19,6 +20,7 @@ const HelpMenu = ({
 			})
 		},
 		{
+			disabled : true,
 			divider  : true,
 			labelKey : 'ui.help_menu.options.intro_flow.title',
 			onClick  : () => safeOpenVideoModal({
@@ -27,6 +29,7 @@ const HelpMenu = ({
 			})
 		},
 		{
+			disabled : true,
 			labelKey : 'ui.help_menu.options.intro_block.title',
 			onClick  : () => safeOpenVideoModal({
 				url      : videoIntroBlock,
@@ -34,6 +37,7 @@ const HelpMenu = ({
 			})
 		},
 		{
+			disabled : true,
 			labelKey : 'ui.help_menu.options.intro_text.title',
 			onClick  : () => safeOpenVideoModal({
 				url      : videoIntroText,
@@ -41,6 +45,7 @@ const HelpMenu = ({
 			})
 		},
 		{
+			disabled : true,
 			divider  : true,
 			labelKey : 'ui.help_menu.options.troubleshooting.title',
 			onClick  : () => safeOpenVideoModal({
