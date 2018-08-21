@@ -5,6 +5,7 @@ import Router from 'next/router'
 import { connect } from 'react-redux'
 import parseUrlVars from 'src/utils/parseUrlVars'
 import loadStaticData from 'src/utils/loadStaticData'
+import * as browserStorage from 'src/utils/browserStorage'
 import Spinner from 'src/components/spinner'
 import HeadContainer from 'src/containers/headContainer'
 import HeaderContainer from 'src/containers/headerContainer'
@@ -74,15 +75,18 @@ class AppContainer extends React.Component {
 	}
 
 	async componentDidMount() {
+		const {
+			setSetup,
+			setDisplayPageLoader,
+			setHiddenGlobalBanners,
+		} = this.props
+
 		// hookup nprogress
 		Router.router.events.on('routeChangeStart', NProgress.start)
 		Router.router.events.on('routeChangeComplete', NProgress.done)
 		Router.router.events.on('routeChangeError', NProgress.done)
+
 		// adjust as path on first render
-		const {
-			setSetup,
-			setDisplayPageLoader,
-		} = this.props
 		setSetup({
 			asPath  : Router.router.asPath,
 			urlVars : parseUrlVars(Router.router.asPath),
@@ -91,10 +95,8 @@ class AppContainer extends React.Component {
 		// hide the initial page loader
 		setDisplayPageLoader(false)
 
-		// monitor the hash
-		// document.addEventListener('click', (e) => {
-		// 	console.log(e.target.hash)
-		// })
+		// hide the global banners
+		setHiddenGlobalBanners(browserStorage.getKeys('hiddenGlobalBanners'))
 	}
 
 	componentWillUnmount() {
@@ -103,12 +105,6 @@ class AppContainer extends React.Component {
 		Router.router.events.off('routeChangeComplete', NProgress.done)
 		Router.router.events.off('routeChangeError', NProgress.done)
 	}
-
-	// shouldComponentUpdate() {
-	// 	// Since we don't really pass down any props/state, we just need
-	// 	// to render once.
-	// 	return false
-	// }
 
 	render() {
 		const {
@@ -198,23 +194,21 @@ class AppContainer extends React.Component {
 						display: flex;
 						flex-direction: column;
 					}
-					.root :global(> *:nth-child(1)) {
+					.root :global(> .header) {
 						position: relative;
 						z-index: 2;
 						height: 3rem;
 					}
-					.root :global(> *:nth-child(2)) {
+					.root :global(> .page) {
 						position: relative;
 						z-index: 1;
 						height: calc(100% - 5rem);
+						overflow-y: scroll;
 					}
-					.root :global(> *:nth-child(3)) {
+					.root :global(> .footer) {
 						position: relative;
 						z-index: 2;
 						height: 2rem;
-					}
-					.root :global(> .page) {
-						overflow-y: scroll;
 					}
 					:global(button) {
 						border: none;

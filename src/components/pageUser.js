@@ -13,9 +13,6 @@ const PageUser = ({
 	<div className='root pageUser'>
 		<style jsx>{`
 			.root {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
 				justify-content: center;
 				background-color: ${tinycolor(GRAY).lighten(25).toRgbString()};
 				padding: 1rem 0;
@@ -23,6 +20,7 @@ const PageUser = ({
 			.root :global(.programList) {
 				width: 100%;
 				max-width: 40rem;
+				margin: 0 auto;
 			}
 		`}</style>
 		<UserProfileAvatar username={username} isAnon={false}/>

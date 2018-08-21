@@ -175,12 +175,14 @@
 
 	"home.url"      : "/",
 	"home.og.title" : "Strawbees CODE",
+	"home.og.image" : "/static/og/home.png",
 
 	"user.url"      : "/user/",
 	"user.og.title" : "Public Profile",
 
 	"flow.url"      : "/flow/",
 	"flow.og.title" : "Flow Programming",
+	"flow.og.image" : "/static/og/flow.png",
 	"flow.base.title" : "Flow",
 	"flow.menu.toggle.simple"   : "simple",
 	"flow.menu.toggle.advanced" : "advanced",
@@ -493,6 +495,7 @@
 
 	"block.url" : "/block/",
 	"block.og.title" : "Block Programming",
+	"block.og.image" : "/static/og/block.png",
 	"block.base.title" : "Block",
 	"block.toolbox.category.input" : "Input",
 	"block.toolbox.category.output" : "Output",
@@ -524,5 +527,6 @@
 
 	"text.url" : "/text/",
 	"text.og.title" : "Text Programming",
+	"text.og.image" : "/static/og/text.png",
 	"text.base.title" : "Text"
 }

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import GlobalBannerContainer from 'src/containers/globalBannerContainer'
 import PageError from 'src/components/pageError'
 import PageHomeContainer from 'src/containers/pageHomeContainer'
 import PageFlowContainer from 'src/containers/pageFlowContainer'
@@ -27,11 +28,12 @@ const PageContainer = (props) => {
 					overflow-y: scroll;
 					-webkit-overflow-scrolling: touch;
 					overscroll-behavior: none;
-				}
-				.root :global(> *) {
-					min-height: 100%;
+					display: flex;
+					flex-direction: column;
+					align-items: stretch;
 				}
 			`}</style>
+			<GlobalBannerContainer />
 			<RefComponent {...props}/>
 		</div>
 	)

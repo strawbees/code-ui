@@ -7,6 +7,9 @@ import {
 	setDisplayPageLoader,
 } from 'src/actions/setup'
 import {
+	setHiddenGlobalBanners,
+} from 'src/actions/ui'
+import {
 	setup as setupEditor
 } from 'src/actions/editor'
 
@@ -16,5 +19,6 @@ export default autobindDispatchToActionCreators({
 	setLocales,
 	setStrings,
 	setDisplayPageLoader,
+	setHiddenGlobalBanners,
 	setupEditor,
 })
