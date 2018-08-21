@@ -19,9 +19,9 @@ class DropdownMenu extends React.Component {
 	}
 
 	openList = () => {
-		console.log(document.activeElement, document.activeElement === this.buttonRef.current)
-		//this.listRef.current.focus()
-		//console.log(document.activeElement, document.activeElement === this.buttonRef.current)
+		// console.log(document.activeElement, document.activeElement === this.buttonRef.current)
+		// this.listRef.current.focus()
+		// console.log(document.activeElement, document.activeElement === this.buttonRef.current)
 	}
 
 	blurActiveElement = () => {
