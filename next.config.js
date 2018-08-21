@@ -5,7 +5,7 @@ const publicRuntimeConfig = {
 	dev : {
 		CANONICAL_URL          : 'http://localhost:3000',
 		COMPILER_URL           : 'https://compiler.quirkbot.com',
-		STRAWBEES_CODE_API_URL : 'https://api-stage.quirkbot.com'
+		STRAWBEES_CODE_API_URL : 'https://api.quirkbot.com'
 	},
 	stage : {
 		CANONICAL_URL          : 'https://code-stage.strawbees.com',
