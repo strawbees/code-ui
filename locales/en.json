@@ -175,7 +175,7 @@
 
 	"home.url"      : "/",
 	"home.og.title" : "Strawbees CODE",
-	"home.og.image" : "/static/og/home.png",
+	"home.og.image" : "/static/og/code.png",
 
 	"user.url"      : "/user/",
 	"user.og.title" : "Public Profile",
