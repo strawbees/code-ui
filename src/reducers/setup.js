@@ -34,10 +34,8 @@ const asPath = (state = null, { type, payload }) => {
 		case SETUP_SET_AS_PATH:
 			return payload
 		case SETUP_SET:
-			if (typeof payload.type !== 'undefined') {
-				return {
-					...payload.type
-				}
+			if (typeof payload.asPath !== 'undefined') {
+				return payload.asPath
 			}
 			return state
 		default:

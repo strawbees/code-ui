@@ -16,6 +16,7 @@ import ModalContainer from 'src/containers/modalContainer'
 import MidiInterfaceManager from 'src/containers/midiInterfaceManager'
 import NavigationManager from 'src/containers/navigationManager'
 import StorageManager from 'src/containers/storageManager'
+import TrackingManager from 'src/containers/trackingManager'
 import { BLACK } from 'src/constants/colors'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
@@ -294,6 +295,7 @@ class AppContainer extends React.Component {
 				<StorageManager />
 				<NavigationManager />
 				<MidiInterfaceManager />
+				<TrackingManager />
 				<HeadContainer />
 				<HeaderContainer />
 				{displayError ?
