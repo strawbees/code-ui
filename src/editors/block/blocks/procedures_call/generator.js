@@ -1,15 +1,10 @@
 import {
 	parseNext,
 	computeInstanceName,
-	getNext,
-	getValueBlockByAttributeName,
-	parseInstaceDefinition,
 	getBlockBody
 } from '../../utils/parsing'
 
-export default (argu, structure) => {
-	const { next, mutation, value } = argu
-
+export default ({ next, mutation, value }, structure) => {
 	const id = mutation &&
 		mutation[0] &&
 		mutation[0].attributes &&
@@ -34,9 +29,7 @@ export default (argu, structure) => {
 			} else if (!argRef.shadow[0].field[0].attributes) {
 				argValue = argRef.shadow[0].field[0]
 			}
-
 		}
-
 		return argValue
 	})
 

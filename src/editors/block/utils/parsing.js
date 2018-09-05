@@ -46,13 +46,19 @@ export const computeInstanceName = (structure, type, id) => {
 	structure.types[type]++
 	const lowerCaseType = `${type.charAt(0).toLowerCase()}${type.slice(1)}`
 	const count = structure.types[type]
-	const name = `${lowerCaseType}${count === 1 ? '' : count}`
+	// const name = `${lowerCaseType}${count === 1 ? '' : count}`
+	const name = `${lowerCaseType}${count}`
 	structure.instances[`${type}${id}`] = name
 	return name
 }
 
 export const parseInstaceDefinition = (structure, instance, type) => {
 	structure.definitions[instance] = `${type} ${instance};\n`
+}
+export const parseProcedureDefinition = (structure, instance, args, body, type) => {
+	const call = `${instance}(${args.map(arg => `${arg.type} ${arg.name}`).join(', ')})`
+	parseInstaceDefinition(structure, call, type)
+	structure.procedureDefinition[instance] = `${type} ${call} {\n${body}};\n`
 }
 export const parseInstacePropertyRetrieval = (structure, instance, property) => {
 	structure.body += `${instance}.${property}.get()`
@@ -78,16 +84,16 @@ export const getBlockBody = (block, structure) => {
 	parseBlock(block, tempStructure)
 	return tempStructure.body
 }
-export const parseBlock = (block, structure) => {
+export const parseBlock = (block, structure, shallow) => {
 	if (!block) {
 		return
 	}
 	if (block.attributes &&
 		block.attributes.type &&
 		GENERATORS[block.attributes.type]) {
-		GENERATORS[block.attributes.type](block, structure)
+		GENERATORS[block.attributes.type](block, structure, shallow)
 	} else {
-		GENERATORS.undefined(block, structure)
+		GENERATORS.undefined(block, structure, shallow)
 	}
 }
 export const indentString = (string, num = 1, template = '\t') => {
@@ -99,10 +105,12 @@ export const indentString = (string, num = 1, template = '\t') => {
 export const assembleStructure = structure => {
 	let {
 		definitions,
+		procedureDefinition,
 		oneTimeAssignments
 	} = structure
 
 	definitions = Object.values(definitions).sort().join('')
+	procedureDefinition = Object.values(procedureDefinition).sort().join('')
 	oneTimeAssignments = Object.values(oneTimeAssignments).sort().join('')
 
 	const {
@@ -112,6 +120,7 @@ export const assembleStructure = structure => {
 
 	const raw = `${header}\n` +
 	`${definitions}\n` +
+	`${procedureDefinition}\n` +
 	'void setup() {\n' +
 	`${oneTimeAssignments}\n` +
 	`${body}` +
@@ -153,16 +162,28 @@ export const generateCode = source => {
 	}
 
 	const structure = {
-		header             : '#include "Quirkbot.h"\n',
-		types              : {},
-		instances          : {},
-		procedures         : {},
-		definitions        : {},
-		oneTimeAssignments : {},
-		body               : ''
+		header              : '#include "Quirkbot.h"\n',
+		types               : {},
+		instances           : {},
+		procedures          : {},
+		procedureDefinition : {},
+		definitions         : {},
+		oneTimeAssignments  : {},
+		body                : ''
 	}
 
 	if (json && json.block) {
+		// First deal with the procedures definitions
+		json.block
+			.filter(block =>
+				block.attributes &&
+				block.attributes.type === 'procedures_definition'
+			)
+			// pass the "shallow" argument as true, so we don't parse the actual
+			// procedure body
+			.forEach(block => parseBlock(block, structure, true))
+
+		// Now parse both the procedureDefinition and the power on event
 		json.block
 			.filter(block =>
 				block.attributes &&
@@ -171,19 +192,7 @@ export const generateCode = source => {
 					block.attributes.type === 'procedures_definition'
 				)
 			)
-			.sort((a, b) => {
-				if (a.attributes.type === 'procedures_definition' &&
-					b.attributes.type !== 'procedures_definition') {
-					return -1
-				}
-				if (b.attributes.type === 'procedures_definition' &&
-					a.attributes.type !== 'procedures_definition') {
-					return 1
-				}
-				return 0
-			})
 			.forEach(block => parseBlock(block, structure))
 	}
-
 	return assembleStructure(structure)
 }

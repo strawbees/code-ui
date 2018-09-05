@@ -7,6 +7,9 @@ export default (strings) => ([
 		secondaryColour : '#01adee',
 		blocks          : [
 			{
+				type : 'input_circuit_touch_touched'
+			},
+			{
 				type : 'input_circuit_touch'
 			},
 			{

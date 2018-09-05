@@ -22,6 +22,7 @@ import data_setvariableto from './data_setvariableto/index'
 import data_variable from './data_variable/index'
 import event_power_on from './event_power_on/index'
 import input_circuit_touch from './input_circuit_touch/index'
+import input_circuit_touch_touched from './input_circuit_touch_touched/index'
 import input_light_sensor from './input_light_sensor/index'
 import math_integer from './math_integer/index'
 import math_number from './math_number/index'
@@ -77,6 +78,7 @@ export default {
 	data_variable,
 	event_power_on,
 	input_circuit_touch,
+	input_circuit_touch_touched,
 	input_light_sensor,
 	math_integer,
 	math_number,

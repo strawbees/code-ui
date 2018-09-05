@@ -504,6 +504,7 @@
 	"block.toolbox.category.variables" : "My Variables",
 	"block.toolbox.category.procedures" : "My Blocks",
 	"block.blocks.input_circuit_touch.message0" : "value of circuit touch %1",
+	"block.blocks.input_circuit_touch_touched.message0" : "%1 is touched",
 	"block.blocks.input_light_sensor.message0" : "value of light sensor %1",
 	"block.blocks.data_addtolist.message0"         : "add %1 to %2",
 	"block.blocks.data_deleteoflist.message0"      : "delete %1 of %2",

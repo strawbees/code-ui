@@ -11,7 +11,7 @@ export default ({ value, next }, structure) => {
 		return
 	}
 	const condition = getBlockBody(conditionBlock, structure)
-	structure.body += `while(${condition}) {\n`
+	structure.body += `while(!${condition}) {\n`
 	structure.body += 'Bot::update();\n'
 	structure.body += '}\n'
 	parseNext(next, structure)

@@ -16,7 +16,7 @@ export default ({ value, field, next }, structure) => {
 
 	parseInstaceDefinition(structure, name, 'Vector<float>')
 
-	structure.body += `${name}.position(${valueBody})`
+	structure.body += `${name}.position(${valueBody - 1})`
 
 	parseNext(next, structure)
 }

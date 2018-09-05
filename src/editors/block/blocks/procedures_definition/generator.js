@@ -1,11 +1,11 @@
 import {
 	getNext,
 	computeInstanceName,
-	parseInstaceDefinition,
+	parseProcedureDefinition,
 	getBlockBody
 } from '../../utils/parsing'
 
-export default ({ statement, next }, structure) => {
+export default ({ statement, next }, structure, shallow) => {
 	const id = statement &&
 		statement[0] &&
 		statement[0].shadow &&
@@ -46,11 +46,13 @@ export default ({ statement, next }, structure) => {
 
 	structure.procedures[id] = args
 
+	// don't further process the body in case this is shallow run
+	if (shallow) {
+		return
+	}
+
 	const type = 'void'
+	const body = getBlockBody(getNext(next), structure)
 
-
-	let procedure = `${instance}(${args.map(arg => `${arg.type} ${arg.name}`).join(', ')})`
-	procedure += ` {\n${getBlockBody(getNext(next), structure)}}`
-
-	parseInstaceDefinition(structure, procedure, type)
+	parseProcedureDefinition(structure, instance, args, body, type)
 }
