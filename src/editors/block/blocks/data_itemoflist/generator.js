@@ -1,3 +1,4 @@
+import { sanitizeCPPVariableName } from 'src/utils/string'
 import {
 	parseNext,
 	getValueBlockByAttributeName,
@@ -12,11 +13,11 @@ export default ({ value, field, next }, structure) => {
 		return
 	}
 	const valueBody = getBlockBody(valueBlock, structure)
-	const name = field && field[0]
+	const name = sanitizeCPPVariableName(field && field[0])
 
 	parseInstaceDefinition(structure, name, 'Vector<float>')
 
-	structure.body += `${name}[${valueBody - 1}]`
+	structure.body += `${name}[${valueBody} - 1]`
 
 	parseNext(next, structure)
 }
