@@ -20,6 +20,7 @@ import {
 const SingleBoardUploader = ({
 	onUploadPress,
 	runtimeId,
+	hardwareInterface,
 	// uuid,
 	midi,
 	// bootloader,
@@ -30,31 +31,29 @@ const SingleBoardUploader = ({
 	uploadError
 }) => {
 	let type
-	if (midi) {
-		// Board is midi compatible
-		if (hex) {
-			// There's a hex avaiable
-			if (uploading) {
-				// There's an ongoing upload
-				type = 'UPLOADING'
-			} else if (uploaderBusy) {
-				// Uploader is busy
-				type = 'BUSY'
-			} else if (!uploadSuccess && !uploadError) {
-				// Upload hasn't start yet
-				type = 'IDDLE'
-			} else if (uploadSuccess) {
-				// Sucessful upload
-				type = 'SUCCESS'
-			} else {
-				// Upload error
-				type = 'ERROR'
-			}
+	if (hardwareInterface === 'midi' && !midi) {
+		// Board is not compatible
+		type = 'NOT_COMPATIBLE'
+	} else if (hex) {
+		// There's a hex avaiable
+		if (uploading) {
+			// There's an ongoing upload
+			type = 'UPLOADING'
+		} else if (uploaderBusy) {
+			// Uploader is busy
+			type = 'BUSY'
+		} else if (!uploadSuccess && !uploadError) {
+			// Upload hasn't start yet
+			type = 'IDDLE'
+		} else if (uploadSuccess) {
+			// Sucessful upload
+			type = 'SUCCESS'
 		} else {
-			type = 'NO_HEX'
+			// Upload error
+			type = 'ERROR'
 		}
 	} else {
-		type = 'NOT_COMPATIBLE'
+		type = 'NO_HEX'
 	}
 
 	let statusIcon
@@ -261,16 +260,18 @@ SingleBoardUploader.defaultProps = {
 }
 
 SingleBoardUploader.propTypes = {
-	onUploadPress : PropTypes.func,
-	runtimeId     : PropTypes.string,
-	uuid          : PropTypes.string,
-	midi          : PropTypes.bool,
-	uploaderBusy  : PropTypes.bool,
-	bootloader    : PropTypes.bool,
-	uploading     : PropTypes.bool,
-	hex           : PropTypes.string,
-	uploadSuccess : PropTypes.bool,
-	uploadError   : PropTypes.string,
+	onUploadPress     : PropTypes.func,
+	runtimeId         : PropTypes.string,
+	hardwareInterface : PropTypes.string,
+	uuid              : PropTypes.string,
+	midi              : PropTypes.bool,
+	serial            : PropTypes.bool,
+	uploaderBusy      : PropTypes.bool,
+	bootloader        : PropTypes.bool,
+	uploading         : PropTypes.bool,
+	hex               : PropTypes.string,
+	uploadSuccess     : PropTypes.bool,
+	uploadError       : PropTypes.string,
 }
 
 export default SingleBoardUploader

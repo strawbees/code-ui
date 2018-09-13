@@ -53,7 +53,7 @@ const EditorMenu = ({
 			}
 			.root :global(>*),
 			.buttons :global(>*) {
-				margin-right: 0.5rem;
+				margin-right: 0.3rem;
 			}
 			.buttons {
 				margin-right: 0;
@@ -134,7 +134,7 @@ const EditorMenu = ({
 					transform: rotateZ(360deg);
 				}
 			}
-			@media (max-width: 800px){
+			@media (max-width: 850px){
 				.saved-status .circle {
 					margin-right: 0;
 				}
@@ -252,7 +252,7 @@ const EditorMenu = ({
 					icon={saveIcon}
 					labelKey='ui.header_menu.options.save'
 					onClick={onSavePress}
-					hideLabelOnMediaQuery={'max-width: 800px'}
+					hideLabelOnMediaQuery={'max-width: 850px'}
 				/>
 			}
 			<IconButton

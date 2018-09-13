@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect'
-import qbmidiLinkSelector from 'src/selectors/qbmidiLinkSelector'
+import qbcompoundLinkSelector from 'src/selectors/qbcompoundLinkSelector'
 import uploaderEntryUploadingSelector from 'src/selectors/uploaderEntryUploadingSelector'
 import uploaderEntrySuccessSelector from 'src/selectors/uploaderEntrySuccessSelector'
 import uploaderEntryFormatedErrorSelector from 'src/selectors/uploaderEntryFormatedErrorSelector'
@@ -7,7 +7,7 @@ import uploaderBusySelector from 'src/selectors/uploaderBusySelector'
 
 export default () => createSelector(
 	[
-		qbmidiLinkSelector(),
+		qbcompoundLinkSelector(),
 		uploaderEntryUploadingSelector(),
 		uploaderEntrySuccessSelector(),
 		uploaderEntryFormatedErrorSelector(),
@@ -15,8 +15,10 @@ export default () => createSelector(
 	],
 	(
 		{
+			hardwareInterface,
 			uuid,
 			midi,
+			serial,
 			bootloader,
 		},
 		uploading,
@@ -24,8 +26,10 @@ export default () => createSelector(
 		uploadError,
 		uploaderBusy,
 	) => ({
+		hardwareInterface,
 		uuid,
 		midi,
+		serial,
 		bootloader,
 		uploading,
 		uploadSuccess,

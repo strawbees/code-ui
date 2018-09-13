@@ -10,6 +10,7 @@ import {
 	SETUP_SET_STRINGS,
 	SETUP_SET_DISPLAY_PAGE_LOADER,
 	SETUP_SET_DISPLAY_ERROR,
+	SETUP_SET_OS,
 } from 'src/constants/actionTypes'
 
 const query = (state = null, { type, payload }) => {
@@ -138,6 +139,7 @@ const stringsLoaded = (state = {}, { type, payload }) => {
 
 const displayPageLoader = generateReducer(SETUP_SET_DISPLAY_PAGE_LOADER, false)
 const displayError = generateReducer(SETUP_SET_DISPLAY_ERROR, false)
+const os = generateReducer(SETUP_SET_OS)
 
 export default combineReducers({
 	query,
@@ -151,4 +153,5 @@ export default combineReducers({
 	stringsLoaded,
 	displayPageLoader,
 	displayError,
+	os,
 })

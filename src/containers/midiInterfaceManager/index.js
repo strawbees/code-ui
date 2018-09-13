@@ -14,10 +14,12 @@ class MidiInterfaceManager extends React.Component {
 
 		const links = midiGetLinks().reduce((acc, link) => {
 			acc[link.runtimeId] = {
+				hardwareInterface      : 'midi',
 				runtimeId              : link.runtimeId,
 				uuid                   : link.uuid,
 				bootloader             : link.bootloader,
 				midi                   : link.midi,
+				serial                 : true,
 				updated                : link.updated,
 				uploading              : link.uploading,
 				enteringBootloaderMode : link.enteringBootloaderMode,
@@ -55,10 +57,14 @@ class MidiInterfaceManager extends React.Component {
 }
 
 MidiInterfaceManager.propTypes = {
-	setQbmidiLinks : PropTypes.func,
-	midiInit       : PropTypes.func,
-	midiGetLinks   : PropTypes.func,
-	midiEnableLogs : PropTypes.func,
+	setQbmidiLinks     : PropTypes.func,
+	setQbmidiAvailable : PropTypes.func,
+	setQbmidiReady     : PropTypes.func,
+	midiInit           : PropTypes.func,
+	midiGetLinks       : PropTypes.func,
+	midiEnableLogs     : PropTypes.func,
+	available          : PropTypes.bool,
+	ready              : PropTypes.bool,
 }
 
 export default connect(

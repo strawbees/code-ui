@@ -1,25 +1,32 @@
 import { createSelector } from 'reselect'
-import qbmidiLinkSelector from 'src/selectors/qbmidiLinkSelector'
+import qbcompoundLinkSelector from 'src/selectors/qbcompoundLinkSelector'
 
 export default () => createSelector(
 	[
-		qbmidiLinkSelector(),
+		qbcompoundLinkSelector(),
 	],
 	({
+		hardwareInterface,
 		midi,
+		serial,
 		uuid,
 		bootloader,
 		uploading,
 		enteringBootloaderMode,
 		exitingBootloaderMode,
-	}) => ({
-		uuid,
-		status : !midi
-			? 'problem'
-			: (uploading || enteringBootloaderMode || exitingBootloaderMode)
+	}) => {
+		const result = {
+			uuid
+		}
+		if (hardwareInterface === 'midi' && !midi) {
+			result.status = 'problem'
+		} else {
+			result.status = (uploading || enteringBootloaderMode || exitingBootloaderMode)
 				? 'busy'
 				: bootloader
 					? 'bootloader'
 					: 'ok'
-	})
+		}
+		return result
+	}
 )

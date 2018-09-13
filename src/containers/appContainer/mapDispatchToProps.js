@@ -5,6 +5,7 @@ import {
 	setLocales,
 	setStrings,
 	setDisplayPageLoader,
+	setOS,
 } from 'src/actions/setup'
 import {
 	setHiddenGlobalBanners,
@@ -21,4 +22,5 @@ export default autobindDispatchToActionCreators({
 	setDisplayPageLoader,
 	setHiddenGlobalBanners,
 	setupEditor,
+	setOS,
 })

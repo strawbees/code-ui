@@ -40,6 +40,8 @@ const SingleBoardStatus = ({
 			left: ${scale * -0.2}rem;
 		}
 		.icon.notConnected,
+		.icon.notReady,
+		.icon.notAvailable,
 		.icon.problem {
 			fill: ${tinycolor(RED).toRgbString()};
 		}
@@ -113,6 +115,8 @@ SingleBoardStatus.propTypes = {
 	uuid   : PropTypes.string,
 	status : PropTypes.oneOf([
 		'notConnected',
+		'notReady',
+		'notAvailable',
 		'ok',
 		'bootloader',
 		'busy',

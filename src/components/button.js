@@ -62,6 +62,7 @@ class Button extends React.Component {
 						box-sizing: border-box;
 						padding: 0.25rem 1rem;
 						border-radius: 2rem;
+						margin: 0.15rem;
 						cursor: pointer;
 						color: ${tinycolor(textColor).toRgbString()};
 						fill: ${tinycolor(textColor).toRgbString()};

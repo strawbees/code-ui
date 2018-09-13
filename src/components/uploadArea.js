@@ -3,6 +3,7 @@ import Markdown from 'react-remarkable'
 import Message from 'src/components/message'
 import SingleBoardStatus from 'src/components/singleBoardStatus'
 import SingleBoardUploaderContainer from 'src/containers/singleBoardUploaderContainer'
+import UploaderDependenciesContainer from 'src/containers/uploaderDependenciesContainer'
 import S from 'src/containers/sManager'
 
 const UploadArea = ({
@@ -56,16 +57,7 @@ const UploadArea = ({
 			</Message>
 		}
 		{boardIds.length === 0 &&
-			<Message type='warning' className='not-detected'>
-				<SingleBoardStatus
-					scale={1.25}
-					status='notConnected'
-				/>
-				<S
-					value='ui.board.upload.error.notConnected'
-					markdown={true}
-				/>
-			</Message>
+			<UploaderDependenciesContainer hideTitle={true}/>
 		}
 		{boardIds.length > 0 && boardIds.map(runtimeId =>
 			<SingleBoardUploaderContainer

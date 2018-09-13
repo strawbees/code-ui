@@ -1,14 +1,15 @@
 import { combineReducers } from 'redux'
 import generateReducer from 'src/utils/generateReducer'
+
 import {
-	QBMIDI_SET_LINKS,
-	QBMIDI_SET_AVAILABLE,
-	QBMIDI_SET_READY,
+	QBSERIAL_SET_LINKS,
+	QBSERIAL_SET_AVAILABLE,
+	QBSERIAL_SET_READY,
 } from 'src/constants/actionTypes'
 
 const links = (state = {}, { type, payload }) => {
 	switch (type) {
-		case QBMIDI_SET_LINKS:
+		case QBSERIAL_SET_LINKS:
 			return {
 				...payload
 			}
@@ -16,9 +17,8 @@ const links = (state = {}, { type, payload }) => {
 			return state
 	}
 }
-
-const available = generateReducer(QBMIDI_SET_AVAILABLE, false)
-const ready = generateReducer(QBMIDI_SET_READY, false)
+const available = generateReducer(QBSERIAL_SET_AVAILABLE, false)
+const ready = generateReducer(QBSERIAL_SET_READY, false)
 
 export default combineReducers({
 	links,

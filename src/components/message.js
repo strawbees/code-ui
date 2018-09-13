@@ -49,6 +49,12 @@ const Message = ({
 					background-color: ${bgColor};
 					color: ${color};
 					font-size: 0.8rem;
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
+				}
+				.root :global(img) {
+					height: auto;
 				}
 			`}</style>
 			{children}

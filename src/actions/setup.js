@@ -9,6 +9,7 @@ import {
 	SETUP_SET_STRINGS,
 	SETUP_SET_DISPLAY_PAGE_LOADER,
 	SETUP_SET_DISPLAY_ERROR,
+	SETUP_SET_OS,
 } from 'src/constants/actionTypes'
 
 export const setSetup = generateAction(SETUP_SET)
@@ -20,3 +21,4 @@ export const setRoutes = generateAction(SETUP_SET_ROUTES)
 export const setStrings = generateAction(SETUP_SET_STRINGS)
 export const setDisplayPageLoader = generateAction(SETUP_SET_DISPLAY_PAGE_LOADER)
 export const setDisplayError = generateAction(SETUP_SET_DISPLAY_ERROR)
+export const setOS = generateAction(SETUP_SET_OS)

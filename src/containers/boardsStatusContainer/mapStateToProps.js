@@ -1,13 +1,22 @@
 import { createSelector } from 'reselect'
-import qbmidiLinksSelector from 'src/selectors/qbmidiLinksSelector'
+import qbcompoundLinksSelector from 'src/selectors/qbcompoundLinksSelector'
+import qbserialAvailableSelector from 'src/selectors/qbserialAvailableSelector'
+import qbserialReadySelector from 'src/selectors/qbserialReadySelector'
+
 
 export default () => createSelector(
 	[
-		qbmidiLinksSelector(),
+		qbcompoundLinksSelector(),
+		qbserialAvailableSelector(),
+		qbserialReadySelector(),
 	],
 	(
-		qbmidiLinks,
+		qbcompoundLinks,
+		available,
+		ready,
 	) => ({
-		boards : Object.keys(qbmidiLinks)
+		boards : Object.keys(qbcompoundLinks),
+		available,
+		ready,
 	})
 )

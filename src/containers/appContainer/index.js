@@ -13,10 +13,12 @@ import FooterContainer from 'src/containers/footerContainer'
 import PageContainer from 'src/containers/pageContainer'
 import PageError from 'src/components/pageError'
 import ModalContainer from 'src/containers/modalContainer'
-import MidiInterfaceManager from 'src/containers/midiInterfaceManager'
+//import MidiInterfaceManager from 'src/containers/midiInterfaceManager'
+import SerialInterfaceManager from 'src/containers/serialInterfaceManager'
 import NavigationManager from 'src/containers/navigationManager'
 import StorageManager from 'src/containers/storageManager'
 import TrackingManager from 'src/containers/trackingManager'
+import getOS from 'src/utils/getOS'
 import { BLACK } from 'src/constants/colors'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
@@ -80,6 +82,7 @@ class AppContainer extends React.Component {
 			setSetup,
 			setDisplayPageLoader,
 			setHiddenGlobalBanners,
+			setOS,
 		} = this.props
 
 		// hookup nprogress
@@ -92,6 +95,9 @@ class AppContainer extends React.Component {
 			asPath  : Router.router.asPath,
 			urlVars : parseUrlVars(Router.router.asPath),
 		})
+
+		// set the sniffed os
+		setOS(getOS())
 
 		// hide the initial page loader
 		setDisplayPageLoader(false)
@@ -294,7 +300,8 @@ class AppContainer extends React.Component {
 
 				<StorageManager />
 				<NavigationManager />
-				<MidiInterfaceManager />
+				{/* <MidiInterfaceManager /> */}
+				<SerialInterfaceManager />
 				<TrackingManager />
 				<HeadContainer />
 				<HeaderContainer />
@@ -324,6 +331,7 @@ AppContainer.propTypes = {
 	setupEditor          : PropTypes.func,
 	displayPageLoader    : PropTypes.bool,
 	displayError         : PropTypes.PropTypes.oneOf([false, 404, 500]),
+	setOS                : PropTypes.func,
 }
 
 export default connect(

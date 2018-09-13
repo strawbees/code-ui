@@ -8,6 +8,7 @@ const Link = ({ children, ...props }) => {
 		to,
 		external,
 		onClick,
+		className,
 		...otherProps
 	} = props
 
@@ -22,9 +23,8 @@ const Link = ({ children, ...props }) => {
 				href={href}
 				as={as}
 				{...otherProps}>
-
 				<a
-					className='root link'
+					className={`root link ${className}`}
 					target={external && '_blank'}
 					onClick={(nativeEvent) => {
 						const evt = { href, as, nativeEvent }
@@ -48,7 +48,7 @@ const Link = ({ children, ...props }) => {
 
 	return (
 		<span
-			className='root link'
+			className={`root link ${className}`}
 			onClick={(nativeEvent) => {
 				const evt = { href, as, nativeEvent }
 				if (onClick) {

@@ -1,8 +1,12 @@
 import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
 import {
-	modalOpenUploaderDependencies
-} from 'src/actions/uploader'
+	setQbserialLinks,
+	setQbserialAvailable,
+	setQbserialReady,
+} from 'src/actions/qbserial'
 
 export default autobindDispatchToActionCreators({
-	openUploaderDependencies : modalOpenUploaderDependencies
+	setQbserialLinks,
+	setQbserialAvailable,
+	setQbserialReady,
 })

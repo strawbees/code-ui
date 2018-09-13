@@ -56,7 +56,7 @@ const UserHeaderAvatar = ({
 				<IconButton
 					icon={icon}
 					labelKey={username}
-					hideLabelOnMediaQuery={'max-width: 950px'}
+					hideLabelOnMediaQuery={'max-width: 1020px'}
 					tabIndex='-1'
 				/>
 			</Link>
