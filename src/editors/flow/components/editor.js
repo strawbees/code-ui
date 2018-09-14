@@ -14,10 +14,10 @@ const Editor = () =>
 				z-index: 1;
 			}
 			.root :global(> *:nth-child(1)) {
-				width: 12rem;
+				width: 12.5rem;
 			}
 			.root :global(> *:nth-child(2)) {
-				width: calc(100% - 12rem);
+				width: calc(100% - 12.5rem);
 			}
 			@media (max-width: 600px) {
 				.root :global(> *:nth-child(1)) {

@@ -68,6 +68,7 @@ class Button extends React.Component {
 						fill: ${tinycolor(textColor).toRgbString()};
 						background-color: ${tinycolor(bgColor).toRgbString()};
 						transition: background-color 0.1s;
+						min-height: 2rem;
 					}
 					.root:not(.disabled):hover,
 					.root:focus,

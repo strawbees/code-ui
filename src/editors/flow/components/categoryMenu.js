@@ -44,7 +44,7 @@ const CategoryMenu = ({
 			}
 			.nodes {
 				margin-top: 0.4rem;
-				padding: 0 1rem 0 0;
+				padding: 0 0.5rem 0 0;
 				display: flex;
 				flex-direction: column;
 				align-items: stretch;

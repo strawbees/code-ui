@@ -65,6 +65,11 @@ const IconButton = ({
 		onClick={onClick}
 		className={`${className} iconButton`}
 		{...otherProps}>
+		<style jsx>{`
+			.iconButton {
+				min-height: 1.5rem;
+			}
+		`}</style>
 		<IconButtonContent
 			icon={icon}
 			label={label}
