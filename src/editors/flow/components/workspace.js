@@ -104,7 +104,7 @@ class Workspace extends React.Component {
 						display: flex;
 						flex-direction: column;
 						position: relative;
-						overflow: scroll;
+						overflow: auto;
 						-webkit-overflow-scrolling: touch;
 						overscroll-behavior: none;
 						touch-action: none;
@@ -122,6 +122,7 @@ class Workspace extends React.Component {
 							linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
 						overflow: hidden;
 						touch-action: none;
+						outline: none;
 					}
 					.lines :global(>.connectionLines) {
 						position: absolute;

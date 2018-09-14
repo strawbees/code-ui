@@ -12,7 +12,7 @@ import {
 
 const UploaderDependencies = ({
 	hideTitle,
-	os,
+	uploaderNeedsDriver,
 	serialBoardIds,
 	serialAvailable,
 	serialReady,
@@ -99,10 +99,7 @@ const UploaderDependencies = ({
 				}
 				{serialBoardIds.length === 0 &&
 					<>
-						{os &&
-							os.family &&
-							os.family.toLowerCase().indexOf('windows') !== -1 &&
-							os.version.indexOf('10') === -1 &&
+						{uploaderNeedsDriver &&
 							<Link to={driverUrl}
 								external={true}>
 								<Message type='error'>
@@ -142,16 +139,16 @@ const UploaderDependencies = ({
 	</div>
 
 UploaderDependencies.propTypes = {
-	hideTitle       : PropTypes.bool,
-	os              : PropTypes.object,
-	serialBoardsIds : PropTypes.arrayOf(PropTypes.string),
-	serialAvailable : PropTypes.bool,
-	serialReady     : PropTypes.bool,
-	midiBoardIds    : PropTypes.arrayOf(PropTypes.string),
-	midiAvailable   : PropTypes.bool,
-	midiReady       : PropTypes.bool,
-	extensionUrl    : PropTypes.string,
-	driverUrl       : PropTypes.string,
+	hideTitle           : PropTypes.bool,
+	uploaderNeedsDriver : PropTypes.bool,
+	serialBoardsIds     : PropTypes.arrayOf(PropTypes.string),
+	serialAvailable     : PropTypes.bool,
+	serialReady         : PropTypes.bool,
+	midiBoardIds        : PropTypes.arrayOf(PropTypes.string),
+	midiAvailable       : PropTypes.bool,
+	midiReady           : PropTypes.bool,
+	extensionUrl        : PropTypes.string,
+	driverUrl           : PropTypes.string,
 }
 
 export default UploaderDependencies

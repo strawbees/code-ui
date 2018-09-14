@@ -16,7 +16,7 @@ const ParameterDisplayValueList = ({
 		<style jsx>{`
 			.root {
 				height: ${items.length > 4 ? `${4.5 * 2}rem` : `${items.length * 2}rem`};
-				overflow-y: scroll;
+				overflow-y: auto;
 				border-radius: 0.25rem;
 			}
 			.items {

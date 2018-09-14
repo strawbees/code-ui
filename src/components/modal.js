@@ -56,7 +56,7 @@ const Modal = ({
 				max-width: calc(100vw - 4rem);
 				min-width: calc(400px - 4rem);
 				min-height: calc(150px - 4rem);
-				overflow-y: scroll;
+				overflow-y: auto;
 			}
 			@media (max-width: 400px) {
 				:global(.ReactModal__Content) :global(>.content) {

@@ -29,7 +29,7 @@ const SideMenu = ({
 			}
 
 			.root :global(>*:nth-child(2)) {
-				overflow-y: scroll;
+				overflow-y: auto;
 				flex-grow: 1;
 				margin-left: 0.5rem;
 				padding-right: 0.5rem;

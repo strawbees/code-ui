@@ -210,7 +210,7 @@ class AppContainer extends React.Component {
 						position: relative;
 						z-index: 1;
 						height: calc(100% - 5rem);
-						overflow-y: scroll;
+						overflow-y: auto;
 					}
 					.root :global(> .footer) {
 						position: relative;

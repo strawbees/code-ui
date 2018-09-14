@@ -25,7 +25,7 @@ const PageContainer = (props) => {
 		<div className='root page'>
 			<style jsx>{`
 				.root {
-					overflow-y: scroll;
+					overflow-y: auto;
 					-webkit-overflow-scrolling: touch;
 					overscroll-behavior: none;
 					display: flex;

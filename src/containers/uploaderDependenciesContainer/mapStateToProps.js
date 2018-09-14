@@ -1,5 +1,5 @@
 import { createStructuredSelector } from 'reselect'
-import setupOSSelector from 'src/selectors/setupOSSelector'
+import uploaderNeedsDriverSelector from 'src/selectors/uploaderNeedsDriverSelector'
 import qbserialRuntimeIdListSelector from 'src/selectors/qbserialRuntimeIdListSelector'
 import qbserialAvailableSelector from 'src/selectors/qbserialAvailableSelector'
 import qbserialReadySelector from 'src/selectors/qbserialReadySelector'
@@ -9,11 +9,11 @@ import qbmidiReadySelector from 'src/selectors/qbmidiReadySelector'
 
 
 export default () => createStructuredSelector({
-	os              : setupOSSelector(),
-	serialBoardIds  : qbserialRuntimeIdListSelector(),
-	serialAvailable : qbserialAvailableSelector(),
-	serialReady     : qbserialReadySelector(),
-	midiBoardIds    : qbmidiRuntimeIdListSelector(),
-	midiAvailable   : qbmidiAvailableSelector(),
-	midiReady       : qbmidiReadySelector(),
+	uploaderNeedsDriver : uploaderNeedsDriverSelector(),
+	serialBoardIds      : qbserialRuntimeIdListSelector(),
+	serialAvailable     : qbserialAvailableSelector(),
+	serialReady         : qbserialReadySelector(),
+	midiBoardIds        : qbmidiRuntimeIdListSelector(),
+	midiAvailable       : qbmidiAvailableSelector(),
+	midiReady           : qbmidiReadySelector(),
 })

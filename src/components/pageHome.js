@@ -60,12 +60,12 @@ const PageHome = () =>
 					height: 100%;
 				}
 				.section.top {
-					overflow-y: scroll;
+					overflow-y: auto;
 					flex: 1;
 					-webkit-overflow-scrolling: touch;
 				}
 				.section.bottom {
-					overflow-y: scroll;
+					overflow-y: auto;
 					flex: 1;
 					-webkit-overflow-scrolling: touch;
 				}
