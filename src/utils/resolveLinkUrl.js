@@ -11,7 +11,7 @@ const baseUrl = typeof CANONICAL_URL !== 'undefined' ? CANONICAL_URL : ''
 export default (to) => {
 	let href
 	let as
-	to = to.replace(baseUrl, '')
+	to = (to || '').replace(baseUrl, '')
 	if (to && routes[to]) {
 		href = {
 			pathname : routes[to].page,

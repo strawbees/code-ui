@@ -271,9 +271,11 @@ class AppContainer extends React.Component {
 						font-size: 2.0rem;
 					}
 					:global(.global-type-h3) {
+						text-transform: none;
 						font-size: 1.5rem;
 					}
 					:global(.global-type-h4) {
+						text-transform: none;
 						font-size: 1rem;
 					}
 					@media (max-width: 400px) {

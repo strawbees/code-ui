@@ -9,7 +9,6 @@ import {
 	WHITE,
 	GREEN,
 } from 'src/constants/colors'
-import webstoreImage from 'src/assets/images/strawbees-code-helper-chrome-webstore.gif'
 
 const UploaderDependencies = ({
 	hideTitle,
@@ -20,6 +19,8 @@ const UploaderDependencies = ({
 	midiBoardIds,
 	midiAvailable,
 	midiReady,
+	extensionUrl,
+	driverUrl,
 }) =>
 	<div className='root uploaderDependencies'>
 		<style jsx>{`
@@ -73,10 +74,10 @@ const UploaderDependencies = ({
 					/>
 					<img className='webstore-image'
 						alt='Strawbees CODE Helper installation'
-						src={webstoreImage}
+						src='/static/images/strawbees-code-helper-chrome-webstore.gif'
 					/>
 				</Message>
-				<Link to='https://chrome.google.com/webstore/detail/strawbees-code-helper/ackaalhbfjagidmjlhlokoblhbnahegd'
+				<Link to={extensionUrl}
 					external={true}
 					className='install-button'>
 					<IconButton
@@ -102,7 +103,7 @@ const UploaderDependencies = ({
 							os.family &&
 							os.family.toLowerCase().indexOf('windows') !== -1 &&
 							os.version.indexOf('10') === -1 &&
-							<Link to='https://github.com/Quirkbot/QuirkbotWindowsDriverInstaller/releases/download/2.0.0/quirkbot-windows-drivers-2.0.0.exe'
+							<Link to={driverUrl}
 								external={true}>
 								<Message type='error'>
 									<S
@@ -118,7 +119,7 @@ const UploaderDependencies = ({
 								status='notConnected'
 							/>
 							<S
-								value='ui.board.upload.error.notConnected'
+								value='ui.board.dependencies.serial.no_boards_detected'
 								markdown={true}
 							/>
 						</Message>
@@ -149,6 +150,8 @@ UploaderDependencies.propTypes = {
 	midiBoardIds    : PropTypes.arrayOf(PropTypes.string),
 	midiAvailable   : PropTypes.bool,
 	midiReady       : PropTypes.bool,
+	extensionUrl    : PropTypes.string,
+	driverUrl       : PropTypes.string,
 }
 
 export default UploaderDependencies
