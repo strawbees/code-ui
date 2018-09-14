@@ -78,6 +78,9 @@ class Outlet extends React.Component {
 				parameterId : element.dataset.id,
 				instanceId  : element.dataset.instanceId
 			}))
+
+		// avoid scrolling on ios
+		document.ontouchmove = (e) => e.preventDefault()
 	}
 
 	onDragMove = (e, { x, y }) => {
@@ -107,6 +110,9 @@ class Outlet extends React.Component {
 			this.props.onConnect(parameter)
 		}
 		this.props.onHover(null)
+
+		// restore scrolling on ios
+		document.ontouchmove = () => true
 
 		// important to return the parameter, in case the parameterHandle is
 		// transfering the drag methods, and need to know if it was dropped

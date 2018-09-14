@@ -64,6 +64,9 @@ class InstanceDraggableContainer extends React.Component {
 		// starting the drag won't give focus on touch devices, so we need to
 		// force it here.
 		this.ref.current.focus({ preventScroll : true })
+
+		// avoid scrolling on ios
+		document.ontouchmove = (e) => e.preventDefault()
 	}
 
 	onDragMove = (e, { x, y }) => {
@@ -72,6 +75,9 @@ class InstanceDraggableContainer extends React.Component {
 
 	onDragStop = (e, { x, y }) => {
 		this.moveInstance(x, y)
+
+		// restore scrolling on ios
+		document.ontouchmove = () => true
 	}
 
 	onKeyUp = ({ keyCode }) => {

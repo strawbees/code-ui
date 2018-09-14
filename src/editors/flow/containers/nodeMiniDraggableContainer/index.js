@@ -26,6 +26,8 @@ class NodeMiniDraggableContainer extends React.Component {
 			},
 			dragClass : 'drag-start'
 		})
+		// avoid scrolling on ios
+		document.ontouchmove = (e) => e.preventDefault()
 	}
 
 	onDragMove = () => {
@@ -69,6 +71,9 @@ class NodeMiniDraggableContainer extends React.Component {
 			},
 			dragClass : 'drag-end'
 		})
+
+		// restore scrolling on ios
+		document.ontouchmove = () => true
 	}
 
 	render() {
@@ -98,7 +103,7 @@ class NodeMiniDraggableContainer extends React.Component {
 						position: fixed;
 						cursor: grabbing;
 						width: 9.5rem;
-						z-index: 1;
+						z-index: 10;
 					}
 					@media (max-width: 600px) {
 						.drag.drag-start,
