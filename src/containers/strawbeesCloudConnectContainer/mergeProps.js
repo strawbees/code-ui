@@ -13,6 +13,7 @@ export default (stateProps, dispatchProps, ownProps) => {
 		setCredentials,
 		setUser,
 		setRemoteMirror,
+		backupAnonPrograms,
 		collapseAccountSettings,
 		...otherDispatchProps
 	} = dispatchProps
@@ -21,6 +22,7 @@ export default (stateProps, dispatchProps, ownProps) => {
 	} = dispatchProps
 
 	const onConnect = async ({ credentials, user }) => {
+		backupAnonPrograms(programs)
 		if (Object.keys(programs).length) {
 			try {
 				await safeOpenDialogModal({

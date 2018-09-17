@@ -1,5 +1,7 @@
 import * as browserStorage from 'src/utils/browserStorage'
 
+export const name = 'local'
+
 export const prefix = 'lo'
 
 export const refreshCredentials = async (credentials) => credentials

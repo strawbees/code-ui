@@ -7,6 +7,7 @@ import {
 	setCredentials,
 	setUser,
 	setRemoteMirror,
+	backupAnonPrograms,
 } from 'src/actions/storage'
 import {
 	collapseAccountSettings,
@@ -18,5 +19,6 @@ export default autobindDispatchToActionCreators({
 	setCredentials,
 	setUser,
 	setRemoteMirror,
+	backupAnonPrograms,
 	collapseAccountSettings,
 })

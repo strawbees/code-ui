@@ -33,6 +33,14 @@ class StorageManager extends React.Component {
 			}
 		})
 
+		// Check if we need to restore the anon programs
+		const anonPrograms = browserStorage.get('anonProgramsBackup', 'data')
+		if (!this.credentials && anonPrograms) {
+			browserStorage.remove('anonProgramsBackup', 'data')
+			this.programs = anonPrograms
+		}
+
+
 		// Pass it to the state
 		setCredentials(this.credentials)
 		setPrograms(this.programs)

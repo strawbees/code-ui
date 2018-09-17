@@ -1,6 +1,6 @@
 import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
 import {
-	clearStorage,
+	safeClearLoggedInData,
 } from 'src/actions/storage'
 import {
 	expandAccountSettings,
@@ -9,7 +9,7 @@ import {
 
 
 export default autobindDispatchToActionCreators({
-	clearStorage,
+	logout : safeClearLoggedInData,
 	expandAccountSettings,
 	collapseAccountSettings,
 })

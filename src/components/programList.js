@@ -1,17 +1,24 @@
 import PropTypes from 'prop-types'
 import S from 'src/containers/sManager'
+import SvgIcon from 'src/components/svgIcon'
+import syncIcon from 'src/assets/icons/general/sync.svg'
 import {
 	WHITE
 } from 'src/constants/colors'
+import {
+	NEEDS_SYNC,
+	SYNCING,
+	READY,
+	ERROR
+} from 'src/constants/storage'
 
 const StorageProgramList = ({
 	ids,
 	ItemContainer,
-	title
+	title,
+	storageStatus
 }) => {
-	if (!ids || !ids.length) {
-		return null
-	}
+
 	return (
 		<div className='root programList'>
 			<style jsx>{`
@@ -25,6 +32,21 @@ const StorageProgramList = ({
 				}
 				.title {
 					text-align: center;
+				}
+				.root :global(.sync-icon) {
+					align-self: center;
+					height: 3rem;
+					width: 3rem;
+					fill: ${WHITE};
+					animation: spin-animation 2s linear infinite reverse;
+				}
+				@keyframes spin-animation {
+					from {
+						transform: rotateZ(0);
+					}
+					to {
+						transform: rotateZ(360deg);
+					}
 				}
 				.controls {
 					display: grid;
@@ -56,7 +78,7 @@ const StorageProgramList = ({
 					justify-content: center;
 					border-radius: 1rem;
 					background-color: rgba(255,255,255,0.2);
-					height: 5rem;
+					min-height: 3rem;
 				}
 				@media (max-width: 400px) {
 					.controls {
@@ -73,6 +95,12 @@ const StorageProgramList = ({
 				<div className='title global-type global-type-h3'>
 					{title}
 				</div>
+			}
+			{(storageStatus === SYNCING || storageStatus === NEEDS_SYNC) &&
+				<SvgIcon
+					className='sync-icon'
+					icon={syncIcon}
+				/>
 			}
 			{ids && ids.length > 0 &&
 				<div className='controls'>
@@ -100,11 +128,11 @@ const StorageProgramList = ({
 					)}
 				</div>
 			}
-			{/* (!ids || !ids.length) &&
+			{(!ids || !ids.length) &&
 				<div className='empty'>
 					<S value='ui.program_list.empty'/>
 				</div>
-			*/}
+			}
 		</div>
 	)
 }
@@ -116,7 +144,13 @@ StorageProgramList.defaultProps = {
 StorageProgramList.propTypes = {
 	ItemContainer : PropTypes.func,
 	ids           : PropTypes.arrayOf(PropTypes.string),
-	title         : PropTypes.string
+	title         : PropTypes.string,
+	storageStatus : PropTypes.oneOf([
+		NEEDS_SYNC,
+		SYNCING,
+		READY,
+		ERROR
+	])
 }
 
 export default StorageProgramList

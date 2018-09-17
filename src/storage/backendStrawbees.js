@@ -8,6 +8,7 @@ const {
 } = getConfig()
 
 // "Pubic" api
+export const name = 'strawbees'
 export const prefix = 'sb'
 
 export const refreshCredentials = async (credentials) => {

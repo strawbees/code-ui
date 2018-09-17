@@ -2,6 +2,7 @@ import generateAction from 'src/utils/generateAction'
 import {
 	generateUniqueId,
 	resolveBackendFromCredentials,
+	resolveBackendFromProgramId,
 } from 'src/storage'
 import refEditorIdSelector from 'src/selectors/refEditorIdSelector'
 import refEditorNameSelector from 'src/selectors/refEditorNameSelector'
@@ -15,6 +16,7 @@ import {
 	updateCurrentEditorProgramSource,
 	updateCurrentEditorProgramId,
 } from 'src/actions/editor'
+import * as browserStorage from 'src/utils/browserStorage'
 import {
 	STORAGE_SET_STATUS,
 	STORAGE_SET_CREDENTIALS,
@@ -70,6 +72,35 @@ export const removeProgram = generateAction(STORAGE_REMOVE_PROGRAM)
 export const removeAllPrograms = generateAction(STORAGE_REMOVE_ALL_PROGRAMS)
 export const clearStorage = generateAction(STORAGE_CLEAR)
 
+export const safeClearLoggedInData = () => async (dispatch) => {
+	dispatch(setCredentials(null))
+	dispatch(setUser(null))
+	dispatch(setPrograms({}))
+	dispatch(setRemoteMirror(null))
+	dispatch(restoreAnonPrograms())
+}
+
+export const backupAnonPrograms = () => async (dispatch, getState) => {
+	const programs = storageProgramsSelector()(getState())
+	const localPrograms = Object.keys(programs)
+		.filter(id => resolveBackendFromProgramId(id).name === 'local')
+		.reduce((acc, id) => {
+			acc[id] = programs[id]
+			return acc
+		}, {})
+	browserStorage.set('anonProgramsBackup', 'data', localPrograms)
+}
+
+export const restoreAnonPrograms = () => async (dispatch, getState) => {
+	const state = getState()
+	const credentials = storageCredentialsSelector()(state)
+	const programs = browserStorage.get('anonProgramsBackup', 'data')
+	if (credentials || !programs) {
+		return
+	}
+	browserStorage.remove('anonProgramsBackup', 'data')
+	dispatch(setPrograms(programs))
+}
 
 export const safeAddProgram = (type, name, source) => async (dispatch, getState) => {
 	const state = getState()
@@ -162,7 +193,7 @@ export const safeSync = () => async (dispatch, getState) => {
 	} catch (error) {
 		// if we get an authorization error, we have no choice but logout
 		if (error.message === 'NOT_AUTHORIZED') {
-			dispatch(clearStorage())
+			dispatch(safeClearLoggedInData())
 			return
 		}
 		// other errors (maybe network) we keep, and don't logout yet

@@ -123,7 +123,7 @@
 	"ui.dialog.anonymous_copy_programs.cancel"      : "No, discard programs",
 
 	"ui.program_list.title.storage" : "My programs",
-	"ui.program_list.empty"         : "No programs yet",
+	"ui.program_list.empty"         : "No programs saved yet",
 	"ui.program_list.sort.type"     : "type",
 	"ui.program_list.sort.name"     : "name",
 	"ui.program_list.sort.modified" : "last modified",
@@ -160,7 +160,7 @@
 	"ui.board.dependencies.serial.ready"               : "We are ready to communicate with your Quirkbot!",
 	"ui.board.dependencies.serial.install.text"        : "To be able to communicate with your Quirkbot, you need to first add the **Strawbees CODE Helper** from the *Chrome Web Store*.",
 	"ui.board.dependencies.serial.install.cta"         : "Go to Web Store and add helper",
-	"ui.board.dependencies.serial.no_boards_detected"  : "We could not detect any Quirkbots on this device. If your Quirkbot is connected, make sure it is ON and attached to a working USB port.\n\nIf the problem persists, view **HELP > Troubleshooting**.",
+	"ui.board.dependencies.serial.no_boards_detected"  : "We could not detect any Quirkbots. If your Quirkbot is connected, make sure it is ON and attached to a working USB port.\n\nIf the problem persists, view **HELP > Troubleshooting**.",
 	"ui.board.dependencies.serial.windows_driver"      : "**Windows** require drivers, have you already installed them?\n\n**Click here to install the Quirkbot drivers for Windows**.",
 
 	"ui.board.upload.start"                            : "Start upload",
