@@ -40,5 +40,42 @@
 			"locale" : "en",
 			"ref" : "text"
 		}
+	},
+
+
+	"/sv/": {
+		"page": "/",
+		"query": {
+			"locale" : "sv",
+			"ref" : "home"
+		}
+	},
+	"/sv/user/": {
+		"page": "/",
+		"query": {
+			"locale" : "sv",
+			"ref" : "user"
+		}
+	},
+	"/sv/flow/": {
+		"page": "/",
+		"query": {
+			"locale" : "sv",
+			"ref" : "flow"
+		}
+	},
+	"/sv/block/": {
+		"page": "/",
+		"query": {
+			"locale" : "sv",
+			"ref" : "block"
+		}
+	},
+	"/sv/text/": {
+		"page": "/",
+		"query": {
+			"locale" : "sv",
+			"ref" : "text"
+		}
 	}
 }
