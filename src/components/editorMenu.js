@@ -27,6 +27,7 @@ import {
 } from 'src/constants/colors'
 
 const EditorMenu = ({
+	disabled,
 	type,
 	name,
 	saved,
@@ -169,11 +170,11 @@ const EditorMenu = ({
 			}
 
 		`}</style>
-		<div className='type'>
+		{/* <div className='type'>
 			<SvgIcon
 				icon={editorIcons[type]}
 			/>
-		</div>
+		</div> */}
 		<DropdownMenu
 			labelKey='ui.file_menu.title'
 			options={[
@@ -191,27 +192,31 @@ const EditorMenu = ({
 				},
 				{
 					labelKey         : 'ui.file_menu.options.save',
-					disabledLabelKey : 'ui.file_menu.options.autosaved',
+					disabledLabelKey : disabled ? 'ui.file_menu.options.save' : 'ui.file_menu.options.autosaved',
 					onClick          : onSavePress,
-					disabled         : saved,
+					disabled         : disabled || saved,
 					divider          : true
 				},
 				{
 					labelKey : 'ui.file_menu.options.duplicate',
 					onClick  : onDuplicatePress,
+					disabled,
 				},
 				{
 					labelKey : 'ui.file_menu.options.upload',
 					onClick  : onUploadPress,
+					disabled,
 				},
 				{
 					labelKey : 'ui.file_menu.options.share',
 					onClick  : onSharePress,
-					divider  : true
+					divider  : true,
+					disabled,
 				},
 				{
 					labelKey : 'ui.file_menu.options.export',
 					onClick  : onExportPress,
+					disabled,
 				},
 				{
 					labelKey : 'ui.file_menu.options.import',
@@ -220,53 +225,58 @@ const EditorMenu = ({
 			]}
 		/>
 		<HelpMenuContainer />
-		<input
-			className='name'
-			type='text'
-			value={name}
-			size={0}
-			placeholder={placeholderName}
-			onChange={e => onNameChange(e.target.value)}
-		/>
-		<div className='buttons'>
-			{saved &&
-				<div className={`saved-status ${storageStatus}`}>
-					<div className='circle'>
-						<SvgIcon
-							icon={(
-								storageStatus === SYNCING ||
-								storageStatus === NEEDS_SYNC) ?
-								syncIcon
-								:
-								checkIcon
-							}
-						/>
-					</div>
-					<div className='label'>
-						<S value='ui.file_menu.options.autosaved'/>
-					</div>
-				</div>
-			}
-			{!saved &&
-				<IconButton
-					icon={saveIcon}
-					labelKey='ui.header_menu.options.save'
-					onClick={onSavePress}
-					hideLabelOnMediaQuery={'max-width: 850px'}
+		{!disabled &&
+			<>
+				<input
+					className='name'
+					type='text'
+					value={name}
+					size={0}
+					placeholder={placeholderName}
+					onChange={e => onNameChange(e.target.value)}
 				/>
-			}
-			<IconButton
-				icon={uploadIcon}
-				labelKey='ui.header_menu.options.upload'
-				onClick={onUploadPress}
-				hideLabelOnMediaQuery={'max-width: 800px'}
-			/>
-		</div>
+				<div className='buttons'>
+					{saved &&
+						<div className={`saved-status ${storageStatus}`}>
+							<div className='circle'>
+								<SvgIcon
+									icon={(
+										storageStatus === SYNCING ||
+										storageStatus === NEEDS_SYNC) ?
+										syncIcon
+										:
+										checkIcon
+									}
+								/>
+							</div>
+							<div className='label'>
+								<S value='ui.file_menu.options.autosaved'/>
+							</div>
+						</div>
+					}
+					{!saved &&
+						<IconButton
+							icon={saveIcon}
+							labelKey='ui.header_menu.options.save'
+							onClick={onSavePress}
+							hideLabelOnMediaQuery={'max-width: 850px'}
+						/>
+					}
+					<IconButton
+						icon={uploadIcon}
+						labelKey='ui.header_menu.options.upload'
+						onClick={onUploadPress}
+						hideLabelOnMediaQuery={'max-width: 800px'}
+					/>
+				</div>
+			</>
+		}
 	</div>
 
 EditorMenu.defaultProps = {}
 
 EditorMenu.propTypes = {
+	disabled        : PropTypes.bool,
 	type            : PropTypes.string,
 	name            : PropTypes.string,
 	saved           : PropTypes.bool,

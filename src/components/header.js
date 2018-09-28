@@ -28,11 +28,8 @@ const Header = ({
 			.root :global(> .dropdownMenu) {
 				height: 100%;
 			}
-			.root .editor {
+			.root :global(.editorMenu) {
 				flex: 1;
-				height: 100%;
-			}
-			.root .editor :global(>*){
 				height: 100%;
 			}
 			.root .logo :global(>.svgIcon) {
@@ -80,7 +77,11 @@ const Header = ({
 			</div>
 		</Link>
 
-		{!editorMenu &&
+		<EditorMenuContainer
+			disabled={!editorMenu}
+		/>
+
+		{/* {!editorMenu &&
 			<HelpMenuContainer />
 		}
 
@@ -89,6 +90,7 @@ const Header = ({
 				<EditorMenuContainer />
 			}
 		</div>
+		*/}
 		<UserHeaderAvatarContainer />
 		<LocalesMenuContainer />
 	</div>
