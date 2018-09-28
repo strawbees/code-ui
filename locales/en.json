@@ -119,10 +119,10 @@
 	"ui.dialog.discard.description"           : "You are about to leave the current editor and your changes will be lost. Do you want to proceed?",
 	"ui.dialog.discard.confirm"               : "Proceed",
 	"ui.dialog.anonymous_save.title"       : "Guest - saving",
-	"ui.dialog.anonymous_save.description" : "When you save a program as an *Guest*, the program is only saved locally on your device and is not published on the web.",
+	"ui.dialog.anonymous_save.description" : "When you save a program as a *Guest*, the program is only saved locally on your device and is not published on the web.",
 	"ui.dialog.anonymous_save.confirm"     : "Ok, got it",
 	"ui.dialog.anonymous_copy_programs.title"       : "Copy local programs?",
-	"ui.dialog.anonymous_copy_programs.description" : "There are programs saved locally by an *Guest* on this device. Would you like to copy them to your online account?",
+	"ui.dialog.anonymous_copy_programs.description" : "There are programs saved locally by a *Guest* on this device. Would you like to copy them to your online account?",
 	"ui.dialog.anonymous_copy_programs.confirm"     : "Yes, copy programs",
 	"ui.dialog.anonymous_copy_programs.cancel"      : "No, discard programs",
 

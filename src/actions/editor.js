@@ -135,18 +135,18 @@ export const saveCurrentEditorProgram = () => async (dispatch, getState) => {
 	dispatch(setUrlVars(parseUrlVars(as)))
 
 	// If the user is anonymous, warn about how the programs are not saved online
-	if (isAnon) {
-		dispatch(safeOpenDialogModal(
-			{
-				titleKey              : 'ui.dialog.anonymous_save.title',
-				descriptionKey        : 'ui.dialog.anonymous_save.description',
-				confirmLabelKey       : 'ui.dialog.anonymous_save.confirm',
-				descriptionIsMarkdown : true,
-				limitWidth            : true,
-				displayCancel         : false
-			}
-		))
-	}
+	// if (isAnon) {
+	// 	dispatch(safeOpenDialogModal(
+	// 		{
+	// 			titleKey              : 'ui.dialog.anonymous_save.title',
+	// 			descriptionKey        : 'ui.dialog.anonymous_save.description',
+	// 			confirmLabelKey       : 'ui.dialog.anonymous_save.confirm',
+	// 			descriptionIsMarkdown : true,
+	// 			limitWidth            : true,
+	// 			displayCancel         : false
+	// 		}
+	// 	))
+	// }
 }
 export const updateCurrentEditorProgramName = (name) => async (dispatch, getState) => {
 	const state = getState()
