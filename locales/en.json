@@ -59,7 +59,7 @@
 	"ui.sb_cloud.forgot.submit.success"              : "Check your email for instructions on how to reset your password.",
 
 	"ui.program_creator.title" : "Create a program",
-	"ui.program_creator.import" : "Import program",
+	"ui.program_creator.import" : "Import from computer",
 
 	"ui.header_menu.options.upload"  : "Upload",
 	"ui.header_menu.options.save"    : "Save",
@@ -104,7 +104,7 @@
 	"ui.dialog.share.dynamic_url.description" : "",
 	"ui.dialog.share.static_url.title"        : "Link to this program, as it is right now",
 	"ui.dialog.share.static_url.description"  : "If this program is modified, this link will always point to it's current version",
-	"ui.dialog.import.title"                  : "Import program",
+	"ui.dialog.import.title"                  : "Import from computer",
 	"ui.dialog.import.drag_file"              : "Drop your program file here",
 	"ui.dialog.import.drop_file"              : "Drop it!",
 	"ui.dialog.import.open_file"              : "Open file",
