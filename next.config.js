@@ -3,7 +3,7 @@ const routes = require('./static/routes')
 const configMode = process.env.CONFIG || 'dev'
 const publicRuntimeConfig = {
 	dev : {
-		CANONICAL_URL                 : 'http ://code-dev.strawbees.com:3000',
+		CANONICAL_URL                 : 'http://code-dev.strawbees.com:3000',
 		COMPILER_URL                  : 'https://compiler.quirkbot.com',
 		STRAWBEES_CODE_API_URL        : 'https://api-stage.quirkbot.com',
 		GAID                          : 'UA-69443341-6',

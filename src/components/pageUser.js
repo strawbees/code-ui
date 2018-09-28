@@ -16,6 +16,7 @@ const PageUser = ({
 				justify-content: center;
 				background-color: ${tinycolor(GRAY).lighten(25).toRgbString()};
 				padding: 1rem 0;
+				flex: 1;
 			}
 			.root :global(.programList) {
 				width: 100%;

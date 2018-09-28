@@ -5,6 +5,7 @@ import {
 import {
 	modalRemoveProgram,
 	modalDuplicateProgramById,
+	modalShareProgramData,
 	modalUploadCode,
 	exportProgramToFile,
 } from 'src/actions/program'
@@ -13,6 +14,7 @@ export default autobindDispatchToActionCreators({
 	safeOpenModal,
 	modalRemoveProgram,
 	modalDuplicateProgramById,
+	modalShareProgramData,
 	modalUploadCode,
 	exportProgramToFile,
 })

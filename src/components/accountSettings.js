@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import IconButton from 'src/components/iconButton'
-import Link from 'src/components/link'
+import CopyableUrl from 'src/components/copyableUrl'
 import StrawbeesCloudConnectContainer from 'src/containers/strawbeesCloudConnectContainer'
 import S from 'src/containers/sManager'
 import userIcons from 'src/assets/icons/user'
@@ -81,23 +81,8 @@ class AccountSettings extends React.Component {
 						padding: 1rem;
 						box-shadow: 0.15rem 0.15rem 0 0 rgba(0,0,0,0.2);
 					}
-					.public-profile-url {
+					.settings :global(.copyableUrl){
 						margin-bottom: 1rem;
-						display: flex;
-						flex-direction: column;
-						align-items: center;
-					}
-					.public-profile-url .title {
-						font-weight: bold;
-					}
-					.public-profile-url :global(.url){
-						font-size: 0.65rem;
-						font-family: Code;
-						background-color: ${tinycolor(WHITE).toRgbString()};
-						color: ${tinycolor(BLACK).setAlpha(0.7).toRgbString()};
-						padding: 0.25rem 0.5rem;
-						border-radius: 0.2rem;
-
 					}
 				`}</style>
 				<div className='expand'>
@@ -121,17 +106,11 @@ class AccountSettings extends React.Component {
 								onClick={isOpen ? collapseAccountSettings : expandAccountSettings}
 							/>
 							<div className='settings'>
-								<div className='public-profile-url'>
-									<div className='title'>
-										<S value='ui.user.account_settings.public_profile.title' />
-									</div>
-									<div
-										className='url'
-										ref={this.publicProfileUrlContainer}
-										onClick={this.selectPublicProfileUrlContainer}>
-										{publicProfileUrl}
-									</div>
-								</div>
+								<CopyableUrl
+									titleKey='ui.user.account_settings.public_profile.title'
+									descriptionKey='ui.user.account_settings.public_profile.description'
+									url={publicProfileUrl}
+								/>
 								<IconButton
 									icon={userIcons.logout}
 									labelKey='ui.user.account_settings.logout'

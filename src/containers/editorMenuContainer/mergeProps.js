@@ -14,6 +14,7 @@ export default (stateProps, dispatchProps, ownProps) => {
 		saveCurrentEditorProgram,
 		modalUploadCode,
 		modalDuplicateProgramData,
+		modalShareProgramData,
 		modalImportProgram,
 		exportProgramToFile,
 		...otherDispatchProps
@@ -26,7 +27,13 @@ export default (stateProps, dispatchProps, ownProps) => {
 		onSavePress      : saveCurrentEditorProgram,
 		onUploadPress    : () => modalUploadCode(generatedCode),
 		onDuplicatePress : () => modalDuplicateProgramData({ type, source, name }),
-		onImportPress    : () => modalImportProgram(),
-		onExportPress    : () => exportProgramToFile({ type, source, name })
+		onSharePress     : () => modalShareProgramData({
+			id,
+			type,
+			source,
+			name,
+		}),
+		onImportPress : () => modalImportProgram(),
+		onExportPress : () => exportProgramToFile({ type, source, name }),
 	}
 }

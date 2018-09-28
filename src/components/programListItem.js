@@ -1,60 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import tinycolor from 'tinycolor2'
-import Link from 'src/components/link'
 import IconButton from 'src/components/iconButton'
-import ProgramTitle from 'src/components/programTitle'
 import ProgramButton from 'src/components/programButton'
+import ProgramMenu from 'src/components/programMenu'
 import fileIcons from 'src/assets/icons/file'
-import { GRAY } from 'src/constants/colors'
-
-const ProgramMenu = ({
-	name,
-	type,
-	updatedAt,
-	items,
-}) =>
-	<React.Fragment>
-		<style jsx>{`
-			.root {
-				display: flex;
-				flex-direction: column;
-				align-items: stretch;
-			}
-			.container {
-				margin-top: 0.5rem;
-				display: flex;
-				flex-direction: column;
-				align-items: flex-start;
-				background-color: ${tinycolor(GRAY).lighten(35).toRgbString()};
-				padding: 0.5rem;
-				border-radius: 0.5rem;
-			}
-			.container :global(.iconButton){
-				margin-bottom: 0.5rem;
-			}
-			.container :global(.iconButton:last-child) {
-				margin-bottom: 0;
-			}
-		`}</style>
-		<ProgramTitle
-			name={name}
-			type={type}
-			updatedAt={updatedAt}
-			displayAsButton={false}
-		/>
-		<div className='container'>
-			{items && items.filter(item => item).map(({ icon, labelKey, onClick }) =>
-				<IconButton
-					key={labelKey}
-					icon={icon}
-					labelKey={labelKey}
-					onClick={onClick}
-				/>
-			)}
-		</div>
-	</React.Fragment>
-
 
 const ProgramListItem = ({
 	name,

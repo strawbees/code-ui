@@ -72,32 +72,32 @@ const fields = [
 			invalid : 'ui.sb_cloud.signup.email.error.invalid',
 		},
 	},
-	{
-		id       : 'signup-email-confirm',
-		name     : 'email-confirm',
-		type     : 'email',
-		labelKey : 'ui.sb_cloud.signup.email_confirm.label',
-		validate : (value, values) => {
-			if (!value) {
-				return 'blank'
-			}
-			if (values.email !== values['email-confirm']) {
-				return 'missmatch'
-			}
-			return null
-		},
-		validateOnBlur : true,
-		errorKeys      : {
-			blank     : 'ui.sb_cloud.signup.email_confirm.error.blank',
-			missmatch : 'ui.sb_cloud.signup.email_confirm.error.missmatch',
-		},
-	},
+	// {
+	// 	id       : 'signup-email-confirm',
+	// 	name     : 'email-confirm',
+	// 	type     : 'email',
+	// 	labelKey : 'ui.sb_cloud.signup.email_confirm.label',
+	// 	validate : (value, values) => {
+	// 		if (!value) {
+	// 			return 'blank'
+	// 		}
+	// 		if (values.email !== values['email-confirm']) {
+	// 			return 'missmatch'
+	// 		}
+	// 		return null
+	// 	},
+	// 	validateOnBlur : true,
+	// 	errorKeys      : {
+	// 		blank     : 'ui.sb_cloud.signup.email_confirm.error.blank',
+	// 		missmatch : 'ui.sb_cloud.signup.email_confirm.error.missmatch',
+	// 	},
+	// },
 	{
 		id       : 'signup-password',
 		name     : 'password',
 		type     : 'password',
 		labelKey : 'ui.sb_cloud.signup.password.label',
-		notify   : ['password-confirm'],
+		// notify   : ['password-confirm'],
 		validate : (value) => {
 			if (!value) {
 				return 'blank'
@@ -113,27 +113,27 @@ const fields = [
 			short : 'ui.sb_cloud.signup.password.error.short',
 		},
 	},
-	{
-		id       : 'signup-password-confirm',
-		name     : 'password-confirm',
-		type     : 'password',
-		labelKey : 'ui.sb_cloud.signup.password_confirm.label',
-		notify   : ['password'],
-		validate : (value, values) => {
-			if (!value) {
-				return 'blank'
-			}
-			if (values.password !== values['password-confirm']) {
-				return 'missmatch'
-			}
-			return null
-		},
-		validateOnBlur : true,
-		errorKeys      : {
-			blank     : 'ui.sb_cloud.signup.password_confirm.error.blank',
-			missmatch : 'ui.sb_cloud.signup.password_confirm.error.missmatch',
-		},
-	},
+	// {
+	// 	id       : 'signup-password-confirm',
+	// 	name     : 'password-confirm',
+	// 	type     : 'password',
+	// 	labelKey : 'ui.sb_cloud.signup.password_confirm.label',
+	// 	notify   : ['password'],
+	// 	validate : (value, values) => {
+	// 		if (!value) {
+	// 			return 'blank'
+	// 		}
+	// 		if (values.password !== values['password-confirm']) {
+	// 			return 'missmatch'
+	// 		}
+	// 		return null
+	// 	},
+	// 	validateOnBlur : true,
+	// 	errorKeys      : {
+	// 		blank     : 'ui.sb_cloud.signup.password_confirm.error.blank',
+	// 		missmatch : 'ui.sb_cloud.signup.password_confirm.error.missmatch',
+	// 	},
+	// },
 	{
 		id            : 'signup-terms',
 		name          : 'terms',

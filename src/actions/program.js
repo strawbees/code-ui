@@ -15,8 +15,12 @@ import {
 import storageFormatedProgramSelector from 'src/selectors/storageFormatedProgramSelector'
 import storageProgramsSelector from 'src/selectors/storageProgramsSelector'
 import editorSelector from 'src/selectors/editorSelector'
+import programDynamicUrlSelector from 'src/selectors/programDynamicUrlSelector'
+import programStaticUrlSelector from 'src/selectors/programStaticUrlSelector'
 import storageProgramSelector from 'src/selectors/storageProgramSelector'
+import CopyableUrl from 'src/components/copyableUrl'
 import FormInput from 'src/components/formInput'
+import ProgramMenuFrame from 'src/components/programMenuFrame'
 import UploadAreaContainer from 'src/containers/uploadAreaContainer'
 import ProgramImporterContainer from 'src/containers/programImporterContainer'
 import blockCompressSource from 'src/editors/block/utils/compressSource'
@@ -172,7 +176,7 @@ export const modalDuplicateProgramData = (program) => async (dispatch) => {
 		},
 		<FormInput
 			defaultValue={newName}
-			labelKey={'modal.program.duplicate-confirmation'}
+			labelKey={'ui.dialog.duplicate.field'}
 			onChange={e => newName = e}
 		/>,
 	))
@@ -185,13 +189,39 @@ export const modalUploadCode = (code) => async (dispatch) => {
 		/>
 	))
 }
-export const modalImportProgram = () => async (dispatch) => {
-	return dispatch(safeOpenDialogModal(
+export const modalImportProgram = () => async (dispatch) =>
+	dispatch(safeOpenDialogModal(
 		{
 			titleKey       : 'ui.dialog.import.title',
 			displayConfirm : false,
 			displayCancel  : false
 		},
 		<ProgramImporterContainer />
+	))
+
+export const modalShareProgramData = (program) => async (dispatch, getState) => {
+	const state = getState()
+
+	const {
+		id,
+		name,
+		type,
+		source
+	} = program
+
+	const dynamicUrl = programDynamicUrlSelector()(state, { id, type })
+	const staticUrl = programStaticUrlSelector()(state, { name, type, source })
+
+	return dispatch(safeOpenModal(
+		<ProgramMenuFrame
+			name={name}
+			type={type}
+			centered={true}>
+			<CopyableUrl
+				titleKey='ui.dialog.share.dynamic_url.title'
+				descriptionKey='ui.dialog.share.dynamic_url.description'
+				url={(dynamicUrl && staticUrl) ? dynamicUrl : staticUrl}
+			/>
+		</ProgramMenuFrame>
 	))
 }

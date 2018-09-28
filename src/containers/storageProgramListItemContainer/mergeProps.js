@@ -16,6 +16,7 @@ export default (stateProps, dispatchProps, ownProps) => {
 	const {
 		modalRemoveProgram,
 		modalDuplicateProgramById,
+		modalShareProgramData,
 		modalUploadCode,
 		exportProgramToFile,
 		...otherDispatchProps
@@ -27,8 +28,13 @@ export default (stateProps, dispatchProps, ownProps) => {
 		...otherOwnProps,
 		onRemovePress    : () => modalRemoveProgram(id),
 		onDuplicatePress : () => modalDuplicateProgramById(id),
-		onSharePress     : () => {},
-		onUploadPress    : () => modalUploadCode(generatedCode),
-		onExportPress    : () => exportProgramToFile({ type, source, name }),
+		onSharePress     : () => modalShareProgramData({
+			id,
+			type,
+			source,
+			name,
+		}),
+		onUploadPress : () => modalUploadCode(generatedCode),
+		onExportPress : () => exportProgramToFile({ type, source, name }),
 	}
 }
