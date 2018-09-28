@@ -81,7 +81,7 @@
 	"ui.file_menu.options.export"    : "Export to computer",
 	"ui.file_menu.options.remove"    : "Delete...",
 
-	"ui.help_menu.title"                         : "Help",
+	"ui.help_menu.title"                         : "Tutorials",
 	"ui.help_menu.options.intro_code.title"      : "Using Strawbees CODE",
 	"ui.help_menu.options.intro_code.video"      : "https://www.youtube.com/watch?v=-D9FhCw9OVA",
 	"ui.help_menu.options.intro_flow.title"      : "Flow programming",

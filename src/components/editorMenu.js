@@ -59,15 +59,16 @@ const EditorMenu = ({
 			.buttons {
 				margin-right: 0;
 			}
-			.type {
-				margin-right: 0;
-			}
-			.type :global(>.svgIcon) {
-				width: 3.5rem;
-				height: 2.25rem;
-			}
+
 			.root :global(> .dropdownMenu) {
 				height: 100%;
+			}
+			.type {
+				margin-right: -2.5rem;
+			}
+			.type :global(>.svgIcon) {
+				width: 2.25rem;
+				height: 1.5rem;
 			}
 			.name {
 				-webkit-appearance: none;
@@ -76,7 +77,7 @@ const EditorMenu = ({
 				background-color: ${tinycolor(WHITE).setAlpha(0.5).toRgbString()};
 				font-size: 1rem;
 				font-family: Text;
-				padding: 0 0.2rem;
+				padding: 0 0.2rem 0 2.75rem;
 				max-width: 15rem;
 				height: 2rem;
 				margin-right: 0.5rem;
@@ -156,6 +157,10 @@ const EditorMenu = ({
 				.type {
 					display: none;
 				}
+				.name {
+					padding: 0 0.2rem;
+				}
+
 			}
 			@media (max-width: 450px){
 				.name {
@@ -231,6 +236,11 @@ const EditorMenu = ({
 		<HelpMenuContainer />
 		{!disabled &&
 			<>
+				<div className='type'>
+					<SvgIcon
+						icon={editorIcons[type]}
+					/>
+				</div>
 				<input
 					className='name'
 					type='text'
