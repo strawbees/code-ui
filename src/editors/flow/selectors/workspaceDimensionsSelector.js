@@ -42,17 +42,19 @@ export default () => createSelector(
 		height += 100
 		// "footer"
 		height += 130
-		// parameters
-		height += nodeY.parameters.length * 45
-		// "multiple" parameters
-		height += nodeY.parameters.reduce((acc, parameter) => {
-			if (parameter.multiple) {
-				acc += Object.keys(instanceY.parameters || [])
-					.filter(name => name.indexOf(`${parameter.id}.`) === 0)
-					.length * 30
-			}
-			return acc
-		}, 0)
+		if (nodeY.parameters) {
+			// parameters
+			height += nodeY.parameters.length * 45
+			// "multiple" parameters
+			height += nodeY.parameters.reduce((acc, parameter) => {
+				if (parameter.multiple) {
+					acc += Object.keys(instanceY.parameters || [])
+						.filter(name => name.indexOf(`${parameter.id}.`) === 0)
+						.length * 30
+				}
+				return acc
+			}, 0)
+		}
 
 		return {
 			width,

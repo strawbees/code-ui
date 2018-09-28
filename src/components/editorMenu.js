@@ -88,6 +88,10 @@ const EditorMenu = ({
 			.name::placeholder {
 				color: ${tinycolor(GRAY).darken(30).toRgbString()};
 			}
+			.name:focus::placeholder {
+				opacity: 0.2;
+			}
+
 			.buttons {
 				display: flex;
 				flex-direction: row;
