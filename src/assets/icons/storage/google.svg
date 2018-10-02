@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
+    <defs>
+        <path id="a" d="M78.885 50.67c0-2.09-.187-4.1-.536-6.029H50.59v11.401h15.863c-.683 3.684-2.76 6.806-5.881 8.896v7.395h9.526c5.572-5.131 8.787-12.687 8.787-21.663zm0 0"/>
+    </defs>
+    <clipPath id="b">
+        <use xlink:href="#a" overflow="visible"/>
+    </clipPath>
+    <path clip-path="url(#b)" fill="#3e82f1" d="M34.215 28.266H95.26v60.442H34.215z"/>
+    <defs>
+        <path id="c" d="M50.59 79.475c7.958 0 14.63-2.639 19.507-7.141l-9.526-7.395c-2.639 1.769-6.015 2.814-9.981 2.814-7.677 0-14.175-5.185-16.492-12.152H24.25v7.637c4.85 9.632 14.818 16.237 26.34 16.237zm0 0"/>
+    </defs>
+    <clipPath id="d">
+        <use xlink:href="#c" overflow="visible"/>
+    </clipPath>
+    <path clip-path="url(#d)" fill="#32a753" d="M7.875 39.225h78.596v56.624H7.875z"/>
+    <defs>
+        <path id="e" d="M34.097 55.6a17.698 17.698 0 0 1-.924-5.6c0-1.943.335-3.832.924-5.6v-7.636H24.25c-1.996 3.979-3.135 8.481-3.135 13.237s1.139 9.258 3.135 13.237l9.847-7.638zm0 0"/>
+    </defs>
+    <clipPath id="f">
+        <use xlink:href="#e" overflow="visible"/>
+    </clipPath>
+    <path clip-path="url(#f)" fill="#f9bb00" d="M4.74 20.389h45.732v59.223H4.74z"/>
+    <defs>
+        <path id="g" d="M50.59 32.248c4.327 0 8.213 1.487 11.267 4.408l8.454-8.454c-5.104-4.756-11.776-7.677-19.721-7.677-11.522 0-21.49 6.605-26.34 16.238l9.847 7.636c2.318-6.966 8.816-12.151 16.493-12.151zm0 0"/>
+    </defs>
+    <clipPath id="h">
+        <use xlink:href="#g" overflow="visible"/>
+    </clipPath>
+    <path clip-path="url(#h)" fill="#e74133" d="M7.875 4.151h78.81v56.624H7.875z"/>
+</svg>

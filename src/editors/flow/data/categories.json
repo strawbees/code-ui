@@ -1,0 +1,17 @@
+{
+	"input" : {
+		"id" : "input",
+		"index" : 0,
+		"color" : "rgb(0,173,238)"
+	},
+	"brains" : {
+		"id" : "brains",
+		"index" : 1,
+		"color" : "rgb(57,165,0)"
+	},
+	"output" : {
+		"id" : "output",
+		"index" : 2,
+		"color" : "rgb(244,66,176)"
+	}
+}

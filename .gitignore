@@ -1,0 +1,14 @@
+.DS_Store
+node_modules
+yarn-error.log
+/aws-config-*.json
+!/aws-config-template.json
+/.env
+/.next
+/out
+/static/lib/nprogress.css
+/static/lib/scratch-blocks
+/static/locales/
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

@@ -1,0 +1,1493 @@
+{
+	"analog-sensor": {
+		"id": "analog-sensor",
+		"index": 3,
+		"taxonomy": {
+			"advanced": true,
+			"category": "input"
+		},
+		"parameters": [
+			{
+				"id": "place",
+				"default": "DISCONNECTED",
+				"validation": {
+					"type": "list",
+					"data": [
+						"DISCONNECTED",
+						"HB",
+						"LAB",
+						"RAB",
+						"LLB",
+						"RLB",
+						"BP1",
+						"BP2",
+						"LLF",
+						"LAF"
+					]
+				},
+				"code": "place"
+			},
+			{
+				"id": "min",
+				"default": 0,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "min"
+			},
+			{
+				"id": "max",
+				"default": 1,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "max"
+			}
+		],
+		"outlets": [
+			{
+				"id": "out",
+				"code": "out"
+			}
+		],
+		"code": "AnalogSensor"
+	},
+	"buzzer": {
+		"id": "buzzer",
+		"index": 4,
+		"taxonomy": {
+			"advanced": true,
+			"category": "output"
+		},
+		"parameters": [
+			{
+				"id": "note",
+				"default": "NO_NOTE",
+				"validation": {
+					"type": "list",
+					"data": [
+						"NO_NOTE",
+						"NOTE_A1",
+						"NOTE_AS1",
+						"NOTE_B1",
+						"NOTE_C2",
+						"NOTE_CS2",
+						"NOTE_D2",
+						"NOTE_DS2",
+						"NOTE_E2",
+						"NOTE_F2",
+						"NOTE_FS2",
+						"NOTE_G2",
+						"NOTE_GS2",
+						"NOTE_A2",
+						"NOTE_AS2",
+						"NOTE_B2",
+						"NOTE_C3",
+						"NOTE_CS3",
+						"NOTE_D3",
+						"NOTE_DS3",
+						"NOTE_E3",
+						"NOTE_F3",
+						"NOTE_FS3",
+						"NOTE_G3",
+						"NOTE_GS3",
+						"NOTE_A3",
+						"NOTE_AS3",
+						"NOTE_B3",
+						"NOTE_C4",
+						"NOTE_CS4",
+						"NOTE_D4",
+						"NOTE_DS4",
+						"NOTE_E4",
+						"NOTE_F4",
+						"NOTE_FS4",
+						"NOTE_G4",
+						"NOTE_GS4",
+						"NOTE_A4",
+						"NOTE_AS4",
+						"NOTE_B4",
+						"NOTE_C5",
+						"NOTE_CS5",
+						"NOTE_D5",
+						"NOTE_DS5",
+						"NOTE_E5",
+						"NOTE_F5",
+						"NOTE_FS5",
+						"NOTE_G5",
+						"NOTE_GS5",
+						"NOTE_A5",
+						"NOTE_AS5",
+						"NOTE_B5",
+						"NOTE_C6",
+						"NOTE_CS6",
+						"NOTE_D6",
+						"NOTE_DS6",
+						"NOTE_E6",
+						"NOTE_F6",
+						"NOTE_FS6",
+						"NOTE_G6",
+						"NOTE_GS6",
+						"NOTE_A6",
+						"NOTE_AS6",
+						"NOTE_B6",
+						"NOTE_C7",
+						"NOTE_CS7",
+						"NOTE_D7",
+						"NOTE_DS7",
+						"NOTE_E7",
+						"NOTE_F7",
+						"NOTE_FS7",
+						"NOTE_G7",
+						"NOTE_GS7",
+						"NOTE_A7",
+						"NOTE_AS7",
+						"NOTE_B7",
+						"NOTE_C8",
+						"NOTE_CS8",
+						"NOTE_D8",
+						"NOTE_DS8"
+					]
+				},
+				"code": "note"
+			},
+			{
+				"id": "place",
+				"default": "BP1",
+				"validation": {
+					"type": "list",
+					"data": [
+						"DISCONNECTED",
+						"BP1",
+						"BP2",
+						"BP3",
+						"BP4",
+						"BP5",
+						"BP6"
+					]
+				},
+				"code": "place"
+			}
+		],
+		"outlets": [],
+		"code": "Buzzer"
+	},
+	"makey-touch": {
+		"id": "makey-touch",
+		"index": 0,
+		"taxonomy": {
+			"advanced": false,
+			"category": "input"
+		},
+		"parameters": [
+			{
+				"id": "place",
+				"default": "DISCONNECTED",
+				"validation": {
+					"type": "list",
+					"data": [
+						"DISCONNECTED",
+						"H",
+						"LA",
+						"RA",
+						"LL",
+						"RL"
+					]
+				},
+				"code": "place"
+			},
+			{
+				"id": "sensitivity",
+				"default": 0,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "sensitivity"
+			},
+			{
+				"id": "min",
+				"default": 0,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "min"
+			},
+			{
+				"id": "max",
+				"default": 1,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "max"
+			}
+		],
+		"outlets": [
+			{
+				"id": "out",
+				"code": "out"
+			}
+		],
+		"code": "CircuitTouch"
+	},
+	"comparison": {
+		"id": "comparison",
+		"index": 3,
+		"taxonomy": {
+			"advanced": true,
+			"category": "brains"
+		},
+		"parameters": [
+			{
+				"id": "in",
+				"default": 0,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "in"
+			},
+			{
+				"id": "operation",
+				"default": "COMP_EQUAL",
+				"validation": {
+					"type": "list",
+					"data": [
+						"COMP_EQUAL",
+						"COMP_DIFF",
+						"COMP_GREATER",
+						"COMP_GREATER_EQ",
+						"COMP_LESS",
+						"COMP_LESS_EQ"
+					]
+				},
+				"code": "operation"
+			},
+			{
+				"id": "value",
+				"default": 0,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "value"
+			},
+			{
+				"id": "ifThen",
+				"default": 1,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "ifThen"
+			},
+			{
+				"id": "ifElse",
+				"default": 0,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "ifElse"
+			}
+		],
+		"outlets": [
+			{
+				"id": "out",
+				"code": "out"
+			}
+		],
+		"code": "Comparison"
+	},
+	"constrain": {
+		"id": "constrain",
+		"index": 4,
+		"taxonomy": {
+			"advanced": true,
+			"category": "brains"
+		},
+		"parameters": [
+			{
+				"id": "in",
+				"default": 0,
+				"code": "in"
+			},
+			{
+				"id": "min",
+				"default": 0,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "min"
+			},
+			{
+				"id": "max",
+				"default": 1,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "max"
+			}
+		],
+		"outlets": [
+			{
+				"id": "out",
+				"code": "out"
+			}
+		],
+		"code": "Constrain"
+	},
+	"continuous-servo": {
+		"id": "continuous-servo",
+		"index": 3,
+		"taxonomy": {
+			"advanced": true,
+			"category": "output"
+		},
+		"parameters": [
+			{
+				"id": "speed",
+				"default": 0,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "speed"
+			},
+			{
+				"id": "direction",
+				"default": 0,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "direction"
+			},
+			{
+				"id": "place",
+				"default": "DISCONNECTED",
+				"validation": {
+					"type": "list",
+					"data": [
+						"DISCONNECTED",
+						"SERVO_MOTOR_1",
+						"SERVO_MOTOR_2"
+					]
+				},
+				"code": "place"
+			}
+		],
+		"outlets": [],
+		"code": "ContinuousServo"
+	},
+	"converter": {
+		"id": "converter",
+		"index": 4,
+		"taxonomy": {
+			"advanced": true,
+			"category": "brains"
+		},
+		"parameters": [
+			{
+				"id": "in",
+				"default": 0,
+				"code": "in"
+			},
+			{
+				"id": "inMin",
+				"default": 0,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "inMin"
+			},
+			{
+				"id": "inMax",
+				"default": 1,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "inMax"
+			},
+			{
+				"id": "outMin",
+				"default": 0,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "outMin"
+			},
+			{
+				"id": "outMax",
+				"default": 1,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "outMax"
+			}
+		],
+		"outlets": [
+			{
+				"id": "out",
+				"code": "out"
+			}
+		],
+		"code": "Converter"
+	},
+	"counter": {
+		"id": "counter",
+		"index": 8,
+		"taxonomy": {
+			"advanced": true,
+			"category": "brains"
+		},
+		"parameters": [
+			{
+				"id": "trigger",
+				"default": 0,
+				"code": "trigger"
+			},
+			{
+				"id": "amount",
+				"default": 1,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "amount"
+			}
+		],
+		"outlets": [
+			{
+				"id": "out",
+				"code": "out"
+			}
+		],
+		"code": "Counter"
+	},
+	"dual-color-led": {
+		"id": "dual-color-led",
+		"index": 1,
+		"taxonomy": {
+			"advanced": true,
+			"category": "output"
+		},
+		"parameters": [
+			{
+				"id": "light",
+				"default": 1,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "light"
+			},
+			{
+				"id": "color",
+				"default": 0,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "color"
+			},
+			{
+				"id": "place",
+				"default": "DISCONNECTED",
+				"validation": {
+					"type": "list",
+					"data": [
+						"DISCONNECTED",
+						"H",
+						"LA",
+						"RA",
+						"LL",
+						"RL"
+					]
+				},
+				"code": "place"
+			}
+		],
+		"outlets": [],
+		"code": "DualColorLed"
+	},
+	"gate": {
+		"id": "gate",
+		"index": 5,
+		"taxonomy": {
+			"advanced": true,
+			"category": "brains"
+		},
+		"parameters": [
+			{
+				"id": "in",
+				"default": 0,
+				"code": "in"
+			},
+			{
+				"id": "trigger",
+				"default": 0,
+				"code": "trigger"
+			}
+		],
+		"outlets": [
+			{
+				"id": "out",
+				"code": "out"
+			}
+		],
+		"code": "Gate"
+	},
+	"ir-proximity": {
+		"id": "ir-proximity",
+		"index": 2,
+		"taxonomy": {
+			"advanced": true,
+			"category": "input"
+		},
+		"parameters": [
+			{
+				"id": "min",
+				"default": 0,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "min"
+			},
+			{
+				"id": "max",
+				"default": 1,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "max"
+			}
+		],
+		"outlets": [
+			{
+				"id": "out",
+				"code": "out"
+			}
+		],
+		"code": "IRProximity"
+	},
+	"key-press": {
+		"id": "key-press",
+		"index": 5,
+		"taxonomy": {
+			"advanced": true,
+			"category": "output"
+		},
+		"parameters": [
+			{
+				"id": "trigger",
+				"default": 0,
+				"code": "trigger"
+			},
+			{
+				"id": "key",
+				"default": "NO_KEY",
+				"validation": {
+					"type": "list",
+					"data": [
+						"NO_KEY",
+						"KEY_SPACE",
+						"KEY_UP",
+						"KEY_DOWN",
+						"KEY_LEFT",
+						"KEY_RIGHT",
+						"KEY_0",
+						"KEY_1",
+						"KEY_2",
+						"KEY_3",
+						"KEY_4",
+						"KEY_5",
+						"KEY_6",
+						"KEY_7",
+						"KEY_8",
+						"KEY_9",
+						"KEY_A",
+						"KEY_B",
+						"KEY_C",
+						"KEY_D",
+						"KEY_E",
+						"KEY_F",
+						"KEY_G",
+						"KEY_H",
+						"KEY_I",
+						"KEY_J",
+						"KEY_K",
+						"KEY_L",
+						"KEY_M",
+						"KEY_N",
+						"KEY_O",
+						"KEY_P",
+						"KEY_Q",
+						"KEY_R",
+						"KEY_S",
+						"KEY_T",
+						"KEY_U",
+						"KEY_V",
+						"KEY_W",
+						"KEY_X",
+						"KEY_Y",
+						"KEY_Z",
+						"KEY_LEFT_CTRL",
+						"KEY_LEFT_SHIFT",
+						"KEY_LEFT_ALT",
+						"KEY_LEFT_GUI",
+						"KEY_RIGHT_CTRL",
+						"KEY_RIGHT_SHIFT",
+						"KEY_RIGHT_ALT",
+						"KEY_RIGHT_GUI",
+						"KEY_BACKSPACE",
+						"KEY_TAB",
+						"KEY_RETURN",
+						"KEY_ESC",
+						"KEY_INSERT",
+						"KEY_DELETE",
+						"KEY_PAGE_UP",
+						"KEY_PAGE_DOWN",
+						"KEY_HOME",
+						"KEY_END",
+						"KEY_CAPS_LOCK",
+						"KEY_F1",
+						"KEY_F2",
+						"KEY_F3",
+						"KEY_F4",
+						"KEY_F5",
+						"KEY_F6",
+						"KEY_F7",
+						"KEY_F8",
+						"KEY_F9",
+						"KEY_F10",
+						"KEY_F11",
+						"KEY_F12",
+						"KEY_EXCLAMATION_POINT",
+						"KEY_DOUBLE_QUOTES",
+						"KEY_NUMBER_SIGN",
+						"KEY_DOLLAR_SIGN",
+						"KEY_PERCENT_SIGN",
+						"KEY_AMPERSAND",
+						"KEY_SINGLE_QUOTE",
+						"KEY_OPENING_PARENTHESIS",
+						"KEY_CLOSING_PARENTHESIS",
+						"KEY_ASTERISK",
+						"KEY_PLUS_SIGN",
+						"KEY_COMMA",
+						"KEY_MINUS_SIGN",
+						"KEY_PERIOD",
+						"KEY_SLASH",
+						"KEY_COLON",
+						"KEY_SEMICOLON",
+						"KEY_LESS_THAN_SIGN",
+						"KEY_EQUAL_SIGN",
+						"KEY_GREATER_THAN_SIGN",
+						"KEY_QUESTION_MARK",
+						"KEY_AT_SYMBOL",
+						"KEY_OPENING_BRACKET",
+						"KEY_BACKSLASH",
+						"KEY_CLOSING_BRACKET",
+						"KEY_CARET",
+						"KEY_UNDERSCORE",
+						"KEY_GRAVE_ACCENT",
+						"KEY_OPENING_BRACE",
+						"KEY_VERTICAL_BAR",
+						"KEY_CLOSING_BRACE",
+						"KEY_TILDE"
+					]
+				},
+				"code": "key"
+			}
+		],
+		"outlets": [],
+		"code": "KeyPress"
+	},
+	"key-sequence": {
+		"id": "key-sequence",
+		"index": 6,
+		"taxonomy": {
+			"advanced": true,
+			"category": "output"
+		},
+		"parameters": [
+			{
+				"id": "key",
+				"default": "NO_KEY",
+				"code": "key"
+			},
+			{
+				"id": "holdTime",
+				"default": 0,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "holdTime"
+			}
+		],
+		"outlets": [],
+		"code": "KeySequence"
+	},
+	"led": {
+		"id": "led",
+		"index": 0,
+		"taxonomy": {
+			"advanced": false,
+			"category": "output"
+		},
+		"parameters": [
+			{
+				"id": "light",
+				"default": 1,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "light"
+			},
+			{
+				"id": "place",
+				"default": "DISCONNECTED",
+				"validation": {
+					"type": "list",
+					"data": [
+						"DISCONNECTED",
+						"LE",
+						"RE",
+						"LM",
+						"RM",
+						"H",
+						"LA",
+						"RA",
+						"LL",
+						"RL"
+					]
+				},
+				"code": "place"
+			}
+		],
+		"outlets": [],
+		"code": "Led"
+	},
+	"light-sensor": {
+		"id": "light-sensor",
+		"index": 1,
+		"taxonomy": {
+			"advanced": false,
+			"category": "input"
+		},
+		"parameters": [
+			{
+				"id": "place",
+				"default": "DISCONNECTED",
+				"validation": {
+					"type": "list",
+					"data": [
+						"DISCONNECTED",
+						"H",
+						"LA",
+						"RA",
+						"LL",
+						"RL"
+					]
+				},
+				"code": "place"
+			},
+			{
+				"id": "min",
+				"default": 0,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "min"
+			},
+			{
+				"id": "max",
+				"default": 1,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "max"
+			}
+		],
+		"outlets": [
+			{
+				"id": "out",
+				"code": "out"
+			}
+		],
+		"code": "LightSensor"
+	},
+	"list": {
+		"id": "list",
+		"index": 6,
+		"taxonomy": {
+			"advanced": true,
+			"category": "brains"
+		},
+		"parameters": [
+			{
+				"id": "in",
+				"default": 0,
+				"code": "in"
+			},
+			{
+				"id": "items",
+				"default": 0,
+				"multiple": true,
+				"code": "items"
+			}
+		],
+		"outlets": [
+			{
+				"id": "out",
+				"code": "out"
+			}
+		],
+		"code": "List"
+	},
+	"logic": {
+		"id": "logic",
+		"index": 3,
+		"taxonomy": {
+			"advanced": true,
+			"category": "brains"
+		},
+		"parameters": [
+			{
+				"id": "operation",
+				"default": "LOGIC_AND",
+				"validation": {
+					"type": "list",
+					"data": [
+						"LOGIC_AND",
+						"LOGIC_OR",
+						"LOGIC_XOR"
+					]
+				},
+				"code": "operation"
+			},
+			{
+				"id": "items",
+				"default": 0,
+				"multiple": true,
+				"code": "items"
+			},
+			{
+				"id": "open",
+				"default": 1,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "open"
+			},
+			{
+				"id": "close",
+				"default": 0,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "close"
+			}
+		],
+		"outlets": [
+			{
+				"id": "out",
+				"code": "out"
+			}
+		],
+		"code": "Logic"
+	},
+	"math": {
+		"id": "math",
+		"index": 2,
+		"taxonomy": {
+			"advanced": true,
+			"category": "brains"
+		},
+		"parameters": [
+			{
+				"id": "in",
+				"default": 0,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "in"
+			},
+			{
+				"id": "operation",
+				"default": "MATH_ADD",
+				"validation": {
+					"type": "list",
+					"data": [
+						"MATH_ADD",
+						"MATH_SUBTRACT",
+						"MATH_MULTIPLY",
+						"MATH_DIVIDE",
+						"MATH_MODULO"
+					]
+				},
+				"code": "operation"
+			},
+			{
+				"id": "value",
+				"default": 0,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "value"
+			}
+		],
+		"outlets": [
+			{
+				"id": "out",
+				"code": "out"
+			}
+		],
+		"code": "Math"
+	},
+	"randomizer": {
+		"id": "randomizer",
+		"index": 1,
+		"taxonomy": {
+			"advanced": false,
+			"category": "brains"
+		},
+		"parameters": [
+			{
+				"id": "interval",
+				"default": 0.5,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0.05,
+						"max": 5
+					}
+				},
+				"code": "interval"
+			},
+			{
+				"id": "min",
+				"default": 0,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "min"
+			},
+			{
+				"id": "max",
+				"default": 1,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "max"
+			}
+		],
+		"outlets": [
+			{
+				"id": "out",
+				"code": "out"
+			}
+		],
+		"code": "Randomizer"
+	},
+	"sequence": {
+		"id": "sequence",
+		"index": 7,
+		"taxonomy": {
+			"advanced": true,
+			"category": "brains"
+		},
+		"parameters": [
+			{
+				"id": "trigger",
+				"default": 0,
+				"code": "trigger"
+			},
+			{
+				"id": "duration",
+				"default": 1,
+				"code": "duration"
+			},
+			{
+				"id": "items",
+				"default": 0,
+				"multiple": true,
+				"code": "items"
+			}
+		],
+		"outlets": [
+			{
+				"id": "out",
+				"code": "out"
+			}
+		],
+		"code": "Sequence"
+	},
+	"servo-motor": {
+		"id": "servo-motor",
+		"index": 2,
+		"taxonomy": {
+			"advanced": false,
+			"category": "output"
+		},
+		"parameters": [
+			{
+				"id": "position",
+				"default": 0.5,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "position"
+			},
+			{
+				"id": "place",
+				"default": "DISCONNECTED",
+				"validation": {
+					"type": "list",
+					"data": [
+						"DISCONNECTED",
+						"SERVO_MOTOR_1",
+						"SERVO_MOTOR_2"
+					]
+				},
+				"code": "place"
+			}
+		],
+		"outlets": [],
+		"code": "ServoMotor"
+	},
+	"sonar": {
+		"id": "sonar",
+		"index": 2,
+		"taxonomy": {
+			"advanced": true,
+			"category": "input"
+		},
+		"parameters": [
+			{
+				"id": "place",
+				"default": "DISCONNECTED",
+				"validation": {
+					"type": "list",
+					"data": [
+						"DISCONNECTED",
+						"BP1",
+						"BP2",
+						"BP3",
+						"BP4",
+						"BP5",
+						"BP6"
+					]
+				},
+				"code": "place"
+			},
+			{
+				"id": "meters",
+				"default": 2,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 4
+					}
+				},
+				"code": "meters"
+			},
+			{
+				"id": "min",
+				"default": 0,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "min"
+			},
+			{
+				"id": "max",
+				"default": 1,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "max"
+			}
+		],
+		"outlets": [
+			{
+				"id": "out",
+				"code": "out"
+			}
+		],
+		"code": "Sonar"
+	},
+	"squeeze-sensor": {
+		"id": "squeeze-sensor",
+		"index": 1,
+		"taxonomy": {
+			"advanced": true,
+			"category": "input"
+		},
+		"parameters": [
+			{
+				"id": "place",
+				"default": "DISCONNECTED",
+				"validation": {
+					"type": "list",
+					"data": [
+						"DISCONNECTED",
+						"H",
+						"LA",
+						"RA",
+						"LL",
+						"RL"
+					]
+				},
+				"code": "place"
+			},
+			{
+				"id": "min",
+				"default": 0,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "min"
+			},
+			{
+				"id": "max",
+				"default": 1,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "max"
+			}
+		],
+		"outlets": [
+			{
+				"id": "out",
+				"code": "out"
+			}
+		],
+		"code": "SqueezeSensor"
+	},
+	"statistics": {
+		"id": "statistics",
+		"index": 3,
+		"taxonomy": {
+			"advanced": true,
+			"category": "brains"
+		},
+		"parameters": [
+			{
+				"id": "operation",
+				"default": "STAT_AVG",
+				"validation": {
+					"type": "list",
+					"data": [
+						"STAT_AVG",
+						"STAT_MIN",
+						"STAT_MAX",
+						"STAT_SUM"
+					]
+				},
+				"code": "operation"
+			},
+			{
+				"id": "items",
+				"default": 0,
+				"multiple": true,
+				"code": "items"
+			}
+		],
+		"outlets": [
+			{
+				"id": "out",
+				"code": "out"
+			}
+		],
+		"code": "Statistics"
+	},
+	"time": {
+		"id": "time",
+		"index": 1,
+		"taxonomy": {
+			"advanced": true,
+			"category": "brains"
+		},
+		"parameters": null,
+		"outlets": [
+			{
+				"id": "out",
+				"code": "out"
+			}
+		],
+		"code": "Time"
+	},
+	"voltage-output": {
+		"id": "voltage-output",
+		"index": 7,
+		"taxonomy": {
+			"advanced": true,
+			"category": "output"
+		},
+		"parameters": [
+			{
+				"id": "in",
+				"default": 1,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "in"
+			},
+			{
+				"id": "place",
+				"default": "DISCONNECTED",
+				"validation": {
+					"type": "list",
+					"data": [
+						"DISCONNECTED",
+						"HB",
+						"LAB",
+						"RAB",
+						"LLB",
+						"RLB",
+						"BP1",
+						"BP2",
+						"BP3",
+						"BP4",
+						"BP5",
+						"BP6",
+						"HF",
+						"LAF",
+						"RAF",
+						"LLF",
+						"RLF"
+					]
+				},
+				"code": "place"
+			}
+		],
+		"outlets": [],
+		"code": "VoltageOutput"
+	},
+	"wave": {
+		"id": "wave",
+		"index": 0,
+		"taxonomy": {
+			"advanced": false,
+			"category": "brains"
+		},
+		"parameters": [
+			{
+				"id": "length",
+				"default": 1,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0.1,
+						"max": 10,
+						"step": 0.05
+					}
+				},
+				"code": "length"
+			},
+			{
+				"id": "type",
+				"default": "WAVE_SINE",
+				"validation": {
+					"type": "list",
+					"data": [
+						"WAVE_SINE",
+						"WAVE_TRIANGLE",
+						"WAVE_SQUARE",
+						"WAVE_PULSE",
+						"WAVE_RAMP_UP",
+						"WAVE_RAMP_DOWN"
+					]
+				},
+				"code": "type"
+			},
+			{
+				"id": "min",
+				"default": 0,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "min"
+			},
+			{
+				"id": "max",
+				"default": 1,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "max"
+			},
+			{
+				"id": "offset",
+				"default": 0,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "offset"
+			}
+		],
+		"outlets": [
+			{
+				"id": "out",
+				"code": "out"
+			}
+		],
+		"code": "Wave"
+	}
+}
