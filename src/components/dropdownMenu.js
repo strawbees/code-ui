@@ -182,8 +182,8 @@ class DropdownMenu extends React.Component {
 					role='listbox'
 					tabIndex='-1'
 					ref={listRef}>
-					{options.filter(option => option).map(option =>
-						<li key={option.labelKey}
+					{options.filter(option => option).map((option, i) =>
+						<li key={i}
 							className={`option ${option.disabled ? 'disabled' : ''} ${option.divider ? 'divider' : ''}`}
 							role='option'
 							tabIndex={`${(option.disabled || option.link) ? '-1' : '0'}`}
@@ -198,14 +198,19 @@ class DropdownMenu extends React.Component {
 									className='option-icon'/>
 							}
 							{option.disabled &&
-								<S value={option.disabledLabelKey || option.labelKey}/>
+								<S value={
+									option.disabledLabel ||
+									option.disabledLabelKey ||
+									option.label ||
+									option.labelKey
+								}/>
 							}
 							{(!option.disabled && !option.link && !option.linkKey) &&
-								<S value={option.labelKey}/>
+								<S value={option.label || option.labelKey}/>
 							}
 							{(!option.disabled && option.link && !option.linkKey) &&
 								<Link to={option.link} external={option.linkExternal}>
-									<S value={option.labelKey}/>
+									<S value={option.label || option.labelKey}/>
 								</Link>
 							}
 							{(!option.disabled && !option.link && option.linkKey) &&
@@ -220,7 +225,7 @@ class DropdownMenu extends React.Component {
 										}}
 									/>
 									<Link to={this.state.linkFromKey} external={option.linkExternal}>
-										<S value={option.labelKey}/>
+										<S value={option.label || option.labelKey}/>
 									</Link>
 								</React.Fragment>
 							}
@@ -246,7 +251,9 @@ DropdownMenu.propTypes = {
 	options             : PropTypes.arrayOf(PropTypes.shape({
 		icon             : PropTypes.func,
 		labelKey         : PropTypes.string,
+		label            : PropTypes.string,
 		disabledLabelKey : PropTypes.string,
+		disabledLabel    : PropTypes.string,
 		onClick          : PropTypes.func,
 		disabled         : PropTypes.bool,
 		link             : PropTypes.string,

@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import { BLUE } from 'src/constants/colors'
-import HelpMenuContainer from 'src/containers/helpMenuContainer'
 import Link from 'src/components/link'
 import SvgIcon from 'src/components/svgIcon'
 import UserHeaderAvatarContainer from 'src/containers/userHeaderAvatarContainer'
@@ -25,7 +24,8 @@ const Header = ({
 				width: 100%;
 				padding: 0 0.5rem;
 			}
-			.root :global(> .dropdownMenu) {
+			.root :global(> .dropdownMenu),
+			.root :global(>.userHeaderAvatar) {
 				height: 100%;
 			}
 			.root :global(.editorMenu) {
@@ -45,10 +45,6 @@ const Header = ({
 			.root .logo :global(>.svgIcon),
 			.root .logo-compact :global(>.svgIcon) {
 				margin-right: 0.5rem;
-			}
-			.root :global(>.userHeaderAvatar) {
-				margin-right: 0.3rem;
-				height: 100%;
 			}
 			@media (max-width: 650px) {
 				.root {
@@ -81,17 +77,6 @@ const Header = ({
 		<EditorMenuContainer
 			disabled={!editorMenu}
 		/>
-
-		{/* {!editorMenu &&
-			<HelpMenuContainer />
-		}
-
-		<div className='editor'>
-			{editorMenu &&
-				<EditorMenuContainer />
-			}
-		</div>
-		*/}
 		<UserHeaderAvatarContainer />
 		<LocalesMenuContainer />
 	</div>

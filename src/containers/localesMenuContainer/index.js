@@ -4,8 +4,11 @@ import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
+const LocalesMenuContainer = (props) =>
+	<LocalesMenu {...props}/>
+
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
-)(LocalesMenu)
+)(LocalesMenuContainer)

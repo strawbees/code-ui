@@ -23,15 +23,18 @@ export default () => createSelector(
 		queryRef,
 		urlVarsString
 	) => ({
-		current : {
-			name : currentLocale.name
-		},
-		alternatives : otherLocales.map(locale => ({
-			name : locale.name,
-			url  : Object.keys(routes).filter(path =>
-				routes[path].query.locale === locale.id
-				&& routes[path].query.ref === queryRef
-			).pop() + urlVarsString
-		}))
+		options : [
+			{
+				label    : currentLocale.name,
+				disabled : true,
+			},
+			...otherLocales.map(locale => ({
+				label : locale.name,
+				link  : Object.keys(routes).filter(path =>
+					routes[path].query.locale === locale.id
+					&& routes[path].query.ref === queryRef
+				).pop() + urlVarsString
+			}))
+		]
 	})
 )
