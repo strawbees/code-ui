@@ -14,6 +14,8 @@ const UserHeaderAvatar = ({
 	username,
 	isAnon,
 	storageStatus,
+	signup,
+	signin,
 	logout,
 }) => {
 	let icon
@@ -61,11 +63,20 @@ const UserHeaderAvatar = ({
 						labelKey : 'ui.user.account_settings.profile',
 						link     : profileUrl,
 					},
-					!isAnon && {
+					!isAnon ? {
 						divider  : true,
 						labelKey : 'ui.user.account_settings.logout',
 						onClick  : logout,
-					}
+					} : null,
+					isAnon ? {
+						divider  : true,
+						labelKey : 'ui.user.account_settings.signup',
+						onClick  : signup,
+					} : null,
+					isAnon ? {
+						labelKey : 'ui.user.account_settings.signin',
+						onClick  : signin,
+					} : null,
 				]}
 			/>
 		</div>
@@ -76,6 +87,8 @@ UserHeaderAvatar.propTypes = {
 	profileUrl    : PropTypes.string,
 	username      : PropTypes.string,
 	isAnon        : PropTypes.bool,
+	signin        : PropTypes.func,
+	signup        : PropTypes.func,
 	logout        : PropTypes.func,
 	storageStatus : PropTypes.oneOf([
 		NEEDS_SYNC,

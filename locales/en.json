@@ -4,9 +4,10 @@
 
 	"error.og.title" : "Not found",
 
-	"ui.sb_cloud.nav.signin" : "Sign in",
-	"ui.sb_cloud.nav.signup" : "Sign up",
-
+	"ui.sb_cloud.signup.cta"                              : "Sign up",
+	"ui.sb_cloud.signup.title"                            : "Sign up to Strawbees Cloud",
+	"ui.sb_cloud.signin.cta"                              : "Sign in",
+	"ui.sb_cloud.signin.title"                            : "Sign in to Strawbees Cloud",
 	"ui.sb_cloud.signup.age.label"                        : "How old are you?",
 	"ui.sb_cloud.signup.age.tip"                          : "We need to be aware of your age for legal reasons",
 	"ui.sb_cloud.signup.age.error.blank"                  : "You need to fill in your age",
@@ -121,8 +122,8 @@
 	"ui.dialog.anonymous_save.title"       : "Guest - saving",
 	"ui.dialog.anonymous_save.description" : "When you save a program as a *Guest*, the program is only saved locally on your device and is not published on the web.",
 	"ui.dialog.anonymous_save.confirm"     : "Ok, got it",
-	"ui.dialog.anonymous_copy_programs.title"       : "Copy local programs?",
-	"ui.dialog.anonymous_copy_programs.description" : "There are programs saved locally by a *Guest* on this device. Would you like to copy them to your online account?",
+	"ui.dialog.anonymous_copy_programs.title"       : "Copy Guest programs?",
+	"ui.dialog.anonymous_copy_programs.description" : "There are programs saved by a *Guest* on this device. Would you like to copy them to your online account?",
 	"ui.dialog.anonymous_copy_programs.confirm"     : "Yes, copy programs",
 	"ui.dialog.anonymous_copy_programs.cancel"      : "No, discard programs",
 

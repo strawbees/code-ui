@@ -1,6 +1,7 @@
 import generateAction from 'src/utils/generateAction'
 import {
 	generateUniqueId,
+	resolveBackendFromBackendName,
 	resolveBackendFromCredentials,
 	resolveBackendFromProgramId,
 } from 'src/storage'
@@ -16,7 +17,16 @@ import {
 	updateCurrentEditorProgramSource,
 	updateCurrentEditorProgramId,
 } from 'src/actions/editor'
+import {
+	safeOpenDialogModal,
+	closeModal,
+} from 'src/actions/modal'
+import {
+	collapseAccountSettings,
+} from 'src/actions/ui'
 import * as browserStorage from 'src/utils/browserStorage'
+import StrawbeesCloudSignin from 'src/components/strawbeesCloudSignin'
+import StrawbeesCloudSignup from 'src/components/strawbeesCloudSignup'
 import {
 	STORAGE_SET_STATUS,
 	STORAGE_SET_CREDENTIALS,
@@ -33,7 +43,6 @@ import {
 import {
 	READY,
 	SYNCING,
-	NEEDS_SYNC,
 	ERROR,
 } from 'src/constants/storage'
 
@@ -201,4 +210,87 @@ export const safeSync = () => async (dispatch, getState) => {
 		console.log('Error syncing storage', error)
 		dispatch(setStatus(ERROR))
 	}
+}
+
+const onModalConnect = ({ credentials, user }) => async (dispatch, getState) => {
+	const programs = storageProgramsSelector()(getState())
+	await dispatch(backupAnonPrograms(programs))
+	if (Object.keys(programs).length) {
+		try {
+			await dispatch(safeOpenDialogModal({
+				titleKey        : 'ui.dialog.anonymous_copy_programs.title',
+				descriptionKey  : 'ui.dialog.anonymous_copy_programs.description',
+				confirmLabelKey : 'ui.dialog.anonymous_copy_programs.confirm',
+				cancelLabelKey  : 'ui.dialog.anonymous_copy_programs.cancel',
+				limitWidth      : true
+			}))
+			dispatch(setRemoteMirror(null))
+		} catch (e) {}
+	}
+	dispatch(setCredentials(credentials))
+	dispatch(setUser(user))
+	dispatch(closeModal())
+	dispatch(collapseAccountSettings())
+}
+
+export const modalSignup = (backendName) => async (dispatch) => {
+	if (!backendName) {
+		return
+	}
+	const backend = resolveBackendFromBackendName(backendName)
+	let SignupComponent
+	switch (backend.name) {
+		case 'strawbees':
+			SignupComponent = StrawbeesCloudSignup
+			break
+		default:
+	}
+	dispatch(safeOpenDialogModal(
+		{
+			titleKey       : 'ui.sb_cloud.signup.title',
+			displayConfirm : false,
+			displayCancel  : false
+		},
+		<SignupComponent
+			onSignup={async (values) => {
+				const result = await backend.signup(values)
+				dispatch(onModalConnect(result))
+			}}
+		/>
+	))
+}
+
+export const modalSignin = (backendName) => async (dispatch) => {
+	if (!backendName) {
+		return
+	}
+	const backend = resolveBackendFromBackendName(backendName)
+	let SigninComponent
+	switch (backend.name) {
+		case 'strawbees':
+			SigninComponent = StrawbeesCloudSignin
+			break
+		default:
+	}
+	dispatch(safeOpenDialogModal(
+		{
+			titleKey       : 'ui.sb_cloud.signin.title',
+			displayConfirm : false,
+			displayCancel  : false
+		},
+		<SigninComponent
+			onSignin={async (values) => {
+				const result = await backend.signin(values)
+				dispatch(onModalConnect(result))
+			}}
+			onForgotPassword={async (values) => {
+				try {
+					const result = await backend.forgotPassword(values)
+					console.log('todo: do something with result', result)
+				} catch (error) {
+					throw error
+				}
+			}}
+		/>
+	))
 }

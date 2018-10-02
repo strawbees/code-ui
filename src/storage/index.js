@@ -3,11 +3,18 @@ import * as backendLocal from './backendLocal'
 import * as backendStrawbees from './backendStrawbees'
 
 const backends = {
-	local     : backendLocal,
-	strawbees : backendStrawbees,
+	[backendLocal.name]     : backendLocal,
+	[backendStrawbees.name] : backendStrawbees,
 	// gdrive    : backendGDrive,
 	// dropbox   : backendDropbox,
 	// github    : backendGithub,
+}
+
+export const resolveBackendFromBackendName = (name) => {
+	if (!name || !backends[name]) {
+		return backends.local
+	}
+	return backends[name]
 }
 
 export const resolveBackendFromCredentials = (credentials) => {
