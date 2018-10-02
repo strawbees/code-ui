@@ -11,7 +11,7 @@ export default (strings) => ({
 				['right mouth', 'RM'],
 				['horn', 'H'],
 				['left arm', 'LA'],
-				['light arm', 'RA'],
+				['right arm', 'RA'],
 				['left leg', 'LL'],
 				['right leg', 'RL'],
 			]

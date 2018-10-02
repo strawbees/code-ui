@@ -7,7 +7,7 @@ export default (strings) => ({
 			options : [
 				['horn', 'H'],
 				['left arm', 'LA'],
-				['light arm', 'RA'],
+				['right arm', 'RA'],
 				['left leg', 'LL'],
 				['right leg', 'RL'],
 			]
