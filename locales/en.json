@@ -138,9 +138,13 @@
 	"ui.user.anon_warning"  : "**You are not signed in.** Your programs will be saved locally, but they won't be published to the web. If you need online access, *please sign in*.",
 	"ui.user.account_settings.button"                     : "Account settings",
 	"ui.user.account_settings.annon"                      : "Sign in",
+	"ui.user.account_settings.profile"                    : "View Profile",
+	"ui.user.account_settings.signin"                     : "Sign in",
+	"ui.user.account_settings.signup"                     : "Sign up",
+	"ui.user.account_settings.logout"                     : "Log out",
 	"ui.user.account_settings.public_profile.title"       : "Shareable profile link",
 	"ui.user.account_settings.public_profile.description" : "Use this link to share a list of your programs",
-	"ui.user.account_settings.logout"                     : "Logout",
+
 
 	"ui.editor.text_preview.button"      : "Preview text program",
 	"ui.editor.text_preview.title"       : "Text program preview",

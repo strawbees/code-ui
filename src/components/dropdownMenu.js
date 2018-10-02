@@ -30,8 +30,13 @@ class DropdownMenu extends React.Component {
 
 	render() {
 		const {
+			alignRight,
+			smallType,
 			labelKey,
+			label,
+			icon,
 			options,
+			responsiveHideLabel,
 		} = this.props
 		const {
 			listRef,
@@ -54,8 +59,8 @@ class DropdownMenu extends React.Component {
 						align-items: center;
 						height: 100%;
 						padding: 0 0.5rem;
-						font-weight: bold;
-						text-transform: uppercase;
+						font-weight: ${smallType ? 'normal' : 'bold'};
+						text-transform: ${smallType ? 'none' : 'uppercase'};
 						color: ${tinycolor(WHITE).toRgbString()};
 						fill: ${tinycolor(WHITE).toRgbString()};
 					}
@@ -65,7 +70,12 @@ class DropdownMenu extends React.Component {
 						outline: none;
 						background-color: ${tinycolor(BLUE).toRgbString()};
 					}
-					.label :global(.svgIcon) {
+					.label :global(.icon) {
+						width: 1.75rem;
+						height: 1.75rem;
+						margin-right: 0.25rem;
+					}
+					.label :global(.expand-icon) {
 						margin-left: 0.25rem;
 						width: 0.8rem;
 						height: 0.8rem;
@@ -75,7 +85,7 @@ class DropdownMenu extends React.Component {
 						flex-direction: column;
 						position: absolute;
 						top: 100%;
-						left: 0;
+						${alignRight ? 'right: 0;' : 'left: 0;'}
 						z-index: 1;
 						padding: 0;
 						margin: 0;
@@ -101,7 +111,16 @@ class DropdownMenu extends React.Component {
 					.list .option {
 						list-style: none;
 						cursor: pointer;
+						display: flex;
+						flex-direction: row;
+						align-items: center;
+						justify-content: flex-start;
 						padding: 0 0.25rem;
+					}
+					.list .option :global(.option-icon) {
+						width: 1.5rem;
+						height: 1.5rem;
+						margin-right: 0.25rem;
 					}
 					.list .option:not(.disabled):hover,
 					.list .option:not(.disabled):focus,
@@ -128,7 +147,10 @@ class DropdownMenu extends React.Component {
 						font-weight: normal;
 					}
 					@media (max-width: 750px) {
-						.label :global(.svgIcon) {
+						.label .text {
+							${responsiveHideLabel ? 'display: none;' : ''}
+						}
+						.label :global(.expand-icon) {
 							display: none;
 						}
 					}
@@ -143,14 +165,24 @@ class DropdownMenu extends React.Component {
 					aria-haspopup='listbox'
 					ref={buttonRef}
 					onClick={openList}>
-					<S value={labelKey}/>
-					<SvgIcon icon={expandIcon}/>
+					{icon &&
+						<SvgIcon icon={icon}
+							className='icon'/>
+					}
+					<span className='text'>
+						{label}
+						{!label &&
+							<S value={labelKey}/>
+						}
+					</span>
+					<SvgIcon icon={expandIcon}
+						className='expand-icon'/>
 				</button>
 				<ul className='list'
 					role='listbox'
 					tabIndex='-1'
 					ref={listRef}>
-					{options.map(option =>
+					{options.filter(option => option).map(option =>
 						<li key={option.labelKey}
 							className={`option ${option.disabled ? 'disabled' : ''} ${option.divider ? 'divider' : ''}`}
 							role='option'
@@ -161,6 +193,10 @@ class DropdownMenu extends React.Component {
 									option.onClick()
 								}
 							}}>
+							{option.icon &&
+								<SvgIcon icon={option.icon}
+									className='option-icon'/>
+							}
 							{option.disabled &&
 								<S value={option.disabledLabelKey || option.labelKey}/>
 							}
@@ -201,8 +237,14 @@ DropdownMenu.defaultProps = {
 }
 
 DropdownMenu.propTypes = {
-	labelKey : PropTypes.string,
-	options  : PropTypes.arrayOf(PropTypes.shape({
+	labelKey            : PropTypes.string,
+	label               : PropTypes.string,
+	icon                : PropTypes.func,
+	responsiveHideLabel : PropTypes.bool,
+	alignRight          : PropTypes.bool,
+	smallType           : PropTypes.bool,
+	options             : PropTypes.arrayOf(PropTypes.shape({
+		icon             : PropTypes.func,
 		labelKey         : PropTypes.string,
 		disabledLabelKey : PropTypes.string,
 		onClick          : PropTypes.func,

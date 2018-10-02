@@ -188,14 +188,17 @@ const EditorMenu = ({
 			labelKey='ui.file_menu.title'
 			options={[
 				{
+					icon     : editorIcons.flow,
 					labelKey : 'ui.file_menu.options.new_flow',
 					link     : newFlowProgramUrl
 				},
 				{
+					icon     : editorIcons.block,
 					labelKey : 'ui.file_menu.options.new_block',
 					link     : newBlockProgramUrl
 				},
 				{
+					icon     : editorIcons.text,
 					labelKey : 'ui.file_menu.options.new_text',
 					link     : newTextProgramUrl
 				},

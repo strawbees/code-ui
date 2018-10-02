@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types'
-import tinycolor from 'tinycolor2'
-import Link from 'src/components/link'
-import IconButton from 'src/components/iconButton'
+import DropdownMenu from 'src/components/dropdownMenu'
 import userIcons from 'src/assets/icons/user'
 import syncIcon from 'src/assets/icons/general/sync.svg'
 import {
@@ -10,15 +8,13 @@ import {
 	READY,
 	ERROR
 } from 'src/constants/storage'
-import {
-	YELLOW
-} from 'src/constants/colors'
 
 const UserHeaderAvatar = ({
 	profileUrl,
 	username,
 	isAnon,
 	storageStatus,
+	logout,
 }) => {
 	let icon
 	if (storageStatus === SYNCING ||
@@ -38,9 +34,11 @@ const UserHeaderAvatar = ({
 				.root :global(.link:focus) {
 					outline: none;
 				}
-				.root.SYNCING :global(.link .svgIcon),
-				.root.NEEDS_SYNC :global(.link .svgIcon) {
-					fill: ${tinycolor(YELLOW).darken(10).toRgbString()};
+				.root :global(> .dropdownMenu) {
+					height: 100%;
+				}
+				.root.SYNCING :global(.dropdownMenu .icon),
+				.root.NEEDS_SYNC :global(.dropdownMenu .icon) {
 					animation: spin-animation 2s linear infinite reverse;
 				}
 				@keyframes spin-animation {
@@ -52,14 +50,24 @@ const UserHeaderAvatar = ({
 					}
 				}
 			`}</style>
-			<Link to={profileUrl}>
-				<IconButton
-					icon={icon}
-					labelKey={username}
-					hideLabelOnMediaQuery={'max-width: 1020px'}
-					tabIndex='-1'
-				/>
-			</Link>
+			<DropdownMenu
+				label={username}
+				alignRight={true}
+				smallType={true}
+				responsiveHideLabel={true}
+				icon={icon}
+				options={[
+					{
+						labelKey : 'ui.user.account_settings.profile',
+						link     : profileUrl,
+					},
+					!isAnon && {
+						divider  : true,
+						labelKey : 'ui.user.account_settings.logout',
+						onClick  : logout,
+					}
+				]}
+			/>
 		</div>
 	)
 }
@@ -68,6 +76,7 @@ UserHeaderAvatar.propTypes = {
 	profileUrl    : PropTypes.string,
 	username      : PropTypes.string,
 	isAnon        : PropTypes.bool,
+	logout        : PropTypes.func,
 	storageStatus : PropTypes.oneOf([
 		NEEDS_SYNC,
 		SYNCING,

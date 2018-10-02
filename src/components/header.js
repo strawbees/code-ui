@@ -48,6 +48,7 @@ const Header = ({
 			}
 			.root :global(>.userHeaderAvatar) {
 				margin-right: 0.3rem;
+				height: 100%;
 			}
 			@media (max-width: 650px) {
 				.root {
