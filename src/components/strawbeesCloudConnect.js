@@ -56,7 +56,7 @@ const StrawbeesCloudConnect = ({
 		</div>*/}
 		<div className='nav'>
 			<IconButton
-				icon={signupIcon}
+				// icon={signupIcon}
 				labelKey='ui.sb_cloud.signup.cta'
 				bgColor={PINK}
 				bgHoverColor={PINK}
@@ -65,7 +65,7 @@ const StrawbeesCloudConnect = ({
 				onClick={signup}
 			/>
 			<IconButton
-				icon={signinIcon}
+				// icon={signinIcon}
 				labelKey='ui.sb_cloud.signin.cta'
 				bgColor={BLUE}
 				bgHoverColor={BLUE}
