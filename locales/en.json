@@ -11,7 +11,7 @@
 	"ui.sb_cloud.signup.age.label"                        : "How old are you?",
 	"ui.sb_cloud.signup.age.tip"                          : "We need to be aware of your age for legal reasons",
 	"ui.sb_cloud.signup.age.error.blank"                  : "You need to fill in your age",
-	"ui.sb_cloud.signup.age.error.under"                  : "Sorry, you need to be at least 13 to create an account and save programs on the cloud... But don't worry you can still program without an account!",
+	"ui.sb_cloud.signup.age.error.under"                  : "Sorry, you need to be at least 13 to create an account and save programs on the cloud... But don't worry you can still program as a *Guest*!",
 	"ui.sb_cloud.signup.username.label"                   : "Username",
 	"ui.sb_cloud.signup.username.tip"                     : "Pick something that doesn't reveal your identity",
 	"ui.sb_cloud.signup.username.error.blank"             : "You need to fill in your username",

@@ -276,14 +276,14 @@ const EditorMenu = ({
 							icon={saveIcon}
 							labelKey='ui.header_menu.options.save'
 							onClick={onSavePress}
-							hideLabelOnMediaQuery={'max-width: 850px'}
+							hideLabelOnMediaQuery={'max-width: 950px'}
 						/>
 					}
 					<IconButton
 						icon={uploadIcon}
 						labelKey='ui.header_menu.options.upload'
 						onClick={onUploadPress}
-						hideLabelOnMediaQuery={'max-width: 800px'}
+						hideLabelOnMediaQuery={'max-width: 950px'}
 					/>
 				</div>
 			</>

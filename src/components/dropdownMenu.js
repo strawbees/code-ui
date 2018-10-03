@@ -19,9 +19,7 @@ class DropdownMenu extends React.Component {
 	}
 
 	openList = () => {
-		// console.log(document.activeElement, document.activeElement === this.buttonRef.current)
-		// this.listRef.current.focus()
-		// console.log(document.activeElement, document.activeElement === this.buttonRef.current)
+		this.buttonRef.current.focus()
 	}
 
 	blurActiveElement = () => {
@@ -146,7 +144,7 @@ class DropdownMenu extends React.Component {
 					.list .option.disabled:hover {
 						font-weight: normal;
 					}
-					@media (max-width: 750px) {
+					@media (max-width: 825px) {
 						.label .text {
 							${responsiveHideLabel ? 'display: none;' : ''}
 						}
@@ -163,6 +161,7 @@ class DropdownMenu extends React.Component {
 				<button
 					className='label'
 					aria-haspopup='listbox'
+					tabIndex='0'
 					ref={buttonRef}
 					onClick={openList}>
 					{icon &&
