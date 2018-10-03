@@ -8,6 +8,7 @@ import SvgIcon from 'src/components/svgIcon'
 import S from 'src/containers/sManager'
 import checkIcon from 'src/assets/icons/general/check.svg'
 import syncIcon from 'src/assets/icons/general/sync.svg'
+import fileIcons from 'src/assets/icons/file'
 import editorIcons from 'src/assets/icons/editors/small'
 import saveIcon from 'src/assets/icons/file/save.svg'
 import uploadIcon from 'src/assets/icons/file/upload.svg'
@@ -207,32 +208,38 @@ const EditorMenu = ({
 					disabledLabelKey : disabled ? 'ui.file_menu.options.save' : 'ui.file_menu.options.autosaved',
 					onClick          : onSavePress,
 					disabled         : disabled || saved,
-					divider          : true
+					divider          : true,
+					// icon             : fileIcons.save,
 				},
 				{
 					labelKey : 'ui.file_menu.options.duplicate',
 					onClick  : onDuplicatePress,
+					// icon     : fileIcons.duplicate,
 					disabled,
 				},
 				{
 					labelKey : 'ui.file_menu.options.upload',
 					onClick  : onUploadPress,
+					// icon     : fileIcons.upload,
 					disabled,
 				},
 				{
 					labelKey : 'ui.file_menu.options.share',
 					onClick  : onSharePress,
 					divider  : true,
+					// icon     : fileIcons.share,
 					disabled,
 				},
 				{
 					labelKey : 'ui.file_menu.options.export',
 					onClick  : onExportPress,
+					// icon     : fileIcons.export,
 					disabled,
 				},
 				{
 					labelKey : 'ui.file_menu.options.import',
 					onClick  : onImportPress,
+					// icon     : fileIcons.import,
 				},
 			]}
 		/>

@@ -137,6 +137,9 @@ class DropdownMenu extends React.Component {
 						cursor: auto;
 						color: rgba(255,255,255,0.4);
 					}
+					.list .option.disabled :global(.svgIcon){
+						opacity: 0.4;
+					}
 					.list .option.divider {
 						margin-top: 0.25rem;
 						border-top: solid 1px rgba(0,0,0, 0.1);

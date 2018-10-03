@@ -33,6 +33,9 @@ class AccountSettings extends React.Component {
 			expandAccountSettings,
 			collapseAccountSettings
 		} = this.props
+		if (isAnon) {
+			return <StrawbeesCloudConnectContainer />
+		}
 		return (
 			<div className={`root accountSettings ${isOpen ? 'opened' : 'closed'}`}>
 				<style jsx>{`

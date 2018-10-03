@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import DropdownMenu from 'src/components/dropdownMenu'
 import userIcons from 'src/assets/icons/user'
 import syncIcon from 'src/assets/icons/general/sync.svg'
+import strawbeesIcon from 'src/assets/icons/storage/strawbees.svg'
 import {
 	NEEDS_SYNC,
 	SYNCING,
@@ -62,20 +63,24 @@ const UserHeaderAvatar = ({
 					{
 						labelKey : 'ui.user.account_settings.profile',
 						link     : profileUrl,
+						// icon     : userIcons.user,
 					},
 					!isAnon ? {
 						divider  : true,
 						labelKey : 'ui.user.account_settings.logout',
 						onClick  : logout,
+						// icon     : userIcons.logout,
 					} : null,
 					isAnon ? {
 						divider  : true,
 						labelKey : 'ui.user.account_settings.signup',
 						onClick  : signup,
+						// icon     : strawbeesIcon,
 					} : null,
 					isAnon ? {
 						labelKey : 'ui.user.account_settings.signin',
 						onClick  : signin,
+						// icon     : userIcons.login,
 					} : null,
 				]}
 			/>

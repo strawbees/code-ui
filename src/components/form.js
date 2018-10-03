@@ -168,7 +168,7 @@ class Form extends React.Component {
 											{field.type === 'checkbox' &&
 												<div className='checkbox-container'>
 													<Informed.Checkbox
-														type={field.type }
+														type={field.type}
 														field={field.name}
 														validateOnChange={field.validateOnChange}
 														validateOnBlur={field.validateOnBlur}
@@ -190,7 +190,7 @@ class Form extends React.Component {
 											}
 											{error &&
 												<Message className='error' type='error'>
-													<S value={error} />
+													<S value={error} markdown={true}/>
 												</Message>
 											}
 										</div>
@@ -213,7 +213,7 @@ class Form extends React.Component {
 									formState.errors._form_error_ &&
 									errorKeys[formState.errors._form_error_] &&
 									<Message className='error' type='warning'>
-										<S value={errorKeys[formState.errors._form_error_]} />
+										<S value={errorKeys[formState.errors._form_error_]} markdown={true}/>
 									</Message>
 								/* eslint-enable no-underscore-dangle */}
 								<IconButton
