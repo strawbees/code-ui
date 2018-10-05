@@ -1,6 +1,6 @@
 {
   "name": "strawbees-code",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "scripts": {
     "dev": "node lib/scripts/dev.js",
     "build": "node lib/scripts/build.js",
