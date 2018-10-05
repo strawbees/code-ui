@@ -24,20 +24,24 @@ const PageContainer = (props) => {
 	}
 	const RefComponent = components[props.queryRef] || PageError
 	return (
-		<div className='root page'>
-			<style jsx>{`
-				.root {
-					overflow-y: auto;
-					-webkit-overflow-scrolling: touch;
-					overscroll-behavior: none;
-					display: flex;
-					flex-direction: column;
-					align-items: stretch;
-				}
-			`}</style>
-			<GlobalBannerContainer />
-			<RefComponent {...props}/>
-		</div>
+		<>
+			{props.queryRef === 'home' &&
+				<GlobalBannerContainer />
+			}
+			<div className='root page'>
+				<style jsx>{`
+					.root {
+						overflow-y: auto;
+						-webkit-overflow-scrolling: touch;
+						overscroll-behavior: none;
+						display: flex;
+						flex-direction: column;
+						align-items: stretch;
+					}
+				`}</style>
+				<RefComponent {...props}/>
+			</div>
+		</>
 	)
 }
 
