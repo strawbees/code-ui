@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import Markdown from 'react-remarkable'
 import PropTypes from 'prop-types'
+import Markdown from 'src/components/markdown'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'

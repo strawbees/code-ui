@@ -5,16 +5,34 @@ import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
-const GlobalBannerContainer = ({ banners, hideBanner }) =>
-	<React.Fragment>
-		{banners.map(bannerProps =>
-			<Banner
-				onHide={hideBanner}
-				key={bannerProps.id}
-				{...bannerProps}
-			/>
-		)}
-	</React.Fragment>
+class GlobalBannerContainer extends React.Component {
+	state = {
+		mounted : false
+	}
+
+	componentDidMount() {
+		this.setState({ mounted : true })
+	}
+
+	render() {
+		const { mounted } = this.state
+		const { banners, hideBanner } = this.props
+		if (!mounted) {
+			return null
+		}
+		return (
+			<React.Fragment>
+				{banners.map(bannerProps =>
+					<Banner
+						onHide={hideBanner}
+						key={bannerProps.id}
+						{...bannerProps}
+					/>
+				)}
+			</React.Fragment>
+		)
+	}
+}
 
 export default connect(
 	mapStateToProps,
