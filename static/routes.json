@@ -57,7 +57,7 @@
 			"id" : "privacy-policy"
 		}
 	},
-	"/terms-of-use/": {
+	"/terms/": {
 		"page": "/",
 		"query": {
 			"locale" : "en",

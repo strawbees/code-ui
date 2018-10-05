@@ -6,14 +6,14 @@
 
 **1.1** These Terms of Use constitute an agreement between you and Strawbees AB (collectively "Strawbees", "we", "us" or "ours") that governs your use of Strawbees CODE and all associated services (collectively "platform"). Strawbees AB is a company that provide solutions for developing a powerful skillset through hands-on exploration and working with design, construction, electronics and programming. Our organization number is 556983-8914 and we are registered under the address Strawbees AB, Stenkolsgatan 1B, 417 07 Gothenburg, Sweden. Please read the Terms of Use carefully. By using the platform you affirm that you have read, understood, and accepted the terms and conditions in the Terms of Use. If you do not agree with any of these conditions, please do not the platform.
 
-**1.2** Your privacy is important to us. Please read our Privacy Policy, which identifies how we use, collect, and store information it collects through the platform. By using the platform, you additionally agree that you are comfortable with our {% assign arg1='privacy-policy' %}{% include f_print_page_link %} and {% assign arg1='cookie-policy' %}{% include f_print_page_link %}.
+**1.2** Your privacy is important to us. Please read our Privacy Policy, which identifies how we use, collect, and store information it collects through the platform. By using the platform, you additionally agree that you are comfortable with our [privacy policy](/privacy-policy) and [cookie policy](/cookie-policy).
 
 **1.3** We reserve the right to make changes to this privacy policy at any time by giving notice to its Users on this page and possibly within this Application and/or - as far as technically and legally feasible - sending a notice to Users via any contact information available to the Owner. It is strongly recommended to check this page often, referring to the date of the last modification listed at the top. Should the changes affect processing activities performed on the basis of the User’s consent, the Owner shall collect new consent from the User, where required.
 
 
 ## 2. Account Creation and Maintenance
 
-**2.1** In order to use some features of the platform, you will need to register and create an account. Creating an account is optional, but without an account you will not be able to save programs. When registering for a personal account, you will be asked to provide certain personal information, such as your email address, age, username. Please see our {% assign arg1='privacy-policy' %}{% include f_print_page_link %}. for the data retention and usage policies.
+**2.1** In order to use some features of the platform, you will need to register and create an account. Creating an account is optional, but without an account you will not be able to save programs. When registering for a personal account, you will be asked to provide certain personal information, such as your email address, age, username. Please see our [privacy policy](/privacy-policy). for the data retention and usage policies.
 
 **2.2** You are responsible for keeping your password secret and your account secure. You are solely responsible for any use of your account, even if your account is used by another person. If any use of your account violates the Terms of Use, your account may be suspended or deleted.
 

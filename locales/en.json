@@ -32,7 +32,7 @@
 	"ui.sb_cloud.signup.password_confirm.error.blank"     : "You need to fill in your password",
 	"ui.sb_cloud.signup.password_confirm.error.missmatch" : "Password doesn't match",
 	"ui.sb_cloud.signup.terms.label"                      : "Terms and conditions",
-	"ui.sb_cloud.signup.terms.tip"                        : "I've read and accepted the [terms of use](#terms), [privacy policy](#privacy-policy) and [cookie policy](#cookie-policy)",
+	"ui.sb_cloud.signup.terms.tip"                        : "I've read and accepted the <a href='/terms' target=_blank>terms of use</a>, <a href='/privacy-policy' target=_blank>privacy policy</a> and <a href='/cookie-policy' target=_blank>cookie policy</a>",
 	"ui.sb_cloud.signup.terms.error.agree"                : "You must read and accept the terms and conditions",
 	"ui.sb_cloud.signup.submit"                           : "Sign up",
 	"ui.sb_cloud.signup.submit.error.network"             : "There seems to be a connection problem",

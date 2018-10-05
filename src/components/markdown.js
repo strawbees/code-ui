@@ -14,7 +14,13 @@ const Markdown = ({
 }) =>
 	<div className='root markdown'>
 		<style jsx>{`
-
+			/* Remove marging */
+			.root :global(> div > span > *:first-child){
+				margin-top: 0;
+			}
+			.root :global(> div > span > *:last-child){
+				margin-bottom: 0;
+			}
 			.root :global(> div > span hr) {
 				border: none;
 				border-top: solid 2px rgba(0,0,0,0.05);

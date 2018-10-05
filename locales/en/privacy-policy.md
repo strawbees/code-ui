@@ -23,7 +23,7 @@ Unless specified otherwise, all Data requested by this Application is mandatory 
 
 Users who are uncertain about which Personal Data is mandatory are welcome to contact the Owner.
 
-Any use of Cookies – or of other tracking tools – by this Application or by the owners of third-party services used by this Application serves the purpose of providing the Service required by the User, in addition to any other purposes described in the present document and in the {% assign arg1='cookie-policy' %}{% include f_print_page_link %}.
+Any use of Cookies – or of other tracking tools – by this Application or by the owners of third-party services used by this Application serves the purpose of providing the Service required by the User, in addition to any other purposes described in the present document and in the [cookie policy](/cookie-policy).
 
 Users are responsible for any third-party Personal Data obtained, published or shared through this Application and confirm that they have the third party's consent to provide the Data to the Owner.
 
