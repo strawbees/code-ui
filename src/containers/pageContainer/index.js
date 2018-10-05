@@ -7,6 +7,7 @@ import PageFlowContainer from 'src/containers/pageFlowContainer'
 import PageBlockContainer from 'src/containers/pageBlockContainer'
 import PageTextContainer from 'src/containers/pageTextContainer'
 import PageUserContainer from 'src/containers/pageUserContainer'
+import PageMDContainer from 'src/containers/pageMDContainer'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
@@ -19,6 +20,7 @@ const PageContainer = (props) => {
 		block : PageBlockContainer,
 		text  : PageTextContainer,
 		user  : PageUserContainer,
+		md    : PageMDContainer,
 	}
 	const RefComponent = components[props.queryRef] || PageError
 	return (
@@ -46,7 +48,8 @@ PageContainer.propTypes = {
 		'block',
 		'text',
 		'error',
-		'user'
+		'user',
+		'md'
 	])
 }
 

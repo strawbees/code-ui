@@ -40,5 +40,29 @@
 			"locale" : "en",
 			"ref" : "text"
 		}
+	},
+	"/cookie-policy/": {
+		"page": "/",
+		"query": {
+			"locale" : "en",
+			"ref" : "md",
+			"id" : "cookie-policy"
+		}
+	},
+	"/privacy-policy/": {
+		"page": "/",
+		"query": {
+			"locale" : "en",
+			"ref" : "md",
+			"id" : "privacy-policy"
+		}
+	},
+	"/terms-of-use/": {
+		"page": "/",
+		"query": {
+			"locale" : "en",
+			"ref" : "md",
+			"id" : "terms-of-use"
+		}
 	}
 }

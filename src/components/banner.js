@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import Markdown from 'react-remarkable'
+import Markdown from 'src/components/markdown'
 import IconButton from 'src/components/iconButton'
 import closeIcon from 'src/assets/icons/general/close.svg'
 import {

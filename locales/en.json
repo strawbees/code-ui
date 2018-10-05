@@ -553,5 +553,14 @@
 	"text.url" : "/text/",
 	"text.og.title" : "Text Programming",
 	"text.og.image" : "/static/og/text.png",
-	"text.base.title" : "Text"
+	"text.base.title" : "Text",
+
+	"cookie-policy.url" : "/cookie-policy/",
+	"cookie-policy.og.title" : "Cookie Policy",
+
+	"privacy-policy.url" : "/privacy-policy/",
+	"privacy-policy.og.title" : "Privacy Policy",
+
+	"terms-of-use.url" : "/terms-of-use/",
+	"terms-of-use.og.title" : "Terms of Use"
 }
