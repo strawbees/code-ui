@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import Markdown from 'react-remarkable'
+import Markdown from 'src/components/markdown'
 import Message from 'src/components/message'
 import SingleBoardStatus from 'src/components/singleBoardStatus'
 import SingleBoardUploaderContainer from 'src/containers/singleBoardUploaderContainer'

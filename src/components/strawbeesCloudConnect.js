@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import IconButton from 'src/components/iconButton'
-import SvgIcon from 'src/components/svgIcon'
-import strawbeesIcon from 'src/assets/icons/storage/strawbees.svg'
+// import SvgIcon from 'src/components/svgIcon'
+import signupIcon from 'src/assets/icons/storage/strawbees.svg'
+import signinIcon from 'src/assets/icons/user/login.svg'
+
 import {
 	WHITE,
 	PINK,
@@ -38,7 +40,7 @@ const StrawbeesCloudConnect = ({
 				height: 6rem;
 			}
 			.nav {
-				margin-top: 1rem;
+				/*margin-top: 1rem;*/
 				display: flex;
 				flex-direction: row;
 				align-items: center;
@@ -48,12 +50,13 @@ const StrawbeesCloudConnect = ({
 				margin: 0 0.5rem;
 			}
 		`}</style>
-		<div className='logo'>
-			<SvgIcon icon={strawbeesIcon}/>
+		{/*<div className='logo'>
+			<SvgIcon icon={signupIcon}/>
 			Strawbees Cloud
-		</div>
+		</div>*/}
 		<div className='nav'>
 			<IconButton
+				// icon={signupIcon}
 				labelKey='ui.sb_cloud.signup.cta'
 				bgColor={PINK}
 				bgHoverColor={PINK}
@@ -62,6 +65,7 @@ const StrawbeesCloudConnect = ({
 				onClick={signup}
 			/>
 			<IconButton
+				// icon={signinIcon}
 				labelKey='ui.sb_cloud.signin.cta'
 				bgColor={BLUE}
 				bgHoverColor={BLUE}

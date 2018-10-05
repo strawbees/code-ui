@@ -1,8 +1,7 @@
 {
 	"codepreview" : {
 		"en" : {
-			"title" : "Strawbees CODE - BETA Preview",
-			"content" : "You're previewing the **beta version** of our new editor, if you have suggestions or if something doesn't work as expected, please [give us some feedback](https://goo.gl/forms/7x1EsGWqgurucvne2). If you prefer, you can still [access the old editor](https://code.quirkbot.com)."
+			"content" : "**Welcome to the new Strawbees CODE!** <a href='https://goo.gl/forms/7x1EsGWqgurucvne2' target='_blank'>Please give us feedback!</a> The old editor is still avaialble <a href='https://code.quirkbot.com' target='_blank'>here</a>."
 		}
 	}
 }

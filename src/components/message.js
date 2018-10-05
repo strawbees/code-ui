@@ -56,6 +56,12 @@ const Message = ({
 				.root :global(img) {
 					height: auto;
 				}
+				.root :global(>div>span>*:first-child){
+					margin-top: 0;
+				}
+				.root :global(>div>span>*:last-child){
+					margin-bottom: 0;
+				}
 			`}</style>
 			{children}
 		</div>

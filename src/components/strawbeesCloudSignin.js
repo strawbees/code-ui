@@ -184,6 +184,10 @@ class StrawbeesCloudSignin extends React.Component {
 						justify-content: center;
 						position: relative;
 					}
+					.forgot .toggle {
+						font-weight: bold;
+						cursor: pointer;
+					}
 					.forgot :global(.iconButton) {
 						margin-top: 0.5rem;
 						margin-bottom: 0.25rem;
@@ -208,14 +212,17 @@ class StrawbeesCloudSignin extends React.Component {
 				<div className='forgot'>
 					{!displayForgotSuccess &&
 						<React.Fragment>
-							<IconButton
-								labelKey='ui.sb_cloud.forgot.title'
-								onClick={toggleForgotForm}
-								bgColor={GRAY}
-								bgHoverColor={GRAY}
-								textColor={WHITE}
-								textHoverColor={WHITE}
-							/>
+							<div role='button'
+								className='toggle'
+								tabIndex={0}
+								onKeyUp={({ key }) => {
+									if (key === 'Enter') {
+										toggleForgotForm()
+									}
+								}}
+								onClick={toggleForgotForm}>
+								<S value='ui.sb_cloud.forgot.title'/>
+							</div>
 							{displayForgot &&
 								<Form
 									submitLabelKey='ui.sb_cloud.forgot.submit'

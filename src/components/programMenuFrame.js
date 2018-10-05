@@ -22,7 +22,7 @@ const ProgramMenuFrame = ({
 				margin-top: 0.5rem;
 				display: flex;
 				flex-direction: column;
-				align-items: ${centered ? 'center' : 'flex-start'};
+				align-items: ${centered ? 'stretch' : 'flex-start'};
 				background-color: ${tinycolor(GRAY).lighten(35).toRgbString()};
 				padding: 0.5rem;
 				border-radius: 0.5rem;

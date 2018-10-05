@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import Markdown from 'react-remarkable'
+import Markdown from 'src/components/markdown'
 import IconButton from 'src/components/iconButton'
 import closeIcon from 'src/assets/icons/general/close.svg'
 import {
@@ -19,14 +19,18 @@ const Banner = ({
 	<div className='root banner'>
 		<style jsx>{`
 			.root {
-				padding: 1rem 2.5rem;
 				background-color: ${backgroundColor};
 				color: ${textColor};
 				font-size: 1rem;
 				text-align: center;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
 			}
 			.containter {
+				padding: 0.5rem;
 				display: flex;
+				flex: 1;
 				flex-direction: column;
 				align-items: center;
 			}
@@ -34,18 +38,14 @@ const Banner = ({
 				font-weight: bold;
 				text-transform: uppercase;
 			}
-			.content :global(p:first-of-type) {
-				margin-top: 0;
-			}
-			.content :global(p:last-of-type) {
-				margin-bottom: 0;
-				max-width: 50rem;
-			}
 			.root :global(.iconButton) {
-				position: absolute;
-				top: 0.5rem;
-				right: 0.5rem;
+				transform: scale(0.7);
 
+			}
+			@media (max-width: 650px) {
+				.root {
+					font-size: 0.8rem;
+				}
 			}
 		`}</style>
 		<div className='containter'>
