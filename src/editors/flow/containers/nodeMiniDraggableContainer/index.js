@@ -27,7 +27,7 @@ class NodeMiniDraggableContainer extends React.Component {
 			dragClass : 'drag-start'
 		})
 		// avoid scrolling on ios
-		document.ontouchmove = (e) => e.preventDefault()
+		document.ontouchmove = (event) => event.preventDefault()
 	}
 
 	onDragMove = () => {

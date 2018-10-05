@@ -80,7 +80,7 @@ class InstanceDraggableContainer extends React.Component {
 		document.ontouchmove = () => true
 	}
 
-	onKeyUp = ({ keyCode }) => {
+	onKeyUp = ({ key }) => {
 		const {
 			id,
 			updateInstancePosition
@@ -89,17 +89,17 @@ class InstanceDraggableContainer extends React.Component {
 			x,
 			y,
 		} = this.props
-		switch (keyCode) {
-			case 37: // left
+		switch (key) {
+			case 'ArrowLeft':
 				x -= 10
 				break
-			case 39: // right
+			case 'ArrowRight':
 				x += 10
 				break
-			case 38: // up
+			case 'ArrowUp':
 				y -= 10
 				break
-			case 40: // down
+			case 'ArrowDown':
 				y += 10
 				break
 			default:

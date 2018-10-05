@@ -16,7 +16,8 @@ class CopyableUrl extends React.Component {
 	constructor(props) {
 		super(props)
 
-		this.urlField = React.createRef()
+		this.selfRef = React.createRef()
+		this.urlFieldRef = React.createRef()
 	}
 
 	copyToClipboard = (e) => {
@@ -26,13 +27,16 @@ class CopyableUrl extends React.Component {
 
 		const el = document.createElement('textarea')
 		el.value = this.props.url
+		el.style.fontSize = '20px'
 		document.body.appendChild(el)
 		el.select()
 		document.execCommand('copy')
 		document.body.removeChild(el)
 
-		this.urlField.current.focus()
-		window.getSelection().selectAllChildren(this.urlField.current)
+		// this.urlFieldRef.current.focus()
+		// window.getSelection().selectAllChildren(this.urlFieldRef.current)
+
+		// this.selfRef.current.focus()
 
 		this.setState({ showCopied : true })
 		window.clearInterval(this.showCopiedTimer)
@@ -58,11 +62,12 @@ class CopyableUrl extends React.Component {
 			showCopied
 		} = this.state
 		return (
-			<div className='root copyableUrl'
+			<div className={`root copyableUrl ${showCopied ? 'active' : ''}`}
 				role='button'
 				tabIndex={0}
 				onClick={this.copyToClipboard}
-				onKeyPress={this.copyToClipboard}>
+				onKeyPress={this.copyToClipboard}
+				ref={this.selfRef}>
 				<style jsx>{`
 					.root {
 						display: flex;
@@ -83,12 +88,14 @@ class CopyableUrl extends React.Component {
 						max-width: 20rem;
 						white-space: nowrap;
 						overflow: hidden;
-						text-overflow: ellipsis
+						text-overflow: ellipsis;
+						align-self: stretch;
 					}
 					.description {
 						font-size: 0.7rem;
 						margin-bottom: 0.2rem;
 					}
+					.root.active .url,
 					.root:focus .url,
 					.root:focus-within .url,
 					.url:focus {
@@ -97,6 +104,8 @@ class CopyableUrl extends React.Component {
 					}
 					.instructions {
 						font-size: 0.8rem;
+					}
+					.root.active .instructions {
 						color: ${tinycolor(BLUE).setAlpha(0.7).toRgbString()};
 					}
 				`}</style>
@@ -119,7 +128,7 @@ class CopyableUrl extends React.Component {
 				{url &&
 					<div className='url'
 						tabIndex={0}
-						ref={this.urlField}>
+						ref={this.urlFieldRef}>
 						{url}
 					</div>
 				}

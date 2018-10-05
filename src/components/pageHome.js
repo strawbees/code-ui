@@ -27,12 +27,12 @@ const PageHome = () =>
 			.section :global(> *) {
 				width: 100%;
 				max-width: 40rem;
+
 			}
 			.section.top {
 				background-color: ${tinycolor(GRAY).darken(25).toRgbString()};
 			}
 			.section.bottom {
-				flex: 1;
 				background-color: ${tinycolor(GRAY).lighten(25).toRgbString()};
 			}
 			.section :global(.userArea) {
@@ -51,7 +51,6 @@ const PageHome = () =>
 			@media (min-width: 1080px) {
 				.root {
 					display: flex;
-					flex-direction: column;
 					align-items: stretch;
 					flex-direction: row;
 					height: 100%;
