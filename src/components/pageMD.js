@@ -8,6 +8,7 @@ import {
 } from 'src/constants/colors'
 
 const PageMD = ({
+	queryRef,
 	queryId
 }) =>
 	<div className='root pageMD'>
@@ -40,13 +41,14 @@ const PageMD = ({
 				}
 			}
 		`}</style>
-		<S value={`${queryId}.md`} markdown={true}/>
+		<S value={`${queryRef}${queryId ? `.${queryId}` : ''}.md`} markdown={true}/>
 	</div>
 
 PageMD.defaultProps = {}
 
 PageMD.propTypes = {
-	queryId : PropTypes.string
+	queryRef : PropTypes.string,
+	queryId  : PropTypes.string
 }
 
 
