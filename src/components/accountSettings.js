@@ -105,7 +105,18 @@ class AccountSettings extends React.Component {
 							<IconButton
 								icon={preferencesIcon}
 								labelKey='ui.user.account_settings.button'
-								onClick={isOpen ? collapseAccountSettings : expandAccountSettings}
+								onClick={() => {
+									if (isOpen) {
+										collapseAccountSettings()
+									} else {
+										expandAccountSettings()
+									}
+									fireGlobalEvent('track-event', {
+										category : 'ui',
+										action   : isOpen ? 'close account settings' : 'open account settings',
+										label    : 'account settings'
+									})
+								}}
 							/>
 							<div className='settings'>
 								<CopyableUrl

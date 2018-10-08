@@ -226,7 +226,18 @@ const onModalConnect = ({ credentials, user }) => async (dispatch, getState) => 
 				limitWidth      : true
 			}))
 			dispatch(setRemoteMirror(null))
-		} catch (e) {}
+			fireGlobalEvent('track-event', {
+				category : 'user',
+				action   : 'copy guest programs',
+				label    : 'modal'
+			})
+		} catch (e) {
+			fireGlobalEvent('track-event', {
+				category : 'user',
+				action   : 'discard guest programs',
+				label    : 'modal'
+			})
+		}
 	}
 	dispatch(setCredentials(credentials))
 	dispatch(setUser(user))
@@ -257,7 +268,8 @@ export const modalSignup = (backendName) => async (dispatch) => {
 				const result = await backend.signup(values)
 				fireGlobalEvent('track-event', {
 					category : 'user',
-					action   : 'sign-up-complete'
+					action   : 'sign-up-complete',
+					label    : 'modal'
 				})
 				dispatch(onModalConnect(result))
 			}}
@@ -288,7 +300,8 @@ export const modalSignin = (backendName) => async (dispatch) => {
 				const result = await backend.signin(values)
 				fireGlobalEvent('track-event', {
 					category : 'user',
-					action   : 'sign-in-complete'
+					action   : 'sign-in-complete',
+					label    : 'modal'
 				})
 				dispatch(onModalConnect(result))
 			}}
@@ -297,7 +310,8 @@ export const modalSignin = (backendName) => async (dispatch) => {
 					const result = await backend.forgotPassword(values)
 					fireGlobalEvent('track-event', {
 						category : 'user',
-						action   : 'forgot-password-complete'
+						action   : 'forgot-password-complete',
+						label    : 'modal'
 					})
 					console.log('todo: do something with result', result)
 				} catch (error) {
