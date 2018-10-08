@@ -4,6 +4,7 @@ import IconButton from 'src/components/iconButton'
 import ProgramButton from 'src/components/programButton'
 import ProgramMenu from 'src/components/programMenu'
 import fileIcons from 'src/assets/icons/file'
+import { fireGlobalEvent } from 'src/utils/globalEvents'
 
 const ProgramListItem = ({
 	name,
@@ -45,27 +46,62 @@ const ProgramListItem = ({
 						onUploadPress && {
 							icon     : fileIcons.upload,
 							labelKey : 'ui.file_menu.options.upload',
-							onClick  : onUploadPress,
+							onClick  : () => {
+								onUploadPress()
+								fireGlobalEvent('track-event', {
+									category : 'ui',
+									action   : 'upload program',
+									label    : 'program menu'
+								})
+							},
 						},
 						onDuplicatePress && {
 							icon     : fileIcons.duplicate,
 							labelKey : 'ui.file_menu.options.duplicate',
-							onClick  : onDuplicatePress,
+							onClick  : () => {
+								onDuplicatePress()
+								fireGlobalEvent('track-event', {
+									category : 'ui',
+									action   : 'duplicate program',
+									label    : 'program menu'
+								})
+							},
 						},
 						onSharePress && {
 							icon     : fileIcons.share,
 							labelKey : 'ui.file_menu.options.share',
-							onClick  : onSharePress,
+							onClick  : () => {
+								onSharePress()
+								fireGlobalEvent('track-event', {
+									category : 'ui',
+									action   : 'share program',
+									label    : 'program menu'
+								})
+							},
 						},
 						onExportPress && {
 							icon     : fileIcons.export,
 							labelKey : 'ui.file_menu.options.export',
-							onClick  : onExportPress,
+							onClick  : () => {
+								onExportPress()
+								fireGlobalEvent('track-event', {
+									category : 'ui',
+									action   : 'export program',
+									label    : 'program menu'
+								})
+							},
 						},
 						onRemovePress && {
 							icon     : fileIcons.remove,
 							labelKey : 'ui.file_menu.options.remove',
-							onClick  : onRemovePress,
+							onClick  : () => {
+								onRemovePress()
+								fireGlobalEvent('track-event', {
+									category : 'ui',
+									action   : 'remove program',
+									label    : 'program menu'
+								})
+							},
 						},
 					]}
 				/>

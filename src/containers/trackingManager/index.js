@@ -3,6 +3,10 @@ import ReactGA from 'react-ga'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import shallowCompareObjects from 'src/utils/shallowCompareObjects'
+import {
+	addGlobalEventListener,
+	removeAllGlobalEventListeners,
+} from 'src/utils/globalEvents'
 import getConfig from 'next/config'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
@@ -24,6 +28,15 @@ class TrackingManager extends React.Component {
 				send_page_view : false
 			}
 		})
+		removeAllGlobalEventListeners('track-event') // removing all here just for HRM
+		addGlobalEventListener('track-event', ReactGA.event)
+		removeAllGlobalEventListeners('track-pageview') // removing all here just for HRM
+		addGlobalEventListener('track-pageview', ReactGA.pageview)
+	}
+
+	componentWillUnmout() {
+		removeAllGlobalEventListeners('track-event')
+		removeAllGlobalEventListeners('track-pageview')
 	}
 
 	componentDidUpdate(prevProps) {

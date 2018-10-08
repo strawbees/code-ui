@@ -25,6 +25,7 @@ import {
 	collapseAccountSettings,
 } from 'src/actions/ui'
 import * as browserStorage from 'src/utils/browserStorage'
+import { fireGlobalEvent } from 'src/utils/globalEvents'
 import StrawbeesCloudSignin from 'src/components/strawbeesCloudSignin'
 import StrawbeesCloudSignup from 'src/components/strawbeesCloudSignup'
 import {
@@ -254,6 +255,10 @@ export const modalSignup = (backendName) => async (dispatch) => {
 		<SignupComponent
 			onSignup={async (values) => {
 				const result = await backend.signup(values)
+				fireGlobalEvent('track-event', {
+					category : 'user',
+					action   : 'sign-up-complete'
+				})
 				dispatch(onModalConnect(result))
 			}}
 		/>
@@ -281,11 +286,19 @@ export const modalSignin = (backendName) => async (dispatch) => {
 		<SigninComponent
 			onSignin={async (values) => {
 				const result = await backend.signin(values)
+				fireGlobalEvent('track-event', {
+					category : 'user',
+					action   : 'sign-in-complete'
+				})
 				dispatch(onModalConnect(result))
 			}}
 			onForgotPassword={async (values) => {
 				try {
 					const result = await backend.forgotPassword(values)
+					fireGlobalEvent('track-event', {
+						category : 'user',
+						action   : 'forgot-password-complete'
+					})
 					console.log('todo: do something with result', result)
 				} catch (error) {
 					throw error

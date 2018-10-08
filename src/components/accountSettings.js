@@ -4,13 +4,12 @@ import tinycolor from 'tinycolor2'
 import IconButton from 'src/components/iconButton'
 import CopyableUrl from 'src/components/copyableUrl'
 import StrawbeesCloudConnectContainer from 'src/containers/strawbeesCloudConnectContainer'
-import S from 'src/containers/sManager'
 import userIcons from 'src/assets/icons/user'
 import preferencesIcon from 'src/assets/icons/general/preferences.svg'
+import { fireGlobalEvent } from 'src/utils/globalEvents'
 import {
 	WHITE,
 	GRAY,
-	BLACK,
 } from 'src/constants/colors'
 
 class AccountSettings extends React.Component {
@@ -113,11 +112,25 @@ class AccountSettings extends React.Component {
 									titleKey='ui.user.account_settings.public_profile.title'
 									descriptionKey='ui.user.account_settings.public_profile.description'
 									url={publicProfileUrl}
+									onCopy={() => {
+										fireGlobalEvent('track-event', {
+											category : 'ui',
+											action   : 'copy profile url',
+											label    : 'account settings'
+										})
+									}}
 								/>
 								<IconButton
 									icon={userIcons.logout}
 									labelKey='ui.user.account_settings.logout'
-									onClick={logout}
+									onClick={() => {
+										logout()
+										fireGlobalEvent('track-event', {
+											category : 'ui',
+											action   : 'logout',
+											label    : 'account settings'
+										})
+									}}
 								/>
 							</div>
 						</React.Fragment>

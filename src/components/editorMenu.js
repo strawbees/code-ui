@@ -8,10 +8,11 @@ import SvgIcon from 'src/components/svgIcon'
 import S from 'src/containers/sManager'
 import checkIcon from 'src/assets/icons/general/check.svg'
 import syncIcon from 'src/assets/icons/general/sync.svg'
-import fileIcons from 'src/assets/icons/file'
 import editorIcons from 'src/assets/icons/editors/small'
 import saveIcon from 'src/assets/icons/file/save.svg'
 import uploadIcon from 'src/assets/icons/file/upload.svg'
+import { fireGlobalEvent } from 'src/utils/globalEvents'
+
 import {
 	ERROR,
 	NEEDS_SYNC,
@@ -191,55 +192,112 @@ const EditorMenu = ({
 				{
 					icon     : editorIcons.flow,
 					labelKey : 'ui.file_menu.options.new_flow',
-					link     : newFlowProgramUrl
+					link     : newFlowProgramUrl,
+					onClick  : () => fireGlobalEvent('track-event', {
+						category : 'ui',
+						action   : 'new flow program',
+						label    : 'file menu'
+					}),
 				},
 				{
 					icon     : editorIcons.block,
 					labelKey : 'ui.file_menu.options.new_block',
-					link     : newBlockProgramUrl
+					link     : newBlockProgramUrl,
+					onClick  : () => fireGlobalEvent('track-event', {
+						category : 'ui',
+						action   : 'new block program',
+						label    : 'file menu'
+					}),
 				},
 				{
 					icon     : editorIcons.text,
 					labelKey : 'ui.file_menu.options.new_text',
-					link     : newTextProgramUrl
+					link     : newTextProgramUrl,
+					onClick  : () => fireGlobalEvent('track-event', {
+						category : 'ui',
+						action   : 'new text program',
+						label    : 'file menu'
+					}),
 				},
 				{
 					labelKey         : 'ui.file_menu.options.save',
 					disabledLabelKey : disabled ? 'ui.file_menu.options.save' : 'ui.file_menu.options.autosaved',
-					onClick          : onSavePress,
 					disabled         : disabled || saved,
 					divider          : true,
 					// icon             : fileIcons.save,
+					onClick          : () => {
+						onSavePress()
+						fireGlobalEvent('track-event', {
+							category : 'ui',
+							action   : 'save program',
+							label    : 'file menu'
+						})
+					},
 				},
 				{
+					disabled,
 					labelKey : 'ui.file_menu.options.duplicate',
-					onClick  : onDuplicatePress,
-					// icon     : fileIcons.duplicate,
-					disabled,
+					// icon  : fileIcons.duplicate,
+					onClick  : () => {
+						onDuplicatePress()
+						fireGlobalEvent('track-event', {
+							category : 'ui',
+							action   : 'duplicate program',
+							label    : 'file menu'
+						})
+					},
 				},
 				{
+					disabled,
 					labelKey : 'ui.file_menu.options.upload',
-					onClick  : onUploadPress,
-					// icon     : fileIcons.upload,
-					disabled,
+					// icon  : fileIcons.upload,
+					onClick  : () => {
+						onUploadPress()
+						fireGlobalEvent('track-event', {
+							category : 'ui',
+							action   : 'upload program',
+							label    : 'file menu'
+						})
+					},
 				},
 				{
+					disabled,
 					labelKey : 'ui.file_menu.options.share',
-					onClick  : onSharePress,
 					divider  : true,
-					// icon     : fileIcons.share,
-					disabled,
+					// icon  : fileIcons.share,
+					onClick  : () => {
+						onSharePress()
+						fireGlobalEvent('track-event', {
+							category : 'ui',
+							action   : 'share program',
+							label    : 'file menu'
+						})
+					},
 				},
 				{
-					labelKey : 'ui.file_menu.options.export',
-					onClick  : onExportPress,
-					// icon     : fileIcons.export,
 					disabled,
+					labelKey : 'ui.file_menu.options.export',
+					// icon  : fileIcons.export,
+					onClick  : () => {
+						onExportPress()
+						fireGlobalEvent('track-event', {
+							category : 'ui',
+							action   : 'export program',
+							label    : 'file menu'
+						})
+					},
 				},
 				{
 					labelKey : 'ui.file_menu.options.import',
-					onClick  : onImportPress,
-					// icon     : fileIcons.import,
+					// icon  : fileIcons.import,
+					onClick  : () => {
+						onImportPress()
+						fireGlobalEvent('track-event', {
+							category : 'ui',
+							action   : 'import program',
+							label    : 'file menu'
+						})
+					},
 				},
 			]}
 		/>
@@ -282,14 +340,28 @@ const EditorMenu = ({
 						<IconButton
 							icon={saveIcon}
 							labelKey='ui.header_menu.options.save'
-							onClick={onSavePress}
+							onClick={() => {
+								onSavePress()
+								fireGlobalEvent('track-event', {
+									category : 'ui',
+									action   : 'save program',
+									label    : 'header'
+								})
+							}}
 							hideLabelOnMediaQuery={'max-width: 950px'}
 						/>
 					}
 					<IconButton
 						icon={uploadIcon}
 						labelKey='ui.header_menu.options.upload'
-						onClick={onUploadPress}
+						onClick={() => {
+							onUploadPress()
+							fireGlobalEvent('track-event', {
+								category : 'ui',
+								action   : 'upload program',
+								label    : 'header'
+							})
+						}}
 						hideLabelOnMediaQuery={'max-width: 950px'}
 					/>
 				</div>
