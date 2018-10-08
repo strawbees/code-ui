@@ -555,15 +555,15 @@
 	"text.og.image"   : "/static/og/text.png",
 	"text.base.title" : "Text",
 
-	"cookie-policy.url"        : "/cookie-policy/",
-	"cookie-policy.og.title"   : "Cookie Policy",
-	"cookie-policy.base.title" : "Cookie Policy",
+	"md.cookie-policy.url"        : "/cookie-policy/",
+	"md.cookie-policy.og.title"   : "Cookie Policy",
+	"md.cookie-policy.base.title" : "Cookie Policy",
 
-	"privacy-policy.url"        : "/privacy-policy/",
-	"privacy-policy.og.title"   : "Privacy Policy",
-	"privacy-policy.base.title" : "Privacy Policy",
+	"md.privacy-policy.url"        : "/privacy-policy/",
+	"md.privacy-policy.og.title"   : "Privacy Policy",
+	"md.privacy-policy.base.title" : "Privacy Policy",
 
-	"terms-of-use.url"        : "/terms/",
-	"terms-of-use.og.title"   : "Terms of Use",
-	"terms-of-use.base.title" : "Terms of Use"
+	"md.terms-of-use.url"        : "/terms/",
+	"md.terms-of-use.og.title"   : "Terms of Use",
+	"md.terms-of-use.base.title" : "Terms of Use"
 }

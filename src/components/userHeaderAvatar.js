@@ -2,7 +2,8 @@ import PropTypes from 'prop-types'
 import DropdownMenu from 'src/components/dropdownMenu'
 import userIcons from 'src/assets/icons/user'
 import syncIcon from 'src/assets/icons/general/sync.svg'
-import strawbeesIcon from 'src/assets/icons/storage/strawbees.svg'
+import { fireGlobalEvent } from 'src/utils/globalEvents'
+
 import {
 	NEEDS_SYNC,
 	SYNCING,
@@ -63,23 +64,49 @@ const UserHeaderAvatar = ({
 					{
 						labelKey : 'ui.user.account_settings.profile',
 						link     : profileUrl,
+						onClick  : () => fireGlobalEvent('track-event', {
+							category : 'ui',
+							action   : 'go to profile',
+							label    : 'user avatar menu'
+						}),
 						// icon     : userIcons.user,
 					},
 					!isAnon ? {
 						divider  : true,
 						labelKey : 'ui.user.account_settings.logout',
-						onClick  : logout,
+						onClick  : () => {
+							logout()
+							fireGlobalEvent('track-event', {
+								category : 'ui',
+								action   : 'logout',
+								label    : 'user avatar menu'
+							})
+						},
 						// icon     : userIcons.logout,
 					} : null,
 					isAnon ? {
 						divider  : true,
 						labelKey : 'ui.user.account_settings.signup',
-						onClick  : signup,
+						onClick  : () => {
+							signup()
+							fireGlobalEvent('track-event', {
+								category : 'ui',
+								action   : 'sign-up',
+								label    : 'user avatar menu'
+							})
+						},
 						// icon     : strawbeesIcon,
 					} : null,
 					isAnon ? {
 						labelKey : 'ui.user.account_settings.signin',
-						onClick  : signin,
+						onClick  : () => {
+							signin()
+							fireGlobalEvent('track-event', {
+								category : 'ui',
+								action   : 'sign-in',
+								label    : 'user avatar menu'
+							})
+						},
 						// icon     : userIcons.login,
 					} : null,
 				]}

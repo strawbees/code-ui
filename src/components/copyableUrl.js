@@ -38,6 +38,10 @@ class CopyableUrl extends React.Component {
 
 		// this.selfRef.current.focus()
 
+		if (this.props.onCopy) {
+			this.props.onCopy(this.props.url)
+		}
+
 		this.setState({ showCopied : true })
 		window.clearInterval(this.showCopiedTimer)
 		this.showCopiedTimer = window.setInterval(
@@ -147,6 +151,7 @@ CopyableUrl.propTypes = {
 	url            : PropTypes.string,
 	description    : PropTypes.string,
 	descriptionKey : PropTypes.string,
+	onCopy         : PropTypes.func,
 }
 
 export default CopyableUrl

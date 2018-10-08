@@ -8,6 +8,7 @@ import LocalesMenuContainer from 'src/containers/localesMenuContainer'
 import EditorMenuContainer from 'src/containers/editorMenuContainer'
 import logoIcon from 'src/assets/icons/logos/strawbeesCode.svg'
 import logoCompactIcon from 'src/assets/icons/logos/strawbeesCodeCompact.svg'
+import { fireGlobalEvent } from 'src/utils/globalEvents'
 
 const Header = ({
 	editorMenu,
@@ -65,7 +66,12 @@ const Header = ({
 			}
 		`}</style>
 
-		<Link to={homeUrl}>
+		<Link to={homeUrl}
+			onClick={() => fireGlobalEvent('track-event', {
+				category : 'ui',
+				action   : 'go to profile',
+				label    : 'logo'
+			})}>
 			<div className='logo'>
 				<SvgIcon icon={logoIcon} />
 			</div>

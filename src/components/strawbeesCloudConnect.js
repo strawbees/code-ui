@@ -2,8 +2,10 @@ import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import IconButton from 'src/components/iconButton'
 // import SvgIcon from 'src/components/svgIcon'
-import signupIcon from 'src/assets/icons/storage/strawbees.svg'
-import signinIcon from 'src/assets/icons/user/login.svg'
+// import signupIcon from 'src/assets/icons/storage/strawbees.svg'
+// import signinIcon from 'src/assets/icons/user/login.svg'
+import { fireGlobalEvent } from 'src/utils/globalEvents'
+
 
 import {
 	WHITE,
@@ -50,10 +52,10 @@ const StrawbeesCloudConnect = ({
 				margin: 0 0.5rem;
 			}
 		`}</style>
-		{/*<div className='logo'>
+		{/* <div className='logo'>
 			<SvgIcon icon={signupIcon}/>
 			Strawbees Cloud
-		</div>*/}
+		</div> */}
 		<div className='nav'>
 			<IconButton
 				// icon={signupIcon}
@@ -62,7 +64,14 @@ const StrawbeesCloudConnect = ({
 				bgHoverColor={PINK}
 				textColor={WHITE}
 				textHoverColor={WHITE}
-				onClick={signup}
+				onClick={() => {
+					signup()
+					fireGlobalEvent('track-event', {
+						category : 'ui',
+						action   : 'sign-up',
+						label    : 'account settings'
+					})
+				}}
 			/>
 			<IconButton
 				// icon={signinIcon}
@@ -71,7 +80,14 @@ const StrawbeesCloudConnect = ({
 				bgHoverColor={BLUE}
 				textColor={WHITE}
 				textHoverColor={WHITE}
-				onClick={signin}
+				onClick={() => {
+					signin()
+					fireGlobalEvent('track-event', {
+						category : 'ui',
+						action   : 'sign-in',
+						label    : 'account settings'
+					})
+				}}
 			/>
 		</div>
 	</div>

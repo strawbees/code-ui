@@ -6,6 +6,7 @@ import IconButton from 'src/components/iconButton'
 import S from 'src/containers/sManager'
 import createIcons from 'src/assets/icons/editors/create'
 import fileIcons from 'src/assets/icons/file'
+import { fireGlobalEvent } from 'src/utils/globalEvents'
 import {
 	WHITE,
 	BLACK,
@@ -73,15 +74,30 @@ const ProgramCreator = ({
 			<S value='ui.program_creator.title'/>
 		</div>
 		<div className='types'>
-			<Link to={flowUrl}>
+			<Link to={flowUrl}
+				onClick={() => fireGlobalEvent('track-event', {
+					category : 'ui',
+					action   : 'new flow program',
+					label    : 'program creator'
+				})}>
 				<SvgIcon icon={createIcons.flow} />
 				<S value='flow.base.title'/>
 			</Link>
-			<Link to={blockUrl}>
+			<Link to={blockUrl}
+				onClick={() => fireGlobalEvent('track-event', {
+					category : 'ui',
+					action   : 'new block program',
+					label    : 'program creator'
+				})}>
 				<SvgIcon icon={createIcons.block} />
 				<S value='block.base.title'/>
 			</Link>
-			<Link to={textUrl}>
+			<Link to={textUrl}
+				onClick={() => fireGlobalEvent('track-event', {
+					category : 'ui',
+					action   : 'new text program',
+					label    : 'program creator'
+				})}>
 				<SvgIcon icon={createIcons.text} />
 				<S value='text.base.title'/>
 			</Link>
@@ -89,7 +105,14 @@ const ProgramCreator = ({
 		<IconButton
 			icon={fileIcons.import}
 			labelKey='ui.program_creator.import'
-			onClick={onImportPress}
+			onClick={() => {
+				onImportPress()
+				fireGlobalEvent('track-event', {
+					category : 'ui',
+					action   : 'import program',
+					label    : 'program creator'
+				})
+			}}
 		/>
 	</div>
 

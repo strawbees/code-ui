@@ -1,6 +1,8 @@
 import { createStructuredSelector } from 'reselect'
 import queryIdSelector from 'src/selectors/queryIdSelector'
+import queryRefSelector from 'src/selectors/queryRefSelector'
 
 export default () => createStructuredSelector({
-	queryId : queryIdSelector(),
+	queryRef : queryRefSelector(),
+	queryId  : queryIdSelector(),
 })

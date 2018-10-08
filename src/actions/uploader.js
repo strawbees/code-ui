@@ -4,6 +4,7 @@ import {
 } from 'quirkbot-midi-interface'
 import getConfig from 'next/config'
 import { generateMethod } from 'src/utils/chromeExtensionApi'
+import { fireGlobalEvent } from 'src/utils/globalEvents'
 import qbcompoundLinkSelector from 'src/selectors/qbcompoundLinkSelector'
 import generateAction from 'src/utils/generateAction'
 import { safeOpenModal } from 'src/actions/modal'
@@ -14,6 +15,7 @@ import {
 	UPLOADER_SET_SUCCESS,
 	UPLOADER_CLEAR_ERROR,
 } from 'src/constants/actionTypes'
+
 
 const {
 	publicRuntimeConfig : {
@@ -28,6 +30,10 @@ export const setUploadSuccess = generateAction(UPLOADER_SET_SUCCESS)
 
 export const uploadHex = (runtimeId, hex) => async (dispatch, getState) => {
 	dispatch(startUpload({ runtimeId, hex }))
+	fireGlobalEvent('track-event', {
+		category : 'quirkbot',
+		action   : 'upload-start'
+	})
 
 	const testLink = qbcompoundLinkSelector()(getState(), { runtimeId })
 	let uploadFn
@@ -44,6 +50,10 @@ export const uploadHex = (runtimeId, hex) => async (dispatch, getState) => {
 	try {
 		await uploadFn()
 		dispatch(setUploadSuccess({ runtimeId, hex }))
+		fireGlobalEvent('track-event', {
+			category : 'quirkbot',
+			action   : 'upload-success'
+		})
 	} catch ({ name : errorName, message : errorMessage }) {
 		let error
 		switch (errorMessage) {
@@ -51,6 +61,10 @@ export const uploadHex = (runtimeId, hex) => async (dispatch, getState) => {
 				error = 'UNHANDLED'
 		}
 		dispatch(setUploadError({ runtimeId, hex, error }))
+		fireGlobalEvent('track-event', {
+			category : 'quirkbot',
+			action   : 'upload-error'
+		})
 	}
 }
 
