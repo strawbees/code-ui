@@ -70,7 +70,7 @@ const PageHome = () =>
 				.section {
 					min-height: 0;
 					display: block;
-					overflow-y: scroll;
+					overflow-y: auto;
 				}
 				.section .container {
 					min-height: min-content;
