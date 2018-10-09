@@ -17,6 +17,11 @@ const PageUser = ({
 				background-color: ${tinycolor(GRAY).lighten(25).toRgbString()};
 				padding: 1rem 0;
 				flex: 1;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				min-height: min-content;
 			}
 			.root :global(.programList) {
 				width: 100%;
