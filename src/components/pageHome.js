@@ -11,54 +11,74 @@ const PageHome = () =>
 	<div className='root pageHome'>
 		<style jsx>{`
 			.root {
-				display: block;
 				position: relative;
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+				align-items: stretch;
+				justify-content: center;
+				min-height: min-content;
 			}
 			.banner {
 				position: absolute;
 			}
 			.section {
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				align-items: stretch;
+				justify-content: center;
+				flex: 1;
+				min-height: min-content;
+			}
+			.section .container {
+				position: relative;
+				flex: 1;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
 				justify-content: center;
 				padding: 3rem 0;
-			}
-			.section :global(> *) {
-				width: 100%;
-				max-width: 40rem;
-
+				min-height: min-content;
 			}
 			.section.top {
 				background-color: ${tinycolor(GRAY).darken(25).toRgbString()};
 			}
+			.section.top :global(.programCreator){
+				max-width: 100%;
+			}
 			.section.bottom {
 				background-color: ${tinycolor(GRAY).lighten(25).toRgbString()};
 			}
-			.section :global(.userArea) {
+			.section.bottom :global(.programList){
+				width: 100%;
+				max-width: 40rem;
+			}
+			.section.bottom :global(.userArea) {
 				margin-bottom: 1rem;
 			}
-			@media (max-width: 400px) {
-				.section {
-					padding: 1rem 0;
-				}
-			}
-			@media (max-height: 550px) {
-				.section {
+			@media (max-height: 650px) {
+				.section .container {
 					padding: 1rem 0;
 				}
 			}
 			@media (min-width: 1080px) {
 				.root {
-					display: flex;
-					align-items: stretch;
 					flex-direction: row;
-					height: 100%;
+					min-height: 0;
 				}
 				.section {
+					min-height: 0;
+					display: block;
+				}
+				.section .container {
+					min-height: min-content;
 					height: 100%;
 				}
-				.section.top {
+				/*.section {
+					height: 100%;
+				}*/
+				/*.section.top {
 					overflow-y: auto;
 					flex: 1;
 					-webkit-overflow-scrolling: touch;
@@ -67,15 +87,19 @@ const PageHome = () =>
 					overflow-y: auto;
 					flex: 1;
 					-webkit-overflow-scrolling: touch;
-				}
+				}*/
 			}
 		`}</style>
 		<div className='section top'>
-			<ProgramCreatorContainer/>
+			<div className='container'>
+				<ProgramCreatorContainer/>
+			</div>
 		</div>
 		<div className='section bottom'>
-			<UserArea/>
-			<StorageProgramListContainer/>
+			<div className='container'>
+				<UserArea/>
+				<StorageProgramListContainer/>
+			</div>
 		</div>
 	</div>
 

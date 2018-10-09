@@ -237,7 +237,7 @@ class AppContainer extends React.Component {
 						border: 0;
 						padding: 0;
 					}
-					/* Typogrphy */
+					/* Typography */
 					:global(.global-type) {
 						vertical-align: baseline;
 						font-family: inherit;
@@ -261,7 +261,8 @@ class AppContainer extends React.Component {
 					:global(.global-type-h4) {
 						font-weight: bold;
 						text-transform: uppercase;
-						line-height: 1;
+						line-height: 1.25;
+						margin-top: 0;
 						margin-bottom: 1rem;
 					}
 					:global(.global-type-h1) {

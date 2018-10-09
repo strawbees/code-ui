@@ -12,6 +12,17 @@ if (process.browser) {
 		hash
 	} = window.location
 	const searchHash = `${search}${hash}`
+	// /reset/#/xxxxx -> /reset-password/?t=xxxxx
+	if ((pathname === '/reset/' ||
+		pathname === '/reset') &&
+		search === '' &&
+		hash.indexOf('#' === 0)) {
+		const id = hash
+			.replace('#!/', '')
+			.replace('#/', '')
+			.replace('#', '')
+		window.location = `/reset-password/?t=${id}`
+	}
 	// /program/#!/xxxxx -> /flow/?p=xxxxx
 	if ((pathname === '/program/' ||
 		pathname === '/program') &&

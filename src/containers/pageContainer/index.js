@@ -2,12 +2,13 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import GlobalBannerContainer from 'src/containers/globalBannerContainer'
 import PageError from 'src/components/pageError'
-import PageHomeContainer from 'src/containers/pageHomeContainer'
-import PageFlowContainer from 'src/containers/pageFlowContainer'
 import PageBlockContainer from 'src/containers/pageBlockContainer'
+import PageFlowContainer from 'src/containers/pageFlowContainer'
+import PageHomeContainer from 'src/containers/pageHomeContainer'
+import PageMDContainer from 'src/containers/pageMDContainer'
+import PagePasswordResetContainer from 'src/containers/pagePasswordResetContainer'
 import PageTextContainer from 'src/containers/pageTextContainer'
 import PageUserContainer from 'src/containers/pageUserContainer'
-import PageMDContainer from 'src/containers/pageMDContainer'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
@@ -15,12 +16,13 @@ import mergeProps from './mergeProps'
 
 const PageContainer = (props) => {
 	const components = {
-		home  : PageHomeContainer,
-		flow  : PageFlowContainer,
-		block : PageBlockContainer,
-		text  : PageTextContainer,
-		user  : PageUserContainer,
-		md    : PageMDContainer,
+		block            : PageBlockContainer,
+		flow             : PageFlowContainer,
+		home             : PageHomeContainer,
+		md               : PageMDContainer,
+		'password-reset' : PagePasswordResetContainer,
+		text             : PageTextContainer,
+		user             : PageUserContainer,
 	}
 	const RefComponent = components[props.queryRef] || PageError
 	return (
@@ -47,13 +49,15 @@ const PageContainer = (props) => {
 
 PageContainer.propTypes = {
 	queryRef : PropTypes.oneOf([
-		'home',
-		'flow',
 		'block',
-		'text',
 		'error',
+		'flow',
+		'home',
+		'md',
+		'password-reset',
+		'email-verification',
+		'text',
 		'user',
-		'md'
 	])
 }
 

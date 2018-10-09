@@ -59,6 +59,17 @@
 	"ui.sb_cloud.forgot.submit.error.user_not_found" : "This username is not registered",
 	"ui.sb_cloud.forgot.submit.success"              : "Check your email for instructions on how to reset your password.",
 
+	"ui.sb_cloud.reset_password.password.label"            : "New password",
+	"ui.sb_cloud.reset_password.password.error.blank"      : "You need to fill in your new password",
+	"ui.sb_cloud.reset_password.password.error.short"      : "Password needs to be at least 6 characters long",
+	"ui.sb_cloud.reset_password.submit"                    : "Reset password",
+	"ui.sb_cloud.reset_password.submit.error.network"      : "There seems to be a connection problem",
+	"ui.sb_cloud.reset_password.submit.error.server"       : "Server is not responding",
+	"ui.sb_cloud.reset_password.submit.error.unhandled"    : "We are having problems, please try again later",
+	"ui.sb_cloud.reset_password.submit.error.invalid_link" : "This reset password link is expired.",
+	"ui.sb_cloud.reset_password.submit.success"            : "Your password was updated.",
+
+
 	"ui.program_creator.title" : "Create a program",
 	"ui.program_creator.import" : "Import from computer",
 
@@ -143,7 +154,7 @@
 	"ui.user.account_settings.signin"                     : "Sign in",
 	"ui.user.account_settings.signup"                     : "Sign up",
 	"ui.user.account_settings.logout"                     : "Log out",
-	"ui.user.account_settings.public_profile.title"       : "Shareable profile link",
+	"ui.user.account_settings.public_profile.title"       : "Public profile link",
 	"ui.user.account_settings.public_profile.description" : "Use this link to share a list of your programs",
 
 
@@ -554,6 +565,10 @@
 	"text.og.title"   : "Text Programming",
 	"text.og.image"   : "/static/og/text.png",
 	"text.base.title" : "Text",
+
+	"password-reset.url"        : "/reset-password/",
+	"password-reset.og.title"   : "Reset Password",
+	"password-reset.base.title" : "Reset Password",
 
 	"md.cookie-policy.url"        : "/cookie-policy/",
 	"md.cookie-policy.og.title"   : "Cookie Policy",

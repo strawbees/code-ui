@@ -188,6 +188,21 @@ export const forgotPassword = async ({ username }) => {
 	return json
 }
 
+export const resetPassword = async ({ token, password }) => {
+	const { ok, json } = await apiCall({
+		url    : 'auth/reset',
+		method : 'post',
+		data   : {
+			token,
+			password
+		}
+	})
+	if (!ok) {
+		throw new Error(json.code)
+	}
+	return json
+}
+
 // Api handlers
 const registerRemoteUser = async (
 	{
