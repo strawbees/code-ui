@@ -19,6 +19,8 @@ class Form extends React.Component {
 
 	render() {
 		const {
+			title,
+			titleKey,
 			formId,
 			submitLabelKey,
 			fields,
@@ -50,16 +52,15 @@ class Form extends React.Component {
 						justify-content: flex-end;
 					}
 					.root :global(form .submit-area .error){
-						align-self: flex-end;
 						flex-grow: 1;
 						margin-right: 1rem;
-						max-width: 11rem;
 					}
-					.root :global(form .submit-area .submit){
+					/*.root :global(form .submit-area .submit){
 						margin: 0 0.25rem 0.25rem 0;
-					}
+					}*/
 					.root :global(.field) {
 						display: flex;
+						align-items: stretch;
 						flex-direction: column;
 						padding-bottom: 0.5rem;
 						border-bottom: solid 1px ${tinycolor(GRAY).lighten(30).toRgbString()};
@@ -105,7 +106,7 @@ class Form extends React.Component {
 					.root :global(.field .error) {
 						margin-top: 0.5rem;
 						max-width: 25rem;
-						align-self: center;
+						align-self: flex-start;
 					}
 					.root :global(.field.error .label){
 						color: ${tinycolor(RED).toRgbString()};
@@ -122,7 +123,27 @@ class Form extends React.Component {
 						align-items: center;
 						justify-content: center;
 					}
+					@media (max-width: 450px) {
+						.root :global(form .submit-area){
+							flex-direction: column;
+							align-items: stretch;
+							justify-content: center;
+						}
+						.root :global(form .submit-area .error){
+							flex-grow: 1;
+							margin-right: 0;
+							margin-bottom: 0.5rem;
+						}
+					}
 				`}</style>
+				{(titleKey || title) &&
+					<div className='form-title global-type global-type-h3'>
+						{(titleKey || !title) &&
+							<S value={titleKey}/>
+						}
+						{title}
+					</div>
+				}
 				<Informed.Form
 					id={formId}
 					onSubmit={onSubmit}
@@ -212,7 +233,7 @@ class Form extends React.Component {
 									formState.errors &&
 									formState.errors._form_error_ &&
 									errorKeys[formState.errors._form_error_] &&
-									<Message className='error' type='warning'>
+									<Message className='error' type='error'>
 										<S value={errorKeys[formState.errors._form_error_]} markdown={true}/>
 									</Message>
 								/* eslint-enable no-underscore-dangle */}
@@ -246,6 +267,8 @@ Form.defaultProps = {
 }
 
 Form.propTypes = {
+	title          : PropTypes.string,
+	titleKey       : PropTypes.string,
 	formId         : PropTypes.string,
 	submitLabelKey : PropTypes.string,
 	errorKeys      : PropTypes.object,

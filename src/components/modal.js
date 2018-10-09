@@ -39,14 +39,14 @@ const Modal = ({
 				left: auto !important;
 				bottom: auto !important;
 				right: auto !important;
-				padding: 1rem !important;
+				padding: 1rem 1.5rem !important;
 				border: none !important;
 				border-radius: 1rem !important;
 			}
 			:global(.ReactModal__Content) :global(>.close) {
 				position: absolute;
-				top: 0.1rem;
-				right: 0.1rem;
+				top: 0rem;
+				right: 0rem;
 				z-index: 1;
 				transform: scale3d(0.7,0.7,0.7);
 			}

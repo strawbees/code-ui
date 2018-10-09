@@ -40,7 +40,7 @@ class FormInput extends React.Component {
 						font-family: Text;
 						padding: 0 0.2rem;
 						height: 2rem;
-						margin-right: 0.5rem;
+						/*margin-right: 0.5rem;*/
 					}
 					input:focus {
 						outline: none;

@@ -41,6 +41,13 @@
 			"ref" : "text"
 		}
 	},
+	"/reset-password/": {
+		"page": "/",
+		"query": {
+			"locale" : "en",
+			"ref" : "password-reset"
+		}
+	},
 	"/cookie-policy/": {
 		"page": "/",
 		"query": {
