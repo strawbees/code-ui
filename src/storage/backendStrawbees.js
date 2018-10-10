@@ -203,6 +203,18 @@ export const resetPassword = async ({ token, password }) => {
 	return json
 }
 
+export const confirmEmail = async (id) => {
+	const { ok, json } = await apiCall({
+		url    : `auth/confirm/${id}`,
+		method : 'get',
+	})
+	if (!ok) {
+		throw new Error(json.code)
+	}
+	return json
+}
+
+
 // Api handlers
 const registerRemoteUser = async (
 	{

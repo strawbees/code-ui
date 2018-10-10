@@ -63,11 +63,18 @@
 	"ui.sb_cloud.reset_password.password.error.blank"      : "You need to fill in your new password",
 	"ui.sb_cloud.reset_password.password.error.short"      : "Password needs to be at least 6 characters long",
 	"ui.sb_cloud.reset_password.submit"                    : "Reset password",
-	"ui.sb_cloud.reset_password.submit.error.network"      : "There seems to be a connection problem",
-	"ui.sb_cloud.reset_password.submit.error.server"       : "Server is not responding",
-	"ui.sb_cloud.reset_password.submit.error.unhandled"    : "We are having problems, please try again later",
+	"ui.sb_cloud.reset_password.submit.error.network"      : "There seems to be a connection problem.",
+	"ui.sb_cloud.reset_password.submit.error.server"       : "Server is not respondin.g",
+	"ui.sb_cloud.reset_password.submit.error.unhandled"    : "We are having problems, please try again later.",
 	"ui.sb_cloud.reset_password.submit.error.invalid_link" : "This reset password link is expired.",
 	"ui.sb_cloud.reset_password.submit.success"            : "Your password was updated.",
+
+	"ui.sb_cloud.confirm_email.title"                     : "Confirm email",
+	"ui.sb_cloud.confirm_email.submit.error.network"      : "There seems to be a connection problem.",
+	"ui.sb_cloud.confirm_email.submit.error.server"       : "Server is not responding.",
+	"ui.sb_cloud.confirm_email.submit.error.unhandled"    : "We are having problems, please try again later.",
+	"ui.sb_cloud.confirm_email.submit.error.invalid_link" : "This confirmation link is invalid.",
+	"ui.sb_cloud.confirm_email.submit.success"            : "Your email is confirmed.",
 
 
 	"ui.program_creator.title" : "Create a program",
@@ -569,6 +576,10 @@
 	"password-reset.url"        : "/reset-password/",
 	"password-reset.og.title"   : "Reset Password",
 	"password-reset.base.title" : "Reset Password",
+
+	"email-confirmation.url"        : "/confirm-email/",
+	"email-confirmation.og.title"   : "Confirm Email",
+	"email-confirmation.base.title" : "Confirm Email",
 
 	"md.cookie-policy.url"        : "/cookie-policy/",
 	"md.cookie-policy.og.title"   : "Cookie Policy",

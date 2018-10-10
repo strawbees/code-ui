@@ -17,7 +17,6 @@ const publicRuntimeConfig = {
 		GAID                          : 'UA-69443341-7',
 		CHROME_EXTENSION_ID           : 'ackaalhbfjagidmjlhlokoblhbnahegd',
 		WINDOWS_DRIVERS_INSTALLER_URL : 'https://github.com/Quirkbot/QuirkbotWindowsDriverInstaller/releases/download/2.0.0/quirkbot-windows-drivers-2.0.0.exe',
-
 	},
 	production : {
 		CANONICAL_URL                 : 'https://code.strawbees.com',
@@ -26,7 +25,6 @@ const publicRuntimeConfig = {
 		GAID                          : 'XXXXXXXXXXXX',
 		CHROME_EXTENSION_ID           : 'ackaalhbfjagidmjlhlokoblhbnahegd',
 		WINDOWS_DRIVERS_INSTALLER_URL : 'https://github.com/Quirkbot/QuirkbotWindowsDriverInstaller/releases/download/2.0.0/quirkbot-windows-drivers-2.0.0.exe',
-
 	}
 }
 // eslint-disable-next-line no-console

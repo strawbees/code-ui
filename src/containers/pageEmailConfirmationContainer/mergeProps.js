@@ -12,9 +12,9 @@ export default (stateProps, dispatchProps, ownProps) => {
 		...otherStateProps,
 		...dispatchProps,
 		...ownProps,
-		onSubmit : async ({ password }) => {
+		onSubmit : () => {
 			const backend = resolveBackendFromBackendName('strawbees')
-			return backend.resetPassword({ token, password })
+			return backend.confirmEmail(token)
 		}
 	}
 }

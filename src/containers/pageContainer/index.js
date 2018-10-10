@@ -1,8 +1,9 @@
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import GlobalBannerContainer from 'src/containers/globalBannerContainer'
-import PageError from 'src/components/pageError'
 import PageBlockContainer from 'src/containers/pageBlockContainer'
+import PageEmailConfirmationContainer from 'src/containers/pageEmailConfirmationContainer'
+import PageError from 'src/components/pageError'
 import PageFlowContainer from 'src/containers/pageFlowContainer'
 import PageHomeContainer from 'src/containers/pageHomeContainer'
 import PageMDContainer from 'src/containers/pageMDContainer'
@@ -16,13 +17,14 @@ import mergeProps from './mergeProps'
 
 const PageContainer = (props) => {
 	const components = {
-		block            : PageBlockContainer,
-		flow             : PageFlowContainer,
-		home             : PageHomeContainer,
-		md               : PageMDContainer,
-		'password-reset' : PagePasswordResetContainer,
-		text             : PageTextContainer,
-		user             : PageUserContainer,
+		block                : PageBlockContainer,
+		'email-confirmation' : PageEmailConfirmationContainer,
+		flow                 : PageFlowContainer,
+		home                 : PageHomeContainer,
+		md                   : PageMDContainer,
+		'password-reset'     : PagePasswordResetContainer,
+		text                 : PageTextContainer,
+		user                 : PageUserContainer,
 	}
 	const RefComponent = components[props.queryRef] || PageError
 	return (
@@ -50,12 +52,12 @@ const PageContainer = (props) => {
 PageContainer.propTypes = {
 	queryRef : PropTypes.oneOf([
 		'block',
+		'email-confirmation',
 		'error',
 		'flow',
 		'home',
 		'md',
 		'password-reset',
-		'email-verification',
 		'text',
 		'user',
 	])
