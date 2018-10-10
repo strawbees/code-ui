@@ -30,7 +30,7 @@ const PageContainer = (props) => {
 			{props.queryRef === 'home' &&
 				<GlobalBannerContainer />
 			}
-			<div className='root page'>
+			<main role='main' className='root page'>
 				<style jsx>{`
 					.root {
 						overflow-y: auto;
@@ -42,7 +42,7 @@ const PageContainer = (props) => {
 					}
 				`}</style>
 				<RefComponent {...props}/>
-			</div>
+			</main>
 		</>
 	)
 }
