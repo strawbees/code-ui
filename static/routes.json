@@ -48,6 +48,13 @@
 			"ref" : "password-reset"
 		}
 	},
+	"/confirm-email/": {
+		"page": "/",
+		"query": {
+			"locale" : "en",
+			"ref" : "email-confirmation"
+		}
+	},
 	"/cookie-policy/": {
 		"page": "/",
 		"query": {

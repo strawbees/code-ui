@@ -23,6 +23,17 @@ if (process.browser) {
 			.replace('#', '')
 		window.location = `/reset-password/?t=${id}`
 	}
+	// /confirm/#/xxxxx -> /confirm-email/?t=xxxxx
+	if ((pathname === '/confirm/' ||
+		pathname === '/confirm') &&
+		search === '' &&
+		hash.indexOf('#' === 0)) {
+		const id = hash
+			.replace('#!/', '')
+			.replace('#/', '')
+			.replace('#', '')
+		window.location = `/confirm-email/?t=${id}`
+	}
 	// /program/#!/xxxxx -> /flow/?p=xxxxx
 	if ((pathname === '/program/' ||
 		pathname === '/program') &&
