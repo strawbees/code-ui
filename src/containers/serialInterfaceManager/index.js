@@ -43,16 +43,7 @@ class SerialInterfaceManager extends React.Component {
 			generateMethod,
 			setQbserialAvailable,
 		} = this.props
-		// connect to the extension
-		if (window.quirkbotChromeApp) {
-			this.ping = window.quirkbotChromeApp.ping
-			this.getModel = window.quirkbotChromeApp.getModel
-			setQbserialAvailable(true)
-		} else if (typeof window.chrome !== 'undefined') {
-			this.ping = generateMethod('ping', extensionId)
-			this.getModel = generateMethod('getModel', extensionId)
-			setQbserialAvailable(true)
-		}
+
 		// start monitoring the extension
 		this.connectionTimer = window.setInterval(this.monitorExtensionConnection, 1000)
 		this.modelTimer = window.setInterval(this.onTick, 1000)
@@ -63,12 +54,27 @@ class SerialInterfaceManager extends React.Component {
 			extensionId,
 			available,
 			ready,
-			setQbserialReady
+			setQbserialReady,
+			generateMethod,
+			setQbserialAvailable
 		} = this.props
 
 		if (!available) {
+			// connect to the extension
+			if (window.quirkbotChromeApp) {
+				console.log('Using in memory quirkbotChromeApp')
+				this.ping = window.quirkbotChromeApp.ping
+				this.getModel = window.quirkbotChromeApp.getModel
+				setQbserialAvailable(true)
+			} else if (typeof window.chrome !== 'undefined') {
+				this.inited = true
+				this.ping = generateMethod('ping', extensionId)
+				this.getModel = generateMethod('getModel', extensionId)
+				setQbserialAvailable(true)
+			}
 			return
 		}
+
 		const timeoutPing = () => new Promise(async (resolve, reject) => {
 			const timeout = setTimeout(() => {
 				reject(new Error('Timeout'))
