@@ -44,7 +44,11 @@ class SerialInterfaceManager extends React.Component {
 			setQbserialAvailable,
 		} = this.props
 		// connect to the extension
-		if (typeof window.chrome !== 'undefined') {
+		if (window.quirkbotChromeApp) {
+			this.ping = window.quirkbotChromeApp.ping
+			this.getModel = window.quirkbotChromeApp.getModel
+			setQbserialAvailable(true)
+		} else if (typeof window.chrome !== 'undefined') {
 			this.ping = generateMethod('ping', extensionId)
 			this.getModel = generateMethod('getModel', extensionId)
 			setQbserialAvailable(true)
