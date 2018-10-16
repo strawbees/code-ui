@@ -35,7 +35,7 @@ const SideMenu = ({
 				padding-right: 0.5rem;
 			}
 			.categoryMenus {
-				overflow: visible;
+				overflow-y: auto;
 			}
 			.categoryMenus :global(>*) {
 				margin-bottom: 0.5rem;
