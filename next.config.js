@@ -36,7 +36,7 @@ const publicRuntimeConfig = {
 	}
 }
 // eslint-disable-next-line no-console
-console.log('Using config -> ', process.env.CONFIG || 'dev')
+console.log('Using config -> ', configMode)
 
 module.exports = {
 	exportPathMap             : () => routes,

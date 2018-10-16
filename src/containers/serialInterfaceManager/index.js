@@ -38,12 +38,6 @@ class SerialInterfaceManager extends React.Component {
 	}
 
 	componentDidMount() {
-		const {
-			extensionId,
-			generateMethod,
-			setQbserialAvailable,
-		} = this.props
-
 		// start monitoring the extension
 		this.connectionTimer = window.setInterval(this.monitorExtensionConnection, 1000)
 		this.modelTimer = window.setInterval(this.onTick, 1000)
