@@ -6,6 +6,7 @@ yarn-error.log
 /.env
 /.next
 /out
+/npm-bundle
 /static/lib/nprogress.css
 /static/lib/scratch-blocks
 /static/locales/

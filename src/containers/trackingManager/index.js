@@ -29,9 +29,20 @@ class TrackingManager extends React.Component {
 			}
 		})
 		removeAllGlobalEventListeners('track-event') // removing all here just for HRM
-		addGlobalEventListener('track-event', ReactGA.event)
+		addGlobalEventListener('track-event', this.trackEvent)
 		removeAllGlobalEventListeners('track-pageview') // removing all here just for HRM
-		addGlobalEventListener('track-pageview', ReactGA.pageview)
+		addGlobalEventListener('track-pageview', this.trackPageview)
+	}
+
+	trackEvent = (data) => {
+		ReactGA.event(data)
+	}
+
+	trackPageview = (path) => {
+		if (path === '/index.html') {
+			path = '/'
+		}
+		ReactGA.pageview(path)
 	}
 
 	componentWillUnmout() {
@@ -41,7 +52,7 @@ class TrackingManager extends React.Component {
 
 	componentDidUpdate(prevProps) {
 		if (!shallowCompareObjects(this.props, prevProps, ['asPath'])) {
-			ReactGA.pageview(this.props.asPath)
+			this.trackPageview(this.props.asPath)
 		}
 	}
 

@@ -22,13 +22,21 @@ const publicRuntimeConfig = {
 		CANONICAL_URL                 : 'https://code.strawbees.com',
 		COMPILER_URL                  : 'https://compiler.quirkbot.com',
 		STRAWBEES_CODE_API_URL        : 'https://api.quirkbot.com',
-		GAID                          : 'XXXXXXXXXXXX',
+		GAID                          : 'UA-69443341-8',
 		CHROME_EXTENSION_ID           : 'ackaalhbfjagidmjlhlokoblhbnahegd',
+		WINDOWS_DRIVERS_INSTALLER_URL : 'https://github.com/Quirkbot/QuirkbotWindowsDriverInstaller/releases/download/2.0.0/quirkbot-windows-drivers-2.0.0.exe',
+	},
+	desktop : {
+		CANONICAL_URL                 : 'https://code.strawbees.com',
+		COMPILER_URL                  : 'http://localhost:9511',
+		STRAWBEES_CODE_API_URL        : 'https://api.quirkbot.com',
+		GAID                          : 'UA-69443341-9',
+		CHROME_EXTENSION_ID           : 'jgbaejhmonchgianepimdbcpfgcbdmam',
 		WINDOWS_DRIVERS_INSTALLER_URL : 'https://github.com/Quirkbot/QuirkbotWindowsDriverInstaller/releases/download/2.0.0/quirkbot-windows-drivers-2.0.0.exe',
 	}
 }
 // eslint-disable-next-line no-console
-console.log('Using config -> ', process.env.CONFIG || 'dev')
+console.log('Using config -> ', configMode)
 
 module.exports = {
 	exportPathMap             : () => routes,
