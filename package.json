@@ -1,6 +1,7 @@
 {
   "name": "strawbees-code",
-  "version": "1.2.3",
+  "version": "1.2.4",
+  "author": "Paulo Barcelos <paulo@strawbees.com>",
   "scripts": {
     "dev": "node lib/scripts/dev.js",
     "build": "node lib/scripts/build.js",
@@ -8,7 +9,7 @@
     "npm-bundle:desktop": "CONFIG=desktop node lib/scripts/bundleForNpm.js",
     "deploy:stage": "CONFIG=stage node lib/scripts/deploy.js",
     "deploy:production": "CONFIG=production node lib/scripts/deploy.js",
-    "lint": "eslint --fix src/** pages/** lib/**"
+    "lint": "eslint  ./*.js src/**/*.js pages/**/*.js lib/**/*.js"
   },
   "dependencies": {
     "@babel/core": "^7.1.2",
@@ -49,7 +50,6 @@
     "workbox-build": "^3.6.2",
     "xxhashjs": "^0.2.2"
   },
-  "author": "Paulo Barcelos <paulo@strawbees.com>",
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "eslint": "^5.6.1",
