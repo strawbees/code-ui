@@ -67,7 +67,6 @@ export const sync = async (
 	credentials,
 	{
 		programs,
-		user,
 		remoteMirror,
 	}) => {
 	// The result object is is what will be returned after the sync. It contains
@@ -505,7 +504,7 @@ const normalizeProgramFromApi = (program) => {
 	}
 }
 
-const normalizeProgramToApi = (program, user) => {
+const normalizeProgramToApi = (program) => {
 	// clone
 	program = JSON.parse(JSON.stringify(program))
 	// resolve the tree based on the type

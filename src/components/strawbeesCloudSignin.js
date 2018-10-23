@@ -1,13 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
-import IconButton from 'src/components/iconButton'
 import Message from 'src/components/message'
 import S from 'src/containers/sManager'
 import Form from 'src/components/form'
 import {
 	GRAY,
-	WHITE,
 } from 'src/constants/colors'
 
 const signinFields = [

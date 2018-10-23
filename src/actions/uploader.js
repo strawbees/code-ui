@@ -43,7 +43,12 @@ export const uploadHex = (runtimeId, hex) => async (dispatch, getState) => {
 	if (testLink.hardwareInterface === 'midi') {
 		uploadFn = async () => uploadHexToLink(getLinkByRuntimeId(runtimeId), hex)
 	} else {
-		const serialUpload = generateMethod('upload', CHROME_EXTENSION_ID)
+		let serialUpload
+		if (window.quirkbotChromeApp) {
+			serialUpload = window.quirkbotChromeApp.upload
+		} else {
+			serialUpload = generateMethod('upload', CHROME_EXTENSION_ID)
+		}
 		uploadFn = async () => serialUpload(testLink.uuid, hex)
 	}
 
@@ -68,8 +73,7 @@ export const uploadHex = (runtimeId, hex) => async (dispatch, getState) => {
 	}
 }
 
-export const modalOpenUploaderDependencies = () => async (dispatch) => {
-	return dispatch(safeOpenModal(
+export const modalOpenUploaderDependencies = () => async (dispatch) =>
+	dispatch(safeOpenModal(
 		<UploaderDependenciesContainer />
 	))
-}

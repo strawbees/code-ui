@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import Markdown from 'src/components/markdown'
 import Message from 'src/components/message'
-import SingleBoardStatus from 'src/components/singleBoardStatus'
 import SingleBoardUploaderContainer from 'src/containers/singleBoardUploaderContainer'
 import UploaderDependenciesContainer from 'src/containers/uploaderDependenciesContainer'
 import S from 'src/containers/sManager'

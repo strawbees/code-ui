@@ -6,12 +6,10 @@ import refEditorIdSelector from 'src/selectors/refEditorIdSelector'
 import refEditorTypeSelector from 'src/selectors/refEditorTypeSelector'
 import refEditorSavedSelector from 'src/selectors/refEditorSavedSelector'
 import storageProgramSelector from 'src/selectors/storageProgramSelector'
-import storageIsAnonSelector from 'src/selectors/storageIsAnonSelector'
 import urlVarsSelector from 'src/selectors/urlVarsSelector'
 import generateNewProgramSource from 'src/utils/generateNewProgramSource'
 import parseUrlVars from 'src/utils/parseUrlVars'
 import resolveLinkUrl from 'src/utils/resolveLinkUrl'
-import { safeOpenDialogModal } from 'src/actions/modal'
 import {
 	setAsPath,
 	setUrlVars,
@@ -119,7 +117,6 @@ export const saveCurrentEditorProgram = () => async (dispatch, getState) => {
 	const name = refEditorNameSelector()(state)
 	const source = refEditorSourceSelector()(state)
 	const type = refEditorTypeSelector()(state)
-	const isAnon = storageIsAnonSelector()(state)
 	const { id } = await dispatch(safeAddProgram(type, name, source))
 	if (type === 'flow') {
 		dispatch(setFlowId(id))

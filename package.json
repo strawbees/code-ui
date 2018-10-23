@@ -1,6 +1,6 @@
 {
   "name": "strawbees-code",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "author": "Paulo Barcelos <paulo@strawbees.com>",
   "scripts": {
     "dev": "node lib/scripts/dev.js",
@@ -9,7 +9,7 @@
     "npm-bundle:desktop": "CONFIG=desktop node lib/scripts/bundleForNpm.js",
     "deploy:stage": "CONFIG=stage node lib/scripts/deploy.js",
     "deploy:production": "CONFIG=production node lib/scripts/deploy.js",
-    "lint": "eslint  ./*.js src/**/*.js pages/**/*.js lib/**/*.js"
+    "lint": "eslint --fix ./*.js src/**/*.js pages/**/*.js lib/**/*.js"
   },
   "dependencies": {
     "@babel/core": "^7.1.2",

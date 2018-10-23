@@ -17,11 +17,9 @@ const StorageProgramList = ({
 	ItemContainer,
 	title,
 	storageStatus
-}) => {
-
-	return (
-		<div className='root programList'>
-			<style jsx>{`
+}) => (
+	<div className='root programList'>
+		<style jsx>{`
 				.root {
 					padding: 0.5rem;
 					display: flex;
@@ -91,18 +89,18 @@ const StorageProgramList = ({
 					}
 				}
 			`}</style>
-			{title &&
+		{title &&
 				<div className='title global-type global-type-h3'>
 					{title}
 				</div>
-			}
-			{(storageStatus === SYNCING || storageStatus === NEEDS_SYNC) &&
+		}
+		{(storageStatus === SYNCING || storageStatus === NEEDS_SYNC) &&
 				<SvgIcon
 					className='sync-icon'
 					icon={syncIcon}
 				/>
-			}
-			{ids && ids.length > 0 &&
+		}
+		{ids && ids.length > 0 &&
 				<div className='controls'>
 					<div className='type'>
 						<div className='pill'>
@@ -120,22 +118,21 @@ const StorageProgramList = ({
 						</div>
 					</div>
 				</div>
-			}
-			{ids &&
+		}
+		{ids &&
 				<div className='list'>
 					{ids.map(id =>
 						<ItemContainer key={id} id={id}/>
 					)}
 				</div>
-			}
-			{(!ids || !ids.length) &&
+		}
+		{(!ids || !ids.length) &&
 				<div className='empty'>
 					<S value='ui.program_list.empty'/>
 				</div>
-			}
-		</div>
-	)
-}
+		}
+	</div>
+)
 
 StorageProgramList.defaultProps = {
 	ids : []

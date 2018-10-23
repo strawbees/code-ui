@@ -184,55 +184,62 @@ class DropdownMenu extends React.Component {
 					role='listbox'
 					tabIndex='-1'
 					ref={listRef}>
-					{options.filter(option => option).map((option, i) =>
-						<li key={i}
-							className={`option ${option.disabled ? 'disabled' : ''} ${option.divider ? 'divider' : ''}`}
-							role='option'
-							tabIndex={`${(option.disabled || option.link) ? '-1' : '0'}`}
-							onClick={option.disabled ? null : () => {
-								blurActiveElement()
-								if (option.onClick) {
-									option.onClick()
+					{options.filter(option => option).map((option, i) => {
+						const onClickOrEnter = option.disabled ? null : (evt) => {
+							if (evt.key && evt.key !== 'Enter') {
+								return
+							}
+							blurActiveElement()
+							if (option.onClick) {
+								option.onClick()
+							}
+						}
+						return (
+							<li key={i}
+								className={`option ${option.disabled ? 'disabled' : ''} ${option.divider ? 'divider' : ''}`}
+								role='option'
+								tabIndex={`${(option.disabled || option.link) ? '-1' : '0'}`}
+								onClick={onClickOrEnter}
+								onKeyUp={onClickOrEnter}>
+								{option.icon &&
+									<SvgIcon icon={option.icon}
+										className='option-icon'/>
 								}
-							}}>
-							{option.icon &&
-								<SvgIcon icon={option.icon}
-									className='option-icon'/>
-							}
-							{option.disabled &&
-								<S value={
-									option.disabledLabel ||
-									option.disabledLabelKey ||
-									option.label ||
-									option.labelKey
-								}/>
-							}
-							{(!option.disabled && !option.link && !option.linkKey) &&
-								<S value={option.label || option.labelKey}/>
-							}
-							{(!option.disabled && option.link && !option.linkKey) &&
-								<Link to={option.link} external={option.linkExternal}>
+								{option.disabled &&
+									<S value={
+										option.disabledLabel ||
+										option.disabledLabelKey ||
+										option.label ||
+										option.labelKey
+									}/>
+								}
+								{(!option.disabled && !option.link && !option.linkKey) &&
 									<S value={option.label || option.labelKey}/>
-								</Link>
-							}
-							{(!option.disabled && !option.link && option.linkKey) &&
-								<React.Fragment>
-									<S
-										value={option.linkKey}
-										render={false}
-										onChange={(linkFromKey) => {
-											if (this.state.linkFromKey !== linkFromKey) {
-												this.setState({ linkFromKey })
-											}
-										}}
-									/>
-									<Link to={this.state.linkFromKey} external={option.linkExternal}>
+								}
+								{(!option.disabled && option.link && !option.linkKey) &&
+									<Link to={option.link} external={option.linkExternal}>
 										<S value={option.label || option.labelKey}/>
 									</Link>
-								</React.Fragment>
-							}
-						</li>
-					)}
+								}
+								{(!option.disabled && !option.link && option.linkKey) &&
+									<React.Fragment>
+										<S
+											value={option.linkKey}
+											render={false}
+											onChange={(linkFromKey) => {
+												if (this.state.linkFromKey !== linkFromKey) {
+													this.setState({ linkFromKey })
+												}
+											}}
+										/>
+										<Link to={this.state.linkFromKey} external={option.linkExternal}>
+											<S value={option.label || option.labelKey}/>
+										</Link>
+									</React.Fragment>
+								}
+							</li>
+						)
+					})}
 				</ul>
 			</div>
 		)

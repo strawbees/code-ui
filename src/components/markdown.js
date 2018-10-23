@@ -2,9 +2,6 @@ import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import Remarkable from 'react-remarkable'
 import {
-	BLACK,
-	YELLOW,
-	WHITE,
 	PINK,
 	GRAY,
 } from 'src/constants/colors'

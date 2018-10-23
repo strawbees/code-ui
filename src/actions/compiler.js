@@ -24,11 +24,12 @@ export const setCompilerHex = generateAction(COMPILER_SET_HEX)
 const enterCompilationQueue = async (code) => {
 	try {
 		const response = await timeoutFetch(`${COMPILER_URL}/${window.encodeURIComponent(code)}`, {}, 15000)
-		const { _id } = await response.json()
-		if (!_id) {
+		const { _id, id } = await response.json()
+
+		if (!_id && !id) {
 			throw new Error('No id')
 		}
-		return _id
+		return _id || id
 	} catch (e) {
 		let error
 		if (e.message === 'Failed to fetch') {

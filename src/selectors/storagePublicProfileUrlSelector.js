@@ -10,7 +10,6 @@ const {
 		CANONICAL_URL
 	}
 } = getConfig()
-const baseUrl = typeof CANONICAL_URL !== 'undefined' ? CANONICAL_URL : ''
 
 export default () => createSelector(
 	[
@@ -34,5 +33,7 @@ export default () => createSelector(
 		if (backend.prefix === 'sb') {
 			return `${CANONICAL_URL}${userUrl}?u=${backend.prefix}/${user.username}`
 		}
+
+		return ''
 	}
 )
