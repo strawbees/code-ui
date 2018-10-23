@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import Message from 'src/components/message'
 import Spinner from 'src/components/spinner'
 import S from 'src/containers/sManager'
-import shallowCompareObjects from 'src/utils/shallowCompareObjects'
 
 const errorKeys = {
 	NETWORK     : 'ui.sb_cloud.confirm_email.submit.error.network',

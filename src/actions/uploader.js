@@ -68,8 +68,7 @@ export const uploadHex = (runtimeId, hex) => async (dispatch, getState) => {
 	}
 }
 
-export const modalOpenUploaderDependencies = () => async (dispatch) => {
-	return dispatch(safeOpenModal(
+export const modalOpenUploaderDependencies = () => async (dispatch) =>
+	dispatch(safeOpenModal(
 		<UploaderDependenciesContainer />
 	))
-}

@@ -9,12 +9,9 @@ import {
 	WHITE,
 } from 'src/constants/colors'
 
-const LIGHT_GRAY = tinycolor(GRAY).lighten(20).toRgbString()
-
 if (process.browser) {
 	ReactModal.setAppElement('#__next')
 }
-
 
 const Modal = ({
 	display,

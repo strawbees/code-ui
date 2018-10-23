@@ -307,13 +307,12 @@ export const modalSignin = (backendName) => async (dispatch) => {
 			}}
 			onForgotPassword={async (values) => {
 				try {
-					const result = await backend.forgotPassword(values)
+					await backend.forgotPassword(values)
 					fireGlobalEvent('track-event', {
 						category : 'user',
 						action   : 'forgot-password-complete',
 						label    : 'modal'
 					})
-					console.log('todo: do something with result', result)
 				} catch (error) {
 					throw error
 				}

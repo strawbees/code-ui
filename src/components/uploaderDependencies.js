@@ -3,7 +3,6 @@ import IconButton from 'src/components/iconButton'
 import Link from 'src/components/link'
 import Message from 'src/components/message'
 import SingleBoardStatus from 'src/components/singleBoardStatus'
-import SingleBoardStatusContainer from 'src/containers/singleBoardStatusContainer'
 import S from 'src/containers/sManager'
 import {
 	WHITE,
@@ -16,9 +15,6 @@ const UploaderDependencies = ({
 	serialBoardIds,
 	serialAvailable,
 	serialReady,
-	midiBoardIds,
-	midiAvailable,
-	midiReady,
 	extensionUrl,
 	driverUrl,
 }) =>

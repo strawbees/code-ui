@@ -19,7 +19,7 @@ const fields = [
 			return null
 		},
 		// validateOnBlur : true,
-		errorKeys      : {
+		errorKeys : {
 			blank    : 'ui.sb_cloud.signup.age.error.blank',
 			underAge : 'ui.sb_cloud.signup.age.error.under',
 		},
@@ -44,7 +44,7 @@ const fields = [
 			return null
 		},
 		// validateOnBlur : true,
-		errorKeys      : {
+		errorKeys : {
 			blank      : 'ui.sb_cloud.signup.username.error.blank',
 			'too-long' : 'ui.sb_cloud.signup.username.error.too_long',
 			invalid    : 'ui.sb_cloud.signup.username.error.invalid',
@@ -67,7 +67,7 @@ const fields = [
 			return null
 		},
 		// validateOnBlur : true,
-		errorKeys      : {
+		errorKeys : {
 			blank   : 'ui.sb_cloud.signup.email.error.blank',
 			invalid : 'ui.sb_cloud.signup.email.error.invalid',
 		},
@@ -108,7 +108,7 @@ const fields = [
 			return null
 		},
 		// validateOnBlur : true,
-		errorKeys      : {
+		errorKeys : {
 			blank : 'ui.sb_cloud.signup.password.error.blank',
 			short : 'ui.sb_cloud.signup.password.error.short',
 		},
@@ -148,7 +148,7 @@ const fields = [
 			return null
 		},
 		// validateOnBlur : true,
-		errorKeys      : {
+		errorKeys : {
 			agree : 'ui.sb_cloud.signup.terms.error.agree',
 		},
 	}

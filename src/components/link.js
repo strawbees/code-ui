@@ -17,7 +17,20 @@ const Link = ({ children, ...props }) => {
 		as
 	} = resolveLinkUrl(to)
 
+	const onClickOrEnter = (nativeEvent) => {
+		if (nativeEvent.key && nativeEvent.key !== 'Enter') {
+			return
+		}
+		const evt = { href, as, nativeEvent }
+		evt.inApp = as === to
+		if (onClick) {
+			onClick(nativeEvent)
+		}
+		fireGlobalEvent('link', evt)
+	}
+
 	if (to) {
+		/* eslint-disable jsx-a11y/anchor-is-valid */
 		return (
 			<NextLink
 				href={href}
@@ -26,14 +39,10 @@ const Link = ({ children, ...props }) => {
 				<a
 					className={`root link ${className}`}
 					target={external && '_blank'}
-					onClick={(nativeEvent) => {
-						const evt = { href, as, nativeEvent }
-						evt.inApp = as === to
-						if (onClick) {
-							onClick(nativeEvent)
-						}
-						fireGlobalEvent('link', evt)
-					}}>
+					tabIndex='0'
+					role='link'
+					onKeyUp={onClickOrEnter}
+					onClick={onClickOrEnter}>
 					<style jsx>{`
 						.root {
 							display: block;
@@ -44,18 +53,16 @@ const Link = ({ children, ...props }) => {
 				</a>
 			</NextLink>
 		)
+		/* eslint-enable jsx-a11y/anchor-is-valid */
 	}
 
 	return (
 		<span
 			className={`root link ${className}`}
-			onClick={(nativeEvent) => {
-				const evt = { href, as, nativeEvent }
-				if (onClick) {
-					onClick(nativeEvent)
-				}
-				fireGlobalEvent('link', evt)
-			}}
+			tabIndex='0'
+			role='link'
+			onKeyUp={onClickOrEnter}
+			onClick={onClickOrEnter}
 			{...otherProps}>
 			<style jsx>{`
 				.root {
