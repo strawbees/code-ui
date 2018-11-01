@@ -4,7 +4,7 @@ export default (input, init = {}) => {
 		controller = new AbortController()
 	} else {
 		controller = {
-			abort  : () => throw new Error('AbortError'),
+			abort  : () => { throw new Error('AbortError') },
 			signal : () => {},
 		}
 	}
