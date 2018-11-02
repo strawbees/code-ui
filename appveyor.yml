@@ -1,0 +1,53 @@
+environment:
+  nodejs_version: 11.0.0
+
+platform:
+  - x86
+
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - npm install
+  - cinst -y nsis
+  - SET PATH=C:\Program Files\NSIS\;C:\Program Files (x86)\NSIS\;%PATH%
+
+build_script:
+  - cmd: node gulp.js build
+
+test_script:
+  - node --version
+  - npm --version
+  - cmd: npm test
+
+artifacts:
+  - path: nwjs-out\versions\**\*
+    name: build
+
+version: "{build}"
+
+skip_tags: true
+
+deploy:
+  - provider: S3
+    access_key_id:
+      secure: AkqgS6TgE6nC0WUZ3nNtqoH1LkPOYhol/bSlMRleKcg=
+    secret_access_key:
+      secure: 8hFJeMNTHobCOn8OkZirlb3iCEGjUHtxsWSFv3Jo79nklT34asKfOVcFzf3WJ1/B
+    bucket: quirkbot-downloads-stage
+    region: us-east-1
+    set_public: true
+    folder: nwjs-build
+    artifact: build
+    on:
+      branch: develop
+  - provider: S3
+    access_key_id:
+      secure: AkqgS6TgE6nC0WUZ3nNtqoH1LkPOYhol/bSlMRleKcg=
+    secret_access_key:
+      secure: 8hFJeMNTHobCOn8OkZirlb3iCEGjUHtxsWSFv3Jo79nklT34asKfOVcFzf3WJ1/B
+    bucket: quirkbot-downloads-production
+    region: us-east-1
+    set_public: true
+    folder: nwjs-build
+    artifact: build
+    on:
+      branch: master

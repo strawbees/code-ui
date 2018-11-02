@@ -1,0 +1,21 @@
+{
+	"executable-name": "Strawbees CODE",
+	"nwjs-version" : "0.34.1",
+	"description": "",
+	"autoupdate": "https://code.strawbees.com/nwjs-build/versions",
+	"main": "index.html",
+	"dependencies": {
+		"strawbees-code-compiler-service": "0.0.3",
+		"quirkbot-chrome-app": "0.2.14"
+	},
+	"window": {
+		"title": "Strawbees CODE",
+		"toolbar": true,
+		"frame": true,
+		"width": 1920,
+		"height": 1080,
+		"min_width": 650,
+		"min_height": 500
+	},
+	"author": "Paulo Barcelos <paulo@strawbees.com>"
+}
