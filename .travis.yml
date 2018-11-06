@@ -18,8 +18,8 @@ deploy:
       secure: "Vot3GPf2JRuzJDBtYZ7YsaWEMqVF9ydIvyDgceAHcpxGPwpJDYWYXmoOxjyZj7RdOhbTzhTCV4A8ixkl6SL0gq0aOdHdcJLXYhMXmDblxEKZnshvXUrryBW1ClHg34DRskdRJTJCkHGbJXud4rBYh+iG6rwbhMSAnHrxa6VneB6qUcImmwfFLshDQqwS6ApGG/v5JqwKEtV3viiPZkJDT3hpebtb9f8MuV0dGV6PVVOY4QnTCVDeOo0YQQbAoMiAOkCfRO6W+A3nk5+x0B/X2V2rEXRG2jDl7Xds2t4HcV8johXclXb4yZi55xFSW5uYEi2Nw7DuG2iBMRKlstWmcJOrNKJiQ2jBUVdeCXTPCD7uom2lUNfH8Vu5s9og+1leQzk1lQWPqrs4WOMzBM08Cr8KnWqRiEE84Rq5A6Ez636u3FxF60xDId6UPGhMNHJwqiwCj5MInLqFLeIYFe+meXFmCgA0O5DQEJifkIeDv4vumZSIYy9soOnaW6jorHgibxbrbtfi+eqm8EsP+nxtZ7KWoGrOhpOPnIC9C+bz6TfF6WwLEY4BbDjfLVWSZeGpKdEPRqNaw/7o95nRx1Vf8wgfKO2/rzV99wIPMmITKeFufhhRJECywkljzn1LGuW5KuCkoHfM22/uOzq041a3XIkXcHABUdTgAT2MhZ7T0j0="
     bucket: quirkbot-downloads-production
     region: us-east-1
-    local_dir: nwjs-out/versions
-    upload-dir: nwjs-build
+    local_dir: nwjs-build/versions
+    upload-dir: .
     skip_cleanup: true
     on:
       branch: master
@@ -31,8 +31,8 @@ deploy:
       secure: "Vot3GPf2JRuzJDBtYZ7YsaWEMqVF9ydIvyDgceAHcpxGPwpJDYWYXmoOxjyZj7RdOhbTzhTCV4A8ixkl6SL0gq0aOdHdcJLXYhMXmDblxEKZnshvXUrryBW1ClHg34DRskdRJTJCkHGbJXud4rBYh+iG6rwbhMSAnHrxa6VneB6qUcImmwfFLshDQqwS6ApGG/v5JqwKEtV3viiPZkJDT3hpebtb9f8MuV0dGV6PVVOY4QnTCVDeOo0YQQbAoMiAOkCfRO6W+A3nk5+x0B/X2V2rEXRG2jDl7Xds2t4HcV8johXclXb4yZi55xFSW5uYEi2Nw7DuG2iBMRKlstWmcJOrNKJiQ2jBUVdeCXTPCD7uom2lUNfH8Vu5s9og+1leQzk1lQWPqrs4WOMzBM08Cr8KnWqRiEE84Rq5A6Ez636u3FxF60xDId6UPGhMNHJwqiwCj5MInLqFLeIYFe+meXFmCgA0O5DQEJifkIeDv4vumZSIYy9soOnaW6jorHgibxbrbtfi+eqm8EsP+nxtZ7KWoGrOhpOPnIC9C+bz6TfF6WwLEY4BbDjfLVWSZeGpKdEPRqNaw/7o95nRx1Vf8wgfKO2/rzV99wIPMmITKeFufhhRJECywkljzn1LGuW5KuCkoHfM22/uOzq041a3XIkXcHABUdTgAT2MhZ7T0j0="
     bucket: quirkbot-downloads-stage
     region: us-east-1
-    local_dir: nwjs-out/versions
-    upload-dir: nwjs-build
+    local_dir: nwjs-build/versions
+    upload-dir: .
     skip_cleanup: true
     on:
       branch: develop

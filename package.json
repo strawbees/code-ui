@@ -56,6 +56,6 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.10.0",
-    "strawbees-app-packager": "^1.0.1"
+    "strawbees-app-packager": "^1.1.0"
   }
 }

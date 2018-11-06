@@ -18,7 +18,7 @@ test_script:
   - yarn --version
 
 artifacts:
-  - path: nwjs-out\versions\**\*
+  - path: nwjs-build\versions\**\*
     name: build
 
 version: "{build}"
