@@ -5,7 +5,12 @@ export default async (input, init = {}, timeout) => {
 		return fetch(input, init)
 	}
 	const timer = setTimeout(() => init.controller.abort(), timeout)
-	const result = await abortableFetch(input, init)
-	clearTimeout(timer)
-	return result
+	try {
+		const result = await abortableFetch(input, init)
+		clearTimeout(timer)
+		return result
+	} catch (e) {
+		clearTimeout(timer)
+		throw e
+	}
 }
