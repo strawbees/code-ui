@@ -1,7 +1,7 @@
 {
 	"name": "StrawbeesCODE",
 	"executable-name": "Strawbees CODE",
-	"nwjs-version" : "0.34.1",
+	"nwjs-version" : "0.34.1-sdk",
 	"description": "",
 	"autoupdate": "https://s3.amazonaws.com/quirkbot-downloads-stage/nwjs-build/versions",
 	"main": "index.html",
