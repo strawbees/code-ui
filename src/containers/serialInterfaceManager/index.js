@@ -56,8 +56,9 @@ class SerialInterfaceManager extends React.Component {
 
 		if (!available) {
 			// connect to the extension
-			if (QuirkbotChromeApp.ping && QuirkbotChromeApp.getModel) {
+			if (QuirkbotChromeApp.init) {
 				console.log('Using in memory quirkbotChromeApp')
+				QuirkbotChromeApp.init()
 				this.ping = QuirkbotChromeApp.ping
 				this.getModel = QuirkbotChromeApp.getModel
 				setQbserialAvailable(true)

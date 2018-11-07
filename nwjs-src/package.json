@@ -1,20 +1,19 @@
 {
-	"name": "Strawbees CODE",
+	"name": "StrawbeesCODE",
 	"executable-name": "Strawbees CODE",
 	"nwjs-version" : "0.34.1",
 	"description": "",
-	"autoupdate": "https://code.strawbees.com/nwjs-build/versions",
+	"autoupdate": "https://s3.amazonaws.com/quirkbot-downloads-stage/nwjs-build/versions",
 	"main": "index.html",
 	"dependencies": {
-		"strawbees-code-compiler-service": "0.0.3",
-		"quirkbot-chrome-app": "0.2.14"
+		"strawbees-code-compiler-service": "0.0.3"
 	},
 	"window": {
 		"title": "Strawbees CODE",
 		"toolbar": true,
 		"frame": true,
-		"width": 1920,
-		"height": 1080,
+		"width": 1400,
+		"height": 800,
 		"min_width": 650,
 		"min_height": 500
 	},

@@ -5779,10 +5779,10 @@ querystring@0.2.0, querystring@^0.2.0:
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
   integrity sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=
 
-quirkbot-chrome-app@^0.2.20:
-  version "0.2.20"
-  resolved "https://registry.yarnpkg.com/quirkbot-chrome-app/-/quirkbot-chrome-app-0.2.20.tgz#addfd542eb7187e73a02d07309021c5bad3f0b05"
-  integrity sha512-6MeAAUaDaMKFv6fIPjXiy32tzdzXCHZ0FlOwOzVMnuydlYmrwi9TeSDdKYItN2pS6Hz6/iUy5pEG0C42WzH1Ng==
+quirkbot-chrome-app@^0.2.25:
+  version "0.2.25"
+  resolved "https://registry.yarnpkg.com/quirkbot-chrome-app/-/quirkbot-chrome-app-0.2.25.tgz#b032c585d316b1eac0b83b14851af0695750732c"
+  integrity sha512-9oE0n/mMGqRmqlW9HsdyhXHMdwU0y5IrDabjJR+wZdYjZwzofcBZCHItdrD0HEUFR+u5rFV3PWiy/kOsnAQRhA==
 
 quirkbot-midi-interface@^0.1.0:
   version "0.1.0"
@@ -6722,10 +6722,10 @@ std-env@^1.1.0, std-env@^1.3.1:
   dependencies:
     is-ci "^1.1.0"
 
-strawbees-app-packager@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/strawbees-app-packager/-/strawbees-app-packager-1.1.2.tgz#f914803627dad208fb36d250538f819450994a87"
-  integrity sha512-xGND+vlJUG0DdDAhqK8VPqIozTTK0P1G1ZGCl3+OtJ+lpH7SrhRfphxoCu1a+DE+b7FHmgyKt9euWhvmMsT+CQ==
+strawbees-app-packager@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/strawbees-app-packager/-/strawbees-app-packager-1.1.4.tgz#baf09e20fc8ebad31e2787e1751642916b51e897"
+  integrity sha512-jEWExqlkh0mimN+nIgAU/xav5hjQwDB102i+8KfimCkS6r4H74zKMn1Ze+1cLpx5SsStGgTKjYr5F6u0GObLuw==
   dependencies:
     archiver "^3.0.0"
     nwjs-builder "^1.13.1"
