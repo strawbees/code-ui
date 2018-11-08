@@ -44,6 +44,7 @@
     "s3": "^4.4.0",
     "scratch-blocks": "^0.1.0-prerelease.1541447209",
     "serve-handler": "^5.0.5",
+    "strawbees-app-packager": "^1.1.5",
     "tinycolor2": "^1.4.1",
     "why-did-you-update": "^1.0.2",
     "workbox-build": "^3.6.2",
@@ -57,7 +58,6 @@
     "eslint-import-resolver-babel-module": "^5.0.0-beta.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.10.0",
-    "strawbees-app-packager": "^1.1.4"
+    "eslint-plugin-react": "^7.10.0"
   }
 }
