@@ -6697,10 +6697,10 @@ std-env@^1.1.0, std-env@^1.3.1:
   dependencies:
     is-ci "^1.1.0"
 
-strawbees-app-packager@^1.1.5:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/strawbees-app-packager/-/strawbees-app-packager-1.1.5.tgz#1250cc4ddd3297f40e1171ff63d0e89134ee046e"
-  integrity sha512-+8FPnd6DI4hh8ZM4lHjEIcGG2VLUqsyDlRPgp5q1/T3DVX2kKPeyZ2PnNkJwMtrREcbuPdDtPg4XFQBNCMSh1A==
+strawbees-app-packager@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/strawbees-app-packager/-/strawbees-app-packager-1.1.6.tgz#b3b551a69ae569b800d3e48cea7562e9547cea6a"
+  integrity sha512-4vz6EaEt0KwNDiVp+W632LZcMWHa26rh6gWEjXnW9PGhbniV+QOvDN1TQn7Gki4lm1/jTQrbUGv6Ur+H3HljGw==
   dependencies:
     archiver "^3.0.0"
     nwjs-builder "^1.13.1"
