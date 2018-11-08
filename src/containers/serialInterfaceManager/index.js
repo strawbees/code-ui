@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import QuirkbotChromeApp from 'quirkbot-chrome-app'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
@@ -55,10 +56,11 @@ class SerialInterfaceManager extends React.Component {
 
 		if (!available) {
 			// connect to the extension
-			if (window.quirkbotChromeApp) {
+			if (QuirkbotChromeApp.init) {
 				console.log('Using in memory quirkbotChromeApp')
-				this.ping = window.quirkbotChromeApp.ping
-				this.getModel = window.quirkbotChromeApp.getModel
+				QuirkbotChromeApp.init()
+				this.ping = QuirkbotChromeApp.ping
+				this.getModel = QuirkbotChromeApp.getModel
 				setQbserialAvailable(true)
 			} else if (typeof window.chrome !== 'undefined') {
 				this.inited = true
