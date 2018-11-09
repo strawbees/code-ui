@@ -18,7 +18,7 @@ test_script:
   - yarn --version
 
 artifacts:
-  - path: nwjs-build\versions\**\*
+  - path: code-nwjs-build\versions\**\*
     name: build
 
 version: "{build}"
@@ -46,7 +46,7 @@ deploy:
     bucket: quirkbot-downloads-production
     region: us-east-1
     set_public: true
-    folder: 
+    folder:
     artifact: build
     on:
       branch: master

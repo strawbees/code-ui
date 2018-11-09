@@ -3,7 +3,7 @@
 	"executable-name": "StrawbeesCODE",
 	"nwjs-version" : "0.34.2-sdk",
 	"description": "",
-	"autoupdate": "https://s3.amazonaws.com/quirkbot-downloads-stage/nwjs-build/versions",
+	"autoupdate": "https://s3.amazonaws.com/quirkbot-downloads-stage/code-nwjs-build/versions",
 	"main": "index.html",
 	"dependencies": {
 		"strawbees-code-compiler-service": "0.0.3"
