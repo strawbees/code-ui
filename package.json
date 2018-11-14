@@ -11,7 +11,7 @@
     "deploy:stage": "CONFIG=stage node lib/scripts/deploy.js",
     "deploy:production": "CONFIG=production node lib/scripts/deploy.js",
     "lint": "eslint --fix ./*.js src/**/*.js pages/**/*.js lib/**/*.js"
-  },
+  }, 
   "dependencies": {
     "@babel/core": "^7.1.2",
     "babel-plugin-inline-react-svg": "0.4.0",
