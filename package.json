@@ -11,7 +11,7 @@
     "deploy:stage": "CONFIG=stage node lib/scripts/deploy.js",
     "deploy:production": "CONFIG=production node lib/scripts/deploy.js",
     "lint": "eslint --fix ./*.js src/**/*.js pages/**/*.js lib/**/*.js"
-  }, 
+  },
   "dependencies": {
     "@babel/core": "^7.1.2",
     "babel-plugin-inline-react-svg": "0.4.0",
@@ -44,7 +44,7 @@
     "s3": "^4.4.0",
     "scratch-blocks": "^0.1.0-prerelease.1541447209",
     "serve-handler": "^5.0.5",
-    "strawbees-app-packager": "^1.2.1",
+    "strawbees-app-packager": "^1.2.2",
     "tinycolor2": "^1.4.1",
     "why-did-you-update": "^1.0.2",
     "workbox-build": "^3.6.2",
