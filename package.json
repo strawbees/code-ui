@@ -1,6 +1,6 @@
 {
   "name": "strawbees-code",
-  "version": "1.2.18",
+  "version": "1.2.19",
   "author": "Paulo Barcelos <paulo@strawbees.com>",
   "scripts": {
     "dev": "node lib/scripts/dev.js",
