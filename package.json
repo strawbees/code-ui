@@ -44,7 +44,7 @@
     "s3": "^4.4.0",
     "scratch-blocks": "^0.1.0-prerelease.1541447209",
     "serve-handler": "^5.0.5",
-    "strawbees-app-packager": "^1.2.6",
+    "strawbees-app-packager": "^1.2.7",
     "tinycolor2": "^1.4.1",
     "why-did-you-update": "^1.0.2",
     "workbox-build": "^3.6.2",
