@@ -6,7 +6,7 @@
 	"autoupdate": "https://s3.amazonaws.com/quirkbot-downloads-stage/code-nwjs-build/versions",
 	"main": "index.html",
 	"dependencies": {
-		"strawbees-code-compiler-service": "0.0.25"
+		"strawbees-code-compiler-service": "1.0.0"
 	},
 	"window": {
 		"title": "Strawbees CODE",
