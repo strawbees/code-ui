@@ -1,7 +1,7 @@
 {
 	"name": "StrawbeesCODE",
 	"executable-name": "StrawbeesCODE",
-	"nwjs-version" : "0.34.2",
+	"nwjs-version" : "0.34.4",
 	"description": "",
 	"autoupdate": {
 		"stage": "https://s3.amazonaws.com/strawbees-downloads-stage/code-nwjs-build/versions",
