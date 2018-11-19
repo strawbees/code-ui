@@ -18,7 +18,8 @@
 		"width": 1100,
 		"height": 550,
 		"min_width": 700,
-		"min_height": 400
+		"min_height": 400,
+		"icon": "static/favicon/android-chrome-512x512.png"
 	},
 	"author": "Paulo Barcelos <paulo@strawbees.com>"
 }
