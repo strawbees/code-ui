@@ -5,7 +5,7 @@
 	"description": "",
 	"autoupdate": {
 		"stage": "https://s3.amazonaws.com/strawbees-downloads-stage/code-nwjs-build/versions",
-		"prodcution": "https://s3.amazonaws.com/strawbees-downloads-production/code-nwjs-build/versions",
+		"prodcution": "https://s3.amazonaws.com/strawbees-downloads-production/code-nwjs-build/versions"
 	},
 	"main": "index.html",
 	"dependencies": {
