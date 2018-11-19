@@ -30,7 +30,7 @@ deploy:
       secure: 1joZTNZgmvLkKm8loxEpluxvQfInd6tssEaIysW4ONs=
     secret_access_key:
       secure: V7c3H3iFazbpHOxThQMIkcZCp99uEBOAcE8v75qMZAvap9SwbGprXuQ4KIiTSDvF
-    bucket: quirkbot-downloads-stage
+    bucket: strawbees-downloads-stage
     region: us-east-1
     set_public: true
     folder:
@@ -42,7 +42,7 @@ deploy:
       secure: 1joZTNZgmvLkKm8loxEpluxvQfInd6tssEaIysW4ONs=
     secret_access_key:
       secure: V7c3H3iFazbpHOxThQMIkcZCp99uEBOAcE8v75qMZAvap9SwbGprXuQ4KIiTSDvF
-    bucket: quirkbot-downloads-production
+    bucket: strawbees-downloads-production
     region: us-east-1
     set_public: true
     folder:
