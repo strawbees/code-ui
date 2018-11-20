@@ -2,6 +2,7 @@ import {
 	getLinkByRuntimeId,
 	uploadHexToLink
 } from 'quirkbot-midi-interface'
+import QuirkbotChromeApp from 'quirkbot-chrome-app'
 import getConfig from 'next/config'
 import { generateMethod } from 'src/utils/chromeExtensionApi'
 import { fireGlobalEvent } from 'src/utils/globalEvents'
@@ -44,8 +45,8 @@ export const uploadHex = (runtimeId, hex) => async (dispatch, getState) => {
 		uploadFn = async () => uploadHexToLink(getLinkByRuntimeId(runtimeId), hex)
 	} else {
 		let serialUpload
-		if (window.quirkbotChromeApp) {
-			serialUpload = window.quirkbotChromeApp.upload
+		if (QuirkbotChromeApp.init) {
+			serialUpload = QuirkbotChromeApp.upload
 		} else {
 			serialUpload = generateMethod('upload', CHROME_EXTENSION_ID)
 		}

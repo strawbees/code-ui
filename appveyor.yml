@@ -8,19 +8,16 @@ install:
   - ps: Install-Product node $env:nodejs_version
   - cinst -y nsis
   - SET PATH=C:\Program Files\NSIS\;C:\Program Files (x86)\NSIS\;%PATH%
-  - (New-Object Net.WebClient).DownloadFile("https://yarnpkg.com/latest.msi", "$env:temp\yarn.msi")
-  - cmd /c start /wait msiexec.exe /i $env:temp\yarn.msi /quiet /qn /norestart
-  - yarn
+  - npm install --production
 build_script:
   - cmd: node lib\scripts\packageDesktopApp.js
 
 test_script:
   - node --version
   - npm --version
-  - yarn --version
 
 artifacts:
-  - path: nwjs-out\versions\**\*
+  - path: code-nwjs-build\versions\**\*
     name: build
 
 version: "{build}"
@@ -30,25 +27,25 @@ skip_tags: true
 deploy:
   - provider: S3
     access_key_id:
-      secure: AkqgS6TgE6nC0WUZ3nNtqoH1LkPOYhol/bSlMRleKcg=
+      secure: 1joZTNZgmvLkKm8loxEpluxvQfInd6tssEaIysW4ONs=
     secret_access_key:
-      secure: 8hFJeMNTHobCOn8OkZirlb3iCEGjUHtxsWSFv3Jo79nklT34asKfOVcFzf3WJ1/B
-    bucket: quirkbot-downloads-stage
+      secure: V7c3H3iFazbpHOxThQMIkcZCp99uEBOAcE8v75qMZAvap9SwbGprXuQ4KIiTSDvF
+    bucket: strawbees-downloads-stage
     region: us-east-1
     set_public: true
-    folder: nwjs-build
+    folder:
     artifact: build
     on:
       branch: develop
   - provider: S3
     access_key_id:
-      secure: AkqgS6TgE6nC0WUZ3nNtqoH1LkPOYhol/bSlMRleKcg=
+      secure: 1joZTNZgmvLkKm8loxEpluxvQfInd6tssEaIysW4ONs=
     secret_access_key:
-      secure: 8hFJeMNTHobCOn8OkZirlb3iCEGjUHtxsWSFv3Jo79nklT34asKfOVcFzf3WJ1/B
-    bucket: quirkbot-downloads-production
+      secure: V7c3H3iFazbpHOxThQMIkcZCp99uEBOAcE8v75qMZAvap9SwbGprXuQ4KIiTSDvF
+    bucket: strawbees-downloads-production
     region: us-east-1
     set_public: true
-    folder: nwjs-build
+    folder:
     artifact: build
     on:
       branch: master

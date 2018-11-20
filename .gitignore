@@ -6,6 +6,8 @@ yarn-error.log
 /.env
 /.next
 /out
+/nwjs-build
+/code-nwjs-build
 /nwjs-out
 /nwjs-temp
 /static/lib/nprogress.css
