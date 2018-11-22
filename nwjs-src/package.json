@@ -9,7 +9,7 @@
 	},
 	"main": "index.html",
 	"dependencies": {
-		"strawbees-code-compiler-service": "1.0.0"
+		"strawbees-code-compiler-service": "1.0.1"
 	},
 	"window": {
 		"title": "Strawbees CODE",
