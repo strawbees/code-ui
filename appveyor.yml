@@ -6,7 +6,7 @@ platform:
   - x64
 
 install:
-  - ps: Install-Product node $env:nodejs_version $env:platform;
+  - ps: Install-Product node $env:nodejs_version $env:platform
   - cinst -y nsis
   - SET PATH=C:\Program Files\NSIS\;C:\Program Files (x86)\NSIS\;%PATH%
   - npm ci --only=production
