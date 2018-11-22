@@ -1,18 +1,15 @@
 environment:
-  nodejs_version: 11.1.0
+  nodejs_version: 11.2.0
 
 platform:
   - x86
   - x64
 
 install:
-  - ps: Install-Product node $env:nodejs_version
+  - ps: Install-Product node $env:nodejs_version $env:platform;
   - cinst -y nsis
   - SET PATH=C:\Program Files\NSIS\;C:\Program Files (x86)\NSIS\;%PATH%
   - npm ci --only=production
-
-cache:
-  - '%APPDATA%\npm-cache'
 
 build_script:
   - cmd: node lib\scripts\packageDesktopApp.js
