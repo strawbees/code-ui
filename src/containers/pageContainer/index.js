@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import GlobalBannerContainer from 'src/containers/globalBannerContainer'
 import PageBlockContainer from 'src/containers/pageBlockContainer'
+import PageDownloadContainer from 'src/containers/pageDownloadContainer'
 import PageEmailConfirmationContainer from 'src/containers/pageEmailConfirmationContainer'
 import PageError from 'src/components/pageError'
 import PageFlowContainer from 'src/containers/pageFlowContainer'
@@ -17,12 +18,13 @@ import mergeProps from './mergeProps'
 
 const PageContainer = (props) => {
 	const components = {
-		block                : PageBlockContainer,
 		'email-confirmation' : PageEmailConfirmationContainer,
+		'password-reset'     : PagePasswordResetContainer,
+		block                : PageBlockContainer,
+		download             : PageDownloadContainer,
 		flow                 : PageFlowContainer,
 		home                 : PageHomeContainer,
 		md                   : PageMDContainer,
-		'password-reset'     : PagePasswordResetContainer,
 		text                 : PageTextContainer,
 		user                 : PageUserContainer,
 	}
@@ -52,6 +54,7 @@ const PageContainer = (props) => {
 PageContainer.propTypes = {
 	queryRef : PropTypes.oneOf([
 		'block',
+		'download',
 		'email-confirmation',
 		'error',
 		'flow',

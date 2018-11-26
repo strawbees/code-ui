@@ -3,12 +3,14 @@ environment:
 
 platform:
   - x86
+  - x64
 
 install:
-  - ps: Install-Product node $env:nodejs_version
+  - ps: Install-Product node $env:nodejs_version $env:platform
   - cinst -y nsis
   - SET PATH=C:\Program Files\NSIS\;C:\Program Files (x86)\NSIS\;%PATH%
-  - npm install --production
+  - npm ci --only=production
+
 build_script:
   - cmd: node lib\scripts\packageDesktopApp.js
 
