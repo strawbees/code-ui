@@ -9,6 +9,7 @@ const publicRuntimeConfig = {
 		GAID                          : 'XXXXXXXXXXXX',
 		CHROME_EXTENSION_ID           : 'ackaalhbfjagidmjlhlokoblhbnahegd',
 		WINDOWS_DRIVERS_INSTALLER_URL : 'https://github.com/Quirkbot/QuirkbotWindowsDriverInstaller/releases/download/2.0.0/quirkbot-windows-drivers-2.0.0.exe',
+		DOWNLOAD_DESKTOP_APP_URL      : 'https://s3.amazonaws.com/strawbees-downloads-stage/code-nwjs-build/versions',
 	},
 	stage : {
 		CANONICAL_URL                 : 'https://code-stage.strawbees.com',
@@ -17,6 +18,7 @@ const publicRuntimeConfig = {
 		GAID                          : 'UA-69443341-7',
 		CHROME_EXTENSION_ID           : 'ackaalhbfjagidmjlhlokoblhbnahegd',
 		WINDOWS_DRIVERS_INSTALLER_URL : 'https://github.com/Quirkbot/QuirkbotWindowsDriverInstaller/releases/download/2.0.0/quirkbot-windows-drivers-2.0.0.exe',
+		DOWNLOAD_DESKTOP_APP_URL      : 'https://s3.amazonaws.com/strawbees-downloads-stage/code-nwjs-build/versions',
 	},
 	production : {
 		CANONICAL_URL                 : 'https://code.strawbees.com',
@@ -25,6 +27,7 @@ const publicRuntimeConfig = {
 		GAID                          : 'UA-69443341-8',
 		CHROME_EXTENSION_ID           : 'ackaalhbfjagidmjlhlokoblhbnahegd',
 		WINDOWS_DRIVERS_INSTALLER_URL : 'https://github.com/Quirkbot/QuirkbotWindowsDriverInstaller/releases/download/2.0.0/quirkbot-windows-drivers-2.0.0.exe',
+		DOWNLOAD_DESKTOP_APP_URL      : 'https://s3.amazonaws.com/strawbees-downloads-production/code-nwjs-build/versions',
 	},
 	desktop : {
 		CANONICAL_URL                 : 'https://code.strawbees.com',
@@ -33,6 +36,7 @@ const publicRuntimeConfig = {
 		GAID                          : 'UA-69443341-9',
 		CHROME_EXTENSION_ID           : 'jgbaejhmonchgianepimdbcpfgcbdmam',
 		WINDOWS_DRIVERS_INSTALLER_URL : 'https://github.com/Quirkbot/QuirkbotWindowsDriverInstaller/releases/download/2.0.0/quirkbot-windows-drivers-2.0.0.exe',
+		DOWNLOAD_DESKTOP_APP_URL      : 'https://s3.amazonaws.com/strawbees-downloads-production/code-nwjs-build/versions',
 	}
 }
 // eslint-disable-next-line no-console

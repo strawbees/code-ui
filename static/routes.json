@@ -55,6 +55,13 @@
 			"ref" : "email-confirmation"
 		}
 	},
+	"/download/": {
+		"page": "/",
+		"query": {
+			"locale" : "en",
+			"ref" : "download"
+		}
+	},
 	"/cookie-policy/": {
 		"page": "/",
 		"query": {

@@ -573,6 +573,14 @@
 	"text.og.image"   : "/static/og/text.png",
 	"text.base.title" : "Text",
 
+	"download.url"              : "/download/",
+	"download.og.title"         : "Download",
+	"download.base.title"       : "Download Strawbees CODE",
+	"download.base.description" : "Download the Strawbees CODE app to be able program anytime, even wihtout an internet connection!",
+	"download.platform.darwin"  : "Mac OS",
+	"download.platform.win32"   : "Windows 7 and above",
+	"download.download-cta"     : "Download",
+
 	"password-reset.url"        : "/reset-password/",
 	"password-reset.og.title"   : "Reset Password",
 	"password-reset.base.title" : "Reset Password",
