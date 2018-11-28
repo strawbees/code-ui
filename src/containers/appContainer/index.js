@@ -2,10 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import NProgress from 'nprogress'
 import Router from 'next/router'
+import getConfig from 'next/config'
 import { connect } from 'react-redux'
 import parseUrlVars from 'src/utils/parseUrlVars'
 import loadStaticData from 'src/utils/loadStaticData'
 import * as browserStorage from 'src/utils/browserStorage'
+import { fireGlobalEvent } from 'src/utils/globalEvents'
+import resolveLinkUrl from 'src/utils/resolveLinkUrl'
 import Spinner from 'src/components/spinner'
 import HeadContainer from 'src/containers/headContainer'
 import HeaderContainer from 'src/containers/headerContainer'
@@ -23,6 +26,12 @@ import { BLACK } from 'src/constants/colors'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
+
+const {
+	publicRuntimeConfig : {
+		CONFIG_MODE
+	}
+} = getConfig()
 
 class AppContainer extends React.Component {
 	static async getInitialProps({
@@ -104,6 +113,34 @@ class AppContainer extends React.Component {
 
 		// hide the global banners
 		setHiddenGlobalBanners(browserStorage.getKeys('hiddenGlobalBanners'))
+
+		// monitor incoming links via the url scheme (only for the desktop app)
+		if (CONFIG_MODE === 'desktop') {
+			if (window.nw) {
+				const openUrlScheme = (url) => {
+					let to = url
+					to = to.replace('strawbeescode://', '/')
+					to += to.endsWith('/') ? '' : '/'
+					console.log('Opening via URL Scheme', to)
+					const {
+						href,
+						as
+					} = resolveLinkUrl(to)
+					const evt = { href, as, inApp : as === to }
+					fireGlobalEvent('link', evt)
+				}
+				window.nw.App.on('open', openUrlScheme)
+				if (window.nw.App.argv && window.nw.App.argv.length) {
+					for (let i = 0; i < window.nw.App.argv.length; i++) {
+						const arg = window.nw.App.argv[i]
+						if (arg.indexOf('strawbeescode://') === 0) {
+							openUrlScheme(arg)
+							break
+						}
+					}
+				}
+			}
+		}
 	}
 
 	componentWillUnmount() {

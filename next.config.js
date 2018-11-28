@@ -43,7 +43,10 @@ const publicRuntimeConfig = {
 console.log('Using config -> ', configMode)
 
 module.exports = {
-	exportPathMap             : () => routes,
-	publicRuntimeConfig       : publicRuntimeConfig[configMode],
+	exportPathMap       : () => routes,
+	publicRuntimeConfig : {
+		...publicRuntimeConfig[configMode],
+		CONFIG_MODE : configMode
+	},
 	useFileSystemPublicRoutes : false,
 }
