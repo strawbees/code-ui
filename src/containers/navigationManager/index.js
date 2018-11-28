@@ -64,7 +64,7 @@ class NavigationManager extends React.PureComponent {
 			// ignore links that are not from inside the app
 			return
 		}
-		if (nativeEvent.currentTarget.nodeName === 'A' &&
+		if (nativeEvent && nativeEvent.currentTarget && nativeEvent.currentTarget.nodeName === 'A' &&
 			(
 				nativeEvent.metaKey ||
 				nativeEvent.ctrlKey ||
@@ -79,7 +79,9 @@ class NavigationManager extends React.PureComponent {
 			return
 		}
 		// Stop the event, we take control from now on
-		nativeEvent.preventDefault()
+		if (nativeEvent && nativeEvent.preventDefault) {
+			nativeEvent.preventDefault()
+		}
 		try {
 			await this.onBeforeNavigation(as)
 			// If onBeforeNavigation resolves, process the link
