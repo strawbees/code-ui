@@ -1,5 +1,6 @@
 {
-	"name": "StrawbeesCODE",
+	"name": "Strawbees CODE",
+	"publisher": "Strawbees AB",
 	"executable-name": "StrawbeesCODE",
 	"url-scheme": "strawbeescode",
 	"nwjs-version" : "0.34.4",
