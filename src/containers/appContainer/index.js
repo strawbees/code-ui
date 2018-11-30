@@ -118,9 +118,11 @@ class AppContainer extends React.Component {
 		if (CONFIG_MODE === 'desktop') {
 			if (window.nw) {
 				const openUrlScheme = (url) => {
-					let to = url
-					to = to.replace('strawbeescode://', '/')
-					to += to.endsWith('/') ? '' : '/'
+					const urlParts = url.split('strawbeescode://')
+					let to = ''
+					if (urlParts.length === 2) {
+						to = `/${urlParts[1]}${urlParts[1].endsWith('/') ? '' : '/'}`
+					}
 					console.log('Opening via URL Scheme', to)
 					const {
 						href,
