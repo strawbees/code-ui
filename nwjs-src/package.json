@@ -4,7 +4,7 @@
 	"executable-name": "Strawbees CODE",
 	"publisher": "Strawbees AB",
 	"url-scheme": "strawbeescode",
-	"nwjs-version" : "0.34.4",
+	"nwjs-version" : "0.35.0",
 	"description": "",
 	"autoupdate": {
 		"stage": "https://s3.amazonaws.com/strawbees-downloads-stage/code-nwjs-build/versions",
