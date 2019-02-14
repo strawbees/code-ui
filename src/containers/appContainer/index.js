@@ -128,8 +128,9 @@ class AppContainer extends React.Component {
 						href,
 						as
 					} = resolveLinkUrl(to)
-					const evt = { href, as, inApp : as === to }
+					// const evt = { href, as, inApp : as === to }
 					fireGlobalEvent('link', evt)
+					//Router.push(href, as)
 				}
 				window.nw.App.on('open', openUrlScheme)
 				if (window.nw.App.argv && window.nw.App.argv.length) {

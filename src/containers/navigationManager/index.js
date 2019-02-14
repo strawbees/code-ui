@@ -22,7 +22,10 @@ import mergeProps from './mergeProps'
 class NavigationManager extends React.PureComponent {
 	async componentDidMount() {
 		// Monitor Links clicks and popState
-		removeAllGlobalEventListeners('link') // removing all here just for HRM
+		// (explicitly removing all listeners before attaching a new one, to
+		// make sure we clean any eventual listener that was created by
+		// hot reloading (HRM))
+		removeAllGlobalEventListeners('link')
 		addGlobalEventListener('link', this.onLinkClicked)
 		Router.beforePopState(this.onBeforePopState)
 
