@@ -1,9 +1,17 @@
-export default (locationString) => {
-	const {
-		pathname,
-		search,
-		hash
-	} = new URL(locationString)
+export default (url) => {
+	let pathname
+	let search
+	let hash
+	try {
+		({
+			pathname,
+			search,
+			hash
+		} = new URL(url))
+	} catch (e) {
+		console.log('Error trying to parse URL for redirect', e)
+		return undefined
+	}
 	const searchHash = `${search}${hash}`
 
 	// /reset/#/xxxxx -> /reset-password/?t=xxxxx
