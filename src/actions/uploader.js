@@ -1,7 +1,7 @@
-import {
-	getLinkByRuntimeId,
-	uploadHexToLink
-} from 'quirkbot-midi-interface'
+// import {
+// 	getLinkByRuntimeId,
+// 	uploadHexToLink
+// } from 'quirkbot-midi-interface'
 import QuirkbotChromeApp from 'quirkbot-chrome-app'
 import getConfig from 'next/config'
 import { generateMethod } from 'src/utils/chromeExtensionApi'
@@ -42,7 +42,7 @@ export const uploadHex = (runtimeId, hex) => async (dispatch, getState) => {
 	// figure out if this runtime id belongs to a midi or serial interface,
 	// as the upload process is quite different
 	if (testLink.hardwareInterface === 'midi') {
-		uploadFn = async () => uploadHexToLink(getLinkByRuntimeId(runtimeId), hex)
+		// uploadFn = async () => uploadHexToLink(getLinkByRuntimeId(runtimeId), hex)
 	} else {
 		let serialUpload
 		if (QuirkbotChromeApp.init) {
