@@ -1,4 +1,4 @@
-import nodeFecth from 'isomorphic-unfetch'
+import nodeFecth from 'node-fetch'
 
 const CACHE = {}
 export default async file => {
