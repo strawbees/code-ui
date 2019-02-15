@@ -7,7 +7,7 @@ const publicRuntimeConfig = {
 		COMPILER_URL                  : 'https://compiler.quirkbot.com',
 		STRAWBEES_CODE_API_URL        : 'https://api-stage.quirkbot.com',
 		URL_SCHEME                    : 'strawbeescode',
-		GAID                          : 'XXXXXXXXXXXX',
+		GAID                          : 'UA-NNNNNN-N',
 		CHROME_EXTENSION_ID           : 'ackaalhbfjagidmjlhlokoblhbnahegd',
 		WINDOWS_DRIVERS_INSTALLER_URL : 'https://github.com/Quirkbot/QuirkbotWindowsDriverInstaller/releases/download/2.0.0/quirkbot-windows-drivers-2.0.0.exe',
 		DOWNLOAD_DESKTOP_APP_URL      : 'https://s3.amazonaws.com/strawbees-downloads-stage/code-nwjs-build/versions',
@@ -47,7 +47,14 @@ const publicRuntimeConfig = {
 console.log('Using config -> ', configMode)
 
 module.exports = {
-	exportPathMap       : () => routes,
+	exportPathMap : () => routes,
+	webpack       : (config) => {
+		config.module.rules.push({
+			test : /\.svg$/,
+			use  : ['@svgr/webpack'],
+		})
+		return config
+	},
 	publicRuntimeConfig : {
 		...publicRuntimeConfig[configMode],
 		CONFIG_MODE : configMode
