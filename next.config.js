@@ -48,8 +48,13 @@ const publicRuntimeConfig = {
 console.log('Using config -> ', configMode)
 
 module.exports = {
-	exportPathMap : () => routes,
-	webpack       : (config) => {
+	useFileSystemPublicRoutes : false,
+	exportPathMap             : () => routes,
+	publicRuntimeConfig       : {
+		...publicRuntimeConfig[configMode],
+		CONFIG_MODE : configMode
+	},
+	webpack : (config) => {
 		// svg loader
 		config.module.rules.push({
 			test : /\.svg$/,
@@ -64,9 +69,6 @@ module.exports = {
 		}
 		return config
 	},
-	publicRuntimeConfig : {
-		...publicRuntimeConfig[configMode],
-		CONFIG_MODE : configMode
-	},
-	useFileSystemPublicRoutes : false,
+
+
 }
