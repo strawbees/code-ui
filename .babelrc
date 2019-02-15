@@ -1,20 +1,5 @@
 {
 	"presets": [
 		"next/babel"
-	],
-	"plugins": [
-		[
-			"module-resolver",
-			{
-				"root": [
-					"./"
-				],
-				"alias": {
-					"root": "./",
-					"static": "./static",
-					"src": "./src"
-				}
-			}
-		]
 	]
 }

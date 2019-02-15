@@ -1,3 +1,4 @@
+const path = require('path')
 const routes = require('./static/routes')
 
 const configMode = process.env.CONFIG || 'dev'
@@ -49,10 +50,18 @@ console.log('Using config -> ', configMode)
 module.exports = {
 	exportPathMap : () => routes,
 	webpack       : (config) => {
+		// svg loader
 		config.module.rules.push({
 			test : /\.svg$/,
 			use  : ['@svgr/webpack'],
 		})
+		// alias
+		config.resolve.alias = {
+			...config.resolve.alias,
+			root   : path.resolve(__dirname),
+			static : path.resolve(__dirname, 'static'),
+			src    : path.resolve(__dirname, 'src'),
+		}
 		return config
 	},
 	publicRuntimeConfig : {
