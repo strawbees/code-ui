@@ -4,19 +4,6 @@
 	],
 	"plugins": [
 		[
-			"inline-react-svg",
-			{
-				"svgo": {
-					"plugins": [
-						{
-							"cleanupIDs": false
-						}
-					]
-
-				}
-			}
-		],
-		[
 			"module-resolver",
 			{
 				"root": [

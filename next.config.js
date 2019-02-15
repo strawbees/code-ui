@@ -47,7 +47,14 @@ const publicRuntimeConfig = {
 console.log('Using config -> ', configMode)
 
 module.exports = {
-	exportPathMap       : () => routes,
+	exportPathMap : () => routes,
+	webpack       : (config) => {
+		config.module.rules.push({
+			test : /\.svg$/,
+			use  : ['@svgr/webpack'],
+		})
+		return config
+	},
 	publicRuntimeConfig : {
 		...publicRuntimeConfig[configMode],
 		CONFIG_MODE : configMode
