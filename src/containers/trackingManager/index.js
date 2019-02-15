@@ -22,10 +22,10 @@ const {
 class TrackingManager extends React.Component {
 	componentDidMount() {
 		ReactGA.initialize(GAID, {
-			debug     : true,
+			// debug     : true,
 			gaOptions : {
-				anonymise_ip   : true,
-				send_page_view : false
+				anonymiseIp  : true,
+				sendPageView : false
 			}
 		})
 		removeAllGlobalEventListeners('track-event') // removing all here just for HRM
