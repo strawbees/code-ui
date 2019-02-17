@@ -1,7 +1,7 @@
 {
     "name": "Strawbees CODE",
     "short_name": "StrawbeesCODE",
-    "start_url": "../",
+    "start_url": "../?utm_source=homescreen",
     "icons": [
         {
             "src": "favicon/android-chrome-192x192.png",
