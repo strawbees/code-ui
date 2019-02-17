@@ -11,7 +11,7 @@ const configMap = {
 		CANONICAL_URL                 : 'http://code-dev.strawbees.com:3000',
 		COMPILER_URL                  : 'https://compiler.quirkbot.com',
 		STRAWBEES_CODE_API_URL        : 'https://api-stage.quirkbot.com',
-		ROOT_PATH                     : '/test',
+		ROOT_PATH                     : '',
 		URL_SCHEME                    : 'strawbeescode',
 		GAID                          : 'UA-NNNNNN-N',
 		CHROME_EXTENSION_ID           : 'ackaalhbfjagidmjlhlokoblhbnahegd',
