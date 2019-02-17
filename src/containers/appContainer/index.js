@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import NProgress from 'nprogress'
 import Router from 'next/router'
 import getConfig from 'next/config'
 import { connect } from 'react-redux'
@@ -87,11 +86,6 @@ class AppContainer extends React.Component {
 			setOS,
 		} = this.props
 
-		// hookup nprogress
-		Router.router.events.on('routeChangeStart', NProgress.start)
-		Router.router.events.on('routeChangeComplete', NProgress.done)
-		Router.router.events.on('routeChangeError', NProgress.done)
-
 		// adjust as path on first render
 		setSetup({
 			asPath  : Router.router.asPath,
@@ -106,13 +100,6 @@ class AppContainer extends React.Component {
 
 		// hide the global banners
 		setHiddenGlobalBanners(browserStorage.getKeys('hiddenGlobalBanners'))
-	}
-
-	componentWillUnmount() {
-		// unhook nprogress
-		Router.router.events.off('routeChangeStart', NProgress.start)
-		Router.router.events.off('routeChangeComplete', NProgress.done)
-		Router.router.events.off('routeChangeError', NProgress.done)
 	}
 
 	render() {
