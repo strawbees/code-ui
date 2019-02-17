@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 import generateReducer from 'src/utils/generateReducer'
 import {
 	SETUP_SET,
+	SETUP_SET_ROOT_PATH,
 	SETUP_SET_QUERY,
 	SETUP_SET_AS_PATH,
 	SETUP_SET_URL_VARS,
@@ -13,6 +14,19 @@ import {
 	SETUP_SET_OS,
 } from 'src/constants/actionTypes'
 
+const rootPath = (state = '', { type, payload }) => {
+	switch (type) {
+		case SETUP_SET_ROOT_PATH:
+			return payload
+		case SETUP_SET:
+			if (typeof payload.rootPath !== 'undefined') {
+				return payload.rootPath
+			}
+			return state
+		default:
+			return state
+	}
+}
 const query = (state = null, { type, payload }) => {
 	switch (type) {
 		case SETUP_SET_QUERY:
@@ -142,6 +156,7 @@ const displayError = generateReducer(SETUP_SET_DISPLAY_ERROR, false)
 const os = generateReducer(SETUP_SET_OS)
 
 export default combineReducers({
+	rootPath,
 	query,
 	asPath,
 	urlVars,
