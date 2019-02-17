@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect'
 import stateSelector from 'src/selectors/stateSelector'
-import makeStringSelector from 'src/selectors/makeStringSelector'
+import makeInternalUrlStringSelector from 'src/selectors/makeInternalUrlStringSelector'
 import propsSelector from 'src/selectors/propsSelector'
 import { resolveBackendFromProgramId } from 'src/storage'
 import getConfig from 'next/config'
@@ -22,11 +22,11 @@ export default () => createSelector(
 		{
 			id,
 			type,
-		}
+		},
 	) => {
 		const storageBackend = resolveBackendFromProgramId(id)
 		if (storageBackend && storageBackend.name !== 'local') {
-			return `${baseUrl}${makeStringSelector(`${type}.url`)(state)}?p=${id}`
+			return `${baseUrl}${makeInternalUrlStringSelector(`${type}.url`)(state)}?p=${id}`
 		}
 		return ''
 	}

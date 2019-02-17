@@ -205,7 +205,6 @@ class StrawbeesCloudSignup extends React.Component {
 	render() {
 		const {
 			getFormApi,
-			onPreSubmit,
 			onSubmit,
 		} = this
 		const {
@@ -227,7 +226,6 @@ class StrawbeesCloudSignup extends React.Component {
 					fields={fields}
 					getApi={getFormApi}
 					onSubmit={onSubmit}
-					onPreSubmit={onPreSubmit}
 					disabled={disabled}
 				/>
 			</div>

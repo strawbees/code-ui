@@ -3,7 +3,7 @@ import LZString from 'lz-string'
 import stateSelector from 'src/selectors/stateSelector'
 import refEditorNameSelector from 'src/selectors/refEditorNameSelector'
 import refEditorGeneratedCodeSelector from 'src/selectors/refEditorGeneratedCodeSelector'
-import makeStringSelector from 'src/selectors/makeStringSelector'
+import makeInternalUrlStringSelector from 'src/selectors/makeInternalUrlStringSelector'
 
 export default () => createSelector(
 	[
@@ -14,14 +14,14 @@ export default () => createSelector(
 	(
 		state,
 		name,
-		generatedCode
+		generatedCode,
 	) => {
 		const program = {
 			name,
 			type   : 'text',
 			source : generatedCode,
 		}
-		let url = makeStringSelector('text.url')(state)
+		let url = makeInternalUrlStringSelector('text.url')(state)
 		url += '?data='
 		url += LZString.compressToEncodedURIComponent(JSON.stringify(program))
 		return {
