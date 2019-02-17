@@ -1,14 +1,14 @@
 import { connect } from 'react-redux'
-import Head from 'src/components/head'
+import GlobalStyles from 'src/components/globalStyles'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
-const HeadContainer = (props) =>
-	<Head {...props}/>
+const GlobalStylesContainer = (props) =>
+	<GlobalStyles {...props}/>
 
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
-)(HeadContainer)
+)(GlobalStylesContainer)

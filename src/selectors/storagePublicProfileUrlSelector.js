@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect'
-import makeStringSelector from 'src/selectors/makeStringSelector'
+import makeInternalUrlStringSelector from 'src/selectors/makeInternalUrlStringSelector'
+import rootPathSelector from 'src/selectors/rootPathSelector'
 import storageUserSelector from 'src/selectors/storageUserSelector'
 import storageCredentialsSelector from 'src/selectors/storageCredentialsSelector'
 import { resolveBackendFromCredentials } from 'src/storage'
@@ -13,12 +14,14 @@ const {
 
 export default () => createSelector(
 	[
-		makeStringSelector('user.url'),
+		makeInternalUrlStringSelector('user.url'),
+		rootPathSelector(),
 		storageUserSelector(),
 		storageCredentialsSelector()
 	],
 	(
 		userUrl,
+		rootPath,
 		user,
 		credentials,
 	) => {
@@ -31,7 +34,7 @@ export default () => createSelector(
 		}
 
 		if (backend.prefix === 'sb') {
-			return `${CANONICAL_URL}${userUrl}?u=${backend.prefix}/${user.username}`
+			return `${CANONICAL_URL}${rootPath}${userUrl}?u=${backend.prefix}/${user.username}`
 		}
 
 		return ''

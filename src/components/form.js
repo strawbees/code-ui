@@ -26,7 +26,6 @@ class Form extends React.Component {
 			fields,
 			errorKeys,
 			onSubmit,
-			onPreSubmit,
 			getApi,
 			disabled,
 		} = this.props
@@ -147,7 +146,6 @@ class Form extends React.Component {
 				<Informed.Form
 					id={formId}
 					onSubmit={onSubmit}
-					preSubmit={onPreSubmit}
 					getApi={getApi}>
 					{({ formState, formApi }) => (
 						<React.Fragment>
@@ -240,7 +238,7 @@ class Form extends React.Component {
 								<IconButton
 									className='submit'
 									labelKey={submitLabelKey}
-									onClick={() => formApi.submitForm()}
+									onClick={formApi.submitForm}
 									bgColor={GREEN}
 									bgHoverColor={GREEN}
 									textColor={WHITE}
@@ -273,7 +271,6 @@ Form.propTypes = {
 	submitLabelKey : PropTypes.string,
 	errorKeys      : PropTypes.object,
 	onSubmit       : PropTypes.func,
-	onPreSubmit    : PropTypes.func,
 	getApi         : PropTypes.func,
 	disabled       : PropTypes.bool,
 	fields         : PropTypes.arrayOf(PropTypes.shape({

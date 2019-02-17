@@ -1,4 +1,5 @@
 export const SETUP_SET = 'SETUP_SET'
+export const SETUP_SET_ROOT_PATH = 'SETUP_SET_ROOT_PATH'
 export const SETUP_SET_QUERY = 'SETUP_SET_QUERY'
 export const SETUP_SET_AS_PATH = 'SETUP_SET_AS_PATH'
 export const SETUP_SET_URL_VARS = 'SETUP_SET_URL_VARS'

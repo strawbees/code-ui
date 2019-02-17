@@ -1,12 +1,17 @@
 const path = require('path')
 const routes = require('./static/routes')
+const locales = require('./static/locales/index')
 
-const configMode = process.env.CONFIG || 'dev'
-const publicRuntimeConfig = {
+// load the correct publicRuntimeConfig, based on the COFING enviroment variable
+const configId = process.env.CONFIG || 'dev'
+// eslint-disable-next-line no-console
+console.log('Using config -> ', configId)
+const configMap = {
 	dev : {
 		CANONICAL_URL                 : 'http://code-dev.strawbees.com:3000',
 		COMPILER_URL                  : 'https://compiler.quirkbot.com',
 		STRAWBEES_CODE_API_URL        : 'https://api-stage.quirkbot.com',
+		ROOT_PATH                     : '',
 		URL_SCHEME                    : 'strawbeescode',
 		GAID                          : 'UA-NNNNNN-N',
 		CHROME_EXTENSION_ID           : 'ackaalhbfjagidmjlhlokoblhbnahegd',
@@ -17,6 +22,7 @@ const publicRuntimeConfig = {
 		CANONICAL_URL                 : 'https://code-stage.strawbees.com',
 		COMPILER_URL                  : 'https://compiler.quirkbot.com',
 		STRAWBEES_CODE_API_URL        : 'https://api.quirkbot.com',
+		ROOT_PATH                     : '',
 		URL_SCHEME                    : 'strawbeescode',
 		GAID                          : 'UA-69443341-7',
 		CHROME_EXTENSION_ID           : 'ackaalhbfjagidmjlhlokoblhbnahegd',
@@ -27,6 +33,7 @@ const publicRuntimeConfig = {
 		CANONICAL_URL                 : 'https://code.strawbees.com',
 		COMPILER_URL                  : 'https://compiler.quirkbot.com',
 		STRAWBEES_CODE_API_URL        : 'https://api.quirkbot.com',
+		ROOT_PATH                     : '',
 		URL_SCHEME                    : 'strawbeescode',
 		GAID                          : 'UA-69443341-8',
 		CHROME_EXTENSION_ID           : 'ackaalhbfjagidmjlhlokoblhbnahegd',
@@ -37,6 +44,7 @@ const publicRuntimeConfig = {
 		CANONICAL_URL                 : 'https://code.strawbees.com',
 		COMPILER_URL                  : 'http://localhost:9511',
 		STRAWBEES_CODE_API_URL        : 'https://api.quirkbot.com',
+		ROOT_PATH                     : '/node_modules/strawbees-code/out',
 		URL_SCHEME                    : 'strawbeescode',
 		GAID                          : 'UA-69443341-9',
 		CHROME_EXTENSION_ID           : 'jgbaejhmonchgianepimdbcpfgcbdmam',
@@ -44,17 +52,23 @@ const publicRuntimeConfig = {
 		DOWNLOAD_DESKTOP_APP_URL      : 'https://s3.amazonaws.com/strawbees-downloads-production/code-nwjs-build/versions',
 	}
 }
-// eslint-disable-next-line no-console
-console.log('Using config -> ', configMode)
+const publicRuntimeConfig = {
+	...configMap[configId],
+	// expose routes with the ROOT_PATH applied to them
+	routes : Object.keys(routes).reduce((acc, pathname) => {
+		acc[`${configMap[configId].ROOT_PATH}${pathname}`] = routes[pathname]
+		return acc
+	}, {}),
+	// expose the locales
+	locales,
+}
 
 module.exports = {
+	publicRuntimeConfig,
 	useFileSystemPublicRoutes : false,
-	exportPathMap             : () => routes,
-	publicRuntimeConfig       : {
-		...publicRuntimeConfig[configMode],
-		CONFIG_MODE : configMode
-	},
-	webpack : (config) => {
+	assetPrefix               : publicRuntimeConfig.ROOT_PATH,
+	exportPathMap             : () => publicRuntimeConfig.routes,
+	webpack                   : (config) => {
 		// svg loader
 		config.module.rules.push({
 			test : /\.svg$/,
@@ -69,6 +83,4 @@ module.exports = {
 		}
 		return config
 	},
-
-
 }

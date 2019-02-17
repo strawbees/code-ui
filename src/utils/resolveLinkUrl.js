@@ -1,11 +1,12 @@
-import routes from 'static/routes.json'
 import getConfig from 'next/config'
 
 const {
 	publicRuntimeConfig : {
-		CANONICAL_URL
+		CANONICAL_URL,
+		routes
 	}
 } = getConfig()
+
 const baseUrl = typeof CANONICAL_URL !== 'undefined' ? CANONICAL_URL : ''
 
 export default (to) => {

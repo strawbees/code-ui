@@ -1,6 +1,7 @@
 import generateAction from 'src/utils/generateAction'
 import {
 	SETUP_SET,
+	SETUP_SET_ROOT_PATH,
 	SETUP_SET_QUERY,
 	SETUP_SET_AS_PATH,
 	SETUP_SET_URL_VARS,
@@ -13,6 +14,7 @@ import {
 } from 'src/constants/actionTypes'
 
 export const setSetup = generateAction(SETUP_SET)
+export const setRootPath = generateAction(SETUP_SET_ROOT_PATH)
 export const setQuery = generateAction(SETUP_SET_QUERY)
 export const setAsPath = generateAction(SETUP_SET_AS_PATH)
 export const setUrlVars = generateAction(SETUP_SET_URL_VARS)

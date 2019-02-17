@@ -105,7 +105,8 @@ class BlockEditor extends React.Component {
 		} = window
 
 		const {
-			strings
+			strings,
+			mediaPath
 		} = this.props
 		// Load and register all blocks
 		Object.keys(blocks).forEach(id => {
@@ -134,7 +135,7 @@ class BlockEditor extends React.Component {
 		const { mainWorkspaceContainer } = this
 		this.mainWorkspace = Blockly.inject(mainWorkspaceContainer.current, {
 			toolbox : toolboxXml,
-			media   : '/static/lib/scratch-blocks/media/',
+			media   : mediaPath,
 			zoom    : {
 				controls   : true,
 				wheel      : true,
@@ -191,7 +192,7 @@ class BlockEditor extends React.Component {
 					this.proceduresWorkspace.dispose()
 				}
 				this.proceduresWorkspace = Blockly.inject(container, {
-					media : '/static/lib/scratch-blocks/media/',
+					media : mediaPath,
 					zoom  : {
 						startScale : 0.66
 					},
@@ -309,6 +310,7 @@ class BlockEditor extends React.Component {
 }
 
 BlockEditor.propTypes = {
+	mediaPath       : PropTypes.string,
 	strings         : PropTypes.object,
 	refEditorSource : PropTypes.string,
 	onSourceChange  : PropTypes.func,
@@ -327,9 +329,15 @@ const BlockEditorWithStrings = (props) => {
 	)
 }
 
-const BlockEditorWithScript = withScript(
-	['/static/lib/scratch-blocks/vertical.js'],
-	BlockEditorWithStrings,
-	Spinner
-)
+const BlockEditorWithScript = ({
+	scriptPath,
+	...props
+}) => {
+	const Editor = withScript(
+		[scriptPath],
+		BlockEditorWithStrings,
+		Spinner
+	)
+	return <Editor {...props}/>
+}
 export default BlockEditorWithScript

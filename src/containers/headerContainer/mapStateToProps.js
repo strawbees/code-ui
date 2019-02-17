@@ -1,17 +1,17 @@
 import { createSelector } from 'reselect'
 import queryRefSelector from 'src/selectors/queryRefSelector'
-import makeStringSelector from 'src/selectors/makeStringSelector'
+import makeInternalUrlStringSelector from 'src/selectors/makeInternalUrlStringSelector'
 
 export default () => createSelector(
 	[
 		queryRefSelector(),
-		makeStringSelector('home.url'),
+		makeInternalUrlStringSelector('home.url'),
 	],
 	(
 		queryRef,
 		homeUrl,
 	) => ({
 		editorMenu : queryRef === 'flow' || queryRef === 'block' || queryRef === 'text',
-		homeUrl,
+		homeUrl
 	})
 )
