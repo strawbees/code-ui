@@ -11,6 +11,20 @@ install:
   - SET PATH=C:\Program Files\NSIS\;C:\Program Files (x86)\NSIS\;%PATH%
   - npm ci --only=production
 
+# defined specific build configs for different branches
+-
+  branches:
+    only:
+      - master
+  environment:
+    CONFIG: desktop_production
+-
+  branches:
+    only:
+      - develop
+  environment:
+    CONFIG: desktop_stage
+
 build_script:
   - cmd: node lib\scripts\packageDesktopApp.js
 
