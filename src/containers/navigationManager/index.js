@@ -40,6 +40,11 @@ class NavigationManager extends React.PureComponent {
 		Router.onBeforePopState(() => true)
 	}
 
+	// process the naviation on prop changes
+	componentDidUpdate(prevProps) {
+		this.processNavigation(prevProps)
+	}
+
 	// Forward the beforePopState, with a custom cancel handle
 	onBeforePopState = ({ url, as, options }) => {
 		// create an async handle, to control the pop state flow
@@ -128,11 +133,6 @@ class NavigationManager extends React.PureComponent {
 		)
 	}
 
-	// process the naviation on prop changes
-	componentDidUpdate(prevProps) {
-		this.processNavigation(prevProps)
-	}
-
 	// Monitor the page and url var changes to load programs, users, etc
 	processNavigation = async (prevProps) => {
 		// Only proceef if there are changes to the props that we care about
@@ -155,7 +155,7 @@ class NavigationManager extends React.PureComponent {
 		const { queryRef } = this.props
 
 		// Start by always cleaning the error
-		setDisplayError(null)
+		setDisplayError(false)
 
 		// Check if this is a user page
 		if (queryRef === 'user') {
@@ -173,7 +173,7 @@ class NavigationManager extends React.PureComponent {
 				return
 			}
 
-			// If theres a program id...
+			// If theres a user id...
 			// Check if it is valid...
 			if (!isUserIdValid(urlVarU)) {
 				setDisplayError(404)
