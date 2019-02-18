@@ -10,7 +10,6 @@ yarn-error.log
 /code-nwjs-build
 /nwjs-out
 /nwjs-temp
-/static/lib/nprogress.css
 /static/lib/scratch-blocks
 /static/locales/
 .elasticbeanstalk/*
