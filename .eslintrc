@@ -79,6 +79,7 @@
     "import/resolver": {
       "alias" : [
         [ "root", "./" ],
+        [ "data", "./data" ],
         [ "static", "./static" ],
         [ "src", "./src" ]
       ]

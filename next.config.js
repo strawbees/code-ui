@@ -1,6 +1,6 @@
 const path = require('path')
-const routes = require('./static/routes.json')
-const locales = require('./static/locales/index.json')
+const routes = require('./data/routes.json')
+const locales = require('./data/locales.json')
 
 // load the correct publicRuntimeConfig, based on the COFING enviroment variable
 const configId = process.env.CONFIG || 'dev'
@@ -89,6 +89,7 @@ module.exports = {
 		config.resolve.alias = {
 			...config.resolve.alias,
 			root   : path.resolve(__dirname),
+			data   : path.resolve(__dirname, 'data'),
 			static : path.resolve(__dirname, 'static'),
 			src    : path.resolve(__dirname, 'src'),
 		}
