@@ -91,14 +91,6 @@ const locales = (state = null, { type, payload }) => {
 			return state
 	}
 }
-const localesLoaded = (state = false, { type }) => {
-	switch (type) {
-		case SETUP_SET_LOCALES:
-			return true
-		default:
-			return state
-	}
-}
 const routes = (state = null, { type, payload }) => {
 	switch (type) {
 		case SETUP_SET_ROUTES:
@@ -112,14 +104,6 @@ const routes = (state = null, { type, payload }) => {
 				}
 			}
 			return state
-		default:
-			return state
-	}
-}
-const routesLoaded = (state = false, { type }) => {
-	switch (type) {
-		case SETUP_SET_ROUTES:
-			return true
 		default:
 			return state
 	}
@@ -161,9 +145,7 @@ export default combineReducers({
 	asPath,
 	urlVars,
 	locales,
-	localesLoaded,
 	routes,
-	routesLoaded,
 	strings,
 	stringsLoaded,
 	displayPageLoader,
