@@ -6,6 +6,7 @@ yarn-error.log
 /.env
 /.next
 /out
+/dist
 /nwjs-build
 /code-nwjs-build
 /nwjs-out
