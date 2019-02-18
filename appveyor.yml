@@ -12,6 +12,7 @@ install:
   - npm ci --only=production
 
 # defined specific build configs for different branches
+for:
 -
   branches:
     only:
