@@ -9,7 +9,8 @@ cache:
   directories:
   - "$HOME/.npm"
 script:
-- node lib/scripts/packageDesktopApp.js
+- $TRAVIS_BRANCH == "develop" && CONFIG=desktop_stage node lib/scripts/packageDesktopApp.js
+- $TRAVIS_BRANCH == "master" && CONFIG=desktop_production node lib/scripts/packageDesktopApp.js
 branches:
   only:
     - master
