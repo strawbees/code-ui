@@ -1,0 +1,21 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgctxt "email-confirmation.url"
+msgid "/confirm-email/"
+msgstr ""
+
+msgctxt "email-confirmation.og.title"
+msgid "Confirm Email"
+msgstr ""
+
+msgctxt "email-confirmation.base.title"
+msgid "Confirm Email"
+msgstr ""
+

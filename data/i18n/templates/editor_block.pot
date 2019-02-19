@@ -1,0 +1,137 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgctxt "block.url"
+msgid "/block/"
+msgstr ""
+
+msgctxt "block.og.title"
+msgid "Block Programming"
+msgstr ""
+
+msgctxt "block.og.image"
+msgid "/static/og/block.png"
+msgstr ""
+
+msgctxt "block.base.title"
+msgid "Block"
+msgstr ""
+
+msgctxt "block.toolbox.category.input"
+msgid "Input"
+msgstr ""
+
+msgctxt "block.toolbox.category.output"
+msgid "Output"
+msgstr ""
+
+msgctxt "block.toolbox.category.control"
+msgid "Control"
+msgstr ""
+
+msgctxt "block.toolbox.category.operators"
+msgid "Operators"
+msgstr ""
+
+msgctxt "block.toolbox.category.variables"
+msgid "My Variables"
+msgstr ""
+
+msgctxt "block.toolbox.category.procedures"
+msgid "My Blocks"
+msgstr ""
+
+msgctxt "block.blocks.input_circuit_touch.message0"
+msgid "value of circuit touch %1"
+msgstr ""
+
+msgctxt "block.blocks.input_circuit_touch_touched.message0"
+msgid "%1 is touched"
+msgstr ""
+
+msgctxt "block.blocks.input_light_sensor.message0"
+msgid "value of light sensor %1"
+msgstr ""
+
+msgctxt "block.blocks.data_addtolist.message0"
+msgid "add %1 to %2"
+msgstr ""
+
+msgctxt "block.blocks.data_deleteoflist.message0"
+msgid "delete %1 of %2"
+msgstr ""
+
+msgctxt "block.blocks.data_deletealloflist.message0"
+msgid "delete all of %1"
+msgstr ""
+
+msgctxt "block.blocks.data_insertatlist.message0"
+msgid "insert %1 at %2 of %3"
+msgstr ""
+
+msgctxt "block.blocks.data_replaceitemoflist.message0"
+msgid "replace item %1 of %2 with %3"
+msgstr ""
+
+msgctxt "block.blocks.data_itemoflist.message0"
+msgid "item %1 of %2"
+msgstr ""
+
+msgctxt "block.blocks.data_itemnumoflist.message0"
+msgid "item # of %1 in %2"
+msgstr ""
+
+msgctxt "block.blocks.data_lengthoflist.message0"
+msgid "length of %1"
+msgstr ""
+
+msgctxt "block.blocks.data_listcontainsitem.message0"
+msgid "%1 contains %2?"
+msgstr ""
+
+msgctxt "block.blocks.places.left_arm"
+msgid "left arm"
+msgstr ""
+
+msgctxt "block.blocks.places.left_leg"
+msgid "left leg"
+msgstr ""
+
+msgctxt "block.blocks.places.right_arm"
+msgid "right arm"
+msgstr ""
+
+msgctxt "block.blocks.places.right_leg"
+msgid "right leg"
+msgstr ""
+
+msgctxt "block.blocks.places.horn"
+msgid "horn"
+msgstr ""
+
+msgctxt "block.procedures.title"
+msgid "Make a block"
+msgstr ""
+
+msgctxt "block.procedures.add_number"
+msgid "Number"
+msgstr ""
+
+msgctxt "block.procedures.add_boolean"
+msgid "Boolean"
+msgstr ""
+
+msgctxt "block.procedures.add_label"
+msgid "Label"
+msgstr ""
+
+msgctxt "block.procedures.confirm"
+msgid "Create block"
+msgstr ""
+

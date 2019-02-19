@@ -5,6 +5,7 @@ yarn-error.log
 !/aws-config-template.json
 /.env
 /.next
+/.zanata-cache
 /out
 /dist
 /nwjs-build

@@ -9,6 +9,7 @@ const handle = app.getRequestHandler()
 
 const {
 	publicRuntimeConfig : {
+		NEXT_SERVER_PORT,
 		ROOT_PATH,
 		routes,
 	}
@@ -61,10 +62,10 @@ const init = async () => {
 		)
 		// then just handle the request as usual
 		handle(req, res, parse(req.url, true))
-	}).listen(3000, (err) => {
+	}).listen(NEXT_SERVER_PORT, (err) => {
 		if (err) throw err
 		// eslint-disable-next-line no-console
-		console.log('> Ready on http://localhost:3000')
+		console.log(`> Ready on http://127.0.0.1:${NEXT_SERVER_PORT}`)
 	})
 }
 init()

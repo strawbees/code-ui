@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<config xmlns="http://zanata.org/namespace/config/">
+  <url>https://translate.zanata.org/</url>
+  <project>strawbees-code</project>
+  <project-version>master</project-version>
+  <project-type>gettext</project-type>
+  <src-dir>data/i18n/templates</src-dir>
+  <trans-dir>data/i18n/translations</trans-dir>
+  <rules>
+      <rule pattern="**/*.pot">{filename}/{locale}.po</rule>
+  </rules>
+</config>
