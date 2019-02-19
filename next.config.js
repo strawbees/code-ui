@@ -1,6 +1,6 @@
 const path = require('path')
 const routes = require('./data/routes.json')
-const locales = require('./data/locales.json')
+const locales = require('./data/i18n/build/index.json')
 
 // load the correct publicRuntimeConfig, based on the COFING enviroment variable
 const configId = process.env.CONFIG || 'dev'
@@ -72,6 +72,8 @@ const publicRuntimeConfig = {
 	}, {}),
 	// expose the locales
 	locales,
+	// expose next server port
+	NEXT_SERVER_PORT : 3000
 }
 
 module.exports = {

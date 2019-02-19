@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import nodeFecth from 'node-fetch'
 import Router from 'next/router'
 import getConfig from 'next/config'
 import { connect } from 'react-redux'
 import parseUrlVars from 'src/utils/parseUrlVars'
-import loadStaticData from 'src/utils/loadStaticData'
 import * as browserStorage from 'src/utils/browserStorage'
 import Spinner from 'src/components/spinner'
 import GlobalStylesContainer from 'src/containers/globalStylesContainer'
@@ -26,6 +26,7 @@ import mergeProps from './mergeProps'
 
 const {
 	publicRuntimeConfig : {
+		NEXT_SERVER_PORT,
 		ROOT_PATH,
 		routes,
 		locales,
@@ -67,7 +68,10 @@ class AppContainer extends React.Component {
 		if (!stringsLoaded[query.locale]) {
 			setStrings({
 				locale : query.locale,
-				data   : await loadStaticData(`locales/${query.locale}.json`)
+				data   : isServer ?
+					(await (await nodeFecth(`http://127.0.0.1:${NEXT_SERVER_PORT}${ROOT_PATH}/static/locales/${query.locale}.json`)).json())
+					:
+					(await (await fetch(`${ROOT_PATH}/static/locales/${query.locale}.json`)).json())
 			})
 		}
 		if (isServer) {
