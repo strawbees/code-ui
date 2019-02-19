@@ -1,8 +1,8 @@
 import { createStructuredSelector } from 'reselect'
-import makeInternalUrlStringSelector from 'src/selectors/makeInternalUrlStringSelector'
+import makeStringSelector from 'src/selectors/makeStringSelector'
 
 export default () => createStructuredSelector({
-	flowUrl  : makeInternalUrlStringSelector('flow.url'),
-	blockUrl : makeInternalUrlStringSelector('block.url'),
-	textUrl  : makeInternalUrlStringSelector('text.url'),
+	flowUrl  : makeStringSelector('routes.flow'),
+	blockUrl : makeStringSelector('routes.block'),
+	textUrl  : makeStringSelector('routes.text'),
 })

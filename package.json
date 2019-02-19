@@ -12,6 +12,9 @@
     "prepublishOnly": "npm run prebuild-all",
     "lint": "eslint --fix ./*.js src/**/*.js pages/**/*.js lib/**/*.js"
   },
+  "bin": {
+    "strawbees-code-ui-build": "./lib/scripts/build.js"
+  },
   "dependencies": {
     "@babel/core": "^7.3.3",
     "@svgr/webpack": "^4.1.0",

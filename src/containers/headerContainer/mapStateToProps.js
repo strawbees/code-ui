@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect'
 import queryRefSelector from 'src/selectors/queryRefSelector'
-import makeInternalUrlStringSelector from 'src/selectors/makeInternalUrlStringSelector'
+import makeStringSelector from 'src/selectors/makeStringSelector'
 
 export default () => createSelector(
 	[
 		queryRefSelector(),
-		makeInternalUrlStringSelector('home.url'),
+		makeStringSelector('routes.home'),
 	],
 	(
 		queryRef,

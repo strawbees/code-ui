@@ -1,87 +1,75 @@
 {
-	"/error/": {
+	"routes.home": {
 		"page": "/",
 		"query": {
-			"locale" : "en",
-			"ref" : "error"
-		}
-	},
-	"/": {
-		"page": "/",
-		"query": {
-			"locale" : "en",
 			"ref" : "home"
 		}
 	},
-	"/user/": {
+	"routes.error": {
 		"page": "/",
 		"query": {
-			"locale" : "en",
+			"ref" : "error"
+		}
+	},
+	"routes.user": {
+		"page": "/",
+		"query": {
 			"ref" : "user"
 		}
 	},
-	"/flow/": {
+	"routes.flow": {
 		"page": "/",
 		"query": {
-			"locale" : "en",
 			"ref" : "flow"
 		}
 	},
-	"/block/": {
+	"routes.block": {
 		"page": "/",
 		"query": {
-			"locale" : "en",
 			"ref" : "block"
 		}
 	},
-	"/text/": {
+	"routes.text": {
 		"page": "/",
 		"query": {
-			"locale" : "en",
 			"ref" : "text"
 		}
 	},
-	"/reset-password/": {
+	"routes.reset-password": {
 		"page": "/",
 		"query": {
-			"locale" : "en",
 			"ref" : "password-reset"
 		}
 	},
-	"/confirm-email/": {
+	"routes.confirm-email": {
 		"page": "/",
 		"query": {
-			"locale" : "en",
 			"ref" : "email-confirmation"
 		}
 	},
-	"/download/": {
+	"routes.download": {
 		"page": "/",
 		"query": {
-			"locale" : "en",
 			"ref" : "download"
 		}
 	},
-	"/cookie-policy/": {
+	"routes.md.cookie-policy": {
 		"page": "/",
 		"query": {
-			"locale" : "en",
 			"ref" : "md",
 			"id" : "cookie-policy"
 		}
 	},
-	"/privacy-policy/": {
+	"routes.md.privacy-policy": {
 		"page": "/",
 		"query": {
-			"locale" : "en",
 			"ref" : "md",
 			"id" : "privacy-policy"
 		}
 	},
-	"/terms/": {
+	"routes.md.terms": {
 		"page": "/",
 		"query": {
-			"locale" : "en",
 			"ref" : "md",
 			"id" : "terms-of-use"
 		}

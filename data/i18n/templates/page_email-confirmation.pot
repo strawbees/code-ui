@@ -7,10 +7,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgctxt "email-confirmation.url"
-msgid "/confirm-email/"
-msgstr ""
-
 msgctxt "email-confirmation.og.title"
 msgid "Confirm Email"
 msgstr ""
@@ -18,4 +14,3 @@ msgstr ""
 msgctxt "email-confirmation.base.title"
 msgid "Confirm Email"
 msgstr ""
-

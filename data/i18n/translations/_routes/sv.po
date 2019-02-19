@@ -1,0 +1,62 @@
+# Paulo Barcelos <paulo@strawbees.com>, 2019. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2019-02-19 05:31+0000\n"
+"Last-Translator: Paulo Barcelos <paulo@strawbees.com>\n"
+"Language-Team: Swedish\n"
+"Language: sv\n"
+"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+msgctxt "routes.home"
+msgid "/"
+msgstr "/sv/"
+
+msgctxt "routes.error"
+msgid "/error/"
+msgstr "/sv/error/"
+
+msgctxt "routes.user"
+msgid "/user/"
+msgstr "/sv/user/"
+
+msgctxt "routes.flow"
+msgid "/flow/"
+msgstr "/sv/flow/"
+
+msgctxt "routes.block"
+msgid "/block/"
+msgstr "/sv/block/"
+
+msgctxt "routes.text"
+msgid "/text/"
+msgstr "/sv/text/"
+
+msgctxt "routes.reset-password"
+msgid "/reset-password/"
+msgstr "/sv/reset-password/"
+
+msgctxt "routes.confirm-email"
+msgid "/confirm-email/"
+msgstr "/sv/confirm-email/"
+
+msgctxt "routes.download"
+msgid "/download/"
+msgstr "/sv/download/"
+
+msgctxt "routes.md.cookie-policy"
+msgid "/cookie-policy/"
+msgstr "/sv/cookie-policy/"
+
+msgctxt "routes.md.privacy-policy"
+msgid "/privacy-policy/"
+msgstr "/sv/privacy-policy/"
+
+msgctxt "routes.md.terms"
+msgid "/terms/"
+msgstr "/sv/terms/"

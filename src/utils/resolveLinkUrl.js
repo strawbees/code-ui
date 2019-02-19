@@ -1,9 +1,9 @@
 import getConfig from 'next/config'
+import routes from 'static/routes.json'
 
 const {
 	publicRuntimeConfig : {
 		CANONICAL_URL,
-		routes
 	}
 } = getConfig()
 

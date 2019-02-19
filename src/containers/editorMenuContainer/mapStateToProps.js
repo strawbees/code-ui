@@ -7,7 +7,6 @@ import refEditorSavedSelector from 'src/selectors/refEditorSavedSelector'
 import refEditorGeneratedCodeSelector from 'src/selectors/refEditorGeneratedCodeSelector'
 import storageStatusSelector from 'src/selectors/storageStatusSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
-import makeInternalUrlStringSelector from 'src/selectors/makeInternalUrlStringSelector'
 
 export default () => createStructuredSelector({
 	type               : refEditorTypeSelector(),
@@ -19,7 +18,7 @@ export default () => createStructuredSelector({
 	generatedCode      : refEditorGeneratedCodeSelector(),
 	storageStatus      : storageStatusSelector(),
 	placeholderName    : makeStringSelector('ui.editor.program_placeholder_name'),
-	newFlowProgramUrl  : makeInternalUrlStringSelector('flow.url'),
-	newBlockProgramUrl : makeInternalUrlStringSelector('block.url'),
-	newTextProgramUrl  : makeInternalUrlStringSelector('text.url'),
+	newFlowProgramUrl  : makeStringSelector('routes.flow'),
+	newBlockProgramUrl : makeStringSelector('routes.block'),
+	newTextProgramUrl  : makeStringSelector('routes.text'),
 })

@@ -7,10 +7,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgctxt "md.privacy-policy.url"
-msgid "/privacy-policy/"
-msgstr ""
-
 msgctxt "md.privacy-policy.og.title"
 msgid "Privacy Policy"
 msgstr ""
@@ -392,4 +388,3 @@ msgid ""
 "This privacy policy relates solely to this Application, if not stated "
 "otherwise within this document.\n"
 msgstr ""
-

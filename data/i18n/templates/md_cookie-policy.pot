@@ -7,10 +7,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgctxt "md.cookie-policy.url"
-msgid "/cookie-policy/"
-msgstr ""
-
 msgctxt "md.cookie-policy.og.title"
 msgid "Cookie Policy"
 msgstr ""
@@ -111,4 +107,3 @@ msgid ""
 "| _gat_gtag_UA_50042401_3 | Contains campaign related information for the "
 "user. | 90 days                 |\n"
 msgstr ""
-

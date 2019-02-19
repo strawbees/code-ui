@@ -1,4 +1,4 @@
-import makeInternalUrlStringSelector from 'src/selectors/makeInternalUrlStringSelector'
+import makeStringSelector from 'src/selectors/makeStringSelector'
 
 const formatDate = (ts) => {
 	const d = new Date(ts)
@@ -28,7 +28,7 @@ export default (
 	placeholderName,
 ) => ({
 	name      : name || placeholderName,
-	url       : `${makeInternalUrlStringSelector(`${type}.url`)(state)}?p=${id}`,
+	url       : `${makeStringSelector(`routes.${type}`)(state)}?p=${id}`,
 	updatedAt : formatDate(updatedAt),
 	type,
 	source,

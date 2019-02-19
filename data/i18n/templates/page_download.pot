@@ -7,10 +7,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgctxt "download.url"
-msgid "/download/"
-msgstr ""
-
 msgctxt "download.og.title"
 msgid "Download"
 msgstr ""
@@ -36,4 +32,3 @@ msgstr ""
 msgctxt "download.download-cta"
 msgid "Download"
 msgstr ""
-

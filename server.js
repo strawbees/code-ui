@@ -1,26 +1,29 @@
-const { createServer } = require('http')
-const { parse } = require('url')
+const http = require('http')
+const url = require('url')
+const fs = require('fs').promises
+const path = require('path')
 const next = require('next')
-const getConfig = require('next/config').default
-
-const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dev })
-const handle = app.getRequestHandler()
-
-const {
-	publicRuntimeConfig : {
-		NEXT_SERVER_PORT,
-		ROOT_PATH,
-		routes,
-	}
-} = getConfig()
+const getNextConfig = require('next/config').default
 
 const init = async () => {
+	const dev = process.env.NODE_ENV !== 'production'
+	const app = next({ dev })
+	const handle = app.getRequestHandler()
+	const routes = JSON.parse(await fs.readFile(path.join('static', 'routes.json')))
+	const {
+		publicRuntimeConfig
+	} = getNextConfig()
+	// eslint-disable-next-line no-console
+	console.log('CONFIG:', publicRuntimeConfig)
+	const {
+		NEXT_SERVER_PORT,
+		ROOT_PATH,
+	} = publicRuntimeConfig
 	await app.prepare()
 
-	createServer((req, res) => {
+	http.createServer((req, res) => {
 		// parse pathname
-		const parsedUrl = parse(req.url, true)
+		const parsedUrl = url.parse(req.url, true)
 		const { pathname } = parsedUrl
 		// does it match a route without a trailing slash?
 		if (routes[`${pathname}/`]) {
@@ -61,7 +64,7 @@ const init = async () => {
 			pathname.replace(new RegExp(`^${ROOT_PATH}`), '')
 		)
 		// then just handle the request as usual
-		handle(req, res, parse(req.url, true))
+		handle(req, res, url.parse(req.url, true))
 	}).listen(NEXT_SERVER_PORT, (err) => {
 		if (err) throw err
 		// eslint-disable-next-line no-console

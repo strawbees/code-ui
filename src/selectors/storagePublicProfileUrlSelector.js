@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect'
-import makeInternalUrlStringSelector from 'src/selectors/makeInternalUrlStringSelector'
+import makeStringSelector from 'src/selectors/makeStringSelector'
 import rootPathSelector from 'src/selectors/rootPathSelector'
 import storageUserSelector from 'src/selectors/storageUserSelector'
 import storageCredentialsSelector from 'src/selectors/storageCredentialsSelector'
@@ -14,7 +14,7 @@ const {
 
 export default () => createSelector(
 	[
-		makeInternalUrlStringSelector('user.url'),
+		makeStringSelector('routes.user'),
 		rootPathSelector(),
 		storageUserSelector(),
 		storageCredentialsSelector()

@@ -13,10 +13,6 @@ msgstr ""
 "X-Generator: Zanata 4.6.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-msgctxt "md.privacy-policy.url"
-msgid "/privacy-policy/"
-msgstr ""
-
 msgctxt "md.privacy-policy.og.title"
 msgid "Privacy Policy"
 msgstr ""

@@ -7,10 +7,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgctxt "text.url"
-msgid "/text/"
-msgstr ""
-
 msgctxt "text.og.title"
 msgid "Text Programming"
 msgstr ""
@@ -22,4 +18,3 @@ msgstr ""
 msgctxt "text.base.title"
 msgid "Text"
 msgstr ""
-

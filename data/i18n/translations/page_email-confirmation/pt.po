@@ -13,10 +13,6 @@ msgstr ""
 "X-Generator: Zanata 4.6.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-msgctxt "email-confirmation.url"
-msgid "/confirm-email/"
-msgstr ""
-
 msgctxt "email-confirmation.og.title"
 msgid "Confirm Email"
 msgstr ""
