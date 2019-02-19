@@ -29,7 +29,6 @@ const {
 		NEXT_SERVER_PORT,
 		ROOT_PATH,
 		routes,
-		locales,
 	}
 } = getConfig()
 
@@ -43,65 +42,62 @@ class AppContainer extends React.Component {
 		const {
 			stringsLoaded,
 			setSetup,
-			setStrings,
-			setDisplayPageLoader,
 			setupEditor,
 		} = mergeProps(
 			mapStateToProps()(store.getState(), {}),
 			mapDispatchToProps(store.dispatch)
 		)
 
-		if (!isServer) {
-			setSetup({
-				query,
-				asPath,
-				urlVars : parseUrlVars(asPath)
-			})
-		} else {
+		// if re we running from the server...
+		if (isServer) {
+			const serverStatic = `http://127.0.0.1:${NEXT_SERVER_PORT}${ROOT_PATH}/static`
 			setSetup({
 				query,
 				routes,
-				locales,
 				rootPath : ROOT_PATH,
+				locales  : (await (await nodeFecth(`${serverStatic}/i18n/index.json`)).json()),
+				strings  : {
+					locale : query.locale,
+					data   : await (await nodeFecth(`${serverStatic}/i18n/${query.locale}.json`)).json(),
+				},
+				// show the initial page loader
+				displayPageLoader : true
 			})
-		}
-		if (!stringsLoaded[query.locale]) {
-			setStrings({
-				locale : query.locale,
-				data   : isServer ?
-					(await (await nodeFecth(`http://127.0.0.1:${NEXT_SERVER_PORT}${ROOT_PATH}/static/locales/${query.locale}.json`)).json())
-					:
-					(await (await fetch(`${ROOT_PATH}/static/locales/${query.locale}.json`)).json())
-			})
-		}
-		if (isServer) {
-			// show the initial page loader
-			setDisplayPageLoader(true)
 			// Editor setup only needs to happen once, in server
 			setupEditor()
+			return
 		}
+		// if re we running from the client...
+		const clientStatic = `${ROOT_PATH}/static`
+		setSetup({
+			query,
+			asPath,
+			urlVars : parseUrlVars(asPath),
+			// load the strings if needed
+			...(!stringsLoaded[query.locale] ? {
+				strings : {
+					locale : query.locale,
+					data   : await (await fetch(`${clientStatic}/i18n/${query.locale}.json`)).json()
+				}
+			} : {})
+		})
 	}
 
 	async componentDidMount() {
 		const {
 			setSetup,
-			setDisplayPageLoader,
 			setHiddenGlobalBanners,
-			setOS,
 		} = this.props
 
-		// adjust as path on first render
 		setSetup({
-			asPath  : Router.router.asPath,
-			urlVars : parseUrlVars(Router.router.asPath),
+			// adjust as path and url on first render
+			asPath            : Router.router.asPath,
+			urlVars           : parseUrlVars(Router.router.asPath),
+			// set the sniffed os
+			os                : getOS(),
+			// hide the initial page loader
+			displayPageLoader : false
 		})
-
-		// set the sniffed os
-		setOS(getOS())
-
-		// hide the initial page loader
-		setDisplayPageLoader(false)
-
 		// hide the global banners
 		setHiddenGlobalBanners(browserStorage.getKeys('hiddenGlobalBanners'))
 	}
