@@ -6,7 +6,6 @@
     "build": "node lib/scripts/build.js",
     "build-serve": "node lib/scripts/buildServe.js",
     "prebuild-all": "node lib/scripts/prebuild.js",
-    "i18n:build": "node lib/scripts/i18nBuild.js",
     "i18n:pull": "zanata-cli pull --username $ZANATA_USER --key $ZANATA_KEY --create-skeletons",
     "deploy:stage": "CONFIG=web_stage node lib/scripts/deploy.js",
     "deploy:production": "CONFIG=web_production node lib/scripts/deploy.js",
