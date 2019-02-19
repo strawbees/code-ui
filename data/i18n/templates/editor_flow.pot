@@ -7,10 +7,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgctxt "flow.url"
-msgid "/flow/"
-msgstr ""
-
 msgctxt "flow.og.title"
 msgid "Flow Programming"
 msgstr ""
@@ -1254,4 +1250,3 @@ msgstr ""
 msgctxt "flow.constant.channel-4"
 msgid "Channel 4"
 msgstr ""
-

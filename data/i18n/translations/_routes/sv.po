@@ -1,0 +1,62 @@
+# Paulo Barcelos <paulo@strawbees.com>, 2019. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2019-02-19 05:54+0000\n"
+"Last-Translator: Paulo Barcelos <paulo@strawbees.com>\n"
+"Language-Team: Swedish\n"
+"Language: sv\n"
+"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+msgctxt "routes.home"
+msgid "/"
+msgstr ""
+
+msgctxt "routes.error"
+msgid "/error/"
+msgstr ""
+
+msgctxt "routes.user"
+msgid "/user/"
+msgstr ""
+
+msgctxt "routes.flow"
+msgid "/flow/"
+msgstr ""
+
+msgctxt "routes.block"
+msgid "/block/"
+msgstr ""
+
+msgctxt "routes.text"
+msgid "/text/"
+msgstr ""
+
+msgctxt "routes.reset-password"
+msgid "/reset-password/"
+msgstr ""
+
+msgctxt "routes.confirm-email"
+msgid "/confirm-email/"
+msgstr ""
+
+msgctxt "routes.download"
+msgid "/download/"
+msgstr ""
+
+msgctxt "routes.md.cookie-policy"
+msgid "/cookie-policy/"
+msgstr ""
+
+msgctxt "routes.md.privacy-policy"
+msgid "/privacy-policy/"
+msgstr ""
+
+msgctxt "routes.md.terms"
+msgid "/terms/"
+msgstr ""

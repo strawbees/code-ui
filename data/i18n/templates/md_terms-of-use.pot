@@ -7,10 +7,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgctxt "md.terms-of-use.url"
-msgid "/terms/"
-msgstr ""
-
 msgctxt "md.terms-of-use.og.title"
 msgid "Terms of Use"
 msgstr ""
@@ -307,4 +303,3 @@ msgid ""
 "Use and supersedes all previous agreements with us relating to the use of "
 "the platform.\n"
 msgstr ""
-

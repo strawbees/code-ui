@@ -28,7 +28,6 @@ const {
 	publicRuntimeConfig : {
 		NEXT_SERVER_PORT,
 		ROOT_PATH,
-		routes,
 	}
 } = getConfig()
 
@@ -53,8 +52,8 @@ class AppContainer extends React.Component {
 			const serverStatic = `http://127.0.0.1:${NEXT_SERVER_PORT}${ROOT_PATH}/static`
 			setSetup({
 				query,
-				routes,
 				rootPath : ROOT_PATH,
+				routes   : (await (await nodeFecth(`${serverStatic}/routes.json`)).json()),
 				locales  : (await (await nodeFecth(`${serverStatic}/i18n/index.json`)).json()),
 				strings  : {
 					locale : query.locale,

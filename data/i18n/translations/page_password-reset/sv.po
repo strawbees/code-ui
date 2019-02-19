@@ -13,10 +13,6 @@ msgstr ""
 "X-Generator: Zanata 4.6.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-msgctxt "password-reset.url"
-msgid "/reset-password/"
-msgstr ""
-
 msgctxt "password-reset.og.title"
 msgid "Reset Password"
 msgstr ""

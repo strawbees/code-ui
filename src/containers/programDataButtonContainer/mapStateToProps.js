@@ -2,7 +2,7 @@ import LZString from 'lz-string'
 import { createSelector } from 'reselect'
 import stateSelector from 'src/selectors/stateSelector'
 import propsSelector from 'src/selectors/propsSelector'
-import makeInternalUrlStringSelector from 'src/selectors/makeInternalUrlStringSelector'
+import makeStringSelector from 'src/selectors/makeStringSelector'
 
 export default () => createSelector(
 	[
@@ -17,7 +17,7 @@ export default () => createSelector(
 			source
 		},
 	) => {
-		let url = makeInternalUrlStringSelector(`${type}.url`)(state)
+		let url = makeStringSelector(`routes.${type}`)(state)
 		url += '?data='
 		url += LZString.compressToEncodedURIComponent(JSON.stringify({
 			name,

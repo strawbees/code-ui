@@ -2,7 +2,6 @@ import { createSelector } from 'reselect'
 import queryRefSelector from 'src/selectors/queryRefSelector'
 import queryIdSelector from 'src/selectors/queryIdSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
-import makeInternalUrlStringSelector from 'src/selectors/makeInternalUrlStringSelector'
 import rootPathSelector from 'src/selectors/rootPathSelector'
 import getConfig from 'next/config'
 
@@ -15,7 +14,7 @@ const baseUrl = typeof CANONICAL_URL !== 'undefined' ? CANONICAL_URL : ''
 
 const makeRefOgSelector = (ref, id) => createSelector(
 	[
-		makeInternalUrlStringSelector(`${ref}${id ? `.${id}` : ''}.url`, false),
+		makeStringSelector(`routes.${ref}${id ? `.${id}` : ''}`, false),
 		makeStringSelector(`${ref}${id ? `.${id}` : ''}.og.title`, false),
 		makeStringSelector(`${ref}${id ? `.${id}` : ''}.og.description`, false),
 		makeStringSelector(`${ref}${id ? `.${id}` : ''}.og.image`, false),

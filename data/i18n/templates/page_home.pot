@@ -7,10 +7,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgctxt "home.url"
-msgid "/"
-msgstr ""
-
 msgctxt "home.og.title"
 msgid "Strawbees CODE"
 msgstr ""
@@ -18,4 +14,3 @@ msgstr ""
 msgctxt "home.og.image"
 msgid "/static/og/code.png"
 msgstr ""
-
