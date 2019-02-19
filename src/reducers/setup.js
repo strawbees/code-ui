@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux'
-import generateReducer from 'src/utils/generateReducer'
 import {
 	SETUP_SET,
 	SETUP_SET_ROOT_PATH,
@@ -117,6 +116,16 @@ const strings = (state = {}, { type, payload }) => {
 			newState[payload.locale] = payload.data
 			return newState
 		}
+		case SETUP_SET: {
+			if (typeof payload.strings !== 'undefined') {
+				const newState = {
+					...state
+				}
+				newState[payload.strings.locale] = payload.strings.data
+				return newState
+			}
+			return state
+		}
 		default:
 			return state
 	}
@@ -130,14 +139,59 @@ const stringsLoaded = (state = {}, { type, payload }) => {
 			newState[payload.locale] = true
 			return newState
 		}
+		case SETUP_SET: {
+			if (typeof payload.strings !== 'undefined') {
+				const newState = {
+					...state
+				}
+				newState[payload.strings.locale] = true
+				return newState
+			}
+			return state
+		}
 		default:
 			return state
 	}
 }
-
-const displayPageLoader = generateReducer(SETUP_SET_DISPLAY_PAGE_LOADER, false)
-const displayError = generateReducer(SETUP_SET_DISPLAY_ERROR, false)
-const os = generateReducer(SETUP_SET_OS)
+const displayPageLoader = (state = false, { type, payload }) => {
+	switch (type) {
+		case SETUP_SET_DISPLAY_PAGE_LOADER:
+			return payload
+		case SETUP_SET:
+			if (typeof payload.displayPageLoader !== 'undefined') {
+				return payload.displayPageLoader
+			}
+			return state
+		default:
+			return state
+	}
+}
+const displayError = (state = false, { type, payload }) => {
+	switch (type) {
+		case SETUP_SET_DISPLAY_ERROR:
+			return payload
+		case SETUP_SET:
+			if (typeof payload.displayError !== 'undefined') {
+				return payload.displayError
+			}
+			return state
+		default:
+			return state
+	}
+}
+const os = (state = null, { type, payload }) => {
+	switch (type) {
+		case SETUP_SET_OS:
+			return payload
+		case SETUP_SET:
+			if (typeof payload.os !== 'undefined') {
+				return payload.os
+			}
+			return state
+		default:
+			return state
+	}
+}
 
 export default combineReducers({
 	rootPath,
