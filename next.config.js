@@ -1,6 +1,5 @@
 const path = require('path')
 const routes = require('./data/routes.json')
-const locales = require('./data/i18n/build/index.json')
 
 // load the correct publicRuntimeConfig, based on the COFING enviroment variable
 const configId = process.env.CONFIG || 'dev'
@@ -11,6 +10,7 @@ const configMap = {
 		CANONICAL_URL                 : 'http://code-dev.strawbees.com:3000',
 		COMPILER_URL                  : 'https://compiler.quirkbot.com',
 		STRAWBEES_CODE_API_URL        : 'https://api-stage.quirkbot.com',
+		LOCALES                       : ['en', 'pt'],
 		ROOT_PATH                     : '',
 		URL_SCHEME                    : 'strawbeescode',
 		GAID                          : 'UA-NNNNNN-N',
@@ -70,8 +70,6 @@ const publicRuntimeConfig = {
 		acc[`${configMap[configId].ROOT_PATH}${pathname}`] = routes[pathname]
 		return acc
 	}, {}),
-	// expose the locales
-	locales,
 	// expose next server port
 	NEXT_SERVER_PORT : 3000
 }
