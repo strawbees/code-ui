@@ -1,7 +1,6 @@
 {
-  "name": "strawbees-code",
+  "name": "@strawbees/code-ui",
   "version": "1.3.14",
-  "author": "Paulo Barcelos <paulo@strawbees.com>",
   "scripts": {
     "dev": "node lib/scripts/dev.js",
     "build": "node lib/scripts/build.js",
