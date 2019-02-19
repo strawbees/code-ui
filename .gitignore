@@ -13,7 +13,7 @@ yarn-error.log
 /nwjs-out
 /nwjs-temp
 /static/lib/scratch-blocks
-/static/locales/
+/static/i18n/
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
