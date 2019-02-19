@@ -9,15 +9,13 @@
     "prebuild-all": "node lib/scripts/prebuild.js",
     "i18n:build": "node lib/scripts/i18nBuild.js",
     "i18n:pull": "zanata-cli pull --username $ZANATA_USER --key $ZANATA_KEY --create-skeletons",
-    "package:desktop:stage": "CONFIG=desktop_stage node lib/scripts/packageDesktopApp.js",
-    "package:desktop:production": "CONFIG=desktop_production node lib/scripts/packageDesktopApp.js",
     "deploy:stage": "CONFIG=web_stage node lib/scripts/deploy.js",
     "deploy:production": "CONFIG=web_production node lib/scripts/deploy.js",
     "prepublishOnly": "npm run prebuild-all",
     "lint": "eslint --fix ./*.js src/**/*.js pages/**/*.js lib/**/*.js"
   },
   "dependencies": {
-    "@babel/core": "^7.2.2",
+    "@babel/core": "^7.3.3",
     "@svgr/webpack": "^4.1.0",
     "file-saver": "^2.0.0",
     "informed": "1.10.12",
