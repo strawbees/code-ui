@@ -14,6 +14,8 @@ import {
 	removeGlobalEventListener,
 	removeAllGlobalEventListeners,
 } from 'src/utils/globalEvents'
+import resolveLinkUrl from 'src/utils/resolveLinkUrl'
+import routes from 'static/routes.json'
 import shallowCompareObjects from 'src/utils/shallowCompareObjects'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
@@ -98,7 +100,7 @@ class NavigationManager extends React.PureComponent {
 	}
 
 	// Unified call that will run before the page changes
-	onBeforeNavigation = async () => {
+	onBeforeNavigation = async (as) => {
 		const {
 			queryRef,
 			urlVarP,
@@ -117,6 +119,14 @@ class NavigationManager extends React.PureComponent {
 		// if the program has no changes, or if it is currently loaded by a program
 		// id or program data, we don't need to care about it
 		if (!refEditorHasChanges || urlVarP || urlVarData) {
+			return
+		}
+
+		// check if this is not just a language change, by parsing the
+		// navigation and chekcing if the queryRef is the same, if no no need to
+		// show the dialog either
+		const resolved = resolveLinkUrl(as)
+		if (resolved.href.query && resolved.href.query.ref === queryRef) {
 			return
 		}
 
