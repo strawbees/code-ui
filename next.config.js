@@ -14,6 +14,7 @@ const defaults = {
 	WINDOWS_DRIVERS_INSTALLER_URL : 'https://github.com/Quirkbot/QuirkbotWindowsDriverInstaller/releases/download/2.0.0/quirkbot-windows-drivers-2.0.0.exe',
 	DOWNLOAD_DESKTOP_APP_URL      : 'https://s3.amazonaws.com/strawbees-downloads-stage/code-nwjs-build/versions',
 	NEXT_SERVER_PORT              : 3000,
+	NEXT_EXPORT_PATH              : 'out',
 }
 
 // configs for common known targets
@@ -47,7 +48,7 @@ const commonConfigs = {
 		COMPILER_URL                  : 'http://localhost:9511',
 		STRAWBEES_CODE_API_URL        : 'https://api-stage.quirkbot.com',
 		LOCALES                       : ['en', 'pt', 'sv'],
-		ROOT_PATH                     : '',
+		ROOT_PATH                     : '/ui',
 		URL_SCHEME                    : 'strawbeescode-stage',
 		GAID                          : 'UA-69443341-7',
 		CHROME_EXTENSION_ID           : 'jgbaejhmonchgianepimdbcpfgcbdmam',
@@ -59,7 +60,7 @@ const commonConfigs = {
 		COMPILER_URL                  : 'http://localhost:9511',
 		STRAWBEES_CODE_API_URL        : 'https://api.quirkbot.com',
 		LOCALES                       : ['en'],
-		ROOT_PATH                     : '',
+		ROOT_PATH                     : '/ui',
 		URL_SCHEME                    : 'strawbeescode',
 		GAID                          : 'UA-69443341-8',
 		CHROME_EXTENSION_ID           : 'jgbaejhmonchgianepimdbcpfgcbdmam',
@@ -69,6 +70,7 @@ const commonConfigs = {
 }
 // generate the final config, allowing overwritting from env
 const config = {
+	CONFIG : process.env.CONFIG || 'default',
 	...defaults,
 	...(process.env.CONFIG ? commonConfigs[process.env.CONFIG] : {}),
 	...(Object.keys(defaults).reduce((acc, key) => {
@@ -78,6 +80,7 @@ const config = {
 		return acc
 	}, {}))
 }
+
 
 module.exports = {
 	useFileSystemPublicRoutes : false,
