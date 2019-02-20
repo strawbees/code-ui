@@ -113,11 +113,8 @@ class BlockEditor extends React.Component {
 			const { definition } = blocks[id]
 			if (definition) {
 				Blockly.Blocks[id] = {
-					/* eslint-disable object-shorthand */
-					/* eslint-disable func-names */
+					/* eslint-disable-next-line object-shorthand,func-names */
 					init : function () { this.jsonInit(definition(strings)) }
-					/* eslint-enable object-shorthand */
-					/* eslint-enable func-names */
 				}
 			}
 			delete Blockly.Blocks.data_showvariable
