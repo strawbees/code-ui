@@ -10,7 +10,8 @@ import resolveLinkUrl from 'src/utils/resolveLinkUrl'
 
 const {
 	publicRuntimeConfig : {
-		URL_SCHEME
+		URL_SCHEME,
+		ROOT_PATH
 	}
 } = getConfig()
 
@@ -25,11 +26,13 @@ if (process.browser) {
 }
 
 // register the service worker
-if (process.browser && process.env.NODE_ENV === 'production') {
+if (process.browser) {
 	if ('serviceWorker' in navigator) {
 		// Use the window load event to keep the page load performant
+		console.log('sw')
 		window.addEventListener('load', () => {
-			navigator.serviceWorker.register('/service-worker.js')
+			console.log('load')
+			navigator.serviceWorker.register(`${ROOT_PATH}/service-worker.js`)
 		})
 	}
 }
