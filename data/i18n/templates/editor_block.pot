@@ -27,22 +27,6 @@ msgctxt "block.toolbox.category.output"
 msgid "Output"
 msgstr ""
 
-msgctxt "block.toolbox.category.control"
-msgid "Control"
-msgstr ""
-
-msgctxt "block.toolbox.category.operators"
-msgid "Operators"
-msgstr ""
-
-msgctxt "block.toolbox.category.variables"
-msgid "My Variables"
-msgstr ""
-
-msgctxt "block.toolbox.category.procedures"
-msgid "My Blocks"
-msgstr ""
-
 msgctxt "block.blocks.event_power_on.message0"
 msgid "when program starts"
 msgstr ""

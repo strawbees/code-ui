@@ -91,7 +91,7 @@ export default (strings) => ([
 		]
 	},
 	{
-		name            : s(strings, 'block.toolbox.category.control'),
+		name            : window.Blockly.Msg.CATEGORY_CONTROL,
 		colour          : '#FFAB19',
 		secondaryColour : '#CF8B17',
 		blocks          : [
@@ -135,7 +135,7 @@ export default (strings) => ([
 		]
 	},
 	{
-		name            : s(strings, 'block.toolbox.category.operators'),
+		name            : window.Blockly.Msg.CATEGORY_OPERATORS,
 		colour          : '#40BF4A',
 		secondaryColour : '#389438',
 		blocks          : [
@@ -326,13 +326,13 @@ export default (strings) => ([
 		]
 	},
 	{
-		name            : s(strings, 'block.toolbox.category.variables'),
+		name            : window.Blockly.Msg.CATEGORY_VARIABLES,
 		colour          : '#FF8C1A',
 		secondaryColour : '#DB6E00',
 		custom          : 'VARIABLE'
 	},
 	{
-		name            : s(strings, 'block.toolbox.category.procedures'),
+		name            : window.Blockly.Msg.CATEGORY_MYBLOCKS,
 		colour          : '#FF6680',
 		secondaryColour : '#FF4D6A',
 		custom          : 'PROCEDURE'
