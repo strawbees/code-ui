@@ -5,6 +5,7 @@ yarn-error.log
 !/aws-config-template.json
 /.env
 /.next
+/.prebuild-cache
 /.zanata-cache
 /out
 /dist
