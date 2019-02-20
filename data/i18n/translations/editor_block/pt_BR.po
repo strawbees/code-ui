@@ -1,4 +1,4 @@
-# 
+# Paulo Barcelos <paulo@strawbees.com>, 2019. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
@@ -6,8 +6,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2019-02-20 06:11+0000\n"
+"Last-Translator: Paulo Barcelos <paulo@strawbees.com>\n"
 "Language-Team: Portuguese (Brazil)\n"
 "Language: pt_BR\n"
 "X-Generator: Zanata 4.6.2\n"
@@ -19,23 +19,23 @@ msgstr ""
 
 msgctxt "block.og.image"
 msgid "/static/og/block.png"
-msgstr ""
+msgstr "/static/og/block.png"
 
 msgctxt "block.base.title"
 msgid "Block"
-msgstr ""
+msgstr "Bloco"
 
 msgctxt "block.toolbox.category.input"
 msgid "Input"
-msgstr ""
+msgstr "Entrada"
 
 msgctxt "block.toolbox.category.output"
 msgid "Output"
-msgstr ""
+msgstr "Saída"
 
 msgctxt "block.blocks.event_power_on.message0"
 msgid "when program starts"
-msgstr ""
+msgstr "quando o programa começa"
 
 msgctxt "block.blocks.input_circuit_touch.message0"
 msgid "value of circuit touch %1"
@@ -43,96 +43,96 @@ msgstr ""
 
 msgctxt "block.blocks.input_circuit_touch_touched.message0"
 msgid "%1 is touched"
-msgstr ""
+msgstr "%1 é tocado"
 
 msgctxt "block.blocks.input_light_sensor.message0"
 msgid "value of light sensor %1"
-msgstr ""
+msgstr "valor do sensor de luz %1"
 
 msgctxt "block.blocks.output_continuous_servo_direction.message0"
 msgid "set continuos servo %1 direction to %2"
-msgstr ""
+msgstr "mude a direção do motor servo contínuo %1 para %2"
 
 msgctxt "block.blocks.output_continuous_servo_speed.message0"
 msgid "set continuos servo %1 speed to %2"
-msgstr ""
+msgstr "mude a velocidade do motor servo contínuo %1 para %2"
 
 msgctxt "block.blocks.output_led.message0"
 msgid "set led %1 light to %2"
-msgstr ""
+msgstr "mude a luz do led %1 para %2"
 
 msgctxt "block.blocks.output_led_dual_color_color.message0"
 msgid "set dual color led %1 color to %2"
-msgstr ""
+msgstr "mude a cor do led de cor dupla %1 para %2"
 
 msgctxt "block.blocks.output_led_dual_color_light.message0"
 msgid "set dual color led %1 light to %2"
-msgstr ""
+msgstr "mude a luz do led de cor dupla %1 para %2"
 
 msgctxt "block.blocks.output_servo.message0"
 msgid "set servo %1 position to %2"
-msgstr ""
+msgstr "mude a posição do motor servo %1 para %2"
 
 msgctxt "block.blocks.places.left_eye"
 msgid "left eye"
-msgstr ""
+msgstr "olho equerdo"
 
 msgctxt "block.blocks.places.right_eye"
 msgid "right eye"
-msgstr ""
+msgstr "olho direito"
 
 msgctxt "block.blocks.places.left_mouth"
 msgid "left mouth"
-msgstr ""
+msgstr "boca esquerda"
 
 msgctxt "block.blocks.places.right_mouth"
 msgid "right mouth"
-msgstr ""
+msgstr "boca direita"
 
 msgctxt "block.blocks.places.left_arm"
 msgid "left arm"
-msgstr ""
+msgstr "esquerdo direito"
 
 msgctxt "block.blocks.places.left_leg"
 msgid "left leg"
-msgstr ""
+msgstr "perna esquerda"
 
 msgctxt "block.blocks.places.right_arm"
 msgid "right arm"
-msgstr ""
+msgstr "braço direito"
 
 msgctxt "block.blocks.places.right_leg"
 msgid "right leg"
-msgstr ""
+msgstr "perna direita"
 
 msgctxt "block.blocks.places.horn"
 msgid "horn"
-msgstr ""
+msgstr "chifre"
 
 msgctxt "block.blocks.places.servor_motor_1"
 msgid "1"
-msgstr ""
+msgstr "1"
 
 msgctxt "block.blocks.places.servor_motor_2"
 msgid "2"
-msgstr ""
+msgstr "2"
 
 msgctxt "block.procedures.title"
 msgid "Make a block"
-msgstr ""
+msgstr "Crie um bloco"
 
 msgctxt "block.procedures.add_number"
 msgid "Number"
-msgstr ""
+msgstr "Número"
 
 msgctxt "block.procedures.add_boolean"
 msgid "Boolean"
-msgstr ""
+msgstr "Booleano"
 
 msgctxt "block.procedures.add_label"
 msgid "Label"
-msgstr ""
+msgstr "Rótulo"
 
 msgctxt "block.procedures.confirm"
 msgid "Create block"
-msgstr ""
+msgstr "Criar bloco"
