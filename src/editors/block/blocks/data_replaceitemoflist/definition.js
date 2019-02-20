@@ -1,7 +1,7 @@
 import s from 'src/utils/s'
 
 export default (strings) => ({
-	message0 : s(strings, 'block.blocks.data_replaceitemoflist.message0'),
+	message0 : Blockly.Msg.DATA_REPLACEITEMOFLIST,
 	args0    : [
 		{
 			type : 'input_value',

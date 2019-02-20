@@ -43,6 +43,10 @@ msgctxt "block.toolbox.category.procedures"
 msgid "My Blocks"
 msgstr ""
 
+msgctxt "block.blocks.event_power_on.message0"
+msgid "when program starts"
+msgstr ""
+
 msgctxt "block.blocks.input_circuit_touch.message0"
 msgid "value of circuit touch %1"
 msgstr ""
@@ -55,40 +59,44 @@ msgctxt "block.blocks.input_light_sensor.message0"
 msgid "value of light sensor %1"
 msgstr ""
 
-msgctxt "block.blocks.data_addtolist.message0"
-msgid "add %1 to %2"
+msgctxt "block.blocks.output_continuous_servo_direction.message0"
+msgid "set continuos servo %1 direction to %2"
 msgstr ""
 
-msgctxt "block.blocks.data_deleteoflist.message0"
-msgid "delete %1 of %2"
+msgctxt "block.blocks.output_continuous_servo_speed.message0"
+msgid "set continuos servo %1 speed to %2"
 msgstr ""
 
-msgctxt "block.blocks.data_deletealloflist.message0"
-msgid "delete all of %1"
+msgctxt "block.blocks.output_led.message0"
+msgid "set led %1 light to %2"
 msgstr ""
 
-msgctxt "block.blocks.data_insertatlist.message0"
-msgid "insert %1 at %2 of %3"
+msgctxt "block.blocks.output_led_dual_color_color.message0"
+msgid "set dual color led %1 color to %2"
 msgstr ""
 
-msgctxt "block.blocks.data_replaceitemoflist.message0"
-msgid "replace item %1 of %2 with %3"
+msgctxt "block.blocks.output_led_dual_color_light.message0"
+msgid "set dual color led %1 light to %2"
 msgstr ""
 
-msgctxt "block.blocks.data_itemoflist.message0"
-msgid "item %1 of %2"
+msgctxt "block.blocks.output_servo.message0"
+msgid "set servo %1 position to %2"
 msgstr ""
 
-msgctxt "block.blocks.data_itemnumoflist.message0"
-msgid "item # of %1 in %2"
+msgctxt "block.blocks.places.left_eye"
+msgid "left eye"
 msgstr ""
 
-msgctxt "block.blocks.data_lengthoflist.message0"
-msgid "length of %1"
+msgctxt "block.blocks.places.right_eye"
+msgid "right eye"
 msgstr ""
 
-msgctxt "block.blocks.data_listcontainsitem.message0"
-msgid "%1 contains %2?"
+msgctxt "block.blocks.places.left_mouth"
+msgid "left mouth"
+msgstr ""
+
+msgctxt "block.blocks.places.right_mouth"
+msgid "right mouth"
 msgstr ""
 
 msgctxt "block.blocks.places.left_arm"
@@ -109,6 +117,14 @@ msgstr ""
 
 msgctxt "block.blocks.places.horn"
 msgid "horn"
+msgstr ""
+
+msgctxt "block.blocks.places.servor_motor_1"
+msgid "1"
+msgstr ""
+
+msgctxt "block.blocks.places.servor_motor_2"
+msgid "2"
 msgstr ""
 
 msgctxt "block.procedures.title"
