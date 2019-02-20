@@ -1,0 +1,42 @@
+# Paulo Barcelos <paulo@strawbees.com>, 2019. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2019-02-20 03:31+0000\n"
+"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt_BR\n"
+"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+msgctxt "download.og.title"
+msgid "Download"
+msgstr "Baixar Strawbees CODE"
+
+msgctxt "download.base.title"
+msgid "Download Strawbees CODE"
+msgstr "Baixar Strawbees CODE"
+
+msgctxt "download.base.description"
+msgid ""
+"Download the Strawbees CODE app to be able program anytime, even wihtout an "
+"internet connection!"
+msgstr ""
+"Baixe o aplicativo do Strawbees CODE e programe sem precisar de estar na "
+"internet!"
+
+msgctxt "download.platform.darwin"
+msgid "Mac OS"
+msgstr "Mac OS"
+
+msgctxt "download.platform.win32"
+msgid "Windows 7 and above"
+msgstr "Windows 7 ou superior"
+
+msgctxt "download.download-cta"
+msgid "Download"
+msgstr "Baixar"

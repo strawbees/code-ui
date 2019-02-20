@@ -1,7 +1,7 @@
 import s from 'src/utils/s'
 
 export default (strings) => ({
-	message0 : s(strings, 'block.blocks.data_deletealloflist.message0'),
+	message0 : window.Blockly.Msg.DATA_DELETEALLOFLIST,
 	args0    : [
 		{
 			type          : 'field_variable',

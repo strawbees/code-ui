@@ -108,6 +108,9 @@ class BlockEditor extends React.Component {
 			strings,
 			mediaPath
 		} = this.props
+		// Load the correct strings
+		Blockly.Msg = strings['_scracth-blocks']
+
 		// Load and register all blocks
 		Object.keys(blocks).forEach(id => {
 			const { definition } = blocks[id]
