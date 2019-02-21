@@ -1,11 +1,7 @@
-.DS_Store
-node_modules
 /aws-config-*.json
-!/aws-config-template.json
 /.next
 /.prebuild-cache
 /.zanata-cache
-/out
 /static/lib/scratch-blocks
 /static/i18n/
 /static/routes.json
