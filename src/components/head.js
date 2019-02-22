@@ -41,6 +41,8 @@ const Head = ({
 		<meta name="msapplication-TileColor" content="#da532c"/>
 		<meta name="msapplication-config" content={`${rootPath}/static/favicon/browserconfig.xml`}/>
 		<meta name="theme-color" content="#ffffff"/>
+
+		<script src={`${rootPath}/static/lib/scratch-blocks/vertical.js`}/>
 	</DocumentHead>
 
 

@@ -328,16 +328,20 @@ const BlockEditorWithStrings = (props) => {
 		<BlockEditor {...props}/>
 	)
 }
+export default BlockEditorWithStrings
 
-const BlockEditorWithScript = ({
-	scriptPath,
-	...props
-}) => {
-	const Editor = withScript(
-		[scriptPath],
-		BlockEditorWithStrings,
-		Spinner
-	)
-	return <Editor {...props}/>
-}
-export default BlockEditorWithScript
+// after finding numerous bugs with blockly remounting, decided to skip the
+// dynamic loading of the script file and just load blockly on the <head>
+// instead, like a normal script...
+// const BlockEditorWithScript = ({
+// 	scriptPath,
+// 	...props
+// }) => {
+// 	const Editor = withScript(
+// 		[scriptPath],
+// 		BlockEditorWithStrings,
+// 		Spinner
+// 	)
+// 	return <Editor {...props}/>
+// }
+// export default BlockEditorWithScript
