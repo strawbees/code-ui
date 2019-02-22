@@ -51,6 +51,6 @@ msgctxt "routes.md.privacy-policy"
 msgid "/privacy-policy/"
 msgstr ""
 
-msgctxt "routes.md.terms"
+msgctxt "routes.md.terms-of-use"
 msgid "/terms/"
 msgstr ""

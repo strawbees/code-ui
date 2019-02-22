@@ -67,7 +67,7 @@
 			"id" : "privacy-policy"
 		}
 	},
-	"routes.md.terms": {
+	"routes.md.terms-of-use": {
 		"page": "/",
 		"query": {
 			"ref" : "md",
