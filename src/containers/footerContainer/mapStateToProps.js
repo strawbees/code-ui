@@ -5,7 +5,7 @@ export default () => createStructuredSelector({
 	cookiePolicyTitle  : makeStringSelector('md.cookie-policy.base.title'),
 	privacyPolicyTitle : makeStringSelector('md.privacy-policy.base.title'),
 	termsOfUseTitle    : makeStringSelector('md.terms-of-use.base.title'),
-	cookiePolicyUrl    : makeStringSelector('routes.cookie_policy'),
-	privacyPolicyUrl   : makeStringSelector('routes.cookie_policy'),
-	termsOfUseUrl      : makeStringSelector('routes.cookie_policy'),
+	cookiePolicyUrl    : makeStringSelector('routes.md.cookie-policy'),
+	privacyPolicyUrl   : makeStringSelector('routes.md.privacy-policy'),
+	termsOfUseUrl      : makeStringSelector('routes.md.terms-of-use'),
 })
