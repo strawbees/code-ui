@@ -1,4 +1,4 @@
-# 
+# Dan Henriksson <dan@strawbees.com>, 2019. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
@@ -6,8 +6,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2019-02-22 03:32+0000\n"
+"Last-Translator: Dan Henriksson <dan@strawbees.com>\n"
 "Language-Team: Swedish\n"
 "Language: sv\n"
 "X-Generator: Zanata 4.6.2\n"
@@ -15,432 +15,438 @@ msgstr ""
 
 msgctxt "error.og.title"
 msgid "Not found"
-msgstr ""
+msgstr "Hittades Inte"
 
 msgctxt "ui.sb_cloud.signup.cta"
 msgid "Sign up"
-msgstr ""
+msgstr "Skapa konto"
 
 msgctxt "ui.sb_cloud.signup.title"
 msgid "Sign up to Strawbees Cloud"
-msgstr ""
+msgstr "Skapa konto på Strawbees Cloud"
 
 msgctxt "ui.sb_cloud.signin.cta"
 msgid "Sign in"
-msgstr ""
+msgstr "Logga in"
 
 msgctxt "ui.sb_cloud.signin.title"
 msgid "Sign in to Strawbees Cloud"
-msgstr ""
+msgstr "Logga in på Strawbees Cloud"
 
 msgctxt "ui.sb_cloud.signup.age.label"
 msgid "How old are you?"
-msgstr ""
+msgstr "Hur gammal är du?"
 
 msgctxt "ui.sb_cloud.signup.age.tip"
 msgid "We need to be aware of your age for legal reasons."
-msgstr ""
+msgstr "Vi behöver känna till din ålder av lagliga skäl."
 
 msgctxt "ui.sb_cloud.signup.age.error.blank"
 msgid "You need to fill in your age."
-msgstr ""
+msgstr "Du måste fylla i din ålder."
 
 msgctxt "ui.sb_cloud.signup.age.error.under"
 msgid ""
 "You need to be at least 13 to create an account. But don't worry, you can "
 "still program as a *Guest*!"
 msgstr ""
+"Du måste vara minst 13 år för att skapa ett konto. Men oroa dig inte, utan "
+"ett eget konto kan du ändå programmera som \"Gäst\"!"
 
 msgctxt "ui.sb_cloud.signup.username.label"
 msgid "Username"
-msgstr ""
+msgstr "Användarnamn"
 
 msgctxt "ui.sb_cloud.signup.username.tip"
 msgid "Pick something that doesn't reveal your identity."
-msgstr ""
+msgstr "Välj något som inte avslutar din identitet."
 
 msgctxt "ui.sb_cloud.signup.username.error.blank"
 msgid "You need to fill in your username."
-msgstr ""
+msgstr "Du måste fylla i ditt användarnamn."
 
 msgctxt "ui.sb_cloud.signup.username.error.too_long"
 msgid "Username can be up to 30 characters long\""
-msgstr ""
+msgstr "Användarnamnet måste vara minst 30 tecken långt."
 
 msgctxt "ui.sb_cloud.signup.username.error.invalid"
 msgid "Username can only contain letters, numbers, '-' and '_'."
-msgstr ""
+msgstr "Användarnamnet får bara innehålla bokstäver, siffror '-' och '_'."
 
 msgctxt "ui.sb_cloud.signup.username.error.unique"
 msgid "This username is already taken."
-msgstr ""
+msgstr "Användarnamnet är upptaget."
 
 msgctxt "ui.sb_cloud.signup.email.label"
 msgid "Email"
-msgstr ""
+msgstr "E-post"
 
 msgctxt "ui.sb_cloud.signup.email.tip"
 msgid "So we can communicate with you about your account."
-msgstr ""
+msgstr "För att vi ska kunna kommunicera med dig angående ditt konto."
 
 msgctxt "ui.sb_cloud.signup.email.error.blank"
 msgid "You need to fill in your email"
-msgstr ""
+msgstr "Du måste fylla i din e-post"
 
 msgctxt "ui.sb_cloud.signup.email.error.invalid"
 msgid "Invalid email"
-msgstr ""
+msgstr "Ogiltig e-post"
 
 msgctxt "ui.sb_cloud.signup.email_confirm.label"
 msgid "Confirm email"
-msgstr ""
+msgstr "Bekräfta e-post"
 
 msgctxt "ui.sb_cloud.signup.email_confirm.error.blank"
 msgid "You need to fill in your email."
-msgstr ""
+msgstr "Du måste fylla i din e-post."
 
 msgctxt "ui.sb_cloud.signup.email_confirm.error.missmatch"
 msgid "Email doesn't match."
-msgstr ""
+msgstr "E-posten matchar inte."
 
 msgctxt "ui.sb_cloud.signup.password.label"
 msgid "Password"
-msgstr ""
+msgstr "Lösenord"
 
 msgctxt "ui.sb_cloud.signup.password.error.blank"
 msgid "You need to fill in your password."
-msgstr ""
+msgstr "Du måste dylla i ditt lösenord."
 
 msgctxt "ui.sb_cloud.signup.password.error.short"
 msgid "Password needs to be at least 6 characters long."
-msgstr ""
+msgstr "Lösenordet måste vara minst sex tecken."
 
 msgctxt "ui.sb_cloud.signup.password_confirm.label"
 msgid "Confirm password"
-msgstr ""
+msgstr "Bekräfta lösenord"
 
 msgctxt "ui.sb_cloud.signup.password_confirm.error.blank"
 msgid "You need to fill in your password."
-msgstr ""
+msgstr "Du måste fylla i ditt lösenord."
 
 msgctxt "ui.sb_cloud.signup.password_confirm.error.missmatch"
 msgid "Password doesn't match."
-msgstr ""
+msgstr "Lösenordet stämmer inte överens."
 
 msgctxt "ui.sb_cloud.signup.terms.label"
 msgid "Terms and conditions"
-msgstr ""
+msgstr "Villkor"
 
+#, fuzzy
 msgctxt "ui.sb_cloud.signup.terms.tip"
 msgid ""
 "I've read and accepted the <a href='/terms' target=_blank>terms of use</a>, "
 "<a href='/privacy-policy' target=_blank>privacy policy</a> and <a href='/"
 "cookie-policy' target=_blank>cookie policy</a>."
-msgstr ""
+msgstr "Jag har läst och accepterat villkoren och cookiepolicyn"
 
 msgctxt "ui.sb_cloud.signup.terms.error.agree"
 msgid "You must read and accept the terms and conditions."
-msgstr ""
+msgstr "DU måste läsa och acceptera villkoren"
 
 msgctxt "ui.sb_cloud.signup.submit"
 msgid "Sign up"
-msgstr ""
+msgstr "Registrera dig"
 
 msgctxt "ui.sb_cloud.signup.submit.error.network"
 msgid "There seems to be a connection problem."
-msgstr ""
+msgstr "Det  verkar finnas ett problem med anslutningen."
 
 msgctxt "ui.sb_cloud.signup.submit.error.server"
 msgid "Server is not responding."
-msgstr ""
+msgstr "Servern svarar inte."
 
 msgctxt "ui.sb_cloud.signup.submit.error.unhandled"
 msgid "We are having problems, please try again later."
-msgstr ""
+msgstr "Vi har problem för tillfället, vänligen försök igen senare."
 
 msgctxt "ui.sb_cloud.signin.username.label"
 msgid "Username"
-msgstr ""
+msgstr "Användarnamn"
 
 msgctxt "ui.sb_cloud.signin.username.error.blank"
 msgid "You need to fill in your username."
-msgstr ""
+msgstr "Du måste fylla i ditt användarnamn."
 
 msgctxt "ui.sb_cloud.signin.password.label"
 msgid "Password"
-msgstr ""
+msgstr "Lösenord"
 
 msgctxt "ui.sb_cloud.signin.password.error.blank"
 msgid "You need to fill in your password."
-msgstr ""
+msgstr "Du måste fylla i ditt lösenord."
 
 msgctxt "ui.sb_cloud.signin.submit"
 msgid "Sign in"
-msgstr ""
+msgstr "Logga in"
 
 msgctxt "ui.sb_cloud.signin.submit.error.network"
 msgid "There seems to be a connection problem."
-msgstr ""
+msgstr "Det verkar vara problem med anslutningen."
 
 msgctxt "ui.sb_cloud.signin.submit.error.server"
 msgid "Server is not responding."
-msgstr ""
+msgstr "Servern svarar inte."
 
 msgctxt "ui.sb_cloud.signin.submit.error.unhandled"
 msgid "We are having problems, please try again later."
-msgstr ""
+msgstr "Vi har problem, vänligen försök igen senare."
 
 msgctxt "ui.sb_cloud.signin.submit.error.not_authorized"
 msgid "Invalid username or password."
-msgstr ""
+msgstr "Felaktigt användarnamn eller lösenord."
 
 msgctxt "ui.sb_cloud.forgot.title"
 msgid "Forgot password?"
-msgstr ""
+msgstr "Glömt lösenordet?"
 
 msgctxt "ui.sb_cloud.forgot.username.label"
 msgid "Username"
-msgstr ""
+msgstr "Användarnamn"
 
 msgctxt "ui.sb_cloud.forgot.username.error.blank"
 msgid "You need to fill in your username."
-msgstr ""
+msgstr "Du måste fylla i ditt användarnamn."
 
 msgctxt "ui.sb_cloud.forgot.submit"
 msgid "Reset password"
-msgstr ""
+msgstr "Återställ lösenord"
 
 msgctxt "ui.sb_cloud.forgot.submit.error.network"
 msgid "There seems to be a connection problem."
-msgstr ""
+msgstr "Det verkar vara ett problem med anslutningen."
 
 msgctxt "ui.sb_cloud.forgot.submit.error.server"
 msgid "Server is not responding."
-msgstr ""
+msgstr "Servern svarar inte."
 
 msgctxt "ui.sb_cloud.forgot.submit.error.unhandled"
 msgid "We are having problems, please try again later."
-msgstr ""
+msgstr "Vi har problem, vänligen försök igen senare."
 
 msgctxt "ui.sb_cloud.forgot.submit.error.user_not_found"
 msgid "This username is not registered."
-msgstr ""
+msgstr "Det här användarnamnet är inte registrerat."
 
 msgctxt "ui.sb_cloud.forgot.submit.success"
 msgid "Check your email for instructions on how to reset your password."
 msgstr ""
+"Öppna din e-post för att hitta instruktionerna för hur du återställer ditt "
+"lösenord."
 
 msgctxt "ui.sb_cloud.reset_password.password.label"
 msgid "New password"
-msgstr ""
+msgstr "Nytt lösenord"
 
 msgctxt "ui.sb_cloud.reset_password.password.error.blank"
 msgid "You need to fill in your new password."
-msgstr ""
+msgstr "Du måste fylla i ditt nya lösenord."
 
 msgctxt "ui.sb_cloud.reset_password.password.error.short"
 msgid "Password needs to be at least 6 characters long."
-msgstr ""
+msgstr "Lösenordet måste vara minst sex tecken."
 
 msgctxt "ui.sb_cloud.reset_password.submit"
 msgid "Reset password"
-msgstr ""
+msgstr "Återställ lösenord"
 
 msgctxt "ui.sb_cloud.reset_password.submit.error.network"
 msgid "There seems to be a connection problem."
-msgstr ""
+msgstr "Det verkar vara ett problem med anslutningen."
 
 msgctxt "ui.sb_cloud.reset_password.submit.error.server"
 msgid "Server is not responding."
-msgstr ""
+msgstr "Servern svarar inte."
 
 msgctxt "ui.sb_cloud.reset_password.submit.error.unhandled"
 msgid "We are having problems, please try again later."
-msgstr ""
+msgstr "Vi har problem, vänligen försök igen senare."
 
 msgctxt "ui.sb_cloud.reset_password.submit.error.invalid_link"
 msgid "This reset password link is expired."
-msgstr ""
+msgstr "Länken för att återställa lösenordet har gått ut."
 
 msgctxt "ui.sb_cloud.reset_password.submit.success"
 msgid "Your password was updated."
-msgstr ""
+msgstr "Ditt lösenord är uppdaterat."
 
 msgctxt "ui.sb_cloud.confirm_email.title"
 msgid "Confirm email"
-msgstr ""
+msgstr "Bekräfta e-post"
 
 msgctxt "ui.sb_cloud.confirm_email.submit.error.network"
 msgid "There seems to be a connection problem."
-msgstr ""
+msgstr "Det verkar vara ett problem med anslutningen."
 
 msgctxt "ui.sb_cloud.confirm_email.submit.error.server"
 msgid "Server is not responding."
-msgstr ""
+msgstr "Servern svarar inte."
 
 msgctxt "ui.sb_cloud.confirm_email.submit.error.unhandled"
 msgid "We are having problems, please try again later."
-msgstr ""
+msgstr "Vi har problem, vänligen försök igen senare."
 
 msgctxt "ui.sb_cloud.confirm_email.submit.error.invalid_link"
 msgid "This confirmation link is invalid."
-msgstr ""
+msgstr "Den här bekräftelselänken fungerar inte."
 
 msgctxt "ui.sb_cloud.confirm_email.submit.success"
 msgid "Your email is confirmed."
-msgstr ""
+msgstr "Din e-post är bekräftad."
 
 msgctxt "ui.program_creator.title"
 msgid "Create a program"
-msgstr ""
+msgstr "Skapa ett program"
 
 msgctxt "ui.program_creator.import"
 msgid "Import from computer"
-msgstr ""
+msgstr "Importera från dator"
 
 msgctxt "ui.header_menu.options.upload"
 msgid "Upload"
-msgstr ""
+msgstr "Ladda upp"
 
 msgctxt "ui.header_menu.options.save"
 msgid "Save"
-msgstr ""
+msgstr "Spara"
 
 msgctxt "ui.program_list.controls.type"
 msgid "type"
-msgstr ""
+msgstr "typ"
 
 msgctxt "ui.program_list.controls.name"
 msgid "name"
-msgstr ""
+msgstr "namn"
 
 msgctxt "ui.program_list.controls.updated"
 msgid "last modified"
-msgstr ""
+msgstr "senast modifierad"
 
 msgctxt "ui.file_menu.title"
 msgid "File"
-msgstr ""
+msgstr "Fil"
 
 msgctxt "ui.file_menu.options.new_flow"
 msgid "New Flow program"
-msgstr ""
+msgstr "Nytt Flowprogram"
 
 msgctxt "ui.file_menu.options.new_block"
 msgid "New Block program"
-msgstr ""
+msgstr "Nytt Blockprogram"
 
 msgctxt "ui.file_menu.options.new_text"
 msgid "New Text program"
-msgstr ""
+msgstr "Nytt Textprogram"
 
 msgctxt "ui.file_menu.options.upload"
 msgid "Upload to Quirkbot..."
-msgstr ""
+msgstr "Ladda upp till Quirkbot..."
 
 msgctxt "ui.file_menu.options.save"
 msgid "Save"
-msgstr ""
+msgstr "Spara"
 
 msgctxt "ui.file_menu.options.autosaved"
 msgid "Autosaved"
-msgstr ""
+msgstr "Autosparad"
 
 msgctxt "ui.file_menu.options.duplicate"
 msgid "Save as a copy..."
-msgstr ""
+msgstr "Spara som en kopia..."
 
 msgctxt "ui.file_menu.options.share"
 msgid "Share..."
-msgstr ""
+msgstr "Dela..."
 
 msgctxt "ui.file_menu.options.import"
 msgid "Import from computer..."
-msgstr ""
+msgstr "Importera från dator..."
 
 msgctxt "ui.file_menu.options.export"
 msgid "Export to computer"
-msgstr ""
+msgstr "Exportera till dator"
 
 msgctxt "ui.file_menu.options.remove"
 msgid "Delete..."
-msgstr ""
+msgstr "Ta bor..."
 
 msgctxt "ui.help_menu.title"
 msgid "Tutorials"
-msgstr ""
+msgstr "Guider"
 
 msgctxt "ui.help_menu.options.intro_code.title"
 msgid "Using Strawbees CODE"
-msgstr ""
+msgstr "Använda Strawbees CODE"
 
 msgctxt "ui.help_menu.options.intro_code.video"
 msgid "https://www.youtube.com/watch?v=-D9FhCw9OVA"
-msgstr ""
+msgstr "https://www.youtube.com/watch?v=-D9FhCw9OVA"
 
 msgctxt "ui.help_menu.options.intro_flow.title"
 msgid "Flow programming"
-msgstr ""
+msgstr "Flowprogrammering"
 
 msgctxt "ui.help_menu.options.intro_flow.video"
 msgid "https://www.youtube.com/watch?v=-D9FhCw9OVA"
-msgstr ""
+msgstr "https://www.youtube.com/watch?v=-D9FhCw9OVA"
 
 msgctxt "ui.help_menu.options.intro_block.title"
 msgid "Block programming"
-msgstr ""
+msgstr "Blockprogrammering"
 
 msgctxt "ui.help_menu.options.intro_block.video"
 msgid "https://www.youtube.com/watch?v=-D9FhCw9OVA"
-msgstr ""
+msgstr "https://www.youtube.com/watch?v=-D9FhCw9OVA"
 
 msgctxt "ui.help_menu.options.intro_text.title"
 msgid "Text programming"
-msgstr ""
+msgstr "Textprogrammering"
 
 msgctxt "ui.help_menu.options.intro_text.video"
 msgid "https://www.youtube.com/watch?v=-D9FhCw9OVA"
-msgstr ""
+msgstr "https://www.youtube.com/watch?v=-D9FhCw9OVA"
 
 msgctxt "ui.help_menu.options.troubleshooting.title"
 msgid "Troubleshooting"
-msgstr ""
+msgstr "Felsökning"
 
 msgctxt "ui.help_menu.options.troubleshooting.video"
 msgid "https://www.youtube.com/watch?v=-D9FhCw9OVA"
-msgstr ""
+msgstr "https://www.youtube.com/watch?v=-D9FhCw9OVA"
 
 msgctxt "ui.help_menu.options.learning_platform"
 msgid "Visit Strawbees Learning"
-msgstr ""
+msgstr "Gå till Strawbees Learning"
 
+#, fuzzy
 msgctxt "ui.help_menu.options.learning_platform.url"
 msgid "https://learning.strawbees.com"
-msgstr ""
+msgstr "https://learning.strawbees.com"
 
 msgctxt "ui.dialog.upload.title"
 msgid "Upload to Quirkbot"
-msgstr ""
+msgstr "Ladda upp till Quirkbot"
 
 msgctxt "ui.dialog.duplicate.title"
 msgid "Save as a copy"
-msgstr ""
+msgstr "Spara som kopia"
 
 msgctxt "ui.dialog.duplicate.field"
 msgid "New name"
-msgstr ""
+msgstr "Nytt namn"
 
 msgctxt "ui.dialog.duplicate.confirm"
 msgid "Save"
-msgstr ""
+msgstr "Spara"
 
 msgctxt "ui.dialog.share.title"
 msgid "Share"
-msgstr ""
+msgstr "Dela"
 
 msgctxt "ui.dialog.share.dynamic_url.title"
 msgid "Link to this program"
-msgstr ""
+msgstr "Länk till det här programmet"
 
 msgctxt "ui.dialog.share.dynamic_url.description"
 msgid ""
@@ -448,264 +454,290 @@ msgstr ""
 
 msgctxt "ui.dialog.share.static_url.title"
 msgid "Link to this program, as it is right now"
-msgstr ""
+msgstr "Länk till det här programmet, som det ser ut just nu"
 
 msgctxt "ui.dialog.share.static_url.description"
 msgid ""
 "If this program is modified, this link will always point to it's current "
 "version"
 msgstr ""
+"Om det här programmet modifieras kommer den här länken alltid att peka mot "
+"dess nuvarande version"
 
 msgctxt "ui.dialog.import.title"
 msgid "Import from computer"
-msgstr ""
+msgstr "Importera från din dator"
 
 msgctxt "ui.dialog.import.drag_file"
 msgid "Drop your program file here."
-msgstr ""
+msgstr "Släpp ditt program här."
 
 msgctxt "ui.dialog.import.drop_file"
 msgid "Drop it!"
-msgstr ""
+msgstr "Släpp den!"
 
 msgctxt "ui.dialog.import.open_file"
 msgid "Open file"
-msgstr ""
+msgstr "Öppna fil"
 
 msgctxt "ui.dialog.import.reject"
 msgid "This file format is not accepted."
-msgstr ""
+msgstr "Det här filformatet är inte accepterat."
 
 msgctxt "ui.dialog.import.invalid"
 msgid "This file is invalid."
-msgstr ""
+msgstr "Den här filen är ogiltig."
 
 msgctxt "ui.dialog.import.success"
 msgid "Click on the program to open it."
-msgstr ""
+msgstr "Klicka på programmet för att öppna det."
 
 msgctxt "ui.dialog.export.title"
 msgid "Export to computer"
-msgstr ""
+msgstr "Exportera till din dator"
 
 msgctxt "ui.dialog.remove.title"
 msgid "Delete program"
-msgstr ""
+msgstr "Ta bort program"
 
 msgctxt "ui.dialog.remove.description"
 msgid "Are you sure you want to delete this program?"
-msgstr ""
+msgstr "Är du säker på att du vill ta bort det här programmet?"
 
 msgctxt "ui.dialog.remove.confirm"
 msgid "Delete"
-msgstr ""
+msgstr "Ta bort"
 
 msgctxt "ui.dialog.discard.title"
 msgid "Discard changes?"
-msgstr ""
+msgstr "Ignorera ändringar?"
 
 msgctxt "ui.dialog.discard.description"
 msgid ""
 "You are about to leave the current editor and your changes will be lost. Do "
 "you want to proceed?"
 msgstr ""
+"Du håller på att lämna den nuvarande redigeraren och dina ändringar kommer "
+"att gå förlorade. Vill du fortsätta?"
 
 msgctxt "ui.dialog.discard.confirm"
 msgid "Proceed"
-msgstr ""
+msgstr "Fortsätt"
 
+#, fuzzy
 msgctxt "ui.dialog.anonymous_save.title"
 msgid "Guest - saving"
-msgstr ""
+msgstr "Gäst - sparar"
 
+#, fuzzy
 msgctxt "ui.dialog.anonymous_save.description"
 msgid ""
 "When you save a program as a *Guest*, the program is only saved locally on "
 "your device and is not published on the web."
 msgstr ""
+"När du sparar ett program som *Gäst* så finns programmet bara tillgängligt "
+"på den enheten du använder just nu, och sparas inte på internet."
 
 msgctxt "ui.dialog.anonymous_save.confirm"
 msgid "Ok, got it"
-msgstr ""
+msgstr "Ok, jag förstår"
 
 msgctxt "ui.dialog.anonymous_copy_programs.title"
 msgid "Copy Guest programs?"
-msgstr ""
+msgstr "Kopiera Gästprogram?"
 
+#, fuzzy
 msgctxt "ui.dialog.anonymous_copy_programs.description"
 msgid ""
 "There are programs saved by a *Guest* on this device. Would you like to copy "
 "them to your online account?"
 msgstr ""
+"Det finns program sparade av en gästanvändare på den här datorn. Vill du "
+"kopiera dem till ditt onlinekonto?"
 
 msgctxt "ui.dialog.anonymous_copy_programs.confirm"
 msgid "Yes, copy programs."
-msgstr ""
+msgstr "Ja, kopiera programmen."
 
 msgctxt "ui.dialog.anonymous_copy_programs.cancel"
 msgid "No, discard programs."
-msgstr ""
+msgstr "Nej, kassera programmen."
 
 msgctxt "ui.program_list.title.storage"
 msgid "My programs"
-msgstr ""
+msgstr "Mina program"
 
 msgctxt "ui.program_list.empty"
 msgid "No programs saved yet."
-msgstr ""
+msgstr "Inga program sparade ännu."
 
 msgctxt "ui.program_list.sort.type"
 msgid "type"
-msgstr ""
+msgstr "typ"
 
 msgctxt "ui.program_list.sort.name"
 msgid "name"
-msgstr ""
+msgstr "namn"
 
 msgctxt "ui.program_list.sort.modified"
 msgid "last modified"
-msgstr ""
+msgstr "senast modifierad"
 
 msgctxt "ui.editor.program_placeholder_name"
 msgid "Untitled Program"
-msgstr ""
+msgstr "Namnlöst Program"
 
 msgctxt "ui.user.anon_username"
 msgid "Guest"
-msgstr ""
+msgstr "Gäst"
 
+#, fuzzy
 msgctxt "ui.user.anon_warning"
 msgid ""
 "**You are not signed in.** Your programs will be saved locally, but they "
 "won't be published to the web. If you need online access, *please sign in*."
 msgstr ""
+"**Du är inte inloggad.** Dina program kommer att sparas lokalt, men kommer "
+"inte att publiceras på nätet. Om du behöver komma åt filerna online, "
+"*vänligen logga in*."
 
 msgctxt "ui.user.account_settings.button"
 msgid "Account settings"
-msgstr ""
+msgstr "Kontoinställningar"
 
 msgctxt "ui.user.account_settings.annon"
 msgid "Sign in"
-msgstr ""
+msgstr "Logga in"
 
 msgctxt "ui.user.account_settings.profile"
 msgid "View Profile"
-msgstr ""
+msgstr "Visa Profil"
 
 msgctxt "ui.user.account_settings.signin"
 msgid "Sign in"
-msgstr ""
+msgstr "Logga in"
 
 msgctxt "ui.user.account_settings.signup"
 msgid "Sign up"
-msgstr ""
+msgstr "Logga in"
 
 msgctxt "ui.user.account_settings.logout"
 msgid "Log out"
-msgstr ""
+msgstr "Logga ut"
 
+#, fuzzy
 msgctxt "ui.user.account_settings.public_profile.title"
 msgid "Public profile link"
-msgstr ""
+msgstr "Länk till offentlig profil"
 
 msgctxt "ui.user.account_settings.public_profile.description"
 msgid "Use this link to share a list of your programs."
-msgstr ""
+msgstr "Använd den här länken för att dela en lista av dina program."
 
 msgctxt "ui.editor.text_preview.button"
 msgid "Preview text program"
-msgstr ""
+msgstr "Förhandsvisa Textprogram "
 
 msgctxt "ui.editor.text_preview.title"
 msgid "Text program preview"
-msgstr ""
+msgstr "Förhandsvisning av Textprogram"
 
+#, fuzzy
 msgctxt "ui.editor.text_preview.description"
 msgid ""
 "This is the text version of your visual program. To modify it, open it in "
 "the Text editor."
 msgstr ""
+"Det här är textversionen av ditt visuella program. Öppna det i "
+"Textredigeraren för att modifiera det."
 
 msgctxt "ui.editor.text_preview.create"
 msgid "Open in text editor"
-msgstr ""
+msgstr "Öppna i textredigeraren"
 
 msgctxt "ui.buttons.cancel"
 msgid "Cancel"
-msgstr ""
+msgstr "Avbryt"
 
 msgctxt "ui.buttons.confirm"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgctxt "ui.copyable_url.instruction.iddle"
 msgid "Click to copy"
-msgstr ""
+msgstr "Klicka för att kopiera"
 
+#, fuzzy
 msgctxt "ui.copyable_url.instruction.copied"
 msgid "Copied to clipboard!"
-msgstr ""
+msgstr "Kopierad till urklipp"
 
 msgctxt "ui.board.status.notConnected"
 msgid "Not detected"
-msgstr ""
+msgstr "Inte detekterad"
 
 msgctxt "ui.board.status.notReady"
 msgid "Missing helper, click to install."
-msgstr ""
+msgstr "Helper saknas, klicka för att installera."
 
 msgctxt "ui.board.status.notAvailable"
 msgid "Browser not supported"
-msgstr ""
+msgstr "Webbläsaren stöds inte"
 
 msgctxt "ui.board.status.ok"
 msgid "Ready"
-msgstr ""
+msgstr "Redo"
 
+#, fuzzy
 msgctxt "ui.board.status.busy"
 msgid "Busy"
-msgstr ""
+msgstr "Upptagen"
 
 msgctxt "ui.board.status.problem"
 msgid "Error"
-msgstr ""
+msgstr "Fel"
 
+#, fuzzy
 msgctxt "ui.board.status.bootloader"
 msgid "Recovery Mode"
-msgstr ""
+msgstr "Recovery Mode"
 
 msgctxt "ui.board.dependencies.serial.title.not_supported"
 msgid "Browser not supported."
-msgstr ""
+msgstr "Webbläsaren stöds ej."
 
 msgctxt "ui.board.dependencies.serial.title.missing"
 msgid "Add Strawbees CODE helper"
-msgstr ""
+msgstr "Installera Strawbees CODE Helper"
 
 msgctxt "ui.board.dependencies.serial.title.ready"
 msgid "Ready to use"
-msgstr ""
+msgstr "Redo att användas"
 
 msgctxt "ui.board.dependencies.serial.not_supported"
 msgid ""
 "In order to be able to communicate with your Quirkbot, please use the "
 "*Google Chrome Broswer*."
 msgstr ""
+"För att kommunicera med din Quirkbot, använd *Webbläsaren Google Chrome*"
 
 msgctxt "ui.board.dependencies.serial.ready"
 msgid "We are ready to communicate with your Quirkbot!"
-msgstr ""
+msgstr "Vi är redo att kommunicera med din Quirkbot!"
 
 msgctxt "ui.board.dependencies.serial.install.text"
 msgid ""
 "To be able to communicate with your Quirkbot, you need to first add the "
 "**Strawbees CODE Helper** from the *Chrome Web Store*."
 msgstr ""
+"För att kunna kommunicera med din Quirkbot måste du först lägga till "
+"**Strawbees CODE Helper** från *Chrome Web Store*."
 
 msgctxt "ui.board.dependencies.serial.install.cta"
 msgid "Go to Web Store and add helper"
-msgstr ""
+msgstr "Gå till Web Store och lägg till Helper"
 
+#, fuzzy
 msgctxt "ui.board.dependencies.serial.no_boards_detected"
 msgid ""
 "We could not detect any Quirkbots. If your Quirkbot is connected, make sure "
@@ -713,96 +745,116 @@ msgid ""
 "\n"
 "If the problem persists, view **TUTORIALS > Troubleshooting**."
 msgstr ""
+"Vi kunde inte detektera någon Quirkbot. Om din Quirkbot är ansluten, se till "
+"att den är påslagen och inkopplad till en fungerande USB-port.\n"
+"\n"
+"Om problemet kvarstår, öppna **Guider > Felsökning**"
 
+#, fuzzy
 msgctxt "ui.board.dependencies.serial.windows_driver"
 msgid ""
 "**Windows** require drivers, have you already installed them?\n"
 "\n"
 "**Click here to install the Quirkbot drivers for Windows**."
 msgstr ""
+"**Windows** behöver drivrutiner. Har du installerat dem?\n"
+"\n"
+"**Klicka här för att installera Quirkbotdrivrutiner till Windows**."
 
+#, fuzzy
 msgctxt "ui.board.upload.start"
 msgid "Start upload"
-msgstr ""
+msgstr "Påbörja uppladdning"
 
+#, fuzzy
 msgctxt "ui.board.upload.restart"
 msgid "Restart upload"
-msgstr ""
+msgstr "Starta om uppladdning"
 
 msgctxt "ui.board.upload.status.NO_HEX"
 msgid "Preparing program..."
-msgstr ""
+msgstr "Förbereder program..."
 
+#, fuzzy
 msgctxt "ui.board.upload.status.IDDLE"
 msgid "Waiting to start..."
-msgstr ""
+msgstr "Väntar på att börja..."
 
+#, fuzzy
 msgctxt "ui.board.upload.status.BUSY"
 msgid "Waiting upload to finish..."
-msgstr ""
+msgstr "Väntar på att avsluta..."
 
 msgctxt "ui.board.upload.status.UPLOADING"
 msgid "Uploading..."
-msgstr ""
+msgstr "Laddar upp..."
 
+#, fuzzy
 msgctxt "ui.board.upload.status.NOT_COMPATIBLE"
 msgid "Board not compatible."
-msgstr ""
+msgstr "Enheten ej kompatibel."
 
 msgctxt "ui.board.upload.status.SUCCESS"
 msgid "Upload complete!"
-msgstr ""
+msgstr "Uppladdningen slutförd!"
 
 msgctxt "ui.board.upload.status.ERROR"
 msgid "Upload failed."
-msgstr ""
+msgstr "Uppladdningen misslyckades."
 
 msgctxt "ui.board.upload.compiler.progress"
 msgid "Preparing program..."
-msgstr ""
+msgstr "Förbereder program..."
 
 msgctxt "ui.board.upload.compiler.error.UNHANDLED"
 msgid "This is embarrassing... could you please try again?"
-msgstr ""
+msgstr "Det här blev pinsamt... skulle du kunna försöka igen?"
 
 msgctxt "ui.board.upload.compiler.error.CONNECTION"
 msgid "There seems to have a problem with the internet connection."
-msgstr ""
+msgstr "Det verkar vara ett problem med internetuppkopplingen. "
 
 msgctxt "ui.board.upload.compiler.error.TIMEOUT"
 msgid "We are having problems connecting our server. Please try again."
-msgstr ""
+msgstr "Vi har problem att ansluta till vår server. Vänligen försök igen."
 
 msgctxt "ui.board.upload.compiler.error.SERVER"
 msgid "Hum... there's something wrong with our server. Please try again."
 msgstr ""
+"Hmm... det verkar vara något fel med vår server. Vänligen försök igen."
 
 msgctxt "ui.board.upload.compiler.error.ROM_MAX"
 msgid ""
 "Whoa! Your program is too big to fit the Quirkbot's memory, try reducing it."
 msgstr ""
+"Ojdå! Ditt program är för stort för att få plats i minnet på din Quirkbot. "
+"Försöka att göra programmet mindre."
 
 msgctxt "ui.board.upload.compiler.error.RAM_MAX"
 msgid ""
 "Whoa! Your program is too big to fit the Quirkbot's memory, try reducing it."
 msgstr ""
+"Ojdå! Ditt program är för stort för att få plats i minnet på din Quirkbot. "
+"Försöka att göra programmet mindre."
 
 msgctxt "ui.board.upload.compiler.error.COMPILATION_ERROR"
 msgid ""
 "There seems to be an error on your code, please revise it and try again."
 msgstr ""
+"Det verkar vara ett fel i din kod. Vänligen se över den och försök igen."
 
 msgctxt "ui.board.upload.uploader.error.UNHANDLED"
 msgid ""
 "Weird... something went wrong.\n"
 "\n"
 "If the problem persists check **TUTORIALS > Troubleshooting**."
-msgstr ""
+msgstr "Konstigt... någonting fick fel."
 
 msgctxt "ui.board.upload.disconnect_warning"
 msgid "Please don't disconnect your Quirkbot."
-msgstr ""
+msgstr "Koppla in ur din Quirkbot."
 
+#, fuzzy
 msgctxt "ui.board.upload.not_compatible_warning"
 msgid "Your board model is not compatible with this uploader."
-msgstr ""
+msgstr "Din Quirkbot är inte kompatibel med den här uppladdaren."

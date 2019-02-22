@@ -1,4 +1,4 @@
-# 
+# Dan Henriksson <dan@strawbees.com>, 2019. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
@@ -6,8 +6,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2019-02-22 03:34+0000\n"
+"Last-Translator: Dan Henriksson <dan@strawbees.com>\n"
 "Language-Team: Swedish\n"
 "Language: sv\n"
 "X-Generator: Zanata 4.6.2\n"
@@ -15,1244 +15,1306 @@ msgstr ""
 
 msgctxt "flow.og.title"
 msgid "Flow Programming"
-msgstr ""
+msgstr "Flowprogrammering"
 
 msgctxt "flow.og.image"
 msgid "/static/og/flow.png"
-msgstr ""
+msgstr "/static/og/flow.png"
 
 msgctxt "flow.base.title"
 msgid "Flow"
-msgstr ""
+msgstr "Flow"
 
 msgctxt "flow.menu.toggle.simple"
 msgid "simple"
-msgstr ""
+msgstr "förenklad"
 
 msgctxt "flow.menu.toggle.advanced"
 msgid "advanced"
-msgstr ""
+msgstr "avancerad"
 
 msgctxt "flow.category.brains"
 msgid "Brains"
-msgstr ""
+msgstr "Hjärna"
 
 msgctxt "flow.category.input"
 msgid "Input"
-msgstr ""
+msgstr "Input"
 
 msgctxt "flow.category.output"
 msgid "Output"
-msgstr ""
+msgstr "Output"
 
 msgctxt "flow.node.analog-sensor"
 msgid "Analog Sensor"
-msgstr ""
+msgstr "Analog Sensor"
 
 msgctxt "flow.node.buzzer"
 msgid "Buzzer"
-msgstr ""
+msgstr "Summer"
 
 msgctxt "flow.node.continuous-servo"
 msgid "Continuous Servo"
-msgstr ""
+msgstr "Kontinuerlig Servo"
 
 msgctxt "flow.node.comparison"
 msgid "Comparison"
-msgstr ""
+msgstr "Jämförelse"
 
 msgctxt "flow.node.constrain"
 msgid "Constrain"
-msgstr ""
+msgstr "Begränsa"
 
 msgctxt "flow.node.converter"
 msgid "Converter"
-msgstr ""
+msgstr "Konverterare"
 
 msgctxt "flow.node.counter"
 msgid "Counter"
-msgstr ""
+msgstr "Räknare"
 
 msgctxt "flow.node.dual-color-led"
 msgid "Dual Color LED"
-msgstr ""
+msgstr "Tvåfärgad Ljusdiod"
 
 msgctxt "flow.node.gate"
 msgid "Gate"
-msgstr ""
+msgstr "Port"
 
 msgctxt "flow.node.ir-proximity"
 msgid "IR Proximity"
-msgstr ""
+msgstr "IR"
 
 msgctxt "flow.node.key-press"
 msgid "Key Press"
-msgstr ""
+msgstr "Knapptryckning"
 
 msgctxt "flow.node.key-sequence"
 msgid "Key Sequence"
-msgstr ""
+msgstr "Knappsekvens"
 
 msgctxt "flow.node.led"
 msgid "LED"
-msgstr ""
+msgstr "Lysdiod"
 
 msgctxt "flow.node.light-sensor"
 msgid "Light Sensor"
-msgstr ""
+msgstr "Ljussensor"
 
 msgctxt "flow.node.list"
 msgid "List"
-msgstr ""
+msgstr "Lista"
 
 msgctxt "flow.node.logic"
 msgid "Logic"
-msgstr ""
+msgstr "Logik"
 
 msgctxt "flow.node.makey-touch"
 msgid "Circuit Touch"
-msgstr ""
+msgstr "Berörinssensor"
 
 msgctxt "flow.node.math"
 msgid "Math"
-msgstr ""
+msgstr "Mattematik"
 
 msgctxt "flow.node.randomizer"
 msgid "Randomizer"
-msgstr ""
+msgstr "Slumpgenerator"
 
 msgctxt "flow.node.sequence"
 msgid "Sequence"
-msgstr ""
+msgstr "Sekvens"
 
 msgctxt "flow.node.servo-motor"
 msgid "Servo Motor"
-msgstr ""
+msgstr "Servomotor"
 
 msgctxt "flow.node.sonar"
 msgid "Sonar"
-msgstr ""
+msgstr "Radar"
 
+#, fuzzy
 msgctxt "flow.node.squeeze-sensor"
 msgid "Squeeze Sensor"
-msgstr ""
+msgstr "Klämsensor"
 
 msgctxt "flow.node.statistics"
 msgid "Statistics"
-msgstr ""
+msgstr "Statistik"
 
 msgctxt "flow.node.voltage-output"
 msgid "Voltage Output"
-msgstr ""
+msgstr "Strömutgång"
 
 msgctxt "flow.node.wave"
 msgid "Wave"
-msgstr ""
+msgstr "Vågform"
 
 msgctxt "flow.node.time"
 msgid "Time"
-msgstr ""
+msgstr "Tid"
 
 msgctxt "flow.parameter.in"
 msgid "in"
-msgstr ""
+msgstr "in"
 
 msgctxt "flow.parameter.light"
 msgid "light intensity"
-msgstr ""
+msgstr "ljuskänslighet"
 
 msgctxt "flow.parameter.color"
 msgid "color"
-msgstr ""
+msgstr "färg"
 
+#, fuzzy
 msgctxt "flow.parameter.items"
 msgid "items"
-msgstr ""
+msgstr "objekt"
 
+#, fuzzy
 msgctxt "flow.parameter.operation"
 msgid "operation"
-msgstr ""
+msgstr "operation"
 
 msgctxt "flow.parameter.place"
 msgid "place"
-msgstr ""
+msgstr "plats"
 
 msgctxt "flow.parameter.position"
 msgid "position"
-msgstr ""
+msgstr "position"
 
 msgctxt "flow.parameter.sensitivity"
 msgid "sensitivity"
-msgstr ""
+msgstr "känslighet"
 
 msgctxt "flow.parameter.speed"
 msgid "speed"
-msgstr ""
+msgstr "hastighet"
 
 msgctxt "flow.parameter.direction"
 msgid "direction"
-msgstr ""
+msgstr "riktning"
 
 msgctxt "flow.parameter.duration"
 msgid "duration (s)"
-msgstr ""
+msgstr "varaktighet"
 
 msgctxt "flow.parameter.length"
 msgid "length (s)"
-msgstr ""
+msgstr "längd"
 
+#, fuzzy
 msgctxt "flow.parameter.meters"
 msgid "max distance (m)"
-msgstr ""
+msgstr "maximalt avstånd (m)"
 
 msgctxt "flow.parameter.interval"
 msgid "interval (s)"
-msgstr ""
+msgstr "intervall (s)"
 
 msgctxt "flow.parameter.type"
 msgid "type"
-msgstr ""
+msgstr "typ"
 
+#, fuzzy
 msgctxt "flow.parameter.min"
 msgid "min"
-msgstr ""
+msgstr "minimum"
 
+#, fuzzy
 msgctxt "flow.parameter.max"
 msgid "max"
-msgstr ""
+msgstr "maximum"
 
+#, fuzzy
 msgctxt "flow.parameter.inMin"
 msgid "in min"
-msgstr ""
+msgstr "in minimum"
 
+#, fuzzy
 msgctxt "flow.parameter.inMax"
 msgid "in max"
-msgstr ""
+msgstr "in maximum"
 
+#, fuzzy
 msgctxt "flow.parameter.outMin"
 msgid "out min"
-msgstr ""
+msgstr "ut minimum"
 
+#, fuzzy
 msgctxt "flow.parameter.outMax"
 msgid "out max"
-msgstr ""
+msgstr "ut maximum"
 
+#, fuzzy
 msgctxt "flow.parameter.trigger"
 msgid "trigger"
-msgstr ""
+msgstr "utlösare"
 
 msgctxt "flow.parameter.value"
 msgid "value"
-msgstr ""
+msgstr "värde"
 
 msgctxt "flow.parameter.key"
 msgid "key"
-msgstr ""
+msgstr "tangent"
 
+#, fuzzy
 msgctxt "flow.parameter.note"
 msgid "note"
-msgstr ""
+msgstr "not"
 
+#, fuzzy
 msgctxt "flow.parameter.holdTime"
 msgid "hold time"
-msgstr ""
+msgstr "håll tid"
 
+#, fuzzy
 msgctxt "flow.parameter.offset"
 msgid "offset"
-msgstr ""
+msgstr "förskjutning"
 
+#, fuzzy
 msgctxt "flow.parameter.channel"
 msgid "channel"
-msgstr ""
+msgstr "kanal"
 
+#, fuzzy
 msgctxt "flow.parameter.ifThen"
 msgid "then"
-msgstr ""
+msgstr "sedan"
 
 msgctxt "flow.parameter.ifElse"
 msgid "else"
-msgstr ""
+msgstr "annars"
 
+#, fuzzy
 msgctxt "flow.parameter.amount"
 msgid "amount"
-msgstr ""
+msgstr "summa"
 
 msgctxt "flow.parameter.open"
 msgid "open"
-msgstr ""
+msgstr "öppna"
 
 msgctxt "flow.parameter.close"
 msgid "close"
-msgstr ""
+msgstr "stäng"
 
+#, fuzzy
 msgctxt "flow.outlet.out"
 msgid "outlet"
-msgstr ""
+msgstr "utgång"
 
+#, fuzzy
 msgctxt "flow.constant.logic-and"
 msgid "AND"
-msgstr ""
+msgstr "AND"
 
+#, fuzzy
 msgctxt "flow.constant.logic-or"
 msgid "OR"
-msgstr ""
+msgstr "OR"
 
+#, fuzzy
 msgctxt "flow.constant.logic-xor"
 msgid "XOR"
-msgstr ""
+msgstr "XOR"
 
+#, fuzzy
 msgctxt "flow.constant.math-add"
 msgid "Add"
-msgstr ""
+msgstr "Addera"
 
+#, fuzzy
 msgctxt "flow.constant.math-subtract"
 msgid "Subtract"
-msgstr ""
+msgstr "Ta bort"
 
+#, fuzzy
 msgctxt "flow.constant.math-multiply"
 msgid "Multiply"
-msgstr ""
+msgstr "Multiplicera"
 
+#, fuzzy
 msgctxt "flow.constant.math-divide"
 msgid "Divide"
-msgstr ""
+msgstr "Dela"
 
+#, fuzzy
 msgctxt "flow.constant.math-modulo"
 msgid "Modulo"
-msgstr ""
+msgstr "Modul"
 
+#, fuzzy
 msgctxt "flow.constant.comparison-equal"
 msgid "Equal"
-msgstr ""
+msgstr "Lika med"
 
+#, fuzzy
 msgctxt "flow.constant.comparison-diff"
 msgid "Different"
-msgstr ""
+msgstr "Skiljer sig"
 
+#, fuzzy
 msgctxt "flow.constant.comparison-greater"
 msgid "Greater"
-msgstr ""
+msgstr "Större än"
 
+#, fuzzy
 msgctxt "flow.constant.comparison-greater-equal"
 msgid "Greater or equal"
-msgstr ""
+msgstr "Större eller lika med"
 
+#, fuzzy
 msgctxt "flow.constant.comparison-less"
 msgid "Less"
-msgstr ""
+msgstr "Mindre än"
 
+#, fuzzy
 msgctxt "flow.constant.comparison-less-equal"
 msgid "Less or equal"
-msgstr ""
+msgstr "Mindre än eller lika med"
 
+#, fuzzy
 msgctxt "flow.constant.statistics-avg"
 msgid "Average"
-msgstr ""
+msgstr "Medelvärde"
 
+#, fuzzy
 msgctxt "flow.constant.statistics-min"
 msgid "Minimum"
-msgstr ""
+msgstr "Minimum"
 
+#, fuzzy
 msgctxt "flow.constant.statistics-max"
 msgid "Maximum"
-msgstr ""
+msgstr "Maximum"
 
+#, fuzzy
 msgctxt "flow.constant.statistics-sum"
 msgid "Summation"
-msgstr ""
+msgstr "Summering"
 
+#, fuzzy
 msgctxt "flow.constant.wave-sine"
 msgid "Sine"
-msgstr ""
+msgstr "Sinusvåg"
 
+#, fuzzy
 msgctxt "flow.constant.wave-square"
 msgid "Square"
-msgstr ""
+msgstr "Fyrkantsvåg"
 
+#, fuzzy
 msgctxt "flow.constant.wave-triangle"
 msgid "Triangle"
-msgstr ""
+msgstr "Triangelvåg"
 
+#, fuzzy
 msgctxt "flow.constant.wave-pulse"
 msgid "Pulse"
-msgstr ""
+msgstr "Pulsvåg"
 
+#, fuzzy
 msgctxt "flow.constant.wave-ramp-up"
 msgid "Ramp Up"
-msgstr ""
+msgstr "Ramp uppåt"
 
+#, fuzzy
 msgctxt "flow.constant.wave-ramp-down"
 msgid "Ramp Down"
-msgstr ""
+msgstr "Ramp nedåt"
 
 msgctxt "flow.constant.servo-motor-1"
 msgid "Servo 1"
-msgstr ""
+msgstr "Servo 1"
 
 msgctxt "flow.constant.servo-motor-2"
 msgid "Servo 2"
-msgstr ""
+msgstr "Servo 2"
 
 msgctxt "flow.constant.disconnected"
 msgid "Disconnected"
-msgstr ""
+msgstr "Oansluten"
 
 msgctxt "flow.constant.place-left-eye"
 msgid "Left eye"
-msgstr ""
+msgstr "Vänster öga"
 
 msgctxt "flow.constant.place-right-eye"
 msgid "Right eye"
-msgstr ""
+msgstr "Höger öga"
 
 msgctxt "flow.constant.place-left-mouth"
 msgid "Left mouth"
-msgstr ""
+msgstr "Vänster mun"
 
 msgctxt "flow.constant.place-right-mouth"
 msgid "Right mouth"
-msgstr ""
+msgstr "Höger mun"
 
 msgctxt "flow.constant.place-horn"
 msgid "Horn"
-msgstr ""
+msgstr "Horn"
 
 msgctxt "flow.constant.place-left-arm"
 msgid "Left arm"
-msgstr ""
+msgstr "Vänster arm"
 
 msgctxt "flow.constant.place-right-arm"
 msgid "Right arm"
-msgstr ""
+msgstr "Höger arm"
 
 msgctxt "flow.constant.place-left-leg"
 msgid "Left leg"
-msgstr ""
+msgstr "Vänster ben"
 
 msgctxt "flow.constant.place-right-leg"
 msgid "Right leg"
-msgstr ""
+msgstr "Höger ben"
 
+#, fuzzy
 msgctxt "flow.constant.place-horn-front"
 msgid "Horn Front"
-msgstr ""
+msgstr "Hornets Framsida"
 
+#, fuzzy
 msgctxt "flow.constant.place-left-arm-front"
 msgid "Left Arm Front"
-msgstr ""
+msgstr "Vänster Arms Framsida"
 
+#, fuzzy
 msgctxt "flow.constant.place-right-arm-front"
 msgid "Right Arm Front"
-msgstr ""
+msgstr "Höger Arms Framsida"
 
+#, fuzzy
 msgctxt "flow.constant.place-left-leg-front"
 msgid "Left Leg Front"
-msgstr ""
+msgstr "Vänster Bens Framsida"
 
+#, fuzzy
 msgctxt "flow.constant.place-right-leg-front"
 msgid "Right Leg Front"
-msgstr ""
+msgstr "Höger Bens Framsida"
 
+#, fuzzy
 msgctxt "flow.constant.place-horn-back"
 msgid "Horn Back"
-msgstr ""
+msgstr "Hornets Baksida"
 
+#, fuzzy
 msgctxt "flow.constant.place-left-arm-back"
 msgid "Left Arm Back"
-msgstr ""
+msgstr "Vänster Arms Baksida"
 
+#, fuzzy
 msgctxt "flow.constant.place-right-arm-back"
 msgid "Right Arm Back"
-msgstr ""
+msgstr "Höger Arms Baksida"
 
+#, fuzzy
 msgctxt "flow.constant.place-left-leg-back"
 msgid "Left Leg Back"
-msgstr ""
+msgstr "Vänster Bens Baksida"
 
+#, fuzzy
 msgctxt "flow.constant.place-right-leg-back"
 msgid "Right Leg Back"
-msgstr ""
+msgstr "Höger Bens Baksida"
 
 msgctxt "flow.constant.place-backpack-1"
 msgid "Backpack 1"
-msgstr ""
+msgstr "Backpack 1"
 
 msgctxt "flow.constant.place-backpack-2"
 msgid "Backpack 2"
-msgstr ""
+msgstr "Backpack 2"
 
 msgctxt "flow.constant.place-backpack-3"
 msgid "Backpack 3"
-msgstr ""
+msgstr "Backpack 3"
 
 msgctxt "flow.constant.place-backpack-4"
 msgid "Backpack 4"
-msgstr ""
+msgstr "Backpack 4"
 
 msgctxt "flow.constant.place-backpack-5"
 msgid "Backpack 5"
-msgstr ""
+msgstr "Backpack 5"
 
 msgctxt "flow.constant.place-backpack-6"
 msgid "Backpack 6"
-msgstr ""
+msgstr "Backpack 6"
 
+#, fuzzy
 msgctxt "flow.constant.no-note"
 msgid "No note"
-msgstr ""
+msgstr "Ingen ton"
 
 msgctxt "flow.constant.note-a1"
 msgid "A1"
-msgstr ""
+msgstr "A1"
 
 msgctxt "flow.constant.note-as1"
 msgid "A#1"
-msgstr ""
+msgstr "A#1"
 
 msgctxt "flow.constant.note-b1"
 msgid "B1"
-msgstr ""
+msgstr "B1"
 
 msgctxt "flow.constant.note-c2"
 msgid "C2"
-msgstr ""
+msgstr "C2"
 
 msgctxt "flow.constant.note-cs2"
 msgid "C#2"
-msgstr ""
+msgstr "C#2"
 
 msgctxt "flow.constant.note-d2"
 msgid "D2"
-msgstr ""
+msgstr "D2"
 
 msgctxt "flow.constant.note-ds2"
 msgid "D#2"
-msgstr ""
+msgstr "D#2"
 
 msgctxt "flow.constant.note-e2"
 msgid "E2"
-msgstr ""
+msgstr "E2"
 
 msgctxt "flow.constant.note-f2"
 msgid "F2"
-msgstr ""
+msgstr "F2"
 
 msgctxt "flow.constant.note-fs2"
 msgid "F#2"
-msgstr ""
+msgstr "F#2"
 
 msgctxt "flow.constant.note-g2"
 msgid "G2"
-msgstr ""
+msgstr "G2"
 
 msgctxt "flow.constant.note-gs2"
 msgid "G#2"
-msgstr ""
+msgstr "G#2"
 
 msgctxt "flow.constant.note-a2"
 msgid "A2"
-msgstr ""
+msgstr "A2"
 
 msgctxt "flow.constant.note-as2"
 msgid "A#2"
-msgstr ""
+msgstr "A#2"
 
 msgctxt "flow.constant.note-b2"
 msgid "B2"
-msgstr ""
+msgstr "B2"
 
 msgctxt "flow.constant.note-c3"
 msgid "C3"
-msgstr ""
+msgstr "C3"
 
 msgctxt "flow.constant.note-cs3"
 msgid "C#3"
-msgstr ""
+msgstr "C#3"
 
 msgctxt "flow.constant.note-d3"
 msgid "D3"
-msgstr ""
+msgstr "D3"
 
 msgctxt "flow.constant.note-ds3"
 msgid "D#3"
-msgstr ""
+msgstr "D#3"
 
 msgctxt "flow.constant.note-e3"
 msgid "E3"
-msgstr ""
+msgstr "E3"
 
 msgctxt "flow.constant.note-f3"
 msgid "F3"
-msgstr ""
+msgstr "F3"
 
 msgctxt "flow.constant.note-fs3"
 msgid "F#3"
-msgstr ""
+msgstr "F#3"
 
 msgctxt "flow.constant.note-g3"
 msgid "G3"
-msgstr ""
+msgstr "G3"
 
 msgctxt "flow.constant.note-gs3"
 msgid "G#3"
-msgstr ""
+msgstr "G#3"
 
 msgctxt "flow.constant.note-a3"
 msgid "A3"
-msgstr ""
+msgstr "A3"
 
 msgctxt "flow.constant.note-as3"
 msgid "A#3"
-msgstr ""
+msgstr "A#3"
 
 msgctxt "flow.constant.note-b3"
 msgid "B3"
-msgstr ""
+msgstr "B3"
 
 msgctxt "flow.constant.note-c4"
 msgid "C4"
-msgstr ""
+msgstr "C4"
 
 msgctxt "flow.constant.note-cs4"
 msgid "C#4"
-msgstr ""
+msgstr "C#4"
 
 msgctxt "flow.constant.note-d4"
 msgid "D4"
-msgstr ""
+msgstr "D4"
 
 msgctxt "flow.constant.note-ds4"
 msgid "D#4"
-msgstr ""
+msgstr "D#4"
 
 msgctxt "flow.constant.note-e4"
 msgid "E4"
-msgstr ""
+msgstr "E4"
 
 msgctxt "flow.constant.note-f4"
 msgid "F4"
-msgstr ""
+msgstr "F4"
 
 msgctxt "flow.constant.note-fs4"
 msgid "F#4"
-msgstr ""
+msgstr "F#4"
 
 msgctxt "flow.constant.note-g4"
 msgid "G4"
-msgstr ""
+msgstr "G4"
 
 msgctxt "flow.constant.note-gs4"
 msgid "G#4"
-msgstr ""
+msgstr "G#4"
 
 msgctxt "flow.constant.note-a4"
 msgid "A4"
-msgstr ""
+msgstr "A4"
 
 msgctxt "flow.constant.note-as4"
 msgid "A#4"
-msgstr ""
+msgstr "A#4"
 
 msgctxt "flow.constant.note-b4"
 msgid "B4"
-msgstr ""
+msgstr "B4"
 
 msgctxt "flow.constant.note-c5"
 msgid "C5"
-msgstr ""
+msgstr "C5"
 
 msgctxt "flow.constant.note-cs5"
 msgid "C#5"
-msgstr ""
+msgstr "C#5"
 
 msgctxt "flow.constant.note-d5"
 msgid "D5"
-msgstr ""
+msgstr "D5"
 
 msgctxt "flow.constant.note-ds5"
 msgid "D#5"
-msgstr ""
+msgstr "D#5"
 
 msgctxt "flow.constant.note-e5"
 msgid "E5"
-msgstr ""
+msgstr "E5"
 
 msgctxt "flow.constant.note-f5"
 msgid "F5"
-msgstr ""
+msgstr "F5"
 
 msgctxt "flow.constant.note-fs5"
 msgid "F#5"
-msgstr ""
+msgstr "F#5"
 
 msgctxt "flow.constant.note-g5"
 msgid "G5"
-msgstr ""
+msgstr "G5"
 
 msgctxt "flow.constant.note-gs5"
 msgid "G#5"
-msgstr ""
+msgstr "G#5"
 
 msgctxt "flow.constant.note-a5"
 msgid "A5"
-msgstr ""
+msgstr "A5"
 
 msgctxt "flow.constant.note-as5"
 msgid "A#5"
-msgstr ""
+msgstr "A#5"
 
 msgctxt "flow.constant.note-b5"
 msgid "B5"
-msgstr ""
+msgstr "B5"
 
 msgctxt "flow.constant.note-c6"
 msgid "C6"
-msgstr ""
+msgstr "C6"
 
 msgctxt "flow.constant.note-cs6"
 msgid "C#6"
-msgstr ""
+msgstr "C#6"
 
 msgctxt "flow.constant.note-d6"
 msgid "D6"
-msgstr ""
+msgstr "D6"
 
 msgctxt "flow.constant.note-ds6"
 msgid "D#6"
-msgstr ""
+msgstr "D#6"
 
 msgctxt "flow.constant.note-e6"
 msgid "E6"
-msgstr ""
+msgstr "E6"
 
 msgctxt "flow.constant.note-f6"
 msgid "F6"
-msgstr ""
+msgstr "F6"
 
 msgctxt "flow.constant.note-fs6"
 msgid "F#6"
-msgstr ""
+msgstr "F#6"
 
 msgctxt "flow.constant.note-g6"
 msgid "G6"
-msgstr ""
+msgstr "G6"
 
 msgctxt "flow.constant.note-gs6"
 msgid "G#6"
-msgstr ""
+msgstr "G#6"
 
 msgctxt "flow.constant.note-a6"
 msgid "A6"
-msgstr ""
+msgstr "A6"
 
 msgctxt "flow.constant.note-as6"
 msgid "A#6"
-msgstr ""
+msgstr "A#6"
 
 msgctxt "flow.constant.note-b6"
 msgid "B6"
-msgstr ""
+msgstr "B6"
 
 msgctxt "flow.constant.note-c7"
 msgid "C7"
-msgstr ""
+msgstr "C7"
 
 msgctxt "flow.constant.note-cs7"
 msgid "C#7"
-msgstr ""
+msgstr "C#7"
 
 msgctxt "flow.constant.note-d7"
 msgid "D7"
-msgstr ""
+msgstr "D7"
 
 msgctxt "flow.constant.note-ds7"
 msgid "D#7"
-msgstr ""
+msgstr "D#7"
 
 msgctxt "flow.constant.note-e7"
 msgid "E7"
-msgstr ""
+msgstr "E7"
 
 msgctxt "flow.constant.note-f7"
 msgid "F7"
-msgstr ""
+msgstr "F7"
 
 msgctxt "flow.constant.note-fs7"
 msgid "F#7"
-msgstr ""
+msgstr "F#7"
 
 msgctxt "flow.constant.note-g7"
 msgid "G7"
-msgstr ""
+msgstr "G7"
 
 msgctxt "flow.constant.note-gs7"
 msgid "G#7"
-msgstr ""
+msgstr "G#7"
 
 msgctxt "flow.constant.note-a7"
 msgid "A7"
-msgstr ""
+msgstr "A7"
 
 msgctxt "flow.constant.note-as7"
 msgid "A#7"
-msgstr ""
+msgstr "A#7"
 
 msgctxt "flow.constant.note-b7"
 msgid "B7"
-msgstr ""
+msgstr "B7"
 
 msgctxt "flow.constant.note-c8"
 msgid "C8"
-msgstr ""
+msgstr "C8"
 
 msgctxt "flow.constant.note-cs8"
 msgid "C#8"
-msgstr ""
+msgstr "C#8"
 
 msgctxt "flow.constant.note-d8"
 msgid "D8"
-msgstr ""
+msgstr "D8"
 
 msgctxt "flow.constant.note-ds8"
 msgid "D#8"
-msgstr ""
+msgstr "D#8"
 
+#, fuzzy
 msgctxt "flow.constant.no-key"
 msgid "No key"
-msgstr ""
+msgstr "Ingen tangent"
 
 msgctxt "flow.constant.key-0"
 msgid "0"
-msgstr ""
+msgstr "0"
 
 msgctxt "flow.constant.key-1"
 msgid "1"
-msgstr ""
+msgstr "1"
 
 msgctxt "flow.constant.key-2"
 msgid "2"
-msgstr ""
+msgstr "2"
 
 msgctxt "flow.constant.key-3"
 msgid "3"
-msgstr ""
+msgstr "3"
 
 msgctxt "flow.constant.key-4"
 msgid "4"
-msgstr ""
+msgstr "4"
 
 msgctxt "flow.constant.key-5"
 msgid "5"
-msgstr ""
+msgstr "5"
 
 msgctxt "flow.constant.key-6"
 msgid "6"
-msgstr ""
+msgstr "6"
 
 msgctxt "flow.constant.key-7"
 msgid "7"
-msgstr ""
+msgstr "7"
 
 msgctxt "flow.constant.key-8"
 msgid "8"
-msgstr ""
+msgstr "8"
 
 msgctxt "flow.constant.key-9"
 msgid "9"
-msgstr ""
+msgstr "9"
 
 msgctxt "flow.constant.key-a"
 msgid "A"
-msgstr ""
+msgstr "A"
 
 msgctxt "flow.constant.key-b"
 msgid "B"
-msgstr ""
+msgstr "B"
 
 msgctxt "flow.constant.key-c"
 msgid "C"
-msgstr ""
+msgstr "C"
 
 msgctxt "flow.constant.key-d"
 msgid "D"
-msgstr ""
+msgstr "D"
 
 msgctxt "flow.constant.key-e"
 msgid "E"
-msgstr ""
+msgstr "E"
 
 msgctxt "flow.constant.key-f"
 msgid "F"
-msgstr ""
+msgstr "F"
 
 msgctxt "flow.constant.key-g"
 msgid "G"
-msgstr ""
+msgstr "G"
 
 msgctxt "flow.constant.key-h"
 msgid "H"
-msgstr ""
+msgstr "H"
 
 msgctxt "flow.constant.key-i"
 msgid "I"
-msgstr ""
+msgstr "I"
 
 msgctxt "flow.constant.key-j"
 msgid "J"
-msgstr ""
+msgstr "J"
 
 msgctxt "flow.constant.key-k"
 msgid "K"
-msgstr ""
+msgstr "K"
 
 msgctxt "flow.constant.key-l"
 msgid "L"
-msgstr ""
+msgstr "L"
 
 msgctxt "flow.constant.key-m"
 msgid "M"
-msgstr ""
+msgstr "M"
 
 msgctxt "flow.constant.key-n"
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgctxt "flow.constant.key-o"
 msgid "O"
-msgstr ""
+msgstr "O"
 
 msgctxt "flow.constant.key-p"
 msgid "P"
-msgstr ""
+msgstr "P"
 
 msgctxt "flow.constant.key-q"
 msgid "Q"
-msgstr ""
+msgstr "Q"
 
 msgctxt "flow.constant.key-r"
 msgid "R"
-msgstr ""
+msgstr "R"
 
 msgctxt "flow.constant.key-s"
 msgid "S"
-msgstr ""
+msgstr "S"
 
 msgctxt "flow.constant.key-t"
 msgid "T"
-msgstr ""
+msgstr "T"
 
 msgctxt "flow.constant.key-u"
 msgid "U"
-msgstr ""
+msgstr "U"
 
 msgctxt "flow.constant.key-v"
 msgid "V"
-msgstr ""
+msgstr "V"
 
 msgctxt "flow.constant.key-w"
 msgid "W"
-msgstr ""
+msgstr "W"
 
 msgctxt "flow.constant.key-x"
 msgid "X"
-msgstr ""
+msgstr "X"
 
 msgctxt "flow.constant.key-y"
 msgid "Y"
-msgstr ""
+msgstr "Y"
 
 msgctxt "flow.constant.key-z"
 msgid "Z"
-msgstr ""
+msgstr "Z"
 
 msgctxt "flow.constant.key-left_ctrl"
 msgid "Left CTRL"
-msgstr ""
+msgstr "Vänster CTRL"
 
 msgctxt "flow.constant.key-left_shift"
 msgid "Left SHIFT"
-msgstr ""
+msgstr "Vänster SHIFT"
 
 msgctxt "flow.constant.key-left_alt"
 msgid "Left ALT"
-msgstr ""
+msgstr "Vänster ALT"
 
+#, fuzzy
 msgctxt "flow.constant.key-left_gui"
 msgid "Left GUI"
-msgstr ""
+msgstr "Vänster GUI"
 
 msgctxt "flow.constant.key-right_ctrl"
 msgid "Right CTRL"
-msgstr ""
+msgstr "Höger CTRL"
 
 msgctxt "flow.constant.key-right_shift"
 msgid "Right SHIFT"
-msgstr ""
+msgstr "Höger SHIFT"
 
 msgctxt "flow.constant.key-right_alt"
 msgid "Right ALT"
-msgstr ""
+msgstr "Höger ALT"
 
+#, fuzzy
 msgctxt "flow.constant.key-right_gui"
 msgid "Right GUI"
-msgstr ""
+msgstr "Höger GUI"
 
 msgctxt "flow.constant.key-up"
 msgid "Up"
-msgstr ""
+msgstr "Upp"
 
 msgctxt "flow.constant.key-down"
 msgid "Down"
-msgstr ""
+msgstr "Ned"
 
 msgctxt "flow.constant.key-left"
 msgid "Left"
-msgstr ""
+msgstr "Vänster"
 
 msgctxt "flow.constant.key-right"
 msgid "Right"
-msgstr ""
+msgstr "Höger"
 
+#, fuzzy
 msgctxt "flow.constant.key-backspace"
 msgid "Backspace"
-msgstr ""
+msgstr "Backsteg"
 
 msgctxt "flow.constant.key-tab"
 msgid "Tab"
-msgstr ""
+msgstr "Tab"
 
 msgctxt "flow.constant.key-return"
 msgid "Return"
-msgstr ""
+msgstr "Enter"
 
 msgctxt "flow.constant.key-esc"
 msgid "ESC"
-msgstr ""
+msgstr "ESC"
 
 msgctxt "flow.constant.key-insert"
 msgid "Insert"
-msgstr ""
+msgstr "Insert"
 
 msgctxt "flow.constant.key-delete"
 msgid "Delete"
-msgstr ""
+msgstr "Delete"
 
 msgctxt "flow.constant.key-page_up"
 msgid "Page up"
-msgstr ""
+msgstr "Page Up"
 
 msgctxt "flow.constant.key-page_down"
 msgid "Page down"
-msgstr ""
+msgstr "Page Down"
 
 msgctxt "flow.constant.key-home"
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
 msgctxt "flow.constant.key-end"
 msgid "End"
-msgstr ""
+msgstr "End"
 
 msgctxt "flow.constant.key-caps_lock"
 msgid "Caps lock"
-msgstr ""
+msgstr "Caps lock"
 
 msgctxt "flow.constant.key-f1"
 msgid "F1"
-msgstr ""
+msgstr "F1"
 
 msgctxt "flow.constant.key-f2"
 msgid "F2"
-msgstr ""
+msgstr "F2"
 
 msgctxt "flow.constant.key-f3"
 msgid "F3"
-msgstr ""
+msgstr "F3"
 
 msgctxt "flow.constant.key-f4"
 msgid "F4"
-msgstr ""
+msgstr "F4"
 
 msgctxt "flow.constant.key-f5"
 msgid "F5"
-msgstr ""
+msgstr "F5"
 
 msgctxt "flow.constant.key-f6"
 msgid "F6"
-msgstr ""
+msgstr "F6"
 
 msgctxt "flow.constant.key-f7"
 msgid "F7"
-msgstr ""
+msgstr "F7"
 
 msgctxt "flow.constant.key-f8"
 msgid "F8"
-msgstr ""
+msgstr "F8"
 
 msgctxt "flow.constant.key-f9"
 msgid "F9"
-msgstr ""
+msgstr "F9"
 
 msgctxt "flow.constant.key-f10"
 msgid "F10"
-msgstr ""
+msgstr "F10"
 
 msgctxt "flow.constant.key-f11"
 msgid "F11"
-msgstr ""
+msgstr "F11"
 
 msgctxt "flow.constant.key-f12"
 msgid "F12"
-msgstr ""
+msgstr "F12"
 
 msgctxt "flow.constant.key-space"
 msgid "SPACE"
-msgstr ""
+msgstr "SPACE"
 
 msgctxt "flow.constant.key-exclamation_point"
 msgid "!"
-msgstr ""
+msgstr "!"
 
 msgctxt "flow.constant.key-double_quotes"
 msgid "\""
-msgstr ""
+msgstr "\""
 
 msgctxt "flow.constant.key-number_sign"
 msgid "#"
-msgstr ""
+msgstr "#"
 
 msgctxt "flow.constant.key-dollar_sign"
 msgid "$"
-msgstr ""
+msgstr "$"
 
 msgctxt "flow.constant.key-percent_sign"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 msgctxt "flow.constant.key-ampersand"
 msgid "&"
-msgstr ""
+msgstr "&"
 
 msgctxt "flow.constant.key-single_quote"
 msgid "'"
-msgstr ""
+msgstr "'"
 
 msgctxt "flow.constant.key-opening_parenthesis"
 msgid "("
-msgstr ""
+msgstr "("
 
 msgctxt "flow.constant.key-closing_parenthesis"
 msgid ")"
-msgstr ""
+msgstr ")"
 
 msgctxt "flow.constant.key-asterisk"
 msgid "*"
-msgstr ""
+msgstr "*"
 
 msgctxt "flow.constant.key-plus_sign"
 msgid "+"
-msgstr ""
+msgstr "+"
 
 msgctxt "flow.constant.key-comma"
 msgid ","
-msgstr ""
+msgstr ","
 
 msgctxt "flow.constant.key-minus_sign"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 msgctxt "flow.constant.key-period"
 msgid "."
-msgstr ""
+msgstr "."
 
 msgctxt "flow.constant.key-slash"
 msgid "/"
-msgstr ""
+msgstr "/"
 
 msgctxt "flow.constant.key-colon"
 msgid ":"
-msgstr ""
+msgstr ":"
 
 msgctxt "flow.constant.key-semicolon"
 msgid ";"
-msgstr ""
+msgstr ";"
 
 msgctxt "flow.constant.key-less_than_sign"
 msgid "<"
-msgstr ""
+msgstr "<"
 
 msgctxt "flow.constant.key-equal_sign"
 msgid "="
-msgstr ""
+msgstr "="
 
 msgctxt "flow.constant.key-greater_than_sign"
 msgid ">"
-msgstr ""
+msgstr ">"
 
 msgctxt "flow.constant.key-question_mark"
 msgid "?"
-msgstr ""
+msgstr "?"
 
 msgctxt "flow.constant.key-at_symbol"
 msgid "@"
-msgstr ""
+msgstr "@"
 
 msgctxt "flow.constant.key-opening_bracket"
 msgid "["
-msgstr ""
+msgstr "["
 
 msgctxt "flow.constant.key-backslash"
 msgid "\\"
-msgstr ""
+msgstr "\\"
 
 msgctxt "flow.constant.key-closing_bracket"
 msgid "]"
-msgstr ""
+msgstr "]"
 
 msgctxt "flow.constant.key-caret"
 msgid "^"
-msgstr ""
+msgstr "^"
 
 msgctxt "flow.constant.key-underscore"
 msgid "_"
-msgstr ""
+msgstr "_"
 
 msgctxt "flow.constant.key-grave_accent"
 msgid "`"
-msgstr ""
+msgstr "`"
 
 msgctxt "flow.constant.key-opening_brace"
 msgid "{"
-msgstr ""
+msgstr "{"
 
 msgctxt "flow.constant.key-vertical_bar"
 msgid "|"
-msgstr ""
+msgstr "|"
 
 msgctxt "flow.constant.key-closing_brace"
 msgid "}"
-msgstr ""
+msgstr "}"
 
 msgctxt "flow.constant.key-tilde"
 msgid "~"
-msgstr ""
+msgstr "~"
 
+#, fuzzy
 msgctxt "flow.constant.no-channel"
 msgid "No Channel"
-msgstr ""
+msgstr "Ingen Kanal"
 
+#, fuzzy
 msgctxt "flow.constant.channel-1"
 msgid "Channel 1"
-msgstr ""
+msgstr "Kanal 1"
 
+#, fuzzy
 msgctxt "flow.constant.channel-2"
 msgid "Channel 2"
-msgstr ""
+msgstr "Kanal 2"
 
+#, fuzzy
 msgctxt "flow.constant.channel-3"
 msgid "Channel 3"
-msgstr ""
+msgstr "Kanal 3"
 
+#, fuzzy
 msgctxt "flow.constant.channel-4"
 msgid "Channel 4"
-msgstr ""
+msgstr "Kanal 4"
