@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
-import withScript from 'src/hoc/withScript'
 import IconButton from 'src/components/iconButton'
 import Spinner from 'src/components/spinner'
 import plusIcon from 'src/assets/icons/general/plus.svg'
 import debounce from 'src/utils/debounce'
+import sortDomNode from 'src/utils/sortDomNode'
 import {
 	GRAY,
 	WHITE,
@@ -86,7 +86,7 @@ class BlockEditor extends React.Component {
 		this.mainWorkspaceContainer = React.createRef()
 	}
 
-	loadSource(source) {
+	loadSource = (source) => {
 		const {
 			Blockly
 		} = window
@@ -136,6 +136,7 @@ class BlockEditor extends React.Component {
 		this.mainWorkspace = Blockly.inject(mainWorkspaceContainer.current, {
 			toolbox : toolboxXml,
 			media   : mediaPath,
+			sounds  : false,
 			zoom    : {
 				controls   : true,
 				wheel      : true,
@@ -168,6 +169,11 @@ class BlockEditor extends React.Component {
 
 			this.cancelSourceUpdate = debounce('update block source', () => {
 				const xml = Blockly.Xml.workspaceToDom(this.mainWorkspace)
+				// it's importat to sort the node before comparing it, as
+				// sometimes blockly will change the internal order of the Xml
+				// nodes, causing the comparisson to be a false positive, and
+				// that causes all sorts of problems
+				sortDomNode(xml)
 				const currentSource = Blockly.Xml.domToText(xml)
 				if (this.source !== currentSource) {
 					this.source = currentSource
