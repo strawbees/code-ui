@@ -29,9 +29,7 @@ if (process.browser) {
 if (process.browser) {
 	if ('serviceWorker' in navigator) {
 		// Use the window load event to keep the page load performant
-		console.log('sw')
 		window.addEventListener('load', () => {
-			console.log('load')
 			navigator.serviceWorker.register(`${ROOT_PATH}/service-worker.js`)
 		})
 	}
