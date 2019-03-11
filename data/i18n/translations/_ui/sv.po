@@ -6,7 +6,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-02-22 03:32+0000\n"
+"PO-Revision-Date: 2019-02-26 10:30+0000\n"
 "Last-Translator: Dan Henriksson <dan@strawbees.com>\n"
 "Language-Team: Swedish\n"
 "Language: sv\n"
@@ -25,13 +25,14 @@ msgctxt "ui.sb_cloud.signup.title"
 msgid "Sign up to Strawbees Cloud"
 msgstr "Skapa konto på Strawbees Cloud"
 
+#, fuzzy
 msgctxt "ui.sb_cloud.signin.cta"
 msgid "Login"
-msgstr ""
+msgstr "Logga In"
 
 msgctxt "ui.sb_cloud.signin.title"
 msgid "Login to Strawbees Cloud"
-msgstr ""
+msgstr "Logga in på Strawbees Cloud"
 
 msgctxt "ui.sb_cloud.signup.age.label"
 msgid "How old are you?"
@@ -177,9 +178,10 @@ msgctxt "ui.sb_cloud.signin.password.error.blank"
 msgid "You need to fill in your password."
 msgstr "Du måste fylla i ditt lösenord."
 
+#, fuzzy
 msgctxt "ui.sb_cloud.signin.submit"
 msgid "Login"
-msgstr ""
+msgstr "Logga In"
 
 msgctxt "ui.sb_cloud.signin.submit.error.network"
 msgid "There seems to be a connection problem."
@@ -572,21 +574,23 @@ msgctxt "ui.user.account_settings.button"
 msgid "Account settings"
 msgstr "Kontoinställningar"
 
+#, fuzzy
 msgctxt "ui.user.account_settings.annon"
 msgid "Login"
-msgstr ""
+msgstr "Logga In"
 
 msgctxt "ui.user.account_settings.profile"
 msgid "View Profile"
 msgstr "Visa Profil"
 
+#, fuzzy
 msgctxt "ui.user.account_settings.signin"
 msgid "Login"
-msgstr ""
+msgstr "Logga In"
 
 msgctxt "ui.user.account_settings.signup"
 msgid "Sign up"
-msgstr "Logga in"
+msgstr "Skapa Konto"
 
 msgctxt "ui.user.account_settings.logout"
 msgid "Log out"
