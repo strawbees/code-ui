@@ -6,7 +6,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-02-22 05:05+0000\n"
+"PO-Revision-Date: 2019-02-22 11:37+0000\n"
 "Last-Translator: Paulo Barcelos <paulo@strawbees.com>\n"
 "Language-Team: Portuguese (Brazil)\n"
 "Language: pt_BR\n"
@@ -35,7 +35,7 @@ msgstr "avançado"
 
 msgctxt "flow.category.brains"
 msgid "Brains"
-msgstr ""
+msgstr "Processamento"
 
 msgctxt "flow.category.input"
 msgid "Input"
@@ -47,23 +47,23 @@ msgstr "Saída"
 
 msgctxt "flow.node.analog-sensor"
 msgid "Analog Sensor"
-msgstr ""
+msgstr "Sensor analógico"
 
 msgctxt "flow.node.buzzer"
 msgid "Buzzer"
-msgstr ""
+msgstr "Campainha"
 
 msgctxt "flow.node.continuous-servo"
 msgid "Continuous Servo"
-msgstr ""
+msgstr "Servo contínuo"
 
 msgctxt "flow.node.comparison"
 msgid "Comparison"
-msgstr ""
+msgstr "Comparação"
 
 msgctxt "flow.node.constrain"
 msgid "Constrain"
-msgstr ""
+msgstr "Limitador"
 
 msgctxt "flow.node.converter"
 msgid "Converter"
@@ -75,15 +75,15 @@ msgstr "Contador"
 
 msgctxt "flow.node.dual-color-led"
 msgid "Dual Color LED"
-msgstr ""
+msgstr "LED duas cores"
 
 msgctxt "flow.node.gate"
 msgid "Gate"
-msgstr "Porta"
+msgstr "Interruptor"
 
 msgctxt "flow.node.ir-proximity"
 msgid "IR Proximity"
-msgstr ""
+msgstr "Sensor infravermelho"
 
 msgctxt "flow.node.key-press"
 msgid "Key Press"
@@ -203,7 +203,7 @@ msgstr "comprimento (s)"
 
 msgctxt "flow.parameter.meters"
 msgid "max distance (m)"
-msgstr "distância máxima"
+msgstr "distância máxima (m)"
 
 msgctxt "flow.parameter.interval"
 msgid "interval (s)"
@@ -239,7 +239,7 @@ msgstr "valor máximo da saída"
 
 msgctxt "flow.parameter.trigger"
 msgid "trigger"
-msgstr "gatilho"
+msgstr "ativação"
 
 msgctxt "flow.parameter.value"
 msgid "value"
@@ -259,7 +259,7 @@ msgstr "tempo pressionada"
 
 msgctxt "flow.parameter.offset"
 msgid "offset"
-msgstr ""
+msgstr "fase"
 
 msgctxt "flow.parameter.channel"
 msgid "channel"
@@ -275,7 +275,7 @@ msgstr "senão"
 
 msgctxt "flow.parameter.amount"
 msgid "amount"
-msgstr "quantidade"
+msgstr "incremento"
 
 msgctxt "flow.parameter.open"
 msgid "open"
@@ -483,35 +483,35 @@ msgstr "Mochila 2"
 
 msgctxt "flow.constant.place-backpack-3"
 msgid "Backpack 3"
-msgstr ""
+msgstr "Mochila 3"
 
 msgctxt "flow.constant.place-backpack-4"
 msgid "Backpack 4"
-msgstr ""
+msgstr "Mochila 4"
 
 msgctxt "flow.constant.place-backpack-5"
 msgid "Backpack 5"
-msgstr ""
+msgstr "Mochila 5"
 
 msgctxt "flow.constant.place-backpack-6"
 msgid "Backpack 6"
-msgstr ""
+msgstr "Mochila 6"
 
 msgctxt "flow.constant.no-note"
 msgid "No note"
-msgstr ""
+msgstr "Nenhuma nota"
 
 msgctxt "flow.constant.note-a1"
 msgid "A1"
-msgstr ""
+msgstr "A1"
 
 msgctxt "flow.constant.note-as1"
 msgid "A#1"
-msgstr ""
+msgstr "A#1"
 
 msgctxt "flow.constant.note-b1"
 msgid "B1"
-msgstr ""
+msgstr "B1"
 
 msgctxt "flow.constant.note-c2"
 msgid "C2"
@@ -979,7 +979,7 @@ msgstr "ALT esquerdo"
 
 msgctxt "flow.constant.key-left_gui"
 msgid "Left GUI"
-msgstr ""
+msgstr "GUI esquerdo"
 
 msgctxt "flow.constant.key-right_ctrl"
 msgid "Right CTRL"
@@ -995,7 +995,7 @@ msgstr "ALT direito"
 
 msgctxt "flow.constant.key-right_gui"
 msgid "Right GUI"
-msgstr ""
+msgstr "GUI direito"
 
 msgctxt "flow.constant.key-up"
 msgid "Up"
@@ -1031,7 +1031,7 @@ msgstr "ESC"
 
 msgctxt "flow.constant.key-insert"
 msgid "Insert"
-msgstr ""
+msgstr "Insert"
 
 msgctxt "flow.constant.key-delete"
 msgid "Delete"
@@ -1051,7 +1051,7 @@ msgstr "Home"
 
 msgctxt "flow.constant.key-end"
 msgid "End"
-msgstr ""
+msgstr "End"
 
 msgctxt "flow.constant.key-caps_lock"
 msgid "Caps lock"

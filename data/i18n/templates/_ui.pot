@@ -20,11 +20,11 @@ msgid "Sign up to Strawbees Cloud"
 msgstr ""
 
 msgctxt "ui.sb_cloud.signin.cta"
-msgid "Sign in"
+msgid "Login"
 msgstr ""
 
 msgctxt "ui.sb_cloud.signin.title"
-msgid "Sign in to Strawbees Cloud"
+msgid "Login to Strawbees Cloud"
 msgstr ""
 
 msgctxt "ui.sb_cloud.signup.age.label"
@@ -169,7 +169,7 @@ msgid "You need to fill in your password."
 msgstr ""
 
 msgctxt "ui.sb_cloud.signin.submit"
-msgid "Sign in"
+msgid "Login"
 msgstr ""
 
 msgctxt "ui.sb_cloud.signin.submit.error.network"
@@ -508,36 +508,21 @@ msgctxt "ui.dialog.discard.confirm"
 msgid "Proceed"
 msgstr ""
 
-msgctxt "ui.dialog.anonymous_save.title"
-msgid "Guest - saving"
-msgstr ""
-
-msgctxt "ui.dialog.anonymous_save.description"
-msgid ""
-"When you save a program as a *Guest*, the program is only saved locally on "
-"your device and is not published on the web."
-msgstr ""
-
-msgctxt "ui.dialog.anonymous_save.confirm"
-msgid "Ok, got it"
-msgstr ""
-
 msgctxt "ui.dialog.anonymous_copy_programs.title"
-msgid "Copy Guest programs?"
+msgid "Copy existing programs?"
 msgstr ""
 
 msgctxt "ui.dialog.anonymous_copy_programs.description"
 msgid ""
-"There are programs saved by a *Guest* on this device. Would you like to copy "
-"them to your online account?"
+"Would you like to copy the existing programs to your account?"
 msgstr ""
 
 msgctxt "ui.dialog.anonymous_copy_programs.confirm"
-msgid "Yes, copy programs."
+msgid "Yes, copy programs"
 msgstr ""
 
 msgctxt "ui.dialog.anonymous_copy_programs.cancel"
-msgid "No, discard programs."
+msgid "No"
 msgstr ""
 
 msgctxt "ui.program_list.title.storage"
@@ -568,18 +553,12 @@ msgctxt "ui.user.anon_username"
 msgid "Guest"
 msgstr ""
 
-msgctxt "ui.user.anon_warning"
-msgid ""
-"**You are not signed in.** Your programs will be saved locally, but they "
-"won't be published to the web. If you need online access, *please sign in*."
-msgstr ""
-
 msgctxt "ui.user.account_settings.button"
 msgid "Account settings"
 msgstr ""
 
 msgctxt "ui.user.account_settings.annon"
-msgid "Sign in"
+msgid "Login"
 msgstr ""
 
 msgctxt "ui.user.account_settings.profile"
@@ -587,7 +566,7 @@ msgid "View Profile"
 msgstr ""
 
 msgctxt "ui.user.account_settings.signin"
-msgid "Sign in"
+msgid "Login"
 msgstr ""
 
 msgctxt "ui.user.account_settings.signup"

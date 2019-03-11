@@ -26,12 +26,12 @@ msgid "Sign up to Strawbees Cloud"
 msgstr "Skapa konto på Strawbees Cloud"
 
 msgctxt "ui.sb_cloud.signin.cta"
-msgid "Sign in"
-msgstr "Logga in"
+msgid "Login"
+msgstr ""
 
 msgctxt "ui.sb_cloud.signin.title"
-msgid "Sign in to Strawbees Cloud"
-msgstr "Logga in på Strawbees Cloud"
+msgid "Login to Strawbees Cloud"
+msgstr ""
 
 msgctxt "ui.sb_cloud.signup.age.label"
 msgid "How old are you?"
@@ -178,8 +178,8 @@ msgid "You need to fill in your password."
 msgstr "Du måste fylla i ditt lösenord."
 
 msgctxt "ui.sb_cloud.signin.submit"
-msgid "Sign in"
-msgstr "Logga in"
+msgid "Login"
+msgstr ""
 
 msgctxt "ui.sb_cloud.signin.submit.error.network"
 msgid "There seems to be a connection problem."
@@ -524,44 +524,21 @@ msgctxt "ui.dialog.discard.confirm"
 msgid "Proceed"
 msgstr "Fortsätt"
 
-#, fuzzy
-msgctxt "ui.dialog.anonymous_save.title"
-msgid "Guest - saving"
-msgstr "Gäst - sparar"
-
-#, fuzzy
-msgctxt "ui.dialog.anonymous_save.description"
-msgid ""
-"When you save a program as a *Guest*, the program is only saved locally on "
-"your device and is not published on the web."
-msgstr ""
-"När du sparar ett program som *Gäst* så finns programmet bara tillgängligt "
-"på den enheten du använder just nu, och sparas inte på internet."
-
-msgctxt "ui.dialog.anonymous_save.confirm"
-msgid "Ok, got it"
-msgstr "Ok, jag förstår"
-
 msgctxt "ui.dialog.anonymous_copy_programs.title"
-msgid "Copy Guest programs?"
-msgstr "Kopiera Gästprogram?"
-
-#, fuzzy
-msgctxt "ui.dialog.anonymous_copy_programs.description"
-msgid ""
-"There are programs saved by a *Guest* on this device. Would you like to copy "
-"them to your online account?"
+msgid "Copy existing programs?"
 msgstr ""
-"Det finns program sparade av en gästanvändare på den här datorn. Vill du "
-"kopiera dem till ditt onlinekonto?"
+
+msgctxt "ui.dialog.anonymous_copy_programs.description"
+msgid "Would you like to copy the existing programs to your account?"
+msgstr ""
 
 msgctxt "ui.dialog.anonymous_copy_programs.confirm"
-msgid "Yes, copy programs."
-msgstr "Ja, kopiera programmen."
+msgid "Yes, copy programs"
+msgstr ""
 
 msgctxt "ui.dialog.anonymous_copy_programs.cancel"
-msgid "No, discard programs."
-msgstr "Nej, kassera programmen."
+msgid "No"
+msgstr ""
 
 msgctxt "ui.program_list.title.storage"
 msgid "My programs"
@@ -591,31 +568,21 @@ msgctxt "ui.user.anon_username"
 msgid "Guest"
 msgstr "Gäst"
 
-#, fuzzy
-msgctxt "ui.user.anon_warning"
-msgid ""
-"**You are not signed in.** Your programs will be saved locally, but they "
-"won't be published to the web. If you need online access, *please sign in*."
-msgstr ""
-"**Du är inte inloggad.** Dina program kommer att sparas lokalt, men kommer "
-"inte att publiceras på nätet. Om du behöver komma åt filerna online, "
-"*vänligen logga in*."
-
 msgctxt "ui.user.account_settings.button"
 msgid "Account settings"
 msgstr "Kontoinställningar"
 
 msgctxt "ui.user.account_settings.annon"
-msgid "Sign in"
-msgstr "Logga in"
+msgid "Login"
+msgstr ""
 
 msgctxt "ui.user.account_settings.profile"
 msgid "View Profile"
 msgstr "Visa Profil"
 
 msgctxt "ui.user.account_settings.signin"
-msgid "Sign in"
-msgstr "Logga in"
+msgid "Login"
+msgstr ""
 
 msgctxt "ui.user.account_settings.signup"
 msgid "Sign up"
