@@ -26,8 +26,8 @@ const Toggle = ({
 				padding: 0.2rem 0.5rem;
 			}
 			.switch {
-				width: 2rem;
-				height: 0.9rem;
+				width: 1.5rem;
+				height: 0.8rem;
 				position: relative;
 				display: flex;
 				flex-direction: row;
@@ -65,21 +65,21 @@ const Toggle = ({
 				position: absolute;
 				left: 0;
 				top: 0;
-				width: 0.9rem;
-				height: 0.9rem;
-				border-radius: 0.9rem;
+				width: 0.8rem;
+				height: 0.8rem;
+				border-radius: 0.8rem;
 				box-sizing: border-box;
 				background-color: ${tinycolor(GRAY).toRgbString()};
 				transition: left 0.2s, background-color 0.2s;
 			}
 			.root.on .switch .pin {
-				left: calc(100% - 0.9rem);
+				left: calc(100% - 0.8rem);
 				background-color: ${tinycolor(RED).toRgbString()};
 			}
 			.label {
-				font-size: 0.7rem;
+				font-size: 0.65rem;
 				text-transform: uppercase;
-				letter-spacing: 0.05rem;
+				letter-spacing: 0.025rem;
 			}
 			.offLabel {
 				margin-right: 0.25rem;
