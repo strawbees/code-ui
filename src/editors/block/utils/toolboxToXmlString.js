@@ -2,9 +2,10 @@
 /* eslint-disable indent */
 export default toolbox => `<xml>
 	${toolbox.reduce((xml, {
-		name, colour, secondaryColour, blocks = [], custom
+		id, name, colour, secondaryColour, blocks = [], custom
 	}) => {
 		xml += `<category
+			${id ? `id="${id}"` : ''}
 			${name ? `name="${name}"` : ''}
 			${colour ? `colour="${colour}"` : ''}
 			${secondaryColour ? `secondaryColour="${secondaryColour}"` : ''}
