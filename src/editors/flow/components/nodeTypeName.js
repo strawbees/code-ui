@@ -27,6 +27,10 @@ const NodeTypeName = ({
 			}
 			.name {
 				font-size: 0.8rem;
+				flex: 1;
+				white-space: nowrap;
+			    overflow: hidden;
+			    text-overflow: ellipsis
 			}
 		`}</style>
 		<SvgIcon icon={icon}/>

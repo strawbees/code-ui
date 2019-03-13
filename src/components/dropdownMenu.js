@@ -96,7 +96,7 @@ class DropdownMenu extends React.Component {
 						opacity: 0;
 						transform: scale3d(0,0,1);
 						transform-origin: top left;
-						width: 12rem;
+						min-width: 12rem;
 					}
 					.label:focus + .list,
 					.list:focus,
@@ -109,6 +109,7 @@ class DropdownMenu extends React.Component {
 					.list .option {
 						list-style: none;
 						cursor: pointer;
+						white-space: nowrap;
 						display: flex;
 						flex-direction: row;
 						align-items: center;

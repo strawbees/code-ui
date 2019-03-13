@@ -2,6 +2,7 @@ import s from 'src/utils/s'
 
 export default (strings) => ([
 	{
+		id              : 'input',
 		name            : s(strings, 'block.toolbox.category.input'),
 		colour          : '#7fd5f0',
 		secondaryColour : '#01adee',
@@ -18,6 +19,7 @@ export default (strings) => ([
 		]
 	},
 	{
+		id              : 'output',
 		name            : s(strings, 'block.toolbox.category.output'),
 		colour          : '#f580c5',
 		secondaryColour : '#f75abb',
@@ -91,6 +93,7 @@ export default (strings) => ([
 		]
 	},
 	{
+		id              : 'control',
 		name            : window.Blockly.Msg.CATEGORY_CONTROL,
 		colour          : '#FFAB19',
 		secondaryColour : '#CF8B17',
@@ -135,6 +138,7 @@ export default (strings) => ([
 		]
 	},
 	{
+		id              : 'operators',
 		name            : window.Blockly.Msg.CATEGORY_OPERATORS,
 		colour          : '#40BF4A',
 		secondaryColour : '#389438',
@@ -326,12 +330,14 @@ export default (strings) => ([
 		]
 	},
 	{
+		id              : 'variables',
 		name            : window.Blockly.Msg.CATEGORY_VARIABLES,
 		colour          : '#FF8C1A',
 		secondaryColour : '#DB6E00',
 		custom          : 'VARIABLE'
 	},
 	{
+		id              : 'myBlocks',
 		name            : window.Blockly.Msg.CATEGORY_MYBLOCKS,
 		colour          : '#FF6680',
 		secondaryColour : '#FF4D6A',

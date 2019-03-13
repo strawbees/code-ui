@@ -21,6 +21,9 @@ const NodeMini = ({
 			.root:hover {
 				background-color: ${tinycolor(color).setAlpha(0.75).toRgbString()};
 			}
+			.root :global(>.nodeTypeName) {
+				max-width: 100%;
+			}
 			@media (max-width: 600px) {
 				.root :global(>.nodeTypeName) {
 					padding-right: 0.4rem;
