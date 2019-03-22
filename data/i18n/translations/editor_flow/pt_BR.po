@@ -1,3 +1,4 @@
+# Murilo Polese <murilo@strawbees.com>, 2019. #zanata
 # Paulo Barcelos <paulo@strawbees.com>, 2019. #zanata
 msgid ""
 msgstr ""
@@ -6,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-02-22 11:37+0000\n"
+"PO-Revision-Date: 2019-03-21 08:34+0000\n"
 "Last-Translator: Paulo Barcelos <paulo@strawbees.com>\n"
 "Language-Team: Portuguese (Brazil)\n"
 "Language: pt_BR\n"
@@ -17,6 +18,7 @@ msgctxt "flow.og.title"
 msgid "Flow Programming"
 msgstr "Programação Flow"
 
+#, fuzzy
 msgctxt "flow.og.image"
 msgid "/static/og/flow.png"
 msgstr "/static/og/flow.png"
@@ -75,7 +77,7 @@ msgstr "Contador"
 
 msgctxt "flow.node.dual-color-led"
 msgid "Dual Color LED"
-msgstr "LED duas cores"
+msgstr "LED de duas cores"
 
 msgctxt "flow.node.gate"
 msgid "Gate"
@@ -99,7 +101,7 @@ msgstr "LED"
 
 msgctxt "flow.node.light-sensor"
 msgid "Light Sensor"
-msgstr "Sensor de luz"
+msgstr "Sensor de luminosidade"
 
 msgctxt "flow.node.list"
 msgid "List"
@@ -111,7 +113,7 @@ msgstr "Lógica"
 
 msgctxt "flow.node.makey-touch"
 msgid "Circuit Touch"
-msgstr ""
+msgstr "Circuito de toque"
 
 msgctxt "flow.node.math"
 msgid "Math"
@@ -135,7 +137,7 @@ msgstr "Sonar"
 
 msgctxt "flow.node.squeeze-sensor"
 msgid "Squeeze Sensor"
-msgstr ""
+msgstr "Sensor de compressão"
 
 msgctxt "flow.node.statistics"
 msgid "Statistics"
@@ -143,7 +145,7 @@ msgstr "Estatística"
 
 msgctxt "flow.node.voltage-output"
 msgid "Voltage Output"
-msgstr ""
+msgstr "Saída de voltagem"
 
 msgctxt "flow.node.wave"
 msgid "Wave"
@@ -159,7 +161,7 @@ msgstr "entrada"
 
 msgctxt "flow.parameter.light"
 msgid "light intensity"
-msgstr "intensidade de luz"
+msgstr "luminosidade"
 
 msgctxt "flow.parameter.color"
 msgid "color"
@@ -223,19 +225,19 @@ msgstr "máximo"
 
 msgctxt "flow.parameter.inMin"
 msgid "in min"
-msgstr "valor mínimo da entrada"
+msgstr "mínimo de entrada"
 
 msgctxt "flow.parameter.inMax"
 msgid "in max"
-msgstr "valor máximo da entrada"
+msgstr "máximo de entrada"
 
 msgctxt "flow.parameter.outMin"
 msgid "out min"
-msgstr "valor mínimo da saída"
+msgstr "mínimo de saída"
 
 msgctxt "flow.parameter.outMax"
 msgid "out max"
-msgstr "valor máximo da saída"
+msgstr "máximo de saída"
 
 msgctxt "flow.parameter.trigger"
 msgid "trigger"
@@ -291,15 +293,15 @@ msgstr "saída"
 
 msgctxt "flow.constant.logic-and"
 msgid "AND"
-msgstr "AND"
+msgstr "E"
 
 msgctxt "flow.constant.logic-or"
 msgid "OR"
-msgstr "OR"
+msgstr "OU"
 
 msgctxt "flow.constant.logic-xor"
 msgid "XOR"
-msgstr "XOR"
+msgstr "OU-EXCLUSIVO"
 
 msgctxt "flow.constant.math-add"
 msgid "Add"
@@ -307,7 +309,7 @@ msgstr "Adição"
 
 msgctxt "flow.constant.math-subtract"
 msgid "Subtract"
-msgstr "Subitração"
+msgstr "Subtração"
 
 msgctxt "flow.constant.math-multiply"
 msgid "Multiply"
@@ -1031,7 +1033,7 @@ msgstr "ESC"
 
 msgctxt "flow.constant.key-insert"
 msgid "Insert"
-msgstr "Insert"
+msgstr "Inserir"
 
 msgctxt "flow.constant.key-delete"
 msgid "Delete"

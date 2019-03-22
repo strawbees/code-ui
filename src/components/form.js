@@ -158,14 +158,20 @@ class Form extends React.Component {
 
 									return (
 										<div className={`field ${error ? 'error' : ''}`} key={field.id}>
-											{field.labelKey &&
+											{(field.label || field.labelKey) &&
 												<label className='label' htmlFor={field.id}>
-													<S value={field.labelKey} />
+													<S
+														value={field.label || field.labelKey}
+														markdown={field.labelIsMarkdown}
+													/>
 												</label>
 											}
-											{(field.tipKey && field.type !== 'checkbox') &&
+											{((field.tip || field.tipKey) && field.type !== 'checkbox') &&
 												<div className='tip'>
-													<S value={field.tipKey} />
+													<S
+														value={field.tip || field.tipKey}
+														markdown={field.tipIsMarkdown}
+													/>
 												</div>
 											}
 											{(
@@ -195,11 +201,11 @@ class Form extends React.Component {
 														notify={field.notify}
 														id={field.id}
 													/>
-													{field.tipKey &&
+													{(field.tip || field.tipKey) &&
 														<label htmlFor={field.id}>
 															<div className='tip'>
 																<S
-																	value={field.tipKey}
+																	value={field.tip || field.tipKey}
 																	markdown={field.tipIsMarkdown}
 																/>
 															</div>
@@ -283,7 +289,10 @@ Form.propTypes = {
 		]),
 		id               : PropTypes.string,
 		name             : PropTypes.string,
+		label            : PropTypes.string,
 		labelKey         : PropTypes.string,
+		labelIsMarkdown  : PropTypes.bool,
+		tip              : PropTypes.string,
 		tipKey           : PropTypes.string,
 		tipIsMarkdown    : PropTypes.bool,
 		validate         : PropTypes.func,
