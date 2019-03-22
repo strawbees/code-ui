@@ -86,7 +86,7 @@ module.exports = {
 	useFileSystemPublicRoutes : false,
 	publicRuntimeConfig       : config,
 	assetPrefix               : config.ROOT_PATH,
-	exportPathMap             : async () => JSON.parse(await fs.readFile(path.join('static', 'routes.json'))),
+	exportPathMap             : async () => JSON.parse(await fs.readFile(path.resolve(__dirname, 'static', 'routes.json'))),
 	webpack                   : (webpackConfig) => {
 		// svg loader
 		webpackConfig.module.rules.push({
