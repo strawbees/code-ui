@@ -7,7 +7,7 @@ const getNextConfig = require('next/config').default
 
 const init = async () => {
 	const dev = process.env.NODE_ENV !== 'production'
-	const app = next({ dev })
+	const app = next({ dev, dir : __dirname })
 	const handle = app.getRequestHandler()
 	const routes = JSON.parse(await fs.readFile(path.join('static', 'routes.json')))
 	const {
