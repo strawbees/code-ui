@@ -10,8 +10,6 @@
     "i18n:zanata:pull": "zanata-cli pull --username $ZANATA_USER --key $ZANATA_KEY --create-skeletons",
     "i18n:zanata:push": "zanata-cli push --username $ZANATA_USER --key $ZANATA_KEY --push-type both",
     "i18n:pull": "npm run i18n:zanata:pull && npm run i18n:scratch-blocks:pull",
-    "deploy:stage": "CONFIG=web_stage node lib/scripts/deploy.js",
-    "deploy:production": "CONFIG=web_production node lib/scripts/deploy.js",
     "prepublishOnly": "npm run build-targets",
     "lint": "eslint --fix ./*.js src/**/*.js pages/**/*.js lib/**/*.js"
   },
@@ -45,7 +43,6 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
-    "s3": "^4.4.0",
     "scratch-blocks": "^0.1.0-prerelease.1549990124",
     "serve-handler": "^5.0.8",
     "tinycolor2": "^1.4.1",
