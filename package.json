@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "node lib/scripts/dev.js",
     "build": "node lib/scripts/build.js",
+    "build-serve": "node lib/scripts/buildServe.js",
     "build-targets": "node lib/scripts/buildTargets.js",
     "i18n:scratch-blocks:pull": "node lib/scripts/i18nPull.js",
     "i18n:zanata:pull": "zanata-cli pull --username $ZANATA_USER --key $ZANATA_KEY --create-skeletons",
