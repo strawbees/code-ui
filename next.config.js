@@ -11,7 +11,7 @@ const defaults = {
 	URL_SCHEME                    : 'strawbeescode',
 	GAID                          : 'UA-NNNNNN-N',
 	CHROME_EXTENSION_ID           : 'ackaalhbfjagidmjlhlokoblhbnahegd',
-	WINDOWS_DRIVERS_INSTALLER_URL : 'https://github.com/Quirkbot/QuirkbotWindowsDriverInstaller/releases/download/2.0.0/quirkbot-windows-drivers-2.0.0.exe',
+	WINDOWS_DRIVERS_INSTALLER_URL : 'https://github.com/strawbees/quirkbot-driver/releases/download/v2.0.0.0/Quirkbot-Windows-Drivers-Installer-v2.0.0.0.exe',
 	DOWNLOAD_DESKTOP_APP_URL      : 'https://s3.amazonaws.com/strawbees-downloads-stage/code-nwjs-build/versions',
 	NEXT_SERVER_PORT              : 3000,
 	NEXT_EXPORT_PATH              : path.resolve(__dirname, 'out'),
