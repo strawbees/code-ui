@@ -18,7 +18,7 @@ export default () => createStructuredSelector({
 	generatedCode      : refEditorGeneratedCodeSelector(),
 	storageStatus      : storageStatusSelector(),
 	placeholderName    : makeStringSelector('ui.editor.program_placeholder_name'),
-	newFlowProgramUrl  : makeStringSelector('flow.url'),
-	newBlockProgramUrl : makeStringSelector('block.url'),
-	newTextProgramUrl  : makeStringSelector('text.url'),
+	newFlowProgramUrl  : makeStringSelector('routes.flow'),
+	newBlockProgramUrl : makeStringSelector('routes.block'),
+	newTextProgramUrl  : makeStringSelector('routes.text'),
 })

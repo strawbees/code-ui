@@ -23,9 +23,9 @@ export default () => createSelector(
 			name,
 			type,
 			source
-		}
+		},
 	) => {
-		let url = `${baseUrl}${makeStringSelector(`${type}.url`)(state)}?data=`
+		let url = `${baseUrl}${makeStringSelector(`routes.${type}`)(state)}?data=`
 		url += LZString.compressToEncodedURIComponent(JSON.stringify({
 			name,
 			type,

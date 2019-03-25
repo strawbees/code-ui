@@ -1,4 +1,5 @@
 import { createStructuredSelector } from 'reselect'
+import rootPathSelector from 'src/selectors/rootPathSelector'
 import uploaderNeedsDriverSelector from 'src/selectors/uploaderNeedsDriverSelector'
 import qbserialRuntimeIdListSelector from 'src/selectors/qbserialRuntimeIdListSelector'
 import qbserialAvailableSelector from 'src/selectors/qbserialAvailableSelector'
@@ -9,6 +10,7 @@ import qbmidiReadySelector from 'src/selectors/qbmidiReadySelector'
 
 
 export default () => createStructuredSelector({
+	rootPath            : rootPathSelector(),
 	uploaderNeedsDriver : uploaderNeedsDriverSelector(),
 	serialBoardIds      : qbserialRuntimeIdListSelector(),
 	serialAvailable     : qbserialAvailableSelector(),

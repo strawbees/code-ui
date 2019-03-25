@@ -1,0 +1,20 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgctxt "text.og.title"
+msgid "Text Programming"
+msgstr ""
+
+msgctxt "text.og.image"
+msgid "/static/og/text.png"
+msgstr ""
+
+msgctxt "text.base.title"
+msgid "Text"
+msgstr ""

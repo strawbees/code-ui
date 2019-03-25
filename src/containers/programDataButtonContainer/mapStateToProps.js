@@ -17,7 +17,7 @@ export default () => createSelector(
 			source
 		},
 	) => {
-		let url = makeStringSelector(`${type}.url`)(state)
+		let url = makeStringSelector(`routes.${type}`)(state)
 		url += '?data='
 		url += LZString.compressToEncodedURIComponent(JSON.stringify({
 			name,

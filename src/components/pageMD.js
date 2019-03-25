@@ -41,7 +41,7 @@ const PageMD = ({
 				}
 			}
 		`}</style>
-		<S value={`${queryRef}${queryId ? `.${queryId}` : ''}.md`} markdown={true}/>
+		<S value={`${queryRef}${queryId ? `.${queryId}` : ''}.content`} markdown={true}/>
 	</div>
 
 PageMD.defaultProps = {}

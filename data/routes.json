@@ -1,0 +1,77 @@
+{
+	"routes.home": {
+		"page": "/",
+		"query": {
+			"ref" : "home"
+		}
+	},
+	"routes.error": {
+		"page": "/",
+		"query": {
+			"ref" : "error"
+		}
+	},
+	"routes.user": {
+		"page": "/",
+		"query": {
+			"ref" : "user"
+		}
+	},
+	"routes.flow": {
+		"page": "/",
+		"query": {
+			"ref" : "flow"
+		}
+	},
+	"routes.block": {
+		"page": "/",
+		"query": {
+			"ref" : "block"
+		}
+	},
+	"routes.text": {
+		"page": "/",
+		"query": {
+			"ref" : "text"
+		}
+	},
+	"routes.reset-password": {
+		"page": "/",
+		"query": {
+			"ref" : "password-reset"
+		}
+	},
+	"routes.confirm-email": {
+		"page": "/",
+		"query": {
+			"ref" : "email-confirmation"
+		}
+	},
+	"routes.download": {
+		"page": "/",
+		"query": {
+			"ref" : "download"
+		}
+	},
+	"routes.md.cookie-policy": {
+		"page": "/",
+		"query": {
+			"ref" : "md",
+			"id" : "cookie-policy"
+		}
+	},
+	"routes.md.privacy-policy": {
+		"page": "/",
+		"query": {
+			"ref" : "md",
+			"id" : "privacy-policy"
+		}
+	},
+	"routes.md.terms-of-use": {
+		"page": "/",
+		"query": {
+			"ref" : "md",
+			"id" : "terms-of-use"
+		}
+	}
+}

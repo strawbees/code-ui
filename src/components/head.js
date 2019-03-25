@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import DocumentHead from 'next/head'
 
 const Head = ({
+	rootPath,
 	ogTitle,
 	ogUrl,
 	ogDescription,
@@ -31,20 +32,22 @@ const Head = ({
 			<meta property="og:type" content={ogType} />
 		}
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png"/>
-		<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png"/>
-		<link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png"/>
-		<link rel="manifest" href="/static/site.webmanifest"/>
-		<link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#5bbad5"/>
-		<link rel="shortcut icon" href="/static/favicon/favicon.ico"/>
+		<link rel="apple-touch-icon" sizes="180x180" href={`${rootPath}/static/favicon/apple-touch-icon.png`}/>
+		<link rel="icon" type="image/png" sizes="32x32" href={`${rootPath}/static/favicon/favicon-32x32.png`}/>
+		<link rel="icon" type="image/png" sizes="16x16" href={`${rootPath}/static/favicon/favicon-16x16.png`}/>
+		<link rel="manifest" href={`${rootPath}/static/site.webmanifest`}/>
+		<link rel="mask-icon" href={`${rootPath}/static/favicon/safari-pinned-tab.svg`} color="#5bbad5"/>
+		<link rel="shortcut icon" href={`${rootPath}/static/favicon/favicon.ico`}/>
 		<meta name="msapplication-TileColor" content="#da532c"/>
-		<meta name="msapplication-config" content="/static/favicon/browserconfig.xml"/>
+		<meta name="msapplication-config" content={`${rootPath}/static/favicon/browserconfig.xml`}/>
 		<meta name="theme-color" content="#ffffff"/>
-		<link rel="preload" href="/static/lib/nprogress.css" as="style" onLoad="this.onload=null;this.rel='stylesheet'"/>
+
+		<script src={`${rootPath}/static/lib/scratch-blocks/vertical.js`}/>
 	</DocumentHead>
 
 
 Head.propTypes = {
+	rootPath      : PropTypes.string,
 	ogTitle       : PropTypes.string,
 	ogUrl         : PropTypes.string,
 	ogDescription : PropTypes.string,

@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
-import generateReducer from 'src/utils/generateReducer'
 import {
 	SETUP_SET,
+	SETUP_SET_ROOT_PATH,
 	SETUP_SET_QUERY,
 	SETUP_SET_AS_PATH,
 	SETUP_SET_URL_VARS,
@@ -13,6 +13,19 @@ import {
 	SETUP_SET_OS,
 } from 'src/constants/actionTypes'
 
+const rootPath = (state = '', { type, payload }) => {
+	switch (type) {
+		case SETUP_SET_ROOT_PATH:
+			return payload
+		case SETUP_SET:
+			if (typeof payload.rootPath !== 'undefined') {
+				return payload.rootPath
+			}
+			return state
+		default:
+			return state
+	}
+}
 const query = (state = null, { type, payload }) => {
 	switch (type) {
 		case SETUP_SET_QUERY:
@@ -77,14 +90,6 @@ const locales = (state = null, { type, payload }) => {
 			return state
 	}
 }
-const localesLoaded = (state = false, { type }) => {
-	switch (type) {
-		case SETUP_SET_LOCALES:
-			return true
-		default:
-			return state
-	}
-}
 const routes = (state = null, { type, payload }) => {
 	switch (type) {
 		case SETUP_SET_ROUTES:
@@ -102,14 +107,6 @@ const routes = (state = null, { type, payload }) => {
 			return state
 	}
 }
-const routesLoaded = (state = false, { type }) => {
-	switch (type) {
-		case SETUP_SET_ROUTES:
-			return true
-		default:
-			return state
-	}
-}
 const strings = (state = {}, { type, payload }) => {
 	switch (type) {
 		case SETUP_SET_STRINGS: {
@@ -118,6 +115,16 @@ const strings = (state = {}, { type, payload }) => {
 			}
 			newState[payload.locale] = payload.data
 			return newState
+		}
+		case SETUP_SET: {
+			if (typeof payload.strings !== 'undefined') {
+				const newState = {
+					...state
+				}
+				newState[payload.strings.locale] = payload.strings.data
+				return newState
+			}
+			return state
 		}
 		default:
 			return state
@@ -132,23 +139,67 @@ const stringsLoaded = (state = {}, { type, payload }) => {
 			newState[payload.locale] = true
 			return newState
 		}
+		case SETUP_SET: {
+			if (typeof payload.strings !== 'undefined') {
+				const newState = {
+					...state
+				}
+				newState[payload.strings.locale] = true
+				return newState
+			}
+			return state
+		}
+		default:
+			return state
+	}
+}
+const displayPageLoader = (state = false, { type, payload }) => {
+	switch (type) {
+		case SETUP_SET_DISPLAY_PAGE_LOADER:
+			return payload
+		case SETUP_SET:
+			if (typeof payload.displayPageLoader !== 'undefined') {
+				return payload.displayPageLoader
+			}
+			return state
+		default:
+			return state
+	}
+}
+const displayError = (state = false, { type, payload }) => {
+	switch (type) {
+		case SETUP_SET_DISPLAY_ERROR:
+			return payload
+		case SETUP_SET:
+			if (typeof payload.displayError !== 'undefined') {
+				return payload.displayError
+			}
+			return state
+		default:
+			return state
+	}
+}
+const os = (state = null, { type, payload }) => {
+	switch (type) {
+		case SETUP_SET_OS:
+			return payload
+		case SETUP_SET:
+			if (typeof payload.os !== 'undefined') {
+				return payload.os
+			}
+			return state
 		default:
 			return state
 	}
 }
 
-const displayPageLoader = generateReducer(SETUP_SET_DISPLAY_PAGE_LOADER, false)
-const displayError = generateReducer(SETUP_SET_DISPLAY_ERROR, false)
-const os = generateReducer(SETUP_SET_OS)
-
 export default combineReducers({
+	rootPath,
 	query,
 	asPath,
 	urlVars,
 	locales,
-	localesLoaded,
 	routes,
-	routesLoaded,
 	strings,
 	stringsLoaded,
 	displayPageLoader,

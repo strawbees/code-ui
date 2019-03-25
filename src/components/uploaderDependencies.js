@@ -10,6 +10,7 @@ import {
 } from 'src/constants/colors'
 
 const UploaderDependencies = ({
+	rootPath,
 	hideTitle,
 	uploaderNeedsDriver,
 	serialBoardIds,
@@ -70,7 +71,7 @@ const UploaderDependencies = ({
 					/>
 					<img className='webstore-image'
 						alt='Strawbees CODE Helper installation'
-						src='/static/images/strawbees-code-helper-chrome-webstore.gif'
+						src={`${rootPath}/static/images/strawbees-code-helper-chrome-webstore.gif`}
 					/>
 				</Message>
 				<Link to={extensionUrl}
@@ -135,6 +136,7 @@ const UploaderDependencies = ({
 	</div>
 
 UploaderDependencies.propTypes = {
+	rootPath            : PropTypes.string,
 	hideTitle           : PropTypes.bool,
 	uploaderNeedsDriver : PropTypes.bool,
 	serialBoardsIds     : PropTypes.arrayOf(PropTypes.string),

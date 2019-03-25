@@ -150,30 +150,38 @@ class ProgramImporter extends React.Component {
 				{program === null &&
 					<Dropzone
 						accept='application/json'
-						className='dropzone'
 						multiple={false}
-						activeClassName='active'
-						rejectClassName='reject'
 						onDrop={this.onDrop}>
-						<div className='iddle'>
-							<S
-								value='ui.dialog.import.drag_file'
-							/>
-							<IconButton
-								icon={fileIcons.folder}
-								labelKey='ui.dialog.import.open_file'
-							/>
-						</div>
-						<div className='ready'>
-							<S
-								value='ui.dialog.import.drop_file'
-							/>
-						</div>
-						<div className='error'>
-							<S
-								value='ui.dialog.import.reject'
-							/>
-						</div>
+						{({
+							getRootProps,
+							getInputProps,
+							isDragActive,
+							isDragReject
+						}) =>
+							<div {...getRootProps()}
+								className={`dropzone ${isDragActive ? 'active' : ''} ${isDragReject ? 'reject' : ''}`}>
+								<input {...getInputProps()} />
+								<div className='iddle'>
+									<S
+										value='ui.dialog.import.drag_file'
+									/>
+									<IconButton
+										icon={fileIcons.folder}
+										labelKey='ui.dialog.import.open_file'
+									/>
+								</div>
+								<div className='ready'>
+									<S
+										value='ui.dialog.import.drop_file'
+									/>
+								</div>
+								<div className='error'>
+									<S
+										value='ui.dialog.import.reject'
+									/>
+								</div>
+							</div>
+						}
 					</Dropzone>
 				}
 			</div>

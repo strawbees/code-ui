@@ -14,14 +14,14 @@ export default () => createSelector(
 	(
 		state,
 		name,
-		generatedCode
+		generatedCode,
 	) => {
 		const program = {
 			name,
 			type   : 'text',
 			source : generatedCode,
 		}
-		let url = makeStringSelector('text.url')(state)
+		let url = makeStringSelector('routes.text')(state)
 		url += '?data='
 		url += LZString.compressToEncodedURIComponent(JSON.stringify(program))
 		return {

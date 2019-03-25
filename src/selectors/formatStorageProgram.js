@@ -28,7 +28,7 @@ export default (
 	placeholderName,
 ) => ({
 	name      : name || placeholderName,
-	url       : `${makeStringSelector(`${type}.url`)(state)}?p=${id}`,
+	url       : `${makeStringSelector(`routes.${type}`)(state)}?p=${id}`,
 	updatedAt : formatDate(updatedAt),
 	type,
 	source,

@@ -5,13 +5,13 @@ import makeStringSelector from 'src/selectors/makeStringSelector'
 export default () => createSelector(
 	[
 		queryRefSelector(),
-		makeStringSelector('home.url'),
+		makeStringSelector('routes.home'),
 	],
 	(
 		queryRef,
 		homeUrl,
 	) => ({
 		editorMenu : queryRef === 'flow' || queryRef === 'block' || queryRef === 'text',
-		homeUrl,
+		homeUrl
 	})
 )

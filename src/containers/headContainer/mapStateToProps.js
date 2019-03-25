@@ -2,6 +2,7 @@ import { createSelector } from 'reselect'
 import queryRefSelector from 'src/selectors/queryRefSelector'
 import queryIdSelector from 'src/selectors/queryIdSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
+import rootPathSelector from 'src/selectors/rootPathSelector'
 import getConfig from 'next/config'
 
 const {
@@ -13,14 +14,14 @@ const baseUrl = typeof CANONICAL_URL !== 'undefined' ? CANONICAL_URL : ''
 
 const makeRefOgSelector = (ref, id) => createSelector(
 	[
-		makeStringSelector(`${ref}${id ? `.${id}` : ''}.url`, false),
+		makeStringSelector(`routes.${ref}${id ? `.${id}` : ''}`, false),
 		makeStringSelector(`${ref}${id ? `.${id}` : ''}.og.title`, false),
 		makeStringSelector(`${ref}${id ? `.${id}` : ''}.og.description`, false),
 		makeStringSelector(`${ref}${id ? `.${id}` : ''}.og.image`, false),
 		makeStringSelector(`${ref}${id ? `.${id}` : ''}.og.type`, false),
 		makeStringSelector('home.og.title', false),
 		makeStringSelector('home.og.description', false),
-		makeStringSelector('home.og.image', false)
+		makeStringSelector('home.og.image', false),
 	],
 	(
 		refUrl,
@@ -45,13 +46,18 @@ const makeRefOgSelector = (ref, id) => createSelector(
 
 export default () => createSelector(
 	[
+		rootPathSelector(),
 		queryRefSelector(),
 		queryIdSelector(),
 		state => state,
 	],
 	(
+		rootPath,
 		queryRef,
 		queryId,
 		state,
-	) => makeRefOgSelector(queryRef, queryId)(state)
+	) => ({
+		rootPath,
+		...makeRefOgSelector(queryRef, queryId)(state)
+	})
 )

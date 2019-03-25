@@ -1,5 +1,5 @@
 export default (strings) => ({
-	message0 : 'change %1 by %2',
+	message0 : window.Blockly.Msg.DATA_CHANGEVARIABLEBY,
 	args0    : [
 		{
 			type : 'field_variable',

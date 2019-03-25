@@ -1,0 +1,7 @@
+/aws-config-*.json
+/.next
+/.prebuild-cache
+/.zanata-cache
+/static/lib/scratch-blocks
+/static/i18n/
+/static/routes.json

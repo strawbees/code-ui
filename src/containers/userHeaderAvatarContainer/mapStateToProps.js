@@ -5,7 +5,7 @@ import storageStatusSelector from 'src/selectors/storageStatusSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 
 export default () => createStructuredSelector({
-	profileUrl    : makeStringSelector('home.url'),
+	profileUrl    : makeStringSelector('routes.home'),
 	username      : storageUsernameSelector(),
 	isAnon        : storageIsAnonSelector(),
 	storageStatus : storageStatusSelector(),

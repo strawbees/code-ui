@@ -1,12 +1,14 @@
+import s from 'src/utils/s'
+
 export default (strings) => ({
-	message0 : 'set continuos servo %1 speed to %2',
+	message0 : s(strings, 'block.blocks.output_continuous_servo_speed.message0'),
 	args0    : [
 		{
 			type    : 'field_dropdown',
 			name    : 'PLACE',
 			options : [
-				['1', 'SERVO_MOTOR_1'],
-				['2', 'SERVO_MOTOR_2']
+				[s(strings, 'block.blocks.places.servor_motor_1'), 'SERVO_MOTOR_1'],
+				[s(strings, 'block.blocks.places.servor_motor_2'), 'SERVO_MOTOR_2'],
 			]
 		},
 		{

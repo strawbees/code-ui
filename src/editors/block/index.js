@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
-import withScript from 'src/hoc/withScript'
 import IconButton from 'src/components/iconButton'
 import Spinner from 'src/components/spinner'
 import plusIcon from 'src/assets/icons/general/plus.svg'
 import debounce from 'src/utils/debounce'
+import sortDomNode from 'src/utils/sortDomNode'
 import {
 	GRAY,
 	WHITE,
@@ -86,7 +86,7 @@ class BlockEditor extends React.Component {
 		this.mainWorkspaceContainer = React.createRef()
 	}
 
-	loadSource(source) {
+	loadSource = (source) => {
 		const {
 			Blockly
 		} = window
@@ -105,18 +105,19 @@ class BlockEditor extends React.Component {
 		} = window
 
 		const {
-			strings
+			strings,
+			mediaPath
 		} = this.props
+		// Load the correct strings
+		Blockly.Msg = strings['_scracth-blocks']
+
 		// Load and register all blocks
 		Object.keys(blocks).forEach(id => {
 			const { definition } = blocks[id]
 			if (definition) {
 				Blockly.Blocks[id] = {
-					/* eslint-disable object-shorthand */
-					/* eslint-disable func-names */
+					/* eslint-disable-next-line object-shorthand,func-names */
 					init : function () { this.jsonInit(definition(strings)) }
-					/* eslint-enable object-shorthand */
-					/* eslint-enable func-names */
 				}
 			}
 			delete Blockly.Blocks.data_showvariable
@@ -134,7 +135,8 @@ class BlockEditor extends React.Component {
 		const { mainWorkspaceContainer } = this
 		this.mainWorkspace = Blockly.inject(mainWorkspaceContainer.current, {
 			toolbox : toolboxXml,
-			media   : '/static/lib/scratch-blocks/media/',
+			media   : mediaPath,
+			sounds  : false,
 			zoom    : {
 				controls   : true,
 				wheel      : true,
@@ -167,6 +169,11 @@ class BlockEditor extends React.Component {
 
 			this.cancelSourceUpdate = debounce('update block source', () => {
 				const xml = Blockly.Xml.workspaceToDom(this.mainWorkspace)
+				// it's importat to sort the node before comparing it, as
+				// sometimes blockly will change the internal order of the Xml
+				// nodes, causing the comparisson to be a false positive, and
+				// that causes all sorts of problems
+				sortDomNode(xml)
 				const currentSource = Blockly.Xml.domToText(xml)
 				if (this.source !== currentSource) {
 					this.source = currentSource
@@ -191,7 +198,7 @@ class BlockEditor extends React.Component {
 					this.proceduresWorkspace.dispose()
 				}
 				this.proceduresWorkspace = Blockly.inject(container, {
-					media : '/static/lib/scratch-blocks/media/',
+					media : mediaPath,
 					zoom  : {
 						startScale : 0.66
 					},
@@ -309,6 +316,7 @@ class BlockEditor extends React.Component {
 }
 
 BlockEditor.propTypes = {
+	mediaPath       : PropTypes.string,
 	strings         : PropTypes.object,
 	refEditorSource : PropTypes.string,
 	onSourceChange  : PropTypes.func,
@@ -326,10 +334,20 @@ const BlockEditorWithStrings = (props) => {
 		<BlockEditor {...props}/>
 	)
 }
+export default BlockEditorWithStrings
 
-const BlockEditorWithScript = withScript(
-	['/static/lib/scratch-blocks/vertical.js'],
-	BlockEditorWithStrings,
-	Spinner
-)
-export default BlockEditorWithScript
+// after finding numerous bugs with blockly remounting, decided to skip the
+// dynamic loading of the script file and just load blockly on the <head>
+// instead, like a normal script...
+// const BlockEditorWithScript = ({
+// 	scriptPath,
+// 	...props
+// }) => {
+// 	const Editor = withScript(
+// 		[scriptPath],
+// 		BlockEditorWithStrings,
+// 		Spinner
+// 	)
+// 	return <Editor {...props}/>
+// }
+// export default BlockEditorWithScript

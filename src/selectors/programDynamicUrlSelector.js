@@ -22,11 +22,11 @@ export default () => createSelector(
 		{
 			id,
 			type,
-		}
+		},
 	) => {
 		const storageBackend = resolveBackendFromProgramId(id)
 		if (storageBackend && storageBackend.name !== 'local') {
-			return `${baseUrl}${makeStringSelector(`${type}.url`)(state)}?p=${id}`
+			return `${baseUrl}${makeStringSelector(`routes.${type}`)(state)}?p=${id}`
 		}
 		return ''
 	}

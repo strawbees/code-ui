@@ -14,6 +14,8 @@ import {
 	removeGlobalEventListener,
 	removeAllGlobalEventListeners,
 } from 'src/utils/globalEvents'
+import resolveLinkUrl from 'src/utils/resolveLinkUrl'
+import routes from 'static/routes.json'
 import shallowCompareObjects from 'src/utils/shallowCompareObjects'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
@@ -22,7 +24,10 @@ import mergeProps from './mergeProps'
 class NavigationManager extends React.PureComponent {
 	async componentDidMount() {
 		// Monitor Links clicks and popState
-		removeAllGlobalEventListeners('link') // removing all here just for HRM
+		// (explicitly removing all listeners before attaching a new one, to
+		// make sure we clean any eventual listener that was created by
+		// hot reloading (HRM))
+		removeAllGlobalEventListeners('link')
 		addGlobalEventListener('link', this.onLinkClicked)
 		Router.beforePopState(this.onBeforePopState)
 
@@ -35,6 +40,11 @@ class NavigationManager extends React.PureComponent {
 		// Stop monitoring Links clicks and popState
 		removeGlobalEventListener('link', this.onLinkClicked)
 		Router.onBeforePopState(() => true)
+	}
+
+	// process the naviation on prop changes
+	componentDidUpdate(prevProps) {
+		this.processNavigation(prevProps)
 	}
 
 	// Forward the beforePopState, with a custom cancel handle
@@ -90,7 +100,7 @@ class NavigationManager extends React.PureComponent {
 	}
 
 	// Unified call that will run before the page changes
-	onBeforeNavigation = async () => {
+	onBeforeNavigation = async (as) => {
 		const {
 			queryRef,
 			urlVarP,
@@ -112,6 +122,14 @@ class NavigationManager extends React.PureComponent {
 			return
 		}
 
+		// check if this is not just a language change, by parsing the
+		// navigation and chekcing if the queryRef is the same, if no no need to
+		// show the dialog either
+		const resolved = resolveLinkUrl(as)
+		if (resolved.href.query && resolved.href.query.ref === queryRef) {
+			return
+		}
+
 		// If we got here it means the user is about to leave the editor with
 		// unsaved progress, so we show a dialog asking if they want cancel the
 		// naviation or to proceed
@@ -123,11 +141,6 @@ class NavigationManager extends React.PureComponent {
 				limitWidth      : true
 			}
 		)
-	}
-
-	// process the naviation on prop changes
-	componentDidUpdate(prevProps) {
-		this.processNavigation(prevProps)
 	}
 
 	// Monitor the page and url var changes to load programs, users, etc
@@ -152,7 +165,7 @@ class NavigationManager extends React.PureComponent {
 		const { queryRef } = this.props
 
 		// Start by always cleaning the error
-		setDisplayError(null)
+		setDisplayError(false)
 
 		// Check if this is a user page
 		if (queryRef === 'user') {
@@ -170,7 +183,7 @@ class NavigationManager extends React.PureComponent {
 				return
 			}
 
-			// If theres a program id...
+			// If theres a user id...
 			// Check if it is valid...
 			if (!isUserIdValid(urlVarU)) {
 				setDisplayError(404)

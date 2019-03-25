@@ -77,7 +77,12 @@
   },
   "settings": {
     "import/resolver": {
-       "babel-module": {}
+      "alias" : [
+        [ "root", "./" ],
+        [ "data", "./data" ],
+        [ "static", "./static" ],
+        [ "src", "./src" ]
+      ]
     }
   }
 }
