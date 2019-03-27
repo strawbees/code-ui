@@ -2,11 +2,9 @@
 
 Web based interface for Strabess CODE built with [Next](https://nextjs.org/).
 
-
 ## Building
 
 Next will generate a static website so you must provide some building context in form of configuration files and environment variables.
-
 
 ### Configuring the build
 
@@ -18,7 +16,6 @@ It also uses the environment variable `CONFIG` to select the appropriated config
 - `web_production`: Builds for CODE Website using production configuration.
 - `desktop_stage`: Builds for CODE Desktop App using stage configuration.
 - `desktop_production`: Builds for CODE Desktop App using production configuration.
-
 
 ### Running the build script
 
