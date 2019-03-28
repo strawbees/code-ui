@@ -87,7 +87,16 @@ module.exports = {
 		// svg loader
 		webpackConfig.module.rules.push({
 			test : /\.svg$/,
-			use  : ['@svgr/webpack'],
+			use  : [{
+				loader  : '@svgr/webpack',
+				options : {
+					svgoConfig : {
+						plugins : {
+							removeViewBox : false
+						}
+					}
+				}
+			}],
 		})
 		// alias
 		webpackConfig.resolve.alias = {
