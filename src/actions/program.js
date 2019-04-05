@@ -219,7 +219,6 @@ export const modalShareProgramData = (program) => async (dispatch, getState) => 
 			centered={true}>
 			<CopyableUrl
 				titleKey='ui.dialog.share.dynamic_url.title'
-				descriptionKey='ui.dialog.share.dynamic_url.description'
 				url={(dynamicUrl && staticUrl) ? dynamicUrl : staticUrl}
 			/>
 		</ProgramMenuFrame>
