@@ -85,6 +85,10 @@ module.exports = {
 	exportPathMap             : async () => JSON.parse(await fs.readFile(path.resolve(__dirname, 'static', 'routes.json'))),
 	webpack                   : (webpackConfig) => {
 		// svg loader
+		// first remove any existing rules for svg
+		const fileLoaderRule = webpackConfig.module.rules.find(rule => rule.test.test('.svg'))
+		fileLoaderRule.exclude = /\.svg$/
+		// then add the @svgr rule
 		webpackConfig.module.rules.push({
 			test : /\.svg$/,
 			use  : [{
