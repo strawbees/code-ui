@@ -87,7 +87,9 @@ module.exports = {
 		// svg loader
 		// first remove any existing rules for svg
 		const fileLoaderRule = webpackConfig.module.rules.find(rule => rule.test.test('.svg'))
-		fileLoaderRule.exclude = /\.svg$/
+		if (fileLoaderRule) {
+			fileLoaderRule.exclude = /\.svg$/
+		}
 		// then add the @svgr rule
 		webpackConfig.module.rules.push({
 			test : /\.svg$/,
