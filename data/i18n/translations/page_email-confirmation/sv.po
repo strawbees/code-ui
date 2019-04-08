@@ -1,4 +1,4 @@
-# Dan Henriksson <dan@strawbees.com>, 2019. #zanata
+# Kristofer Hagbard <kristofer@strawbees.com>, 2019. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
@@ -6,7 +6,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-02-22 11:42+0000\n"
+"PO-Revision-Date: 2019-04-08 05:50+0000\n"
 "Last-Translator: Dan Henriksson <dan@strawbees.com>\n"
 "Language-Team: Swedish\n"
 "Language: sv\n"
@@ -15,8 +15,8 @@ msgstr ""
 
 msgctxt "email-confirmation.og.title"
 msgid "Confirm Email"
-msgstr "Bekräfta E-post"
+msgstr "Bekräfta e-post"
 
 msgctxt "email-confirmation.base.title"
 msgid "Confirm Email"
-msgstr "Bekräfta E-post"
+msgstr "Bekräfta e-post"

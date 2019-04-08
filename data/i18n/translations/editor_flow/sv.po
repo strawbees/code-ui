@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-04-08 03:53+0000\n"
+"PO-Revision-Date: 2019-04-08 05:40+0000\n"
 "Last-Translator: Kristofer Hagbard <kristofer@strawbees.com>\n"
 "Language-Team: Swedish\n"
 "Language: sv\n"
@@ -80,11 +80,12 @@ msgstr "Räknare"
 
 msgctxt "flow.node.dual-color-led"
 msgid "Dual Color LED"
-msgstr "Tvåfärgad Lysdiod"
+msgstr "Tvåfärgad LED"
 
+#, fuzzy
 msgctxt "flow.node.gate"
 msgid "Gate"
-msgstr "Logisk grind"
+msgstr "Brytare"
 
 msgctxt "flow.node.ir-proximity"
 msgid "IR Proximity"
@@ -92,15 +93,15 @@ msgstr "IR Avståndsmätare"
 
 msgctxt "flow.node.key-press"
 msgid "Key Press"
-msgstr "Knapptryckning"
+msgstr "Tangenttryckning "
 
 msgctxt "flow.node.key-sequence"
 msgid "Key Sequence"
-msgstr "Knappsekvens"
+msgstr "Tangent sekvens"
 
 msgctxt "flow.node.led"
 msgid "LED"
-msgstr "Lysdiod"
+msgstr "LED"
 
 msgctxt "flow.node.light-sensor"
 msgid "Light Sensor"
@@ -116,7 +117,7 @@ msgstr "Logik"
 
 msgctxt "flow.node.makey-touch"
 msgid "Circuit Touch"
-msgstr "Berörinssensor"
+msgstr "Beröringssensor"
 
 msgctxt "flow.node.math"
 msgid "Math"
@@ -136,20 +137,21 @@ msgstr "Servomotor"
 
 msgctxt "flow.node.sonar"
 msgid "Sonar"
-msgstr "Radar"
+msgstr "Sonar"
 
 #, fuzzy
 msgctxt "flow.node.squeeze-sensor"
 msgid "Squeeze Sensor"
-msgstr "Klämsensor"
+msgstr "Kalibrerad sensor"
 
 msgctxt "flow.node.statistics"
 msgid "Statistics"
 msgstr "Statistik"
 
+#, fuzzy
 msgctxt "flow.node.voltage-output"
 msgid "Voltage Output"
-msgstr "Strömutgång"
+msgstr "PWM utgång"
 
 msgctxt "flow.node.wave"
 msgid "Wave"
@@ -165,18 +167,16 @@ msgstr "in"
 
 msgctxt "flow.parameter.light"
 msgid "light intensity"
-msgstr "ljuskänslighet"
+msgstr "ljusstyrka"
 
 msgctxt "flow.parameter.color"
 msgid "color"
 msgstr "färg"
 
-#, fuzzy
 msgctxt "flow.parameter.items"
 msgid "items"
 msgstr "objekt"
 
-#, fuzzy
 msgctxt "flow.parameter.operation"
 msgid "operation"
 msgstr "operation"
@@ -203,13 +203,12 @@ msgstr "riktning"
 
 msgctxt "flow.parameter.duration"
 msgid "duration (s)"
-msgstr "varaktighet"
+msgstr "längd (s)"
 
 msgctxt "flow.parameter.length"
 msgid "length (s)"
-msgstr "längd"
+msgstr "längd (s)"
 
-#, fuzzy
 msgctxt "flow.parameter.meters"
 msgid "max distance (m)"
 msgstr "maximalt avstånd (m)"
@@ -252,10 +251,9 @@ msgctxt "flow.parameter.outMax"
 msgid "out max"
 msgstr "ut maximum"
 
-#, fuzzy
 msgctxt "flow.parameter.trigger"
 msgid "trigger"
-msgstr "utlösare"
+msgstr "aktivera"
 
 msgctxt "flow.parameter.value"
 msgid "value"
@@ -265,17 +263,14 @@ msgctxt "flow.parameter.key"
 msgid "key"
 msgstr "tangent"
 
-#, fuzzy
 msgctxt "flow.parameter.note"
 msgid "note"
 msgstr "not"
 
-#, fuzzy
 msgctxt "flow.parameter.holdTime"
 msgid "hold time"
-msgstr "håll tid"
+msgstr "tid nedtryckt"
 
-#, fuzzy
 msgctxt "flow.parameter.offset"
 msgid "offset"
 msgstr "förskjutning"
@@ -285,16 +280,14 @@ msgctxt "flow.parameter.channel"
 msgid "channel"
 msgstr "kanal"
 
-#, fuzzy
 msgctxt "flow.parameter.ifThen"
 msgid "then"
-msgstr "sedan"
+msgstr "då"
 
 msgctxt "flow.parameter.ifElse"
 msgid "else"
 msgstr "annars"
 
-#, fuzzy
 msgctxt "flow.parameter.amount"
 msgid "amount"
 msgstr "summa"
@@ -307,130 +300,106 @@ msgctxt "flow.parameter.close"
 msgid "close"
 msgstr "stäng"
 
-#, fuzzy
 msgctxt "flow.outlet.out"
 msgid "outlet"
 msgstr "utgång"
 
-#, fuzzy
 msgctxt "flow.constant.logic-and"
 msgid "AND"
-msgstr "AND"
+msgstr "OCH"
 
-#, fuzzy
 msgctxt "flow.constant.logic-or"
 msgid "OR"
-msgstr "OR"
+msgstr "ELLER"
 
 #, fuzzy
 msgctxt "flow.constant.logic-xor"
 msgid "XOR"
 msgstr "XOR"
 
-#, fuzzy
 msgctxt "flow.constant.math-add"
 msgid "Add"
 msgstr "Addera"
 
-#, fuzzy
 msgctxt "flow.constant.math-subtract"
 msgid "Subtract"
-msgstr "Ta bort"
+msgstr "Subtrahera"
 
-#, fuzzy
 msgctxt "flow.constant.math-multiply"
 msgid "Multiply"
 msgstr "Multiplicera"
 
-#, fuzzy
 msgctxt "flow.constant.math-divide"
 msgid "Divide"
-msgstr "Dela"
+msgstr "Dela med"
 
-#, fuzzy
 msgctxt "flow.constant.math-modulo"
 msgid "Modulo"
-msgstr "Modul"
+msgstr "Modulo"
 
-#, fuzzy
 msgctxt "flow.constant.comparison-equal"
 msgid "Equal"
 msgstr "Lika med"
 
-#, fuzzy
 msgctxt "flow.constant.comparison-diff"
 msgid "Different"
-msgstr "Skiljer sig"
+msgstr "Inte lika med"
 
-#, fuzzy
 msgctxt "flow.constant.comparison-greater"
 msgid "Greater"
 msgstr "Större än"
 
-#, fuzzy
 msgctxt "flow.constant.comparison-greater-equal"
 msgid "Greater or equal"
 msgstr "Större eller lika med"
 
-#, fuzzy
 msgctxt "flow.constant.comparison-less"
 msgid "Less"
 msgstr "Mindre än"
 
-#, fuzzy
 msgctxt "flow.constant.comparison-less-equal"
 msgid "Less or equal"
-msgstr "Mindre än eller lika med"
+msgstr "Mindre eller lika med"
 
-#, fuzzy
 msgctxt "flow.constant.statistics-avg"
 msgid "Average"
 msgstr "Medelvärde"
 
-#, fuzzy
 msgctxt "flow.constant.statistics-min"
 msgid "Minimum"
 msgstr "Minimum"
 
-#, fuzzy
 msgctxt "flow.constant.statistics-max"
 msgid "Maximum"
 msgstr "Maximum"
 
-#, fuzzy
 msgctxt "flow.constant.statistics-sum"
 msgid "Summation"
 msgstr "Summering"
 
-#, fuzzy
 msgctxt "flow.constant.wave-sine"
 msgid "Sine"
 msgstr "Sinusvåg"
 
-#, fuzzy
 msgctxt "flow.constant.wave-square"
 msgid "Square"
 msgstr "Fyrkantsvåg"
 
-#, fuzzy
 msgctxt "flow.constant.wave-triangle"
 msgid "Triangle"
 msgstr "Triangelvåg"
 
-#, fuzzy
 msgctxt "flow.constant.wave-pulse"
 msgid "Pulse"
 msgstr "Pulsvåg"
 
-#, fuzzy
 msgctxt "flow.constant.wave-ramp-up"
 msgid "Ramp Up"
-msgstr "Ramp uppåt"
+msgstr "Ramp upp"
 
-#, fuzzy
 msgctxt "flow.constant.wave-ramp-down"
 msgid "Ramp Down"
-msgstr "Ramp nedåt"
+msgstr "Ramp ned"
 
 msgctxt "flow.constant.servo-motor-1"
 msgid "Servo 1"
@@ -440,9 +409,10 @@ msgctxt "flow.constant.servo-motor-2"
 msgid "Servo 2"
 msgstr "Servo 2"
 
+#, fuzzy
 msgctxt "flow.constant.disconnected"
 msgid "Disconnected"
-msgstr "Oansluten"
+msgstr "Ej vald"
 
 msgctxt "flow.constant.place-left-eye"
 msgid "Left eye"
@@ -480,81 +450,70 @@ msgctxt "flow.constant.place-right-leg"
 msgid "Right leg"
 msgstr "Höger ben"
 
-#, fuzzy
 msgctxt "flow.constant.place-horn-front"
 msgid "Horn Front"
 msgstr "Hornets Framsida"
 
-#, fuzzy
 msgctxt "flow.constant.place-left-arm-front"
 msgid "Left Arm Front"
 msgstr "Vänster Arms Framsida"
 
-#, fuzzy
 msgctxt "flow.constant.place-right-arm-front"
 msgid "Right Arm Front"
 msgstr "Höger Arms Framsida"
 
-#, fuzzy
 msgctxt "flow.constant.place-left-leg-front"
 msgid "Left Leg Front"
 msgstr "Vänster Bens Framsida"
 
-#, fuzzy
 msgctxt "flow.constant.place-right-leg-front"
 msgid "Right Leg Front"
 msgstr "Höger Bens Framsida"
 
-#, fuzzy
 msgctxt "flow.constant.place-horn-back"
 msgid "Horn Back"
 msgstr "Hornets Baksida"
 
-#, fuzzy
 msgctxt "flow.constant.place-left-arm-back"
 msgid "Left Arm Back"
 msgstr "Vänster Arms Baksida"
 
-#, fuzzy
 msgctxt "flow.constant.place-right-arm-back"
 msgid "Right Arm Back"
 msgstr "Höger Arms Baksida"
 
-#, fuzzy
 msgctxt "flow.constant.place-left-leg-back"
 msgid "Left Leg Back"
 msgstr "Vänster Bens Baksida"
 
-#, fuzzy
 msgctxt "flow.constant.place-right-leg-back"
 msgid "Right Leg Back"
 msgstr "Höger Bens Baksida"
 
 msgctxt "flow.constant.place-backpack-1"
 msgid "Backpack 1"
-msgstr "Backpack 1"
+msgstr "Ryggsäck 1"
 
 msgctxt "flow.constant.place-backpack-2"
 msgid "Backpack 2"
-msgstr "Backpack 2"
+msgstr "Ryggsäck 2"
 
 msgctxt "flow.constant.place-backpack-3"
 msgid "Backpack 3"
-msgstr "Backpack 3"
+msgstr "Ryggsäck 3"
 
 msgctxt "flow.constant.place-backpack-4"
 msgid "Backpack 4"
-msgstr "Backpack 4"
+msgstr "Ryggsäck 4"
 
 msgctxt "flow.constant.place-backpack-5"
 msgid "Backpack 5"
-msgstr "Backpack 5"
+msgstr "Ryggsäck 5"
 
 msgctxt "flow.constant.place-backpack-6"
 msgid "Backpack 6"
-msgstr "Backpack 6"
+msgstr "Ryggsäck 6"
 
-#, fuzzy
 msgctxt "flow.constant.no-note"
 msgid "No note"
 msgstr "Ingen ton"
@@ -875,7 +834,6 @@ msgctxt "flow.constant.note-ds8"
 msgid "D#8"
 msgstr "D#8"
 
-#, fuzzy
 msgctxt "flow.constant.no-key"
 msgid "No key"
 msgstr "Ingen tangent"
@@ -1036,7 +994,6 @@ msgctxt "flow.constant.key-left_alt"
 msgid "Left ALT"
 msgstr "Vänster ALT"
 
-#, fuzzy
 msgctxt "flow.constant.key-left_gui"
 msgid "Left GUI"
 msgstr "Vänster GUI"
@@ -1053,7 +1010,6 @@ msgctxt "flow.constant.key-right_alt"
 msgid "Right ALT"
 msgstr "Höger ALT"
 
-#, fuzzy
 msgctxt "flow.constant.key-right_gui"
 msgid "Right GUI"
 msgstr "Höger GUI"
@@ -1074,10 +1030,9 @@ msgctxt "flow.constant.key-right"
 msgid "Right"
 msgstr "Höger"
 
-#, fuzzy
 msgctxt "flow.constant.key-backspace"
 msgid "Backspace"
-msgstr "Backsteg"
+msgstr "Backslagstangent"
 
 msgctxt "flow.constant.key-tab"
 msgid "Tab"
@@ -1299,27 +1254,22 @@ msgctxt "flow.constant.key-tilde"
 msgid "~"
 msgstr "~"
 
-#, fuzzy
 msgctxt "flow.constant.no-channel"
 msgid "No Channel"
 msgstr "Ingen Kanal"
 
-#, fuzzy
 msgctxt "flow.constant.channel-1"
 msgid "Channel 1"
 msgstr "Kanal 1"
 
-#, fuzzy
 msgctxt "flow.constant.channel-2"
 msgid "Channel 2"
 msgstr "Kanal 2"
 
-#, fuzzy
 msgctxt "flow.constant.channel-3"
 msgid "Channel 3"
 msgstr "Kanal 3"
 
-#, fuzzy
 msgctxt "flow.constant.channel-4"
 msgid "Channel 4"
 msgstr "Kanal 4"
