@@ -44,8 +44,8 @@ const commonConfigs = {
 	desktop_stage : {
 		CANONICAL_URL            : 'http://strawbeescode-stage',
 		COMPILER_URL             : 'http://localhost:9511',
-		STRAWBEES_CODE_API_URL   : 'https://api-stage.quirkbot.com',
-		LOCALES                  : ['en', 'pt_BR'],
+		STRAWBEES_CODE_API_URL   : 'https://api.quirkbot.com',
+		LOCALES                  : ['en', 'pt_BR', 'sv'],
 		ROOT_PATH                : '/ui',
 		URL_SCHEME               : 'strawbeescode-stage',
 		GAID                     : 'UA-69443341-7',
