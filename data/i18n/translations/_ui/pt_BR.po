@@ -301,7 +301,7 @@ msgid "Create a program"
 msgstr "Crie um programa"
 
 msgctxt "ui.program_creator.import"
-msgid "Import from computer"
+msgid "Load from computer"
 msgstr "Importar do computador"
 
 msgctxt "ui.header_menu.options.upload"
@@ -361,11 +361,11 @@ msgid "Share..."
 msgstr "Compartilhar..."
 
 msgctxt "ui.file_menu.options.import"
-msgid "Import from computer..."
-msgstr "Importar do computador..."
+msgid "Load from computer..."
+msgstr "Carregar do computador..."
 
 msgctxt "ui.file_menu.options.export"
-msgid "Export to computer"
+msgid "Save to computer"
 msgstr "Baixar para o computador"
 
 msgctxt "ui.file_menu.options.remove"
@@ -461,7 +461,7 @@ msgstr ""
 "atual."
 
 msgctxt "ui.dialog.import.title"
-msgid "Import from computer"
+msgid "Load from computer"
 msgstr "Importar do computador"
 
 msgctxt "ui.dialog.import.drag_file"
@@ -489,7 +489,7 @@ msgid "Click on the program to open it."
 msgstr "Clique no programa para abri-lo."
 
 msgctxt "ui.dialog.export.title"
-msgid "Export to computer"
+msgid "Save to computer"
 msgstr "Baixar para o computador"
 
 msgctxt "ui.dialog.remove.title"

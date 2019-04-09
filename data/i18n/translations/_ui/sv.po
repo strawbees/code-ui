@@ -305,7 +305,7 @@ msgstr "Skapa ett program"
 
 #, fuzzy
 msgctxt "ui.program_creator.import"
-msgid "Import from computer"
+msgid "Load from computer"
 msgstr "Ladda upp från din dator"
 
 msgctxt "ui.header_menu.options.upload"
@@ -366,12 +366,12 @@ msgstr "Dela..."
 
 #, fuzzy
 msgctxt "ui.file_menu.options.import"
-msgid "Import from computer..."
+msgid "Load from computer..."
 msgstr "Ladda upp från din dator..."
 
 #, fuzzy
 msgctxt "ui.file_menu.options.export"
-msgid "Export to computer"
+msgid "Save to computer"
 msgstr "Spara till din dator"
 
 msgctxt "ui.file_menu.options.remove"
@@ -469,7 +469,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "ui.dialog.import.title"
-msgid "Import from computer"
+msgid "Load from computer"
 msgstr "Ladda upp från din dator"
 
 msgctxt "ui.dialog.import.drag_file"
@@ -498,7 +498,7 @@ msgstr "Klicka på programmet för att öppna det."
 
 #, fuzzy
 msgctxt "ui.dialog.export.title"
-msgid "Export to computer"
+msgid "Save to computer"
 msgstr "Spara till din dator"
 
 msgctxt "ui.dialog.remove.title"
