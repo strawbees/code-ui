@@ -455,15 +455,6 @@ msgctxt "ui.dialog.share.static_url.title"
 msgid "Link to this program, as it is right now"
 msgstr "Länk till det här programmet, som det ser ut just nu"
 
-#, fuzzy
-msgctxt "ui.dialog.share.static_url.description"
-msgid ""
-"If this program is modified, this link will always point to it's current "
-"version"
-msgstr ""
-"Om det här programmet modifieras kommer den här länken alltid gå till den "
-"senaste versionen."
-
 msgctxt "ui.dialog.import.title"
 msgid "Load from computer"
 msgstr "Ladda upp från din dator"

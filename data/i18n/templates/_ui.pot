@@ -436,16 +436,6 @@ msgctxt "ui.dialog.share.dynamic_url.title"
 msgid "Link to this program"
 msgstr ""
 
-msgctxt "ui.dialog.share.static_url.title"
-msgid "Link to this program, as it is right now"
-msgstr ""
-
-msgctxt "ui.dialog.share.static_url.description"
-msgid ""
-"If this program is modified, this link will always point to it's current "
-"version"
-msgstr ""
-
 msgctxt "ui.dialog.import.title"
 msgid "Load from computer"
 msgstr ""
