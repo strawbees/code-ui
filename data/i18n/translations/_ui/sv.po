@@ -68,7 +68,7 @@ msgid "You need to fill in your username."
 msgstr "Du måste fylla i ditt användarnamn."
 
 msgctxt "ui.sb_cloud.signup.username.error.too_long"
-msgid "Username can be up to 30 characters long"
+msgid "Username can be up to 30 characters long."
 msgstr "Användarnamnet kan vara upp till 30 tecken långt."
 
 msgctxt "ui.sb_cloud.signup.username.error.invalid"
@@ -88,7 +88,7 @@ msgid "So we can communicate with you about your account."
 msgstr "För att vi ska kunna kommunicera med dig angående ditt konto."
 
 msgctxt "ui.sb_cloud.signup.email.error.blank"
-msgid "You need to fill in your email"
+msgid "You need to fill in your email."
 msgstr "Du måste fylla i din e-post"
 
 msgctxt "ui.sb_cloud.signup.email.error.invalid"
