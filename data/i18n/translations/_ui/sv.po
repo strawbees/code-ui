@@ -510,7 +510,7 @@ msgstr "Radera"
 
 #, fuzzy
 msgctxt "ui.dialog.discard.title"
-msgid "Discard changes?"
+msgid "Program not saved!"
 msgstr "Programmet är inte sparat!"
 
 #, fuzzy

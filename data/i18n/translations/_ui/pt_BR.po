@@ -505,7 +505,7 @@ msgid "Delete"
 msgstr "Deletar"
 
 msgctxt "ui.dialog.discard.title"
-msgid "Discard changes?"
+msgid "Program not saved!"
 msgstr "Seu programa não está salvo!"
 
 msgctxt "ui.dialog.discard.description"
