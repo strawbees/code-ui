@@ -34,7 +34,7 @@ const commonConfigs = {
 		CANONICAL_URL            : 'https://code.strawbees.com',
 		COMPILER_URL             : 'https://compiler.quirkbot.com',
 		STRAWBEES_CODE_API_URL   : 'https://api.quirkbot.com',
-		LOCALES                  : ['en', 'pt_BR'],
+		LOCALES                  : ['en', 'pt_BR', 'sv'],
 		ROOT_PATH                : '',
 		URL_SCHEME               : 'strawbeescode',
 		GAID                     : 'UA-69443341-8',
@@ -44,8 +44,8 @@ const commonConfigs = {
 	desktop_stage : {
 		CANONICAL_URL            : 'http://strawbeescode-stage',
 		COMPILER_URL             : 'http://localhost:9511',
-		STRAWBEES_CODE_API_URL   : 'https://api-stage.quirkbot.com',
-		LOCALES                  : ['en', 'pt_BR'],
+		STRAWBEES_CODE_API_URL   : 'https://api.quirkbot.com',
+		LOCALES                  : ['en', 'pt_BR', 'sv'],
 		ROOT_PATH                : '/ui',
 		URL_SCHEME               : 'strawbeescode-stage',
 		GAID                     : 'UA-69443341-7',
@@ -56,7 +56,7 @@ const commonConfigs = {
 		CANONICAL_URL            : 'http://strawbeescode',
 		COMPILER_URL             : 'http://localhost:9511',
 		STRAWBEES_CODE_API_URL   : 'https://api.quirkbot.com',
-		LOCALES                  : ['en'],
+		LOCALES                  : ['en', 'pt_BR', 'sv'],
 		ROOT_PATH                : '/ui',
 		URL_SCHEME               : 'strawbeescode',
 		GAID                     : 'UA-69443341-8',
@@ -85,9 +85,24 @@ module.exports = {
 	exportPathMap             : async () => JSON.parse(await fs.readFile(path.resolve(__dirname, 'static', 'routes.json'))),
 	webpack                   : (webpackConfig) => {
 		// svg loader
+		// first remove any existing rules for svg
+		const fileLoaderRule = webpackConfig.module.rules.find(rule => rule.test.test('.svg'))
+		if (fileLoaderRule) {
+			fileLoaderRule.exclude = /\.svg$/
+		}
+		// then add the @svgr rule
 		webpackConfig.module.rules.push({
 			test : /\.svg$/,
-			use  : ['@svgr/webpack'],
+			use  : [{
+				loader  : '@svgr/webpack',
+				options : {
+					svgoConfig : {
+						plugins : {
+							removeViewBox : false
+						}
+					}
+				}
+			}],
 		})
 		// alias
 		webpackConfig.resolve.alias = {

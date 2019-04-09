@@ -58,7 +58,7 @@ msgid "You need to fill in your username."
 msgstr ""
 
 msgctxt "ui.sb_cloud.signup.username.error.too_long"
-msgid "Username can be up to 30 characters long\""
+msgid "Username can be up to 30 characters long."
 msgstr ""
 
 msgctxt "ui.sb_cloud.signup.username.error.invalid"
@@ -78,7 +78,7 @@ msgid "So we can communicate with you about your account."
 msgstr ""
 
 msgctxt "ui.sb_cloud.signup.email.error.blank"
-msgid "You need to fill in your email"
+msgid "You need to fill in your email."
 msgstr ""
 
 msgctxt "ui.sb_cloud.signup.email.error.invalid"
@@ -289,7 +289,7 @@ msgid "Create a program"
 msgstr ""
 
 msgctxt "ui.program_creator.import"
-msgid "Import from computer"
+msgid "Load from computer"
 msgstr ""
 
 msgctxt "ui.header_menu.options.upload"
@@ -349,11 +349,11 @@ msgid "Share..."
 msgstr ""
 
 msgctxt "ui.file_menu.options.import"
-msgid "Import from computer..."
+msgid "Load from computer..."
 msgstr ""
 
 msgctxt "ui.file_menu.options.export"
-msgid "Export to computer"
+msgid "Save to computer"
 msgstr ""
 
 msgctxt "ui.file_menu.options.remove"
@@ -436,22 +436,8 @@ msgctxt "ui.dialog.share.dynamic_url.title"
 msgid "Link to this program"
 msgstr ""
 
-msgctxt "ui.dialog.share.dynamic_url.description"
-msgid ""
-msgstr ""
-
-msgctxt "ui.dialog.share.static_url.title"
-msgid "Link to this program, as it is right now"
-msgstr ""
-
-msgctxt "ui.dialog.share.static_url.description"
-msgid ""
-"If this program is modified, this link will always point to it's current "
-"version"
-msgstr ""
-
 msgctxt "ui.dialog.import.title"
-msgid "Import from computer"
+msgid "Load from computer"
 msgstr ""
 
 msgctxt "ui.dialog.import.drag_file"
@@ -479,7 +465,7 @@ msgid "Click on the program to open it."
 msgstr ""
 
 msgctxt "ui.dialog.export.title"
-msgid "Export to computer"
+msgid "Save to computer"
 msgstr ""
 
 msgctxt "ui.dialog.remove.title"
@@ -495,7 +481,7 @@ msgid "Delete"
 msgstr ""
 
 msgctxt "ui.dialog.discard.title"
-msgid "Discard changes?"
+msgid "Program not saved!"
 msgstr ""
 
 msgctxt "ui.dialog.discard.description"
@@ -562,7 +548,7 @@ msgid "Login"
 msgstr ""
 
 msgctxt "ui.user.account_settings.profile"
-msgid "View Profile"
+msgid "View profile"
 msgstr ""
 
 msgctxt "ui.user.account_settings.signin"

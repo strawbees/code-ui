@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 
 msgctxt "download.platform.darwin"
-msgid "Mac OS"
+msgid "macOS"
 msgstr ""
 
 msgctxt "download.platform.win32"

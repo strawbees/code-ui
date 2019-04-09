@@ -130,6 +130,7 @@ class DropdownMenu extends React.Component {
 					}
 					.list .option :global(a) {
 						text-decoration: none;
+						width: 100%;
 					}
 					.list .option :global(.link:focus) {
 						outline: none;

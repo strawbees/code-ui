@@ -7,21 +7,15 @@ import {
 	addGlobalEventListener,
 	removeAllGlobalEventListeners,
 } from 'src/utils/globalEvents'
-import getConfig from 'next/config'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
-const {
-	publicRuntimeConfig : {
-		GAID
-	}
-} = getConfig()
-
 
 class TrackingManager extends React.Component {
 	componentDidMount() {
-		ReactGA.initialize(GAID, {
+		const { gaId } = this.props
+		ReactGA.initialize(gaId, {
 			// debug     : true,
 			gaOptions : {
 				anonymiseIp  : true,
@@ -62,7 +56,8 @@ class TrackingManager extends React.Component {
 }
 
 TrackingManager.propTypes = {
-	asPath : PropTypes.string
+	asPath : PropTypes.string,
+	gaId   : PropTypes.string,
 }
 
 export default connect(
