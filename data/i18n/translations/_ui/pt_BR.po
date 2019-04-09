@@ -573,7 +573,7 @@ msgid "Login"
 msgstr "Entrar"
 
 msgctxt "ui.user.account_settings.profile"
-msgid "View Profile"
+msgid "View profile"
 msgstr "Ver perfil"
 
 msgctxt "ui.user.account_settings.signin"
