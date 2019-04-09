@@ -457,10 +457,6 @@ msgctxt "ui.dialog.share.dynamic_url.title"
 msgid "Link to this program"
 msgstr "Länk till det här programmet"
 
-msgctxt "ui.dialog.share.dynamic_url.description"
-msgid ""
-msgstr ""
-
 msgctxt "ui.dialog.share.static_url.title"
 msgid "Link to this program, as it is right now"
 msgstr "Länk till det här programmet, som det ser ut just nu"
