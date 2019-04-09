@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-04-09 03:45+0000\n"
+"PO-Revision-Date: 2019-04-09 06:08+0000\n"
 "Last-Translator: Paulo Barcelos <paulo@strawbees.com>\n"
 "Language-Team: Swedish\n"
 "Language: sv\n"
@@ -303,7 +303,6 @@ msgctxt "ui.program_creator.title"
 msgid "Create a program"
 msgstr "Skapa ett program"
 
-#, fuzzy
 msgctxt "ui.program_creator.import"
 msgid "Load from computer"
 msgstr "Ladda upp från din dator"
@@ -364,12 +363,10 @@ msgctxt "ui.file_menu.options.share"
 msgid "Share..."
 msgstr "Dela..."
 
-#, fuzzy
 msgctxt "ui.file_menu.options.import"
 msgid "Load from computer..."
 msgstr "Ladda upp från din dator..."
 
-#, fuzzy
 msgctxt "ui.file_menu.options.export"
 msgid "Save to computer"
 msgstr "Spara till din dator"
@@ -467,7 +464,6 @@ msgstr ""
 "Om det här programmet modifieras kommer den här länken alltid gå till den "
 "senaste versionen."
 
-#, fuzzy
 msgctxt "ui.dialog.import.title"
 msgid "Load from computer"
 msgstr "Ladda upp från din dator"
@@ -496,7 +492,6 @@ msgctxt "ui.dialog.import.success"
 msgid "Click on the program to open it."
 msgstr "Klicka på programmet för att öppna det."
 
-#, fuzzy
 msgctxt "ui.dialog.export.title"
 msgid "Save to computer"
 msgstr "Spara till din dator"

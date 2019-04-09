@@ -6,8 +6,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-04-09 02:18+0000\n"
-"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
+"PO-Revision-Date: 2019-04-09 06:20+0000\n"
+"Last-Translator: Paulo Barcelos <paulo@strawbees.com>\n"
 "Language-Team: Portuguese (Brazil)\n"
 "Language: pt_BR\n"
 "X-Generator: Zanata 4.6.2\n"
@@ -302,7 +302,7 @@ msgstr "Crie um programa"
 
 msgctxt "ui.program_creator.import"
 msgid "Load from computer"
-msgstr "Importar do computador"
+msgstr "Carregar do computador"
 
 msgctxt "ui.header_menu.options.upload"
 msgid "Upload"
@@ -382,7 +382,7 @@ msgstr "Usando Strawbees CODE"
 
 msgctxt "ui.help_menu.options.intro_code.video"
 msgid "https://www.youtube.com/watch?v=-D9FhCw9OVA"
-msgstr ""
+msgstr "https://www.youtube.com/watch?v=-D9FhCw9OVA"
 
 msgctxt "ui.help_menu.options.intro_flow.title"
 msgid "Flow programming"
@@ -390,7 +390,7 @@ msgstr "Programação Flow"
 
 msgctxt "ui.help_menu.options.intro_flow.video"
 msgid "https://www.youtube.com/watch?v=-D9FhCw9OVA"
-msgstr ""
+msgstr "https://www.youtube.com/watch?v=-D9FhCw9OVA"
 
 msgctxt "ui.help_menu.options.intro_block.title"
 msgid "Block programming"
@@ -398,7 +398,7 @@ msgstr "Programação Block"
 
 msgctxt "ui.help_menu.options.intro_block.video"
 msgid "https://www.youtube.com/watch?v=-D9FhCw9OVA"
-msgstr ""
+msgstr "https://www.youtube.com/watch?v=-D9FhCw9OVA"
 
 msgctxt "ui.help_menu.options.intro_text.title"
 msgid "Text programming"
@@ -406,7 +406,7 @@ msgstr "Programação Text"
 
 msgctxt "ui.help_menu.options.intro_text.video"
 msgid "https://www.youtube.com/watch?v=-D9FhCw9OVA"
-msgstr ""
+msgstr "https://www.youtube.com/watch?v=-D9FhCw9OVA"
 
 msgctxt "ui.help_menu.options.troubleshooting.title"
 msgid "Troubleshooting"
@@ -414,7 +414,7 @@ msgstr "Solução de problemas"
 
 msgctxt "ui.help_menu.options.troubleshooting.video"
 msgid "https://www.youtube.com/watch?v=-D9FhCw9OVA"
-msgstr ""
+msgstr "https://www.youtube.com/watch?v=-D9FhCw9OVA"
 
 msgctxt "ui.help_menu.options.learning_platform"
 msgid "Visit Strawbees Learning"
@@ -462,7 +462,7 @@ msgstr ""
 
 msgctxt "ui.dialog.import.title"
 msgid "Load from computer"
-msgstr "Importar do computador"
+msgstr "Carregar do computador"
 
 msgctxt "ui.dialog.import.drag_file"
 msgid "Drop your program file here."
@@ -506,7 +506,7 @@ msgstr "Deletar"
 
 msgctxt "ui.dialog.discard.title"
 msgid "Discard changes?"
-msgstr "Descartar mudanças?"
+msgstr "Seu programa não está salvo!"
 
 msgctxt "ui.dialog.discard.description"
 msgid ""
