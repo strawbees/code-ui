@@ -11,11 +11,22 @@ const sortDomNode = (node) => {
 		}
 	}
 	items.sort((a, b) => {
-		if (a.tagName === 'variables' && b.tagName !== 'variables') {
+		if (a.tagName.toLowerCase() === 'variables' && b.tagName.toLowerCase() !== 'variables') {
 			return -1
 		}
-		if (b.tagName === 'variables' && a.tagName !== 'variables') {
+		if (b.tagName.toLowerCase() === 'variables' && a.tagName.toLowerCase() !== 'variables') {
 			return 1
+		}
+		if (a.tagName.toLowerCase() === 'statement' && b.tagName.toLowerCase() === 'statement'
+			&& a.attributes && a.attributes[0] && a.attributes[0].nodeValue
+			&& b.attributes && b.attributes[0] && b.attributes[0].nodeValue) {
+			if (a.attributes[0].nodeValue === b.attributes[0].nodeValue) {
+				return 0
+			}
+			if (a.attributes[0].nodeValue > b.attributes[0].nodeValue) {
+				return 1
+			}
+			return -1
 		}
 		if (a.innerHTML === b.innerHTML) {
 			return 0
