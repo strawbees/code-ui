@@ -12,9 +12,9 @@ export default ({ value, next, statement }, structure) => {
 	}
 	const condition = getBlockBody(conditionBlock, structure)
 	structure.body += `if (${condition}) {\n`
-	parseNext([statement && statement[0]], structure)
-	structure.body += '} else {\n'
 	parseNext([statement && statement[1]], structure)
+	structure.body += '} else {\n'
+	parseNext([statement && statement[0]], structure)
 	structure.body += '}\n'
 	parseNext(next, structure)
 }
