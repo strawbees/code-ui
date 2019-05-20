@@ -5,12 +5,12 @@ import IconButton from 'src/components/iconButton'
 import Spinner from 'src/components/spinner'
 import plusIcon from 'src/assets/icons/general/plus.svg'
 import debounce from 'src/utils/debounce'
-import sortBlocklyDomNode from 'src/utils/sortBlocklyDomNode'
 import {
 	GRAY,
 	WHITE,
 	BLUE
 } from 'src/constants/colors'
+import sortBlocklyDomNode from './utils/sortBlocklyDomNode'
 import toolboxToXmlString from './utils/toolboxToXmlString'
 import blocks from './blocks/index'
 import toolbox from './toolbox'
