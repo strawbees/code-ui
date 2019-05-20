@@ -5,7 +5,7 @@ import IconButton from 'src/components/iconButton'
 import Spinner from 'src/components/spinner'
 import plusIcon from 'src/assets/icons/general/plus.svg'
 import debounce from 'src/utils/debounce'
-import sortDomNode from 'src/utils/sortDomNode'
+import sortBlocklyDomNode from 'src/utils/sortBlocklyDomNode'
 import {
 	GRAY,
 	WHITE,
@@ -173,7 +173,7 @@ class BlockEditor extends React.Component {
 				// sometimes blockly will change the internal order of the Xml
 				// nodes, causing the comparisson to be a false positive, and
 				// that causes all sorts of problems
-				sortDomNode(xml)
+				sortBlocklyDomNode(xml)
 				const currentSource = Blockly.Xml.domToText(xml)
 				if (this.source !== currentSource) {
 					this.source = currentSource
