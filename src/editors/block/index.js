@@ -5,7 +5,7 @@ import IconButton from 'src/components/iconButton'
 import Spinner from 'src/components/spinner'
 import plusIcon from 'src/assets/icons/general/plus.svg'
 import debounce from 'src/utils/debounce'
-import sortDomNode from 'src/utils/sortDomNode'
+import sortBlocklyDomNode from 'src/utils/sortBlocklyDomNode'
 import {
 	GRAY,
 	WHITE,
@@ -91,8 +91,15 @@ class BlockEditor extends React.Component {
 			Blockly
 		} = window
 		this.mainWorkspace.clear()
+
+		// important to sort the xml here, beacuse some sources may have the
+		// "<variables>" node in the end, and that will cause a bug on blockly
+		// once it loads it.
+		const sourceXml = Blockly.Xml.textToDom(source)
+		sortBlocklyDomNode(sourceXml)
+
 		Blockly.Xml.domToWorkspace(
-			Blockly.Xml.textToDom(source),
+			sourceXml,
 			this.mainWorkspace
 		)
 		// eslint-disable-next-line no-underscore-dangle
@@ -173,7 +180,7 @@ class BlockEditor extends React.Component {
 				// sometimes blockly will change the internal order of the Xml
 				// nodes, causing the comparisson to be a false positive, and
 				// that causes all sorts of problems
-				sortDomNode(xml)
+				sortBlocklyDomNode(xml)
 				const currentSource = Blockly.Xml.domToText(xml)
 				if (this.source !== currentSource) {
 					this.source = currentSource

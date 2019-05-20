@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <config xmlns="http://zanata.org/namespace/config/">
-  <url>https://translate.zanata.org/</url>
+  <url>http://translation.strawbees.com/</url>
   <project>strawbees-code</project>
   <project-version>master</project-version>
   <project-type>gettext</project-type>

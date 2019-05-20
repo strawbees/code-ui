@@ -11,6 +11,12 @@ const sortDomNode = (node) => {
 		}
 	}
 	items.sort((a, b) => {
+		if (a.tagName === 'variables' && b.tagName !== 'variables') {
+			return -1
+		}
+		if (b.tagName === 'variables' && a.tagName !== 'variables') {
+			return 1
+		}
 		if (a.innerHTML === b.innerHTML) {
 			return 0
 		}
