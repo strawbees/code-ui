@@ -91,8 +91,15 @@ class BlockEditor extends React.Component {
 			Blockly
 		} = window
 		this.mainWorkspace.clear()
+
+		// important to sort the xml here, beacuse some sources may have the
+		// "<variables>" node in the end, and that will cause a bug on blockly
+		// once it loads it.
+		const sourceXml = Blockly.Xml.textToDom(source)
+		sortBlocklyDomNode(sourceXml)
+
 		Blockly.Xml.domToWorkspace(
-			Blockly.Xml.textToDom(source),
+			sourceXml,
 			this.mainWorkspace
 		)
 		// eslint-disable-next-line no-underscore-dangle
