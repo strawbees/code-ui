@@ -17,7 +17,7 @@ const ProgramCreator = ({
 	flowUrl,
 	blockUrl,
 	textUrl,
-	onImportPress,
+	onUploadFactoryCodePress,
 }) =>
 	<div className='root programCreator'>
 		<style jsx>{`
@@ -103,13 +103,13 @@ const ProgramCreator = ({
 			</Link>
 		</div>
 		<IconButton
-			icon={fileIcons.import}
-			labelKey='ui.program_creator.import'
+			icon={fileIcons.upload}
+			labelKey='ui.file_menu.options.upload-factory'
 			onClick={() => {
-				onImportPress()
+				onUploadFactoryCodePress()
 				fireGlobalEvent('track-event', {
 					category : 'ui',
-					action   : 'import program',
+					action   : 'upload factory program',
 					label    : 'program creator'
 				})
 			}}
@@ -117,10 +117,10 @@ const ProgramCreator = ({
 	</div>
 
 ProgramCreator.propTypes = {
-	flowUrl       : PropTypes.string,
-	blockUrl      : PropTypes.string,
-	textUrl       : PropTypes.string,
-	onImportPress : PropTypes.func,
+	flowUrl                  : PropTypes.string,
+	blockUrl                 : PropTypes.string,
+	textUrl                  : PropTypes.string,
+	onUploadFactoryCodePress : PropTypes.func,
 }
 
 export default ProgramCreator
