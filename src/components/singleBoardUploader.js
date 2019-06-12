@@ -147,7 +147,7 @@ const SingleBoardUploader = ({
 						transform: rotateZ(360deg);
 					}
 				}
-				.container :global(.illustration #line-cord)  {
+				.container :global(.quirkbotUploadIsometric_svg__line-cord)  {
 					animation: line-cord-animation 0.5s linear infinite;
 				}
 				@keyframes line-cord-animation {
@@ -158,7 +158,7 @@ const SingleBoardUploader = ({
 						stroke-dashoffset: -300;
 					}
 				}
-				.container :global(.illustration #line-chip)  {
+				.container :global(.quirkbotUploadIsometric_svg__line-chip)  {
 					animation: line-chip-animation 0.5s linear infinite;
 				}
 				@keyframes line-chip-animation {
@@ -169,26 +169,26 @@ const SingleBoardUploader = ({
 						stroke-dashoffset: -130;
 					}
 				}
-				.root:not(.UPLOADING) .container :global(.illustration #line-cord),
-				.root:not(.UPLOADING) .container :global(.illustration #line-chip) {
+				.root:not(.UPLOADING) .container :global(.quirkbotUploadIsometric_svg__line-cord),
+				.root:not(.UPLOADING) .container :global(.quirkbotUploadIsometric_svg__line-chip) {
 					display: none;
 				}
-				.root:not(.UPLOADING):not(.SUCCESS) .container :global(.illustration #led-lm),
-				.root:not(.UPLOADING):not(.SUCCESS) .container :global(.illustration #led-rm),
-				.root:not(.UPLOADING):not(.SUCCESS) .container :global(.illustration #led-le),
-				.root:not(.UPLOADING):not(.SUCCESS) .container :global(.illustration #led-re){
+				.root:not(.UPLOADING):not(.SUCCESS) .container :global(.quirkbotUploadIsometric_svg__led-lm),
+				.root:not(.UPLOADING):not(.SUCCESS) .container :global(.quirkbotUploadIsometric_svg__led-rm),
+				.root:not(.UPLOADING):not(.SUCCESS) .container :global(.quirkbotUploadIsometric_svg__led-le),
+				.root:not(.UPLOADING):not(.SUCCESS) .container :global(.quirkbotUploadIsometric_svg__led-re){
 					display: none;
 				}
-				.root.UPLOADING .container :global(.illustration #led-lm)  {
+				.root.UPLOADING .container :global(.quirkbotUploadIsometric_svg__led-lm)  {
 					animation: led-blink-animation 0.1s linear infinite alternate;
 				}
-				.root.UPLOADING .container :global(.illustration #led-rm)  {
+				.root.UPLOADING .container :global(.quirkbotUploadIsometric_svg__led-rm)  {
 					animation: led-blink-animation 0.1s linear infinite alternate-reverse;;
 				}
-				.root.SUCCESS .container :global(.illustration #led-lm),
-				.root.SUCCESS .container :global(.illustration #led-rm),
-				.root.SUCCESS .container :global(.illustration #led-le),
-				.root.SUCCESS .container :global(.illustration #led-re) {
+				.root.SUCCESS .container :global(.quirkbotUploadIsometric_svg__led-lm),
+				.root.SUCCESS .container :global(.quirkbotUploadIsometric_svg__led-rm),
+				.root.SUCCESS .container :global(.quirkbotUploadIsometric_svg__led-le),
+				.root.SUCCESS .container :global(.quirkbotUploadIsometric_svg__led-re) {
 					animation: led-blink-animation 0.3s linear infinite alternate;;
 				}
 				@keyframes led-blink-animation {
@@ -199,8 +199,8 @@ const SingleBoardUploader = ({
 						opacity: 0.75;
 					}
 				}
-				.root.UPLOADING .container :global(.illustration #led-le),
-				.root.UPLOADING .container :global(.illustration #led-re) {
+				.root.UPLOADING .container :global(.quirkbotUploadIsometric_svg__led-le),
+				.root.UPLOADING .container :global(.quirkbotUploadIsometric_svg__led-re) {
 					display: none;
 				}
 

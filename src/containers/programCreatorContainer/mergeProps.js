@@ -1,13 +1,20 @@
 export default (stateProps, dispatchProps, ownProps) => {
 	const {
+		factoryCode,
+		...otherStateProps
+	} = stateProps
+
+	const {
 		modalImportProgram,
+		modalUploadCode,
 		...otherDispatchProps
 	} = dispatchProps
 
 	return {
-		...stateProps,
+		...otherStateProps,
 		...otherDispatchProps,
 		...ownProps,
-		onImportPress : () => modalImportProgram(),
+		onImportPress            : () => modalImportProgram(),
+		onUploadFactoryCodePress : () => modalUploadCode(factoryCode),
 	}
 }
