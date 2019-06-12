@@ -42,6 +42,7 @@ const EditorMenu = ({
 	onExportPress,
 	onImportPress,
 	onUploadPress,
+	onUploadFactoryCodePress,
 	newFlowProgramUrl,
 	newBlockProgramUrl,
 	newTextProgramUrl,
@@ -299,6 +300,18 @@ const EditorMenu = ({
 						})
 					},
 				},
+				{
+					labelKey : 'ui.file_menu.options.upload-factory',
+					divider  : true,
+					onClick  : () => {
+						onUploadFactoryCodePress()
+						fireGlobalEvent('track-event', {
+							category : 'ui',
+							action   : 'upload factory program',
+							label    : 'file menu'
+						})
+					},
+				},
 			]}
 		/>
 		<HelpMenuContainer />
@@ -383,16 +396,17 @@ EditorMenu.propTypes = {
 		READY,
 		ERROR
 	]),
-	onNameChange       : PropTypes.func,
-	onSavePress        : PropTypes.func,
-	onDuplicatePress   : PropTypes.func,
-	onSharePress       : PropTypes.func,
-	onExportPress      : PropTypes.func,
-	onImportPress      : PropTypes.func,
-	onUploadPress      : PropTypes.func,
-	newFlowProgramUrl  : PropTypes.string,
-	newBlockProgramUrl : PropTypes.string,
-	newTextProgramUrl  : PropTypes.string,
+	onNameChange             : PropTypes.func,
+	onSavePress              : PropTypes.func,
+	onDuplicatePress         : PropTypes.func,
+	onSharePress             : PropTypes.func,
+	onExportPress            : PropTypes.func,
+	onImportPress            : PropTypes.func,
+	onUploadPress            : PropTypes.func,
+	onUploadFactoryCodePress : PropTypes.func,
+	newFlowProgramUrl        : PropTypes.string,
+	newBlockProgramUrl       : PropTypes.string,
+	newTextProgramUrl        : PropTypes.string,
 }
 
 export default EditorMenu

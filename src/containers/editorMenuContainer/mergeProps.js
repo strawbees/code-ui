@@ -2,6 +2,7 @@ export default (stateProps, dispatchProps, ownProps) => {
 	const {
 		id,
 		generatedCode,
+		factoryCode,
 		source,
 		safeName : name,
 		...otherStateProps
@@ -33,7 +34,8 @@ export default (stateProps, dispatchProps, ownProps) => {
 			source,
 			name,
 		}),
-		onImportPress : () => modalImportProgram(),
-		onExportPress : () => exportProgramToFile({ type, source, name }),
+		onImportPress            : () => modalImportProgram(),
+		onExportPress            : () => exportProgramToFile({ type, source, name }),
+		onUploadFactoryCodePress : () => modalUploadCode(factoryCode),
 	}
 }

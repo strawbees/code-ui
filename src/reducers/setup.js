@@ -8,6 +8,7 @@ import {
 	SETUP_SET_LOCALES,
 	SETUP_SET_ROUTES,
 	SETUP_SET_STRINGS,
+	SETUP_SET_FACTORY_CODE,
 	SETUP_SET_DISPLAY_PAGE_LOADER,
 	SETUP_SET_DISPLAY_ERROR,
 	SETUP_SET_OS,
@@ -153,6 +154,19 @@ const stringsLoaded = (state = {}, { type, payload }) => {
 			return state
 	}
 }
+const factoryCode = (state = '', { type, payload }) => {
+	switch (type) {
+		case SETUP_SET_FACTORY_CODE:
+			return payload
+		case SETUP_SET:
+			if (typeof payload.factoryCode !== 'undefined') {
+				return payload.factoryCode
+			}
+			return state
+		default:
+			return state
+	}
+}
 const displayPageLoader = (state = false, { type, payload }) => {
 	switch (type) {
 		case SETUP_SET_DISPLAY_PAGE_LOADER:
@@ -202,6 +216,7 @@ export default combineReducers({
 	routes,
 	strings,
 	stringsLoaded,
+	factoryCode,
 	displayPageLoader,
 	displayError,
 	os,

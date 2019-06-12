@@ -332,6 +332,10 @@ msgctxt "ui.file_menu.options.upload"
 msgid "Upload to Quirkbot..."
 msgstr ""
 
+msgctxt "ui.file_menu.options.upload-factory"
+msgid "Upload Factory Program..."
+msgstr ""
+
 msgctxt "ui.file_menu.options.save"
 msgid "Save"
 msgstr ""
