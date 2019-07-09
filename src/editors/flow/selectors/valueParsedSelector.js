@@ -31,7 +31,11 @@ export default () => createSelector(
 		let result
 		// Check if it is a constant
 		const getConstant = () => {
-			const uppercaseValue = value.toUpperCase()
+			const uppercaseValue = value
+				.trim()
+				.toUpperCase()
+				.split('-').join('_')
+				.split(' ').join('_')
 			const id = constants[uppercaseValue]
 			if (!id) {
 				return null

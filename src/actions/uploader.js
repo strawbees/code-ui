@@ -2,7 +2,7 @@
 // 	getLinkByRuntimeId,
 // 	uploadHexToLink
 // } from 'quirkbot-midi-interface'
-import QuirkbotChromeApp from 'quirkbot-chrome-app'
+import QuirkbotChromeApp from '@strawbees/quirkbot-chrome-app'
 import getConfig from 'next/config'
 import { generateMethod } from 'src/utils/chromeExtensionApi'
 import { fireGlobalEvent } from 'src/utils/globalEvents'

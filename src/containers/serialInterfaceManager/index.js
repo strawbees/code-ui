@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import QuirkbotChromeApp from 'quirkbot-chrome-app'
+import QuirkbotChromeApp from '@strawbees/quirkbot-chrome-app'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
