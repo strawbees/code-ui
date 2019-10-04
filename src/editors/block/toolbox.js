@@ -69,6 +69,23 @@ export default (strings) => ([
 				]
 			},
 			{
+				type   : 'output_servo_transition',
+				values : [
+					{
+						name  : 'POSITION',
+						type  : 'math_positive_number',
+						field : 'NUM',
+						value : 1
+					},
+					{
+						name  : 'DURATION',
+						type  : 'math_positive_number',
+						field : 'NUM',
+						value : 0.5
+					}
+				]
+			},
+			{
 				type   : 'output_continuous_servo_speed',
 				values : [
 					{

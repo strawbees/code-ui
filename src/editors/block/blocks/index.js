@@ -50,6 +50,7 @@ import output_led from './output_led/index'
 import output_led_dual_color_color from './output_led_dual_color_color/index'
 import output_led_dual_color_light from './output_led_dual_color_light/index'
 import output_servo from './output_servo/index'
+import output_servo_transition from './output_servo_transition/index'
 import text from './text/index'
 import undefined from './undefined/index'
 /* eslint-enable camelcase */
@@ -106,6 +107,7 @@ export default {
 	output_led_dual_color_color,
 	output_led_dual_color_light,
 	output_servo,
+	output_servo_transition,
 	text,
 	undefined
 }

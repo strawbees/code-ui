@@ -67,6 +67,38 @@ msgctxt "block.blocks.output_servo.message0"
 msgid "set servo %1 position to %2"
 msgstr ""
 
+msgctxt "block.blocks.output_servo_transition.message0"
+msgid "transition servo %1 position to %2 over %3 seconds %4"
+msgstr ""
+
+msgctxt "block.blocks.easing.linear"
+msgid "linear"
+msgstr ""
+
+msgctxt "block.blocks.easing.sine_in"
+msgid "sine in"
+msgstr ""
+
+msgctxt "block.blocks.easing.sine_out"
+msgid "sine out"
+msgstr ""
+
+msgctxt "block.blocks.easing.sine_in_out"
+msgid "sine in out"
+msgstr ""
+
+msgctxt "block.blocks.easing.expo_in"
+msgid "expo in"
+msgstr ""
+
+msgctxt "block.blocks.easing.expo_out"
+msgid "expo out"
+msgstr ""
+
+msgctxt "block.blocks.easing.expo_in_out"
+msgid "expo in out"
+msgstr ""
+
 msgctxt "block.blocks.places.left_eye"
 msgid "left eye"
 msgstr ""
