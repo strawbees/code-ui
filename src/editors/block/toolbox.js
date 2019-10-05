@@ -8,13 +8,37 @@ export default (strings) => ([
 		secondaryColour : '#01adee',
 		blocks          : [
 			{
-				type : 'input_circuit_touch_touched'
+				type   : 'input_circuit_touch_touched',
+				values : [
+					{
+						name  : 'PLACE',
+						type  : 'dropdown_circuit_touch_places',
+						field : 'VALUE',
+						value : 'H'
+					},
+				],
 			},
 			{
-				type : 'input_circuit_touch'
+				type   : 'input_circuit_touch',
+				values : [
+					{
+						name  : 'PLACE',
+						type  : 'dropdown_circuit_touch_places',
+						field : 'VALUE',
+						value : 'H'
+					},
+				],
 			},
 			{
-				type : 'input_light_sensor'
+				type   : 'input_light_sensor',
+				values : [
+					{
+						name  : 'PLACE',
+						type  : 'dropdown_light_sensor_places',
+						field : 'VALUE',
+						value : 'H'
+					},
+				],
 			}
 		]
 	},
@@ -25,41 +49,14 @@ export default (strings) => ([
 		secondaryColour : '#f75abb',
 		blocks          : [
 			{
-				type   : 'output_led',
-				values : [
-					{
-						name  : 'LIGHT',
-						type  : 'math_positive_number',
-						field : 'NUM',
-						value : 1
-					}
-				]
-			},
-			{
-				type   : 'output_led_dual_color_light',
-				values : [
-					{
-						name  : 'LIGHT',
-						type  : 'math_positive_number',
-						field : 'NUM',
-						value : 1
-					}
-				]
-			},
-			{
-				type   : 'output_led_dual_color_color',
-				values : [
-					{
-						name  : 'COLOR',
-						type  : 'math_positive_number',
-						field : 'NUM',
-						value : 1
-					}
-				]
-			},
-			{
 				type   : 'output_servo',
 				values : [
+					{
+						name  : 'PLACE',
+						type  : 'dropdown_servo_places',
+						field : 'VALUE',
+						value : 'SERVO_MOTOR_1'
+					},
 					{
 						name  : 'POSITION',
 						type  : 'math_positive_number',
@@ -72,6 +69,12 @@ export default (strings) => ([
 				type   : 'output_servo_transition',
 				values : [
 					{
+						name  : 'PLACE',
+						type  : 'dropdown_servo_places',
+						field : 'VALUE',
+						value : 'SERVO_MOTOR_1'
+					},
+					{
 						name  : 'POSITION',
 						type  : 'math_positive_number',
 						field : 'NUM',
@@ -81,13 +84,25 @@ export default (strings) => ([
 						name  : 'DURATION',
 						type  : 'math_positive_number',
 						field : 'NUM',
-						value : 0.5
-					}
+						value : 2
+					},
+					{
+						name  : 'EASING',
+						type  : 'dropdown_easing_functions',
+						field : 'VALUE',
+						value : 'EASING_LINEAR'
+					},
 				]
 			},
 			{
 				type   : 'output_continuous_servo_speed',
 				values : [
+					{
+						name  : 'PLACE',
+						type  : 'dropdown_continuous_servo_places',
+						field : 'VALUE',
+						value : 'SERVO_MOTOR_1'
+					},
 					{
 						name  : 'SPEED',
 						type  : 'math_positive_number',
@@ -100,7 +115,64 @@ export default (strings) => ([
 				type   : 'output_continuous_servo_direction',
 				values : [
 					{
+						name  : 'PLACE',
+						type  : 'dropdown_continuous_servo_places',
+						field : 'VALUE',
+						value : 'SERVO_MOTOR_1'
+					},
+					{
 						name  : 'DIRECTION',
+						type  : 'math_positive_number',
+						field : 'NUM',
+						value : 1
+					}
+				]
+			},
+			{
+				type   : 'output_led',
+				values : [
+					{
+						name  : 'PLACE',
+						type  : 'dropdown_led_places',
+						field : 'VALUE',
+						value : 'LE'
+					},
+					{
+						name  : 'LIGHT',
+						type  : 'math_positive_number',
+						field : 'NUM',
+						value : 1
+					}
+				]
+			},
+			{
+				type   : 'output_led_dual_color_light',
+				values : [
+					{
+						name  : 'PLACE',
+						type  : 'dropdown_led_dual_color_places',
+						field : 'VALUE',
+						value : 'H'
+					},
+					{
+						name  : 'LIGHT',
+						type  : 'math_positive_number',
+						field : 'NUM',
+						value : 1
+					}
+				]
+			},
+			{
+				type   : 'output_led_dual_color_color',
+				values : [
+					{
+						name  : 'PLACE',
+						type  : 'dropdown_led_dual_color_places',
+						field : 'VALUE',
+						value : 'H'
+					},
+					{
+						name  : 'COLOR',
 						type  : 'math_positive_number',
 						field : 'NUM',
 						value : 1

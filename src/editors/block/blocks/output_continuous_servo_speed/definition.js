@@ -4,12 +4,9 @@ export default (strings) => ({
 	message0 : s(strings, 'block.blocks.output_continuous_servo_speed.message0'),
 	args0    : [
 		{
-			type    : 'field_dropdown',
-			name    : 'PLACE',
-			options : [
-				[s(strings, 'block.blocks.places.servor_motor_1'), 'SERVO_MOTOR_1'],
-				[s(strings, 'block.blocks.places.servor_motor_2'), 'SERVO_MOTOR_2'],
-			]
+			type  : 'input_value',
+			name  : 'PLACE',
+			check : 'Number'
 		},
 		{
 			type  : 'input_value',

@@ -20,6 +20,13 @@ import data_lengthoflist from './data_lengthoflist/index'
 import data_listcontainsitem from './data_listcontainsitem/index'
 import data_setvariableto from './data_setvariableto/index'
 import data_variable from './data_variable/index'
+import dropdown_circuit_touch_places from './dropdown_circuit_touch_places/index'
+import dropdown_continuous_servo_places from './dropdown_continuous_servo_places/index'
+import dropdown_easing_functions from './dropdown_easing_functions/index'
+import dropdown_led_dual_color_places from './dropdown_led_dual_color_places/index'
+import dropdown_led_places from './dropdown_led_places/index'
+import dropdown_light_sensor_places from './dropdown_light_sensor_places/index'
+import dropdown_servo_places from './dropdown_servo_places/index'
 import event_power_on from './event_power_on/index'
 import input_circuit_touch from './input_circuit_touch/index'
 import input_circuit_touch_touched from './input_circuit_touch_touched/index'
@@ -77,6 +84,13 @@ export default {
 	data_listcontainsitem,
 	data_setvariableto,
 	data_variable,
+	dropdown_circuit_touch_places,
+	dropdown_continuous_servo_places,
+	dropdown_easing_functions,
+	dropdown_led_dual_color_places,
+	dropdown_led_places,
+	dropdown_light_sensor_places,
+	dropdown_servo_places,
 	event_power_on,
 	input_circuit_touch,
 	input_circuit_touch_touched,

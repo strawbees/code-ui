@@ -1,5 +1,6 @@
 import {
 	parseNext,
+	getBlockBody,
 	getValueBlockByAttributeName,
 	computeInstanceName,
 	parseInstaceDefinition,
@@ -7,8 +8,13 @@ import {
 	setInstacePropertyOneTimeAssignment
 } from '../../utils/parsing'
 
-export default ({ value, field, next }, structure) => {
-	const place = field && field[0]
+export default ({ value, next }, structure) => {
+	const placeBlock = getValueBlockByAttributeName(value, 'PLACE')
+	if (!placeBlock) {
+		parseNext(next, structure)
+		return
+	}
+	const place = getBlockBody(placeBlock)
 	const lightBlock = getValueBlockByAttributeName(value, 'LIGHT')
 	if (!lightBlock) {
 		parseNext(next, structure)
