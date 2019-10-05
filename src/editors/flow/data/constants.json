@@ -271,5 +271,5 @@
 	"WAVE_RAMP_UP"                : "wave-ramp-up",
 	"WAVE_SINE"                   : "wave-sine",
 	"WAVE_SQUARE"                 : "wave-square",
-	"WAVE_TRIANGLE"               : "wave-triangle",
+	"WAVE_TRIANGLE"               : "wave-triangle"
 }
