@@ -122,9 +122,9 @@ export default (strings) => ([
 					},
 					{
 						name  : 'DIRECTION',
-						type  : 'math_positive_number',
-						field : 'NUM',
-						value : 1
+						type  : 'dropdown_continuous_servo_directions',
+						field : 'VALUE',
+						value : 'DIRECTION_CLOCKWISE'
 					}
 				]
 			},

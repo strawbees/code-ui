@@ -21,6 +21,7 @@ import data_listcontainsitem from './data_listcontainsitem/index'
 import data_setvariableto from './data_setvariableto/index'
 import data_variable from './data_variable/index'
 import dropdown_circuit_touch_places from './dropdown_circuit_touch_places/index'
+import dropdown_continuous_servo_directions from './dropdown_continuous_servo_directions/index'
 import dropdown_continuous_servo_places from './dropdown_continuous_servo_places/index'
 import dropdown_easing_functions from './dropdown_easing_functions/index'
 import dropdown_led_dual_color_places from './dropdown_led_dual_color_places/index'
@@ -85,6 +86,7 @@ export default {
 	data_setvariableto,
 	data_variable,
 	dropdown_circuit_touch_places,
+	dropdown_continuous_servo_directions,
 	dropdown_continuous_servo_places,
 	dropdown_easing_functions,
 	dropdown_led_dual_color_places,
