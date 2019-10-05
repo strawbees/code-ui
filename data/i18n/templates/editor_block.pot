@@ -195,6 +195,14 @@ msgctxt "block.blocks.easing.bounce-in-out"
 msgid "bounce in out"
 msgstr ""
 
+msgctxt "block.blocks.direction.clockwise"
+msgid "clockwise"
+msgstr ""
+
+msgctxt "block.blocks.direction.counter_clockwise"
+msgid "counter-clockwise"
+msgstr ""
+
 msgctxt "block.blocks.places.left_eye"
 msgid "left eye"
 msgstr ""
