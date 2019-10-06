@@ -4,7 +4,7 @@ const path = require('path')
 // default configs
 const defaults = {
 	CANONICAL_URL                 : 'http://code-dev.strawbees.com:3000',
-	COMPILER_URL                  : 'https://compiler.quirkbot.com',
+	COMPILER_URL                  : 'http://code-compiler-service-stage.us-east-1.elasticbeanstalk.com',
 	STRAWBEES_CODE_API_URL        : 'https://api-stage.quirkbot.com',
 	LOCALES                       : ['en', 'pt_BR', 'sv'],
 	ROOT_PATH                     : '',
@@ -21,7 +21,7 @@ const defaults = {
 const commonConfigs = {
 	web_stage : {
 		CANONICAL_URL            : 'https://code-stage.strawbees.com',
-		COMPILER_URL             : 'https://compiler.quirkbot.com',
+		COMPILER_URL             : 'http://code-compiler-service-stage.us-east-1.elasticbeanstalk.com',
 		STRAWBEES_CODE_API_URL   : 'https://api.quirkbot.com',
 		LOCALES                  : ['en', 'pt_BR', 'sv'],
 		ROOT_PATH                : '',
