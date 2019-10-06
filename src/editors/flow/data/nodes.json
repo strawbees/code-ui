@@ -14,15 +14,15 @@
 					"type": "list",
 					"data": [
 						"DISCONNECTED",
-						"HB",
-						"LAB",
-						"RAB",
-						"LLB",
-						"RLB",
-						"BP1",
-						"BP2",
-						"LLF",
-						"LAF"
+						"PLACE_HORN_BACK",
+						"PLACE_LEFT_ARM_BACK",
+						"PLACE_RIGHT_ARM_BACK",
+						"PLACE_LEFT_LEG_BACK",
+						"PLACE_RIGHT_LEG_BACK",
+						"PLACE_BP1",
+						"PLACE_BP2",
+						"PLACE_LEFT_LEG_FRONT",
+						"PLACE_LEFT_ARM_FRONT"
 					]
 				},
 				"code": "place"
@@ -160,17 +160,17 @@
 			},
 			{
 				"id": "place",
-				"default": "BP1",
+				"default": "PLACE_BP1",
 				"validation": {
 					"type": "list",
 					"data": [
 						"DISCONNECTED",
-						"BP1",
-						"BP2",
-						"BP3",
-						"BP4",
-						"BP5",
-						"BP6"
+						"PLACE_BP1",
+						"PLACE_BP2",
+						"PLACE_BP3",
+						"PLACE_BP4",
+						"PLACE_BP5",
+						"PLACE_BP6"
 					]
 				},
 				"code": "place"
@@ -194,11 +194,11 @@
 					"type": "list",
 					"data": [
 						"DISCONNECTED",
-						"H",
-						"LA",
-						"RA",
-						"LL",
-						"RL"
+						"PLACE_HORN",
+						"PLACE_LEFT_ARM",
+						"PLACE_RIGHT_ARM",
+						"PLACE_LEFT_LEG",
+						"PLACE_RIGHT_LEG"
 					]
 				},
 				"code": "place"
@@ -397,13 +397,13 @@
 			},
 			{
 				"id": "direction",
-				"default": 0,
+				"default": "DIRECTION_CLOCKWISE",
 				"validation": {
-					"type": "range",
-					"data": {
-						"min": 0,
-						"max": 1
-					}
+					"type": "list",
+					"data": [
+						"DIRECTION_CLOCKWISE",
+						"DIRECTION_COUNTER_CLOCKWISE"
+					]
 				},
 				"code": "direction"
 			},
@@ -414,8 +414,8 @@
 					"type": "list",
 					"data": [
 						"DISCONNECTED",
-						"SERVO_MOTOR_1",
-						"SERVO_MOTOR_2"
+						"PLACE_SERVO_MOTOR_1",
+						"PLACE_SERVO_MOTOR_2"
 					]
 				},
 				"code": "place"
@@ -567,11 +567,11 @@
 					"type": "list",
 					"data": [
 						"DISCONNECTED",
-						"H",
-						"LA",
-						"RA",
-						"LL",
-						"RL"
+						"PLACE_HORN",
+						"PLACE_LEFT_ARM",
+						"PLACE_RIGHT_ARM",
+						"PLACE_LEFT_LEG",
+						"PLACE_RIGHT_LEG"
 					]
 				},
 				"code": "place"
@@ -836,15 +836,15 @@
 					"type": "list",
 					"data": [
 						"DISCONNECTED",
-						"LE",
-						"RE",
-						"LM",
-						"RM",
-						"H",
-						"LA",
-						"RA",
-						"LL",
-						"RL"
+						"PLACE_LEFT_EYE",
+						"PLACE_RIGHT_EYE",
+						"PLACE_LEFT_MOUTH",
+						"PLACE_RIGHT_MOUTH",
+						"PLACE_HORN",
+						"PLACE_LEFT_ARM",
+						"PLACE_RIGHT_ARM",
+						"PLACE_LEFT_LEG",
+						"PLACE_RIGHT_LEG"
 					]
 				},
 				"code": "place"
@@ -868,11 +868,11 @@
 					"type": "list",
 					"data": [
 						"DISCONNECTED",
-						"H",
-						"LA",
-						"RA",
-						"LL",
-						"RL"
+						"PLACE_HORN",
+						"PLACE_LEFT_ARM",
+						"PLACE_RIGHT_ARM",
+						"PLACE_LEFT_LEG",
+						"PLACE_RIGHT_LEG"
 					]
 				},
 				"code": "place"
@@ -1167,8 +1167,8 @@
 					"type": "list",
 					"data": [
 						"DISCONNECTED",
-						"SERVO_MOTOR_1",
-						"SERVO_MOTOR_2"
+						"PLACE_SERVO_MOTOR_1",
+						"PLACE_SERVO_MOTOR_2"
 					]
 				},
 				"code": "place"
@@ -1192,12 +1192,12 @@
 					"type": "list",
 					"data": [
 						"DISCONNECTED",
-						"BP1",
-						"BP2",
-						"BP3",
-						"BP4",
-						"BP5",
-						"BP6"
+						"PLACE_BP1",
+						"PLACE_BP2",
+						"PLACE_BP3",
+						"PLACE_BP4",
+						"PLACE_BP5",
+						"PLACE_BP6"
 					]
 				},
 				"code": "place"
@@ -1262,11 +1262,11 @@
 					"type": "list",
 					"data": [
 						"DISCONNECTED",
-						"H",
-						"LA",
-						"RA",
-						"LL",
-						"RL"
+						"PLACE_HORN",
+						"PLACE_LEFT_ARM",
+						"PLACE_RIGHT_ARM",
+						"PLACE_LEFT_LEG",
+						"PLACE_RIGHT_LEG"
 					]
 				},
 				"code": "place"
@@ -1384,22 +1384,22 @@
 					"type": "list",
 					"data": [
 						"DISCONNECTED",
-						"HB",
-						"LAB",
-						"RAB",
-						"LLB",
-						"RLB",
-						"BP1",
-						"BP2",
-						"BP3",
-						"BP4",
-						"BP5",
-						"BP6",
-						"HF",
-						"LAF",
-						"RAF",
-						"LLF",
-						"RLF"
+						"PLACE_HORN_BACK",
+						"PLACE_LEFT_ARM_BACK",
+						"PLACE_RIGHT_ARM_BACK",
+						"PLACE_LEFT_LEG_BACK",
+						"PLACE_RIGHT_LEG_BACK",
+						"PLACE_BP1",
+						"PLACE_BP2",
+						"PLACE_BP3",
+						"PLACE_BP4",
+						"PLACE_BP5",
+						"PLACE_BP6",
+						"PLACE_HORN_FRONT",
+						"PLACE_LEFT_ARM_FRONT",
+						"PLACE_RIGHT_ARM_FRONT",
+						"PLACE_LEFT_LEG_FRONT",
+						"PLACE_RIGHT_LEG_FRONT"
 					]
 				},
 				"code": "place"

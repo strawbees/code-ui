@@ -1,6 +1,6 @@
 {
   "name": "@strawbees/code-ui",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "scripts": {
     "dev": "node lib/scripts/dev.js",
     "build": "node lib/scripts/build.js",
@@ -43,7 +43,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
-    "scratch-blocks": "^0.1.0-prerelease.1549990124",
+    "scratch-blocks": "0.1.0-prerelease.1569422127",
     "serve-handler": "^5.0.8",
     "tinycolor2": "^1.4.1",
     "workbox-build": "^3.6.3",

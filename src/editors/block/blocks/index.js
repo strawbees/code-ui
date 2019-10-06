@@ -20,6 +20,14 @@ import data_lengthoflist from './data_lengthoflist/index'
 import data_listcontainsitem from './data_listcontainsitem/index'
 import data_setvariableto from './data_setvariableto/index'
 import data_variable from './data_variable/index'
+import dropdown_circuit_touch_places from './dropdown_circuit_touch_places/index'
+import dropdown_continuous_servo_directions from './dropdown_continuous_servo_directions/index'
+import dropdown_continuous_servo_places from './dropdown_continuous_servo_places/index'
+import dropdown_easing_functions from './dropdown_easing_functions/index'
+import dropdown_led_dual_color_places from './dropdown_led_dual_color_places/index'
+import dropdown_led_places from './dropdown_led_places/index'
+import dropdown_light_sensor_places from './dropdown_light_sensor_places/index'
+import dropdown_servo_places from './dropdown_servo_places/index'
 import event_power_on from './event_power_on/index'
 import input_circuit_touch from './input_circuit_touch/index'
 import input_circuit_touch_touched from './input_circuit_touch_touched/index'
@@ -50,6 +58,7 @@ import output_led from './output_led/index'
 import output_led_dual_color_color from './output_led_dual_color_color/index'
 import output_led_dual_color_light from './output_led_dual_color_light/index'
 import output_servo from './output_servo/index'
+import output_servo_transition from './output_servo_transition/index'
 import text from './text/index'
 import undefined from './undefined/index'
 /* eslint-enable camelcase */
@@ -76,6 +85,14 @@ export default {
 	data_listcontainsitem,
 	data_setvariableto,
 	data_variable,
+	dropdown_circuit_touch_places,
+	dropdown_continuous_servo_directions,
+	dropdown_continuous_servo_places,
+	dropdown_easing_functions,
+	dropdown_led_dual_color_places,
+	dropdown_led_places,
+	dropdown_light_sensor_places,
+	dropdown_servo_places,
 	event_power_on,
 	input_circuit_touch,
 	input_circuit_touch_touched,
@@ -106,6 +123,7 @@ export default {
 	output_led_dual_color_color,
 	output_led_dual_color_light,
 	output_servo,
+	output_servo_transition,
 	text,
 	undefined
 }

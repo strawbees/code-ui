@@ -68,6 +68,9 @@ export const parseInstacePropertyAssignment = (block, structure, instance, prope
 	parseBlock(block, structure)
 	structure.body += ';\n'
 }
+export const parseInstacePropertyAssignmentFromValue = (structure, instance, property, value) => {
+	structure.body += `${instance}.${property} = ${value}; \n`
+}
 export const parseInstacePropertyOneTimeAssignment = (block, structure, instance, property) => {
 	structure.oneTimeAssignments[`${instance}.${property}`] =
 		`${instance}.${property} = ${getBlockBody(block, structure)};\n`

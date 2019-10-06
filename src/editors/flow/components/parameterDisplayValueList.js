@@ -25,8 +25,10 @@ const ParameterDisplayValueList = ({
 				background-color: ${tinycolor(WHITE).toRgbString()};
 			}
 			.root button {
+				box-sizing: border-box;
 				background-color: ${tinycolor(WHITE).toRgbString()};
 				height: 2rem;
+				overflow-y: hidden;
 			}
 			.root button .wrapper{
 				padding-left: 0.4rem;

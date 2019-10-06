@@ -1,13 +1,20 @@
 import {
 	parseNext,
 	computeInstanceName,
+	getBlockBody,
+	getValueBlockByAttributeName,
 	parseInstaceDefinition,
 	parseInstacePropertyRetrieval,
 	setInstacePropertyOneTimeAssignment
 } from '../../utils/parsing'
 
-export default ({ field, next }, structure) => {
-	const place = field && field[0]
+export default ({ value, next }, structure) => {
+	const placeBlock = getValueBlockByAttributeName(value, 'PLACE')
+	if (!placeBlock) {
+		parseNext(next, structure)
+		return
+	}
+	const place = getBlockBody(placeBlock)
 	const type = 'LightSensor'
 	const instance = computeInstanceName(structure, type, place)
 

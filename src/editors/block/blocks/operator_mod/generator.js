@@ -13,6 +13,6 @@ export default ({ value, next }, structure) => {
 	}
 	const num1 = getBlockBody(num1Block, structure)
 	const num2 = getBlockBody(num2Block, structure)
-	structure.body += `fmod(${num1} % ${num2})`
+	structure.body += `fmod((${num1}), (${num2}))`
 	parseNext(next, structure)
 }

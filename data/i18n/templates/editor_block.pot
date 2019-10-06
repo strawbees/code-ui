@@ -67,6 +67,142 @@ msgctxt "block.blocks.output_servo.message0"
 msgid "set servo %1 position to %2"
 msgstr ""
 
+msgctxt "block.blocks.output_servo_transition.message0"
+msgid "transition servo %1 position to %2 over %3 seconds %4"
+msgstr ""
+
+msgctxt "block.blocks.easing.linear"
+msgid "linear"
+msgstr ""
+
+msgctxt "block.blocks.easing.sine-in"
+msgid "sine in"
+msgstr ""
+
+msgctxt "block.blocks.easing.sine-out"
+msgid "sine out"
+msgstr ""
+
+msgctxt "block.blocks.easing.sine-in-out"
+msgid "sine in out"
+msgstr ""
+
+msgctxt "block.blocks.easing.quad-in"
+msgid "quad in"
+msgstr ""
+
+msgctxt "block.blocks.easing.quad-out"
+msgid "quad out"
+msgstr ""
+
+msgctxt "block.blocks.easing.quad-in-out"
+msgid "quad in out"
+msgstr ""
+
+msgctxt "block.blocks.easing.cubic-in"
+msgid "cubic in"
+msgstr ""
+
+msgctxt "block.blocks.easing.cubic-out"
+msgid "cubic out"
+msgstr ""
+
+msgctxt "block.blocks.easing.cubic-in-out"
+msgid "cubic in out"
+msgstr ""
+
+msgctxt "block.blocks.easing.quart-in"
+msgid "quart in"
+msgstr ""
+
+msgctxt "block.blocks.easing.quart-out"
+msgid "quart out"
+msgstr ""
+
+msgctxt "block.blocks.easing.quart-in-out"
+msgid "quart in out"
+msgstr ""
+
+msgctxt "block.blocks.easing.quint-in"
+msgid "quint in"
+msgstr ""
+
+msgctxt "block.blocks.easing.quint-out"
+msgid "quint out"
+msgstr ""
+
+msgctxt "block.blocks.easing.quint-in-out"
+msgid "quint in out"
+msgstr ""
+
+msgctxt "block.blocks.easing.expo-in"
+msgid "expo in"
+msgstr ""
+
+msgctxt "block.blocks.easing.expo-out"
+msgid "expo out"
+msgstr ""
+
+msgctxt "block.blocks.easing.expo-in-out"
+msgid "expo in out"
+msgstr ""
+
+msgctxt "block.blocks.easing.circ-in"
+msgid "circ in"
+msgstr ""
+
+msgctxt "block.blocks.easing.circ-out"
+msgid "circ out"
+msgstr ""
+
+msgctxt "block.blocks.easing.circ-in-out"
+msgid "circ in out"
+msgstr ""
+
+msgctxt "block.blocks.easing.back-in"
+msgid "back in"
+msgstr ""
+
+msgctxt "block.blocks.easing.back-out"
+msgid "back out"
+msgstr ""
+
+msgctxt "block.blocks.easing.back-in-out"
+msgid "back in out"
+msgstr ""
+
+msgctxt "block.blocks.easing.elastic-in"
+msgid "elastic in"
+msgstr ""
+
+msgctxt "block.blocks.easing.elastic-out"
+msgid "elastic out"
+msgstr ""
+
+msgctxt "block.blocks.easing.elastic-in-out"
+msgid "elastic in out"
+msgstr ""
+
+msgctxt "block.blocks.easing.bounce-in"
+msgid "bounce in"
+msgstr ""
+
+msgctxt "block.blocks.easing.bounce-out"
+msgid "bounce out"
+msgstr ""
+
+msgctxt "block.blocks.easing.bounce-in-out"
+msgid "bounce in out"
+msgstr ""
+
+msgctxt "block.blocks.direction.clockwise"
+msgid "clockwise"
+msgstr ""
+
+msgctxt "block.blocks.direction.counter_clockwise"
+msgid "counter-clockwise"
+msgstr ""
+
 msgctxt "block.blocks.places.left_eye"
 msgid "left eye"
 msgstr ""
