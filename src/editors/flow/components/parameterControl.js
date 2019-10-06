@@ -19,7 +19,7 @@ const ParameterControl = ({
 				flex-direction: column;
 				align-items: stretch;
 				background-color: ${tinycolor(color).toRgbString()};
-				min-width: 11rem;
+				min-width: 13rem;
 				border: solid 0.4rem ${tinycolor(color).toRgbString()};
 				box-sizing: content-box;
 				border-radius: 0.375rem;
