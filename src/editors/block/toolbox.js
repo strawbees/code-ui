@@ -14,7 +14,7 @@ export default (strings) => ([
 						name  : 'PLACE',
 						type  : 'dropdown_circuit_touch_places',
 						field : 'VALUE',
-						value : 'H'
+						value : 'PLACE_HORN'
 					},
 				],
 			},
@@ -25,7 +25,7 @@ export default (strings) => ([
 						name  : 'PLACE',
 						type  : 'dropdown_circuit_touch_places',
 						field : 'VALUE',
-						value : 'H'
+						value : 'PLACE_HORN'
 					},
 				],
 			},
@@ -36,7 +36,7 @@ export default (strings) => ([
 						name  : 'PLACE',
 						type  : 'dropdown_light_sensor_places',
 						field : 'VALUE',
-						value : 'H'
+						value : 'PLACE_HORN'
 					},
 				],
 			}
@@ -55,7 +55,7 @@ export default (strings) => ([
 						name  : 'PLACE',
 						type  : 'dropdown_servo_places',
 						field : 'VALUE',
-						value : 'SERVO_MOTOR_1'
+						value : 'PLACE_SERVO_MOTOR_1'
 					},
 					{
 						name  : 'POSITION',
@@ -72,7 +72,7 @@ export default (strings) => ([
 						name  : 'PLACE',
 						type  : 'dropdown_servo_places',
 						field : 'VALUE',
-						value : 'SERVO_MOTOR_1'
+						value : 'PLACE_SERVO_MOTOR_1'
 					},
 					{
 						name  : 'POSITION',
@@ -101,7 +101,7 @@ export default (strings) => ([
 						name  : 'PLACE',
 						type  : 'dropdown_continuous_servo_places',
 						field : 'VALUE',
-						value : 'SERVO_MOTOR_1'
+						value : 'PLACE_SERVO_MOTOR_1'
 					},
 					{
 						name  : 'SPEED',
@@ -118,7 +118,7 @@ export default (strings) => ([
 						name  : 'PLACE',
 						type  : 'dropdown_continuous_servo_places',
 						field : 'VALUE',
-						value : 'SERVO_MOTOR_1'
+						value : 'PLACE_SERVO_MOTOR_1'
 					},
 					{
 						name  : 'DIRECTION',
@@ -135,7 +135,7 @@ export default (strings) => ([
 						name  : 'PLACE',
 						type  : 'dropdown_led_places',
 						field : 'VALUE',
-						value : 'LE'
+						value : 'PLACE_LEFT_EYE'
 					},
 					{
 						name  : 'LIGHT',
@@ -152,7 +152,7 @@ export default (strings) => ([
 						name  : 'PLACE',
 						type  : 'dropdown_led_dual_color_places',
 						field : 'VALUE',
-						value : 'H'
+						value : 'PLACE_HORN'
 					},
 					{
 						name  : 'LIGHT',
@@ -169,7 +169,7 @@ export default (strings) => ([
 						name  : 'PLACE',
 						type  : 'dropdown_led_dual_color_places',
 						field : 'VALUE',
-						value : 'H'
+						value : 'PLACE_HORN'
 					},
 					{
 						name  : 'COLOR',

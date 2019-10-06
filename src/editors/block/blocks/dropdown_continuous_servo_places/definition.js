@@ -7,8 +7,8 @@ export default (strings) => ({
 			type    : 'field_dropdown',
 			name    : 'VALUE',
 			options : [
-				[s(strings, 'block.blocks.places.servor_motor_1'), 'SERVO_MOTOR_1'],
-				[s(strings, 'block.blocks.places.servor_motor_2'), 'SERVO_MOTOR_2'],
+				[s(strings, 'block.blocks.places.servor_motor_1'), 'PLACE_SERVO_MOTOR_1'],
+				[s(strings, 'block.blocks.places.servor_motor_2'), 'PLACE_SERVO_MOTOR_2'],
 			]
 		}
 	],

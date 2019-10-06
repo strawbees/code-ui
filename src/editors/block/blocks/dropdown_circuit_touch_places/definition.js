@@ -7,11 +7,11 @@ export default (strings) => ({
 			type    : 'field_dropdown',
 			name    : 'VALUE',
 			options : [
-				[s(strings, 'block.blocks.places.horn'), 'H'],
-				[s(strings, 'block.blocks.places.left_arm'), 'LA'],
-				[s(strings, 'block.blocks.places.right_arm'), 'RA'],
-				[s(strings, 'block.blocks.places.left_leg'), 'LL'],
-				[s(strings, 'block.blocks.places.right_leg'), 'RL'],
+				[s(strings, 'block.blocks.places.horn'), 'PLACE_HORN'],
+				[s(strings, 'block.blocks.places.left_arm'), 'PLACE_LEFT_ARM'],
+				[s(strings, 'block.blocks.places.right_arm'), 'PLACE_RIGHT_ARM'],
+				[s(strings, 'block.blocks.places.left_leg'), 'PLACE_LEFT_LEG'],
+				[s(strings, 'block.blocks.places.right_leg'), 'PLACE_RIGHT_LEG'],
 			]
 		}
 	],
