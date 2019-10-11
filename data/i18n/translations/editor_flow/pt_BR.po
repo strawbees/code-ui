@@ -6,7 +6,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-04-16 04:01+0000\n"
+"PO-Revision-Date: 2019-10-11 02:06+0000\n"
 "Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
 "Language-Team: Portuguese (Brazil)\n"
 "Language: pt_BR\n"
@@ -191,7 +191,7 @@ msgstr "velocidade"
 
 msgctxt "flow.parameter.direction"
 msgid "direction"
-msgstr "direção"
+msgstr "sentido"
 
 msgctxt "flow.parameter.duration"
 msgid "duration (s)"
@@ -1256,3 +1256,135 @@ msgstr "Canal 3"
 msgctxt "flow.constant.channel-4"
 msgid "Channel 4"
 msgstr "Canal 4"
+
+msgctxt "flow.constant.easing-linear"
+msgid "linear"
+msgstr "linear"
+
+msgctxt "flow.constant.easing-sine-in"
+msgid "sine in"
+msgstr ""
+
+msgctxt "flow.constant.easing-sine-out"
+msgid "sine out"
+msgstr ""
+
+msgctxt "flow.constant.easing-sine-in-out"
+msgid "sine in out"
+msgstr ""
+
+msgctxt "flow.constant.easing-quad-in"
+msgid "quad in"
+msgstr ""
+
+msgctxt "flow.constant.easing-quad-out"
+msgid "quad out"
+msgstr ""
+
+msgctxt "flow.constant.easing-quad-in-out"
+msgid "quad in out"
+msgstr ""
+
+msgctxt "flow.constant.easing-cubic-in"
+msgid "cubic in"
+msgstr ""
+
+msgctxt "flow.constant.easing-cubic-out"
+msgid "cubic out"
+msgstr ""
+
+msgctxt "flow.constant.easing-cubic-in-out"
+msgid "cubic in out"
+msgstr ""
+
+msgctxt "flow.constant.easing-quart-in"
+msgid "quart in"
+msgstr ""
+
+msgctxt "flow.constant.easing-quart-out"
+msgid "quart out"
+msgstr ""
+
+msgctxt "flow.constant.easing-quart-in-out"
+msgid "quart in out"
+msgstr ""
+
+msgctxt "flow.constant.easing-quint-in"
+msgid "quint in"
+msgstr ""
+
+msgctxt "flow.constant.easing-quint-out"
+msgid "quint out"
+msgstr ""
+
+msgctxt "flow.constant.easing-quint-in-out"
+msgid "quint in out"
+msgstr ""
+
+msgctxt "flow.constant.easing-expo-in"
+msgid "expo in"
+msgstr ""
+
+msgctxt "flow.constant.easing-expo-out"
+msgid "expo out"
+msgstr ""
+
+msgctxt "flow.constant.easing-expo-in-out"
+msgid "expo in out"
+msgstr ""
+
+msgctxt "flow.constant.easing-circ-in"
+msgid "circ in"
+msgstr ""
+
+msgctxt "flow.constant.easing-circ-out"
+msgid "circ out"
+msgstr ""
+
+msgctxt "flow.constant.easing-circ-in-out"
+msgid "circ in out"
+msgstr ""
+
+msgctxt "flow.constant.easing-back-in"
+msgid "back in"
+msgstr ""
+
+msgctxt "flow.constant.easing-back-out"
+msgid "back out"
+msgstr ""
+
+msgctxt "flow.constant.easing-back-in-out"
+msgid "back in out"
+msgstr ""
+
+msgctxt "flow.constant.easing-elastic-in"
+msgid "elastic in"
+msgstr ""
+
+msgctxt "flow.constant.easing-elastic-out"
+msgid "elastic out"
+msgstr ""
+
+msgctxt "flow.constant.easing-elastic-in-out"
+msgid "elastic in out"
+msgstr ""
+
+msgctxt "flow.constant.easing-bounce-in"
+msgid "bounce in"
+msgstr ""
+
+msgctxt "flow.constant.easing-bounce-out"
+msgid "bounce out"
+msgstr ""
+
+msgctxt "flow.constant.easing-bounce-in-out"
+msgid "bounce in out"
+msgstr ""
+
+msgctxt "flow.constant.direction-clockwise"
+msgid "clockwise"
+msgstr "horário"
+
+msgctxt "flow.constant.direction-counter-clockwise"
+msgid "counter-clockwise"
+msgstr "anti-horário"
