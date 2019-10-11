@@ -7,8 +7,9 @@
     "build-serve": "node lib/scripts/buildServe.js",
     "build-targets": "node lib/scripts/buildTargets.js",
     "i18n:scratch-blocks:pull": "node lib/scripts/i18nPull.js",
-    "i18n:zanata:pull": "zanata-cli pull --username $ZANATA_USER --key $ZANATA_KEY --create-skeletons",
-    "i18n:zanata:push": "zanata-cli push --username $ZANATA_USER --key $ZANATA_KEY --push-type both",
+    "i18n:zanata:pull": "zanata-cli pull --username $ZANATA_USER --key $ZANATA_KEY --create-skeletons --errors",
+    "i18n:zanata:push:templates": "zanata-cli push --username $ZANATA_USER --key $ZANATA_KEY --errors",
+    "i18n:zanata:push:translations": "zanata-cli push --username $ZANATA_USER --key $ZANATA_KEY --push-type trans --errors",
     "i18n:pull": "npm run i18n:zanata:pull && npm run i18n:scratch-blocks:pull",
     "prepublishOnly": "npm run build-targets",
     "lint": "eslint --fix ./*.js src/**/*.js pages/**/*.js lib/**/*.js"
