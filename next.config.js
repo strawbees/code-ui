@@ -12,7 +12,7 @@ const defaults = {
 	GAID                          : 'UA-NNNNNN-N',
 	CHROME_EXTENSION_ID           : 'ackaalhbfjagidmjlhlokoblhbnahegd',
 	WINDOWS_DRIVERS_INSTALLER_URL : 'https://github.com/strawbees/quirkbot-driver/releases/download/v2.0.0.0/Quirkbot-Windows-Drivers-Installer-v2.0.0.0.exe',
-	DOWNLOAD_DESKTOP_APP_URL      : 'https://s3.amazonaws.com/strawbees-downloads-stage/code-nwjs-build/versions',
+	DOWNLOAD_DESKTOP_APP_URL      : 'https://strawbees-downloads-stage.s3.amazonaws.com/code-desktop',
 	NEXT_SERVER_PORT              : 3000,
 	NEXT_EXPORT_PATH              : path.resolve(__dirname, 'out'),
 }
@@ -28,7 +28,7 @@ const commonConfigs = {
 		URL_SCHEME               : 'strawbeescode-stage',
 		GAID                     : 'UA-69443341-7',
 		CHROME_EXTENSION_ID      : 'ackaalhbfjagidmjlhlokoblhbnahegd',
-		DOWNLOAD_DESKTOP_APP_URL : 'https://s3.amazonaws.com/strawbees-downloads-stage/code-nwjs-build/versions',
+		DOWNLOAD_DESKTOP_APP_URL : 'https://strawbees-downloads-stage.s3.amazonaws.com/code-desktop',
 	},
 	web_production : {
 		CANONICAL_URL            : 'https://code.strawbees.com',
@@ -39,7 +39,7 @@ const commonConfigs = {
 		URL_SCHEME               : 'strawbeescode',
 		GAID                     : 'UA-69443341-8',
 		CHROME_EXTENSION_ID      : 'ackaalhbfjagidmjlhlokoblhbnahegd',
-		DOWNLOAD_DESKTOP_APP_URL : 'https://s3.amazonaws.com/strawbees-downloads-production/code-nwjs-build/versions',
+		DOWNLOAD_DESKTOP_APP_URL : 'https://strawbees-downloads-production.s3.amazonaws.com/code-desktop',
 	},
 	desktop_stage : {
 		CANONICAL_URL            : 'http://strawbeescode-stage',
@@ -50,7 +50,7 @@ const commonConfigs = {
 		URL_SCHEME               : 'strawbeescode-stage',
 		GAID                     : 'UA-69443341-7',
 		CHROME_EXTENSION_ID      : 'jgbaejhmonchgianepimdbcpfgcbdmam',
-		DOWNLOAD_DESKTOP_APP_URL : 'https://s3.amazonaws.com/strawbees-stage-production/code-nwjs-build/versions',
+		DOWNLOAD_DESKTOP_APP_URL : 'https://s3.amazonaws.com/strawbees-stage-production/code-desktop',
 	},
 	desktop_production : {
 		CANONICAL_URL            : 'http://strawbeescode',
@@ -61,7 +61,7 @@ const commonConfigs = {
 		URL_SCHEME               : 'strawbeescode',
 		GAID                     : 'UA-69443341-8',
 		CHROME_EXTENSION_ID      : 'jgbaejhmonchgianepimdbcpfgcbdmam',
-		DOWNLOAD_DESKTOP_APP_URL : 'https://s3.amazonaws.com/strawbees-downloads-production/code-nwjs-build/versions',
+		DOWNLOAD_DESKTOP_APP_URL : 'https://strawbees-downloads-production.s3.amazonaws.com/code-desktop',
 	}
 }
 // generate the final config, allowing overwritting from env
