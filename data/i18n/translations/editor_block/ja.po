@@ -1,3 +1,5 @@
+# Japanse Editor <paulo+japaneseeditor@strawbees.com>, 2019. #zanata
+# paulobarcelos <paulo@strawbees.com>, 2019. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
@@ -5,133 +7,269 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: \n"
+"PO-Revision-Date: 2019-10-11 02:52+0000\n"
 "Language-Team: \n"
-"X-Generator: Poedit 2.2.3\n"
-"Last-Translator: \n"
+"X-Generator: Zanata 4.6.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"Last-Translator: Japanse Editor <paulo+japaneseeditor@strawbees.com>\n"
 "Language: ja\n"
 
 msgctxt "block.og.title"
 msgid "Block Programming"
-msgstr ""
+msgstr "ブロックプログラミング"
 
 msgctxt "block.og.image"
 msgid "/static/og/block.png"
-msgstr ""
+msgstr "/static/og/block.png"
 
 msgctxt "block.base.title"
 msgid "Block"
-msgstr ""
+msgstr "ブロック"
 
 msgctxt "block.toolbox.category.input"
 msgid "Input"
-msgstr ""
+msgstr "入力"
 
 msgctxt "block.toolbox.category.output"
 msgid "Output"
-msgstr ""
+msgstr "出力"
 
 msgctxt "block.blocks.event_power_on.message0"
 msgid "when program starts"
-msgstr ""
+msgstr "プログラミングの開始"
 
 msgctxt "block.blocks.input_circuit_touch.message0"
 msgid "value of circuit touch %1"
-msgstr ""
+msgstr "回路の値が %1 に触れた"
 
 msgctxt "block.blocks.input_circuit_touch_touched.message0"
 msgid "%1 is touched"
-msgstr ""
+msgstr "%1 が触れられた"
 
 msgctxt "block.blocks.input_light_sensor.message0"
 msgid "value of light sensor %1"
-msgstr ""
+msgstr "光センサーの値 %1"
 
 msgctxt "block.blocks.output_continuous_servo_direction.message0"
 msgid "set continuos servo %1 direction to %2"
-msgstr ""
+msgstr "連続サーボ %1 の方向を %2 にする"
 
 msgctxt "block.blocks.output_continuous_servo_speed.message0"
 msgid "set continuos servo %1 speed to %2"
-msgstr ""
+msgstr "連続サーボ %1 の速度を %2 にする"
 
 msgctxt "block.blocks.output_led.message0"
 msgid "set led %1 light to %2"
-msgstr ""
+msgstr "LED %1のライトを %2 にする"
 
 msgctxt "block.blocks.output_led_dual_color_color.message0"
 msgid "set dual color led %1 color to %2"
-msgstr ""
+msgstr "デュアルカラーLED %1 の色を %2 にする"
 
 msgctxt "block.blocks.output_led_dual_color_light.message0"
 msgid "set dual color led %1 light to %2"
-msgstr ""
+msgstr "デュアルカラーLED %1 のライトを %2 にする"
 
 msgctxt "block.blocks.output_servo.message0"
 msgid "set servo %1 position to %2"
+msgstr "自動制御 %1 の位置を %2 にする"
+
+msgctxt "block.blocks.output_servo_transition.message0"
+msgid "transition servo %1 position to %2 over %3 seconds %4"
+msgstr ""
+
+msgctxt "block.blocks.easing.linear"
+msgid "linear"
+msgstr ""
+
+msgctxt "block.blocks.easing.sine-in"
+msgid "sine in"
+msgstr ""
+
+msgctxt "block.blocks.easing.sine-out"
+msgid "sine out"
+msgstr ""
+
+msgctxt "block.blocks.easing.sine-in-out"
+msgid "sine in out"
+msgstr ""
+
+msgctxt "block.blocks.easing.quad-in"
+msgid "quad in"
+msgstr ""
+
+msgctxt "block.blocks.easing.quad-out"
+msgid "quad out"
+msgstr ""
+
+msgctxt "block.blocks.easing.quad-in-out"
+msgid "quad in out"
+msgstr ""
+
+msgctxt "block.blocks.easing.cubic-in"
+msgid "cubic in"
+msgstr ""
+
+msgctxt "block.blocks.easing.cubic-out"
+msgid "cubic out"
+msgstr ""
+
+msgctxt "block.blocks.easing.cubic-in-out"
+msgid "cubic in out"
+msgstr ""
+
+msgctxt "block.blocks.easing.quart-in"
+msgid "quart in"
+msgstr ""
+
+msgctxt "block.blocks.easing.quart-out"
+msgid "quart out"
+msgstr ""
+
+msgctxt "block.blocks.easing.quart-in-out"
+msgid "quart in out"
+msgstr ""
+
+msgctxt "block.blocks.easing.quint-in"
+msgid "quint in"
+msgstr ""
+
+msgctxt "block.blocks.easing.quint-out"
+msgid "quint out"
+msgstr ""
+
+msgctxt "block.blocks.easing.quint-in-out"
+msgid "quint in out"
+msgstr ""
+
+msgctxt "block.blocks.easing.expo-in"
+msgid "expo in"
+msgstr ""
+
+msgctxt "block.blocks.easing.expo-out"
+msgid "expo out"
+msgstr ""
+
+msgctxt "block.blocks.easing.expo-in-out"
+msgid "expo in out"
+msgstr ""
+
+msgctxt "block.blocks.easing.circ-in"
+msgid "circ in"
+msgstr ""
+
+msgctxt "block.blocks.easing.circ-out"
+msgid "circ out"
+msgstr ""
+
+msgctxt "block.blocks.easing.circ-in-out"
+msgid "circ in out"
+msgstr ""
+
+msgctxt "block.blocks.easing.back-in"
+msgid "back in"
+msgstr ""
+
+msgctxt "block.blocks.easing.back-out"
+msgid "back out"
+msgstr ""
+
+msgctxt "block.blocks.easing.back-in-out"
+msgid "back in out"
+msgstr ""
+
+msgctxt "block.blocks.easing.elastic-in"
+msgid "elastic in"
+msgstr ""
+
+msgctxt "block.blocks.easing.elastic-out"
+msgid "elastic out"
+msgstr ""
+
+msgctxt "block.blocks.easing.elastic-in-out"
+msgid "elastic in out"
+msgstr ""
+
+msgctxt "block.blocks.easing.bounce-in"
+msgid "bounce in"
+msgstr ""
+
+msgctxt "block.blocks.easing.bounce-out"
+msgid "bounce out"
+msgstr ""
+
+msgctxt "block.blocks.easing.bounce-in-out"
+msgid "bounce in out"
+msgstr ""
+
+msgctxt "block.blocks.direction.clockwise"
+msgid "clockwise"
+msgstr ""
+
+msgctxt "block.blocks.direction.counter_clockwise"
+msgid "counter-clockwise"
 msgstr ""
 
 msgctxt "block.blocks.places.left_eye"
 msgid "left eye"
-msgstr ""
+msgstr "左目"
 
 msgctxt "block.blocks.places.right_eye"
 msgid "right eye"
-msgstr ""
+msgstr "右目"
 
 msgctxt "block.blocks.places.left_mouth"
 msgid "left mouth"
-msgstr ""
+msgstr "左の口"
 
 msgctxt "block.blocks.places.right_mouth"
 msgid "right mouth"
-msgstr ""
+msgstr "右の口"
 
 msgctxt "block.blocks.places.left_arm"
 msgid "left arm"
-msgstr ""
+msgstr "左腕"
 
 msgctxt "block.blocks.places.left_leg"
 msgid "left leg"
-msgstr ""
+msgstr "左足"
 
 msgctxt "block.blocks.places.right_arm"
 msgid "right arm"
-msgstr ""
+msgstr "右腕"
 
 msgctxt "block.blocks.places.right_leg"
 msgid "right leg"
-msgstr ""
+msgstr "右足"
 
 msgctxt "block.blocks.places.horn"
 msgid "horn"
-msgstr ""
+msgstr "ホーン"
 
 msgctxt "block.blocks.places.servor_motor_1"
 msgid "1"
-msgstr ""
+msgstr "1"
 
 msgctxt "block.blocks.places.servor_motor_2"
 msgid "2"
-msgstr ""
+msgstr "2"
 
 msgctxt "block.procedures.title"
 msgid "Make a block"
-msgstr ""
+msgstr "ブロックを作る"
 
 msgctxt "block.procedures.add_number"
 msgid "Number"
-msgstr ""
+msgstr "数字"
 
 msgctxt "block.procedures.add_boolean"
 msgid "Boolean"
-msgstr ""
+msgstr "ブーリアン"
 
 msgctxt "block.procedures.add_label"
 msgid "Label"
-msgstr ""
+msgstr "ラベル"
 
 msgctxt "block.procedures.confirm"
 msgid "Create block"
-msgstr ""
+msgstr "ブロックの作成"

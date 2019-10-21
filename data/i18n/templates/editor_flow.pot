@@ -1251,10 +1251,6 @@ msgctxt "flow.constant.channel-4"
 msgid "Channel 4"
 msgstr ""
 
-msgctxt "flow.constant.channel-4"
-msgid "Channel 4"
-msgstr ""
-
 msgctxt "flow.constant.easing-linear"
 msgid "linear"
 msgstr ""

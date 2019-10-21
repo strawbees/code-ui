@@ -1,3 +1,4 @@
+# Kristofer Hagbard <kristofer@strawbees.com>, 2019. #zanata
 # paulobarcelos <paulo@strawbees.com>, 2019. #zanata
 msgid ""
 msgstr ""
@@ -6,8 +7,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-04-16 03:59+0000\n"
-"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
+"PO-Revision-Date: 2019-10-21 03:28+0000\n"
+"Last-Translator: Kristofer Hagbard <kristofer@strawbees.com>\n"
 "Language-Team: Swedish\n"
 "Language: sv\n"
 "X-Generator: Zanata 4.6.2\n"
@@ -1272,3 +1273,135 @@ msgstr "Kanal 3"
 msgctxt "flow.constant.channel-4"
 msgid "Channel 4"
 msgstr "Kanal 4"
+
+msgctxt "flow.constant.easing-linear"
+msgid "linear"
+msgstr "linjär"
+
+msgctxt "flow.constant.easing-sine-in"
+msgid "sine in"
+msgstr "sin in"
+
+msgctxt "flow.constant.easing-sine-out"
+msgid "sine out"
+msgstr "sin ut"
+
+msgctxt "flow.constant.easing-sine-in-out"
+msgid "sine in out"
+msgstr "sin in ut"
+
+msgctxt "flow.constant.easing-quad-in"
+msgid "quad in"
+msgstr "kvadratisk in"
+
+msgctxt "flow.constant.easing-quad-out"
+msgid "quad out"
+msgstr "kvadratisk ut"
+
+msgctxt "flow.constant.easing-quad-in-out"
+msgid "quad in out"
+msgstr "kvadratisk in ut"
+
+msgctxt "flow.constant.easing-cubic-in"
+msgid "cubic in"
+msgstr "kubisk in"
+
+msgctxt "flow.constant.easing-cubic-out"
+msgid "cubic out"
+msgstr "kubisk ut"
+
+msgctxt "flow.constant.easing-cubic-in-out"
+msgid "cubic in out"
+msgstr "kubisk in ut"
+
+msgctxt "flow.constant.easing-quart-in"
+msgid "quart in"
+msgstr "kvart in"
+
+msgctxt "flow.constant.easing-quart-out"
+msgid "quart out"
+msgstr "kvart ut"
+
+msgctxt "flow.constant.easing-quart-in-out"
+msgid "quart in out"
+msgstr "kvart in ut"
+
+msgctxt "flow.constant.easing-quint-in"
+msgid "quint in"
+msgstr "kvint in"
+
+msgctxt "flow.constant.easing-quint-out"
+msgid "quint out"
+msgstr "kvint out"
+
+msgctxt "flow.constant.easing-quint-in-out"
+msgid "quint in out"
+msgstr "kvint in ut"
+
+msgctxt "flow.constant.easing-expo-in"
+msgid "expo in"
+msgstr "expo in"
+
+msgctxt "flow.constant.easing-expo-out"
+msgid "expo out"
+msgstr "expo ut"
+
+msgctxt "flow.constant.easing-expo-in-out"
+msgid "expo in out"
+msgstr "expo in ut"
+
+msgctxt "flow.constant.easing-circ-in"
+msgid "circ in"
+msgstr "cirkulär in"
+
+msgctxt "flow.constant.easing-circ-out"
+msgid "circ out"
+msgstr "cirkulär ut"
+
+msgctxt "flow.constant.easing-circ-in-out"
+msgid "circ in out"
+msgstr "cirkulär in ut"
+
+msgctxt "flow.constant.easing-back-in"
+msgid "back in"
+msgstr "backa in"
+
+msgctxt "flow.constant.easing-back-out"
+msgid "back out"
+msgstr "backa ut"
+
+msgctxt "flow.constant.easing-back-in-out"
+msgid "back in out"
+msgstr "backa in ut"
+
+msgctxt "flow.constant.easing-elastic-in"
+msgid "elastic in"
+msgstr "elastisk in"
+
+msgctxt "flow.constant.easing-elastic-out"
+msgid "elastic out"
+msgstr "elastisk ut"
+
+msgctxt "flow.constant.easing-elastic-in-out"
+msgid "elastic in out"
+msgstr "elastisk in ut"
+
+msgctxt "flow.constant.easing-bounce-in"
+msgid "bounce in"
+msgstr "studsa in"
+
+msgctxt "flow.constant.easing-bounce-out"
+msgid "bounce out"
+msgstr "studsa ut"
+
+msgctxt "flow.constant.easing-bounce-in-out"
+msgid "bounce in out"
+msgstr "studsa in ut"
+
+msgctxt "flow.constant.direction-clockwise"
+msgid "clockwise"
+msgstr "medurs"
+
+msgctxt "flow.constant.direction-counter-clockwise"
+msgid "counter-clockwise"
+msgstr "moturs"

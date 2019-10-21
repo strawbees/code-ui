@@ -1,3 +1,4 @@
+# Murilo Polese <murilo@strawbees.com>, 2019. #zanata
 # paulobarcelos <paulo@strawbees.com>, 2019. #zanata
 msgid ""
 msgstr ""
@@ -6,8 +7,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-06-12 05:33+0000\n"
-"Last-Translator: paulobarcelos <paulo@strawbees.com>\n"
+"PO-Revision-Date: 2019-08-05 05:56+0000\n"
+"Last-Translator: Murilo Polese <murilo@strawbees.com>\n"
 "Language-Team: Portuguese (Brazil)\n"
 "Language: pt_BR\n"
 "X-Generator: Zanata 4.6.2\n"
@@ -530,7 +531,7 @@ msgstr "Não"
 
 msgctxt "ui.program_list.title.storage"
 msgid "My programs"
-msgstr "Meus programas"
+msgstr "Meus programa"
 
 msgctxt "ui.program_list.empty"
 msgid "No programs saved yet."
