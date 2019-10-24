@@ -1,3 +1,4 @@
+# Japanse Editor <paulo+japaneseeditor@strawbees.com>, 2019. #zanata
 # paulobarcelos <paulo@strawbees.com>, 2019. #zanata
 msgid ""
 msgstr ""
@@ -6,11 +7,11 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-10-11 02:06+0000\n"
+"PO-Revision-Date: 2019-10-24 12:33+0000\n"
 "Language-Team: \n"
 "X-Generator: Zanata 4.6.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
+"Last-Translator: paulobarcelos <paulo@strawbees.com>\n"
 "Language: ja\n"
 
 msgctxt "flow.og.title"
@@ -1259,132 +1260,132 @@ msgstr "チャネル4"
 
 msgctxt "flow.constant.easing-linear"
 msgid "linear"
-msgstr ""
+msgstr "直線"
 
 msgctxt "flow.constant.easing-sine-in"
 msgid "sine in"
-msgstr ""
+msgstr "サインイン"
 
 msgctxt "flow.constant.easing-sine-out"
 msgid "sine out"
-msgstr ""
+msgstr "サインアウト"
 
 msgctxt "flow.constant.easing-sine-in-out"
 msgid "sine in out"
-msgstr ""
+msgstr "サインインアウト"
 
 msgctxt "flow.constant.easing-quad-in"
 msgid "quad in"
-msgstr ""
+msgstr "四角形イン"
 
 msgctxt "flow.constant.easing-quad-out"
 msgid "quad out"
-msgstr ""
+msgstr "四角形アウト"
 
 msgctxt "flow.constant.easing-quad-in-out"
 msgid "quad in out"
-msgstr ""
+msgstr "四角形インアウト"
 
 msgctxt "flow.constant.easing-cubic-in"
 msgid "cubic in"
-msgstr ""
+msgstr "立方体イン"
 
 msgctxt "flow.constant.easing-cubic-out"
 msgid "cubic out"
-msgstr ""
+msgstr "立方体アウト"
 
 msgctxt "flow.constant.easing-cubic-in-out"
 msgid "cubic in out"
-msgstr ""
+msgstr "立方体インアウト"
 
 msgctxt "flow.constant.easing-quart-in"
 msgid "quart in"
-msgstr ""
+msgstr "円柱イン"
 
 msgctxt "flow.constant.easing-quart-out"
 msgid "quart out"
-msgstr ""
+msgstr "円柱アウト"
 
 msgctxt "flow.constant.easing-quart-in-out"
 msgid "quart in out"
-msgstr ""
+msgstr "円柱インアウト"
 
 msgctxt "flow.constant.easing-quint-in"
 msgid "quint in"
-msgstr ""
+msgstr "五角形イン"
 
 msgctxt "flow.constant.easing-quint-out"
 msgid "quint out"
-msgstr ""
+msgstr "五角形アウト"
 
 msgctxt "flow.constant.easing-quint-in-out"
 msgid "quint in out"
-msgstr ""
+msgstr "五角形インアウト"
 
 msgctxt "flow.constant.easing-expo-in"
 msgid "expo in"
-msgstr ""
+msgstr "指数イン"
 
 msgctxt "flow.constant.easing-expo-out"
 msgid "expo out"
-msgstr ""
+msgstr "指数アウト"
 
 msgctxt "flow.constant.easing-expo-in-out"
 msgid "expo in out"
-msgstr ""
+msgstr "指数インアウト"
 
 msgctxt "flow.constant.easing-circ-in"
 msgid "circ in"
-msgstr ""
+msgstr "円形イン"
 
 msgctxt "flow.constant.easing-circ-out"
 msgid "circ out"
-msgstr ""
+msgstr "円形アウト"
 
 msgctxt "flow.constant.easing-circ-in-out"
 msgid "circ in out"
-msgstr ""
+msgstr "円形インアウト"
 
 msgctxt "flow.constant.easing-back-in"
 msgid "back in"
-msgstr ""
+msgstr "バックイン"
 
 msgctxt "flow.constant.easing-back-out"
 msgid "back out"
-msgstr ""
+msgstr "バックアウト"
 
 msgctxt "flow.constant.easing-back-in-out"
 msgid "back in out"
-msgstr ""
+msgstr "バックインアウト"
 
 msgctxt "flow.constant.easing-elastic-in"
 msgid "elastic in"
-msgstr ""
+msgstr "エラスティックイン"
 
 msgctxt "flow.constant.easing-elastic-out"
 msgid "elastic out"
-msgstr ""
+msgstr "エラスティックアウト"
 
 msgctxt "flow.constant.easing-elastic-in-out"
 msgid "elastic in out"
-msgstr ""
+msgstr "エラスティックアウト"
 
 msgctxt "flow.constant.easing-bounce-in"
 msgid "bounce in"
-msgstr ""
+msgstr "バウンドイン"
 
 msgctxt "flow.constant.easing-bounce-out"
 msgid "bounce out"
-msgstr ""
+msgstr "バウンドアウト"
 
 msgctxt "flow.constant.easing-bounce-in-out"
 msgid "bounce in out"
-msgstr ""
+msgstr "バウンドインアウト"
 
 msgctxt "flow.constant.direction-clockwise"
 msgid "clockwise"
-msgstr ""
+msgstr "時計回り"
 
 msgctxt "flow.constant.direction-counter-clockwise"
 msgid "counter-clockwise"
-msgstr ""
+msgstr "反時計回り"
