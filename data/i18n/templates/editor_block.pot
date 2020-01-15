@@ -266,3 +266,15 @@ msgstr ""
 msgctxt "block.procedures.confirm"
 msgid "Create block"
 msgstr ""
+
+msgctxt "block.procedures.edit.title"
+msgid "Edit block"
+msgstr ""
+
+msgctxt "block.procedures.edit.confirm"
+msgid "Save"
+msgstr ""
+
+msgctxt "block.procedures.error.existing.description"
+msgid "A block with this name already exists."
+msgstr ""
