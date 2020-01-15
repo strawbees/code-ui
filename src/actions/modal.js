@@ -77,6 +77,14 @@ export const safeOpenDialogModal = (dialogProps = {}, content = null) => (dispat
 		dispatch(showModal())
 	})
 
+export const safeOpenAlertAlternative = (message) => (dispatch) =>
+	dispatch(safeOpenDialogModal(
+		{
+			descriptionValue : message,
+			displayCancel    : false
+		}
+	))
+
 export const safeOpenPromptAlternative = (message, defaultValue = '', callback) => (dispatch) => {
 	let text = ''
 	return dispatch(safeOpenDialogModal(

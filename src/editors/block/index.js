@@ -192,7 +192,10 @@ class BlockEditor extends React.Component {
 		// Load the initial source
 		this.loadSource(refEditorSource)
 
-		// Override blockly prompt with custom dialogue
+		// Override blockly alert
+		this.originalBlocklyAlert = window.Blockly.alert
+		window.Blockly.alert = (m) => setTimeout(() => this.props.openAlert(m), 0)
+		// Override blockly prompt
 		this.originalBlocklyPrompt = window.Blockly.prompt
 		window.Blockly.prompt = this.props.openPrompt
 
@@ -428,6 +431,12 @@ class BlockEditor extends React.Component {
 			delete this.originalBlocklyCreateProcedureDefCallback_
 		}
 		/* eslint-enable no-underscore-dangle */
+
+		// restore blockly alert
+		if (this.originalBlocklyAlert) {
+			window.Blockly.alert = this.originalBlocklyAlert
+			delete this.originalBlocklyAlert
+		}
 		// restore blockly prompt
 		if (this.originalBlocklyPrompt) {
 			window.Blockly.prompt = this.originalBlocklyPrompt
@@ -491,6 +500,7 @@ BlockEditor.propTypes = {
 	refEditorSource : PropTypes.string,
 	onSourceChange  : PropTypes.func,
 	openDialog      : PropTypes.func,
+	openAlert       : PropTypes.func,
 	openPrompt      : PropTypes.func,
 }
 
