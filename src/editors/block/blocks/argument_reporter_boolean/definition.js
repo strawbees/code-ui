@@ -1,6 +1,6 @@
 import s from 'src/utils/s'
 export default (strings) => ({
-	message0 : '%1 ',
+	message0 : '%1',
 	args0    : [
 		{
 			type : 'field_label_serializable',
