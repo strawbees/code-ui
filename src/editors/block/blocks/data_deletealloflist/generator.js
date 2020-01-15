@@ -5,7 +5,7 @@ import {
 } from '../../utils/parsing'
 
 export default ({ field, next }, structure) => {
-	const name = sanitizeCPPVariableName(field && field[0])
+	const name = sanitizeCPPVariableName(`list_${field && field[0]}`)
 	if (!name) {
 		parseNext(next, structure)
 		return

@@ -21,7 +21,7 @@ export default ({ value, field, next }, structure) => {
 	}
 	const indexBody = getBlockBody(indexBlock, structure)
 
-	const name = sanitizeCPPVariableName(field && field[0])
+	const name = sanitizeCPPVariableName(`list_${field && field[0]}`)
 
 	parseInstaceDefinition(structure, name, 'Vector<float>')
 
