@@ -369,7 +369,6 @@ class BlockEditor extends React.Component {
 							this.mainWorkspace.refreshToolboxSelection_()
 							// Show warning that block was not created
 							setTimeout(() => this.props.openDialog({
-								//titleKey       : 'block.procedures.error.existing.title',
 								descriptionKey : 'block.procedures.error.existing.description',
 								displayCancel  : false,
 								limitWidth     : true
