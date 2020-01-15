@@ -10,7 +10,7 @@ export default (strings) => ({
 	],
 	output          : 'Number',
 	category        : 'data',
-	outputShape     : 2,
+	outputShape     : window.Blockly.OUTPUT_SHAPE_ROUND,
 	colour          : '#FF8C1A',
 	colourSecondary : '#FF8000',
 	colourTertiary  : '#DB6E00'
