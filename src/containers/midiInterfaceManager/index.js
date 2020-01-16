@@ -33,17 +33,25 @@ class MidiInterfaceManager extends React.Component {
 		}
 	}
 
-	componentDidMount() {
+	async componentDidMount() {
 		const {
 			midiInit,
+			setQbmidiAvailable,
+			setQbmidiReady,
 			midiEnableLogs,
 			midiDisableLogs,
 		} = this.props
-		if (process.browser) {
-			midiInit()
-			window.midiEnableLogs = midiEnableLogs
-			window.midiDisableLogs = midiDisableLogs
-			this.timer = window.setInterval(() => this.onTick(), 1000)
+		if (process.browser && navigator && navigator.requestMIDIAccess) {
+			setQbmidiAvailable(true)
+			try {
+				await midiInit()
+				setQbmidiReady(true)
+				window.midiEnableLogs = midiEnableLogs
+				window.midiDisableLogs = midiDisableLogs
+				this.timer = window.setInterval(() => this.onTick(), 1000)
+			} catch (e) {
+				console.log('Cannot intialize midi')
+			}
 		}
 	}
 
