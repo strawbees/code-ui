@@ -199,8 +199,34 @@ class BlockEditor extends React.Component {
 		this.originalBlocklyPrompt = window.Blockly.prompt
 		window.Blockly.prompt = this.props.openPrompt
 
+		const { DataCategory } = window.Blockly
+		DataCategory.createValue = (valueName, type, value) =>
+			`<value name="${valueName}">
+				<shadow type="math_number">
+				<field name="NUM">${value}</field>
+				</shadow>
+			</value>`
+		DataCategory.addSetVariableTo = (xmlList, variable) => DataCategory.addBlock(
+			xmlList, variable, 'data_setvariableto', 'VARIABLE', ['VALUE', 'math_number', 0]
+		)
+		DataCategory.addAddToList = (xmlList, variable) => DataCategory.addBlock(
+			xmlList, variable, 'data_addtolist', 'LIST', ['ITEM', 'math_number', 0.5]
+		)
+		DataCategory.addInsertAtList = (xmlList, variable) => DataCategory.addBlock(
+			xmlList, variable, 'data_insertatlist', 'LIST', ['INDEX', 'math_integer', 1], ['ITEM', 'math_number', 0.5]
+		)
+		DataCategory.addReplaceItemOfList = (xmlList, variable) => DataCategory.addBlock(
+			xmlList, variable, 'data_replaceitemoflist', 'LIST', ['INDEX', 'math_integer', 1], ['ITEM', 'math_number', 0.5]
+		)
+		DataCategory.addItemNumberOfList = (xmlList, variable) => DataCategory.addBlock(
+			xmlList, variable, 'data_itemnumoflist', 'LIST', ['ITEM', 'math_number', 0.5]
+		)
+		DataCategory.addListContainsItem = (xmlList, variable) => DataCategory.addBlock(
+			xmlList, variable, 'data_listcontainsitem', 'LIST', ['ITEM', 'math_number', 0.5]
+		)
+
+
 		// Handle custom blocks creation
-		// Setup workspace
 		this.proceduresMutationRoot = null
 		this.proceduresCallback = null
 
