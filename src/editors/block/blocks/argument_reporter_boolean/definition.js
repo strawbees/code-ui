@@ -1,6 +1,6 @@
 import s from 'src/utils/s'
 export default (strings) => ({
-	message0 : '%1 ',
+	message0 : '%1',
 	args0    : [
 		{
 			type : 'field_label_serializable',
@@ -11,5 +11,5 @@ export default (strings) => ({
 	colour          : '#FF6680',
 	colourSecondary : '#FF4D6A',
 	colourTertiary  : '#FF3355',
-	outputShape     : 1
+	outputShape     : window.Blockly.OUTPUT_SHAPE_HEXAGONAL
 })

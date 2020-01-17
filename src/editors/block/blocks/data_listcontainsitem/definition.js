@@ -18,5 +18,5 @@ export default (strings) => ({
 	colour          : '#FF661A',
 	colourSecondary : '#FF5500',
 	colourTertiary  : '#E64D00',
-	outputShape     : 1,
+	outputShape     : window.Blockly.OUTPUT_SHAPE_HEXAGONAL,
 })

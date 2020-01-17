@@ -15,10 +15,10 @@ export default (strings) => ({
 			]
 		}
 	],
-	output          : 'Number',
+	output          : 'Place',
 	category        : 'input',
 	colour          : '#f580c5',
 	colourSecondary : '#f75abb',
 	colourTertiary  : '#f442b0',
-	outputShape     : 2,
+	outputShape     : window.Blockly.OUTPUT_SHAPE_SQUARE,
 })

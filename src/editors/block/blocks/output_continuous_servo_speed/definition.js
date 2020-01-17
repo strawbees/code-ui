@@ -6,7 +6,7 @@ export default (strings) => ({
 		{
 			type  : 'input_value',
 			name  : 'PLACE',
-			check : 'Number'
+			check : 'Place'
 		},
 		{
 			type  : 'input_value',

@@ -147,9 +147,35 @@ export const sanitizeCPPVariableName = (name) => {
 		return '_'
 	}
 	let newName = name
-	// newName = trimSpaces(newName)
 	newName = lTrimReplaceNumerals(newName, '_')
 	newName = removeDiacritics(newName)
 	newName = newName.replace(/[^\w]/gi, '_')
+
+	// check if colides with a reserved c++ word
+	const reservedWords = ['__has_cpp_attribute', '__has_include', '_Pragma',
+		'alignas', 'alignof', 'and', 'and_eq', 'asm', 'atomic_cancel',
+		'atomic_commit', 'atomic_noexcept', 'auto', 'bitand', 'bitor', 'bool',
+		'break', 'case', 'catch', 'char', 'char16_t', 'char32_t', 'char8_t',
+		'cin', 'class', 'co_await', 'co_return', 'co_yield', 'compl', 'concept',
+		'const', 'const_cast', 'consteval', 'constexpr', 'constinit',
+		'continue', 'cout', 'decltype', 'default', 'define', 'defined',
+		'delete', 'do', 'double', 'dynamic_cast', 'elif', 'else', 'endif',
+		'endl', 'enum', 'error', 'explicit', 'export', 'extern', 'false',
+		'final', 'float', 'for', 'friend', 'goto', 'if', 'ifdef', 'ifndef',
+		'import', 'include', 'inline', 'int', 'INT_MAX', 'INT_MIN', 'iomanip',
+		'iostream', 'line', 'long', 'main', 'MAX_RAND', 'module', 'mutable',
+		'namespace', 'new', 'noexcept', 'not', 'not_eq', 'npos', 'NULL',
+		'nullptr', 'operator', 'or', 'or_eq', 'override', 'pragma', 'private',
+		'protected', 'public', 'reflexpr', 'register', 'reinterpret_cast',
+		'requires', 'return', 'short', 'signed', 'sizeof', 'static',
+		'static_assert', 'static_cast', 'std', 'string', 'struct', 'switch',
+		'synchronized', 'template', 'this', 'thread_local', 'throw',
+		'transaction_safe', 'transaction_safe_dynamic', 'true', 'try',
+		'typedef', 'typeid', 'typename', 'undef', 'union', 'unsigned', 'using',
+		'virtual', 'void', 'volatile', 'wchar_t', 'while', 'xor', 'xor_eq'
+	]
+	if (reservedWords.indexOf(newName) !== -1) {
+		newName = `_${newName}`
+	}
 	return newName
 }

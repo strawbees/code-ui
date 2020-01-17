@@ -79,6 +79,10 @@ export const setInstacePropertyOneTimeAssignment = (structure, instance, propert
 	structure.oneTimeAssignments[`${instance}.${property}`] =
 		`${instance}.${property} = ${value}; \n`
 }
+export const setGlobalOneTimeStatement = (structure, statement) => {
+	structure.oneTimeStatements[statement] =
+		`${statement}; \n`
+}
 export const getBlockBody = (block, structure) => {
 	const tempStructure = {
 		...structure,
@@ -109,11 +113,13 @@ export const assembleStructure = structure => {
 	let {
 		definitions,
 		procedureDefinition,
-		oneTimeAssignments
+		oneTimeStatements,
+		oneTimeAssignments,
 	} = structure
 
 	definitions = Object.values(definitions).sort().join('')
 	procedureDefinition = Object.values(procedureDefinition).sort().join('')
+	oneTimeStatements = Object.values(oneTimeStatements).sort().join('')
 	oneTimeAssignments = Object.values(oneTimeAssignments).sort().join('')
 
 	const {
@@ -125,6 +131,7 @@ export const assembleStructure = structure => {
 	`${definitions}\n` +
 	`${procedureDefinition}\n` +
 	'void setup() {\n' +
+	`${oneTimeStatements}\n` +
 	`${oneTimeAssignments}\n` +
 	`${body}` +
 	'}\n\n' +
@@ -172,6 +179,7 @@ export const generateCode = source => {
 		procedureDefinition : {},
 		definitions         : {},
 		oneTimeAssignments  : {},
+		oneTimeStatements   : {},
 		body                : ''
 	}
 

@@ -4,7 +4,7 @@ const path = require('path')
 // default configs
 const defaults = {
 	CANONICAL_URL                 : 'http://code-dev.strawbees.com:3000',
-	COMPILER_URL                  : 'http://code-compiler-service-stage.us-east-1.elasticbeanstalk.com',
+	COMPILER_URL                  : 'https://compiler.quirkbot.com',
 	STRAWBEES_CODE_API_URL        : 'https://api-stage.quirkbot.com',
 	LOCALES                       : ['en', 'pt_BR', 'sv', 'ja'],
 	ROOT_PATH                     : '',
