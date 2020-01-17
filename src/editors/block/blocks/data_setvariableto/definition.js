@@ -7,13 +7,12 @@ export default (strings) => ({
 		},
 		{
 			type : 'input_value',
-			name : 'VALUE'
+			name : 'VALUE',
 		}
 	],
-	category          : 'data',
-	previousStatement : null,
-	nextStatement     : null,
-	colour            : '#FF8C1A',
-	colourSecondary   : '#FF8000',
-	colourTertiary    : '#DB6E00',
+	category   : window.Blockly.Categories.data,
+	extensions : [
+		'colours_data',
+		'shape_statement'
+	],
 })

@@ -12,6 +12,7 @@ import {
 } from 'src/constants/colors'
 import sortBlocklyDomNode from './utils/sortBlocklyDomNode'
 import toolboxToXmlString from './utils/toolboxToXmlString'
+import xmlToJson from './utils/xmlToJson'
 import blocks from './blocks/index'
 import toolbox from './toolbox'
 
@@ -154,6 +155,11 @@ class BlockEditor extends React.Component {
 				scrollbar : 'rgba(0, 0, 0, 0.05)',
 			}
 		})
+		window.workspace = this.mainWorkspace
+
+		// HACK: as way to avoid spurious variables from being created at
+		// random while moving blocks around.
+		window.Blockly.FieldVariable.prototype.initModel = () => {}
 
 		// Handle the source changes
 		const {
@@ -167,39 +173,102 @@ class BlockEditor extends React.Component {
 			// is the offending event, but UI seems a obvious one to avoid.
 			// Still, it's not 100% solid, so added a debounce, that seems to
 			// solve the issue.
-			if (e.type === 'ui' ||
-				e.type === 'var_create' ||
-				e.type === 'create'
-			) {
+			if (e.type === 'ui') {
 				return
 			}
-
 			this.cancelSourceUpdate = debounce('update block source', () => {
-				const xml = Blockly.Xml.workspaceToDom(this.mainWorkspace)
-				// it's importat to sort the node before comparing it, as
-				// sometimes blockly will change the internal order of the Xml
-				// nodes, causing the comparisson to be a false positive, and
-				// that causes all sorts of problems
-				sortBlocklyDomNode(xml)
-				const currentSource = Blockly.Xml.domToText(xml)
-				if (this.source !== currentSource) {
-					this.source = currentSource
-					onSourceChange(currentSource)
+				try {
+					const xml = Blockly.Xml.workspaceToDom(this.mainWorkspace)
+					// it's importat to sort the node before comparing it, as
+					// sometimes blockly will change the internal order of the Xml
+					// nodes, causing the comparisson to be a false positive, and
+					// that causes all sorts of problems
+					sortBlocklyDomNode(xml)
+					const currentSource = Blockly.Xml.domToText(xml)
+					if (this.source !== currentSource) {
+						this.source = currentSource
+						onSourceChange(currentSource)
+					}
+				} catch (error) {
+					console.log('Error handling blockly source', error)
 				}
 			}, 1000)
 		})
 		// Load the initial source
 		this.loadSource(refEditorSource)
 
-		// Override blockly prompt with custom dialogue
+		// Override blockly alert
+		this.originalBlocklyAlert = window.Blockly.alert
+		window.Blockly.alert = (m, cb) => setTimeout(() => this.props.openAlert(m, cb), 0)
+		// Override blockly confirm
+		this.originalBlocklyConfirm = window.Blockly.confirm
+		window.Blockly.confirm = (m, cb) => setTimeout(() => this.props.openConfirm(m, cb), 0)
+		// Override blockly prompt
 		this.originalBlocklyPrompt = window.Blockly.prompt
-		window.Blockly.prompt = this.props.openPrompt
+		window.Blockly.prompt = (m, d, cb) => setTimeout(() => this.props.openPrompt(m, d, cb), 0)
+
+		const { DataCategory } = window.Blockly
+		DataCategory.createValue = (valueName, type, value) =>
+			`<value name="${valueName}">
+				<shadow type="math_number">
+				<field name="NUM">${value}</field>
+				</shadow>
+			</value>`
+		DataCategory.addSetVariableTo = (xmlList, variable) => DataCategory.addBlock(
+			xmlList, variable, 'data_setvariableto', 'VARIABLE', ['VALUE', 'math_number', 0]
+		)
+		DataCategory.addAddToList = (xmlList, variable) => DataCategory.addBlock(
+			xmlList, variable, 'data_addtolist', 'LIST', ['ITEM', 'math_number', 0.5]
+		)
+		DataCategory.addInsertAtList = (xmlList, variable) => DataCategory.addBlock(
+			xmlList, variable, 'data_insertatlist', 'LIST', ['INDEX', 'math_integer', 1], ['ITEM', 'math_number', 0.5]
+		)
+		DataCategory.addReplaceItemOfList = (xmlList, variable) => DataCategory.addBlock(
+			xmlList, variable, 'data_replaceitemoflist', 'LIST', ['INDEX', 'math_integer', 1], ['ITEM', 'math_number', 0.5]
+		)
+		DataCategory.addItemNumberOfList = (xmlList, variable) => DataCategory.addBlock(
+			xmlList, variable, 'data_itemnumoflist', 'LIST', ['ITEM', 'math_number', 0.5]
+		)
+		DataCategory.addListContainsItem = (xmlList, variable) => DataCategory.addBlock(
+			xmlList, variable, 'data_listcontainsitem', 'LIST', ['ITEM', 'math_number', 0.5]
+		)
+
 
 		// Handle custom blocks creation
-		// Setup workspace
 		this.proceduresMutationRoot = null
 		this.proceduresCallback = null
+
+		// HACK start ----------------------------------------------------------
+		/* So this is massive hack to enable us to to know if the
+		 * `externalProcedureDefCallback` is being called to "create" or to
+		 * "edit" a block. There is a nasty edge case where if there is an
+		 * existing block named "block name" (the default name of a procedure),
+		 * and we try to create a new block, it becomes impossible to determine
+		 * if we are editing or crating a new one.
+		 * This hack works by hijacking the function that calls
+		 * `externalProcedureDefCallback` and setting a flag in this scope.
+		 * Then, inside `externalProcedureDefCallback` we can check for this
+		 * flag to decide if it's a new procedure or not.
+		 */
+		// eslint-disable-next-line no-underscore-dangle
+		this.originalBlocklyCreateProcedureDefCallback_ = window.Blockly.Procedures.createProcedureDefCallback_
+		const proceduresFlags = {}
+		// eslint-disable-next-line no-underscore-dangle,func-names
+		window.Blockly.Procedures.createProcedureDefCallback_ = (workspace) => {
+			proceduresFlags.isNew = true
+			// eslint-disable-next-line no-underscore-dangle
+			this.originalBlocklyCreateProcedureDefCallback_(workspace)
+		}
+		// HACK end ------------------------------------------------------------
+
 		window.Blockly.Procedures.externalProcedureDefCallback = async (mutation, cb) => {
+			// Figure out if this is a new procedure or if we are editing an
+			// existing one.
+			// HACK start ----------------------
+			const isNew = proceduresFlags.isNew === true
+			delete proceduresFlags.isNew
+			// HACK end -------------------------
+
 			const setup = (container) => {
 				if (this.proceduresWorkspace) {
 					this.proceduresWorkspace.dispose()
@@ -228,13 +297,136 @@ class BlockEditor extends React.Component {
 				this.proceduresMutationRoot.initSvg()
 				this.proceduresMutationRoot.render(false)
 			}
+
 			this.props.openDialog(
 				{
-					titleKey        : 'block.procedures.title',
-					confirmLabelKey : 'block.procedures.confirm',
+					titleKey        : isNew ? 'block.procedures.title' : 'block.procedures.edit.title',
+					confirmLabelKey : isNew ? 'block.procedures.confirm' : 'block.procedures.edit.confirm',
 					onConfirm       : () => {
-						const newMutation = this.proceduresMutationRoot.mutationToDom(/* opt_generateShadows */ true)
-						this.proceduresCallback(newMutation)
+						// Extract the proceure mutation (the actual data that
+						// create/modify a procedure).
+						const procedureMutation = this.proceduresMutationRoot.mutationToDom(true)
+						// Extract the procedureCode (will be used as the id
+						// of the procedure).
+						const procedureCode = this.proceduresMutationRoot.getProcCode()
+						// Check if procedureCode is empty. If so, cancel early
+						if (!procedureCode) {
+							this.proceduresCallback = null
+							this.proceduresMutationRoot = null
+							this.proceduresWorkspace.clear()
+							// eslint-disable-next-line no-underscore-dangle
+							this.mainWorkspace.refreshToolboxSelection_()
+							return
+						}
+						// Check if there is any procedure with the same
+						// proccode. If so, cancel.
+						const procedureSource = xmlToJson(window.Blockly.Xml.workspaceToDom(this.mainWorkspace))
+						const existingProcedure =
+							procedureSource &&
+							procedureSource.BLOCK &&
+							procedureSource.BLOCK.filter(block =>
+								block.attributes &&
+								block.attributes.type === 'procedures_definition'
+							).filter(block =>
+								block.STATEMENT &&
+								block.STATEMENT[0] &&
+								block.STATEMENT[0].SHADOW &&
+								block.STATEMENT[0].SHADOW[0] &&
+								block.STATEMENT[0].SHADOW[0].MUTATION &&
+								block.STATEMENT[0].SHADOW[0].MUTATION[0] &&
+								block.STATEMENT[0].SHADOW[0].MUTATION[0].attributes &&
+								block.STATEMENT[0].SHADOW[0].MUTATION[0].attributes.proccode &&
+								block.STATEMENT[0].SHADOW[0].MUTATION[0].attributes.proccode === procedureCode
+							).pop()
+						const existingProcedureArgumentIds = JSON.parse((
+							existingProcedure &&
+							existingProcedure.STATEMENT &&
+							existingProcedure.STATEMENT[0] &&
+							existingProcedure.STATEMENT[0].SHADOW &&
+							existingProcedure.STATEMENT[0].SHADOW[0] &&
+							existingProcedure.STATEMENT[0].SHADOW[0].MUTATION &&
+							existingProcedure.STATEMENT[0].SHADOW[0].MUTATION[0] &&
+							existingProcedure.STATEMENT[0].SHADOW[0].MUTATION[0].attributes &&
+							existingProcedure.STATEMENT[0].SHADOW[0].MUTATION[0].attributes.argumentids
+						) || '[]')
+						const originalMutationArgumentIds = JSON.parse(mutation.getAttribute('argumentids'))
+						if (
+							// Creating a new block and it already exists a
+							// block with the same proccode.
+							(
+								isNew &&
+								existingProcedure
+							) ||
+							// Editing a existing block and it already exists a
+							// block with the same proccode. The existing
+							// block and the one being edited don't have the
+							// same number of arguments, so they are certainly
+							// not the same.
+							(
+								!isNew &&
+								existingProcedure &&
+								existingProcedureArgumentIds.length !==
+								originalMutationArgumentIds.length
+							) ||
+							// Editing a existing block and it already exists a
+							// block with the same proccode. The existing
+							// block and the one being edited have some
+							// arguments, but their id's don't match, so they
+							// are not the same.
+							(
+								!isNew &&
+								existingProcedure &&
+								existingProcedureArgumentIds.length &&
+								existingProcedureArgumentIds.join() !==
+								originalMutationArgumentIds.join()
+							) ||
+							// This is the ambiguos case.
+							// Editing a existing block and it already exists a
+							// block with the same proccode. The existing
+							// block and the one being edited don't have
+							// arguments, but their id's don't match, so they
+							// are not the same.
+							(
+								!isNew &&
+								existingProcedure &&
+								!existingProcedureArgumentIds.length &&
+								!originalMutationArgumentIds.length
+							)
+						) {
+							// If we got here, it means the new procedure will
+							// clash with an existing one. At this point, the
+							// only thing to do is to cancel and give a warning.
+							this.proceduresCallback = null
+							this.proceduresMutationRoot = null
+							this.proceduresWorkspace.clear()
+							// eslint-disable-next-line no-underscore-dangle
+							this.mainWorkspace.refreshToolboxSelection_()
+							// Show warning that block was not created
+							setTimeout(() => this.props.openDialog({
+								descriptionKey : 'block.procedures.error.existing.description',
+								displayCancel  : false,
+								limitWidth     : true
+							}), 0)
+							return
+						}
+
+						// Make sure all the arguments have unique names (by
+						// adding a counter increment to the name)
+						const argumentNames = JSON.parse(procedureMutation.getAttribute('argumentnames'))
+						if (argumentNames.length) {
+							const nameHash = {}
+							const uniqueArgumentNames = argumentNames.map(name => {
+								if (typeof nameHash[name] === 'undefined') {
+									nameHash[name] = 1
+									return name
+								}
+								nameHash[name]++
+								return `${name}${nameHash[name]}`
+							})
+							procedureMutation.setAttribute('argumentnames', JSON.stringify(uniqueArgumentNames))
+						}
+						procedureMutation.setAttribute('exists', 'true')
+						this.proceduresCallback(procedureMutation)
 						this.proceduresCallback = null
 						this.proceduresMutationRoot = null
 						this.proceduresWorkspace.clear()
@@ -265,6 +457,24 @@ class BlockEditor extends React.Component {
 		}
 		this.mainWorkspace.dispose()
 
+		// restore procedures HACK
+		/* eslint-disable no-underscore-dangle */
+		if (this.originalBlocklyCreateProcedureDefCallback_) {
+			window.window.Blockly.Procedures.createProcedureDefCallback_ = this.originalBlocklyCreateProcedureDefCallback_
+			delete this.originalBlocklyCreateProcedureDefCallback_
+		}
+		/* eslint-enable no-underscore-dangle */
+
+		// restore blockly alert
+		if (this.originalBlocklyAlert) {
+			window.Blockly.alert = this.originalBlocklyAlert
+			delete this.originalBlocklyAlert
+		}
+		// restore blockly confirm
+		if (this.originalBlocklyConfirm) {
+			window.Blockly.confirm = this.originalBlocklyConfirm
+			delete this.originalBlocklyConfirm
+		}
 		// restore blockly prompt
 		if (this.originalBlocklyPrompt) {
 			window.Blockly.prompt = this.originalBlocklyPrompt
@@ -328,6 +538,8 @@ BlockEditor.propTypes = {
 	refEditorSource : PropTypes.string,
 	onSourceChange  : PropTypes.func,
 	openDialog      : PropTypes.func,
+	openAlert       : PropTypes.func,
+	openConfirm     : PropTypes.func,
 	openPrompt      : PropTypes.func,
 }
 

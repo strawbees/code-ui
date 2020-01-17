@@ -8,6 +8,7 @@ import FooterContainer from 'src/containers/footerContainer'
 import PageContainer from 'src/containers/pageContainer'
 import PageError from 'src/components/pageError'
 import ModalContainer from 'src/containers/modalContainer'
+// import MidiInterfaceManager from 'src/containers/midiInterfaceManager'
 import SerialInterfaceManager from 'src/containers/serialInterfaceManager'
 import NavigationManager from 'src/containers/navigationManager'
 import StorageManager from 'src/containers/storageManager'
@@ -61,6 +62,7 @@ const App = ({
 		<GlobalStylesContainer />
 		<StorageManager />
 		<NavigationManager />
+		{/* <MidiInterfaceManager /> */}
 		<SerialInterfaceManager />
 		<TrackingManager />
 		<HeadContainer />

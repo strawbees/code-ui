@@ -5,14 +5,16 @@ import {
 } from '../../utils/parsing'
 
 export default ({ field, next }, structure) => {
-	const name = sanitizeCPPVariableName(field && field[0])
+	const name = sanitizeCPPVariableName(`list_${field && field[0]}`)
 	if (!name) {
 		parseNext(next, structure)
 		return
 	}
 	parseInstaceDefinition(structure, name, 'Vector<float>')
 
-	structure.body += `${name}.clear();\n`
+	structure.body += `while(${name}.size()) {\n`
+	structure.body += `${name}.removeAt(0);\n`
+	structure.body += '}\n'
 
 	parseNext(next, structure)
 }

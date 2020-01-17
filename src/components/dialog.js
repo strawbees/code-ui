@@ -13,6 +13,7 @@ const Dialog = ({
 	titleKey,
 	titleValue,
 	descriptionKey,
+	descriptionValue,
 	cancelLabelKey,
 	confirmLabelKey,
 	descriptionIsMarkdown,
@@ -58,9 +59,14 @@ const Dialog = ({
 				{titleValue}
 			</div>
 		}
-		{descriptionKey &&
+		{descriptionKey && !descriptionValue &&
 			<div className='description global-type'>
 				<S value={descriptionKey} markdown={descriptionIsMarkdown} />
+			</div>
+		}
+		{descriptionValue &&
+			<div className='description global-type'>
+				{ descriptionValue }
 			</div>
 		}
 		{children}
@@ -107,6 +113,7 @@ Dialog.propTypes = {
 	titleKey              : PropTypes.string,
 	titleValue            : PropTypes.string,
 	descriptionKey        : PropTypes.string,
+	descriptionValue      : PropTypes.string,
 	cancelLabelKey        : PropTypes.string,
 	confirmLabelKey       : PropTypes.string,
 	descriptionIsMarkdown : PropTypes.bool,

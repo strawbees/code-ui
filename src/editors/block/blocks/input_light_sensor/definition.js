@@ -6,7 +6,7 @@ export default (strings) => ({
 		{
 			type  : 'input_value',
 			name  : 'PLACE',
-			check : 'Number'
+			check : 'Place'
 		},
 	],
 	output          : 'Number',
@@ -14,5 +14,5 @@ export default (strings) => ({
 	colour          : '#7fd5f0',
 	colourSecondary : '#76c4e2',
 	colourTertiary  : '#01adee',
-	outputShape     : 2
+	outputShape     : window.Blockly.OUTPUT_SHAPE_ROUND
 })

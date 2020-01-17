@@ -17,5 +17,5 @@ export default (strings) => ({
 	colour          : '#f580c5',
 	colourSecondary : '#f75abb',
 	colourTertiary  : '#f442b0',
-	outputShape     : 2,
+	outputShape     : window.Blockly.OUTPUT_SHAPE_ROUND,
 })
