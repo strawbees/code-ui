@@ -88,7 +88,7 @@ export default ({ statement, next }, structure, shallow) => {
 	}
 
 	const type = 'void'
-	const body = getBlockBody(getNext(next), structure)
+	const body = `Bot::update();\n${getBlockBody(getNext(next), structure)}`
 
 	parseProcedureDefinition(structure, instance, args, body, type)
 }

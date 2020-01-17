@@ -20,7 +20,7 @@ export default ({ next, mutation, value }, structure) => {
 
 	const procId = `${procCode}${argumentIds.join('')}`
 
-	if (!value || !structure.procedures[procId]) {
+	if (!structure.procedures[procId]) {
 		parseNext(next, structure)
 		return
 	}
@@ -30,7 +30,7 @@ export default ({ next, mutation, value }, structure) => {
 	const args = argumentIds.map((argId, i) => {
 		const argDefinition = structure.procedures[procId].args[i]
 		let argValue = argDefinition.default
-		const argRef = value.filter(v => v.attributes.name === argId).pop()
+		const argRef = value && value.filter(v => v.attributes.name === argId).pop()
 		if (argRef) {
 			if (argRef.block) {
 				argValue = getBlockBody(argRef.block[0], structure)
