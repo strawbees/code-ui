@@ -155,6 +155,11 @@ class BlockEditor extends React.Component {
 				scrollbar : 'rgba(0, 0, 0, 0.05)',
 			}
 		})
+		window.workspace = this.mainWorkspace
+
+		// HACK: as way to avoid spurious variables from being created at
+		// random while moving blocks around.
+		window.Blockly.FieldVariable.prototype.initModel = () => {}
 
 		// Handle the source changes
 		const {
@@ -168,24 +173,24 @@ class BlockEditor extends React.Component {
 			// is the offending event, but UI seems a obvious one to avoid.
 			// Still, it's not 100% solid, so added a debounce, that seems to
 			// solve the issue.
-			if (e.type === 'ui' ||
-				e.type === 'var_create' ||
-				e.type === 'create'
-			) {
+			if (e.type === 'ui') {
 				return
 			}
-
 			this.cancelSourceUpdate = debounce('update block source', () => {
-				const xml = Blockly.Xml.workspaceToDom(this.mainWorkspace)
-				// it's importat to sort the node before comparing it, as
-				// sometimes blockly will change the internal order of the Xml
-				// nodes, causing the comparisson to be a false positive, and
-				// that causes all sorts of problems
-				sortBlocklyDomNode(xml)
-				const currentSource = Blockly.Xml.domToText(xml)
-				if (this.source !== currentSource) {
-					this.source = currentSource
-					onSourceChange(currentSource)
+				try {
+					const xml = Blockly.Xml.workspaceToDom(this.mainWorkspace)
+					// it's importat to sort the node before comparing it, as
+					// sometimes blockly will change the internal order of the Xml
+					// nodes, causing the comparisson to be a false positive, and
+					// that causes all sorts of problems
+					sortBlocklyDomNode(xml)
+					const currentSource = Blockly.Xml.domToText(xml)
+					if (this.source !== currentSource) {
+						this.source = currentSource
+						onSourceChange(currentSource)
+					}
+				} catch (error) {
+					console.log('Error handling blockly source', error)
 				}
 			}, 1000)
 		})
