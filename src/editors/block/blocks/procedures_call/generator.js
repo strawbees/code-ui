@@ -1,4 +1,3 @@
-import { sanitizeCPPVariableName } from 'src/utils/string'
 import {
 	parseNext,
 	getBlockBody
@@ -21,7 +20,7 @@ export default ({ next, mutation, value }, structure) => {
 
 	const procId = `${procCode}${argumentIds.join('')}`
 
-	if (!structure.procedures[procId]) {
+	if (!value || !structure.procedures[procId]) {
 		parseNext(next, structure)
 		return
 	}
