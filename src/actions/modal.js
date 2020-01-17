@@ -77,11 +77,23 @@ export const safeOpenDialogModal = (dialogProps = {}, content = null) => (dispat
 		dispatch(showModal())
 	})
 
-export const safeOpenAlertAlternative = (message) => (dispatch) =>
+export const safeOpenAlertAlternative = (message, callback) => (dispatch) =>
 	dispatch(safeOpenDialogModal(
 		{
 			descriptionValue : message,
-			displayCancel    : false
+			displayCancel    : false,
+			onConfirm        : () => callback && callback(),
+			onCancel         : () => callback && callback(),
+		}
+	))
+
+export const safeOpenConfirmAlternative = (message, callback) => (dispatch) =>
+	dispatch(safeOpenDialogModal(
+		{
+			descriptionValue : message,
+			displayCancel    : false,
+			onConfirm        : () => callback && callback(true),
+			onCancel         : () => callback && callback(false),
 		}
 	))
 
@@ -89,8 +101,8 @@ export const safeOpenPromptAlternative = (message, defaultValue = '', callback) 
 	let text = ''
 	return dispatch(safeOpenDialogModal(
 		{
-			onConfirm : () => callback(text),
-			onCancel  : () => callback(null),
+			onConfirm : () => callback && callback(text),
+			onCancel  : () => callback && callback(null),
 		},
 		<FormInput
 			labelValue={message}

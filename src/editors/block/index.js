@@ -194,10 +194,13 @@ class BlockEditor extends React.Component {
 
 		// Override blockly alert
 		this.originalBlocklyAlert = window.Blockly.alert
-		window.Blockly.alert = (m) => setTimeout(() => this.props.openAlert(m), 0)
+		window.Blockly.alert = (m, cb) => setTimeout(() => this.props.openAlert(m, cb), 0)
+		// Override blockly confirm
+		this.originalBlocklyConfirm = window.Blockly.confirm
+		window.Blockly.confirm = (m, cb) => setTimeout(() => this.props.openConfirm(m, cb), 0)
 		// Override blockly prompt
 		this.originalBlocklyPrompt = window.Blockly.prompt
-		window.Blockly.prompt = this.props.openPrompt
+		window.Blockly.prompt = (m, d, cb) => setTimeout(() => this.props.openPrompt(m, d, cb), 0)
 
 		const { DataCategory } = window.Blockly
 		DataCategory.createValue = (valueName, type, value) =>
@@ -462,6 +465,11 @@ class BlockEditor extends React.Component {
 			window.Blockly.alert = this.originalBlocklyAlert
 			delete this.originalBlocklyAlert
 		}
+		// restore blockly confirm
+		if (this.originalBlocklyConfirm) {
+			window.Blockly.confirm = this.originalBlocklyConfirm
+			delete this.originalBlocklyConfirm
+		}
 		// restore blockly prompt
 		if (this.originalBlocklyPrompt) {
 			window.Blockly.prompt = this.originalBlocklyPrompt
@@ -526,6 +534,7 @@ BlockEditor.propTypes = {
 	onSourceChange  : PropTypes.func,
 	openDialog      : PropTypes.func,
 	openAlert       : PropTypes.func,
+	openConfirm     : PropTypes.func,
 	openPrompt      : PropTypes.func,
 }
 
