@@ -3,7 +3,7 @@ import Button from 'src/components/button'
 import SvgIcon from 'src/components/svgIcon'
 import editorIcons from 'src/assets/icons/editors/small'
 
-const ProgramTitleListItem = ({
+const ProgramTitle = ({
 	name,
 	type,
 	updatedAt,
@@ -11,7 +11,7 @@ const ProgramTitleListItem = ({
 }) => {
 	const Container = displayAsButton ? Button : 'div'
 	return (
-		<div className='root programTitleListItem'>
+		<div className='root programTitle'>
 			<style jsx>{`
 				.root {
 					display: flex;
@@ -74,11 +74,11 @@ const ProgramTitleListItem = ({
 }
 
 
-ProgramTitleListItem.defaultProps = {
+ProgramTitle.defaultProps = {
 	displayAsButton : true
 }
 
-ProgramTitleListItem.propTypes = {
+ProgramTitle.propTypes = {
 	name      : PropTypes.string,
 	type      : PropTypes.string,
 	updatedAt : PropTypes.string,
@@ -86,4 +86,4 @@ ProgramTitleListItem.propTypes = {
 	displayAsButton : PropTypes.bool,
 }
 
-export default ProgramTitleListItem
+export default ProgramTitle
