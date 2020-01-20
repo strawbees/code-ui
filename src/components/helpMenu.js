@@ -3,57 +3,20 @@ import PropTypes from 'prop-types'
 import DropdownMenu from 'src/components/dropdownMenu'
 
 const HelpMenu = ({
-	safeOpenVideoModal,
-	videoIntroCODE,
-	videoIntroFlow,
-	videoIntroBlock,
-	videoIntroText,
-	videoTroubleshooting,
+	modalViewCodingCards,
 }) => {
 	const options = [
 		{
 			disabled : true,
-			labelKey : 'ui.help_menu.options.intro_code.title',
-			onClick  : () => safeOpenVideoModal({
-				url      : videoIntroCODE,
-				autoplay : true
-			})
+			labelKey : 'ui.help_menu.options.coding_cards.flow.title',
+			onClick  : () => modalViewCodingCards('flow')
 		},
 		{
-			disabled : true,
-			divider  : true,
-			labelKey : 'ui.help_menu.options.intro_flow.title',
-			onClick  : () => safeOpenVideoModal({
-				url      : videoIntroFlow,
-				autoplay : true
-			})
+			labelKey : 'ui.help_menu.options.coding_cards.block.title',
+			onClick  : () => modalViewCodingCards('block')
 		},
 		{
-			disabled : true,
-			labelKey : 'ui.help_menu.options.intro_block.title',
-			onClick  : () => safeOpenVideoModal({
-				url      : videoIntroBlock,
-				autoplay : true
-			})
-		},
-		{
-			disabled : true,
-			labelKey : 'ui.help_menu.options.intro_text.title',
-			onClick  : () => safeOpenVideoModal({
-				url      : videoIntroText,
-				autoplay : true
-			})
-		},
-		{
-			disabled : true,
-			divider  : true,
-			labelKey : 'ui.help_menu.options.troubleshooting.title',
-			onClick  : () => safeOpenVideoModal({
-				url      : videoTroubleshooting,
-				autoplay : true
-			})
-		},
-		{
+			divider      : true,
 			labelKey     : 'ui.help_menu.options.learning_platform',
 			linkKey      : 'ui.help_menu.options.learning_platform.url',
 			linkExternal : true,
@@ -68,12 +31,7 @@ const HelpMenu = ({
 }
 
 HelpMenu.propTypes = {
-	safeOpenVideoModal   : PropTypes.func,
-	videoIntroCODE       : PropTypes.string,
-	videoIntroFlow       : PropTypes.string,
-	videoIntroBlock      : PropTypes.string,
-	videoIntroText       : PropTypes.string,
-	videoTroubleshooting : PropTypes.string,
+	modalViewCodingCards : PropTypes.func,
 }
 
 export default HelpMenu

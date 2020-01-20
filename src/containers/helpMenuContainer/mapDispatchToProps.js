@@ -1,8 +1,8 @@
 import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
 import {
-	safeOpenVideoModal,
-} from 'src/actions/modal'
+	modalViewCodingCards,
+} from 'src/actions/codingCards'
 
 export default autobindDispatchToActionCreators({
-	safeOpenVideoModal,
+	modalViewCodingCards,
 })
