@@ -8,6 +8,7 @@ import {
 	SETUP_SET_LOCALES,
 	SETUP_SET_ROUTES,
 	SETUP_SET_STRINGS,
+	SETUP_SET_CODING_CARDS,
 	SETUP_SET_FACTORY_CODE,
 	SETUP_SET_DISPLAY_PAGE_LOADER,
 	SETUP_SET_DISPLAY_ERROR,
@@ -167,6 +168,19 @@ const factoryCode = (state = '', { type, payload }) => {
 			return state
 	}
 }
+const codingCards = (state = {}, { type, payload }) => {
+	switch (type) {
+		case SETUP_SET_CODING_CARDS:
+			return payload
+		case SETUP_SET:
+			if (typeof payload.codingCards !== 'undefined') {
+				return payload.codingCards
+			}
+			return state
+		default:
+			return state
+	}
+}
 const displayPageLoader = (state = false, { type, payload }) => {
 	switch (type) {
 		case SETUP_SET_DISPLAY_PAGE_LOADER:
@@ -217,6 +231,7 @@ export default combineReducers({
 	strings,
 	stringsLoaded,
 	factoryCode,
+	codingCards,
 	displayPageLoader,
 	displayError,
 	os,

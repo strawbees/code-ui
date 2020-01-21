@@ -1,0 +1,165 @@
+{
+	"hardware": {
+		"internal-led": {
+			"title": "coding_cards.hardware.internal-led.title"
+		},
+		"dual-color-led": {
+			"title": "coding_cards.hardware.dual-color-led.title"
+		},
+		"servo-motor": {
+			"title": "coding_cards.hardware.servo-motor.title"
+		},
+		"buzzer": {
+			"title": "coding_cards.hardware.buzzer.title"
+		},
+		"circuit-touch": {
+			"title": "coding_cards.hardware.circuit-touch.title"
+		},
+		"light-sensor": {
+			"title": "coding_cards.hardware.light-sensor.title"
+		}
+	},
+	"cards": {
+		"flow": {},
+		"block": {
+			"blink": {
+				"title": "coding_cards.block.card.blink.title",
+				"hardware": [
+					"internal-led"
+				]
+			},
+			"touch-and-wink": {
+				"title": "coding_cards.block.card.touch-and-wink.title",
+				"hardware": [
+					"circuit-touch",
+					"internal-led"
+				]
+			},
+			"touch-to-shine": {
+				"title": "coding_cards.block.card.touch-to-shine.title",
+				"hardware": [
+					"circuit-touch",
+					"internal-led"
+				]
+			},
+			"shine-in-the-dark": {
+				"title": "coding_cards.block.card.shine-in-the-dark.title",
+				"hardware": [
+					"light-sensor",
+					"internal-led"
+				]
+			},
+			"flicker": {
+				"title": "coding_cards.block.card.flicker.title",
+				"hardware": [
+					"internal-led"
+				]
+			},
+			"glow": {
+				"title": "coding_cards.block.card.glow.title",
+				"hardware": [
+					"internal-led"
+				]
+			},
+			"toggle": {
+				"title": "coding_cards.block.card.toggle.title",
+				"hardware": [
+					"circuit-touch",
+					"internal-led"
+				]
+			},
+			"switching-colors": {
+				"title": "coding_cards.block.card.switching-colors.title",
+				"hardware": [
+					"dual-color-led"
+				]
+			},
+			"touch-to-siren-light": {
+				"title": "coding_cards.block.card.touch-to-siren-light.title",
+				"hardware": [
+					"circuit-touch",
+					"dual-color-led"
+				]
+			},
+			"touch-to-change-color": {
+				"title": "coding_cards.block.card.touch-to-change-color.title",
+				"hardware": [
+					"circuit-touch",
+					"dual-color-led"
+				]
+			},
+			"change-color-when-its-dark": {
+				"title": "coding_cards.block.card.change-color-when-its-dark.title",
+				"hardware": [
+					"light-sensor",
+					"dual-color-led"
+				]
+			},
+			"flickering-color": {
+				"title": "coding_cards.block.card.flickering-color.title",
+				"hardware": [
+					"dual-color-led"
+				]
+			},
+			"fading-colors": {
+				"title": "coding_cards.block.card.fading-colors.title",
+				"hardware": [
+					"dual-color-led"
+				]
+			},
+			"mood-light-switch": {
+				"title": "coding_cards.block.card.mood-light-switch.title",
+				"hardware": [
+					"circuit-touch",
+					"dual-color-led"
+				]
+			},
+			"back-and-forth": {
+				"title": "coding_cards.block.card.back-and-forth.title",
+				"hardware": [
+					"servo-motor"
+				]
+			},
+			"touch-and-trap": {
+				"title": "coding_cards.block.card.touch-and-trap.title",
+				"hardware": [
+					"circuit-touch",
+					"servo-motor"
+				]
+			},
+			"touch-to-hold-position": {
+				"title": "coding_cards.block.card.touch-to-hold-position.title",
+				"hardware": [
+					"circuit-touch",
+					"servo-motor"
+				]
+			},
+			"shake-in-the-dark": {
+				"title": "coding_cards.block.card.shake-in-the-dark.title",
+				"hardware": [
+					"light-sensor",
+					"servo-motor"
+				]
+			},
+			"shake": {
+				"title": "coding_cards.block.card.shake.title",
+				"hardware": [
+					"servo-motor"
+				]
+			},
+			"sweep": {
+				"title": "coding_cards.block.card.sweep.title",
+				"hardware": [
+					"servo-motor"
+				]
+			},
+			"touch-and-switch-position": {
+				"title": "coding_cards.block.card.touch-and-switch-position.title",
+				"hardware": [
+					"circuit-touch",
+					"servo-motor"
+				]
+			}
+		}
+	}
+}

@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import nodeFecth from 'node-fetch'
 import factoryCode from 'data/firmware/factory'
+import codingCards from 'data/codingCards.json'
 import Router from 'next/router'
 import getConfig from 'next/config'
 import { connect } from 'react-redux'
@@ -42,6 +43,7 @@ class AppContainer extends React.Component {
 			setSetup({
 				query,
 				factoryCode,
+				codingCards,
 				rootPath : ROOT_PATH,
 				routes   : (await (await nodeFecth(`${serverStatic}/routes.json`)).json()),
 				locales  : (await (await nodeFecth(`${serverStatic}/i18n/index.json`)).json()),

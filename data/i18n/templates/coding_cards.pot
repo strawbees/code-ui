@@ -14,3 +14,111 @@ msgstr ""
 msgctxt "coding_cards.block.title"
 msgid "Block coding cards"
 msgstr ""
+
+msgctxt "coding_cards.hardware.internal-led.title"
+msgid "Internal LED"
+msgstr ""
+
+msgctxt "coding_cards.hardware.dual-color-led.title"
+msgid "Dual color LED"
+msgstr ""
+
+msgctxt "coding_cards.hardware.servo-motor.title"
+msgid "Servo Motor"
+msgstr ""
+
+msgctxt "coding_cards.hardware.buzzer.title"
+msgid "Buzzer"
+msgstr ""
+
+msgctxt "coding_cards.hardware.circuit-touch.title"
+msgid "Circuit Touch"
+msgstr ""
+
+msgctxt "coding_cards.hardware.light-sensor.title"
+msgid "Light Sensor"
+msgstr ""
+
+msgctxt "coding_cards.block.card.blink.title"
+msgid "Blink"
+msgstr ""
+
+msgctxt "coding_cards.block.card.touch-and-wink.title"
+msgid "Touch and wink"
+msgstr ""
+
+msgctxt "coding_cards.block.card.touch-to-shine.title"
+msgid "Touch to shine"
+msgstr ""
+
+msgctxt "coding_cards.block.card.shine-in-the-dark.title"
+msgid "Shine in the dark"
+msgstr ""
+
+msgctxt "coding_cards.block.card.flicker.title"
+msgid "Flicker"
+msgstr ""
+
+msgctxt "coding_cards.block.card.glow.title"
+msgid "Glow"
+msgstr ""
+
+msgctxt "coding_cards.block.card.toggle.title"
+msgid "Toggle"
+msgstr ""
+
+msgctxt "coding_cards.block.card.switching-colors.title"
+msgid "Switching colors"
+msgstr ""
+
+msgctxt "coding_cards.block.card.touch-to-siren-light.title"
+msgid "Touch to siren light"
+msgstr ""
+
+msgctxt "coding_cards.block.card.touch-to-change-color.title"
+msgid "Touch to change color"
+msgstr ""
+
+msgctxt "coding_cards.block.card.change-color-when-its-dark.title"
+msgid "Change color when it's dark"
+msgstr ""
+
+msgctxt "coding_cards.block.card.flickering-color.title"
+msgid "Flickering color"
+msgstr ""
+
+msgctxt "coding_cards.block.card.fading-colors.title"
+msgid "Fading colors"
+msgstr ""
+
+msgctxt "coding_cards.block.card.mood-light-switch.title"
+msgid "Mood light switch"
+msgstr ""
+
+msgctxt "coding_cards.block.card.back-and-forth.title"
+msgid "Back and forth"
+msgstr ""
+
+msgctxt "coding_cards.block.card.touch-and-trap.title"
+msgid "Touch and trap"
+msgstr ""
+
+msgctxt "coding_cards.block.card.touch-to-hold-position.title"
+msgid "Touch to hold position"
+msgstr ""
+
+msgctxt "coding_cards.block.card.shake-in-the-dark.title"
+msgid "Shake in the dark"
+msgstr ""
+
+msgctxt "coding_cards.block.card.shake.title"
+msgid "Shake"
+msgstr ""
+
+msgctxt "coding_cards.block.card.sweep.title"
+msgid "Sweep"
+msgstr ""
+
+msgctxt "coding_cards.block.card.touch-and-switch-position.title"
+msgid "Touch and swich position"
+msgstr ""
