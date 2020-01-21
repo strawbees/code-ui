@@ -3,12 +3,12 @@ import CodingCardsFilterContainer from 'src/containers/codingCardsFilterContaine
 import SvgIcon from 'src/components/svgIcon'
 import editorIcons from 'src/assets/icons/editors/small'
 
-const CodingCardsDirectory = ({
+const CodingCardsBrowser = ({
 	type,
 	title,
 	cardIds
 }) => (
-	<div className='root codingCardsDirectory'>
+	<div className='root codingCardsBrowser'>
 		<style jsx>{`
 			.root {
 				width: 600px;
@@ -52,12 +52,12 @@ const CodingCardsDirectory = ({
 	</div>
 )
 
-CodingCardsDirectory.defaultProps = {
+CodingCardsBrowser.defaultProps = {
 	title   : '',
 	cardIds : [],
 }
 
-CodingCardsDirectory.propTypes = {
+CodingCardsBrowser.propTypes = {
 	type : PropTypes.oneOf([
 		'flow',
 		'block'
@@ -66,4 +66,4 @@ CodingCardsDirectory.propTypes = {
 	cardIds : PropTypes.arrayOf(PropTypes.string),
 }
 
-export default CodingCardsDirectory
+export default CodingCardsBrowser
