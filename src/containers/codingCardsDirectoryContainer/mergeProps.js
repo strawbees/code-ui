@@ -1,7 +1,9 @@
 export default (stateProps, dispatchProps, ownProps) => {
 	const {
-		titleFlow,
-		titleBlock,
+		flowTitle,
+		blockTitle,
+		flowCardIds,
+		blockCardIds,
 		...otherStateProps
 	} = stateProps
 	const {
@@ -9,20 +11,26 @@ export default (stateProps, dispatchProps, ownProps) => {
 	} = ownProps
 
 	let title
+	let cardIds
 	switch (type) {
 		case 'flow':
-			title = titleFlow
+			title = flowTitle
+			cardIds = flowCardIds
 			break
 		case 'block':
-			title = titleBlock
+			title = blockTitle
+			cardIds = blockCardIds
 			break
 		default:
 			title = 'Coding Cards'
+			cardIds = []
 	}
+
 	return {
 		...otherStateProps,
 		...dispatchProps,
 		...ownProps,
 		title,
+		cardIds,
 	}
 }
