@@ -87,7 +87,7 @@ module.exports = {
 	webpack                   : (webpackConfig) => {
 		// svg loader
 		// first remove any existing rules for svg
-		const fileLoaderRule = webpackConfig.module.rules.find(rule => rule.test.test('.svg'))
+		const fileLoaderRule = webpackConfig.module.rules.find(rule => rule.test && rule.test.test('.svg'))
 		if (fileLoaderRule) {
 			fileLoaderRule.exclude = /\.svg$/
 		}
@@ -115,4 +115,10 @@ module.exports = {
 		}
 		return webpackConfig
 	},
+	experimental : {
+		// had to add this after next 9.2, since it's true by defautl
+		// and enabling a feature to handle FOUC that was breaking Blockly.
+		// (on the first load of /block blockly was not getting the correct size)
+		css : false
+	}
 }
