@@ -12,7 +12,7 @@ export default () => createSelector(
 		codingCardsBlockEntities,
 	) => Object.keys(codingCardsBlockEntities).filter(id =>
 		codingCardsBlockEntities[id].hardware.filter(hardwareId =>
-			codingCardsBlockFilterIds.indexOf(hardwareId) !== 0
+			codingCardsBlockFilterIds.indexOf(hardwareId) !== -1
 		).length > 0
 	)
 )

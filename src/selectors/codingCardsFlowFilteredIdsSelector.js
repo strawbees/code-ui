@@ -12,7 +12,7 @@ export default () => createSelector(
 		codingCardsFlowEntities,
 	) => Object.keys(codingCardsFlowEntities).filter(id =>
 		codingCardsFlowEntities[id].hardware.filter(hardwareId =>
-			codingCardsFlowFilterIds.indexOf(hardwareId) !== 0
+			codingCardsFlowFilterIds.indexOf(hardwareId) !== -1
 		).length > 0
 	)
 )

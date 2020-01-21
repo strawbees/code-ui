@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types'
+import CodingCardsFilterContainer from 'src/containers/codingCardsFilterContainer'
 import SvgIcon from 'src/components/svgIcon'
 import editorIcons from 'src/assets/icons/editors/small'
 
 const CodingCardsDirectory = ({
 	type,
 	title,
-	cards,
-	filterIds
+	cardIds
 }) => (
 	<div className='root codingCardsDirectory'>
 		<style jsx>{`
 			.root {
-				width : 600px;
+				width: 600px;
 			}
 			.title-container {
 				display: flex;
@@ -41,13 +41,20 @@ const CodingCardsDirectory = ({
 				</div>
 			</div>
 		}
+		<CodingCardsFilterContainer
+			type={type}
+		/>
+		{cardIds && cardIds.length > 0 &&
+			cardIds.map(id =>
+				<div key={id}>{id}</div>
+			)
+		}
 	</div>
 )
 
 CodingCardsDirectory.defaultProps = {
-	title     : '',
-	cards     : [],
-	filterIds : []
+	title   : '',
+	cardIds : [],
 }
 
 CodingCardsDirectory.propTypes = {
@@ -55,12 +62,8 @@ CodingCardsDirectory.propTypes = {
 		'flow',
 		'block'
 	]),
-	title : PropTypes.string,
-	cards : PropTypes.arrayOf(PropTypes.shape({
-		id        : PropTypes.string,
-		filterIds : PropTypes.arrayOf(PropTypes.string),
-	})),
-	filterIds : PropTypes.arrayOf(PropTypes.string),
+	title   : PropTypes.string,
+	cardIds : PropTypes.arrayOf(PropTypes.string),
 }
 
 export default CodingCardsDirectory

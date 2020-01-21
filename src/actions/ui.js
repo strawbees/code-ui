@@ -1,9 +1,6 @@
 import generateAction from 'src/utils/generateAction'
 import * as browserStorage from 'src/utils/browserStorage'
-import {
-	safeOpenModal,
-} from 'src/actions/modal'
-import CodingCardsDirectoryContainer from 'src/containers/codingCardsDirectoryContainer'
+
 import {
 	UI_COLLAPSE_ACCOUNT_SETTINGS,
 	UI_EXPAND_ACCOUNT_SETTINGS,
@@ -26,10 +23,3 @@ export const persistentHideGlobalBanner = (id) => async (dispatch) => {
 	browserStorage.set('hiddenGlobalBanners', id, true)
 	dispatch(hideGlobalBanner(id))
 }
-
-export const modalViewCodingCards = (type) => async (dispatch) =>
-	dispatch(safeOpenModal(
-		<CodingCardsDirectoryContainer
-			type={type}>
-		</CodingCardsDirectoryContainer>
-	))
