@@ -123,7 +123,7 @@ class NavigationManager extends React.PureComponent {
 		}
 
 		// check if this is not just a language change, by parsing the
-		// navigation and chekcing if the queryRef is the same, if no no need to
+		// navigation and chekcing if the queryRef is the same, if so, no need to
 		// show the dialog either
 		const resolved = resolveLinkUrl(as)
 		if (resolved.href.query && resolved.href.query.ref === queryRef) {
