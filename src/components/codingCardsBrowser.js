@@ -1,17 +1,30 @@
 import PropTypes from 'prop-types'
+import tinycolor from 'tinycolor2'
 import CodingCardsFilterContainer from 'src/containers/codingCardsFilterContainer'
+import CodingCardPreviewContainer from 'src/containers/codingCardPreviewContainer'
 import SvgIcon from 'src/components/svgIcon'
 import editorIcons from 'src/assets/icons/editors/small'
+import {
+	GRAY
+} from 'src/constants/colors'
 
 const CodingCardsBrowser = ({
 	type,
 	title,
-	cardIds
+	cardIds,
+	currentCardId,
+	setCurrentCardId,
 }) => (
 	<div className='root codingCardsBrowser'>
 		<style jsx>{`
 			.root {
-				width: 600px;
+				width: 50rem;
+				max-width: 100%;
+				height: 26rem;
+				max-height: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: stretch;
 			}
 			.title-container {
 				display: flex;
@@ -26,6 +39,22 @@ const CodingCardsBrowser = ({
 				width: 3.5rem;
 				height: 2.25rem;
 				margin-right: 0.5rem;
+			}
+			.root :global(.codingCardsFilter) {
+				margin-top: 1rem;
+				margin-bottom: 1rem;
+			}
+			.cards {
+				padding: 1rem;
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-items: flex-start;
+				background-color: ${tinycolor(GRAY).lighten(25).toRgbString()};
+				overflow-y: scroll;
+				flex: 1;
+				border-radius: 1rem;
 			}
 		`}</style>
 
@@ -44,17 +73,23 @@ const CodingCardsBrowser = ({
 		<CodingCardsFilterContainer
 			type={type}
 		/>
-		{cardIds && cardIds.length > 0 &&
-			cardIds.map(id =>
-				<div key={id}>{id}</div>
-			)
-		}
+		<div className='cards'>
+			{cardIds && cardIds.length > 0 && cardIds.map(id =>
+				<CodingCardPreviewContainer
+					type={type}
+					key={id}
+					id={id}
+					onClick={() => setCurrentCardId(id)}
+				/>
+			)}
+		</div>
 	</div>
 )
 
 CodingCardsBrowser.defaultProps = {
-	title   : '',
-	cardIds : [],
+	title         : '',
+	cardIds       : [],
+	currentCardId : null,
 }
 
 CodingCardsBrowser.propTypes = {
@@ -62,8 +97,10 @@ CodingCardsBrowser.propTypes = {
 		'flow',
 		'block'
 	]),
-	title   : PropTypes.string,
-	cardIds : PropTypes.arrayOf(PropTypes.string),
+	title            : PropTypes.string,
+	cardIds          : PropTypes.arrayOf(PropTypes.string),
+	currentCardId    : PropTypes.string,
+	setCurrentCardId : PropTypes.string,
 }
 
 export default CodingCardsBrowser

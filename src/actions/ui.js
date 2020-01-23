@@ -9,10 +9,10 @@ import {
 	UI_SET_HIDDEN_GLOBAL_BANNERS,
 	UI_SET_CODING_CARDS_FLOW_FILTER_IDS,
 	UI_SET_CODING_CARDS_BLOCK_FILTER_IDS,
+	UI_SET_CODING_CARDS_FLOW_CURRENT_CARD_ID,
+	UI_SET_CODING_CARDS_BLOCK_CURRENT_CARD_ID,
 } from 'src/constants/actionTypes'
 
-export const setCodingCardsFlowFilterIds = generateAction(UI_SET_CODING_CARDS_FLOW_FILTER_IDS)
-export const setCodingCardsBlockFilterIds = generateAction(UI_SET_CODING_CARDS_BLOCK_FILTER_IDS)
 export const expandAccountSettings = generateAction(UI_EXPAND_ACCOUNT_SETTINGS)
 export const collapseAccountSettings = generateAction(UI_COLLAPSE_ACCOUNT_SETTINGS)
 export const hideGlobalBanner = generateAction(UI_HIDE_GLOBAL_BANNER)
@@ -23,3 +23,8 @@ export const persistentHideGlobalBanner = (id) => async (dispatch) => {
 	browserStorage.set('hiddenGlobalBanners', id, true)
 	dispatch(hideGlobalBanner(id))
 }
+
+export const setCodingCardsFlowFilterIds = generateAction(UI_SET_CODING_CARDS_FLOW_FILTER_IDS)
+export const setCodingCardsBlockFilterIds = generateAction(UI_SET_CODING_CARDS_BLOCK_FILTER_IDS)
+export const setCodingCardsFlowCurrentCardId = generateAction(UI_SET_CODING_CARDS_FLOW_CURRENT_CARD_ID)
+export const setCodingCardsBlockCurrentCardId = generateAction(UI_SET_CODING_CARDS_BLOCK_CURRENT_CARD_ID)

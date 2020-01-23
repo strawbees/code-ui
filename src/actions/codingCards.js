@@ -1,11 +1,11 @@
 import {
 	safeOpenModal,
 } from 'src/actions/modal'
-import CodingCardsDirectoryContainer from 'src/containers/codingCardsDirectoryContainer'
+import CodingCardsBrowserContainer from 'src/containers/codingCardsBrowserContainer'
 
 export const modalViewCodingCards = (type) => async (dispatch) =>
 	dispatch(safeOpenModal(
-		<CodingCardsDirectoryContainer
+		<CodingCardsBrowserContainer
 			type={type}>
-		</CodingCardsDirectoryContainer>
+		</CodingCardsBrowserContainer>
 	))

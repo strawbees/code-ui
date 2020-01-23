@@ -15,8 +15,8 @@ msgctxt "coding_cards.block.title"
 msgid "Block coding cards"
 msgstr ""
 
-msgctxt "coding_cards.hardware.internal-led.title"
-msgid "Internal LED"
+msgctxt "coding_cards.hardware.built-in-led.title"
+msgid "Built-in LED"
 msgstr ""
 
 msgctxt "coding_cards.hardware.dual-color-led.title"

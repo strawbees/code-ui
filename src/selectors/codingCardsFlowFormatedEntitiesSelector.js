@@ -14,7 +14,8 @@ export default () => createSelector(
 	) => Object.keys(codingCardsFlowEntities).reduce((acc, id) => {
 		acc[id] = {
 			id,
-			title : makeStringSelector(codingCardsFlowEntities[id].title)(state)
+			title       : makeStringSelector(codingCardsFlowEntities[id].title)(state),
+			hardwareIds : codingCardsFlowEntities[id].hardware,
 		}
 		return acc
 	}, {})

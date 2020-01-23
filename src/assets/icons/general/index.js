@@ -4,6 +4,7 @@ import close from './close.svg'
 import collapse from './collapse.svg'
 import error from './error.svg'
 import expand from './expand.svg'
+import greenCheck from './greenCheck.svg'
 import language from './language.svg'
 import menu from './menu.svg'
 import minus from './minus.svg'
@@ -18,6 +19,7 @@ export default {
 	collapse,
 	error,
 	expand,
+	greenCheck,
 	language,
 	menu,
 	minus,

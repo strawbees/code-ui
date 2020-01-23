@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import generateReducer from 'src/utils/generateReducer'
 import {
 	SETUP_SET,
 	SETUP_SET_CODING_CARDS,
@@ -9,6 +10,8 @@ import {
 	UI_SET_HIDDEN_GLOBAL_BANNERS,
 	UI_SET_CODING_CARDS_FLOW_FILTER_IDS,
 	UI_SET_CODING_CARDS_BLOCK_FILTER_IDS,
+	UI_SET_CODING_CARDS_FLOW_CURRENT_CARD_ID,
+	UI_SET_CODING_CARDS_BLOCK_CURRENT_CARD_ID,
 } from 'src/constants/actionTypes'
 
 const accountSettingsOpen = (state = false, { type }) => {
@@ -44,7 +47,6 @@ const hiddenGlobalBanners = (state = {}, { type, payload }) => {
 			return state
 	}
 }
-
 const codingCardsflowFilterIds = (state = [], { type, payload }) => {
 	switch (type) {
 		case UI_SET_CODING_CARDS_FLOW_FILTER_IDS:
@@ -69,7 +71,6 @@ const codingCardsflowFilterIds = (state = [], { type, payload }) => {
 			return state
 	}
 }
-
 const codingCardsBlockFilterIds = (state = [], { type, payload }) => {
 	switch (type) {
 		case UI_SET_CODING_CARDS_BLOCK_FILTER_IDS:
@@ -94,10 +95,14 @@ const codingCardsBlockFilterIds = (state = [], { type, payload }) => {
 			return state
 	}
 }
+const codingCardsFlowCurrentCardId = generateReducer(UI_SET_CODING_CARDS_FLOW_CURRENT_CARD_ID, null)
+const codingCardsBlockCurrentCardId = generateReducer(UI_SET_CODING_CARDS_BLOCK_CURRENT_CARD_ID, null)
 
 export default combineReducers({
 	accountSettingsOpen,
 	hiddenGlobalBanners,
 	codingCardsflowFilterIds,
 	codingCardsBlockFilterIds,
+	codingCardsFlowCurrentCardId,
+	codingCardsBlockCurrentCardId,
 })

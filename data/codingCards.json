@@ -1,16 +1,13 @@
 {
 	"hardware": {
-		"internal-led": {
-			"title": "coding_cards.hardware.internal-led.title"
+		"built-in-led": {
+			"title": "coding_cards.hardware.built-in-led.title"
 		},
 		"dual-color-led": {
 			"title": "coding_cards.hardware.dual-color-led.title"
 		},
 		"servo-motor": {
 			"title": "coding_cards.hardware.servo-motor.title"
-		},
-		"buzzer": {
-			"title": "coding_cards.hardware.buzzer.title"
 		},
 		"circuit-touch": {
 			"title": "coding_cards.hardware.circuit-touch.title"
@@ -25,47 +22,47 @@
 			"blink": {
 				"title": "coding_cards.block.card.blink.title",
 				"hardware": [
-					"internal-led"
+					"built-in-led"
 				]
 			},
 			"touch-and-wink": {
 				"title": "coding_cards.block.card.touch-and-wink.title",
 				"hardware": [
 					"circuit-touch",
-					"internal-led"
+					"built-in-led"
 				]
 			},
 			"touch-to-shine": {
 				"title": "coding_cards.block.card.touch-to-shine.title",
 				"hardware": [
 					"circuit-touch",
-					"internal-led"
+					"built-in-led"
 				]
 			},
 			"shine-in-the-dark": {
 				"title": "coding_cards.block.card.shine-in-the-dark.title",
 				"hardware": [
 					"light-sensor",
-					"internal-led"
+					"built-in-led"
 				]
 			},
 			"flicker": {
 				"title": "coding_cards.block.card.flicker.title",
 				"hardware": [
-					"internal-led"
+					"built-in-led"
 				]
 			},
 			"glow": {
 				"title": "coding_cards.block.card.glow.title",
 				"hardware": [
-					"internal-led"
+					"built-in-led"
 				]
 			},
 			"toggle": {
 				"title": "coding_cards.block.card.toggle.title",
 				"hardware": [
 					"circuit-touch",
-					"internal-led"
+					"built-in-led"
 				]
 			},
 			"switching-colors": {

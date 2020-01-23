@@ -1,4 +1,5 @@
 import boardStatus from './boardStatus'
+import codingCards from './codingCards'
 import editors from './editors'
 import file from './file'
 import general from './general'
@@ -9,6 +10,7 @@ import user from './user'
 
 export default {
 	boardStatus,
+	codingCards,
 	editors,
 	file,
 	general,
