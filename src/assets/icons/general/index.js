@@ -1,4 +1,5 @@
 import arrowRight from './arrowRight.svg'
+import arrowBack from './arrowBack.svg'
 import check from './check.svg'
 import close from './close.svg'
 import collapse from './collapse.svg'
@@ -14,6 +15,7 @@ import sync from './sync.svg'
 
 export default {
 	arrowRight,
+	arrowBack,
 	check,
 	close,
 	collapse,

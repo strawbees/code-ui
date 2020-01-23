@@ -23,13 +23,30 @@
 				"title": "coding_cards.block.card.blink.title",
 				"hardware": [
 					"built-in-led"
-				]
+				],
+				"slides" : [
+					{
+						"id" : "block-blink",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					}
+				],
+				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"50\" y=\"50\"><next><block type=\"control_forever\" id=\"=_yI-uKoNaHSGY;@zF*v\"><statement name=\"SUBSTACK\"><block type=\"output_led\" id=\"{qa|Y6RGq4.p~k}LbAkF\"><next><block type=\"control_wait\" id=\"-dGitgaBG+W$d,|N@`SX\"><next><block type=\"output_led\" id=\"3F3gwpVc9w4p]G4nBE{^\"><next><block type=\"control_wait\" id=\"FSt9O*-lIQLj=QufZ|d{\"><value name=\"DURATION\"><shadow type=\"math_positive_number\" id=\"97cclePY#6TPR.[-L/eT\"><field name=\"NUM\">1</field></shadow></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_places\" id=\"rMQ(9]pC1cj}Ss1Cf6%t\"><field name=\"VALUE\">PLACE_LEFT_EYE</field></shadow></value><value name=\"LIGHT\"><shadow type=\"math_positive_number\" id=\"OAen|LVsm?JAFkd:_R0f\"><field name=\"NUM\">0</field></shadow></value></block></next><value name=\"DURATION\"><shadow type=\"math_positive_number\" id=\"VN$.*r6k,6tvi8?T[?1]\"><field name=\"NUM\">1</field></shadow></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_places\" id=\"UipRVERu2ZqpT`NP.F1)\"><field name=\"VALUE\">PLACE_LEFT_EYE</field></shadow></value><value name=\"LIGHT\"><shadow type=\"math_positive_number\" id=\"ex$Luk6;]GzR/jQk5d,r\"><field name=\"NUM\">1</field></shadow></value></block></statement></block></next></block></xml>"
 			},
 			"touch-and-wink": {
 				"title": "coding_cards.block.card.touch-and-wink.title",
 				"hardware": [
 					"circuit-touch",
 					"built-in-led"
+				],
+				"slides" : [
+					{
+						"id" : "block-touch-and-wink",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					},
+					{
+						"id" : "assembly-circuit-touch",
+						"title" : "coding_cards.block.slide.assembly.title"
+					}
 				]
 			},
 			"touch-to-shine": {

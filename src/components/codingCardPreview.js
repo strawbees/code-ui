@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import SvgIcon from 'src/components/svgIcon'
 import Button from 'src/components/button'
-import icons from 'src/assets/icons/codingCards/hardware'
+import hardwareIcons from 'src/assets/icons/codingCards/hardware'
 
 const CodingCardPreview = ({
 	title,
@@ -51,7 +51,7 @@ const CodingCardPreview = ({
 					{hardwareIds && hardwareIds.length > 0 &&
 						hardwareIds.map(id =>
 							<SvgIcon
-								icon={icons[id]}
+								icon={hardwareIcons[id]}
 								key={id}
 								className='icon'
 							/>

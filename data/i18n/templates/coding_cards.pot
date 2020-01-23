@@ -15,6 +15,14 @@ msgctxt "coding_cards.block.title"
 msgid "Block coding cards"
 msgstr ""
 
+msgctxt "coding_cards.back-to-coding-cards"
+msgid "Back to coding cards"
+msgstr ""
+
+msgctxt "coding_cards.open-program"
+msgid "Open in editor"
+msgstr ""
+
 msgctxt "coding_cards.hardware.built-in-led.title"
 msgid "Built-in LED"
 msgstr ""
@@ -37,6 +45,14 @@ msgstr ""
 
 msgctxt "coding_cards.hardware.light-sensor.title"
 msgid "Light Sensor"
+msgstr ""
+
+msgctxt "coding_cards.block.slide.code-and-hardware.title"
+msgid "Code & Hardware Requirements"
+msgstr ""
+
+msgctxt "coding_cards.block.slide.assembly.title"
+msgid "How to use the hardware"
 msgstr ""
 
 msgctxt "coding_cards.block.card.blink.title"

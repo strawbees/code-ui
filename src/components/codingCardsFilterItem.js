@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import Button from 'src/components/button'
 import SvgIcon from 'src/components/svgIcon'
-import icons from 'src/assets/icons/codingCards/hardware'
+import hardwareIcons from 'src/assets/icons/codingCards/hardware'
 import greenCheckIcon from 'src/assets/icons/general/greenCheck.svg'
 
 const CodingCardsFilterItem = ({
@@ -46,7 +46,7 @@ const CodingCardsFilterItem = ({
 				<div className='icon-container'>
 					{iconId &&
 						<SvgIcon
-							icon={icons[iconId]}
+							icon={hardwareIcons[iconId]}
 							className='icon'
 						/>
 					}
