@@ -1,5 +1,7 @@
-import arrowRight from './arrowRight.svg'
 import arrowBack from './arrowBack.svg'
+import arrowNext from './arrowNext.svg'
+import arrowPrevious from './arrowPrevious.svg'
+import arrowRight from './arrowRight.svg'
 import check from './check.svg'
 import close from './close.svg'
 import collapse from './collapse.svg'
@@ -14,8 +16,10 @@ import preferences from './preferences.svg'
 import sync from './sync.svg'
 
 export default {
-	arrowRight,
 	arrowBack,
+	arrowNext,
+	arrowPrevious,
+	arrowRight,
 	check,
 	close,
 	collapse,
