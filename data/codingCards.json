@@ -24,13 +24,13 @@
 				"hardware": [
 					"built-in-led"
 				],
+				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"50\" y=\"50\"><next><block type=\"control_forever\" id=\"W$KVUNq5Q+$?a7kO#1oF\"><statement name=\"SUBSTACK\"><block type=\"output_led\" id=\"EQ@mesn_@S?MC^z$)f}=\"><next><block type=\"control_wait\" id=\"Jn1ysyH+Im`}Vy;(/VIZ\"><next><block type=\"output_led\" id=\"8j.-kdC=D/L?!whF)Q~l\"><next><block type=\"control_wait\" id=\"e22OQM_RHbyNMJHD1*|M\"><value name=\"DURATION\"><shadow type=\"math_positive_number\" id=\"]onyY*=Usd;^*d}A]cAp\"><field name=\"NUM\">1</field></shadow></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_places\" id=\"E3V+zSSO$w[5vqOSGlx-\"><field name=\"VALUE\">PLACE_LEFT_EYE</field></shadow></value><value name=\"LIGHT\"><shadow type=\"math_positive_number\" id=\"s^A@o(vSzJD;dGv#FY|`\"><field name=\"NUM\">0</field></shadow></value></block></next><value name=\"DURATION\"><shadow type=\"math_positive_number\" id=\"MhqwC8CI1DK[1]#/0%JI\"><field name=\"NUM\">1</field></shadow></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_places\" id=\"KY]vi;0xGT-j-4nersDE\"><field name=\"VALUE\">PLACE_LEFT_EYE</field></shadow></value><value name=\"LIGHT\"><shadow type=\"math_positive_number\" id=\"!wFCMtc6H)TnKeJQmA8X\"><field name=\"NUM\">1</field></shadow></value></block></statement></block></next></block></xml>",
 				"slides" : [
 					{
 						"id" : "block-blink",
 						"title" : "coding_cards.block.slide.code-and-hardware.title"
 					}
-				],
-				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"50\" y=\"50\"><next><block type=\"control_forever\" id=\"=_yI-uKoNaHSGY;@zF*v\"><statement name=\"SUBSTACK\"><block type=\"output_led\" id=\"{qa|Y6RGq4.p~k}LbAkF\"><next><block type=\"control_wait\" id=\"-dGitgaBG+W$d,|N@`SX\"><next><block type=\"output_led\" id=\"3F3gwpVc9w4p]G4nBE{^\"><next><block type=\"control_wait\" id=\"FSt9O*-lIQLj=QufZ|d{\"><value name=\"DURATION\"><shadow type=\"math_positive_number\" id=\"97cclePY#6TPR.[-L/eT\"><field name=\"NUM\">1</field></shadow></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_places\" id=\"rMQ(9]pC1cj}Ss1Cf6%t\"><field name=\"VALUE\">PLACE_LEFT_EYE</field></shadow></value><value name=\"LIGHT\"><shadow type=\"math_positive_number\" id=\"OAen|LVsm?JAFkd:_R0f\"><field name=\"NUM\">0</field></shadow></value></block></next><value name=\"DURATION\"><shadow type=\"math_positive_number\" id=\"VN$.*r6k,6tvi8?T[?1]\"><field name=\"NUM\">1</field></shadow></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_places\" id=\"UipRVERu2ZqpT`NP.F1)\"><field name=\"VALUE\">PLACE_LEFT_EYE</field></shadow></value><value name=\"LIGHT\"><shadow type=\"math_positive_number\" id=\"ex$Luk6;]GzR/jQk5d,r\"><field name=\"NUM\">1</field></shadow></value></block></statement></block></next></block></xml>"
+				]
 			},
 			"touch-and-wink": {
 				"title": "coding_cards.block.card.touch-and-wink.title",
@@ -38,6 +38,7 @@
 					"circuit-touch",
 					"built-in-led"
 				],
+				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"50\" y=\"50\"><next><block type=\"control_forever\" id=\"djmg2CuRI]l2+WiAN5?:\"><statement name=\"SUBSTACK\"><block type=\"control_if\" id=\"[iaM/S)ymF0{B][GN/LH\"><value name=\"CONDITION\"><block type=\"input_circuit_touch_touched\" id=\"xGyYB_crB;mMUGhDHH)p\"><value name=\"PLACE\"><shadow type=\"dropdown_circuit_touch_places\" id=\"/0JAQGT3s:eyF+v{5bA,\"><field name=\"VALUE\">PLACE_HORN</field></shadow></value></block></value><next><block type=\"output_led\" id=\"#[ps0a$D)737ZQxH=Yc+\"><value name=\"PLACE\"><shadow type=\"dropdown_led_places\" id=\"}G?,A~GjPdR?!8b:^_2+\"><field name=\"VALUE\">PLACE_LEFT_EYE</field></shadow></value><value name=\"LIGHT\"><shadow type=\"math_positive_number\" id=\"xezQ-S|)64MgzE`hMFYH\"><field name=\"NUM\">1</field></shadow></value></block></next><statement name=\"SUBSTACK\"><block type=\"output_led\" id=\"gZgZ9C[RHU37Un`%YfU=\"><next><block type=\"control_wait\" id=\"PNoDGee~j%m22OY-b}8@\"><value name=\"DURATION\"><shadow type=\"math_positive_number\" id=\".ReQ$W8:fOM@:P@*Rt?R\"><field name=\"NUM\">0.25</field></shadow></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_places\" id=\"[fS.qGc6Yy%hd^!^EhON\"><field name=\"VALUE\">PLACE_LEFT_EYE</field></shadow></value><value name=\"LIGHT\"><shadow type=\"math_positive_number\" id=\"dA;%l/6S^|9(6de1I^$0\"><field name=\"NUM\">0</field></shadow></value></block></statement></block></statement></block></next></block></xml>",
 				"slides" : [
 					{
 						"id" : "block-touch-and-wink",
@@ -54,6 +55,17 @@
 				"hardware": [
 					"circuit-touch",
 					"built-in-led"
+				],
+				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"50\" y=\"50\"><next><block type=\"control_forever\" id=\"Re((6#,E4%zvI;a+Aivs\"><statement name=\"SUBSTACK\"><block type=\"output_led\" id=\"*sU|2n0)LQ^%x!eIQVvU\"><value name=\"PLACE\"><shadow type=\"dropdown_led_places\" id=\"$9=@g30`fva@Iln~C54!\"><field name=\"VALUE\">PLACE_LEFT_EYE</field></shadow></value><value name=\"LIGHT\"><shadow type=\"math_positive_number\" id=\"@!Xz%tEwQ71wP8G,S[rF\"><field name=\"NUM\">1</field></shadow><block type=\"input_circuit_touch\" id=\"qX8AmfJ[T!r`w,~eF^{x\"><value name=\"PLACE\"><shadow type=\"dropdown_circuit_touch_places\" id=\"_uq]L-%Yx-aQ2L2Rz[)5\"><field name=\"VALUE\">PLACE_HORN</field></shadow></value></block></value></block></statement></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-touch-to-shine",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					},
+					{
+						"id" : "assembly-circuit-touch",
+						"title" : "coding_cards.block.slide.assembly.title"
+					}
 				]
 			},
 			"shine-in-the-dark": {
@@ -61,31 +73,78 @@
 				"hardware": [
 					"light-sensor",
 					"built-in-led"
+				],
+				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"50\" y=\"50\"><next><block type=\"control_forever\" id=\"^$(XDmp9/-P5O#/7k^)D\"><statement name=\"SUBSTACK\"><block type=\"control_if_else\" id=\"I)?2.to/3R391Xta3pD5\"><value name=\"CONDITION\"><block type=\"operator_gt\" id=\"39iW2:1|^9rz6OTZ.;m$\"><value name=\"OPERAND1\"><shadow type=\"math_number\" id=\"Gzyauf:KlyOk#*J.*]Uj\"><field name=\"NUM\"></field></shadow><block type=\"input_light_sensor\" id=\"w`XX~si@CtxdohXuMvLK\"><value name=\"PLACE\"><shadow type=\"dropdown_light_sensor_places\" id=\"P_;UN+2R.{Az[e|](e1+\"><field name=\"VALUE\">PLACE_HORN</field></shadow></value></block></value><value name=\"OPERAND2\"><shadow type=\"math_number\" id=\"x6L-Zl/HSez_-AB_5U+(\"><field name=\"NUM\">0.01</field></shadow></value></block></value><statement name=\"SUBSTACK\"><block type=\"output_led\" id=\"rR6M#8Z8]C}jKo7S56Ui\"><value name=\"PLACE\"><shadow type=\"dropdown_led_places\" id=\"29FG;aqAyKSJ`5R4hOt4\"><field name=\"VALUE\">PLACE_LEFT_EYE</field></shadow></value><value name=\"LIGHT\"><shadow type=\"math_positive_number\" id=\"7U0?2M;VdB=b~6:J[jMw\"><field name=\"NUM\">0</field></shadow></value></block></statement><statement name=\"SUBSTACK2\"><block type=\"output_led\" id=\"-0/Hktc7h|HfhQ+O.LRz\"><value name=\"PLACE\"><shadow type=\"dropdown_led_places\" id=\"L)riKwCut$(IAZs+M}Uh\"><field name=\"VALUE\">PLACE_LEFT_EYE</field></shadow></value><value name=\"LIGHT\"><shadow type=\"math_positive_number\" id=\"6}oGW6zHBz~a;c^0{9xY\"><field name=\"NUM\">1</field></shadow></value></block></statement></block></statement></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-shine-in-the-dark",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					},
+					{
+						"id" : "assembly-light-sensor",
+						"title" : "coding_cards.block.slide.assembly.title"
+					}
 				]
 			},
 			"flicker": {
 				"title": "coding_cards.block.card.flicker.title",
 				"hardware": [
 					"built-in-led"
+				],
+				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"36\" y=\"-171\"><next><block type=\"control_forever\" id=\"p!hj]o_j2lvDODQd.C.y\"><statement name=\"SUBSTACK\"><block type=\"output_led\" id=\"Cwndhk+jywJ3cy3a1aso\"><next><block type=\"control_wait\" id=\"w_SM{c=wL#VK;m_.vr*f\"><next><block type=\"output_led\" id=\"a{,453aqLo~pvVOE;LS-\"><next><block type=\"control_wait\" id=\"*S1?%$+H$bvt,Zd-z=E|\"><value name=\"DURATION\"><shadow type=\"math_positive_number\" id=\"v7k4SU#,|X+Q)w;,D?pp\"><field name=\"NUM\">1</field></shadow><block type=\"operator_random\" id=\"2D6WF,OZ:7Re8S_Q|M?I\"><value name=\"TO\"><shadow type=\"math_number\" id=\"SvzGD_q#a9kNFYH.(s]k\"><field name=\"NUM\">0.1</field></shadow></value><value name=\"FROM\"><shadow type=\"math_number\" id=\"|qmPA(Sc!CK(bao@/]i6\"><field name=\"NUM\">0</field></shadow></value></block></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_places\" id=\"2w6d$z@JQ3y#fL?t!p)b\"><field name=\"VALUE\">PLACE_LEFT_EYE</field></shadow></value><value name=\"LIGHT\"><shadow type=\"math_positive_number\" id=\"_=Wl-R#-zq?qsAz-!zA?\"><field name=\"NUM\">0</field></shadow></value></block></next><value name=\"DURATION\"><shadow type=\"math_positive_number\" id=\"R9/LQFPsF@-ihq9x^A_t\"><field name=\"NUM\">1</field></shadow><block type=\"operator_random\" id=\"k2Fy//bK]MOeTq6T))zw\"><value name=\"TO\"><shadow type=\"math_number\" id=\";BnE/$tNi2tFUicb,rHn\"><field name=\"NUM\">0.1</field></shadow></value><value name=\"FROM\"><shadow type=\"math_number\" id=\"w?@(?mS#NP3xU@t1H[#a\"><field name=\"NUM\">0</field></shadow></value></block></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_places\" id=\"PnGtAPnlaWPoUrPC5p-U\"><field name=\"VALUE\">PLACE_LEFT_EYE</field></shadow></value><value name=\"LIGHT\"><shadow type=\"math_positive_number\" id=\"+)wuBvRKCHUO6Bs$-@8m\"><field name=\"NUM\">1</field></shadow></value></block></statement></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-flicker",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					}
 				]
 			},
 			"glow": {
 				"title": "coding_cards.block.card.glow.title",
 				"hardware": [
 					"built-in-led"
+				],
+				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables><variable type=\"\" id=\"yte}arjgLfJs0:s=+dg$\" islocal=\"false\" iscloud=\"false\">brightness</variable></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"50\" y=\"50\"><next><block type=\"control_forever\" id=\"$wmL(_9BEIL|,,O{H7b4\"><statement name=\"SUBSTACK\"><block type=\"data_setvariableto\" id=\"(?n(@N/9j!{U(whj5-=P\"><next><block type=\"control_repeat\" id=\"0A.CAq)XZ~Ma%TC$on:e\"><statement name=\"SUBSTACK\"><block type=\"data_changevariableby\" id=\"1ft%GV{=UloU}JMehokc\"><next><block type=\"output_led\" id=\"8;DW1/`,|BvKapO~TC3#\"><next><block type=\"control_wait\" id=\"%}=45nz~#:Q*,EDw.^%f\"><value name=\"DURATION\"><shadow type=\"math_positive_number\" id=\"pv1H3_vvn4`!Uv1m`D5:\"><field name=\"NUM\">0.02</field></shadow></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_places\" id=\",?J}a/q9U|f)ts*4,j0y\"><field name=\"VALUE\">PLACE_LEFT_EYE</field></shadow></value><value name=\"LIGHT\"><shadow type=\"math_positive_number\" id=\"G9qYS#pU%JRzKuC,,|RH\"><field name=\"NUM\">1</field></shadow><block type=\"data_variable\" id=\"u,rcwL@[pJ7E:jeN9.6,\"><field name=\"VARIABLE\" id=\"yte}arjgLfJs0:s=+dg$\" variabletype=\"\">brightness</field></block></value></block></next><value name=\"VALUE\"><shadow type=\"math_number\" id=\"BMs,yBg3b5|[:}yVVE:v\"><field name=\"NUM\">0.01</field></shadow></value><field name=\"VARIABLE\" id=\"yte}arjgLfJs0:s=+dg$\" variabletype=\"\">brightness</field></block></statement><value name=\"TIMES\"><shadow type=\"math_whole_number\" id=\"]-J0oi/+JN0)OXasb}~2\"><field name=\"NUM\">100</field></shadow></value></block></next><value name=\"VALUE\"><shadow type=\"text\" id=\"`Lw}1``OOaCXd8NIig^E\"><field name=\"TEXT\">0</field></shadow></value><field name=\"VARIABLE\" id=\"yte}arjgLfJs0:s=+dg$\" variabletype=\"\">brightness</field></block></statement></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-glow",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					}
 				]
 			},
-			"toggle": {
-				"title": "coding_cards.block.card.toggle.title",
+			"light-switch": {
+				"title": "coding_cards.block.card.light-switch.title",
 				"hardware": [
 					"circuit-touch",
 					"built-in-led"
+				],
+				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables><variable type=\"\" id=\"Z%w7%=*l0*/GHjF!~Qah\" islocal=\"false\" iscloud=\"false\">toggle</variable></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"50\" y=\"50\"><next><block type=\"data_setvariableto\" id=\"s)nG{F$Y.mO.7ac:lq1/\"><next><block type=\"control_forever\" id=\"d(p)8Kq*btF=kQDDed0J\"><statement name=\"SUBSTACK\"><block type=\"control_if\" id=\"`:O`p3R,|sbCYt?|QA#a\"><statement name=\"SUBSTACK\"><block type=\"control_if_else\" id=\"I)ml9kVk2e[CACsw6n%n\"><statement name=\"SUBSTACK\"><block type=\"data_setvariableto\" id=\"/psa|4}FzKzX?Ax|o+TI\"><value name=\"VALUE\"><shadow type=\"text\" id=\"X.`4J*R4fUsA$^_9qrji\"><field name=\"TEXT\">0</field></shadow></value><field name=\"VARIABLE\" id=\"Z%w7%=*l0*/GHjF!~Qah\" variabletype=\"\">toggle</field></block></statement><statement name=\"SUBSTACK2\"><block type=\"data_setvariableto\" id=\"^a78P86uk4ZehIYAtb_L\"><value name=\"VALUE\"><shadow type=\"text\" id=\"5%[RWjwJ-EUjGkv#~KnT\"><field name=\"TEXT\">1</field></shadow></value><field name=\"VARIABLE\" id=\"Z%w7%=*l0*/GHjF!~Qah\" variabletype=\"\">toggle</field></block></statement><value name=\"CONDITION\"><block type=\"operator_gt\" id=\"TGMM-9*l26mlC=hQ7c%M\"><value name=\"OPERAND1\"><shadow type=\"math_number\" id=\"5yLFckYKCt9u5yGEP9.=\"><field name=\"NUM\"></field></shadow><block type=\"data_variable\" id=\"}Qc=Y+1?cd`0r{;]%w[;\"><field name=\"VARIABLE\" id=\"Z%w7%=*l0*/GHjF!~Qah\" variabletype=\"\">toggle</field></block></value><value name=\"OPERAND2\"><shadow type=\"math_number\" id=\"QO|0EQ=W]K?oshtJKKJ}\"><field name=\"NUM\">0</field></shadow></value></block></value><next><block type=\"output_led\" id=\":[wh8odI!+fyt/DVoVtX\"><next><block type=\"control_wait\" id=\"qO:}^C.){0mp[FjCQ(._\"><value name=\"DURATION\"><shadow type=\"math_positive_number\" id=\"y6D$=m~pY!nvy.V|hRod\"><field name=\"NUM\">0.3</field></shadow></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_places\" id=\"v~*wEoA,(WpVlR|gO)F%\"><field name=\"VALUE\">PLACE_LEFT_EYE</field></shadow></value><value name=\"LIGHT\"><shadow type=\"math_positive_number\" id=\"b=$q:6I`Y~.06biK~lz=\"><field name=\"NUM\">1</field></shadow><block type=\"data_variable\" id=\"N5kL|_ng`pqs8LW%jx5$\"><field name=\"VARIABLE\" id=\"Z%w7%=*l0*/GHjF!~Qah\" variabletype=\"\">toggle</field></block></value></block></next></block></statement><value name=\"CONDITION\"><block type=\"input_circuit_touch_touched\" id=\")BObiWu{=g.R2xFGWQqS\"><value name=\"PLACE\"><shadow type=\"dropdown_circuit_touch_places\" id=\"NG@)}.s*![_CJs;ql584\"><field name=\"VALUE\">PLACE_HORN</field></shadow></value></block></value></block></statement></block></next><value name=\"VALUE\"><shadow type=\"text\" id=\"Aux=x0_n.F}uC8qw(,RN\"><field name=\"TEXT\">0</field></shadow></value><field name=\"VARIABLE\" id=\"Z%w7%=*l0*/GHjF!~Qah\" variabletype=\"\">toggle</field></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-light-switch",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					},
+					{
+						"id" : "assembly-circuit-touch",
+						"title" : "coding_cards.block.slide.assembly.title"
+					}
 				]
 			},
 			"switching-colors": {
 				"title": "coding_cards.block.card.switching-colors.title",
 				"hardware": [
 					"dual-color-led"
+				],
+				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"50\" y=\"50\"><next><block type=\"output_led_dual_color_light\" id=\"wpP|[Y/~n]||OGp]g`$s\"><next><block type=\"control_forever\" id=\"QTUMdYNr0mT)wes[z37t\"><statement name=\"SUBSTACK\"><block type=\"output_led_dual_color_color\" id=\"Mj;YlK[PQaO}u@munI;n\"><next><block type=\"control_wait\" id=\"e@?RPAOMyX###lVg#WS=\"><next><block type=\"output_led_dual_color_color\" id=\"qvC1%MDS?Ea]}^3,.SBK\"><next><block type=\"control_wait\" id=\":tK!~h)Xf`(aIWM{!:[-\"><value name=\"DURATION\"><shadow type=\"math_positive_number\" id=\"s2m-Pr|n]s4LMmUIiuW=\"><field name=\"NUM\">0.5</field></shadow></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_dual_color_places\" id=\"N{cp}}ROF;ELMbM;@PKR\"><field name=\"VALUE\">PLACE_LEFT_ARM</field></shadow></value><value name=\"COLOR\"><shadow type=\"math_positive_number\" id=\"Odj+YvIkOCQ82K~L/ZwN\"><field name=\"NUM\">0</field></shadow></value></block></next><value name=\"DURATION\"><shadow type=\"math_positive_number\" id=\"yJH]+L!!uM9a#yLM!{TS\"><field name=\"NUM\">0.5</field></shadow></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_dual_color_places\" id=\"/-GY[h]g{sOo^3:wG:Kr\"><field name=\"VALUE\">PLACE_LEFT_ARM</field></shadow></value><value name=\"COLOR\"><shadow type=\"math_positive_number\" id=\"v{S?j:YC}yt]d[0^bFz:\"><field name=\"NUM\">1</field></shadow></value></block></statement></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_dual_color_places\" id=\"kXJ:Am-AB6ucLW~:IN?(\"><field name=\"VALUE\">PLACE_LEFT_ARM</field></shadow></value><value name=\"LIGHT\"><shadow type=\"math_positive_number\" id=\"X=wBU`uDdC?|`Dz2/b8B\"><field name=\"NUM\">1</field></shadow></value></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-switching-colors",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					},
+					{
+						"id" : "assembly-dual-color-led",
+						"title" : "coding_cards.block.slide.assembly.title"
+					}
 				]
 			},
 			"touch-to-siren-light": {
@@ -93,6 +152,21 @@
 				"hardware": [
 					"circuit-touch",
 					"dual-color-led"
+				],
+				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"50\" y=\"50\"><next><block type=\"control_forever\" id=\"yyRF9jHt]xlamf:fzI=]\"><statement name=\"SUBSTACK\"><block type=\"control_if_else\" id=\"T.4o*U)B0v%L~zll`IgE\"><value name=\"CONDITION\"><block type=\"input_circuit_touch_touched\" id=\"%Rkkam%ekG8iZR1c[V7$\"><value name=\"PLACE\"><shadow type=\"dropdown_circuit_touch_places\" id=\"*pY~FVIiDXmj;~K$^dtt\"><field name=\"VALUE\">PLACE_HORN</field></shadow></value></block></value><statement name=\"SUBSTACK\"><block type=\"output_led_dual_color_light\" id=\"t/q-_9FTJ{J55Wk;xxlu\"><next><block type=\"output_led_dual_color_color\" id=\"qJF}^Hgu39ft,n/dAE$:\"><next><block type=\"control_wait\" id=\"mzQBRS%,}eHflnE|cwW$\"><next><block type=\"output_led_dual_color_color\" id=\"B{!rYkhz9lWHur^s1^)|\"><next><block type=\"control_wait\" id=\"dU=F=4B6VW4_S:JZ^ogs\"><value name=\"DURATION\"><shadow type=\"math_positive_number\" id=\"goki$xo:M)jGres*ulr#\"><field name=\"NUM\">0.1</field></shadow></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_dual_color_places\" id=\"cT2uRY0XjQ!^w-6?lF;M\"><field name=\"VALUE\">PLACE_LEFT_ARM</field></shadow></value><value name=\"COLOR\"><shadow type=\"math_positive_number\" id=\"6tYYx)p0VOEc;N1FLX[#\"><field name=\"NUM\">0</field></shadow></value></block></next><value name=\"DURATION\"><shadow type=\"math_positive_number\" id=\"}5m0ny{l|*lwirQ8]N?O\"><field name=\"NUM\">0.1</field></shadow></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_dual_color_places\" id=\"X`];eO25G#aS1vE[n[dg\"><field name=\"VALUE\">PLACE_LEFT_ARM</field></shadow></value><value name=\"COLOR\"><shadow type=\"math_positive_number\" id=\"iWv=_w6v(`tY2?RgpM1Q\"><field name=\"NUM\">1</field></shadow></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_dual_color_places\" id=\"6H).7wA{-,F)]g92c7U$\"><field name=\"VALUE\">PLACE_LEFT_ARM</field></shadow></value><value name=\"LIGHT\"><shadow type=\"math_positive_number\" id=\"-c3#ZRl3dH?9O,Om;M]_\"><field name=\"NUM\">1</field></shadow></value></block></statement><statement name=\"SUBSTACK2\"><block type=\"output_led_dual_color_light\" id=\"_|Za*d)QfAf]#MBt%/Ty\"><value name=\"PLACE\"><shadow type=\"dropdown_led_dual_color_places\" id=\"M`3@1BPd-x)hjqRB~K`k\"><field name=\"VALUE\">PLACE_LEFT_ARM</field></shadow></value><value name=\"LIGHT\"><shadow type=\"math_positive_number\" id=\"%%[L7Ork3AQVThHI4q?5\"><field name=\"NUM\">0</field></shadow></value></block></statement></block></statement></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-touch-to-siren-light",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					},
+					{
+						"id" : "assembly-circuit-touch",
+						"title" : "coding_cards.block.slide.assembly.title"
+					},
+					{
+						"id" : "assembly-dual-color-led",
+						"title" : "coding_cards.block.slide.assembly.title"
+					}
 				]
 			},
 			"touch-to-change-color": {
@@ -100,6 +174,21 @@
 				"hardware": [
 					"circuit-touch",
 					"dual-color-led"
+				],
+				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"50\" y=\"50\"><next><block type=\"control_forever\" id=\"5F};.}%B@w*9/3b_?A8j\"><statement name=\"SUBSTACK\"><block type=\"output_led_dual_color_light\" id=\"gIgg.CgApC0t{d[why_*\"><next><block type=\"output_led_dual_color_color\" id=\"]w0B}j`Y*X*:d48%jy}y\"><next><block type=\"control_wait\" id=\"s+rQ;,0YT~P@QJ7sLxAn\"><value name=\"DURATION\"><shadow type=\"math_positive_number\" id=\"yykWL3WJw*?nQnc8`zjv\"><field name=\"NUM\">0.01</field></shadow></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_dual_color_places\" id=\"*n-qa;6+P[_Q7D}@LTCo\"><field name=\"VALUE\">PLACE_LEFT_ARM</field></shadow></value><value name=\"COLOR\"><shadow type=\"math_positive_number\" id=\"P-K*2*hI!CEGEJ_Q25pI\"><field name=\"NUM\">0</field></shadow><block type=\"input_circuit_touch\" id=\"c;Q~Iu;CWR[FT^aYg5VP\"><value name=\"PLACE\"><shadow type=\"dropdown_circuit_touch_places\" id=\"yI!2_n2kj?a3N#2KpsE}\"><field name=\"VALUE\">PLACE_HORN</field></shadow></value></block></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_dual_color_places\" id=\"rB8~8(064G0/u$ptMgF(\"><field name=\"VALUE\">PLACE_LEFT_ARM</field></shadow></value><value name=\"LIGHT\"><shadow type=\"math_positive_number\" id=\"swYe=S?9/qeo6Fu}9.=q\"><field name=\"NUM\">1</field></shadow></value></block></statement></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-touch-to-change-color",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					},
+					{
+						"id" : "assembly-circuit-touch",
+						"title" : "coding_cards.block.slide.assembly.title"
+					},
+					{
+						"id" : "assembly-dual-color-led",
+						"title" : "coding_cards.block.slide.assembly.title"
+					}
 				]
 			},
 			"change-color-when-its-dark": {
@@ -107,18 +196,55 @@
 				"hardware": [
 					"light-sensor",
 					"dual-color-led"
+				],
+				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"50\" y=\"50\"><next><block type=\"control_forever\" id=\"E@JHPVmrm^aWRA{ls4ol\"><statement name=\"SUBSTACK\"><block type=\"output_led_dual_color_light\" id=\"r_Ru/4G/W$uDBZ?UW}jo\"><next><block type=\"control_if_else\" id=\"TthI6}D@{#dDsSRwiSW]\"><value name=\"CONDITION\"><block type=\"operator_gt\" id=\"9_ZHlN@Mp#D*1^R|]*_#\"><value name=\"OPERAND2\"><shadow type=\"math_number\" id=\"6Jg6vBkTM0P2fO9=-,kX\"><field name=\"NUM\">0.01</field></shadow></value><value name=\"OPERAND1\"><shadow type=\"math_number\" id=\"E8wfZ9U;!L)1[VeYQ1*|\"><field name=\"NUM\"></field></shadow><block type=\"input_light_sensor\" id=\"LfqO{3prJ?r$06geohZX\"><value name=\"PLACE\"><shadow type=\"dropdown_light_sensor_places\" id=\"z!gDAzb?bv3cW_W:(CKc\"><field name=\"VALUE\">PLACE_HORN</field></shadow></value></block></value></block></value><statement name=\"SUBSTACK\"><block type=\"output_led_dual_color_color\" id=\"#qdfrlg_QSn1!laCVSJy\"><value name=\"PLACE\"><shadow type=\"dropdown_led_dual_color_places\" id=\":at}MicUREfOv]Jq~3Nf\"><field name=\"VALUE\">PLACE_LEFT_ARM</field></shadow></value><value name=\"COLOR\"><shadow type=\"math_positive_number\" id=\"5zVaIP+mZA|AnJ;mf|S]\"><field name=\"NUM\">0</field></shadow></value></block></statement><statement name=\"SUBSTACK2\"><block type=\"output_led_dual_color_color\" id=\"~Cd/O:srBk4rq;xzVY$V\"><value name=\"PLACE\"><shadow type=\"dropdown_led_dual_color_places\" id=\"-fF=JLXz!m~%|+G.2yuz\"><field name=\"VALUE\">PLACE_LEFT_ARM</field></shadow></value><value name=\"COLOR\"><shadow type=\"math_positive_number\" id=\"[KP}M`iw~;bJok{j2](n\"><field name=\"NUM\">1</field></shadow></value></block></statement></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_dual_color_places\" id=\"^OADv$%g!u2O6Uq8eG$+\"><field name=\"VALUE\">PLACE_LEFT_ARM</field></shadow></value><value name=\"LIGHT\"><shadow type=\"math_positive_number\" id=\"|FNS}PogQhsmS:Yhk=Xv\"><field name=\"NUM\">1</field></shadow></value></block></statement></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-change-color-when-its-dark",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					},
+					{
+						"id" : "assembly-light-sensor",
+						"title" : "coding_cards.block.slide.assembly.title"
+					},
+					{
+						"id" : "assembly-dual-color-led",
+						"title" : "coding_cards.block.slide.assembly.title"
+					}
 				]
 			},
 			"flickering-color": {
 				"title": "coding_cards.block.card.flickering-color.title",
 				"hardware": [
 					"dual-color-led"
+				],
+				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"50\" y=\"50\"><next><block type=\"control_forever\" id=\"HaSRT%_}%B;Q/]kMO#7/\"><statement name=\"SUBSTACK\"><block type=\"output_led_dual_color_light\" id=\"4G0,@=_eQ_LjTQo*osee\"><next><block type=\"output_led_dual_color_color\" id=\"qhej]E4Oa:(_JV(m9kIT\"><next><block type=\"control_wait\" id=\"+$!UPg-PXyi7E@$9n%,2\"><value name=\"DURATION\"><shadow type=\"math_positive_number\" id=\"nFc?f9Ek%R{,JgJ@Kf9)\"><field name=\"NUM\">1</field></shadow><block type=\"operator_random\" id=\";:+Ko~8-U-(0#$NOY,J!\"><value name=\"TO\"><shadow type=\"math_number\" id=\"bKU2kkO!3Z+I+DW,m+DN\"><field name=\"NUM\">0.1</field></shadow></value><value name=\"FROM\"><shadow type=\"math_number\" id=\"f)T+8z$}U,?)^gW5uXam\"><field name=\"NUM\">0</field></shadow></value></block></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_dual_color_places\" id=\"7iEdT:(]byF+Q*~*:2$]\"><field name=\"VALUE\">PLACE_HORN</field></shadow></value><value name=\"COLOR\"><shadow type=\"math_positive_number\" id=\"gIq2*hIgon@|=GB+r3UK\"><field name=\"NUM\">1</field></shadow><block type=\"operator_random\" id=\"r1s#@Jc6k;tUn_k{*4sw\"><value name=\"TO\"><shadow type=\"math_number\" id=\"8L2R#YHS7Y)m?DAYwm`5\"><field name=\"NUM\">1</field></shadow></value><value name=\"FROM\"><shadow type=\"math_number\" id=\"i;n0**Gz*2aBkuN(1Z6:\"><field name=\"NUM\">0</field></shadow></value></block></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_dual_color_places\" id=\"L#?]8Fljg;=0Q:$cCCEA\"><field name=\"VALUE\">PLACE_HORN</field></shadow></value><value name=\"LIGHT\"><shadow type=\"math_positive_number\" id=\"bO!e}1=KidO~F}}#w[Jc\"><field name=\"NUM\">1</field></shadow></value></block></statement></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-flickering-color",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					},
+					{
+						"id" : "assembly-dual-color-led",
+						"title" : "coding_cards.block.slide.assembly.title"
+					}
 				]
 			},
 			"fading-colors": {
 				"title": "coding_cards.block.card.fading-colors.title",
 				"hardware": [
 					"dual-color-led"
+				],
+				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables><variable type=\"\" id=\"jr[WD2|h4UNJ5M!p4c]g\" islocal=\"false\" iscloud=\"false\">color</variable></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"50\" y=\"50\"><next><block type=\"control_forever\" id=\"oHDlGnAC=xK?s0Of5z2g\"><statement name=\"SUBSTACK\"><block type=\"data_setvariableto\" id=\"E*3%e0EuxZ3=AG5vaYCF\"><next><block type=\"output_led_dual_color_light\" id=\"#V5t`*qL(.zTDNUqh:{B\"><next><block type=\"control_repeat\" id=\"Ktwh/!s?Z-PW[+)$|v;6\"><statement name=\"SUBSTACK\"><block type=\"output_led_dual_color_color\" id=\"V{W2-*3jT,X!tih66!lm\"><next><block type=\"data_changevariableby\" id=\"GIWFLevxFx/E0nU:O5bi\"><next><block type=\"control_wait\" id=\"*ITLc+QbT[yVj*l7Yl4Q\"><value name=\"DURATION\"><shadow type=\"math_positive_number\" id=\"Ya~x^tFJ-dY[8Z}f2.TY\"><field name=\"NUM\">0.01</field></shadow></value></block></next><value name=\"VALUE\"><shadow type=\"math_number\" id=\"M?rszccJ;3L//7f_-^Jl\"><field name=\"NUM\">0.01</field></shadow></value><field name=\"VARIABLE\" id=\"jr[WD2|h4UNJ5M!p4c]g\" variabletype=\"\">color</field></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_dual_color_places\" id=\"s8=o1^)/C@.46jz#wtTn\"><field name=\"VALUE\">PLACE_LEFT_ARM</field></shadow></value><value name=\"COLOR\"><shadow type=\"math_positive_number\" id=\"v`EYcFTw.eHTPQ4Ew5gJ\"><field name=\"NUM\">1</field></shadow><block type=\"data_variable\" id=\"qLTtrIK;/BzR+{uZ4CpP\"><field name=\"VARIABLE\" id=\"jr[WD2|h4UNJ5M!p4c]g\" variabletype=\"\">color</field></block></value></block></statement><value name=\"TIMES\"><shadow type=\"math_whole_number\" id=\"r_fk1R.^.}kYz]-o!ePa\"><field name=\"NUM\">100</field></shadow></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_dual_color_places\" id=\"y!9NF,65X-G)j(T$f5o8\"><field name=\"VALUE\">PLACE_LEFT_ARM</field></shadow></value><value name=\"LIGHT\"><shadow type=\"math_positive_number\" id=\"+{dddEjD-7gOITWS^vK}\"><field name=\"NUM\">1</field></shadow></value></block></next><value name=\"VALUE\"><shadow type=\"text\" id=\"z8L=u4D~~G%+H%1SGt{i\"><field name=\"TEXT\">0</field></shadow></value><field name=\"VARIABLE\" id=\"jr[WD2|h4UNJ5M!p4c]g\" variabletype=\"\">color</field></block></statement></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-fading-colors",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					},
+					{
+						"id" : "assembly-dual-color-led",
+						"title" : "coding_cards.block.slide.assembly.title"
+					}
 				]
 			},
 			"mood-light-switch": {
@@ -126,12 +252,42 @@
 				"hardware": [
 					"circuit-touch",
 					"dual-color-led"
+				],
+				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables><variable type=\"\" id=\"n@Gw.AS!X8@dKZAA)l:r\" islocal=\"false\" iscloud=\"false\">toggle</variable></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"-65\" y=\"-187\"><next><block type=\"data_setvariableto\" id=\"i~M{[r[[|Tk@{vx*Qp(4\"><next><block type=\"output_led_dual_color_light\" id=\"MlV]Y[xZfDWfSGU?%f*V\"><next><block type=\"control_forever\" id=\"V:(0p0JtSI~I+Gzm`.VT\"><statement name=\"SUBSTACK\"><block type=\"control_if\" id=\"?z3`-s=#Lk+9JsSU^)*%\"><statement name=\"SUBSTACK\"><block type=\"control_if_else\" id=\"KuQJe`!Lhf_V%otP$)3G\"><statement name=\"SUBSTACK\"><block type=\"data_setvariableto\" id=\"Vk@jgS$MoRX-^[s(@J!6\"><value name=\"VALUE\"><shadow type=\"text\" id=\"jivU$}s@z{zVRhpT[v|[\"><field name=\"TEXT\">0</field></shadow></value><field name=\"VARIABLE\" id=\"n@Gw.AS!X8@dKZAA)l:r\" variabletype=\"\">toggle</field></block></statement><statement name=\"SUBSTACK2\"><block type=\"data_setvariableto\" id=\"+914vvSn(jQSM%[T-?.!\"><value name=\"VALUE\"><shadow type=\"text\" id=\"jYwF9gyaG+;Cg@lAO$F2\"><field name=\"TEXT\">1</field></shadow></value><field name=\"VARIABLE\" id=\"n@Gw.AS!X8@dKZAA)l:r\" variabletype=\"\">toggle</field></block></statement><value name=\"CONDITION\"><block type=\"operator_gt\" id=\"Hq%P2}Ua4I6957UYfKG9\"><value name=\"OPERAND2\"><shadow type=\"math_number\" id=\"G/bb)gkx|Ap=wv~NJ=(~\"><field name=\"NUM\">0</field></shadow></value><value name=\"OPERAND1\"><shadow type=\"math_number\" id=\"M+ew(/pa?Xe)?H%q`Slh\"><field name=\"NUM\"></field></shadow><block type=\"data_variable\" id=\"cG]Y:cd)::ipoAyj6^l}\"><field name=\"VARIABLE\" id=\"n@Gw.AS!X8@dKZAA)l:r\" variabletype=\"\">toggle</field></block></value></block></value><next><block type=\"output_led_dual_color_color\" id=\"%En@xs}6JKoHZ0{5D%P|\"><next><block type=\"control_wait\" id=\"*}(Albltomr1w/%:grk|\"><value name=\"DURATION\"><shadow type=\"math_positive_number\" id=\"a-ctaTucxe4Gguoc6|Cb\"><field name=\"NUM\">0.5</field></shadow></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_dual_color_places\" id=\"JSC{t..Ks;NbB;k5{N`@\"><field name=\"VALUE\">PLACE_LEFT_ARM</field></shadow></value><value name=\"COLOR\"><shadow type=\"math_positive_number\" id=\"5.VXlp5jUGgt?ZCI5LP_\"><field name=\"NUM\">1</field></shadow><block type=\"data_variable\" id=\"9,`o7H1Oa?r(f#jqKK$g\"><field name=\"VARIABLE\" id=\"n@Gw.AS!X8@dKZAA)l:r\" variabletype=\"\">toggle</field></block></value></block></next></block></statement><value name=\"CONDITION\"><block type=\"input_circuit_touch_touched\" id=\"u$OTYG1_A}!r,7PoFxK}\"><value name=\"PLACE\"><shadow type=\"dropdown_circuit_touch_places\" id=\"CP%i#05e;9R`Db[kWKP)\"><field name=\"VALUE\">PLACE_HORN</field></shadow></value></block></value></block></statement></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_dual_color_places\" id=\"`n^Kn_x-+j]LPV46rQBW\"><field name=\"VALUE\">PLACE_LEFT_ARM</field></shadow></value><value name=\"LIGHT\"><shadow type=\"math_positive_number\" id=\"`kIGABco9Bd~.2/[}*Rb\"><field name=\"NUM\">1</field></shadow></value></block></next><value name=\"VALUE\"><shadow type=\"text\" id=\"!qR|4*D:h:X1=%U0676.\"><field name=\"TEXT\">0</field></shadow></value><field name=\"VARIABLE\" id=\"n@Gw.AS!X8@dKZAA)l:r\" variabletype=\"\">toggle</field></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-mood-light-switch",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					},
+					{
+						"id" : "assembly-circuit-touch",
+						"title" : "coding_cards.block.slide.assembly.title"
+					},
+					{
+						"id" : "assembly-dual-color-led",
+						"title" : "coding_cards.block.slide.assembly.title"
+					}
 				]
 			},
 			"back-and-forth": {
 				"title": "coding_cards.block.card.back-and-forth.title",
 				"hardware": [
 					"servo-motor"
+				],
+				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"50\" y=\"50\"><next><block type=\"control_forever\" id=\"]9~*b9.^dN5ptjNEBHc8\"><statement name=\"SUBSTACK\"><block type=\"output_servo\" id=\"tn=,KDf?VNHp7p7dGA/U\"><next><block type=\"control_wait\" id=\"bOmrWB5VR|{Q]S|Bms)?\"><next><block type=\"output_servo\" id=\"aF(TGtCHDl$!HJ8?7t;u\"><next><block type=\"control_wait\" id=\"69LSaByf#s;!TwbpF.~k\"><value name=\"DURATION\"><shadow type=\"math_positive_number\" id=\"-|]gBD.:XdAmWZvpA0cU\"><field name=\"NUM\">1</field></shadow></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_servo_places\" id=\":ZiLl4m^tcV}]}BlGP!M\"><field name=\"VALUE\">PLACE_SERVO_MOTOR_1</field></shadow></value><value name=\"POSITION\"><shadow type=\"math_positive_number\" id=\"q=Q2qjme6UJxdov(Ej6z\"><field name=\"NUM\">0</field></shadow></value></block></next><value name=\"DURATION\"><shadow type=\"math_positive_number\" id=\":$sdJCV]zj8,V[w9$s^1\"><field name=\"NUM\">1</field></shadow></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_servo_places\" id=\"hhv.}v@FWwY$ZE!cK#/i\"><field name=\"VALUE\">PLACE_SERVO_MOTOR_1</field></shadow></value><value name=\"POSITION\"><shadow type=\"math_positive_number\" id=\"FKRnc^meD?SL:Gt{BY:s\"><field name=\"NUM\">1</field></shadow></value></block></statement></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-back-and-forth",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					},
+					{
+						"id" : "assembly-servo-backpack",
+						"title" : "coding_cards.block.slide.assembly.title"
+					},
+					{
+						"id" : "assembly-servo-motor",
+						"title" : "coding_cards.block.slide.assembly.title"
+					}
 				]
 			},
 			"touch-and-trap": {
@@ -139,6 +295,25 @@
 				"hardware": [
 					"circuit-touch",
 					"servo-motor"
+				],
+				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"50\" y=\"50\"><next><block type=\"output_servo\" id=\"[Ujk0g93|*aJ]i^q}^])\"><next><block type=\"control_forever\" id=\"T1s/RAn;k(+3wC1BvS:h\"><statement name=\"SUBSTACK\"><block type=\"control_if\" id=\"Acfv!vfzddrE;.U{Rp/Y\"><value name=\"CONDITION\"><block type=\"input_circuit_touch_touched\" id=\"T/$ZZr$0Bc$O:Z,`6Xp{\"><value name=\"PLACE\"><shadow type=\"dropdown_circuit_touch_places\" id=\"cb@Ha6+-+Wu=v.PW4+qL\"><field name=\"VALUE\">PLACE_HORN</field></shadow></value></block></value><statement name=\"SUBSTACK\"><block type=\"output_servo\" id=\"rn]Tl5pw+hLtm8p@FQ@F\"><value name=\"PLACE\"><shadow type=\"dropdown_servo_places\" id=\"^G~0Vu{6QuXnBf4}3A{9\"><field name=\"VALUE\">PLACE_SERVO_MOTOR_1</field></shadow></value><value name=\"POSITION\"><shadow type=\"math_positive_number\" id=\"Ceut+uAIJ#cRs1ky2#o1\"><field name=\"NUM\">1</field></shadow></value></block></statement></block></statement></block></next><value name=\"PLACE\"><shadow type=\"dropdown_servo_places\" id=\"T0V)lZmbw!Y9YpCn,Ca7\"><field name=\"VALUE\">PLACE_SERVO_MOTOR_1</field></shadow></value><value name=\"POSITION\"><shadow type=\"math_positive_number\" id=\"LD1h9f~n:%R,p|lx+v}{\"><field name=\"NUM\">0</field></shadow></value></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "touch-and-trap",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					},
+					{
+						"id" : "assembly-circuit-touch",
+						"title" : "coding_cards.block.slide.assembly.title"
+					},
+					{
+						"id" : "assembly-servo-backpack",
+						"title" : "coding_cards.block.slide.assembly.title"
+					},
+					{
+						"id" : "assembly-servo-motor",
+						"title" : "coding_cards.block.slide.assembly.title"
+					}
 				]
 			},
 			"touch-to-hold-position": {
@@ -146,6 +321,25 @@
 				"hardware": [
 					"circuit-touch",
 					"servo-motor"
+				],
+				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"50\" y=\"50\"><next><block type=\"control_forever\" id=\"`n%WoYkaY,cEa68-4b/4\"><statement name=\"SUBSTACK\"><block type=\"output_servo\" id=\"z-B:3PhZ~/.-IKr@q`C9\"><value name=\"PLACE\"><shadow type=\"dropdown_servo_places\" id=\"Ke3U@F|aH5/pNuC+vDlf\"><field name=\"VALUE\">PLACE_SERVO_MOTOR_1</field></shadow></value><value name=\"POSITION\"><shadow type=\"math_positive_number\" id=\"5OtM;eAnd(,-1K-X[%He\"><field name=\"NUM\">1</field></shadow><block type=\"input_circuit_touch\" id=\"0Nq^H8=ZUf,9`e_nnWSr\"><value name=\"PLACE\"><shadow type=\"dropdown_circuit_touch_places\" id=\"K2L$T@[G.lA[2f9-)Dk:\"><field name=\"VALUE\">PLACE_HORN</field></shadow></value></block></value></block></statement></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-touch-to-hold-position",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					},
+					{
+						"id" : "assembly-circuit-touch",
+						"title" : "coding_cards.block.slide.assembly.title"
+					},
+					{
+						"id" : "assembly-servo-backpack",
+						"title" : "coding_cards.block.slide.assembly.title"
+					},
+					{
+						"id" : "assembly-servo-motor",
+						"title" : "coding_cards.block.slide.assembly.title"
+					}
 				]
 			},
 			"shake-in-the-dark": {
@@ -153,18 +347,67 @@
 				"hardware": [
 					"light-sensor",
 					"servo-motor"
+				],
+				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"50\" y=\"50\"><next><block type=\"control_forever\" id=\"QM|Gp2.kB=!w^ngt$Gnk\"><statement name=\"SUBSTACK\"><block type=\"control_if_else\" id=\"IvYl3(V-oUO.oSO`qf=J\"><value name=\"CONDITION\"><block type=\"operator_gt\" id=\"]rFDS=YAHA0%,Q,*^`o^\"><value name=\"OPERAND2\"><shadow type=\"math_number\" id=\"l6+ja3g)_C|)`l#tTtF1\"><field name=\"NUM\">0.01</field></shadow></value><value name=\"OPERAND1\"><shadow type=\"math_number\" id=\"w}*`%vx59B6jiRth9jc(\"><field name=\"NUM\"></field></shadow><block type=\"input_light_sensor\" id=\"$._b0L2Yb2I;fD|kY.1x\"><value name=\"PLACE\"><shadow type=\"dropdown_light_sensor_places\" id=\"L-o|q(oIp]`jtt|?-q(Q\"><field name=\"VALUE\">PLACE_HORN</field></shadow></value></block></value></block></value><statement name=\"SUBSTACK\"><block type=\"output_servo\" id=\"zydU~GkV5m@XRN.JJmzE\"><value name=\"PLACE\"><shadow type=\"dropdown_servo_places\" id=\"FEkK1~)MyMVY=1:+xK*P\"><field name=\"VALUE\">PLACE_SERVO_MOTOR_1</field></shadow></value><value name=\"POSITION\"><shadow type=\"math_positive_number\" id=\"b%EFx^h_B;Ht}D#tY5cG\"><field name=\"NUM\">0.5</field></shadow></value></block></statement><statement name=\"SUBSTACK2\"><block type=\"output_servo\" id=\"$zJs@XS~3D`]#TR3V@q:\"><value name=\"PLACE\"><shadow type=\"dropdown_servo_places\" id=\"vO^5{U+mk-$mg]S8-U#!\"><field name=\"VALUE\">PLACE_SERVO_MOTOR_1</field></shadow></value><value name=\"POSITION\"><shadow type=\"math_positive_number\" id=\"vRH6W:hl[yCPHcP~p~J7\"><field name=\"NUM\">1</field></shadow><block type=\"operator_random\" id=\"ocElJ^b=05|rVj;(QTth\"><value name=\"FROM\"><shadow type=\"math_number\" id=\"5vgcFkH(:D*~ws~n#15F\"><field name=\"NUM\">0</field></shadow></value><value name=\"TO\"><shadow type=\"math_number\" id=\"EJ((gF$|jH5#g[wg(@wP\"><field name=\"NUM\">1</field></shadow></value></block></value></block></statement></block></statement></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-touch-shake-in-the-dark",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					},
+					{
+						"id" : "assembly-light-sensor",
+						"title" : "coding_cards.block.slide.assembly.title"
+					},
+					{
+						"id" : "assembly-servo-backpack",
+						"title" : "coding_cards.block.slide.assembly.title"
+					},
+					{
+						"id" : "assembly-servo-motor",
+						"title" : "coding_cards.block.slide.assembly.title"
+					}
 				]
 			},
 			"shake": {
 				"title": "coding_cards.block.card.shake.title",
 				"hardware": [
 					"servo-motor"
+				],
+				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"62\" y=\"-56\"><next><block type=\"control_forever\" id=\"BhwC0!^(ZPwGvM;7Q7+N\"><statement name=\"SUBSTACK\"><block type=\"output_servo\" id=\"(zrn!^HvG=0f?Xzu95rJ\"><value name=\"PLACE\"><shadow type=\"dropdown_servo_places\" id=\"Z~6-fYd!2t*p9Spd!)Vj\"><field name=\"VALUE\">PLACE_SERVO_MOTOR_1</field></shadow></value><value name=\"POSITION\"><shadow type=\"math_positive_number\" id=\"y6].HxHdE3`z0l3J+o6;\"><field name=\"NUM\">1</field></shadow><block type=\"operator_random\" id=\"Y]IRvL2YvN;x@[MIAP;=\"><value name=\"FROM\"><shadow type=\"math_number\" id=\"tSDqck}6XqL$sg/FZjok\"><field name=\"NUM\">0</field></shadow></value><value name=\"TO\"><shadow type=\"math_number\" id=\"}vOr/{oB1Qjz4p/iQ3_-\"><field name=\"NUM\">1</field></shadow></value></block></value></block></statement></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-shake",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					},
+					{
+						"id" : "assembly-servo-backpack",
+						"title" : "coding_cards.block.slide.assembly.title"
+					},
+					{
+						"id" : "assembly-servo-motor",
+						"title" : "coding_cards.block.slide.assembly.title"
+					}
 				]
 			},
 			"sweep": {
 				"title": "coding_cards.block.card.sweep.title",
 				"hardware": [
 					"servo-motor"
+				],
+				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables><variable type=\"\" id=\"kp(Rar_x+@RPjPf@Xu|D\" islocal=\"false\" iscloud=\"false\">position</variable></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"50\" y=\"50\"><next><block type=\"control_forever\" id=\"7rd:,kcfNTdv0Ujj1Fxw\"><statement name=\"SUBSTACK\"><block type=\"data_setvariableto\" id=\";5.mx,BeT.@HR:aT5y)l\"><next><block type=\"control_repeat\" id=\"V3egy{3y/h@tuM~j^Ew2\"><statement name=\"SUBSTACK\"><block type=\"data_changevariableby\" id=\"Wro|{2gQ#mu,R4.Y)72o\"><next><block type=\"output_servo\" id=\"k]+v]KUT94|HdWX(2Tuz\"><next><block type=\"control_wait\" id=\"CU/N7#://w=7lo{vNlMx\"><value name=\"DURATION\"><shadow type=\"math_positive_number\" id=\"8xLShw`v%[lIPbYkGcpv\"><field name=\"NUM\">0.02</field></shadow></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_servo_places\" id=\"4Znf53;b+%Dc15NGtD2[\"><field name=\"VALUE\">PLACE_SERVO_MOTOR_1</field></shadow></value><value name=\"POSITION\"><shadow type=\"math_positive_number\" id=\"k*zj;QvBwH;uD[ZD56c=\"><field name=\"NUM\">1</field></shadow><block type=\"data_variable\" id=\"oL^y;r([EHKryvw~O(:.\"><field name=\"VARIABLE\" id=\"kp(Rar_x+@RPjPf@Xu|D\" variabletype=\"\">position</field></block></value></block></next><value name=\"VALUE\"><shadow type=\"math_number\" id=\"yXIh;0ut*%V:}/eFDxyR\"><field name=\"NUM\">0.01</field></shadow></value><field name=\"VARIABLE\" id=\"kp(Rar_x+@RPjPf@Xu|D\" variabletype=\"\">position</field></block></statement><value name=\"TIMES\"><shadow type=\"math_whole_number\" id=\"IN_o[8v?2J)c7R(;`nDH\"><field name=\"NUM\">100</field></shadow></value></block></next><value name=\"VALUE\"><shadow type=\"text\" id=\"caSRG~TV=vk.6003tNf!\"><field name=\"TEXT\">0</field></shadow></value><field name=\"VARIABLE\" id=\"kp(Rar_x+@RPjPf@Xu|D\" variabletype=\"\">position</field></block></statement></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-sweep",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					},
+					{
+						"id" : "assembly-servo-backpack",
+						"title" : "coding_cards.block.slide.assembly.title"
+					},
+					{
+						"id" : "assembly-servo-motor",
+						"title" : "coding_cards.block.slide.assembly.title"
+					}
 				]
 			},
 			"touch-and-switch-position": {
@@ -172,6 +415,25 @@
 				"hardware": [
 					"circuit-touch",
 					"servo-motor"
+				],
+				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables><variable type=\"\" id=\"Z,,;HI(h9RTxZ8XA*tcr\" islocal=\"false\" iscloud=\"false\">toggle</variable></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"-47\" y=\"-86\"><next><block type=\"data_setvariableto\" id=\"pQlFwhEdXeCD0mRmN0i6\"><next><block type=\"control_forever\" id=\"@7u.+~IG1BBKv:/q@!JX\"><statement name=\"SUBSTACK\"><block type=\"control_if\" id=\"gBG{h:ZJ(y2m*-SGvNrk\"><statement name=\"SUBSTACK\"><block type=\"control_if_else\" id=\"domlLn.VtTI;4lYpV6P/\"><statement name=\"SUBSTACK\"><block type=\"data_setvariableto\" id=\"]vTqrRAwfb*bhIHU_=vu\"><value name=\"VALUE\"><shadow type=\"text\" id=\"j`-gR3tF(^d,[D(+QX$G\"><field name=\"TEXT\">0</field></shadow></value><field name=\"VARIABLE\" id=\"Z,,;HI(h9RTxZ8XA*tcr\" variabletype=\"\">toggle</field></block></statement><statement name=\"SUBSTACK2\"><block type=\"data_setvariableto\" id=\"^x5gbw|3|1Y,O%n-(l:v\"><value name=\"VALUE\"><shadow type=\"text\" id=\"HSGZ,L84[xZ3[pHoKOkQ\"><field name=\"TEXT\">1</field></shadow></value><field name=\"VARIABLE\" id=\"Z,,;HI(h9RTxZ8XA*tcr\" variabletype=\"\">toggle</field></block></statement><value name=\"CONDITION\"><block type=\"operator_gt\" id=\"n75$!8o^/w~v4c**h_jU\"><value name=\"OPERAND1\"><shadow type=\"math_number\" id=\"?%ML+t=;.Ln,3Rl/h30U\"><field name=\"NUM\"></field></shadow><block type=\"data_variable\" id=\"?)gR_b:O+r@.i)Nvl?bE\"><field name=\"VARIABLE\" id=\"Z,,;HI(h9RTxZ8XA*tcr\" variabletype=\"\">toggle</field></block></value><value name=\"OPERAND2\"><shadow type=\"math_number\" id=\"D`FFB~88A|3Feo_hF5s)\"><field name=\"NUM\">0</field></shadow></value></block></value><next><block type=\"output_servo\" id=\"=?_|mgGNfpbf3boCav|~\"><next><block type=\"control_wait\" id=\"9n)%7MTP/-`TrasLQeXg\"><value name=\"DURATION\"><shadow type=\"math_positive_number\" id=\":Oghz3twH6XII8uVR(H+\"><field name=\"NUM\">1</field></shadow></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_servo_places\" id=\",JeU(*CP:_;lIOxnksym\"><field name=\"VALUE\">PLACE_SERVO_MOTOR_1</field></shadow></value><value name=\"POSITION\"><shadow type=\"math_positive_number\" id=\"S_:/8J:c1V*rXj+*EMe;\"><field name=\"NUM\">1</field></shadow><block type=\"data_variable\" id=\"S0xSEFAY6EkfLGo)+hq3\"><field name=\"VARIABLE\" id=\"Z,,;HI(h9RTxZ8XA*tcr\" variabletype=\"\">toggle</field></block></value></block></next></block></statement><value name=\"CONDITION\"><block type=\"input_circuit_touch_touched\" id=\"%Ui_gpKQDU@Cm$r!woWb\"><value name=\"PLACE\"><shadow type=\"dropdown_circuit_touch_places\" id=\"dJju0h^y!/Kfz{M88^6/\"><field name=\"VALUE\">PLACE_HORN</field></shadow></value></block></value></block></statement></block></next><value name=\"VALUE\"><shadow type=\"text\" id=\"KxNv^VMXmU7Z]-O,mUC}\"><field name=\"TEXT\">0</field></shadow></value><field name=\"VARIABLE\" id=\"Z,,;HI(h9RTxZ8XA*tcr\" variabletype=\"\">toggle</field></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-touch-and-switch-position",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					},
+					{
+						"id" : "assembly-circuit-touch",
+						"title" : "coding_cards.block.slide.assembly.title"
+					},
+					{
+						"id" : "assembly-servo-backpack",
+						"title" : "coding_cards.block.slide.assembly.title"
+					},
+					{
+						"id" : "assembly-servo-motor",
+						"title" : "coding_cards.block.slide.assembly.title"
+					}
 				]
 			}
 		}

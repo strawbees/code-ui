@@ -16,7 +16,7 @@ msgid "Block coding cards"
 msgstr ""
 
 msgctxt "coding_cards.back-to-coding-cards"
-msgid "Back to coding cards"
+msgid "Back to cards"
 msgstr ""
 
 msgctxt "coding_cards.open-program"
@@ -79,8 +79,8 @@ msgctxt "coding_cards.block.card.glow.title"
 msgid "Glow"
 msgstr ""
 
-msgctxt "coding_cards.block.card.toggle.title"
-msgid "Toggle"
+msgctxt "coding_cards.block.card.light-switch.title"
+msgid "Light switch"
 msgstr ""
 
 msgctxt "coding_cards.block.card.switching-colors.title"
