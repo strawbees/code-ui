@@ -15,7 +15,6 @@ import {
 	removeAllGlobalEventListeners,
 } from 'src/utils/globalEvents'
 import resolveLinkUrl from 'src/utils/resolveLinkUrl'
-import routes from 'static/routes.json'
 import shallowCompareObjects from 'src/utils/shallowCompareObjects'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
