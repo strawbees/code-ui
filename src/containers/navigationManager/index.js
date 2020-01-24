@@ -102,6 +102,7 @@ class NavigationManager extends React.PureComponent {
 	onBeforeNavigation = async (as) => {
 		const {
 			queryRef,
+			queryLocale,
 			urlVarP,
 			urlVarData,
 			refEditorHasChanges,
@@ -125,7 +126,9 @@ class NavigationManager extends React.PureComponent {
 		// navigation and chekcing if the queryRef is the same, if so, no need to
 		// show the dialog either
 		const resolved = resolveLinkUrl(as)
-		if (resolved.href.query && resolved.href.query.ref === queryRef) {
+		if (resolved.href.query &&
+			resolved.href.query.ref === queryRef &&
+			resolved.href.query.locale !== queryLocale) {
 			return
 		}
 
@@ -305,6 +308,7 @@ class NavigationManager extends React.PureComponent {
 
 NavigationManager.propTypes = {
 	queryRef            : PropTypes.string,
+	queryLocale         : PropTypes.string,
 	urlVarP             : PropTypes.string,
 	urlVarU             : PropTypes.string,
 	urlVarData          : PropTypes.string,
