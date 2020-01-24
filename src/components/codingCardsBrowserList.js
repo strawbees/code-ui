@@ -44,13 +44,14 @@ const CodingCardsBrowserList = ({
 				margin-bottom: 1rem;
 			}
 			.cards {
+				outline: none;
 				padding: 1rem;
 				display: flex;
 				flex-direction: row;
 				flex-wrap: wrap;
 				justify-content: center;
 				align-items: flex-start;
-				background-color: ${tinycolor(GRAY).lighten(25).toRgbString()};
+				background-color: ${tinycolor(GRAY).lighten(35).toRgbString()};
 				overflow-y: scroll;
 				flex: 1;
 				border-radius: 1rem;
@@ -72,7 +73,7 @@ const CodingCardsBrowserList = ({
 		<CodingCardsFilterContainer
 			type={type}
 		/>
-		<div className='cards'>
+		<div className='cards' tabIndex='-1' disabled>
 			{cardIds && cardIds.length > 0 && cardIds.map(id =>
 				<CodingCardPreviewContainer
 					type={type}

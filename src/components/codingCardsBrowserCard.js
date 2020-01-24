@@ -3,6 +3,7 @@ import tinycolor from 'tinycolor2'
 import Link from 'src/components/link'
 import SvgIcon from 'src/components/svgIcon'
 import IconButton from 'src/components/iconButton'
+import ImageSlider from 'src/components/imageSlider'
 import hardwareIcons from 'src/assets/icons/codingCards/hardware'
 import editorIcons from 'src/assets/icons/editors/small'
 import arrowBackIcon from 'src/assets/icons/general/arrowBack.svg'
@@ -44,10 +45,10 @@ const CodingCardsBrowserCard = ({
 				margin-right: 0.5rem;
 			}
 			.card {
-				margin-top: 1rem;
+				margin: 1rem 0 3rem 0;
 				position: relative;
-				padding:  3rem;
-				background-color: ${tinycolor(GRAY).lighten(25).toRgbString()};
+				padding-bottom:  1rem;
+				background-color: ${tinycolor(GRAY).lighten(35).toRgbString()};
 				border-radius: 1rem;
 				width: 42rem;
 				max-width: 100%;
@@ -56,19 +57,18 @@ const CodingCardsBrowserCard = ({
 				justify-content: center;
 				align-items: stretch;
 			}
-			.card :global(.back) {
+			.root :global(.back) {
 				position: absolute;
-				top: 1rem;
-				left: 1rem;
+				bottom: 0;
+				left: 0;
 			}
-			.card .slides :global(.slide) {
+			.card :global(.slides) {
 				width: 100%;
-				height: auto;
 			}
 			.card .hardware {
 				position: absolute;
 				bottom: 1rem;
-				left: 1rem;
+				right: 1rem;
 				display: flex;
 				flex-direction: column;
 			}
@@ -79,10 +79,11 @@ const CodingCardsBrowserCard = ({
 				margin-bottom: 0.125rem;
 			}
 			.root :global(.open-code) {
+				outline: none;
 				text-decoration: none;
 				position: absolute;
-				bottom: 1rem;
-				right: 1rem;
+				bottom: 0;
+				right: 0;
 			}
 		`}</style>
 
@@ -99,21 +100,9 @@ const CodingCardsBrowserCard = ({
 			</div>
 		}
 		<div className='card'>
-			<IconButton
-				icon={arrowBackIcon}
-				onClick={() => setCurrentCardId(null)}
-				className='back'
-				labelKey='coding_cards.back-to-coding-cards'
+			<ImageSlider className='slides'
+				items={slides}
 			/>
-			<div className='slides'>
-				{slides && slides.length > 0 &&
-					<img
-						alt={slides[0].title}
-						src={slides[0].url}
-						className='slide'
-					/>
-				}
-			</div>
 			<div className='hardware'>
 				{hardwareIds && hardwareIds.length > 0 &&
 					hardwareIds.map(id =>
@@ -125,20 +114,26 @@ const CodingCardsBrowserCard = ({
 					)
 				}
 			</div>
-			{programUrl &&
-				<Link to={programUrl}
-					onClick={onOpenCode}
-					className='open-code'>
-					<IconButton
-						labelKey='coding_cards.open-program'
-						textColor={WHITE}
-						textHoverColor={WHITE}
-						bgColor={GREEN}
-						bgHoverColor={GREEN}
-					/>
-				</Link>
-			}
 		</div>
+		<IconButton className='back'
+			icon={arrowBackIcon}
+			onClick={() => setCurrentCardId(null)}
+			labelKey='coding_cards.back-to-coding-cards'
+		/>
+		{programUrl &&
+			<Link to={programUrl}
+				onClick={onOpenCode}
+				className='open-code'>
+				<IconButton
+					labelKey='coding_cards.open-program'
+					textColor={WHITE}
+					textHoverColor={WHITE}
+					bgColor={GREEN}
+					bgHoverColor={GREEN}
+					tabIndex='-1'
+				/>
+			</Link>
+		}
 	</div>
 )
 
