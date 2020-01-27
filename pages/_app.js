@@ -84,7 +84,17 @@ class NextApp extends App {
 					console.log('This url cannot be resolved internally', to)
 				}
 			}
-			window.nw.App.on('open', openUrlScheme)
+			// Runs when the app is already open and someone opens the link
+			window.nw.App.on('open', (arg) => {
+				// At least on Windows, the argment will not be just the url,
+				// but instead the whole command line call, with the url at the
+				// end. So first we will make sure there is nothing before the
+				// url.
+				const base = `${URL_SCHEME}://`
+				const url = `${base}${arg.split(base).pop()}`
+				openUrlScheme(url)
+			})
+			// Runs on the start of the application
 			if (window.nw.App.argv && window.nw.App.argv.length) {
 				for (let i = 0; i < window.nw.App.argv.length; i++) {
 					const arg = window.nw.App.argv[i]
