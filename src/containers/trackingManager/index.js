@@ -22,6 +22,10 @@ class TrackingManager extends React.Component {
 				sendPageView : false
 			}
 		})
+		// allow analytics to work in on any protocol (needed for the app, that
+		// is served from chrome-extension://...)
+		ReactGA.set({ checkProtocolTask : () => {} })
+
 		removeAllGlobalEventListeners('track-event') // removing all here just for HRM
 		addGlobalEventListener('track-event', this.trackEvent)
 		removeAllGlobalEventListeners('track-pageview') // removing all here just for HRM
