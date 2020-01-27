@@ -7,7 +7,9 @@ import getConfig from 'next/config'
 
 const {
 	publicRuntimeConfig : {
-		CANONICAL_URL
+		CANONICAL_URL,
+		SHARE_LINKS_OMIT_ROOT_PATH,
+		ROOT_PATH,
 	}
 } = getConfig()
 const baseUrl = typeof CANONICAL_URL !== 'undefined' ? CANONICAL_URL : ''
@@ -26,7 +28,12 @@ export default () => createSelector(
 	) => {
 		const storageBackend = resolveBackendFromProgramId(id)
 		if (storageBackend && storageBackend.name !== 'local') {
-			return `${baseUrl}${makeStringSelector(`routes.${type}`)(state)}?p=${id}`
+			let url = `${makeStringSelector(`routes.${type}`)(state)}?p=${id}`
+			if (ROOT_PATH && SHARE_LINKS_OMIT_ROOT_PATH && url.indexOf(ROOT_PATH) === 0) {
+				url = url.replace(ROOT_PATH, '')
+			}
+			url = `${baseUrl}${url}`
+			return url
 		}
 		return ''
 	}

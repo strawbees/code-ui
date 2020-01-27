@@ -17,11 +17,9 @@ const {
 
 // handle redirects
 if (process.browser) {
-	{
-		const newLocation = redirects(window.location)
-		if (newLocation) {
-			window.location = newLocation
-		}
+	const newLocation = redirects(window.location)
+	if (newLocation) {
+		window.location = newLocation
 	}
 }
 
@@ -54,7 +52,7 @@ class NextApp extends App {
 				url = url.replace(`${URL_SCHEME}://`, `http://${URL_SCHEME}/`)
 				const redirectedLocation = redirects(url)
 				if (typeof redirectedLocation !== 'undefined') {
-					url = `redirect:/${redirectedLocation}`
+					url = `http://${URL_SCHEME}${redirectedLocation}`
 				}
 				let pathname
 				let search
@@ -69,6 +67,9 @@ class NextApp extends App {
 					return
 				}
 				let to = `${pathname}${pathname.endsWith('/') ? '' : '/'}${search}${hash}`
+				if (ROOT_PATH && to.indexOf(ROOT_PATH) !== 0) {
+					to = `${ROOT_PATH}/${to}`
+				}
 				to = to.replace('//', '/')
 				const {
 					href,
@@ -76,7 +77,12 @@ class NextApp extends App {
 				} = resolveLinkUrl(to)
 				// eslint-disable-next-line no-console
 				console.log('Opening via URL Scheme', url, to, href, as)
-				Router.push(href, as)
+				if (as) {
+					Router.push(href, as)
+				} else {
+					// eslint-disable-next-line no-console
+					console.log('This url cannot be resolved internally', to)
+				}
 			}
 			window.nw.App.on('open', openUrlScheme)
 			if (window.nw.App.argv && window.nw.App.argv.length) {
