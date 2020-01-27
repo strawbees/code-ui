@@ -17,11 +17,9 @@ const {
 
 // handle redirects
 if (process.browser) {
-	{
-		const newLocation = redirects(window.location)
-		if (newLocation) {
-			window.location = newLocation
-		}
+	const newLocation = redirects(window.location)
+	if (newLocation) {
+		window.location = newLocation
 	}
 }
 
