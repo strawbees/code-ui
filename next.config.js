@@ -8,6 +8,7 @@ const defaults = {
 	STRAWBEES_CODE_API_URL        : 'https://api.quirkbot.com',
 	LOCALES                       : ['en', 'pt_BR', 'sv', 'ja'],
 	ROOT_PATH                     : '',
+	SHARE_LINKS_OMIT_ROOT_PATH    : true,
 	URL_SCHEME                    : 'strawbeescode',
 	GAID                          : 'UA-NNNNNN-N',
 	CHROME_EXTENSION_ID           : 'ackaalhbfjagidmjlhlokoblhbnahegd',
@@ -42,7 +43,7 @@ const commonConfigs = {
 		DOWNLOAD_DESKTOP_APP_URL : 'https://strawbees-downloads-production.s3.amazonaws.com/code-desktop',
 	},
 	desktop_stage : {
-		CANONICAL_URL            : 'http://strawbeescode-stage',
+		CANONICAL_URL            : 'https://code-stage.strawbees.com',
 		COMPILER_URL             : 'http://localhost:9511',
 		STRAWBEES_CODE_API_URL   : 'https://api.quirkbot.com',
 		LOCALES                  : ['en', 'pt_BR', 'sv', 'ja'],
@@ -53,7 +54,7 @@ const commonConfigs = {
 		DOWNLOAD_DESKTOP_APP_URL : 'https://s3.amazonaws.com/strawbees-stage-production/code-desktop',
 	},
 	desktop_production : {
-		CANONICAL_URL            : 'http://strawbeescode',
+		CANONICAL_URL            : 'https://code.strawbees.com',
 		COMPILER_URL             : 'http://localhost:9511',
 		STRAWBEES_CODE_API_URL   : 'https://api.quirkbot.com',
 		LOCALES                  : ['en', 'pt_BR', 'sv'],
