@@ -11,6 +11,18 @@ msgctxt "error.og.title"
 msgid "Not found"
 msgstr ""
 
+msgctxt "ui.sb_cloud.delete_account.dialog.title"
+msgid "Delete Strawbees Cloud account"
+msgstr ""
+
+msgctxt "ui.sb_cloud.delete_account.dialog.description"
+msgid "You are about to delete your account and all your data **PERMANENTLY**!\n\nAre you sure you want to proceed?"
+msgstr ""
+
+msgctxt "ui.sb_cloud.delete_account.dialog.confirm"
+msgid "Delete my account"
+msgstr ""
+
 msgctxt "ui.sb_cloud.signup.cta"
 msgid "Sign up"
 msgstr ""
@@ -565,6 +577,14 @@ msgstr ""
 
 msgctxt "ui.user.account_settings.logout"
 msgid "Log out"
+msgstr ""
+
+msgctxt "ui.user.account_settings.download_data"
+msgid "Download all my data"
+msgstr ""
+
+msgctxt "ui.user.account_settings.delete_account"
+msgid "Delete my account and data"
 msgstr ""
 
 msgctxt "ui.user.account_settings.public_profile.title"

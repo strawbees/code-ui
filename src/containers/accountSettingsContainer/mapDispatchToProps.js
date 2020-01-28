@@ -1,6 +1,8 @@
 import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
 import {
 	safeClearLoggedInData,
+	safeDownloadCompleteData,
+	modalDeleteAccount,
 } from 'src/actions/storage'
 import {
 	expandAccountSettings,
@@ -9,7 +11,9 @@ import {
 
 
 export default autobindDispatchToActionCreators({
-	logout : safeClearLoggedInData,
+	logout        : safeClearLoggedInData,
+	downloadData  : safeDownloadCompleteData,
+	deleteAccount : modalDeleteAccount,
 	expandAccountSettings,
 	collapseAccountSettings,
 })

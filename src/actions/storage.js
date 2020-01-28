@@ -57,7 +57,7 @@ const safeBackendCall = (call, options) => async (dispatch, getState) => {
 		const result = await backend[call](credentials, options)
 		return result
 	} catch (error) {
-		// if we get genetic error, throw it forward...
+		// if we get generic error, throw it forward...
 		if (error.message !== 'NOT_AUTHORIZED') {
 			throw error
 		}
@@ -213,6 +213,55 @@ export const safeSync = () => async (dispatch, getState) => {
 	}
 }
 
+export const safeDownloadCompleteData = () => async (dispatch) => {
+	const data = await dispatch(safeBackendCall('loadCompleteData'))
+	let stringifiedData
+	try {
+		stringifiedData = JSON.stringify(data, null, '\t')
+	} catch (error) {
+		stringifiedData = ''
+	}
+	const dataStr = `data:text/json;charset=utf-8,${encodeURIComponent(stringifiedData)}`
+	const downloadAnchorNode = document.createElement('a')
+	downloadAnchorNode.setAttribute('href', dataStr)
+	downloadAnchorNode.setAttribute('download', `StrawbeesCODE_${(data.user && data.user.nickname) || 'data'}.json`)
+	downloadAnchorNode.click()
+	downloadAnchorNode.remove()
+}
+
+export const modalDeleteAccount = () => async (dispatch, getState) => {
+	const user = storageUserSelector()(getState())
+	dispatch(safeOpenDialogModal(
+		{
+			limitWidth            : true,
+			titleKey              : 'ui.sb_cloud.delete_account.dialog.title',
+			descriptionKey        : 'ui.sb_cloud.delete_account.dialog.description',
+			confirmLabelKey       : 'ui.sb_cloud.delete_account.dialog.confirm',
+			descriptionIsMarkdown : true,
+			onConfirm             : async () => {
+				fireGlobalEvent('track-event', {
+					category : 'ui',
+					action   : 'delete account confirmed',
+					label    : 'modal'
+				})
+				await dispatch(safeBackendCall('deleteAccount', user.id))
+				await dispatch(safeClearLoggedInData())
+				fireGlobalEvent('track-event', {
+					category : 'user',
+					action   : 'account delete complete',
+				})
+			},
+			onCancel : () => {
+				fireGlobalEvent('track-event', {
+					category : 'ui',
+					action   : 'delete account canceled',
+					label    : 'modal'
+				})
+			}
+		}
+	))
+}
+
 const onModalConnect = ({ credentials, user }) => async (dispatch, getState) => {
 	const programs = storageProgramsSelector()(getState())
 	await dispatch(backupAnonPrograms(programs))
@@ -257,6 +306,9 @@ export const modalSignup = (backendName) => async (dispatch) => {
 			break
 		default:
 	}
+	if (backend.name !== 'strawbees') {
+		return
+	}
 	dispatch(safeOpenDialogModal(
 		{
 			titleKey       : 'ui.sb_cloud.signup.title',
@@ -289,6 +341,9 @@ export const modalSignin = (backendName) => async (dispatch) => {
 			break
 		default:
 	}
+	if (backend.name !== 'strawbees') {
+		return
+	}
 	dispatch(safeOpenDialogModal(
 		{
 			titleKey       : 'ui.sb_cloud.signin.title',
@@ -306,16 +361,12 @@ export const modalSignin = (backendName) => async (dispatch) => {
 				dispatch(onModalConnect(result))
 			}}
 			onForgotPassword={async (values) => {
-				try {
-					await backend.forgotPassword(values)
-					fireGlobalEvent('track-event', {
-						category : 'user',
-						action   : 'forgot-password-complete',
-						label    : 'modal'
-					})
-				} catch (error) {
-					throw error
-				}
+				await backend.forgotPassword(values)
+				fireGlobalEvent('track-event', {
+					category : 'user',
+					action   : 'forgot-password-complete',
+					label    : 'modal'
+				})
 			}}
 		/>
 	))

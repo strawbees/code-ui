@@ -146,6 +146,16 @@ export const sync = async (
 	return result
 }
 
+export const loadCompleteData = async (credentials) => {
+	const data = await loadRemoteCompleteData(credentials)
+	return data
+}
+
+export const deleteAccount = async (credentials, id) => {
+	const data = await deleteRemoteUser(credentials, { id })
+	console.log(data)
+	return data
+}
 // "Private" api (only used by things that call this backend directy)
 export const signup = async (values) => {
 	const user = await registerRemoteUser(values)
@@ -339,6 +349,17 @@ const loadRemoteProgramById = async (credentials, { programId }) => {
 	return normalizeProgramFromApi(json)
 }
 
+const loadRemoteCompleteData = async (credentials) => {
+	const { ok, json } = await apiCall({
+		url : 'user/data',
+		credentials
+	})
+	if (!ok) {
+		throw new Error('UNHADLED')
+	}
+	return json
+}
+
 const createRemoteProgram = async (credentials, data) => {
 	const { ok, json } = await apiCall({
 		url    : 'program',
@@ -376,6 +397,19 @@ const deleteRemoteProgram = async (credentials, data) => {
 	}
 	return normalizeProgramFromApi(json)
 }
+
+const deleteRemoteUser = async (credentials, data) => {
+	const { ok, json } = await apiCall({
+		url    : `user/${data.id}`,
+		method : 'delete',
+		credentials,
+	})
+	if (!ok) {
+		throw new Error('UNHADLED')
+	}
+	return json
+}
+
 
 // Helpers
 const apiCall = async (

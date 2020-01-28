@@ -10,6 +10,8 @@ import { fireGlobalEvent } from 'src/utils/globalEvents'
 import {
 	WHITE,
 	GRAY,
+	RED,
+	YELLOW,
 } from 'src/constants/colors'
 
 class AccountSettings extends React.Component {
@@ -28,6 +30,8 @@ class AccountSettings extends React.Component {
 			isAnon,
 			publicProfileUrl,
 			logout,
+			downloadData,
+			deleteAccount,
 			isOpen,
 			expandAccountSettings,
 			collapseAccountSettings
@@ -143,6 +147,34 @@ class AccountSettings extends React.Component {
 										})
 									}}
 								/>
+								<IconButton
+									// icon={userIcons.logout}
+									labelKey='ui.user.account_settings.download_data'
+									onClick={() => {
+										downloadData()
+										fireGlobalEvent('track-event', {
+											category : 'ui',
+											action   : 'download data',
+											label    : 'account settings'
+										})
+									}}
+								/>
+								<IconButton
+									// icon={userIcons.logout}
+									labelKey='ui.user.account_settings.delete_account'
+									bgColor={RED}
+									textColor={YELLOW}
+									bgHoverColor={RED}
+									textHoverColor={YELLOW}
+									onClick={() => {
+										deleteAccount()
+										fireGlobalEvent('track-event', {
+											category : 'ui',
+											action   : 'pressed delete account button',
+											label    : 'account settings'
+										})
+									}}
+								/>
 							</div>
 						</React.Fragment>
 					}
@@ -160,6 +192,8 @@ AccountSettings.propTypes = {
 	isAnon                  : PropTypes.bool,
 	publicProfileUrl        : PropTypes.string,
 	logout                  : PropTypes.func,
+	deleteAccount           : PropTypes.func,
+	downloadData            : PropTypes.func,
 	isOpen                  : PropTypes.bool,
 	expandAccountSettings   : PropTypes.func,
 	collapseAccountSettings : PropTypes.func,
