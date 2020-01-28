@@ -7,7 +7,7 @@ const {
 	}
 } = getConfig()
 
-// "Pubic" api
+// "Public" api
 export const name = 'strawbees'
 export const prefix = 'sb'
 
