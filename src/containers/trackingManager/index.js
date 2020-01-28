@@ -2,6 +2,8 @@ import React from 'react'
 import ReactGA from 'react-ga'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import getConfig from 'next/config'
+import Package from 'root/package.json'
 import shallowCompareObjects from 'src/utils/shallowCompareObjects'
 import {
 	addGlobalEventListener,
@@ -10,6 +12,12 @@ import {
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
+
+const {
+	publicRuntimeConfig : {
+		CONFIG,
+	}
+} = getConfig()
 
 
 class TrackingManager extends React.Component {
@@ -22,9 +30,14 @@ class TrackingManager extends React.Component {
 				sendPageView : false
 			}
 		})
-		// allow analytics to work in on any protocol (needed for the app, that
-		// is served from chrome-extension://...)
-		ReactGA.set({ checkProtocolTask : () => {} })
+		ReactGA.set({
+			// this will allow us to separate the traffic from the app / web
+			appId             : CONFIG,
+			appVersion        : Package.version,
+			// allow analytics to work in on any protocol (needed for the app,
+			// that is served from chrome-extension://...)
+			checkProtocolTask : () => {},
+		})
 
 		removeAllGlobalEventListeners('track-event') // removing all here just for HRM
 		addGlobalEventListener('track-event', this.trackEvent)
