@@ -4,8 +4,8 @@ const path = require('path')
 // default configs
 const defaults = {
 	CANONICAL_URL                 : 'http://code-dev.strawbees.com:3000',
-	COMPILER_URL                  : 'https://compiler.strawbees.com',
-	STRAWBEES_CODE_API_URL        : 'https://cloud-api.strawbees.com',
+	COMPILER_URL                  : 'http://code-compiler-service-stage.us-east-1.elasticbeanstalk.com',
+	STRAWBEES_CODE_API_URL        : 'https://cloud-api-stage.strawbees.com',
 	LOCALES                       : ['en', 'pt_BR', 'sv', 'ja'],
 	ROOT_PATH                     : '',
 	SHARE_LINKS_OMIT_ROOT_PATH    : true,
