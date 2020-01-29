@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect'
 import makeStringSelector from 'src/selectors/makeStringSelector'
-import rootPathSelector from 'src/selectors/rootPathSelector'
 import storageUserSelector from 'src/selectors/storageUserSelector'
 import storageCredentialsSelector from 'src/selectors/storageCredentialsSelector'
 import { resolveBackendFromCredentials } from 'src/storage'
@@ -8,20 +7,21 @@ import getConfig from 'next/config'
 
 const {
 	publicRuntimeConfig : {
-		CANONICAL_URL
+		CANONICAL_URL,
+		SHARE_LINKS_OMIT_ROOT_PATH,
+		ROOT_PATH,
 	}
 } = getConfig()
+const baseUrl = typeof CANONICAL_URL !== 'undefined' ? CANONICAL_URL : ''
 
 export default () => createSelector(
 	[
 		makeStringSelector('routes.user'),
-		rootPathSelector(),
 		storageUserSelector(),
 		storageCredentialsSelector()
 	],
 	(
 		userUrl,
-		rootPath,
 		user,
 		credentials,
 	) => {
@@ -34,7 +34,12 @@ export default () => createSelector(
 		}
 
 		if (backend.prefix === 'sb') {
-			return `${CANONICAL_URL}${rootPath}${userUrl}?u=${backend.prefix}/${user.username}`
+			let url = `${userUrl}?u=${backend.prefix}/${user.username}`
+			if (ROOT_PATH && SHARE_LINKS_OMIT_ROOT_PATH && url.indexOf(ROOT_PATH) === 0) {
+				url = url.replace(ROOT_PATH, '')
+			}
+			url = `${baseUrl}${url}`
+			return url
 		}
 
 		return ''
