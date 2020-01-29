@@ -4,7 +4,10 @@ import tinycolor from 'tinycolor2'
 import IconButton from 'src/components/iconButton'
 import CopyableUrl from 'src/components/copyableUrl'
 import StrawbeesCloudConnectContainer from 'src/containers/strawbeesCloudConnectContainer'
+import S from 'src/containers/sManager'
 import userIcons from 'src/assets/icons/user'
+import downloadDataIcon from 'src/assets/icons/file/downloadData.svg'
+import warningIcon from 'src/assets/icons/general/warningLight.svg'
 import preferencesIcon from 'src/assets/icons/general/preferences.svg'
 import { fireGlobalEvent } from 'src/utils/globalEvents'
 import {
@@ -87,8 +90,16 @@ class AccountSettings extends React.Component {
 						padding: 1rem;
 						box-shadow: 0.15rem 0.15rem 0 0 rgba(0,0,0,0.2);
 					}
-					.settings :global(.copyableUrl){
+					.settings .separator {
+						width: 100%;
+						border-top: solid 1px rgba(0,0,0,0.2);
+						margin: 1rem 0;
+					}
+					.settings .danger {
+						width: 100%;
 						margin-bottom: 1rem;
+						text-align: center;
+						font-weight: bold;
 					}
 				`}</style>
 				<div className='expand'>
@@ -135,6 +146,19 @@ class AccountSettings extends React.Component {
 										})
 									}}
 								/>
+								<div className='separator'></div>
+								<IconButton
+									icon={downloadDataIcon}
+									labelKey='ui.user.account_settings.download_data'
+									onClick={() => {
+										downloadData()
+										fireGlobalEvent('track-event', {
+											category : 'ui',
+											action   : 'download data',
+											label    : 'account settings'
+										})
+									}}
+								/>
 								<IconButton
 									icon={userIcons.logout}
 									labelKey='ui.user.account_settings.logout'
@@ -147,20 +171,12 @@ class AccountSettings extends React.Component {
 										})
 									}}
 								/>
+								<div className='separator'></div>
+								<div className='danger'>
+									<S value='ui.user.account_settings.danger_zone'/>
+								</div>
 								<IconButton
-									// icon={userIcons.logout}
-									labelKey='ui.user.account_settings.download_data'
-									onClick={() => {
-										downloadData()
-										fireGlobalEvent('track-event', {
-											category : 'ui',
-											action   : 'download data',
-											label    : 'account settings'
-										})
-									}}
-								/>
-								<IconButton
-									// icon={userIcons.logout}
+									icon={warningIcon}
 									labelKey='ui.user.account_settings.delete_account'
 									bgColor={RED}
 									textColor={YELLOW}

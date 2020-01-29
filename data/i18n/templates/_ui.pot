@@ -583,6 +583,10 @@ msgctxt "ui.user.account_settings.download_data"
 msgid "Download all my data"
 msgstr ""
 
+msgctxt "ui.user.account_settings.danger_zone"
+msgid "Danger zone"
+msgstr ""
+
 msgctxt "ui.user.account_settings.delete_account"
 msgid "Delete my account and data"
 msgstr ""
