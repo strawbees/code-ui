@@ -1,4 +1,5 @@
 // export, import and new are reserved words
+import downloadData from './downloadData.svg'
 import duplicate from './duplicate.svg'
 import export_ from './export.svg'
 import folder from './folder.svg'
@@ -13,6 +14,7 @@ import share from './share.svg'
 import upload from './upload.svg'
 
 export default {
+	downloadData,
 	duplicate,
 	export : export_,
 	folder,

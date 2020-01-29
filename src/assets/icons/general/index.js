@@ -10,6 +10,9 @@ import minus from './minus.svg'
 import plus from './plus.svg'
 import preferences from './preferences.svg'
 import sync from './sync.svg'
+import warningLine from './warningLine.svg'
+import warningLight from './warningLight.svg'
+import warningDark from './warningDark.svg'
 
 export default {
 	arrowRight,
@@ -24,4 +27,7 @@ export default {
 	plus,
 	preferences,
 	sync,
+	warningLine,
+	warningLight,
+	warningDark,
 }
