@@ -31,7 +31,8 @@ class TrackingManager extends React.Component {
 			}
 		})
 		ReactGA.set({
-			// this will allow us to separate the traffic from the app / web
+			// // this will allow us to separate the traffic from the app / web
+			appName           : 'CODE',
 			appId             : CONFIG,
 			appVersion        : Package.version,
 			// allow analytics to work in on any protocol (needed for the app,
