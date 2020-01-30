@@ -47,7 +47,7 @@ const Link = ({ children, ...props }) => {
 						onClick={onClickOrKeyUp}>
 						<style jsx>{`
 							.root {
-								display: block;
+								//display: block;
 								cursor: pointer;
 							}
 						`}</style>
@@ -90,7 +90,7 @@ const Link = ({ children, ...props }) => {
 			{...otherProps}>
 			<style jsx>{`
 				.root {
-					display: block;
+					// display: block;
 				}
 			`}</style>
 			{children}
