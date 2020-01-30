@@ -1,10 +1,20 @@
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import ReactMarkdown from 'react-markdown'
+import Link from 'src/components/link'
 import {
 	PINK,
 	GRAY,
 } from 'src/constants/colors'
+
+const renderers = {
+	link : ({ href, target, children }) =>
+		<Link
+			to={href}
+			external={target === '_blank' ? true : undefined}>
+			{children}
+		</Link>
+}
 
 const Markdown = ({
 	source,
@@ -65,7 +75,11 @@ const Markdown = ({
 			}
 			/* End Table */
 		`}</style>
-		<ReactMarkdown source={source} escapeHtml={false}/>
+		<ReactMarkdown
+			source={source}
+			escapeHtml={false}
+			renderers={renderers}
+		/>
 	</div>
 
 Markdown.propTypes = {
