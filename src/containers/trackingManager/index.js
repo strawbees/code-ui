@@ -21,6 +21,8 @@ const {
 
 
 class TrackingManager extends React.Component {
+	queue = []
+
 	componentDidMount() {
 		const { gaId } = this.props
 		ReactGA.initialize(gaId, {
@@ -47,14 +49,33 @@ class TrackingManager extends React.Component {
 	}
 
 	trackEvent = (data) => {
-		ReactGA.event(data)
+		this.queue.push({
+			type : 'event',
+			data
+		})
+		if (!this.props.paused) {
+			this.processQueue()
+		}
 	}
 
-	trackPageview = (path) => {
-		if (path === '/index.html') {
-			path = '/'
+	trackPageview = (data) => {
+		if (data === '/index.html') {
+			data = '/'
 		}
-		ReactGA.pageview(path)
+		this.queue.push({
+			type : 'pageview',
+			data
+		})
+		if (!this.props.paused) {
+			this.processQueue()
+		}
+	}
+
+	processQueue = () => {
+		while (this.queue.length) {
+			const { type, data } = this.queue.shift()
+			ReactGA[type](data)
+		}
 	}
 
 	componentWillUnmout() {
@@ -66,6 +87,9 @@ class TrackingManager extends React.Component {
 		if (!shallowCompareObjects(this.props, prevProps, ['asPath'])) {
 			this.trackPageview(this.props.asPath)
 		}
+		if (!shallowCompareObjects(this.props, prevProps, ['paused']) && !this.props.paused) {
+			this.processQueue()
+		}
 	}
 
 	render() {
@@ -76,6 +100,7 @@ class TrackingManager extends React.Component {
 TrackingManager.propTypes = {
 	asPath : PropTypes.string,
 	gaId   : PropTypes.string,
+	paused : PropTypes.bool,
 }
 
 export default connect(
