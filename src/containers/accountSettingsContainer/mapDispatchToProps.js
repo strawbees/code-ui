@@ -3,6 +3,7 @@ import {
 	safeClearLoggedInData,
 	safeDownloadCompleteData,
 	modalDeleteAccount,
+	modalChangePassword,
 } from 'src/actions/storage'
 import {
 	expandAccountSettings,
@@ -11,9 +12,10 @@ import {
 
 
 export default autobindDispatchToActionCreators({
-	logout        : safeClearLoggedInData,
-	downloadData  : safeDownloadCompleteData,
-	deleteAccount : modalDeleteAccount,
+	logout         : safeClearLoggedInData,
+	downloadData   : safeDownloadCompleteData,
+	deleteAccount  : modalDeleteAccount,
+	changePassword : () => modalChangePassword('strawbees'),
 	expandAccountSettings,
 	collapseAccountSettings,
 })

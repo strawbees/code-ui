@@ -35,6 +35,7 @@ class AccountSettings extends React.Component {
 			logout,
 			downloadData,
 			deleteAccount,
+			changePassword,
 			isOpen,
 			expandAccountSettings,
 			collapseAccountSettings
@@ -148,6 +149,18 @@ class AccountSettings extends React.Component {
 								/>
 								<div className='separator'></div>
 								<IconButton
+									// icon={downloadDataIcon}
+									labelKey='ui.user.account_settings.change_password'
+									onClick={() => {
+										changePassword()
+										fireGlobalEvent('track-event', {
+											category : 'ui',
+											action   : 'change password',
+											label    : 'account settings'
+										})
+									}}
+								/>
+								<IconButton
 									icon={downloadDataIcon}
 									labelKey='ui.user.account_settings.download_data'
 									onClick={() => {
@@ -210,6 +223,7 @@ AccountSettings.propTypes = {
 	logout                  : PropTypes.func,
 	deleteAccount           : PropTypes.func,
 	downloadData            : PropTypes.func,
+	changePassword          : PropTypes.func,
 	isOpen                  : PropTypes.bool,
 	expandAccountSettings   : PropTypes.func,
 	collapseAccountSettings : PropTypes.func,

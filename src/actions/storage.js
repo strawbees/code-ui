@@ -30,6 +30,7 @@ import * as browserStorage from 'src/utils/browserStorage'
 import { fireGlobalEvent } from 'src/utils/globalEvents'
 import StrawbeesCloudSignin from 'src/components/strawbeesCloudSignin'
 import StrawbeesCloudSignup from 'src/components/strawbeesCloudSignup'
+import StrawbeesCloudChangePassword from 'src/components/strawbeesCloudChangePassword'
 import {
 	STORAGE_SET_STATUS,
 	STORAGE_SET_CREDENTIALS,
@@ -367,6 +368,42 @@ export const modalSignin = (backendName) => async (dispatch) => {
 				fireGlobalEvent('track-event', {
 					category : 'user',
 					action   : 'forgot-password-complete',
+					label    : 'modal'
+				})
+			}}
+		/>
+	))
+}
+
+export const modalChangePassword = (backendName) => async (dispatch, getState) => {
+	if (!backendName) {
+		return
+	}
+	const backend = resolveBackendFromBackendName(backendName)
+	let ChangePasswordComponent
+	switch (backend.name) {
+		case 'strawbees':
+			ChangePasswordComponent = StrawbeesCloudChangePassword
+			break
+		default:
+	}
+	if (backend.name !== 'strawbees') {
+		return
+	}
+	// get the credentials
+	const credentials = storageCredentialsSelector()(getState())
+	dispatch(safeOpenDialogModal(
+		{
+			titleKey       : 'ui.sb_cloud.change_password.title',
+			displayConfirm : false,
+			displayCancel  : false,
+		},
+		<ChangePasswordComponent
+			onSubmit={async (values) => {
+				await backend.changePassword(credentials, values)
+				fireGlobalEvent('track-event', {
+					category : 'user',
+					action   : 'change-password-complete',
 					label    : 'modal'
 				})
 			}}

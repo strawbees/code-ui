@@ -153,9 +153,9 @@ export const loadCompleteData = async (credentials) => {
 
 export const deleteAccount = async (credentials, id) => {
 	const data = await deleteRemoteUser(credentials, { id })
-	console.log(data)
 	return data
 }
+
 // "Private" api (only used by things that call this backend directy)
 export const signup = async (values) => {
 	const user = await registerRemoteUser(values)
@@ -205,6 +205,21 @@ export const resetPassword = async ({ token, password }) => {
 			token,
 			password
 		}
+	})
+	if (!ok) {
+		throw new Error(json.code)
+	}
+	return json
+}
+
+export const changePassword = async (credentials, { password }) => {
+	const { ok, json } = await apiCall({
+		url    : 'auth/changePassword',
+		method : 'post',
+		data   : {
+			password
+		},
+		credentials
 	})
 	if (!ok) {
 		throw new Error(json.code)

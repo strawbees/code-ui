@@ -296,6 +296,54 @@ msgctxt "ui.sb_cloud.confirm_email.submit.success"
 msgid "Your email is confirmed."
 msgstr ""
 
+msgctxt "ui.sb_cloud.change_password.title"
+msgid "Change password"
+msgstr ""
+
+msgctxt "ui.sb_cloud.change_password.password.label"
+msgid "New password"
+msgstr ""
+
+msgctxt "ui.sb_cloud.change_password.password.error.blank"
+msgid "You need to fill in your password."
+msgstr ""
+
+msgctxt "ui.sb_cloud.change_password.password.error.short"
+msgid "Password needs to be at least 6 characters long."
+msgstr ""
+
+msgctxt "ui.sb_cloud.change_password.password_confirm.label"
+msgid "Confirm new password"
+msgstr ""
+
+msgctxt "ui.sb_cloud.change_password.password_confirm.error.blank"
+msgid "You need to fill in your password."
+msgstr ""
+
+msgctxt "ui.sb_cloud.change_password.password_confirm.error.missmatch"
+msgid "Password doesn't match."
+msgstr ""
+
+msgctxt "ui.sb_cloud.change_password.submit"
+msgid "Sign up"
+msgstr ""
+
+msgctxt "ui.sb_cloud.change_password.submit.error.network"
+msgid "There seems to be a connection problem."
+msgstr ""
+
+msgctxt "ui.sb_cloud.change_password.submit.error.server"
+msgid "Server is not responding."
+msgstr ""
+
+msgctxt "ui.sb_cloud.change_password.submit.error.unhandled"
+msgid "We are having problems, please try again later."
+msgstr ""
+
+msgctxt "ui.sb_cloud.change_password.submit.success"
+msgid "Your password is changed!"
+msgstr ""
+
 msgctxt "ui.program_creator.title"
 msgid "Create a program"
 msgstr ""
@@ -581,6 +629,10 @@ msgstr ""
 
 msgctxt "ui.user.account_settings.download_data"
 msgid "Download all my data"
+msgstr ""
+
+msgctxt "ui.user.account_settings.change_password"
+msgid "Change password"
 msgstr ""
 
 msgctxt "ui.user.account_settings.danger_zone"
