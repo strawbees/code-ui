@@ -12,6 +12,8 @@ import {
 	SETUP_SET_DISPLAY_PAGE_LOADER,
 	SETUP_SET_DISPLAY_ERROR,
 	SETUP_SET_OS,
+	SETUP_SET_DISPLAY_COOKIE_NOTICE,
+	SETUP_SET_PAUSE_TRACKING,
 } from 'src/constants/actionTypes'
 
 export const setSetup = generateAction(SETUP_SET)
@@ -26,3 +28,5 @@ export const setFactoryCode = generateAction(SETUP_SET_FACTORY_CODE)
 export const setDisplayPageLoader = generateAction(SETUP_SET_DISPLAY_PAGE_LOADER)
 export const setDisplayError = generateAction(SETUP_SET_DISPLAY_ERROR)
 export const setOS = generateAction(SETUP_SET_OS)
+export const setDisplayCookieNotice = generateAction(SETUP_SET_DISPLAY_COOKIE_NOTICE)
+export const setPauseTracking = generateAction(SETUP_SET_PAUSE_TRACKING)

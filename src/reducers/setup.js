@@ -12,6 +12,8 @@ import {
 	SETUP_SET_DISPLAY_PAGE_LOADER,
 	SETUP_SET_DISPLAY_ERROR,
 	SETUP_SET_OS,
+	SETUP_SET_DISPLAY_COOKIE_NOTICE,
+	SETUP_SET_PAUSE_TRACKING,
 } from 'src/constants/actionTypes'
 
 const rootPath = (state = '', { type, payload }) => {
@@ -206,6 +208,32 @@ const os = (state = null, { type, payload }) => {
 			return state
 	}
 }
+const displayCookieNotice = (state = false, { type, payload }) => {
+	switch (type) {
+		case SETUP_SET_DISPLAY_COOKIE_NOTICE:
+			return payload
+		case SETUP_SET:
+			if (typeof payload.displayCookieNotice !== 'undefined') {
+				return payload.displayCookieNotice
+			}
+			return state
+		default:
+			return state
+	}
+}
+const pauseTracking = (state = true, { type, payload }) => {
+	switch (type) {
+		case SETUP_SET_PAUSE_TRACKING:
+			return payload
+		case SETUP_SET:
+			if (typeof payload.pauseTracking !== 'undefined') {
+				return payload.pauseTracking
+			}
+			return state
+		default:
+			return state
+	}
+}
 
 export default combineReducers({
 	rootPath,
@@ -220,4 +248,6 @@ export default combineReducers({
 	displayPageLoader,
 	displayError,
 	os,
+	displayCookieNotice,
+	pauseTracking,
 })
