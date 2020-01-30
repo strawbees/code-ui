@@ -1,5 +1,11 @@
 {
 	"hardware": {
+		"circuit-touch": {
+			"title": "coding_cards.hardware.circuit-touch.title"
+		},
+		"light-sensor": {
+			"title": "coding_cards.hardware.light-sensor.title"
+		},
 		"built-in-led": {
 			"title": "coding_cards.hardware.built-in-led.title"
 		},
@@ -9,11 +15,8 @@
 		"servo-motor": {
 			"title": "coding_cards.hardware.servo-motor.title"
 		},
-		"circuit-touch": {
-			"title": "coding_cards.hardware.circuit-touch.title"
-		},
-		"light-sensor": {
-			"title": "coding_cards.hardware.light-sensor.title"
+		"key-press": {
+			"title": "coding_cards.hardware.key-press.title"
 		}
 	},
 	"cards": {

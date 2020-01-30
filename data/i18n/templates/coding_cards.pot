@@ -35,6 +35,10 @@ msgctxt "coding_cards.hardware.servo-motor.title"
 msgid "Servo Motor"
 msgstr ""
 
+msgctxt "coding_cards.hardware.key-press.title"
+msgid "Key Press"
+msgstr ""
+
 msgctxt "coding_cards.hardware.buzzer.title"
 msgid "Buzzer"
 msgstr ""
