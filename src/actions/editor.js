@@ -14,10 +14,12 @@ import {
 	setAsPath,
 	setUrlVars,
 } from 'src/actions/setup'
+/* eslint-disable import/no-cycle */
 import {
 	safeAddProgram,
 	safeUpdateProgram,
 } from 'src/actions/storage'
+/* eslint-enable import/no-cycle */
 import {
 	EDITOR_SET_FLOW_NAME,
 	EDITOR_SET_FLOW_ID,
