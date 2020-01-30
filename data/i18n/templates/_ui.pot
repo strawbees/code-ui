@@ -11,6 +11,22 @@ msgctxt "error.og.title"
 msgid "Not found"
 msgstr ""
 
+msgctxt "ui.cookie_notice.title"
+msgid "Strawbees CODE uses cookies"
+msgstr ""
+
+msgctxt "ui.cookie_notice.description"
+msgid "Cookies are stricly necessary for this app to work. Read more about "
+"it in our [Cookie Policy](/cookie-policy/) and [Privacy Policy](/privacy-policy/).\n\n"
+"This app collects **anonymous** usage data. "
+"You can opt out of this behaviour in the "
+"account settings."
+msgstr ""
+
+msgctxt "ui.cookie_notice.confirm"
+msgid "I consent to the use of cookies"
+msgstr ""
+
 msgctxt "ui.sb_cloud.delete_account.dialog.title"
 msgid "Delete Strawbees Cloud account"
 msgstr ""

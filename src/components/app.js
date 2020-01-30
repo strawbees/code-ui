@@ -8,6 +8,7 @@ import FooterContainer from 'src/containers/footerContainer'
 import PageContainer from 'src/containers/pageContainer'
 import PageError from 'src/components/pageError'
 import ModalContainer from 'src/containers/modalContainer'
+import CookieNoticeManager from 'src/containers/cookieNoticeManager'
 // import MidiInterfaceManager from 'src/containers/midiInterfaceManager'
 import SerialInterfaceManager from 'src/containers/serialInterfaceManager'
 import NavigationManager from 'src/containers/navigationManager'
@@ -65,6 +66,7 @@ const App = ({
 		{/* <MidiInterfaceManager /> */}
 		<SerialInterfaceManager />
 		<TrackingManager />
+		<CookieNoticeManager />
 		<HeadContainer />
 		<HeaderContainer />
 		{displayError ?
