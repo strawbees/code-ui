@@ -12,11 +12,13 @@ import storageCredentialsSelector from 'src/selectors/storageCredentialsSelector
 import storageUserSelector from 'src/selectors/storageUserSelector'
 import storageProgramsSelector from 'src/selectors/storageProgramsSelector'
 import storageRemoteMirrorSelector from 'src/selectors/storageRemoteMirrorSelector'
+/* eslint-disable import/no-cycle */
 import {
 	updateCurrentEditorProgramName,
 	updateCurrentEditorProgramSource,
 	updateCurrentEditorProgramId,
 } from 'src/actions/editor'
+/* eslint-enable import/no-cycle */
 import {
 	safeOpenDialogModal,
 	closeModal,
