@@ -8,12 +8,15 @@ import {
 } from 'src/constants/colors'
 
 const renderers = {
-	link : ({ href, target, children }) =>
-		<Link
-			to={href}
-			external={target === '_blank' ? true : undefined}>
-			{children}
-		</Link>
+	link : ({ href, target, children }) => {
+		return (
+			<Link
+				to={href}
+				external={target === '_blank' ? true : undefined}>
+				{children}
+			</Link>
+		)
+	}
 }
 
 const Markdown = ({
