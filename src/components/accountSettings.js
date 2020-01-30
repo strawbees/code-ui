@@ -149,7 +149,7 @@ class AccountSettings extends React.Component {
 								/>
 								<div className='separator'></div>
 								<IconButton
-									// icon={downloadDataIcon}
+									icon={userIcons.changePassword}
 									labelKey='ui.user.account_settings.change_password'
 									onClick={() => {
 										changePassword()
