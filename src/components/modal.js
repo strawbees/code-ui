@@ -68,15 +68,17 @@ const Modal = ({
 				}
 			}
 		`}</style>
-		<IconButton
-			className='close'
-			icon={closeIcon}
-			textColor={WHITE}
-			textHoverColor={WHITE}
-			bgColor={RED}
-			bgHoverColor={RED}
-			onClick={onRequestClose}
-		/>
+		{onRequestClose &&
+			<IconButton
+				className='close'
+				icon={closeIcon}
+				textColor={WHITE}
+				textHoverColor={WHITE}
+				bgColor={RED}
+				bgHoverColor={RED}
+				onClick={onRequestClose}
+			/>
+		}
 		<div className="content">
 			{content}
 		</div>

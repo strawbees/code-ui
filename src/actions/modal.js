@@ -49,7 +49,7 @@ export const safeOpenVideoModal = (videoProps = {}) => async (dispatch) =>
 		dispatch(showModal())
 	})
 
-export const safeOpenDialogModal = (dialogProps = {}, content = null) => (dispatch) =>
+export const safeOpenDialogModal = (dialogProps = {}, content = null, hideCloseButton = false) => (dispatch) =>
 	new Promise((resolve, reject) => {
 		const onConfirm = () => {
 			if (dialogProps.onConfirm) {
@@ -65,7 +65,7 @@ export const safeOpenDialogModal = (dialogProps = {}, content = null) => (dispat
 			dispatch(closeModal())
 			reject()
 		}
-		dispatch(setModalOnRequestClose(onCancel))
+		dispatch(setModalOnRequestClose(hideCloseButton ? null : onCancel))
 		dispatch(setModalContent(
 			<Dialog
 				{...dialogProps}
