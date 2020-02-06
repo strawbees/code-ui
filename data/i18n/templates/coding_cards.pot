@@ -99,8 +99,8 @@ msgctxt "coding_cards.block.card.touch-to-change-color.title"
 msgid "Touch to change color"
 msgstr ""
 
-msgctxt "coding_cards.block.card.change-color-when-its-dark.title"
-msgid "Change color when it's dark"
+msgctxt "coding_cards.block.card.change-color-in-the-dark.title"
+msgid "Change color in the dark"
 msgstr ""
 
 msgctxt "coding_cards.block.card.flickering-color.title"

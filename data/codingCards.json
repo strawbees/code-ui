@@ -158,8 +158,8 @@
 					}
 				]
 			},
-			"change-color-when-its-dark": {
-				"title": "coding_cards.block.card.change-color-when-its-dark.title",
+			"change-color-in-the-dark": {
+				"title": "coding_cards.block.card.change-color-in-the-dark.title",
 				"hardware": [
 					"light-sensor",
 					"dual-color-led"
@@ -167,7 +167,7 @@
 				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"50\" y=\"50\"><next><block type=\"control_forever\" id=\"E@JHPVmrm^aWRA{ls4ol\"><statement name=\"SUBSTACK\"><block type=\"output_led_dual_color_light\" id=\"r_Ru/4G/W$uDBZ?UW}jo\"><next><block type=\"control_if_else\" id=\"TthI6}D@{#dDsSRwiSW]\"><value name=\"CONDITION\"><block type=\"operator_gt\" id=\"9_ZHlN@Mp#D*1^R|]*_#\"><value name=\"OPERAND2\"><shadow type=\"math_number\" id=\"6Jg6vBkTM0P2fO9=-,kX\"><field name=\"NUM\">0.01</field></shadow></value><value name=\"OPERAND1\"><shadow type=\"math_number\" id=\"E8wfZ9U;!L)1[VeYQ1*|\"><field name=\"NUM\"></field></shadow><block type=\"input_light_sensor\" id=\"LfqO{3prJ?r$06geohZX\"><value name=\"PLACE\"><shadow type=\"dropdown_light_sensor_places\" id=\"z!gDAzb?bv3cW_W:(CKc\"><field name=\"VALUE\">PLACE_HORN</field></shadow></value></block></value></block></value><statement name=\"SUBSTACK\"><block type=\"output_led_dual_color_color\" id=\"#qdfrlg_QSn1!laCVSJy\"><value name=\"PLACE\"><shadow type=\"dropdown_led_dual_color_places\" id=\":at}MicUREfOv]Jq~3Nf\"><field name=\"VALUE\">PLACE_LEFT_ARM</field></shadow></value><value name=\"COLOR\"><shadow type=\"math_positive_number\" id=\"5zVaIP+mZA|AnJ;mf|S]\"><field name=\"NUM\">0</field></shadow></value></block></statement><statement name=\"SUBSTACK2\"><block type=\"output_led_dual_color_color\" id=\"~Cd/O:srBk4rq;xzVY$V\"><value name=\"PLACE\"><shadow type=\"dropdown_led_dual_color_places\" id=\"-fF=JLXz!m~%|+G.2yuz\"><field name=\"VALUE\">PLACE_LEFT_ARM</field></shadow></value><value name=\"COLOR\"><shadow type=\"math_positive_number\" id=\"[KP}M`iw~;bJok{j2](n\"><field name=\"NUM\">1</field></shadow></value></block></statement></block></next><value name=\"PLACE\"><shadow type=\"dropdown_led_dual_color_places\" id=\"^OADv$%g!u2O6Uq8eG$+\"><field name=\"VALUE\">PLACE_LEFT_ARM</field></shadow></value><value name=\"LIGHT\"><shadow type=\"math_positive_number\" id=\"|FNS}PogQhsmS:Yhk=Xv\"><field name=\"NUM\">1</field></shadow></value></block></statement></block></next></block></xml>",
 				"slides" : [
 					{
-						"id" : "block-change-color-when-its-dark",
+						"id" : "block-change-color-in-the-dark",
 						"title" : "coding_cards.block.slide.code-and-hardware.title"
 					}
 				]
@@ -234,7 +234,7 @@
 				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"50\" y=\"50\"><next><block type=\"output_servo\" id=\"[Ujk0g93|*aJ]i^q}^])\"><next><block type=\"control_forever\" id=\"T1s/RAn;k(+3wC1BvS:h\"><statement name=\"SUBSTACK\"><block type=\"control_if\" id=\"Acfv!vfzddrE;.U{Rp/Y\"><value name=\"CONDITION\"><block type=\"input_circuit_touch_touched\" id=\"T/$ZZr$0Bc$O:Z,`6Xp{\"><value name=\"PLACE\"><shadow type=\"dropdown_circuit_touch_places\" id=\"cb@Ha6+-+Wu=v.PW4+qL\"><field name=\"VALUE\">PLACE_HORN</field></shadow></value></block></value><statement name=\"SUBSTACK\"><block type=\"output_servo\" id=\"rn]Tl5pw+hLtm8p@FQ@F\"><value name=\"PLACE\"><shadow type=\"dropdown_servo_places\" id=\"^G~0Vu{6QuXnBf4}3A{9\"><field name=\"VALUE\">PLACE_SERVO_MOTOR_1</field></shadow></value><value name=\"POSITION\"><shadow type=\"math_positive_number\" id=\"Ceut+uAIJ#cRs1ky2#o1\"><field name=\"NUM\">1</field></shadow></value></block></statement></block></statement></block></next><value name=\"PLACE\"><shadow type=\"dropdown_servo_places\" id=\"T0V)lZmbw!Y9YpCn,Ca7\"><field name=\"VALUE\">PLACE_SERVO_MOTOR_1</field></shadow></value><value name=\"POSITION\"><shadow type=\"math_positive_number\" id=\"LD1h9f~n:%R,p|lx+v}{\"><field name=\"NUM\">0</field></shadow></value></block></next></block></xml>",
 				"slides" : [
 					{
-						"id" : "touch-and-trap",
+						"id" : "block-touch-and-trap",
 						"title" : "coding_cards.block.slide.code-and-hardware.title"
 					}
 				]
@@ -262,7 +262,7 @@
 				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"50\" y=\"50\"><next><block type=\"control_forever\" id=\"QM|Gp2.kB=!w^ngt$Gnk\"><statement name=\"SUBSTACK\"><block type=\"control_if_else\" id=\"IvYl3(V-oUO.oSO`qf=J\"><value name=\"CONDITION\"><block type=\"operator_gt\" id=\"]rFDS=YAHA0%,Q,*^`o^\"><value name=\"OPERAND2\"><shadow type=\"math_number\" id=\"l6+ja3g)_C|)`l#tTtF1\"><field name=\"NUM\">0.01</field></shadow></value><value name=\"OPERAND1\"><shadow type=\"math_number\" id=\"w}*`%vx59B6jiRth9jc(\"><field name=\"NUM\"></field></shadow><block type=\"input_light_sensor\" id=\"$._b0L2Yb2I;fD|kY.1x\"><value name=\"PLACE\"><shadow type=\"dropdown_light_sensor_places\" id=\"L-o|q(oIp]`jtt|?-q(Q\"><field name=\"VALUE\">PLACE_HORN</field></shadow></value></block></value></block></value><statement name=\"SUBSTACK\"><block type=\"output_servo\" id=\"zydU~GkV5m@XRN.JJmzE\"><value name=\"PLACE\"><shadow type=\"dropdown_servo_places\" id=\"FEkK1~)MyMVY=1:+xK*P\"><field name=\"VALUE\">PLACE_SERVO_MOTOR_1</field></shadow></value><value name=\"POSITION\"><shadow type=\"math_positive_number\" id=\"b%EFx^h_B;Ht}D#tY5cG\"><field name=\"NUM\">0.5</field></shadow></value></block></statement><statement name=\"SUBSTACK2\"><block type=\"output_servo\" id=\"$zJs@XS~3D`]#TR3V@q:\"><value name=\"PLACE\"><shadow type=\"dropdown_servo_places\" id=\"vO^5{U+mk-$mg]S8-U#!\"><field name=\"VALUE\">PLACE_SERVO_MOTOR_1</field></shadow></value><value name=\"POSITION\"><shadow type=\"math_positive_number\" id=\"vRH6W:hl[yCPHcP~p~J7\"><field name=\"NUM\">1</field></shadow><block type=\"operator_random\" id=\"ocElJ^b=05|rVj;(QTth\"><value name=\"FROM\"><shadow type=\"math_number\" id=\"5vgcFkH(:D*~ws~n#15F\"><field name=\"NUM\">0</field></shadow></value><value name=\"TO\"><shadow type=\"math_number\" id=\"EJ((gF$|jH5#g[wg(@wP\"><field name=\"NUM\">1</field></shadow></value></block></value></block></statement></block></statement></block></next></block></xml>",
 				"slides" : [
 					{
-						"id" : "block-touch-shake-in-the-dark",
+						"id" : "block-shake-in-the-dark",
 						"title" : "coding_cards.block.slide.code-and-hardware.title"
 					}
 				]
