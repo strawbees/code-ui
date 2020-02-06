@@ -46,10 +46,6 @@
 					{
 						"id" : "block-touch-and-wink",
 						"title" : "coding_cards.block.slide.code-and-hardware.title"
-					},
-					{
-						"id" : "assembly-circuit-touch",
-						"title" : "coding_cards.block.slide.assembly.title"
 					}
 				]
 			},
@@ -64,10 +60,6 @@
 					{
 						"id" : "block-touch-to-shine",
 						"title" : "coding_cards.block.slide.code-and-hardware.title"
-					},
-					{
-						"id" : "assembly-circuit-touch",
-						"title" : "coding_cards.block.slide.assembly.title"
 					}
 				]
 			},
@@ -82,10 +74,6 @@
 					{
 						"id" : "block-shine-in-the-dark",
 						"title" : "coding_cards.block.slide.code-and-hardware.title"
-					},
-					{
-						"id" : "assembly-light-sensor",
-						"title" : "coding_cards.block.slide.assembly.title"
 					}
 				]
 			},
@@ -126,10 +114,6 @@
 					{
 						"id" : "block-light-switch",
 						"title" : "coding_cards.block.slide.code-and-hardware.title"
-					},
-					{
-						"id" : "assembly-circuit-touch",
-						"title" : "coding_cards.block.slide.assembly.title"
 					}
 				]
 			},
@@ -143,10 +127,6 @@
 					{
 						"id" : "block-switching-colors",
 						"title" : "coding_cards.block.slide.code-and-hardware.title"
-					},
-					{
-						"id" : "assembly-dual-color-led",
-						"title" : "coding_cards.block.slide.assembly.title"
 					}
 				]
 			},
@@ -161,14 +141,6 @@
 					{
 						"id" : "block-touch-to-siren-light",
 						"title" : "coding_cards.block.slide.code-and-hardware.title"
-					},
-					{
-						"id" : "assembly-circuit-touch",
-						"title" : "coding_cards.block.slide.assembly.title"
-					},
-					{
-						"id" : "assembly-dual-color-led",
-						"title" : "coding_cards.block.slide.assembly.title"
 					}
 				]
 			},
@@ -183,14 +155,6 @@
 					{
 						"id" : "block-touch-to-change-color",
 						"title" : "coding_cards.block.slide.code-and-hardware.title"
-					},
-					{
-						"id" : "assembly-circuit-touch",
-						"title" : "coding_cards.block.slide.assembly.title"
-					},
-					{
-						"id" : "assembly-dual-color-led",
-						"title" : "coding_cards.block.slide.assembly.title"
 					}
 				]
 			},
@@ -205,14 +169,6 @@
 					{
 						"id" : "block-change-color-when-its-dark",
 						"title" : "coding_cards.block.slide.code-and-hardware.title"
-					},
-					{
-						"id" : "assembly-light-sensor",
-						"title" : "coding_cards.block.slide.assembly.title"
-					},
-					{
-						"id" : "assembly-dual-color-led",
-						"title" : "coding_cards.block.slide.assembly.title"
 					}
 				]
 			},
@@ -226,10 +182,6 @@
 					{
 						"id" : "block-flickering-color",
 						"title" : "coding_cards.block.slide.code-and-hardware.title"
-					},
-					{
-						"id" : "assembly-dual-color-led",
-						"title" : "coding_cards.block.slide.assembly.title"
 					}
 				]
 			},
@@ -243,10 +195,6 @@
 					{
 						"id" : "block-fading-colors",
 						"title" : "coding_cards.block.slide.code-and-hardware.title"
-					},
-					{
-						"id" : "assembly-dual-color-led",
-						"title" : "coding_cards.block.slide.assembly.title"
 					}
 				]
 			},
@@ -261,14 +209,6 @@
 					{
 						"id" : "block-mood-light-switch",
 						"title" : "coding_cards.block.slide.code-and-hardware.title"
-					},
-					{
-						"id" : "assembly-circuit-touch",
-						"title" : "coding_cards.block.slide.assembly.title"
-					},
-					{
-						"id" : "assembly-dual-color-led",
-						"title" : "coding_cards.block.slide.assembly.title"
 					}
 				]
 			},
@@ -282,14 +222,6 @@
 					{
 						"id" : "block-back-and-forth",
 						"title" : "coding_cards.block.slide.code-and-hardware.title"
-					},
-					{
-						"id" : "assembly-servo-backpack",
-						"title" : "coding_cards.block.slide.assembly.title"
-					},
-					{
-						"id" : "assembly-servo-motor",
-						"title" : "coding_cards.block.slide.assembly.title"
 					}
 				]
 			},
@@ -304,18 +236,6 @@
 					{
 						"id" : "touch-and-trap",
 						"title" : "coding_cards.block.slide.code-and-hardware.title"
-					},
-					{
-						"id" : "assembly-circuit-touch",
-						"title" : "coding_cards.block.slide.assembly.title"
-					},
-					{
-						"id" : "assembly-servo-backpack",
-						"title" : "coding_cards.block.slide.assembly.title"
-					},
-					{
-						"id" : "assembly-servo-motor",
-						"title" : "coding_cards.block.slide.assembly.title"
 					}
 				]
 			},
@@ -330,18 +250,6 @@
 					{
 						"id" : "block-touch-to-hold-position",
 						"title" : "coding_cards.block.slide.code-and-hardware.title"
-					},
-					{
-						"id" : "assembly-circuit-touch",
-						"title" : "coding_cards.block.slide.assembly.title"
-					},
-					{
-						"id" : "assembly-servo-backpack",
-						"title" : "coding_cards.block.slide.assembly.title"
-					},
-					{
-						"id" : "assembly-servo-motor",
-						"title" : "coding_cards.block.slide.assembly.title"
 					}
 				]
 			},
@@ -356,18 +264,6 @@
 					{
 						"id" : "block-touch-shake-in-the-dark",
 						"title" : "coding_cards.block.slide.code-and-hardware.title"
-					},
-					{
-						"id" : "assembly-light-sensor",
-						"title" : "coding_cards.block.slide.assembly.title"
-					},
-					{
-						"id" : "assembly-servo-backpack",
-						"title" : "coding_cards.block.slide.assembly.title"
-					},
-					{
-						"id" : "assembly-servo-motor",
-						"title" : "coding_cards.block.slide.assembly.title"
 					}
 				]
 			},
@@ -381,14 +277,6 @@
 					{
 						"id" : "block-shake",
 						"title" : "coding_cards.block.slide.code-and-hardware.title"
-					},
-					{
-						"id" : "assembly-servo-backpack",
-						"title" : "coding_cards.block.slide.assembly.title"
-					},
-					{
-						"id" : "assembly-servo-motor",
-						"title" : "coding_cards.block.slide.assembly.title"
 					}
 				]
 			},
@@ -402,14 +290,6 @@
 					{
 						"id" : "block-sweep",
 						"title" : "coding_cards.block.slide.code-and-hardware.title"
-					},
-					{
-						"id" : "assembly-servo-backpack",
-						"title" : "coding_cards.block.slide.assembly.title"
-					},
-					{
-						"id" : "assembly-servo-motor",
-						"title" : "coding_cards.block.slide.assembly.title"
 					}
 				]
 			},
@@ -424,18 +304,6 @@
 					{
 						"id" : "block-touch-and-switch-position",
 						"title" : "coding_cards.block.slide.code-and-hardware.title"
-					},
-					{
-						"id" : "assembly-circuit-touch",
-						"title" : "coding_cards.block.slide.assembly.title"
-					},
-					{
-						"id" : "assembly-servo-backpack",
-						"title" : "coding_cards.block.slide.assembly.title"
-					},
-					{
-						"id" : "assembly-servo-motor",
-						"title" : "coding_cards.block.slide.assembly.title"
 					}
 				]
 			}
