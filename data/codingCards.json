@@ -293,8 +293,8 @@
 					}
 				]
 			},
-			"touch-and-switch-position": {
-				"title": "coding_cards.block.card.touch-and-switch-position.title",
+			"touch-to-switch-position": {
+				"title": "coding_cards.block.card.touch-to-switch-position.title",
 				"hardware": [
 					"circuit-touch",
 					"servo-motor"
@@ -302,7 +302,7 @@
 				"source" : "<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables><variable type=\"\" id=\"Z,,;HI(h9RTxZ8XA*tcr\" islocal=\"false\" iscloud=\"false\">toggle</variable></variables><block type=\"event_power_on\" id=\"rootblock\" deletable=\"false\" x=\"-47\" y=\"-86\"><next><block type=\"data_setvariableto\" id=\"pQlFwhEdXeCD0mRmN0i6\"><next><block type=\"control_forever\" id=\"@7u.+~IG1BBKv:/q@!JX\"><statement name=\"SUBSTACK\"><block type=\"control_if\" id=\"gBG{h:ZJ(y2m*-SGvNrk\"><statement name=\"SUBSTACK\"><block type=\"control_if_else\" id=\"domlLn.VtTI;4lYpV6P/\"><statement name=\"SUBSTACK\"><block type=\"data_setvariableto\" id=\"]vTqrRAwfb*bhIHU_=vu\"><value name=\"VALUE\"><shadow type=\"text\" id=\"j`-gR3tF(^d,[D(+QX$G\"><field name=\"TEXT\">0</field></shadow></value><field name=\"VARIABLE\" id=\"Z,,;HI(h9RTxZ8XA*tcr\" variabletype=\"\">toggle</field></block></statement><statement name=\"SUBSTACK2\"><block type=\"data_setvariableto\" id=\"^x5gbw|3|1Y,O%n-(l:v\"><value name=\"VALUE\"><shadow type=\"text\" id=\"HSGZ,L84[xZ3[pHoKOkQ\"><field name=\"TEXT\">1</field></shadow></value><field name=\"VARIABLE\" id=\"Z,,;HI(h9RTxZ8XA*tcr\" variabletype=\"\">toggle</field></block></statement><value name=\"CONDITION\"><block type=\"operator_gt\" id=\"n75$!8o^/w~v4c**h_jU\"><value name=\"OPERAND1\"><shadow type=\"math_number\" id=\"?%ML+t=;.Ln,3Rl/h30U\"><field name=\"NUM\"></field></shadow><block type=\"data_variable\" id=\"?)gR_b:O+r@.i)Nvl?bE\"><field name=\"VARIABLE\" id=\"Z,,;HI(h9RTxZ8XA*tcr\" variabletype=\"\">toggle</field></block></value><value name=\"OPERAND2\"><shadow type=\"math_number\" id=\"D`FFB~88A|3Feo_hF5s)\"><field name=\"NUM\">0</field></shadow></value></block></value><next><block type=\"output_servo\" id=\"=?_|mgGNfpbf3boCav|~\"><next><block type=\"control_wait\" id=\"9n)%7MTP/-`TrasLQeXg\"><value name=\"DURATION\"><shadow type=\"math_positive_number\" id=\":Oghz3twH6XII8uVR(H+\"><field name=\"NUM\">1</field></shadow></value></block></next><value name=\"PLACE\"><shadow type=\"dropdown_servo_places\" id=\",JeU(*CP:_;lIOxnksym\"><field name=\"VALUE\">PLACE_SERVO_MOTOR_1</field></shadow></value><value name=\"POSITION\"><shadow type=\"math_positive_number\" id=\"S_:/8J:c1V*rXj+*EMe;\"><field name=\"NUM\">1</field></shadow><block type=\"data_variable\" id=\"S0xSEFAY6EkfLGo)+hq3\"><field name=\"VARIABLE\" id=\"Z,,;HI(h9RTxZ8XA*tcr\" variabletype=\"\">toggle</field></block></value></block></next></block></statement><value name=\"CONDITION\"><block type=\"input_circuit_touch_touched\" id=\"%Ui_gpKQDU@Cm$r!woWb\"><value name=\"PLACE\"><shadow type=\"dropdown_circuit_touch_places\" id=\"dJju0h^y!/Kfz{M88^6/\"><field name=\"VALUE\">PLACE_HORN</field></shadow></value></block></value></block></statement></block></next><value name=\"VALUE\"><shadow type=\"text\" id=\"KxNv^VMXmU7Z]-O,mUC}\"><field name=\"TEXT\">0</field></shadow></value><field name=\"VARIABLE\" id=\"Z,,;HI(h9RTxZ8XA*tcr\" variabletype=\"\">toggle</field></block></next></block></xml>",
 				"slides" : [
 					{
-						"id" : "block-touch-and-switch-position",
+						"id" : "block-touch-to-switch-position",
 						"title" : "coding_cards.block.slide.code-and-hardware.title"
 					}
 				]

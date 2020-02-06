@@ -139,6 +139,6 @@ msgctxt "coding_cards.block.card.sweep.title"
 msgid "Sweep"
 msgstr ""
 
-msgctxt "coding_cards.block.card.touch-and-switch-position.title"
-msgid "Touch and swich position"
+msgctxt "coding_cards.block.card.touch-to-switch-position.title"
+msgid "Touch to switch position"
 msgstr ""
