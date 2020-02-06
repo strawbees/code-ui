@@ -381,6 +381,14 @@ msgctxt "ui.help_menu.options.intro_code.title"
 msgid "Using Strawbees CODE"
 msgstr "Strawbees CODEを使う"
 
+msgctxt "ui.help_menu.options.coding_cards.flow.title"
+msgid "Flow coding cards..."
+msgstr ""
+
+msgctxt "ui.help_menu.options.coding_cards.block.title"
+msgid "Block coding cards..."
+msgstr ""
+
 msgctxt "ui.help_menu.options.intro_code.video"
 msgid "https://www.youtube.com/watch?v=-D9FhCw9OVA"
 msgstr "https://www.youtube.com/watch?v=-D9FhCw9OVA"

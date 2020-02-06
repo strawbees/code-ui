@@ -15,7 +15,6 @@ import {
 	removeAllGlobalEventListeners,
 } from 'src/utils/globalEvents'
 import resolveLinkUrl from 'src/utils/resolveLinkUrl'
-import routes from 'static/routes.json'
 import shallowCompareObjects from 'src/utils/shallowCompareObjects'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
@@ -103,6 +102,8 @@ class NavigationManager extends React.PureComponent {
 	onBeforeNavigation = async (as) => {
 		const {
 			queryRef,
+			queryLocale,
+			asPath,
 			urlVarP,
 			urlVarData,
 			refEditorHasChanges,
@@ -123,10 +124,12 @@ class NavigationManager extends React.PureComponent {
 		}
 
 		// check if this is not just a language change, by parsing the
-		// navigation and chekcing if the queryRef is the same, if no no need to
+		// navigation and chekcing if the queryRef is the same, if so, no need to
 		// show the dialog either
 		const resolved = resolveLinkUrl(as)
-		if (resolved.href.query && resolved.href.query.ref === queryRef) {
+		if (resolved.href.query &&
+			resolved.href.query.ref === queryRef &&
+			resolved.href.query.locale !== queryLocale) {
 			return
 		}
 
@@ -141,6 +144,27 @@ class NavigationManager extends React.PureComponent {
 				limitWidth      : true
 			}
 		)
+		// Now we are in a very special case... that requires a bit of hack to
+		// get around...
+		// In case the user is currently editing a program that has not been
+		// saved yet, and then tries to create a new program (of the same type),
+		// we will show the dialog above; if they agree to it, we will get here
+		// to this line - and usually that's it, the processNavigation() will
+		// be called in consequence of the route (and props) change. But that
+		// won't work now, because there won't be any route change, so
+		// processNavigation() never get's called.
+		// To work around that, if we will call processNavigation() manually
+		// with some bogus queryRef, so that it will think there is a change
+		// and reset the editor. Let's how far this hack goes...
+		if (resolved.href.query &&
+			resolved.href.query.ref === queryRef &&
+			resolved.href.query.locale === queryLocale &&
+			asPath === as) {
+			this.processNavigation({
+				...this.props,
+				queryRef : 'hack'
+			})
+		}
 	}
 
 	// Monitor the page and url var changes to load programs, users, etc
@@ -306,6 +330,8 @@ class NavigationManager extends React.PureComponent {
 
 NavigationManager.propTypes = {
 	queryRef            : PropTypes.string,
+	queryLocale         : PropTypes.string,
+	asPath              : PropTypes.string,
 	urlVarP             : PropTypes.string,
 	urlVarU             : PropTypes.string,
 	urlVarData          : PropTypes.string,
