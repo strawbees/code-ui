@@ -34,9 +34,8 @@ export default (stateProps, dispatchProps, ownProps) => {
 		...otherOwnProps,
 		type,
 		setCurrentCardId,
-		title       : entry.title,
-		slides      : entry.slides,
-		hardwareIds : entry.hardwareIds,
-		onOpenCode  : closeModal
+		title      : entry.title,
+		slides     : entry.slides,
+		onOpenCode : closeModal
 	}
 }

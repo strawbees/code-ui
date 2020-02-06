@@ -4,7 +4,6 @@ import Link from 'src/components/link'
 import SvgIcon from 'src/components/svgIcon'
 import IconButton from 'src/components/iconButton'
 import ImageSlider from 'src/components/imageSlider'
-import hardwareIcons from 'src/assets/icons/codingCards/hardware'
 import editorIcons from 'src/assets/icons/editors/small'
 import arrowBackIcon from 'src/assets/icons/general/arrowBack.svg'
 
@@ -19,7 +18,6 @@ const CodingCardsBrowserCard = ({
 	title,
 	programUrl,
 	slides,
-	hardwareIds,
 	setCurrentCardId,
 	onOpenCode,
 }) => (
@@ -45,7 +43,7 @@ const CodingCardsBrowserCard = ({
 				margin-right: 0.5rem;
 			}
 			.card {
-				margin: 1rem 0 3rem 0;
+				margin: 1rem 0 1rem 0;
 				position: relative;
 				padding-bottom:  1rem;
 				background-color: ${tinycolor(GRAY).lighten(35).toRgbString()};
@@ -57,33 +55,21 @@ const CodingCardsBrowserCard = ({
 				justify-content: center;
 				align-items: stretch;
 			}
-			.root :global(.back) {
-				position: absolute;
-				bottom: 0;
-				left: 0;
-			}
 			.card :global(.slides) {
 				width: 100%;
 			}
-			.card .hardware {
-				position: absolute;
-				bottom: 1rem;
-				right: 1rem;
+			.buttons {
 				display: flex;
-				flex-direction: column;
+				flex-direction: row;
+				justify-content: space-between;
 			}
-			.root .hardware :global( .icon) {
-				width: 3rem;
-				height: 3rem;
-				margin-top: 0.125rem;
-				margin-bottom: 0.125rem;
+			.buttons :global(.back) {
+
 			}
-			.root :global(.open-code) {
+			.buttons :global(.open-code) {
 				outline: none;
 				text-decoration: none;
-				position: absolute;
-				bottom: 0;
-				right: 0;
+
 			}
 		`}</style>
 
@@ -103,37 +89,28 @@ const CodingCardsBrowserCard = ({
 			<ImageSlider className='slides'
 				items={slides}
 			/>
-			<div className='hardware'>
-				{hardwareIds && hardwareIds.length > 0 &&
-					hardwareIds.map(id =>
-						<SvgIcon
-							icon={hardwareIcons[id]}
-							key={id}
-							className='icon'
-						/>
-					)
-				}
-			</div>
 		</div>
-		<IconButton className='back'
-			icon={arrowBackIcon}
-			onClick={() => setCurrentCardId(null)}
-			labelKey='coding_cards.back-to-coding-cards'
-		/>
-		{programUrl &&
-			<Link to={programUrl}
-				onClick={onOpenCode}
-				className='open-code'>
-				<IconButton
-					labelKey='coding_cards.open-program'
-					textColor={WHITE}
-					textHoverColor={WHITE}
-					bgColor={GREEN}
-					bgHoverColor={GREEN}
-					tabIndex='-1'
-				/>
-			</Link>
-		}
+		<div className='buttons'>
+			<IconButton className='back'
+				icon={arrowBackIcon}
+				onClick={() => setCurrentCardId(null)}
+				labelKey='coding_cards.back-to-coding-cards'
+			/>
+			{programUrl &&
+				<Link to={programUrl}
+					onClick={onOpenCode}
+					className='open-code'>
+					<IconButton
+						labelKey='coding_cards.open-program'
+						textColor={WHITE}
+						textHoverColor={WHITE}
+						bgColor={GREEN}
+						bgHoverColor={GREEN}
+						tabIndex='-1'
+					/>
+				</Link>
+			}
+		</div>
 	</div>
 )
 
@@ -141,7 +118,6 @@ CodingCardsBrowserCard.defaultProps = {
 	title            : '',
 	programUrl       : '',
 	slides           : [],
-	hardwareIds      : [],
 	setCurrentCardId : () => {},
 	onOpenCode       : () => {},
 }
@@ -157,7 +133,6 @@ CodingCardsBrowserCard.propTypes = {
 		title : PropTypes.string,
 		url   : PropTypes.string,
 	})),
-	hardwareIds      : PropTypes.arrayOf(PropTypes.string),
 	setCurrentCardId : PropTypes.func,
 	onOpenCode       : PropTypes.func,
 }
