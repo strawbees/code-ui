@@ -4,15 +4,16 @@ const path = require('path')
 // default configs
 const defaults = {
 	CANONICAL_URL                 : 'http://code-dev.strawbees.com:3000',
-	COMPILER_URL                  : 'https://compiler.quirkbot.com',
-	STRAWBEES_CODE_API_URL        : 'https://api-stage.quirkbot.com',
+	COMPILER_URL                  : 'http://code-compiler-service-stage.us-east-1.elasticbeanstalk.com',
+	STRAWBEES_CODE_API_URL        : 'https://cloud-api-stage.strawbees.com',
 	LOCALES                       : ['en', 'pt_BR', 'sv', 'ja'],
 	ROOT_PATH                     : '',
+	SHARE_LINKS_OMIT_ROOT_PATH    : true,
 	URL_SCHEME                    : 'strawbeescode',
 	GAID                          : 'UA-NNNNNN-N',
 	CHROME_EXTENSION_ID           : 'ackaalhbfjagidmjlhlokoblhbnahegd',
 	WINDOWS_DRIVERS_INSTALLER_URL : 'https://github.com/strawbees/quirkbot-driver/releases/download/v2.0.0.0/Quirkbot-Windows-Drivers-Installer-v2.0.0.0.exe',
-	DOWNLOAD_DESKTOP_APP_URL      : 'https://strawbees-downloads-stage.s3.amazonaws.com/code-desktop',
+	DOWNLOAD_DESKTOP_APP_URL      : 'https://downloads.strawbees.com/code-desktop',
 	NEXT_SERVER_PORT              : 3000,
 	NEXT_EXPORT_PATH              : path.resolve(__dirname, 'out'),
 }
@@ -22,7 +23,7 @@ const commonConfigs = {
 	web_stage : {
 		CANONICAL_URL            : 'https://code-stage.strawbees.com',
 		COMPILER_URL             : 'http://code-compiler-service-stage.us-east-1.elasticbeanstalk.com',
-		STRAWBEES_CODE_API_URL   : 'https://api.quirkbot.com',
+		STRAWBEES_CODE_API_URL   : 'https://cloud-api-stage.strawbees.com',
 		LOCALES                  : ['en', 'pt_BR', 'sv', 'ja'],
 		ROOT_PATH                : '',
 		URL_SCHEME               : 'strawbeescode-stage',
@@ -32,36 +33,36 @@ const commonConfigs = {
 	},
 	web_production : {
 		CANONICAL_URL            : 'https://code.strawbees.com',
-		COMPILER_URL             : 'https://compiler.quirkbot.com',
-		STRAWBEES_CODE_API_URL   : 'https://api.quirkbot.com',
+		COMPILER_URL             : 'https://compiler.strawbees.com',
+		STRAWBEES_CODE_API_URL   : 'https://cloud-api.strawbees.com',
 		LOCALES                  : ['en', 'pt_BR', 'sv'],
 		ROOT_PATH                : '',
 		URL_SCHEME               : 'strawbeescode',
 		GAID                     : 'UA-69443341-8',
 		CHROME_EXTENSION_ID      : 'ackaalhbfjagidmjlhlokoblhbnahegd',
-		DOWNLOAD_DESKTOP_APP_URL : 'https://strawbees-downloads-production.s3.amazonaws.com/code-desktop',
+		DOWNLOAD_DESKTOP_APP_URL : 'https://downloads.strawbees.com/code-desktop',
 	},
 	desktop_stage : {
-		CANONICAL_URL            : 'http://strawbeescode-stage',
+		CANONICAL_URL            : 'https://code-stage.strawbees.com',
 		COMPILER_URL             : 'http://localhost:9511',
-		STRAWBEES_CODE_API_URL   : 'https://api.quirkbot.com',
+		STRAWBEES_CODE_API_URL   : 'https://cloud-api-stage.strawbees.com',
 		LOCALES                  : ['en', 'pt_BR', 'sv', 'ja'],
 		ROOT_PATH                : '/ui',
 		URL_SCHEME               : 'strawbeescode-stage',
 		GAID                     : 'UA-69443341-7',
 		CHROME_EXTENSION_ID      : 'jgbaejhmonchgianepimdbcpfgcbdmam',
-		DOWNLOAD_DESKTOP_APP_URL : 'https://s3.amazonaws.com/strawbees-stage-production/code-desktop',
+		DOWNLOAD_DESKTOP_APP_URL : 'https://strawbees-downloads-stage.s3.amazonaws.com/code-desktop',
 	},
 	desktop_production : {
-		CANONICAL_URL            : 'http://strawbeescode',
+		CANONICAL_URL            : 'https://code.strawbees.com',
 		COMPILER_URL             : 'http://localhost:9511',
-		STRAWBEES_CODE_API_URL   : 'https://api.quirkbot.com',
+		STRAWBEES_CODE_API_URL   : 'https://cloud-api.strawbees.com',
 		LOCALES                  : ['en', 'pt_BR', 'sv'],
 		ROOT_PATH                : '/ui',
 		URL_SCHEME               : 'strawbeescode',
 		GAID                     : 'UA-69443341-8',
 		CHROME_EXTENSION_ID      : 'jgbaejhmonchgianepimdbcpfgcbdmam',
-		DOWNLOAD_DESKTOP_APP_URL : 'https://strawbees-downloads-production.s3.amazonaws.com/code-desktop',
+		DOWNLOAD_DESKTOP_APP_URL : 'https://downloads.strawbees.com/code-desktop',
 	}
 }
 // generate the final config, allowing overwritting from env
@@ -87,7 +88,7 @@ module.exports = {
 	webpack                   : (webpackConfig) => {
 		// svg loader
 		// first remove any existing rules for svg
-		const fileLoaderRule = webpackConfig.module.rules.find(rule => rule.test.test('.svg'))
+		const fileLoaderRule = webpackConfig.module.rules.find(rule => rule.test && rule.test.test('.svg'))
 		if (fileLoaderRule) {
 			fileLoaderRule.exclude = /\.svg$/
 		}
@@ -115,4 +116,10 @@ module.exports = {
 		}
 		return webpackConfig
 	},
+	experimental : {
+		// had to add this after next 9.2, since it's true by defautl
+		// and enabling a feature to handle FOUC that was breaking Blockly.
+		// (on the first load of /block blockly was not getting the correct size)
+		css : false
+	}
 }

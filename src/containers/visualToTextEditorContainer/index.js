@@ -11,7 +11,10 @@ const VisualToTextEditorContainer = (props) =>
 	/>
 
 VisualToTextEditorContainer.propTypes = {
-	VisualEditor : PropTypes.func,
+	VisualEditor : PropTypes.oneOfType([
+		PropTypes.func,
+		PropTypes.object,
+	]),
 }
 
 export default connect(

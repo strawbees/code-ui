@@ -1,5 +1,6 @@
 # Murilo Polese <murilo@strawbees.com>, 2019. #zanata
 # paulobarcelos <paulo@strawbees.com>, 2019. #zanata
+# paulobarcelos <paulo@strawbees.com>, 2020. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
@@ -7,8 +8,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-08-05 05:56+0000\n"
-"Last-Translator: Murilo Polese <murilo@strawbees.com>\n"
+"PO-Revision-Date: 2020-02-10 05:06+0000\n"
+"Last-Translator: paulobarcelos <paulo@strawbees.com>\n"
 "Language-Team: Portuguese (Brazil)\n"
 "Language: pt_BR\n"
 "X-Generator: Zanata 4.6.2\n"
@@ -17,6 +18,25 @@ msgstr ""
 msgctxt "error.og.title"
 msgid "Not found"
 msgstr "Não encontrado"
+
+msgctxt "ui.sb_cloud.delete_account.dialog.title"
+msgid "Delete Strawbees Cloud account"
+msgstr "Deletar conta no Strawbees Cloud"
+
+msgctxt "ui.sb_cloud.delete_account.dialog.description"
+msgid ""
+"You are about to delete your account and all your data **PERMANENTLY**!\n"
+"\n"
+"Are you sure you want to proceed?"
+msgstr ""
+"Você está prestes a deletar sua conta e todas as suas informações "
+"**PERMANENTEMENTE**!\n"
+"\n"
+"Deseja continuar?"
+
+msgctxt "ui.sb_cloud.delete_account.dialog.confirm"
+msgid "Delete my account"
+msgstr "Deletar minha conta"
 
 msgctxt "ui.sb_cloud.signup.cta"
 msgid "Sign up"
@@ -128,7 +148,7 @@ msgstr "Você precisa preencher a sua senha."
 
 msgctxt "ui.sb_cloud.signup.password_confirm.error.missmatch"
 msgid "Password doesn't match."
-msgstr "As senhas de acesso não são iguais."
+msgstr "As senhas não são iguais."
 
 msgctxt "ui.sb_cloud.signup.terms.label"
 msgid "Terms and conditions"
@@ -297,6 +317,54 @@ msgctxt "ui.sb_cloud.confirm_email.submit.success"
 msgid "Your email is confirmed."
 msgstr "O seu email está confirmado."
 
+msgctxt "ui.sb_cloud.change_password.title"
+msgid "Change password"
+msgstr "Mudar senha"
+
+msgctxt "ui.sb_cloud.change_password.password.label"
+msgid "New password"
+msgstr "Nova senha"
+
+msgctxt "ui.sb_cloud.change_password.password.error.blank"
+msgid "You need to fill in your password."
+msgstr "Você precisa preencher a sua senha."
+
+msgctxt "ui.sb_cloud.change_password.password.error.short"
+msgid "Password needs to be at least 6 characters long."
+msgstr "A senha precisa ter, no mínimo, 6 caracteres."
+
+msgctxt "ui.sb_cloud.change_password.password_confirm.label"
+msgid "Confirm new password"
+msgstr "Confirme a nova senha"
+
+msgctxt "ui.sb_cloud.change_password.password_confirm.error.blank"
+msgid "You need to fill in your password."
+msgstr "Você precisa preencher a sua senha."
+
+msgctxt "ui.sb_cloud.change_password.password_confirm.error.missmatch"
+msgid "Password doesn't match."
+msgstr "As senhas não são iguais."
+
+msgctxt "ui.sb_cloud.change_password.submit"
+msgid "Sign up"
+msgstr "Cadastre-se"
+
+msgctxt "ui.sb_cloud.change_password.submit.error.network"
+msgid "There seems to be a connection problem."
+msgstr "Encontramos um erro de conexão."
+
+msgctxt "ui.sb_cloud.change_password.submit.error.server"
+msgid "Server is not responding."
+msgstr "Server is not responding."
+
+msgctxt "ui.sb_cloud.change_password.submit.error.unhandled"
+msgid "We are having problems, please try again later."
+msgstr "Um erro ocorreu, tente novamente mais tarde."
+
+msgctxt "ui.sb_cloud.change_password.submit.success"
+msgid "Your password is changed!"
+msgstr "A sua senha foi atualizada!"
+
 msgctxt "ui.program_creator.title"
 msgid "Create a program"
 msgstr "Crie um programa"
@@ -384,6 +452,14 @@ msgstr "Tutoriais"
 msgctxt "ui.help_menu.options.intro_code.title"
 msgid "Using Strawbees CODE"
 msgstr "Usando Strawbees CODE"
+
+msgctxt "ui.help_menu.options.coding_cards.flow.title"
+msgid "Flow coding cards..."
+msgstr "Cartas de programação Flow..."
+
+msgctxt "ui.help_menu.options.coding_cards.block.title"
+msgid "Block coding cards..."
+msgstr "Cartas de programação Block..."
 
 msgctxt "ui.help_menu.options.intro_code.video"
 msgid "https://www.youtube.com/watch?v=-D9FhCw9OVA"
@@ -580,6 +656,22 @@ msgstr "Cadastre-se"
 msgctxt "ui.user.account_settings.logout"
 msgid "Log out"
 msgstr "Sair"
+
+msgctxt "ui.user.account_settings.download_data"
+msgid "Download all my data"
+msgstr "Baixar todos os meus dados"
+
+msgctxt "ui.user.account_settings.change_password"
+msgid "Change password"
+msgstr "Mudar senha"
+
+msgctxt "ui.user.account_settings.danger_zone"
+msgid "Danger zone"
+msgstr "Zona de perigo"
+
+msgctxt "ui.user.account_settings.delete_account"
+msgid "Delete my account and data"
+msgstr "Deletar minha conta"
 
 msgctxt "ui.user.account_settings.public_profile.title"
 msgid "Public profile link"

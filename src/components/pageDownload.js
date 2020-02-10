@@ -25,7 +25,6 @@ const DownloadInfo = ({
 	}
 	const {
 		url,
-		name,
 		version
 	} = urls[platform][arch]
 	const selected = currentArch === arch && currentPlatform === platform

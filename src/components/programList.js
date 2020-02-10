@@ -139,7 +139,10 @@ StorageProgramList.defaultProps = {
 }
 
 StorageProgramList.propTypes = {
-	ItemContainer : PropTypes.func,
+	ItemContainer : PropTypes.oneOfType([
+		PropTypes.func,
+		PropTypes.object,
+	]),
 	ids           : PropTypes.arrayOf(PropTypes.string),
 	title         : PropTypes.string,
 	storageStatus : PropTypes.oneOf([

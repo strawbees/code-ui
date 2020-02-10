@@ -18,6 +18,21 @@ msgctxt "error.og.title"
 msgid "Not found"
 msgstr "Hittades inte"
 
+msgctxt "ui.sb_cloud.delete_account.dialog.title"
+msgid "Delete Strawbees Cloud account"
+msgstr ""
+
+msgctxt "ui.sb_cloud.delete_account.dialog.description"
+msgid ""
+"You are about to delete your account and all your data **PERMANENTLY**!\n"
+"\n"
+"Are you sure you want to proceed?"
+msgstr ""
+
+msgctxt "ui.sb_cloud.delete_account.dialog.confirm"
+msgid "Delete my account"
+msgstr ""
+
 msgctxt "ui.sb_cloud.signup.cta"
 msgid "Sign up"
 msgstr "Skapa konto"
@@ -298,6 +313,54 @@ msgctxt "ui.sb_cloud.confirm_email.submit.success"
 msgid "Your email is confirmed."
 msgstr "Din e-post är bekräftad."
 
+msgctxt "ui.sb_cloud.change_password.title"
+msgid "Change password"
+msgstr ""
+
+msgctxt "ui.sb_cloud.change_password.password.label"
+msgid "New password"
+msgstr ""
+
+msgctxt "ui.sb_cloud.change_password.password.error.blank"
+msgid "You need to fill in your password."
+msgstr ""
+
+msgctxt "ui.sb_cloud.change_password.password.error.short"
+msgid "Password needs to be at least 6 characters long."
+msgstr ""
+
+msgctxt "ui.sb_cloud.change_password.password_confirm.label"
+msgid "Confirm new password"
+msgstr ""
+
+msgctxt "ui.sb_cloud.change_password.password_confirm.error.blank"
+msgid "You need to fill in your password."
+msgstr ""
+
+msgctxt "ui.sb_cloud.change_password.password_confirm.error.missmatch"
+msgid "Password doesn't match."
+msgstr ""
+
+msgctxt "ui.sb_cloud.change_password.submit"
+msgid "Sign up"
+msgstr ""
+
+msgctxt "ui.sb_cloud.change_password.submit.error.network"
+msgid "There seems to be a connection problem."
+msgstr ""
+
+msgctxt "ui.sb_cloud.change_password.submit.error.server"
+msgid "Server is not responding."
+msgstr ""
+
+msgctxt "ui.sb_cloud.change_password.submit.error.unhandled"
+msgid "We are having problems, please try again later."
+msgstr ""
+
+msgctxt "ui.sb_cloud.change_password.submit.success"
+msgid "Your password is changed!"
+msgstr ""
+
 msgctxt "ui.program_creator.title"
 msgid "Create a program"
 msgstr "Skapa ett program"
@@ -385,6 +448,14 @@ msgstr "Guider"
 msgctxt "ui.help_menu.options.intro_code.title"
 msgid "Using Strawbees CODE"
 msgstr "Använda Strawbees CODE"
+
+msgctxt "ui.help_menu.options.coding_cards.flow.title"
+msgid "Flow coding cards..."
+msgstr ""
+
+msgctxt "ui.help_menu.options.coding_cards.block.title"
+msgid "Block coding cards..."
+msgstr ""
 
 msgctxt "ui.help_menu.options.intro_code.video"
 msgid "https://www.youtube.com/watch?v=-D9FhCw9OVA"
@@ -587,6 +658,22 @@ msgstr "Skapa konto"
 msgctxt "ui.user.account_settings.logout"
 msgid "Log out"
 msgstr "Logga ut"
+
+msgctxt "ui.user.account_settings.download_data"
+msgid "Download all my data"
+msgstr ""
+
+msgctxt "ui.user.account_settings.change_password"
+msgid "Change password"
+msgstr ""
+
+msgctxt "ui.user.account_settings.danger_zone"
+msgid "Danger zone"
+msgstr ""
+
+msgctxt "ui.user.account_settings.delete_account"
+msgid "Delete my account and data"
+msgstr ""
 
 msgctxt "ui.user.account_settings.public_profile.title"
 msgid "Public profile link"

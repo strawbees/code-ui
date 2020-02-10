@@ -80,7 +80,7 @@ class Button extends React.Component {
 						background-color: ${tinycolor(bgHoverColor).toRgbString()};
 					}
 					.root.disabled {
-						opacity: 0.7;
+						opacity: 0.5;
 						cursor: default;
 					}
 				`}</style>

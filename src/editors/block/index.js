@@ -137,7 +137,7 @@ class BlockEditor extends React.Component {
 		// Load toolbox
 		const toolboxXmlString = toolboxToXmlString(toolbox(strings))
 		const toolboxXml = Blockly.Xml.textToDom(toolboxXmlString)
-		delete window.Blockly.Blocks.defaultToolbox
+		delete Blockly.Blocks.defaultToolbox
 
 		// Setup workspace
 		const { mainWorkspaceContainer } = this
@@ -159,7 +159,7 @@ class BlockEditor extends React.Component {
 
 		// HACK: as way to avoid spurious variables from being created at
 		// random while moving blocks around.
-		window.Blockly.FieldVariable.prototype.initModel = () => {}
+		Blockly.FieldVariable.prototype.initModel = () => {}
 
 		// Handle the source changes
 		const {
@@ -198,16 +198,16 @@ class BlockEditor extends React.Component {
 		this.loadSource(refEditorSource)
 
 		// Override blockly alert
-		this.originalBlocklyAlert = window.Blockly.alert
-		window.Blockly.alert = (m, cb) => setTimeout(() => this.props.openAlert(m, cb), 0)
+		this.originalBlocklyAlert = Blockly.alert
+		Blockly.alert = (m, cb) => setTimeout(() => this.props.openAlert(m, cb), 0)
 		// Override blockly confirm
-		this.originalBlocklyConfirm = window.Blockly.confirm
-		window.Blockly.confirm = (m, cb) => setTimeout(() => this.props.openConfirm(m, cb), 0)
+		this.originalBlocklyConfirm = Blockly.confirm
+		Blockly.confirm = (m, cb) => setTimeout(() => this.props.openConfirm(m, cb), 0)
 		// Override blockly prompt
-		this.originalBlocklyPrompt = window.Blockly.prompt
-		window.Blockly.prompt = (m, d, cb) => setTimeout(() => this.props.openPrompt(m, d, cb), 0)
+		this.originalBlocklyPrompt = Blockly.prompt
+		Blockly.prompt = (m, d, cb) => setTimeout(() => this.props.openPrompt(m, d, cb), 0)
 
-		const { DataCategory } = window.Blockly
+		const { DataCategory } = Blockly
 		DataCategory.createValue = (valueName, type, value) =>
 			`<value name="${valueName}">
 				<shadow type="math_number">
@@ -251,17 +251,17 @@ class BlockEditor extends React.Component {
 		 * flag to decide if it's a new procedure or not.
 		 */
 		// eslint-disable-next-line no-underscore-dangle
-		this.originalBlocklyCreateProcedureDefCallback_ = window.Blockly.Procedures.createProcedureDefCallback_
+		this.originalBlocklyCreateProcedureDefCallback_ = Blockly.Procedures.createProcedureDefCallback_
 		const proceduresFlags = {}
 		// eslint-disable-next-line no-underscore-dangle,func-names
-		window.Blockly.Procedures.createProcedureDefCallback_ = (workspace) => {
+		Blockly.Procedures.createProcedureDefCallback_ = (workspace) => {
 			proceduresFlags.isNew = true
 			// eslint-disable-next-line no-underscore-dangle
 			this.originalBlocklyCreateProcedureDefCallback_(workspace)
 		}
 		// HACK end ------------------------------------------------------------
 
-		window.Blockly.Procedures.externalProcedureDefCallback = async (mutation, cb) => {
+		Blockly.Procedures.externalProcedureDefCallback = async (mutation, cb) => {
 			// Figure out if this is a new procedure or if we are editing an
 			// existing one.
 			// HACK start ----------------------
@@ -320,7 +320,7 @@ class BlockEditor extends React.Component {
 						}
 						// Check if there is any procedure with the same
 						// proccode. If so, cancel.
-						const procedureSource = xmlToJson(window.Blockly.Xml.workspaceToDom(this.mainWorkspace))
+						const procedureSource = xmlToJson(Blockly.Xml.workspaceToDom(this.mainWorkspace))
 						const existingProcedure =
 							procedureSource &&
 							procedureSource.BLOCK &&
@@ -452,6 +452,10 @@ class BlockEditor extends React.Component {
 	}
 
 	componentWillUnmount() {
+		const {
+			Blockly
+		} = window
+
 		if (this.cancelSourceUpdate) {
 			this.cancelSourceUpdate()
 		}
@@ -460,24 +464,24 @@ class BlockEditor extends React.Component {
 		// restore procedures HACK
 		/* eslint-disable no-underscore-dangle */
 		if (this.originalBlocklyCreateProcedureDefCallback_) {
-			window.window.Blockly.Procedures.createProcedureDefCallback_ = this.originalBlocklyCreateProcedureDefCallback_
+			Blockly.Procedures.createProcedureDefCallback_ = this.originalBlocklyCreateProcedureDefCallback_
 			delete this.originalBlocklyCreateProcedureDefCallback_
 		}
 		/* eslint-enable no-underscore-dangle */
 
 		// restore blockly alert
 		if (this.originalBlocklyAlert) {
-			window.Blockly.alert = this.originalBlocklyAlert
+			Blockly.alert = this.originalBlocklyAlert
 			delete this.originalBlocklyAlert
 		}
 		// restore blockly confirm
 		if (this.originalBlocklyConfirm) {
-			window.Blockly.confirm = this.originalBlocklyConfirm
+			Blockly.confirm = this.originalBlocklyConfirm
 			delete this.originalBlocklyConfirm
 		}
 		// restore blockly prompt
 		if (this.originalBlocklyPrompt) {
-			window.Blockly.prompt = this.originalBlocklyPrompt
+			Blockly.prompt = this.originalBlocklyPrompt
 			delete this.originalBlocklyPrompt
 		}
 	}

@@ -185,7 +185,10 @@ const VisualToTextEditor = ({
 	</div>
 
 VisualToTextEditor.propTypes = {
-	VisualEditor  : PropTypes.func,
+	VisualEditor : PropTypes.PropTypes.oneOfType([
+		PropTypes.func,
+		PropTypes.object,
+	]),
 	safeOpenModal : PropTypes.func,
 	type          : PropTypes.string,
 }
