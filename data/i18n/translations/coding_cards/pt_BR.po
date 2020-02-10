@@ -1,4 +1,4 @@
-# 
+# paulobarcelos <paulo@strawbees.com>, 2020. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
@@ -6,8 +6,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2020-02-10 05:37+0000\n"
+"Last-Translator: paulobarcelos <paulo@strawbees.com>\n"
 "Language-Team: Portuguese (Brazil)\n"
 "Language: pt_BR\n"
 "X-Generator: Zanata 4.6.2\n"
@@ -15,23 +15,23 @@ msgstr ""
 
 msgctxt "coding_cards.flow.title"
 msgid "Flow coding cards"
-msgstr ""
+msgstr "Cartas de programação Flow"
 
 msgctxt "coding_cards.block.title"
 msgid "Block coding cards"
-msgstr ""
+msgstr "Cartas de programação Block"
 
 msgctxt "coding_cards.back-to-coding-cards"
 msgid "Back to cards"
-msgstr ""
+msgstr "Voltar às cartas"
 
 msgctxt "coding_cards.open-program"
 msgid "Open in editor"
-msgstr ""
+msgstr "Abrir no editor"
 
 msgctxt "coding_cards.hardware.built-in-led.title"
 msgid "Built-in LED"
-msgstr ""
+msgstr "LED embutido"
 
 msgctxt "coding_cards.hardware.dual-color-led.title"
 msgid "Dual color LED"
