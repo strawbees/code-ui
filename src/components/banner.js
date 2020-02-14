@@ -48,7 +48,14 @@ const Banner = ({
 				}
 			}
 		`}</style>
-		<div className='containter'>
+		<div className='containter'
+			onClick={() => {
+				fireGlobalEvent('track-event', {
+					category : 'ui',
+					action   : 'banner click',
+					label    : id
+				})
+			}}>
 			{title &&
 				<div className='title'>
 					{title}
