@@ -1,3 +1,16 @@
 {
-	
+	"app_announcement_20200213" : {
+		"en" : {
+			"title" : "Offline app released!",
+			"content" : "[Download the new CODE app now.](/download/)"
+		},
+		"sv" : {
+			"title" : "Ny offline app ute nu!",
+			"content" : "[Ladda ner den nya CODE appen nu.](/sv/nedladdning/)"
+		},
+		"pt_BR" : {
+			"title" : "Novo aplicativo offline!",
+			"content" : "[Baixe o novo applicativo do CODE agora.](/pt-br/download/)"
+		}
+	}
 }
