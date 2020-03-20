@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
@@ -9,14 +9,14 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Chinese (Simplified, China)\n"
-"Language: zh_Hans_CN\n"
-"X-Generator: Zanata 4.6.2\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Language: zh_CN\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 msgctxt "md.cookie-policy.og.title"
 msgid "Cookie Policy"
-msgstr ""
+msgstr "Cookie 政策"
 
 msgctxt "md.cookie-policy.base.title"
 msgid "Cookie Policy"
-msgstr ""
+msgstr "Cookie 政策"

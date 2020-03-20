@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
@@ -9,13 +9,12 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Chinese (Simplified, China)\n"
-"Language: zh_Hans_CN\n"
-"X-Generator: Zanata 4.6.2\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 msgctxt "password-reset.og.title"
 msgid "Reset Password"
-msgstr ""
+msgstr "重设密码"
 
 msgctxt "password-reset.base.title"
 msgid "Reset Password"

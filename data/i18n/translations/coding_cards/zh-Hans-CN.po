@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
@@ -9,142 +9,142 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Chinese (Simplified, China)\n"
-"Language: zh_Hans_CN\n"
-"X-Generator: Zanata 4.6.2\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Language: zh_CN\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 msgctxt "coding_cards.flow.title"
 msgid "Flow coding cards"
-msgstr ""
+msgstr "FLOW流编程卡"
 
 msgctxt "coding_cards.block.title"
 msgid "Block coding cards"
-msgstr ""
+msgstr "积木编程卡"
 
 msgctxt "coding_cards.back-to-coding-cards"
 msgid "Back to cards"
-msgstr ""
+msgstr "返回卡片"
 
 msgctxt "coding_cards.open-program"
 msgid "Open in editor"
-msgstr ""
+msgstr "在编辑器打开"
 
 msgctxt "coding_cards.hardware.built-in-led.title"
 msgid "Built-in LED"
-msgstr ""
+msgstr "内置 LED"
 
 msgctxt "coding_cards.hardware.dual-color-led.title"
 msgid "Dual color LED"
-msgstr ""
+msgstr "双色 LED"
 
 msgctxt "coding_cards.hardware.servo-motor.title"
 msgid "Servo Motor"
-msgstr ""
+msgstr "舵机"
 
 msgctxt "coding_cards.hardware.key-press.title"
 msgid "Key Press"
-msgstr ""
+msgstr "按键"
 
 msgctxt "coding_cards.hardware.buzzer.title"
 msgid "Buzzer"
-msgstr ""
+msgstr "蜂鸣器"
 
 msgctxt "coding_cards.hardware.circuit-touch.title"
 msgid "Circuit Touch"
-msgstr ""
+msgstr "触摸电路"
 
 msgctxt "coding_cards.hardware.light-sensor.title"
 msgid "Light Sensor"
-msgstr ""
+msgstr "光传感器"
 
 msgctxt "coding_cards.block.slide.code-and-hardware.title"
 msgid "Code & Hardware Requirements"
-msgstr ""
+msgstr "代码和硬件要求"
 
 msgctxt "coding_cards.block.slide.assembly.title"
 msgid "How to use the hardware"
-msgstr ""
+msgstr "如何使用硬件"
 
 msgctxt "coding_cards.block.card.blink.title"
 msgid "Blink"
-msgstr ""
+msgstr "闪烁"
 
 msgctxt "coding_cards.block.card.touch-and-wink.title"
 msgid "Touch and wink"
-msgstr ""
+msgstr "触摸闪烁"
 
 msgctxt "coding_cards.block.card.touch-to-shine.title"
 msgid "Touch to shine"
-msgstr ""
+msgstr "触摸点亮"
 
 msgctxt "coding_cards.block.card.shine-in-the-dark.title"
 msgid "Shine in the dark"
-msgstr ""
+msgstr "黑暗中点亮"
 
 msgctxt "coding_cards.block.card.flicker.title"
 msgid "Flicker"
-msgstr ""
+msgstr "闪烁"
 
 msgctxt "coding_cards.block.card.glow.title"
 msgid "Glow"
-msgstr ""
+msgstr "发光"
 
 msgctxt "coding_cards.block.card.light-switch.title"
 msgid "Light switch"
-msgstr ""
+msgstr "光传感器"
 
 msgctxt "coding_cards.block.card.switching-colors.title"
 msgid "Switching colors"
-msgstr ""
+msgstr "切换颜色"
 
 msgctxt "coding_cards.block.card.touch-to-siren-light.title"
 msgid "Touch to siren light"
-msgstr ""
+msgstr "触摸警笛灯"
 
 msgctxt "coding_cards.block.card.touch-to-change-color.title"
 msgid "Touch to change color"
-msgstr ""
+msgstr "触摸以更改颜色"
 
 msgctxt "coding_cards.block.card.change-color-in-the-dark.title"
 msgid "Change color in the dark"
-msgstr ""
+msgstr "在黑暗中改变颜色"
 
 msgctxt "coding_cards.block.card.flickering-color.title"
 msgid "Flickering color"
-msgstr ""
+msgstr "闪烁的颜色"
 
 msgctxt "coding_cards.block.card.fading-colors.title"
 msgid "Fading colors"
-msgstr ""
+msgstr "褪色"
 
 msgctxt "coding_cards.block.card.mood-light-switch.title"
 msgid "Mood light switch"
-msgstr ""
+msgstr "心情灯开关"
 
 msgctxt "coding_cards.block.card.back-and-forth.title"
 msgid "Back and forth"
-msgstr ""
+msgstr "来回"
 
 msgctxt "coding_cards.block.card.touch-and-trap.title"
 msgid "Touch and trap"
-msgstr ""
+msgstr "触摸陷阱"
 
 msgctxt "coding_cards.block.card.touch-to-hold-position.title"
 msgid "Touch to hold position"
-msgstr ""
+msgstr "触摸以保持位置"
 
 msgctxt "coding_cards.block.card.shake-in-the-dark.title"
 msgid "Shake in the dark"
-msgstr ""
+msgstr "在黑暗中摇晃"
 
 msgctxt "coding_cards.block.card.shake.title"
 msgid "Shake"
-msgstr ""
+msgstr "摇晃"
 
 msgctxt "coding_cards.block.card.sweep.title"
 msgid "Sweep"
-msgstr ""
+msgstr "清除"
 
 msgctxt "coding_cards.block.card.touch-to-switch-position.title"
 msgid "Touch to switch position"
-msgstr ""
+msgstr "触摸以改变位置"
