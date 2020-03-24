@@ -115,11 +115,11 @@ msgstr "请确认电子邮件"
 
 msgctxt "ui.sb_cloud.signup.email_confirm.error.blank"
 msgid "You need to fill in your email."
-msgstr "请输入您的电子邮件."
+msgstr "请输入您的电子邮件"
 
 msgctxt "ui.sb_cloud.signup.email_confirm.error.missmatch"
 msgid "Email doesn't match."
-msgstr "邮件不正确."
+msgstr "邮件不正确"
 
 msgctxt "ui.sb_cloud.signup.password.label"
 msgid "Password"
@@ -131,7 +131,7 @@ msgstr "请输入您的密码."
 
 msgctxt "ui.sb_cloud.signup.password.error.short"
 msgid "Password needs to be at least 6 characters long."
-msgstr "密码需要至少 6 个字符长。"
+msgstr "密码需要至少 6 个字符长"
 
 msgctxt "ui.sb_cloud.signup.password_confirm.label"
 msgid "Confirm password"
@@ -139,11 +139,11 @@ msgstr "确认密码"
 
 msgctxt "ui.sb_cloud.signup.password_confirm.error.blank"
 msgid "You need to fill in your password."
-msgstr "请输入您的密码."
+msgstr "请输入您的密码"
 
 msgctxt "ui.sb_cloud.signup.password_confirm.error.missmatch"
 msgid "Password doesn't match."
-msgstr "密码不匹配。"
+msgstr "密码不匹配"
 
 msgctxt "ui.sb_cloud.signup.terms.label"
 msgid "Terms and conditions"
@@ -155,13 +155,13 @@ msgid ""
 "<a href='/privacy-policy' target=_blank>privacy policy</a> and <a href='/"
 "cookie-policy' target=_blank>cookie policy</a>."
 msgstr ""
-"我已阅读并接受<a href='/terms' target=\"_blank\">使用条款</a>，<a href='/"
-"privacy-policy' target=\"_blank\">隐私政策</a>和<a href='/cookie-policy' "
-"target=\"_blank\">饼干政策</a>。"
+"我已阅读并接受<a href='/zh-hans-cn/terms' target=\"_blank\">使用条款</a>，<a href='/"
+"privacy-policy' target=\"_blank\">隐私政策</a>和<a href='/zh-hans-cn/cookie-policy' "
+"target=\"_blank\">饼干政策</a>"
 
 msgctxt "ui.sb_cloud.signup.terms.error.agree"
 msgid "You must read and accept the terms and conditions."
-msgstr "您必须阅读并接受条款和条件。"
+msgstr "您必须阅读并接受条款和条件"
 
 msgctxt "ui.sb_cloud.signup.submit"
 msgid "Sign up"
@@ -169,15 +169,15 @@ msgstr "注册"
 
 msgctxt "ui.sb_cloud.signup.submit.error.network"
 msgid "There seems to be a connection problem."
-msgstr "似乎有连接问题。"
+msgstr "似乎有连接问题"
 
 msgctxt "ui.sb_cloud.signup.submit.error.server"
 msgid "Server is not responding."
-msgstr "服务器未响应。"
+msgstr "服务器未响应"
 
 msgctxt "ui.sb_cloud.signup.submit.error.unhandled"
 msgid "We are having problems, please try again later."
-msgstr "遇到问题，请稍后再试。"
+msgstr "遇到问题，请稍后再试"
 
 msgctxt "ui.sb_cloud.signin.username.label"
 msgid "Username"
@@ -185,7 +185,7 @@ msgstr "用户名"
 
 msgctxt "ui.sb_cloud.signin.username.error.blank"
 msgid "You need to fill in your username."
-msgstr "您需要输入您的用户名."
+msgstr "请输入您的用户名"
 
 msgctxt "ui.sb_cloud.signin.password.label"
 msgid "Password"
@@ -193,7 +193,7 @@ msgstr "密码"
 
 msgctxt "ui.sb_cloud.signin.password.error.blank"
 msgid "You need to fill in your password."
-msgstr "请输入您的密码."
+msgstr "请输入您的密码"
 
 msgctxt "ui.sb_cloud.signin.submit"
 msgid "Login"
@@ -201,19 +201,19 @@ msgstr "登录"
 
 msgctxt "ui.sb_cloud.signin.submit.error.network"
 msgid "There seems to be a connection problem."
-msgstr "似乎有连接问题。"
+msgstr "似乎有连接问题"
 
 msgctxt "ui.sb_cloud.signin.submit.error.server"
 msgid "Server is not responding."
-msgstr "服务器未响应。"
+msgstr "服务器未响应"
 
 msgctxt "ui.sb_cloud.signin.submit.error.unhandled"
 msgid "We are having problems, please try again later."
-msgstr "遇到问题，请稍后再试。"
+msgstr "遇到问题，请稍后再试"
 
 msgctxt "ui.sb_cloud.signin.submit.error.not_authorized"
 msgid "Invalid username or password."
-msgstr " 用户名或密码无效."
+msgstr " 用户名或密码无效"
 
 msgctxt "ui.sb_cloud.forgot.title"
 msgid "Forgot password?"
@@ -225,7 +225,7 @@ msgstr "用户名"
 
 msgctxt "ui.sb_cloud.forgot.username.error.blank"
 msgid "You need to fill in your username."
-msgstr "请输入您的用户名."
+msgstr "请输入您的用户名"
 
 msgctxt "ui.sb_cloud.forgot.submit"
 msgid "Reset password"
@@ -233,23 +233,23 @@ msgstr "重置密码"
 
 msgctxt "ui.sb_cloud.forgot.submit.error.network"
 msgid "There seems to be a connection problem."
-msgstr "似乎有连接问题。"
+msgstr "似乎有连接问题"
 
 msgctxt "ui.sb_cloud.forgot.submit.error.server"
 msgid "Server is not responding."
-msgstr "服务器未响应。"
+msgstr "服务器未响应"
 
 msgctxt "ui.sb_cloud.forgot.submit.error.unhandled"
 msgid "We are having problems, please try again later."
-msgstr "遇到问题，请稍后再试。"
+msgstr "遇到问题，请稍后再试"
 
 msgctxt "ui.sb_cloud.forgot.submit.error.user_not_found"
 msgid "This username is not registered."
-msgstr "此用户名未注册。"
+msgstr "此用户名未注册"
 
 msgctxt "ui.sb_cloud.forgot.submit.success"
 msgid "Check your email for instructions on how to reset your password."
-msgstr "检查电子邮件，了解如何重置密码的说明。"
+msgstr "请检查电子邮件，查看如何重置密码的说明"
 
 msgctxt "ui.sb_cloud.reset_password.password.label"
 msgid "New password"
@@ -257,11 +257,11 @@ msgstr "新密码"
 
 msgctxt "ui.sb_cloud.reset_password.password.error.blank"
 msgid "You need to fill in your new password."
-msgstr "请输入新密码。"
+msgstr "请输入新密码"
 
 msgctxt "ui.sb_cloud.reset_password.password.error.short"
 msgid "Password needs to be at least 6 characters long."
-msgstr "密码需要至少 6 个字符长。"
+msgstr "密码需要至少 6 个字符长"
 
 msgctxt "ui.sb_cloud.reset_password.submit"
 msgid "Reset password"
@@ -269,23 +269,23 @@ msgstr "重置密码"
 
 msgctxt "ui.sb_cloud.reset_password.submit.error.network"
 msgid "There seems to be a connection problem."
-msgstr "似乎有连接问题。"
+msgstr "似乎有连接问题"
 
 msgctxt "ui.sb_cloud.reset_password.submit.error.server"
 msgid "Server is not responding."
-msgstr "服务器未响应。"
+msgstr "服务器未响应"
 
 msgctxt "ui.sb_cloud.reset_password.submit.error.unhandled"
 msgid "We are having problems, please try again later."
-msgstr "遇到问题，请稍后再试。"
+msgstr "遇到问题，请稍后再试"
 
 msgctxt "ui.sb_cloud.reset_password.submit.error.invalid_link"
 msgid "This reset password link is expired."
-msgstr "此重置密码链接已过期。"
+msgstr "此重置密码链接已过期"
 
 msgctxt "ui.sb_cloud.reset_password.submit.success"
 msgid "Your password was updated."
-msgstr "您的密码已更新。"
+msgstr "您的密码已更新"
 
 msgctxt "ui.sb_cloud.confirm_email.title"
 msgid "Confirm email"
@@ -293,23 +293,23 @@ msgstr "请确认电子邮件"
 
 msgctxt "ui.sb_cloud.confirm_email.submit.error.network"
 msgid "There seems to be a connection problem."
-msgstr "似乎有连接问题。"
+msgstr "似乎有连接问题"
 
 msgctxt "ui.sb_cloud.confirm_email.submit.error.server"
 msgid "Server is not responding."
-msgstr "服务器未响应。"
+msgstr "服务器未响应"
 
 msgctxt "ui.sb_cloud.confirm_email.submit.error.unhandled"
 msgid "We are having problems, please try again later."
-msgstr "遇到问题，请稍后再试。"
+msgstr "遇到问题，请稍后再试"
 
 msgctxt "ui.sb_cloud.confirm_email.submit.error.invalid_link"
 msgid "This confirmation link is invalid."
-msgstr "此确认链接无效。"
+msgstr "此链接已失效"
 
 msgctxt "ui.sb_cloud.confirm_email.submit.success"
 msgid "Your email is confirmed."
-msgstr "您的电子邮件已确认。"
+msgstr "您的电子邮件已确认"
 
 msgctxt "ui.sb_cloud.change_password.title"
 msgid "Change password"
@@ -321,11 +321,11 @@ msgstr "新密码"
 
 msgctxt "ui.sb_cloud.change_password.password.error.blank"
 msgid "You need to fill in your password."
-msgstr "请输入您的密码."
+msgstr "请输入您的密码"
 
 msgctxt "ui.sb_cloud.change_password.password.error.short"
 msgid "Password needs to be at least 6 characters long."
-msgstr "密码需要至少 6 个字符长。"
+msgstr "密码需要至少 6 个字符长"
 
 msgctxt "ui.sb_cloud.change_password.password_confirm.label"
 msgid "Confirm new password"
@@ -333,11 +333,11 @@ msgstr "确认新密码"
 
 msgctxt "ui.sb_cloud.change_password.password_confirm.error.blank"
 msgid "You need to fill in your password."
-msgstr "请输入您的密码."
+msgstr "请输入您的密码"
 
 msgctxt "ui.sb_cloud.change_password.password_confirm.error.missmatch"
 msgid "Password doesn't match."
-msgstr "邮件不正确."
+msgstr "密码不匹配"
 
 msgctxt "ui.sb_cloud.change_password.submit"
 msgid "Sign up"
@@ -345,15 +345,15 @@ msgstr "注册"
 
 msgctxt "ui.sb_cloud.change_password.submit.error.network"
 msgid "There seems to be a connection problem."
-msgstr "似乎有连接问题。"
+msgstr "似乎有连接问题"
 
 msgctxt "ui.sb_cloud.change_password.submit.error.server"
 msgid "Server is not responding."
-msgstr "服务器未响应。"
+msgstr "服务器未响应"
 
 msgctxt "ui.sb_cloud.change_password.submit.error.unhandled"
 msgid "We are having problems, please try again later."
-msgstr "遇到问题，请稍后再试。"
+msgstr "遇到问题，请稍后再试"
 
 msgctxt "ui.sb_cloud.change_password.submit.success"
 msgid "Your password is changed!"
@@ -425,7 +425,7 @@ msgstr "另存为副本..."
 
 msgctxt "ui.file_menu.options.share"
 msgid "Share..."
-msgstr "共享。。。"
+msgstr "分享..."
 
 msgctxt "ui.file_menu.options.import"
 msgid "Load from computer..."
@@ -493,7 +493,7 @@ msgstr ""
 
 msgctxt "ui.help_menu.options.learning_platform"
 msgid "Visit Strawbees Learning"
-msgstr "转到Strawbees学习平台"
+msgstr " 访问Strawbees学习平台"
 
 msgctxt "ui.help_menu.options.learning_platform.url"
 msgid "https://learning.strawbees.com"
@@ -501,7 +501,7 @@ msgstr "https://learning.strawbees.com"
 
 msgctxt "ui.dialog.upload.title"
 msgid "Upload to Quirkbot"
-msgstr "上传到Quirkbot奇宝机器人…"
+msgstr "上传到Quirkbot奇宝机器人"
 
 msgctxt "ui.dialog.duplicate.title"
 msgid "Save as a copy"
@@ -517,7 +517,7 @@ msgstr "保存"
 
 msgctxt "ui.dialog.share.title"
 msgid "Share"
-msgstr "共享"
+msgstr "分享"
 
 msgctxt "ui.dialog.share.dynamic_url.title"
 msgid "Link to this program"
@@ -529,7 +529,7 @@ msgstr "从计算机加载"
 
 msgctxt "ui.dialog.import.drag_file"
 msgid "Drop your program file here."
-msgstr "将程序文件放在此处。"
+msgstr "将程序文件放在此处"
 
 msgctxt "ui.dialog.import.drop_file"
 msgid "Drop it!"
@@ -549,7 +549,7 @@ msgstr "此文件格式无效."
 
 msgctxt "ui.dialog.import.success"
 msgid "Click on the program to open it."
-msgstr "单击程序以将其打开。"
+msgstr "单击打开程序"
 
 msgctxt "ui.dialog.export.title"
 msgid "Save to computer"
@@ -591,11 +591,11 @@ msgstr "您想复制现有程序到您的帐户吗？"
 
 msgctxt "ui.dialog.anonymous_copy_programs.confirm"
 msgid "Yes, copy programs"
-msgstr "是，复制程序"
+msgstr "是的，复制程序"
 
 msgctxt "ui.dialog.anonymous_copy_programs.cancel"
 msgid "No"
-msgstr "不"
+msgstr "取消"
 
 msgctxt "ui.program_list.title.storage"
 msgid "My programs"
@@ -713,7 +713,7 @@ msgstr "没有检测到"
 
 msgctxt "ui.board.status.notReady"
 msgid "Missing helper, click to install."
-msgstr "缺少帮助程序，单击以进行安装。"
+msgstr "缺少帮助程序,点击安装"
 
 msgctxt "ui.board.status.notAvailable"
 msgid "Browser not supported"
@@ -725,7 +725,7 @@ msgstr "准备好了"
 
 msgctxt "ui.board.status.busy"
 msgid "Busy"
-msgstr "忙碌"
+msgstr "繁忙"
 
 msgctxt "ui.board.status.problem"
 msgid "Error"
@@ -733,11 +733,11 @@ msgstr "错误"
 
 msgctxt "ui.board.status.bootloader"
 msgid "Recovery Mode"
-msgstr "恢复刷机"
+msgstr "恢复模式"
 
 msgctxt "ui.board.dependencies.serial.title.not_supported"
 msgid "Browser not supported."
-msgstr "不支持浏览器。"
+msgstr "不支持的浏览器"
 
 msgctxt "ui.board.dependencies.serial.title.missing"
 msgid "Add Strawbees CODE helper"
@@ -745,7 +745,7 @@ msgstr "添加Strawbees代码帮助器"
 
 msgctxt "ui.board.dependencies.serial.title.ready"
 msgid "Ready to use"
-msgstr "随时可以使用"
+msgstr "可以使用"
 
 msgctxt "ui.board.dependencies.serial.not_supported"
 msgid ""
@@ -755,7 +755,7 @@ msgstr "为了能够与您的Quirkbot奇宝机器人通讯，请使用chrome浏�
 
 msgctxt "ui.board.dependencies.serial.ready"
 msgid "We are ready to communicate with your Quirkbot!"
-msgstr "我们准备与您的Quirkbot奇宝机器人沟通！"
+msgstr "已准备好与您的Quirkbot奇宝机器人通讯！"
 
 #, fuzzy
 msgctxt "ui.board.dependencies.serial.install.text"

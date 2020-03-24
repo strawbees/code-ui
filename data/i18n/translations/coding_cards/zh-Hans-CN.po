@@ -67,7 +67,7 @@ msgstr "如何使用硬件"
 
 msgctxt "coding_cards.block.card.blink.title"
 msgid "Blink"
-msgstr "闪烁"
+msgstr "定时闪烁"
 
 msgctxt "coding_cards.block.card.touch-and-wink.title"
 msgid "Touch and wink"
@@ -83,11 +83,11 @@ msgstr "黑暗中点亮"
 
 msgctxt "coding_cards.block.card.flicker.title"
 msgid "Flicker"
-msgstr "闪烁"
+msgstr "随机闪烁"
 
 msgctxt "coding_cards.block.card.glow.title"
 msgid "Glow"
-msgstr "发光"
+msgstr "渐变点亮"
 
 msgctxt "coding_cards.block.card.light-switch.title"
 msgid "Light switch"
@@ -99,23 +99,23 @@ msgstr "切换颜色"
 
 msgctxt "coding_cards.block.card.touch-to-siren-light.title"
 msgid "Touch to siren light"
-msgstr "触摸警笛灯"
+msgstr "触摸警笛"
 
 msgctxt "coding_cards.block.card.touch-to-change-color.title"
 msgid "Touch to change color"
-msgstr "触摸以更改颜色"
+msgstr "触摸变色"
 
 msgctxt "coding_cards.block.card.change-color-in-the-dark.title"
 msgid "Change color in the dark"
-msgstr "在黑暗中改变颜色"
+msgstr "暗处变色"
 
 msgctxt "coding_cards.block.card.flickering-color.title"
 msgid "Flickering color"
-msgstr "闪烁的颜色"
+msgstr "双灯闪烁"
 
 msgctxt "coding_cards.block.card.fading-colors.title"
 msgid "Fading colors"
-msgstr "褪色"
+msgstr "双灯褪色"
 
 msgctxt "coding_cards.block.card.mood-light-switch.title"
 msgid "Mood light switch"
@@ -123,28 +123,28 @@ msgstr "心情灯开关"
 
 msgctxt "coding_cards.block.card.back-and-forth.title"
 msgid "Back and forth"
-msgstr "来回"
+msgstr "来回摆动"
 
 msgctxt "coding_cards.block.card.touch-and-trap.title"
 msgid "Touch and trap"
-msgstr "触摸陷阱"
+msgstr "触发陷阱"
 
 msgctxt "coding_cards.block.card.touch-to-hold-position.title"
 msgid "Touch to hold position"
-msgstr "触摸以保持位置"
+msgstr "触摸保持角度"
 
 msgctxt "coding_cards.block.card.shake-in-the-dark.title"
 msgid "Shake in the dark"
-msgstr "在黑暗中摇晃"
+msgstr "暗处摆动"
 
 msgctxt "coding_cards.block.card.shake.title"
 msgid "Shake"
-msgstr "摇晃"
+msgstr "随机摆动"
 
 msgctxt "coding_cards.block.card.sweep.title"
 msgid "Sweep"
-msgstr "清除"
+msgstr "扫描"
 
 msgctxt "coding_cards.block.card.touch-to-switch-position.title"
 msgid "Touch to switch position"
-msgstr "触摸以改变位置"
+msgstr "触摸改变角度"

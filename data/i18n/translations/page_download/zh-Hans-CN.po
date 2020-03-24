@@ -19,13 +19,13 @@ msgstr "下载"
 
 msgctxt "download.base.title"
 msgid "Download Strawbees CODE"
-msgstr "下载Strawbees代码"
+msgstr "下载Strawbees CODE代码"
 
 msgctxt "download.base.description"
 msgid ""
 "Download the Strawbees CODE app to be able program anytime, even wihtout an "
 "internet connection!"
-msgstr "下载Strawbees CODE应用程序,以便能够随时编程,即使没有互联网连接！"
+msgstr "下载Strawbees CODE应用程序,以便在没有联网的环境下也能够随时编程！"
 
 msgctxt "download.platform.darwin"
 msgid "macOS"

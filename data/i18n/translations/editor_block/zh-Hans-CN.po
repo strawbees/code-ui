@@ -243,7 +243,7 @@ msgstr "右腿"
 
 msgctxt "block.blocks.places.horn"
 msgid "horn"
-msgstr "角"
+msgstr "头部"
 
 msgctxt "block.blocks.places.servor_motor_1"
 msgid "1"

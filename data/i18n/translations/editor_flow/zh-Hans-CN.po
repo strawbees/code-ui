@@ -111,7 +111,7 @@ msgstr "逻辑"
 
 msgctxt "flow.node.makey-touch"
 msgid "Circuit Touch"
-msgstr "触摸电路"
+msgstr "触摸传感器"
 
 msgctxt "flow.node.math"
 msgid "Math"
@@ -119,7 +119,7 @@ msgstr "运算"
 
 msgctxt "flow.node.randomizer"
 msgid "Randomizer"
-msgstr "随机器"
+msgstr "随机数发生器"
 
 msgctxt "flow.node.sequence"
 msgid "Sequence"
@@ -131,7 +131,7 @@ msgstr "舵机"
 
 msgctxt "flow.node.sonar"
 msgid "Sonar"
-msgstr "声纳"
+msgstr "超声波传感器"
 
 msgctxt "flow.node.squeeze-sensor"
 msgid "Squeeze Sensor"
@@ -415,7 +415,7 @@ msgstr "右侧嘴"
 
 msgctxt "flow.constant.place-horn"
 msgid "Horn"
-msgstr "角"
+msgstr "头部"
 
 msgctxt "flow.constant.place-left-arm"
 msgid "Left arm"
@@ -435,7 +435,7 @@ msgstr "右腿"
 
 msgctxt "flow.constant.place-horn-front"
 msgid "Horn Front"
-msgstr "角正面"
+msgstr "头部正面"
 
 msgctxt "flow.constant.place-left-arm-front"
 msgid "Left Arm Front"
@@ -455,7 +455,7 @@ msgstr "右腿正面"
 
 msgctxt "flow.constant.place-horn-back"
 msgid "Horn Back"
-msgstr "角背面"
+msgstr "头部背面"
 
 msgctxt "flow.constant.place-left-arm-back"
 msgid "Left Arm Back"
