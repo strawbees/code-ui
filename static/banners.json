@@ -11,6 +11,10 @@
 		"pt_BR" : {
 			"title" : "Novo aplicativo offline!",
 			"content" : "[Baixe o novo applicativo do CODE agora.](/pt-br/download/)"
+		},
+		"zh-Hans-CN" : {
+			"title" : "离线版app现已发布！",
+			"content" : "[请下载新版 CODE app.](/zh-hans-cn/download/)"
 		}
 	}
 }
