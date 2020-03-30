@@ -1,16 +1,27 @@
 {
 	"app_announcement_20200213" : {
-		"en" : {
-			"title" : "Offline app released!",
-			"content" : "[Download the new CODE app now.](/download/)"
-		},
-		"sv" : {
-			"title" : "Ny offline app ute nu!",
-			"content" : "[Ladda ner den nya CODE appen nu.](/sv/nedladdning/)"
-		},
-		"pt_BR" : {
-			"title" : "Novo aplicativo offline!",
-			"content" : "[Baixe o novo applicativo do CODE agora.](/pt-br/download/)"
+		"configs" : [
+			"default",
+			"web_stage",
+			"web_production"
+		],
+		"content" : {
+			"en" : {
+				"title" : "Offline app released!",
+				"content" : "[Download the new CODE app now.](/download/)"
+			},
+			"sv" : {
+				"title" : "Ny offline app ute nu!",
+				"content" : "[Ladda ner den nya CODE appen nu.](/sv/nedladdning/)"
+			},
+			"pt_BR" : {
+				"title" : "Novo aplicativo offline!",
+				"content" : "[Baixe o novo applicativo do CODE agora.](/pt-br/download/)"
+			},
+			"zh-Hans-CN" : {
+				"title" : "离线版app现已发布！",
+				"content" : "[请下载新版 CODE app.](/zh-hans-cn/download/)"
+			}
 		}
 	}
 }

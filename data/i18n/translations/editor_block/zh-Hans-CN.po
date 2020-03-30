@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
@@ -9,13 +9,13 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Chinese (Simplified, China)\n"
-"Language: zh_Hans_CN\n"
-"X-Generator: Zanata 4.6.2\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: zh\n"
 
 msgctxt "block.og.title"
 msgid "Block Programming"
-msgstr ""
+msgstr "积木编程"
 
 msgctxt "block.og.image"
 msgid "/static/og/block.png"
@@ -23,264 +23,264 @@ msgstr ""
 
 msgctxt "block.base.title"
 msgid "Block"
-msgstr ""
+msgstr "积木"
 
 msgctxt "block.toolbox.category.input"
 msgid "Input"
-msgstr ""
+msgstr "输入"
 
 msgctxt "block.toolbox.category.output"
 msgid "Output"
-msgstr ""
+msgstr "输出"
 
 msgctxt "block.blocks.event_power_on.message0"
 msgid "when program starts"
-msgstr ""
+msgstr "当程序开始"
 
 msgctxt "block.blocks.input_circuit_touch.message0"
 msgid "value of circuit touch %1"
-msgstr ""
+msgstr "触摸传感器%1数值"
 
 msgctxt "block.blocks.input_circuit_touch_touched.message0"
 msgid "%1 is touched"
-msgstr ""
+msgstr "%1检测到触摸"
 
 msgctxt "block.blocks.input_light_sensor.message0"
 msgid "value of light sensor %1"
-msgstr ""
+msgstr "光线传感器%1数值"
 
 msgctxt "block.blocks.output_continuous_servo_direction.message0"
 msgid "set continuos servo %1 direction to %2"
-msgstr ""
+msgstr "设置连续舵机%1方向为%2"
 
 msgctxt "block.blocks.output_continuous_servo_speed.message0"
 msgid "set continuos servo %1 speed to %2"
-msgstr ""
+msgstr "设置连续舵机%1速度为%2"
 
 msgctxt "block.blocks.output_led.message0"
 msgid "set led %1 light to %2"
-msgstr ""
+msgstr "设置LED%1亮度为%2"
 
 msgctxt "block.blocks.output_led_dual_color_color.message0"
 msgid "set dual color led %1 color to %2"
-msgstr ""
+msgstr "设置双色LED%1颜色为%2"
 
 msgctxt "block.blocks.output_led_dual_color_light.message0"
 msgid "set dual color led %1 light to %2"
-msgstr ""
+msgstr "设置双色LED%1亮度为%2"
 
 msgctxt "block.blocks.output_servo.message0"
 msgid "set servo %1 position to %2"
-msgstr ""
+msgstr "设置舵机%1角度为%2"
 
 msgctxt "block.blocks.output_servo_transition.message0"
 msgid "transition servo %1 position to %2 over %3 seconds %4"
-msgstr ""
+msgstr "经过 %3 秒 %4转换舵机 %1 位置到 %2"
 
 msgctxt "block.blocks.easing.linear"
 msgid "linear"
-msgstr ""
+msgstr "线性"
 
 msgctxt "block.blocks.easing.sine-in"
 msgid "sine in"
-msgstr ""
+msgstr "sine in缓动效果"
 
 msgctxt "block.blocks.easing.sine-out"
 msgid "sine out"
-msgstr ""
+msgstr "sine out缓动效果"
 
 msgctxt "block.blocks.easing.sine-in-out"
 msgid "sine in out"
-msgstr ""
+msgstr "sine in out缓动效果"
 
 msgctxt "block.blocks.easing.quad-in"
 msgid "quad in"
-msgstr ""
+msgstr "quad in缓动效果"
 
 msgctxt "block.blocks.easing.quad-out"
 msgid "quad out"
-msgstr ""
+msgstr "quad out缓动效果"
 
 msgctxt "block.blocks.easing.quad-in-out"
 msgid "quad in out"
-msgstr ""
+msgstr "quad in out缓动效果"
 
 msgctxt "block.blocks.easing.cubic-in"
 msgid "cubic in"
-msgstr ""
+msgstr "cubic in缓动效果"
 
 msgctxt "block.blocks.easing.cubic-out"
 msgid "cubic out"
-msgstr ""
+msgstr "cubic out缓动效果"
 
 msgctxt "block.blocks.easing.cubic-in-out"
 msgid "cubic in out"
-msgstr ""
+msgstr "cubic in out缓动效果"
 
 msgctxt "block.blocks.easing.quart-in"
 msgid "quart in"
-msgstr ""
+msgstr "quart in缓动效果"
 
 msgctxt "block.blocks.easing.quart-out"
 msgid "quart out"
-msgstr ""
+msgstr "quart out缓动效果"
 
 msgctxt "block.blocks.easing.quart-in-out"
 msgid "quart in out"
-msgstr ""
+msgstr "quart in out缓动效果"
 
 msgctxt "block.blocks.easing.quint-in"
 msgid "quint in"
-msgstr ""
+msgstr "quint in缓动效果"
 
 msgctxt "block.blocks.easing.quint-out"
 msgid "quint out"
-msgstr ""
+msgstr "quint out缓动效果"
 
 msgctxt "block.blocks.easing.quint-in-out"
 msgid "quint in out"
-msgstr ""
+msgstr "quint in out缓动效果"
 
 msgctxt "block.blocks.easing.expo-in"
 msgid "expo in"
-msgstr ""
+msgstr "expo in缓动效果"
 
 msgctxt "block.blocks.easing.expo-out"
 msgid "expo out"
-msgstr ""
+msgstr "expo out缓动效果"
 
 msgctxt "block.blocks.easing.expo-in-out"
 msgid "expo in out"
-msgstr ""
+msgstr "expo in out缓动效果"
 
 msgctxt "block.blocks.easing.circ-in"
 msgid "circ in"
-msgstr ""
+msgstr "circ in缓动效果"
 
 msgctxt "block.blocks.easing.circ-out"
 msgid "circ out"
-msgstr ""
+msgstr "circ out缓动效果"
 
 msgctxt "block.blocks.easing.circ-in-out"
 msgid "circ in out"
-msgstr ""
+msgstr "circ in out缓动效果"
 
 msgctxt "block.blocks.easing.back-in"
 msgid "back in"
-msgstr ""
+msgstr "back in缓动效果"
 
 msgctxt "block.blocks.easing.back-out"
 msgid "back out"
-msgstr ""
+msgstr "back out缓动效果"
 
 msgctxt "block.blocks.easing.back-in-out"
 msgid "back in out"
-msgstr ""
+msgstr "back in out缓动效果"
 
 msgctxt "block.blocks.easing.elastic-in"
 msgid "elastic in"
-msgstr ""
+msgstr "elastic in缓动效果"
 
 msgctxt "block.blocks.easing.elastic-out"
 msgid "elastic out"
-msgstr ""
+msgstr "elastic out缓动效果"
 
 msgctxt "block.blocks.easing.elastic-in-out"
 msgid "elastic in out"
-msgstr ""
+msgstr "elastic in out缓动效果"
 
 msgctxt "block.blocks.easing.bounce-in"
 msgid "bounce in"
-msgstr ""
+msgstr "boune in缓动效果"
 
 msgctxt "block.blocks.easing.bounce-out"
 msgid "bounce out"
-msgstr ""
+msgstr "bounce out缓动效果"
 
 msgctxt "block.blocks.easing.bounce-in-out"
 msgid "bounce in out"
-msgstr ""
+msgstr "bounce in out缓动效果"
 
 msgctxt "block.blocks.direction.clockwise"
 msgid "clockwise"
-msgstr ""
+msgstr "顺时针"
 
 msgctxt "block.blocks.direction.counter_clockwise"
 msgid "counter-clockwise"
-msgstr ""
+msgstr "逆时针"
 
 msgctxt "block.blocks.places.left_eye"
 msgid "left eye"
-msgstr ""
+msgstr "左眼"
 
 msgctxt "block.blocks.places.right_eye"
 msgid "right eye"
-msgstr ""
+msgstr "右眼"
 
 msgctxt "block.blocks.places.left_mouth"
 msgid "left mouth"
-msgstr ""
+msgstr "左侧嘴"
 
 msgctxt "block.blocks.places.right_mouth"
 msgid "right mouth"
-msgstr ""
+msgstr "右侧嘴"
 
 msgctxt "block.blocks.places.left_arm"
 msgid "left arm"
-msgstr ""
+msgstr "左手"
 
 msgctxt "block.blocks.places.left_leg"
 msgid "left leg"
-msgstr ""
+msgstr "左腿"
 
 msgctxt "block.blocks.places.right_arm"
 msgid "right arm"
-msgstr ""
+msgstr "右手"
 
 msgctxt "block.blocks.places.right_leg"
 msgid "right leg"
-msgstr ""
+msgstr "右腿"
 
 msgctxt "block.blocks.places.horn"
 msgid "horn"
-msgstr ""
+msgstr "头部"
 
 msgctxt "block.blocks.places.servor_motor_1"
 msgid "1"
-msgstr ""
+msgstr "1"
 
 msgctxt "block.blocks.places.servor_motor_2"
 msgid "2"
-msgstr ""
+msgstr "2"
 
 msgctxt "block.procedures.title"
 msgid "Make a block"
-msgstr ""
+msgstr "新建一个积木"
 
 msgctxt "block.procedures.add_number"
 msgid "Number"
-msgstr ""
+msgstr "数字"
 
 msgctxt "block.procedures.add_boolean"
 msgid "Boolean"
-msgstr ""
+msgstr "布尔值"
 
 msgctxt "block.procedures.add_label"
 msgid "Label"
-msgstr ""
+msgstr "标签"
 
 msgctxt "block.procedures.confirm"
 msgid "Create block"
-msgstr ""
+msgstr "制作积木"
 
 msgctxt "block.procedures.edit.title"
 msgid "Edit block"
-msgstr ""
+msgstr "编辑积木"
 
 msgctxt "block.procedures.edit.confirm"
 msgid "Save"
-msgstr ""
+msgstr "保存"
 
 msgctxt "block.procedures.error.existing.description"
 msgid "A block with this name already exists."
-msgstr ""
+msgstr "已有同名积木存在."

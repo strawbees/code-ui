@@ -57,7 +57,7 @@ const GlobalStyles = ({
 		:global(html),
 		:global(html > body) {
 			margin: 0;
-			font-family: 'Text', sans-serif;
+			font-family: 'Text', Arial, Helvetica, "Microsoft YaHei New", "Microsoft Yahei", "微软雅黑", 宋体, SimSun, STXihei, "华文细黑", sans-serif;
 			font-size: 16px;
 			line-height: 1.5;
 			overscroll-behavior: none;

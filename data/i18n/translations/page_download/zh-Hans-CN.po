@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
@@ -9,32 +9,32 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Chinese (Simplified, China)\n"
-"Language: zh_Hans_CN\n"
-"X-Generator: Zanata 4.6.2\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Language: zh_CN\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 msgctxt "download.og.title"
 msgid "Download"
-msgstr ""
+msgstr "下载"
 
 msgctxt "download.base.title"
 msgid "Download Strawbees CODE"
-msgstr ""
+msgstr "下载Strawbees CODE代码"
 
 msgctxt "download.base.description"
 msgid ""
 "Download the Strawbees CODE app to be able program anytime, even wihtout an "
 "internet connection!"
-msgstr ""
+msgstr "下载Strawbees CODE应用程序,以便在没有联网的环境下也能够随时编程！"
 
 msgctxt "download.platform.darwin"
 msgid "macOS"
-msgstr ""
+msgstr "macOS"
 
 msgctxt "download.platform.win32"
 msgid "Windows 7 and above"
-msgstr ""
+msgstr "Windows 7 及以上"
 
 msgctxt "download.download-cta"
 msgid "Download"
-msgstr ""
+msgstr "下载"
