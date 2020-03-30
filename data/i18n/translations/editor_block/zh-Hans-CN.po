@@ -39,11 +39,11 @@ msgstr "当程序开始"
 
 msgctxt "block.blocks.input_circuit_touch.message0"
 msgid "value of circuit touch %1"
-msgstr "触摸传感器数值为%1"
+msgstr "触摸传感器%1数值"
 
 msgctxt "block.blocks.input_circuit_touch_touched.message0"
 msgid "%1 is touched"
-msgstr "触摸传感器输入值%1"
+msgstr "%1检测到触摸"
 
 msgctxt "block.blocks.input_light_sensor.message0"
 msgid "value of light sensor %1"
