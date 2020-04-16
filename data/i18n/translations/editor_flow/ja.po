@@ -156,7 +156,7 @@ msgstr "時間"
 
 msgctxt "flow.parameter.in"
 msgid "in"
-msgstr "入力"
+msgstr "in"
 
 msgctxt "flow.parameter.light"
 msgid "light intensity"
@@ -268,11 +268,11 @@ msgstr "チャネル"
 
 msgctxt "flow.parameter.ifThen"
 msgid "then"
-msgstr "then"
+msgstr "もし～なら"
 
 msgctxt "flow.parameter.ifElse"
 msgid "else"
-msgstr "else"
+msgstr "でなければ"
 
 msgctxt "flow.parameter.amount"
 msgid "amount"
@@ -288,7 +288,7 @@ msgstr "クローズ"
 
 msgctxt "flow.outlet.out"
 msgid "outlet"
-msgstr "出口"
+msgstr "out"
 
 msgctxt "flow.constant.logic-and"
 msgid "AND"
@@ -1116,7 +1116,7 @@ msgstr "!"
 
 msgctxt "flow.constant.key-double_quotes"
 msgid "\""
-msgstr "“"
+msgstr "\""
 
 msgctxt "flow.constant.key-number_sign"
 msgid "#"
@@ -1136,7 +1136,7 @@ msgstr "&"
 
 msgctxt "flow.constant.key-single_quote"
 msgid "'"
-msgstr "'"
+msgid "'"
 
 msgctxt "flow.constant.key-opening_parenthesis"
 msgid "("
