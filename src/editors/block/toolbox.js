@@ -178,7 +178,57 @@ export default (strings) => ([
 						value : 1
 					}
 				]
-			}
+			},
+			{
+				type   : 'output_key_tap',
+				values : [
+					{
+						name  : 'KEY',
+						type  : 'dropdown_key_keys',
+						field : 'VALUE',
+						value : 'KEY_SPACE'
+					},
+				]
+			},
+			{
+				type   : 'output_key_press',
+				values : [
+					{
+						name  : 'KEY',
+						type  : 'dropdown_key_keys',
+						field : 'VALUE',
+						value : 'KEY_SPACE'
+					},
+				]
+			},
+			{
+				type   : 'output_key_release',
+				values : [
+					{
+						name  : 'KEY',
+						type  : 'dropdown_key_keys',
+						field : 'VALUE',
+						value : 'KEY_SPACE'
+					},
+				]
+			},
+			{
+				type   : 'output_key_hold',
+				values : [
+					{
+						name  : 'KEY',
+						type  : 'dropdown_key_keys',
+						field : 'VALUE',
+						value : 'KEY_SPACE'
+					},
+					{
+						name  : 'DURATION',
+						type  : 'math_positive_number',
+						field : 'NUM',
+						value : 2
+					},
+				]
+			},
 		]
 	},
 	{
