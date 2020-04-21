@@ -25,6 +25,7 @@ export default ({ value, next }, structure) => {
 
 	parseInstaceDefinition(structure, instance, type)
 	setInstacePropertyOneTimeAssignment(structure, instance, 'place', place)
+	setInstacePropertyOneTimeAssignment(structure, instance, 'light', '0')
 	parseInstacePropertyAssignment(colorBlock, structure, instance, 'color')
 
 	parseNext(next, structure)
