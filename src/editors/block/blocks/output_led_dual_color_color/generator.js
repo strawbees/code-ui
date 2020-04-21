@@ -14,7 +14,7 @@ export default ({ value, next }, structure) => {
 		parseNext(next, structure)
 		return
 	}
-	const place = getBlockBody(placeBlock)
+	const place = getBlockBody(placeBlock, structure)
 	const colorBlock = getValueBlockByAttributeName(value, 'COLOR')
 	if (!colorBlock) {
 		parseNext(next, structure)
