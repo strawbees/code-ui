@@ -80,18 +80,18 @@ msgstr "flytta servo %1 position till %2 under %3 sekunder %4"
 
 msgctxt "block.blocks.output_key_press.message0"
 msgid "press key %1"
-msgstr ""
+msgstr "tryck ner tangent %1"
 
 msgctxt "block.blocks.output_key_release.message0"
 msgid "release key %1"
-msgstr ""
+msgstr "släpp upp tangent %1"
 
 msgctxt "block.blocks.output_key_tap.message0"
 msgid "tap key %1"
-msgstr ""
+msgstr "tryck kort på tangent %1""
 
 msgctxt "block.blocks.output_key_hold.message0"
-msgid "hold key %1 for %2 seconds"
+msgid "håll ner tangent %1 i %2 sekunder"
 msgstr ""
 
 msgctxt "block.blocks.easing.linear"
