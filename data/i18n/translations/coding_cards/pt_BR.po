@@ -35,116 +35,144 @@ msgstr "LED embutido"
 
 msgctxt "coding_cards.hardware.dual-color-led.title"
 msgid "Dual color LED"
-msgstr ""
+msgstr "LED de duas cores"
 
 msgctxt "coding_cards.hardware.servo-motor.title"
 msgid "Servo Motor"
-msgstr ""
+msgstr "Servo"
 
 msgctxt "coding_cards.hardware.key-press.title"
 msgid "Key Press"
-msgstr ""
+msgstr "Pressionar tecla"
 
 msgctxt "coding_cards.hardware.buzzer.title"
 msgid "Buzzer"
-msgstr ""
+msgstr "Campainha"
 
 msgctxt "coding_cards.hardware.circuit-touch.title"
 msgid "Circuit Touch"
-msgstr ""
+msgstr "Circuito de toque"
 
 msgctxt "coding_cards.hardware.light-sensor.title"
 msgid "Light Sensor"
-msgstr ""
+msgstr "Sensor de luminosidade"
 
 msgctxt "coding_cards.block.slide.code-and-hardware.title"
 msgid "Code & Hardware Requirements"
-msgstr ""
+msgstr "Programa e material necessário"
 
 msgctxt "coding_cards.block.slide.assembly.title"
 msgid "How to use the hardware"
-msgstr ""
+msgstr "Como usar o material"
 
 msgctxt "coding_cards.block.card.blink.title"
 msgid "Blink"
-msgstr ""
+msgstr "Piscar"
 
 msgctxt "coding_cards.block.card.touch-and-wink.title"
 msgid "Touch and wink"
-msgstr ""
+msgstr "Toque para piscar uma vez"
 
 msgctxt "coding_cards.block.card.touch-to-shine.title"
 msgid "Touch to shine"
-msgstr ""
+msgstr "Toque para acender"
 
 msgctxt "coding_cards.block.card.shine-in-the-dark.title"
 msgid "Shine in the dark"
-msgstr ""
+msgstr "Acender no escuro"
 
 msgctxt "coding_cards.block.card.flicker.title"
 msgid "Flicker"
-msgstr ""
+msgstr "Cintilar"
 
 msgctxt "coding_cards.block.card.glow.title"
 msgid "Glow"
-msgstr ""
+msgstr "Acender suavemente"
 
 msgctxt "coding_cards.block.card.light-switch.title"
 msgid "Light switch"
-msgstr ""
+msgstr "Interruptor de luz"
 
 msgctxt "coding_cards.block.card.switching-colors.title"
 msgid "Switching colors"
-msgstr ""
+msgstr "Trocar de cores"
 
 msgctxt "coding_cards.block.card.touch-to-siren-light.title"
 msgid "Touch to siren light"
-msgstr ""
+msgstr "Toque para ligar a luz de sirene"
 
 msgctxt "coding_cards.block.card.touch-to-change-color.title"
 msgid "Touch to change color"
-msgstr ""
+msgstr "Toque para mudar de cor"
 
 msgctxt "coding_cards.block.card.change-color-in-the-dark.title"
 msgid "Change color in the dark"
-msgstr ""
+msgstr "Trocar de cor no escuro"
 
 msgctxt "coding_cards.block.card.flickering-color.title"
 msgid "Flickering color"
-msgstr ""
+msgstr "Cor cintilante"
 
 msgctxt "coding_cards.block.card.fading-colors.title"
 msgid "Fading colors"
-msgstr ""
+msgstr "Trocar de cor suavemente"
 
 msgctxt "coding_cards.block.card.mood-light-switch.title"
 msgid "Mood light switch"
-msgstr ""
+msgstr "Interruptor de luz de cores"
 
 msgctxt "coding_cards.block.card.back-and-forth.title"
 msgid "Back and forth"
-msgstr ""
+msgstr "Vai-e-volta"
 
 msgctxt "coding_cards.block.card.touch-and-trap.title"
 msgid "Touch and trap"
-msgstr ""
+msgstr "Toque e prenda"
 
 msgctxt "coding_cards.block.card.touch-to-hold-position.title"
 msgid "Touch to hold position"
-msgstr ""
+msgstr "Toque para segurar a posição"
 
 msgctxt "coding_cards.block.card.shake-in-the-dark.title"
 msgid "Shake in the dark"
-msgstr ""
+msgstr "Tremer no escuro"
 
 msgctxt "coding_cards.block.card.shake.title"
 msgid "Shake"
-msgstr ""
+msgstr "Tremer"
 
 msgctxt "coding_cards.block.card.sweep.title"
 msgid "Sweep"
-msgstr ""
+msgstr "Movimento de varredura"
 
 msgctxt "coding_cards.block.card.touch-to-switch-position.title"
 msgid "Touch to switch position"
-msgstr ""
+msgstr "Toque para trocar de posição"
+
+msgctxt "coding_cards.block.card.tap-a-key-over-and-over.title"
+msgid "Type a key over and over"
+msgstr "Tecle repetidamente"
+
+msgctxt "coding_cards.block.card.touch-to-write-a-word.title"
+msgid "Touch to write a word"
+msgstr "Toque para escrever uma palavra"
+
+msgctxt "coding_cards.block.card.touch-to-steer.title"
+msgid "Touch to steer"
+msgstr "Toque para controlar"
+
+msgctxt "coding_cards.block.card.press-a-key-in-the-dark.title"
+msgid "Press a key in the dark"
+msgstr "Apertar uma tecla no escuro"
+
+msgctxt "coding_cards.block.card.laughter-generator.title"
+msgid "Laughter generator"
+msgstr "Gerador de risadas"
+
+msgctxt "coding_cards.block.card.type-a-sequence-of-letters.title"
+msgid "Type a sequence of letters"
+msgstr "Tecle uma sequencia de letras"
+
+msgctxt "coding_cards.block.card.touch-to-alternate-keys.title"
+msgid "Touch to alternate keys"
+msgstr "Toque para alternar teclas"

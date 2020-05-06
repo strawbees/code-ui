@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
@@ -15,136 +15,164 @@ msgstr ""
 
 msgctxt "coding_cards.flow.title"
 msgid "Flow coding cards"
-msgstr ""
+msgstr "Flödesprogrammeringskort"
 
 msgctxt "coding_cards.block.title"
 msgid "Block coding cards"
-msgstr ""
+msgstr "Blockprogrammeringskort"
 
 msgctxt "coding_cards.back-to-coding-cards"
 msgid "Back to cards"
-msgstr ""
+msgstr "Tillbaka till korten"
 
 msgctxt "coding_cards.open-program"
 msgid "Open in editor"
-msgstr ""
+msgstr "Öppna i editor"
 
 msgctxt "coding_cards.hardware.built-in-led.title"
 msgid "Built-in LED"
-msgstr ""
+msgstr "Inbyggd LED"
 
 msgctxt "coding_cards.hardware.dual-color-led.title"
 msgid "Dual color LED"
-msgstr ""
+msgstr "Tvåfärgad LED"
 
 msgctxt "coding_cards.hardware.servo-motor.title"
 msgid "Servo Motor"
-msgstr ""
+msgstr "Servomotor"
 
 msgctxt "coding_cards.hardware.key-press.title"
 msgid "Key Press"
-msgstr ""
+msgstr "Tangenttryckning"
 
 msgctxt "coding_cards.hardware.buzzer.title"
 msgid "Buzzer"
-msgstr ""
+msgstr "Summer"
 
 msgctxt "coding_cards.hardware.circuit-touch.title"
 msgid "Circuit Touch"
-msgstr ""
+msgstr "Beröringssensor"
 
 msgctxt "coding_cards.hardware.light-sensor.title"
 msgid "Light Sensor"
-msgstr ""
+msgstr "Ljussensor"
 
 msgctxt "coding_cards.block.slide.code-and-hardware.title"
 msgid "Code & Hardware Requirements"
-msgstr ""
+msgstr "Kod & Systemkrav"
 
 msgctxt "coding_cards.block.slide.assembly.title"
 msgid "How to use the hardware"
-msgstr ""
+msgstr "Att använda hårdvaran"
 
 msgctxt "coding_cards.block.card.blink.title"
 msgid "Blink"
-msgstr ""
+msgstr "Blinka"
 
 msgctxt "coding_cards.block.card.touch-and-wink.title"
 msgid "Touch and wink"
-msgstr ""
+msgstr "Rör vid för att blinka"
 
 msgctxt "coding_cards.block.card.touch-to-shine.title"
 msgid "Touch to shine"
-msgstr ""
+msgstr "Rör vid för att lysa"
 
 msgctxt "coding_cards.block.card.shine-in-the-dark.title"
 msgid "Shine in the dark"
-msgstr ""
+msgstr "Lys i mörkret"
 
 msgctxt "coding_cards.block.card.flicker.title"
 msgid "Flicker"
-msgstr ""
+msgstr "Flimra"
 
 msgctxt "coding_cards.block.card.glow.title"
 msgid "Glow"
-msgstr ""
+msgstr "Glöd"
 
 msgctxt "coding_cards.block.card.light-switch.title"
 msgid "Light switch"
-msgstr ""
+msgstr "Ljusbrytare"
 
 msgctxt "coding_cards.block.card.switching-colors.title"
 msgid "Switching colors"
-msgstr ""
+msgstr "Växla färg"
 
 msgctxt "coding_cards.block.card.touch-to-siren-light.title"
 msgid "Touch to siren light"
-msgstr ""
+msgstr "Rör vid för sirenljus"
 
 msgctxt "coding_cards.block.card.touch-to-change-color.title"
 msgid "Touch to change color"
-msgstr ""
+msgstr "Rör vid för att ändra färg"
 
 msgctxt "coding_cards.block.card.change-color-in-the-dark.title"
 msgid "Change color in the dark"
-msgstr ""
+msgstr "Växla färg i mörkret"
 
 msgctxt "coding_cards.block.card.flickering-color.title"
 msgid "Flickering color"
-msgstr ""
+msgstr "Flimrande färg"
 
 msgctxt "coding_cards.block.card.fading-colors.title"
 msgid "Fading colors"
-msgstr ""
+msgstr "Dimmande färger"
 
 msgctxt "coding_cards.block.card.mood-light-switch.title"
 msgid "Mood light switch"
-msgstr ""
+msgstr "Stämningsbelysningsbrytare"
 
 msgctxt "coding_cards.block.card.back-and-forth.title"
 msgid "Back and forth"
-msgstr ""
+msgstr "Fram och tillbaka"
 
 msgctxt "coding_cards.block.card.touch-and-trap.title"
 msgid "Touch and trap"
-msgstr ""
+msgstr "Rör vid och fånga"
 
 msgctxt "coding_cards.block.card.touch-to-hold-position.title"
 msgid "Touch to hold position"
-msgstr ""
+msgstr "Rör vid för att hålla position"
 
 msgctxt "coding_cards.block.card.shake-in-the-dark.title"
 msgid "Shake in the dark"
-msgstr ""
+msgstr "Skaka i mörkret"
 
 msgctxt "coding_cards.block.card.shake.title"
 msgid "Shake"
-msgstr ""
+msgstr "Skaka"
 
 msgctxt "coding_cards.block.card.sweep.title"
 msgid "Sweep"
-msgstr ""
+msgstr "Svep"
 
 msgctxt "coding_cards.block.card.touch-to-switch-position.title"
 msgid "Touch to switch position"
-msgstr ""
+msgstr "Rör vid för att byta position"
+
+msgctxt "coding_cards.block.card.tap-a-key-over-and-over.title"
+msgid "Type a key over and over"
+msgstr "Tryck ner tangent om och om igen"
+
+msgctxt "coding_cards.block.card.touch-to-write-a-word.title"
+msgid "Touch to write a word"
+msgstr "Rör vid för att skriva ett ord"
+
+msgctxt "coding_cards.block.card.touch-to-steer.title"
+msgid "Touch to steer"
+msgstr "Rör vid för att styra"
+
+msgctxt "coding_cards.block.card.press-a-key-in-the-dark.title"
+msgid "Press a key in the dark"
+msgstr "Tryck på en tangent när det är mörkt"
+
+msgctxt "coding_cards.block.card.laughter-generator.title"
+msgid "Laughter generator"
+msgstr "Skrattgenerator"
+
+msgctxt "coding_cards.block.card.type-a-sequence-of-letters.title"
+msgid "Type a sequence of letters"
+msgstr "Skriv en sekvens av bokstäver"
+
+msgctxt "coding_cards.block.card.touch-to-alternate-keys.title"
+msgid "Touch to alternate keys"
+msgstr "Rör vid för att växla tangent"
