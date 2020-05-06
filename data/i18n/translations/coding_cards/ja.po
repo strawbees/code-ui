@@ -148,3 +148,31 @@ msgstr "掃除する"
 msgctxt "coding_cards.block.card.touch-to-switch-position.title"
 msgid "Touch to switch position"
 msgstr "タッチで位置を変える"
+
+msgctxt "coding_cards.block.card.tap-a-key-over-and-over.title"
+msgid "Type a key over and over"
+msgstr ""
+
+msgctxt "coding_cards.block.card.touch-to-write-a-word.title"
+msgid "Touch to write a word"
+msgstr ""
+
+msgctxt "coding_cards.block.card.touch-to-steer.title"
+msgid "Touch to steer"
+msgstr ""
+
+msgctxt "coding_cards.block.card.press-a-key-in-the-dark.title"
+msgid "Press a key in the dark"
+msgstr ""
+
+msgctxt "coding_cards.block.card.laughter-generator.title"
+msgid "Laughter generator"
+msgstr ""
+
+msgctxt "coding_cards.block.card.type-a-sequence-of-letters.title"
+msgid "Type a sequence of letters"
+msgstr ""
+
+msgctxt "coding_cards.block.card.touch-to-alternate-keys.title"
+msgid "Touch to alternate keys"
+msgstr ""
