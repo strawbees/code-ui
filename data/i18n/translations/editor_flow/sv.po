@@ -93,7 +93,7 @@ msgstr "IR Avståndsmätare"
 
 msgctxt "flow.node.key-press"
 msgid "Key Press"
-msgstr "Tangenttryckning "
+msgstr "Tangenttryckning"
 
 msgctxt "flow.node.key-sequence"
 msgid "Key Sequence"
