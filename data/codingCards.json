@@ -306,6 +306,101 @@
 						"title" : "coding_cards.block.slide.code-and-hardware.title"
 					}
 				]
+			},
+			"type-a-key-over-and-over": {
+				"title": "coding_cards.block.card.type-a-key-over-and-over.title",
+				"hardware": [
+					"key-press"
+				],
+				"source" : "<xml xmlns='http://www.w3.org/1999/xhtml'><variables></variables><block type='event_power_on' id='rootblock' deletable='false' x='50' y='50'><next><block type='control_forever'><statement name='SUBSTACK'><block type='output_key_tap'><next><block type='control_wait'><value name='DURATION'><shadow type='math_positive_number'><field name='NUM'>1</field></shadow></value></block></next><value name='KEY'><shadow type='dropdown_key_keys'><field name='VALUE'>KEY_SPACE</field></shadow></value></block></statement></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-type-a-key-over-and-over",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"touch-to-write-a-word": {
+				"title": "coding_cards.block.card.touch-to-write-a-word.title",
+				"hardware": [
+					"circuit-touch",
+					"key-press"
+				],
+				"source" : "<xml xmlns='http://www.w3.org/1999/xhtml'><variables></variables><block type='event_power_on'  id='rootblock' deletable='false' x='50' y='50'><next><block type='control_forever'><statement name='SUBSTACK'><block type='control_if'><value name='CONDITION'><block type='input_circuit_touch_touched'><value name='PLACE'><shadow type='dropdown_circuit_touch_places'><field name='VALUE'>PLACE_HORN</field></shadow></value></block></value><statement name='SUBSTACK'><block type='output_key_tap'><next><block type='output_key_tap'><next><block type='output_key_tap'><value name='KEY'><shadow type='dropdown_key_keys'><field name='VALUE'>KEY_Y</field></shadow></value></block></next><value name='KEY'><shadow type='dropdown_key_keys'><field name='VALUE'>KEY_E</field></shadow></value></block></next><value name='KEY'><shadow type='dropdown_key_keys'><field name='VALUE'>KEY_H</field></shadow></value></block></statement></block></statement></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-touch-to-write-a-word",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"touch-to-steer": {
+				"title": "coding_cards.block.card.touch-to-steer.title",
+				"hardware": [
+					"circuit-touch",
+					"key-press"
+				],
+				"source" : "<xml xmlns='http://www.w3.org/1999/xhtml'><variables></variables><block type='event_power_on' id='rootblock' deletable='false' x='50' y='50'><next><block type='control_forever'><statement name='SUBSTACK'><block type='control_if_else'><next><block type='control_wait'><value name='DURATION'><shadow type='math_positive_number'><field name='NUM'>0.1</field></shadow></value></block></next><value name='CONDITION'><block type='input_circuit_touch_touched'><value name='PLACE'><shadow type='dropdown_circuit_touch_places'><field name='VALUE'>PLACE_LEFT_ARM</field></shadow></value></block></value><statement name='SUBSTACK'><block type='output_key_press'><value name='KEY'><shadow type='dropdown_key_keys'><field name='VALUE'>KEY_LEFT</field></shadow></value></block></statement><statement name='SUBSTACK2'><block type='output_key_release'><value name='KEY'><shadow type='dropdown_key_keys'><field name='VALUE'>KEY_LEFT</field></shadow></value></block></statement></block></statement></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-touch-to-steer",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"press-a-key-in-the-dark": {
+				"title": "coding_cards.block.card.press-a-key-in-the-dark.title",
+				"hardware": [
+					"light-sensor",
+					"key-press"
+				],
+				"source" : "<xml xmlns='http://www.w3.org/1999/xhtml'><variables></variables><block type='event_power_on' id='rootblock' deletable='false' x='50' y='50'><next><block type='control_forever'><statement name='SUBSTACK'><block type='control_if'><next><block type='control_wait'><value name='DURATION'><shadow type='math_positive_number'><field name='NUM'>0.1</field></shadow></value></block></next><value name='CONDITION'><block type='operator_lt'><value name='OPERAND1'><shadow type='math_number'><field name='NUM'></field></shadow><block type='input_circuit_touch'><value name='PLACE'><shadow type='dropdown_circuit_touch_places'><field name='VALUE'>PLACE_HORN</field></shadow></value></block></value><value name='OPERAND2'><shadow type='math_number'><field name='NUM'>0.1</field></shadow></value></block></value><statement name='SUBSTACK'><block type='output_key_hold'><value name='KEY'><shadow type='dropdown_key_keys'><field name='VALUE'>KEY_SPACE</field></shadow></value><value name='DURATION'><shadow type='math_positive_number'><field name='NUM'>2</field></shadow></value></block></statement></block></statement></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-press-a-key-in-the-dark",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"laughter-generator": {
+				"title": "coding_cards.block.card.laughter-generator.title",
+				"hardware": [
+					"key-press"
+				],
+				"source" : "<xml xmlns='http://www.w3.org/1999/xhtml'><variables><variable type='' id='B(6LfG!!E.],!L}cpner' islocal='false' iscloud='false'>letter</variable></variables><block type='event_power_on' id='rootblock' deletable='false' x='50' y='50'><next><block type='control_forever'><statement name='SUBSTACK'><block type='data_setvariableto'><next><block type='control_if'><next><block type='control_if'><next><block type='control_wait'><value name='DURATION'><shadow type='math_positive_number'><field name='NUM'>0.1</field></shadow></value></block></next><value name='CONDITION'><block type='operator_equals'><value name='OPERAND2'><shadow type='math_number'><field name='NUM'>2</field></shadow></value><value name='OPERAND1'><shadow type='math_number'><field name='NUM'></field></shadow><block type='data_variable'><field name='VARIABLE' id='B(6LfG!!E.],!L}cpner' variabletype=''>letter</field></block></value></block></value><statement name='SUBSTACK'><block type='output_key_tap'><value name='KEY'><shadow type='dropdown_key_keys'><field name='VALUE'>KEY_A</field></shadow></value></block></statement></block></next><value name='CONDITION'><block type='operator_equals'><value name='OPERAND1'><shadow type='math_number'><field name='NUM'></field></shadow><block type='data_variable'><field name='VARIABLE' id='B(6LfG!!E.],!L}cpner' variabletype=''>letter</field></block></value><value name='OPERAND2'><shadow type='math_number'><field name='NUM'>1</field></shadow></value></block></value><statement name='SUBSTACK'><block type='output_key_tap'><value name='KEY'><shadow type='dropdown_key_keys'><field name='VALUE'>KEY_H</field></shadow></value></block></statement></block></next><value name='VALUE'><shadow type='math_number'><field name='NUM'>1</field></shadow><block type='operator_round'><value name='NUM'><shadow type='math_number'><field name='NUM'></field></shadow><block type='operator_random'><value name='FROM'><shadow type='math_number'><field name='NUM'>1</field></shadow></value><value name='TO'><shadow type='math_number'><field name='NUM'>2</field></shadow></value></block></value></block></value><field name='VARIABLE' id='B(6LfG!!E.],!L}cpner' variabletype=''>letter</field></block></statement></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-laughter-generator",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"type-a-sequence-of-letters": {
+				"title": "coding_cards.block.card.type-a-sequence-of-letters.title",
+				"hardware": [
+					"key-press"
+				],
+				"source" : "<xml xmlns='http://www.w3.org/1999/xhtml'><variables><variable type='' id='@,|@uNr*{D[q;vHJ)!+c' islocal='false' iscloud='false'>number</variable></variables><block type='procedures_definition' x='50' y='50'><next><block type='control_if'><next><block type='control_if'><next><block type='control_if'><next><block type='control_wait'><value name='DURATION'><shadow type='math_positive_number'><field name='NUM'>1</field></shadow></value></block></next><value name='CONDITION'><block type='operator_equals'><value name='OPERAND2'><shadow type='math_number'><field name='NUM'>3</field></shadow></value><value name='OPERAND1'><shadow type='math_number'><field name='NUM'></field></shadow><block type='argument_reporter_string_number'><field name='VALUE'>index</field></block></value></block></value><statement name='SUBSTACK'><block type='output_key_tap'><value name='KEY'><shadow type='dropdown_key_keys'><field name='VALUE'>KEY_C</field></shadow></value></block></statement></block></next><value name='CONDITION'><block type='operator_equals'><value name='OPERAND2'><shadow type='math_number'><field name='NUM'>2</field></shadow></value><value name='OPERAND1'><shadow type='math_number'><field name='NUM'></field></shadow><block type='argument_reporter_string_number'><field name='VALUE'>index</field></block></value></block></value><statement name='SUBSTACK'><block type='output_key_tap'><value name='KEY'><shadow type='dropdown_key_keys'><field name='VALUE'>KEY_B</field></shadow></value></block></statement></block></next><value name='CONDITION'><block type='operator_equals'><value name='OPERAND2'><shadow type='math_number'><field name='NUM'>1</field></shadow></value><value name='OPERAND1'><shadow type='math_number'><field name='NUM'></field></shadow><block type='argument_reporter_string_number'><field name='VALUE'>index</field></block></value></block></value><statement name='SUBSTACK'><block type='output_key_tap'><value name='KEY'><shadow type='dropdown_key_keys'><field name='VALUE'>KEY_A</field></shadow></value></block></statement></block></next><statement name='custom_block'><shadow type='procedures_prototype'><mutation proccode='type letter %s' argumentids='[&quot;pCp#h~Wh6.OR+vZlu~H)&quot;]' argumentnames='[&quot;index&quot;]' argumentdefaults='[&quot;&quot;]' warp='false'></mutation><value name='pCp#h~Wh6.OR+vZlu~H)'><shadow type='argument_reporter_string_number'><field name='VALUE'>index</field></shadow></value></shadow></statement></block><block type='event_power_on' id='rootblock' deletable='false' x='365' y='160'><next><block type='data_setvariableto'><next><block type='control_forever'><statement name='SUBSTACK'><block type='procedures_call'><mutation proccode='type letter %s' argumentids='[&quot;pCp#h~Wh6.OR+vZlu~H)&quot;]' warp='false'></mutation><next><block type='data_changevariableby'><next><block type='control_if'><statement name='SUBSTACK'><block type='data_setvariableto'><value name='VALUE'><shadow type='math_number'><field name='NUM'>1</field></shadow></value><field name='VARIABLE' id='@,|@uNr*{D[q;vHJ)!+c' variabletype=''>number</field></block></statement><value name='CONDITION'><block type='operator_gt'><value name='OPERAND2'><shadow type='math_number'><field name='NUM'>3</field></shadow></value><value name='OPERAND1'><shadow type='math_number'><field name='NUM'></field></shadow><block type='data_variable'><field name='VARIABLE' id='@,|@uNr*{D[q;vHJ)!+c' variabletype=''>number</field></block></value></block></value></block></next><value name='VALUE'><shadow type='math_number'><field name='NUM'>1</field></shadow></value><field name='VARIABLE' id='@,|@uNr*{D[q;vHJ)!+c' variabletype=''>number</field></block></next><value name='pCp#h~Wh6.OR+vZlu~H)'><shadow type='text'><field name='TEXT'></field></shadow><block type='data_variable'><field name='VARIABLE' id='@,|@uNr*{D[q;vHJ)!+c' variabletype=''>number</field></block></value></block></statement></block></next><value name='VALUE'><shadow type='math_number'><field name='NUM'>1</field></shadow></value><field name='VARIABLE' id='@,|@uNr*{D[q;vHJ)!+c' variabletype=''>number</field></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-type-a-sequence-of-letters",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"touch-to-alternate-keys": {
+				"title": "coding_cards.block.card.touch-to-alternate-keys.title",
+				"hardware": [
+					"circuit-touch",
+					"key-press"
+				],
+				"source" : "<xml xmlns='http://www.w3.org/1999/xhtml'><variables><variable type='' id='pPFSgBmR8!y]klYZ.+z#' islocal='false' iscloud='false'>toggle</variable></variables><block type='event_power_on' id='rootblock' deletable='false' x='50' y='50'><next><block type='data_setvariableto'><next><block type='control_forever'><statement name='SUBSTACK'><block type='control_if'><statement name='SUBSTACK'><block type='control_if_else'><statement name='SUBSTACK'><block type='data_setvariableto'><next><block type='output_key_tap'><value name='KEY'><shadow type='dropdown_key_keys'><field name='VALUE'>KEY_A</field></shadow></value></block></next><value name='VALUE'><shadow type='math_number'><field name='NUM'>1</field></shadow></value><field name='VARIABLE' id='pPFSgBmR8!y]klYZ.+z#' variabletype=''>toggle</field></block></statement><statement name='SUBSTACK2'><block type='data_setvariableto'><next><block type='output_key_tap'><value name='KEY'><shadow type='dropdown_key_keys'><field name='VALUE'>KEY_B</field></shadow></value></block></next><value name='VALUE'><shadow type='math_number'><field name='NUM'>0</field></shadow></value><field name='VARIABLE' id='pPFSgBmR8!y]klYZ.+z#' variabletype=''>toggle</field></block></statement><value name='CONDITION'><block type='operator_equals'><value name='OPERAND2'><shadow type='math_number'><field name='NUM'>0</field></shadow></value><value name='OPERAND1'><shadow type='math_number'><field name='NUM'></field></shadow><block type='data_variable'><field name='VARIABLE' id='pPFSgBmR8!y]klYZ.+z#' variabletype=''>toggle</field></block></value></block></value></block></statement><next><block type='control_wait'><value name='DURATION'><shadow type='math_positive_number'><field name='NUM'>0.2</field></shadow></value></block></next><value name='CONDITION'><block type='input_circuit_touch_touched'><value name='PLACE'><shadow type='dropdown_circuit_touch_places'><field name='VALUE'>PLACE_HORN</field></shadow></value></block></value></block></statement></block></next><value name='VALUE'><shadow type='math_number'><field name='NUM'>0</field></shadow></value><field name='VARIABLE' id='pPFSgBmR8!y]klYZ.+z#' variabletype=''>toggle</field></block></next></block></xml>",
+				"slides" : [
+					{
+						"id" : "block-touch-to-alternate-keys",
+						"title" : "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
 			}
 		}
 	}
