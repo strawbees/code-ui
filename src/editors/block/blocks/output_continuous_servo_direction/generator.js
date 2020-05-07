@@ -14,7 +14,7 @@ export default ({ value, next }, structure) => {
 		parseNext(next, structure)
 		return
 	}
-	const place = getBlockBody(placeBlock)
+	const place = getBlockBody(placeBlock, structure)
 	const directionBlock = getValueBlockByAttributeName(value, 'DIRECTION')
 	if (!directionBlock) {
 		parseNext(next, structure)

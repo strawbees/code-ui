@@ -77,6 +77,22 @@ msgctxt "block.blocks.output_servo_transition.message0"
 msgid "transition servo %1 position to %2 over %3 seconds %4"
 msgstr "mude a posição do Servo %1 para %2 por %3 segundos %4"
 
+msgctxt "block.blocks.output_key_press.message0"
+msgid "press key %1"
+msgstr "pressione a tecla %1"
+
+msgctxt "block.blocks.output_key_release.message0"
+msgid "release key %1"
+msgstr "solte a tecla %1"
+
+msgctxt "block.blocks.output_key_tap.message0"
+msgid "tap key %1"
+msgstr "toque a tecla %1"
+
+msgctxt "block.blocks.output_key_hold.message0"
+msgid "hold key %1 for %2 seconds"
+msgstr "segure a tecla %1 por %2 segundos"
+
 msgctxt "block.blocks.easing.linear"
 msgid "linear"
 msgstr "linear"
@@ -252,6 +268,426 @@ msgstr "1"
 msgctxt "block.blocks.places.servor_motor_2"
 msgid "2"
 msgstr "2"
+
+msgctxt "block.blocks.keys.no-key"
+msgid "No key"
+msgstr "Nenhuma tecla"
+
+msgctxt "block.blocks.keys.key-0"
+msgid "0"
+msgstr "0"
+
+msgctxt "block.blocks.keys.key-1"
+msgid "1"
+msgstr "1"
+
+msgctxt "block.blocks.keys.key-2"
+msgid "2"
+msgstr "2"
+
+msgctxt "block.blocks.keys.key-3"
+msgid "3"
+msgstr "3"
+
+msgctxt "block.blocks.keys.key-4"
+msgid "4"
+msgstr "4"
+
+msgctxt "block.blocks.keys.key-5"
+msgid "5"
+msgstr "5"
+
+msgctxt "block.blocks.keys.key-6"
+msgid "6"
+msgstr "6"
+
+msgctxt "block.blocks.keys.key-7"
+msgid "7"
+msgstr "7"
+
+msgctxt "block.blocks.keys.key-8"
+msgid "8"
+msgstr "8"
+
+msgctxt "block.blocks.keys.key-9"
+msgid "9"
+msgstr "9"
+
+msgctxt "block.blocks.keys.key-a"
+msgid "A"
+msgstr "A"
+
+msgctxt "block.blocks.keys.key-b"
+msgid "B"
+msgstr "B"
+
+msgctxt "block.blocks.keys.key-c"
+msgid "C"
+msgstr "C"
+
+msgctxt "block.blocks.keys.key-d"
+msgid "D"
+msgstr "D"
+
+msgctxt "block.blocks.keys.key-e"
+msgid "E"
+msgstr "E"
+
+msgctxt "block.blocks.keys.key-f"
+msgid "F"
+msgstr "F"
+
+msgctxt "block.blocks.keys.key-g"
+msgid "G"
+msgstr "G"
+
+msgctxt "block.blocks.keys.key-h"
+msgid "H"
+msgstr "H"
+
+msgctxt "block.blocks.keys.key-i"
+msgid "I"
+msgstr "I"
+
+msgctxt "block.blocks.keys.key-j"
+msgid "J"
+msgstr "J"
+
+msgctxt "block.blocks.keys.key-k"
+msgid "K"
+msgstr "K"
+
+msgctxt "block.blocks.keys.key-l"
+msgid "L"
+msgstr "L"
+
+msgctxt "block.blocks.keys.key-m"
+msgid "M"
+msgstr "M"
+
+msgctxt "block.blocks.keys.key-n"
+msgid "N"
+msgstr "N"
+
+msgctxt "block.blocks.keys.key-o"
+msgid "O"
+msgstr "O"
+
+msgctxt "block.blocks.keys.key-p"
+msgid "P"
+msgstr "P"
+
+msgctxt "block.blocks.keys.key-q"
+msgid "Q"
+msgstr "Q"
+
+msgctxt "block.blocks.keys.key-r"
+msgid "R"
+msgstr "R"
+
+msgctxt "block.blocks.keys.key-s"
+msgid "S"
+msgstr "S"
+
+msgctxt "block.blocks.keys.key-t"
+msgid "T"
+msgstr "T"
+
+msgctxt "block.blocks.keys.key-u"
+msgid "U"
+msgstr "U"
+
+msgctxt "block.blocks.keys.key-v"
+msgid "V"
+msgstr "V"
+
+msgctxt "block.blocks.keys.key-w"
+msgid "W"
+msgstr "W"
+
+msgctxt "block.blocks.keys.key-x"
+msgid "X"
+msgstr "X"
+
+msgctxt "block.blocks.keys.key-y"
+msgid "Y"
+msgstr "Y"
+
+msgctxt "block.blocks.keys.key-z"
+msgid "Z"
+msgstr "Z"
+
+msgctxt "block.blocks.keys.key-left_ctrl"
+msgid "Left CTRL"
+msgstr "CTRL esquerdo"
+
+msgctxt "block.blocks.keys.key-left_shift"
+msgid "Left SHIFT"
+msgstr "CTRL direito"
+
+msgctxt "block.blocks.keys.key-left_alt"
+msgid "Left ALT"
+msgstr "ALT esquerdo"
+
+msgctxt "block.blocks.keys.key-left_gui"
+msgid "Left GUI"
+msgstr "GUI esquerdo"
+
+msgctxt "block.blocks.keys.key-right_ctrl"
+msgid "Right CTRL"
+msgstr "CTRL direito"
+
+msgctxt "block.blocks.keys.key-right_shift"
+msgid "Right SHIFT"
+msgstr "SHIFT direito"
+
+msgctxt "block.blocks.keys.key-right_alt"
+msgid "Right ALT"
+msgstr "ALT direito"
+
+msgctxt "block.blocks.keys.key-right_gui"
+msgid "Right GUI"
+msgstr "GUI direito"
+
+msgctxt "block.blocks.keys.key-up"
+msgid "Up"
+msgstr "Seta para cima"
+
+msgctxt "block.blocks.keys.key-down"
+msgid "Down"
+msgstr "Seta para baixo"
+
+msgctxt "block.blocks.keys.key-left"
+msgid "Left"
+msgstr "Seta para esquerda"
+
+msgctxt "block.blocks.keys.key-right"
+msgid "Right"
+msgstr "Seta para direita"
+
+msgctxt "block.blocks.keys.key-backspace"
+msgid "Backspace"
+msgstr "Retrocesso"
+
+msgctxt "block.blocks.keys.key-tab"
+msgid "Tab"
+msgstr "Tab"
+
+msgctxt "block.blocks.keys.key-return"
+msgid "Return"
+msgstr "Enter"
+
+msgctxt "block.blocks.keys.key-esc"
+msgid "ESC"
+msgstr "ESC"
+
+msgctxt "block.blocks.keys.key-insert"
+msgid "Insert"
+msgstr "Inserir"
+
+msgctxt "block.blocks.keys.key-delete"
+msgid "Delete"
+msgstr "Delete"
+
+msgctxt "block.blocks.keys.key-page_up"
+msgid "Page up"
+msgstr "Página acima"
+
+msgctxt "block.blocks.keys.key-page_down"
+msgid "Page down"
+msgstr "Página abaixo"
+
+msgctxt "block.blocks.keys.key-home"
+msgid "Home"
+msgstr "Home"
+
+msgctxt "block.blocks.keys.key-end"
+msgid "End"
+msgstr "End"
+
+msgctxt "block.blocks.keys.key-caps_lock"
+msgid "Caps lock"
+msgstr "Caps lock"
+
+msgctxt "block.blocks.keys.key-f1"
+msgid "F1"
+msgstr "F1"
+
+msgctxt "block.blocks.keys.key-f2"
+msgid "F2"
+msgstr "F2"
+
+msgctxt "block.blocks.keys.key-f3"
+msgid "F3"
+msgstr "F3"
+
+msgctxt "block.blocks.keys.key-f4"
+msgid "F4"
+msgstr "F4"
+
+msgctxt "block.blocks.keys.key-f5"
+msgid "F5"
+msgstr "F5"
+
+msgctxt "block.blocks.keys.key-f6"
+msgid "F6"
+msgstr "F6"
+
+msgctxt "block.blocks.keys.key-f7"
+msgid "F7"
+msgstr "F7"
+
+msgctxt "block.blocks.keys.key-f8"
+msgid "F8"
+msgstr "F8"
+
+msgctxt "block.blocks.keys.key-f9"
+msgid "F9"
+msgstr "F9"
+
+msgctxt "block.blocks.keys.key-f10"
+msgid "F10"
+msgstr "F10"
+
+msgctxt "block.blocks.keys.key-f11"
+msgid "F11"
+msgstr "F11"
+
+msgctxt "block.blocks.keys.key-f12"
+msgid "F12"
+msgstr "F12"
+
+msgctxt "block.blocks.keys.key-space"
+msgid "SPACE"
+msgstr "Espaço"
+
+msgctxt "block.blocks.keys.key-exclamation_point"
+msgid "!"
+msgstr "!"
+
+msgctxt "block.blocks.keys.key-double_quotes"
+msgid "\""
+msgstr "\""
+
+msgctxt "block.blocks.keys.key-number_sign"
+msgid "#"
+msgstr "#"
+
+msgctxt "block.blocks.keys.key-dollar_sign"
+msgid "$"
+msgstr "$"
+
+msgctxt "block.blocks.keys.key-percent_sign"
+msgid "%"
+msgstr "%"
+
+msgctxt "block.blocks.keys.key-ampersand"
+msgid "&"
+msgstr "&"
+
+msgctxt "block.blocks.keys.key-single_quote"
+msgid "'"
+msgstr "'"
+
+msgctxt "block.blocks.keys.key-opening_parenthesis"
+msgid "("
+msgstr "("
+
+msgctxt "block.blocks.keys.key-closing_parenthesis"
+msgid ")"
+msgstr ")"
+
+msgctxt "block.blocks.keys.key-asterisk"
+msgid "*"
+msgstr "*"
+
+msgctxt "block.blocks.keys.key-plus_sign"
+msgid "+"
+msgstr "+"
+
+msgctxt "block.blocks.keys.key-comma"
+msgid ","
+msgstr ","
+
+msgctxt "block.blocks.keys.key-minus_sign"
+msgid "-"
+msgstr "-"
+
+msgctxt "block.blocks.keys.key-period"
+msgid "."
+msgstr "."
+
+msgctxt "block.blocks.keys.key-slash"
+msgid "/"
+msgstr "/"
+
+msgctxt "block.blocks.keys.key-colon"
+msgid ":"
+msgstr ":"
+
+msgctxt "block.blocks.keys.key-semicolon"
+msgid ";"
+msgstr ";"
+
+msgctxt "block.blocks.keys.key-less_than_sign"
+msgid "<"
+msgstr "<"
+
+msgctxt "block.blocks.keys.key-equal_sign"
+msgid "="
+msgstr "="
+
+msgctxt "block.blocks.keys.key-greater_than_sign"
+msgid ">"
+msgstr ">"
+
+msgctxt "block.blocks.keys.key-question_mark"
+msgid "?"
+msgstr "?"
+
+msgctxt "block.blocks.keys.key-at_symbol"
+msgid "@"
+msgstr "@"
+
+msgctxt "block.blocks.keys.key-opening_bracket"
+msgid "["
+msgstr "["
+
+msgctxt "block.blocks.keys.key-backslash"
+msgid "\\"
+msgstr "\\"
+
+msgctxt "block.blocks.keys.key-closing_bracket"
+msgid "]"
+msgstr "]"
+
+msgctxt "block.blocks.keys.key-caret"
+msgid "^"
+msgstr "^"
+
+msgctxt "block.blocks.keys.key-underscore"
+msgid "_"
+msgstr "_"
+
+msgctxt "block.blocks.keys.key-grave_accent"
+msgid "`"
+msgstr "`"
+
+msgctxt "block.blocks.keys.key-opening_brace"
+msgid "{"
+msgstr "{"
+
+msgctxt "block.blocks.keys.key-vertical_bar"
+msgid "|"
+msgstr "|"
+
+msgctxt "block.blocks.keys.key-closing_brace"
+msgid "}"
+msgstr "}"
+
+msgctxt "block.blocks.keys.key-tilde"
+msgid "~"
+msgstr "~"
 
 msgctxt "block.procedures.title"
 msgid "Make a block"

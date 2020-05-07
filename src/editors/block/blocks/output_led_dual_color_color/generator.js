@@ -14,7 +14,7 @@ export default ({ value, next }, structure) => {
 		parseNext(next, structure)
 		return
 	}
-	const place = getBlockBody(placeBlock)
+	const place = getBlockBody(placeBlock, structure)
 	const colorBlock = getValueBlockByAttributeName(value, 'COLOR')
 	if (!colorBlock) {
 		parseNext(next, structure)
@@ -25,6 +25,7 @@ export default ({ value, next }, structure) => {
 
 	parseInstaceDefinition(structure, instance, type)
 	setInstacePropertyOneTimeAssignment(structure, instance, 'place', place)
+	setInstacePropertyOneTimeAssignment(structure, instance, 'light', '0')
 	parseInstacePropertyAssignment(colorBlock, structure, instance, 'color')
 
 	parseNext(next, structure)

@@ -24,6 +24,7 @@ import dropdown_circuit_touch_places from './dropdown_circuit_touch_places/index
 import dropdown_continuous_servo_directions from './dropdown_continuous_servo_directions/index'
 import dropdown_continuous_servo_places from './dropdown_continuous_servo_places/index'
 import dropdown_easing_functions from './dropdown_easing_functions/index'
+import dropdown_key_keys from './dropdown_key_keys/index'
 import dropdown_led_dual_color_places from './dropdown_led_dual_color_places/index'
 import dropdown_led_places from './dropdown_led_places/index'
 import dropdown_light_sensor_places from './dropdown_light_sensor_places/index'
@@ -54,6 +55,10 @@ import procedures_call from './procedures_call/index'
 import procedures_definition from './procedures_definition/index'
 import output_continuous_servo_direction from './output_continuous_servo_direction/index'
 import output_continuous_servo_speed from './output_continuous_servo_speed/index'
+import output_key_hold from './output_key_hold/index'
+import output_key_press from './output_key_press/index'
+import output_key_release from './output_key_release/index'
+import output_key_tap from './output_key_tap/index'
 import output_led from './output_led/index'
 import output_led_dual_color_color from './output_led_dual_color_color/index'
 import output_led_dual_color_light from './output_led_dual_color_light/index'
@@ -89,6 +94,7 @@ export default {
 	dropdown_continuous_servo_directions,
 	dropdown_continuous_servo_places,
 	dropdown_easing_functions,
+	dropdown_key_keys,
 	dropdown_led_dual_color_places,
 	dropdown_led_places,
 	dropdown_light_sensor_places,
@@ -119,6 +125,10 @@ export default {
 	procedures_definition,
 	output_continuous_servo_direction,
 	output_continuous_servo_speed,
+	output_key_hold,
+	output_key_press,
+	output_key_release,
+	output_key_tap,
 	output_led,
 	output_led_dual_color_color,
 	output_led_dual_color_light,

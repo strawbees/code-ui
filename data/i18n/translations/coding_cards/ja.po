@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
@@ -10,141 +10,169 @@ msgstr ""
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
-"X-Generator: Zanata 4.6.2\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 msgctxt "coding_cards.flow.title"
 msgid "Flow coding cards"
-msgstr ""
+msgstr "フローコーディング・カード"
 
 msgctxt "coding_cards.block.title"
 msgid "Block coding cards"
-msgstr ""
+msgstr "ブロックコーディング・カード"
 
 msgctxt "coding_cards.back-to-coding-cards"
 msgid "Back to cards"
-msgstr ""
+msgstr "カード一覧に戻る"
 
 msgctxt "coding_cards.open-program"
 msgid "Open in editor"
-msgstr ""
+msgstr "プログラミングエディターを開く"
 
 msgctxt "coding_cards.hardware.built-in-led.title"
 msgid "Built-in LED"
-msgstr ""
+msgstr "LEDを組み込む"
 
 msgctxt "coding_cards.hardware.dual-color-led.title"
 msgid "Dual color LED"
-msgstr ""
+msgstr "デュアルカラーLED"
 
 msgctxt "coding_cards.hardware.servo-motor.title"
 msgid "Servo Motor"
-msgstr ""
+msgstr "自動制御モーター"
 
 msgctxt "coding_cards.hardware.key-press.title"
 msgid "Key Press"
-msgstr ""
+msgstr "キー押し"
 
 msgctxt "coding_cards.hardware.buzzer.title"
 msgid "Buzzer"
-msgstr ""
+msgstr "ブザー"
 
 msgctxt "coding_cards.hardware.circuit-touch.title"
 msgid "Circuit Touch"
-msgstr ""
+msgstr "タッチ回路"
 
 msgctxt "coding_cards.hardware.light-sensor.title"
 msgid "Light Sensor"
-msgstr ""
+msgstr "光センサー"
 
 msgctxt "coding_cards.block.slide.code-and-hardware.title"
 msgid "Code & Hardware Requirements"
-msgstr ""
+msgstr "コードとハードウェア"
 
 msgctxt "coding_cards.block.slide.assembly.title"
 msgid "How to use the hardware"
-msgstr ""
+msgstr "ハードウェアの使い方"
 
 msgctxt "coding_cards.block.card.blink.title"
 msgid "Blink"
-msgstr ""
+msgstr "点滅する"
 
 msgctxt "coding_cards.block.card.touch-and-wink.title"
 msgid "Touch and wink"
-msgstr ""
+msgstr "タッチで点滅"
 
 msgctxt "coding_cards.block.card.touch-to-shine.title"
 msgid "Touch to shine"
-msgstr ""
+msgstr "タッチで点灯"
 
 msgctxt "coding_cards.block.card.shine-in-the-dark.title"
 msgid "Shine in the dark"
-msgstr ""
+msgstr "暗闇で光る"
 
 msgctxt "coding_cards.block.card.flicker.title"
 msgid "Flicker"
-msgstr ""
+msgstr "明滅する"
 
 msgctxt "coding_cards.block.card.glow.title"
 msgid "Glow"
-msgstr ""
+msgstr "強く光る"
 
 msgctxt "coding_cards.block.card.light-switch.title"
 msgid "Light switch"
-msgstr ""
+msgstr "点灯スイッチ"
 
 msgctxt "coding_cards.block.card.switching-colors.title"
 msgid "Switching colors"
-msgstr ""
+msgstr "色を変える"
 
 msgctxt "coding_cards.block.card.touch-to-siren-light.title"
 msgid "Touch to siren light"
-msgstr ""
+msgstr "タッチでサイレンの光"
 
 msgctxt "coding_cards.block.card.touch-to-change-color.title"
 msgid "Touch to change color"
-msgstr ""
+msgstr "タッチで光の色を変える"
 
 msgctxt "coding_cards.block.card.change-color-in-the-dark.title"
 msgid "Change color in the dark"
-msgstr ""
+msgstr "暗闇で光の色を変える"
 
 msgctxt "coding_cards.block.card.flickering-color.title"
 msgid "Flickering color"
-msgstr ""
+msgstr "光の色を明滅する"
 
 msgctxt "coding_cards.block.card.fading-colors.title"
 msgid "Fading colors"
-msgstr ""
+msgstr "光の色を徐々に変える"
 
 msgctxt "coding_cards.block.card.mood-light-switch.title"
 msgid "Mood light switch"
-msgstr ""
+msgstr "ムードライトの切り替え"
 
 msgctxt "coding_cards.block.card.back-and-forth.title"
 msgid "Back and forth"
-msgstr ""
+msgstr "前後に動かす"
 
 msgctxt "coding_cards.block.card.touch-and-trap.title"
 msgid "Touch and trap"
-msgstr ""
+msgstr "タッチとトラップ"
 
 msgctxt "coding_cards.block.card.touch-to-hold-position.title"
 msgid "Touch to hold position"
-msgstr ""
+msgstr "タッチで位置を保持する"
 
 msgctxt "coding_cards.block.card.shake-in-the-dark.title"
 msgid "Shake in the dark"
-msgstr ""
+msgstr "暗闇で震えだす"
 
 msgctxt "coding_cards.block.card.shake.title"
 msgid "Shake"
-msgstr ""
+msgstr "震えだす"
 
 msgctxt "coding_cards.block.card.sweep.title"
 msgid "Sweep"
-msgstr ""
+msgstr "掃除する"
 
 msgctxt "coding_cards.block.card.touch-to-switch-position.title"
 msgid "Touch to switch position"
+msgstr "タッチで位置を変える"
+
+msgctxt "coding_cards.block.card.tap-a-key-over-and-over.title"
+msgid "Type a key over and over"
+msgstr ""
+
+msgctxt "coding_cards.block.card.touch-to-write-a-word.title"
+msgid "Touch to write a word"
+msgstr ""
+
+msgctxt "coding_cards.block.card.touch-to-steer.title"
+msgid "Touch to steer"
+msgstr ""
+
+msgctxt "coding_cards.block.card.press-a-key-in-the-dark.title"
+msgid "Press a key in the dark"
+msgstr ""
+
+msgctxt "coding_cards.block.card.laughter-generator.title"
+msgid "Laughter generator"
+msgstr ""
+
+msgctxt "coding_cards.block.card.type-a-sequence-of-letters.title"
+msgid "Type a sequence of letters"
+msgstr ""
+
+msgctxt "coding_cards.block.card.touch-to-alternate-keys.title"
+msgid "Touch to alternate keys"
 msgstr ""

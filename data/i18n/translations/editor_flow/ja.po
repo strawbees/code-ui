@@ -40,11 +40,11 @@ msgstr "ブレイン"
 
 msgctxt "flow.category.input"
 msgid "Input"
-msgstr "入力"
+msgstr "インプット"
 
 msgctxt "flow.category.output"
 msgid "Output"
-msgstr "出力"
+msgstr "アウトプット"
 
 msgctxt "flow.node.analog-sensor"
 msgid "Analog Sensor"
@@ -60,7 +60,7 @@ msgstr "連続自動制御"
 
 msgctxt "flow.node.comparison"
 msgid "Comparison"
-msgstr "互換性"
+msgstr "比較"
 
 msgctxt "flow.node.constrain"
 msgid "Constrain"
@@ -84,7 +84,7 @@ msgstr "ゲート"
 
 msgctxt "flow.node.ir-proximity"
 msgid "IR Proximity"
-msgstr "IR プロキシミティ"
+msgstr "赤外線近接センサー"
 
 msgctxt "flow.node.key-press"
 msgid "Key Press"
@@ -92,7 +92,7 @@ msgstr "キー押し"
 
 msgctxt "flow.node.key-sequence"
 msgid "Key Sequence"
-msgstr "キーシーケンス"
+msgstr "キー連続押し"
 
 msgctxt "flow.node.led"
 msgid "LED"
@@ -156,7 +156,7 @@ msgstr "時間"
 
 msgctxt "flow.parameter.in"
 msgid "in"
-msgstr "中"
+msgstr "in"
 
 msgctxt "flow.parameter.light"
 msgid "light intensity"
@@ -168,7 +168,7 @@ msgstr "色"
 
 msgctxt "flow.parameter.items"
 msgid "items"
-msgstr "アイテム"
+msgstr "項目"
 
 msgctxt "flow.parameter.operation"
 msgid "operation"
@@ -224,19 +224,19 @@ msgstr "最大"
 
 msgctxt "flow.parameter.inMin"
 msgid "in min"
-msgstr "最小の"
+msgstr "最小の入力値"
 
 msgctxt "flow.parameter.inMax"
 msgid "in max"
-msgstr "最大の"
+msgstr "最大の入力値"
 
 msgctxt "flow.parameter.outMin"
 msgid "out min"
-msgstr "最小で"
+msgstr "最小の出力値"
 
 msgctxt "flow.parameter.outMax"
 msgid "out max"
-msgstr "最大で"
+msgstr "最大の出力値"
 
 msgctxt "flow.parameter.trigger"
 msgid "trigger"
@@ -252,15 +252,15 @@ msgstr "キー"
 
 msgctxt "flow.parameter.note"
 msgid "note"
-msgstr "ノート"
+msgstr "音色"
 
 msgctxt "flow.parameter.holdTime"
 msgid "hold time"
-msgstr "ホールドタイム"
+msgstr "持続時間"
 
 msgctxt "flow.parameter.offset"
 msgid "offset"
-msgstr "オフセット"
+msgstr "基準点からの距離"
 
 msgctxt "flow.parameter.channel"
 msgid "channel"
@@ -268,11 +268,11 @@ msgstr "チャネル"
 
 msgctxt "flow.parameter.ifThen"
 msgid "then"
-msgstr "then"
+msgstr "もし～なら"
 
 msgctxt "flow.parameter.ifElse"
 msgid "else"
-msgstr "else"
+msgstr "でなければ"
 
 msgctxt "flow.parameter.amount"
 msgid "amount"
@@ -288,7 +288,7 @@ msgstr "クローズ"
 
 msgctxt "flow.outlet.out"
 msgid "outlet"
-msgstr "アウトレット"
+msgstr "out"
 
 msgctxt "flow.constant.logic-and"
 msgid "AND"
@@ -336,7 +336,7 @@ msgstr "より大きい"
 
 msgctxt "flow.constant.comparison-greater-equal"
 msgid "Greater or equal"
-msgstr "より大きいか等しい"
+msgstr "以上"
 
 msgctxt "flow.constant.comparison-less"
 msgid "Less"
@@ -344,7 +344,7 @@ msgstr "より小さい"
 
 msgctxt "flow.constant.comparison-less-equal"
 msgid "Less or equal"
-msgstr "より小さいか等しい"
+msgstr "以下"
 
 msgctxt "flow.constant.statistics-avg"
 msgid "Average"
@@ -364,39 +364,39 @@ msgstr "合計"
 
 msgctxt "flow.constant.wave-sine"
 msgid "Sine"
-msgstr "サイン"
+msgstr "正弦波"
 
 msgctxt "flow.constant.wave-square"
 msgid "Square"
-msgstr "四角"
+msgstr "矩形波"
 
 msgctxt "flow.constant.wave-triangle"
 msgid "Triangle"
-msgstr "三角"
+msgstr "三角波"
 
 msgctxt "flow.constant.wave-pulse"
 msgid "Pulse"
-msgstr "パルス"
+msgstr "パルス波"
 
 msgctxt "flow.constant.wave-ramp-up"
 msgid "Ramp Up"
-msgstr "ランプアップ"
+msgstr "立ち上がりランプ波"
 
 msgctxt "flow.constant.wave-ramp-down"
 msgid "Ramp Down"
-msgstr "ランプダウン"
+msgstr "立ち下がりランプ波"
 
 msgctxt "flow.constant.servo-motor-1"
 msgid "Servo 1"
-msgstr "自動制御1"
+msgstr "自動制御モーター1"
 
 msgctxt "flow.constant.servo-motor-2"
 msgid "Servo 2"
-msgstr "自動制御2"
+msgstr "自動制御モーター2"
 
 msgctxt "flow.constant.disconnected"
 msgid "Disconnected"
-msgstr "切断されました"
+msgstr "指定されていません"
 
 msgctxt "flow.constant.place-left-eye"
 msgid "Left eye"
@@ -436,43 +436,43 @@ msgstr "右足"
 
 msgctxt "flow.constant.place-horn-front"
 msgid "Horn Front"
-msgstr "ホーン前"
+msgstr "ホーン前部"
 
 msgctxt "flow.constant.place-left-arm-front"
 msgid "Left Arm Front"
-msgstr "左腕前"
+msgstr "左腕前部"
 
 msgctxt "flow.constant.place-right-arm-front"
 msgid "Right Arm Front"
-msgstr "右腕前"
+msgstr "右腕前部"
 
 msgctxt "flow.constant.place-left-leg-front"
 msgid "Left Leg Front"
-msgstr "左足前"
+msgstr "左足前部"
 
 msgctxt "flow.constant.place-right-leg-front"
 msgid "Right Leg Front"
-msgstr "右足前"
+msgstr "右足前部"
 
 msgctxt "flow.constant.place-horn-back"
 msgid "Horn Back"
-msgstr "ホーン後ろ"
+msgstr "ホーン後部"
 
 msgctxt "flow.constant.place-left-arm-back"
 msgid "Left Arm Back"
-msgstr "左腕後ろ"
+msgstr "左腕後部"
 
 msgctxt "flow.constant.place-right-arm-back"
 msgid "Right Arm Back"
-msgstr "右腕後ろ"
+msgstr "右腕後部"
 
 msgctxt "flow.constant.place-left-leg-back"
 msgid "Left Leg Back"
-msgstr "左足後ろ"
+msgstr "左足後部"
 
 msgctxt "flow.constant.place-right-leg-back"
 msgid "Right Leg Back"
-msgstr "右足後ろ"
+msgstr "右足後部"
 
 msgctxt "flow.constant.place-backpack-1"
 msgid "Backpack 1"
@@ -500,7 +500,7 @@ msgstr "バックパック6"
 
 msgctxt "flow.constant.no-note"
 msgid "No note"
-msgstr "ノート無し"
+msgstr "音色が指定されていません"
 
 msgctxt "flow.constant.note-a1"
 msgid "A1"
@@ -820,7 +820,7 @@ msgstr "D#8"
 
 msgctxt "flow.constant.no-key"
 msgid "No key"
-msgstr "キー無し"
+msgstr "キーが指定されていません"
 
 msgctxt "flow.constant.key-0"
 msgid "0"
@@ -1000,19 +1000,19 @@ msgstr "右 GUI"
 
 msgctxt "flow.constant.key-up"
 msgid "Up"
-msgstr "上"
+msgstr "↑"
 
 msgctxt "flow.constant.key-down"
 msgid "Down"
-msgstr "下"
+msgstr "↓"
 
 msgctxt "flow.constant.key-left"
 msgid "Left"
-msgstr "左"
+msgstr "←"
 
 msgctxt "flow.constant.key-right"
 msgid "Right"
-msgstr "右"
+msgstr "→"
 
 msgctxt "flow.constant.key-backspace"
 msgid "Backspace"
@@ -1116,7 +1116,7 @@ msgstr "!"
 
 msgctxt "flow.constant.key-double_quotes"
 msgid "\""
-msgstr "“"
+msgstr "\""
 
 msgctxt "flow.constant.key-number_sign"
 msgid "#"
@@ -1136,7 +1136,7 @@ msgstr "&"
 
 msgctxt "flow.constant.key-single_quote"
 msgid "'"
-msgstr "'"
+msgid "'"
 
 msgctxt "flow.constant.key-opening_parenthesis"
 msgid "("
@@ -1240,7 +1240,7 @@ msgstr "~"
 
 msgctxt "flow.constant.no-channel"
 msgid "No Channel"
-msgstr "チャネル無し"
+msgstr "チャネルが指定されていません"
 
 msgctxt "flow.constant.channel-1"
 msgid "Channel 1"

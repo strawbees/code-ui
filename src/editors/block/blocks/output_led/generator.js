@@ -14,7 +14,7 @@ export default ({ value, next }, structure) => {
 		parseNext(next, structure)
 		return
 	}
-	const place = getBlockBody(placeBlock)
+	const place = getBlockBody(placeBlock, structure)
 	const lightBlock = getValueBlockByAttributeName(value, 'LIGHT')
 	if (!lightBlock) {
 		parseNext(next, structure)
@@ -25,6 +25,7 @@ export default ({ value, next }, structure) => {
 
 	parseInstaceDefinition(structure, instance, type)
 	setInstacePropertyOneTimeAssignment(structure, instance, 'place', place)
+	setInstacePropertyOneTimeAssignment(structure, instance, 'light', '0')
 	parseInstacePropertyAssignment(lightBlock, structure, instance, 'light')
 
 	parseNext(next, structure)
