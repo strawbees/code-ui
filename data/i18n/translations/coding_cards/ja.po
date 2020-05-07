@@ -149,7 +149,7 @@ msgctxt "coding_cards.block.card.touch-to-switch-position.title"
 msgid "Touch to switch position"
 msgstr "タッチで位置を変える"
 
-msgctxt "coding_cards.block.card.tap-a-key-over-and-over.title"
+msgctxt "coding_cards.block.card.type-a-key-over-and-over.title"
 msgid "Type a key over and over"
 msgstr ""
 
