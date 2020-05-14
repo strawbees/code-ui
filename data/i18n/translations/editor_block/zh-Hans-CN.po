@@ -43,7 +43,7 @@ msgstr "触摸传感器%1数值"
 
 msgctxt "block.blocks.input_circuit_touch_touched.message0"
 msgid "%1 is touched"
-msgstr "%1检测到触摸"
+msgstr "触摸传感器%1数值"
 
 msgctxt "block.blocks.input_light_sensor.message0"
 msgid "value of light sensor %1"
@@ -79,19 +79,19 @@ msgstr "经过 %3 秒 %4转换舵机 %1 位置到 %2"
 
 msgctxt "block.blocks.output_key_press.message0"
 msgid "press key %1"
-msgstr ""
+msgstr "按键 %1"
 
 msgctxt "block.blocks.output_key_release.message0"
 msgid "release key %1"
-msgstr ""
+msgstr "释放按键 %1"
 
 msgctxt "block.blocks.output_key_tap.message0"
 msgid "tap key %1"
-msgstr ""
+msgstr "点击按键 %1"
 
 msgctxt "block.blocks.output_key_hold.message0"
 msgid "hold key %1 for %2 seconds"
-msgstr ""
+msgstr "按住键 %1持续% 2 秒"
 
 msgctxt "block.blocks.easing.linear"
 msgid "linear"
