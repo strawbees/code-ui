@@ -91,7 +91,7 @@ msgstr "点击按键 %1"
 
 msgctxt "block.blocks.output_key_hold.message0"
 msgid "hold key %1 for %2 seconds"
-msgstr "按住键 %1持续% 2 秒"
+msgstr "按住键 %1 持续 %2 秒"
 
 msgctxt "block.blocks.easing.linear"
 msgid "linear"
