@@ -1,5 +1,5 @@
 {
-	"app_announcement_20200213" : {
+	"app_announcement_20200519" : {
 		"configs" : [
 			"default",
 			"web_stage",
@@ -7,20 +7,24 @@
 		],
 		"content" : {
 			"en" : {
-				"title" : "Offline app released!",
-				"content" : "[Download the new CODE app now.](/download/)"
+				"title" : "Switch to the app before June 15th!",
+				"content" : "After this date, uploading to Quirkbots will only be possible using the offline app.<br>[Download the app now.](/download/)"
+			},
+			"ja" : {
+				"title" : "Switch to the app before June 15th!",
+				"content" : "After this date, uploading to Quirkbots will only be possible using the offline app.<br>[Download the app now.](/ja/download/)"
 			},
 			"sv" : {
-				"title" : "Ny offline app ute nu!",
-				"content" : "[Ladda ner den nya CODE appen nu.](/sv/nedladdning/)"
+				"title" : "Byt till appen före den 15:e Juni!",
+				"content" : "Efter detta datum kommer det endast gå att ladda upp kod till Quirkbot från vår offline-app.<br>[Ladda ner appen nu.](/sv/nedladdning/)"
 			},
 			"pt_BR" : {
-				"title" : "Novo aplicativo offline!",
-				"content" : "[Baixe o novo applicativo do CODE agora.](/pt-br/download/)"
+				"title" : "Migre para o applicativo até dia 15 de Junho!",
+				"content" : "A partir desta data, o upload para Quirkbots só será possível através do applicativo offline.<br>[Baixe o applicativo agora.](/pt-br/download/)"
 			},
 			"zh-Hans-CN" : {
-				"title" : "离线版app现已发布！",
-				"content" : "[请下载新版 CODE app.](/zh-hans-cn/download/)"
+				"title" : "六月15日前切换到应用程序！",
+				"content" : "自该日起，您将只能通过我们的应用程序将代码上传至Quirkbot.<br>[立刻下载程序](/zh-hans-cn/download/)"
 			}
 		}
 	}
