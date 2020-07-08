@@ -1,6 +1,6 @@
 # Terms of Use of Strawbees CODE
 
-*Last updated: May 23th 2018*
+*Last updated: July 8th 2020*
 
 ## 1. User Agreement
 
@@ -86,6 +86,8 @@ Content on the platform, including user-generated content, may include links to 
 
 You agree to indemnify us and all our affiliates, employees, faculty members, fellows, students, agents, representatives, third party service providers, and members of their governing boards (all of which are "Strawbees Entities"), and to defend and hold each of them harmless, from any and all claims and liabilities (including attorneys' fees) arising out of or related to your breach of the Terms of Use or your use of the platform.
 
+For federal government agencies, provisions in the Terms of Use relating to Indemnification shall not apply to your Official Use, except to the extent expressly authorized by federal law. For state and local government agencies in the United States, Terms of Use relating to Indemnification shall apply to your Official Use only to the extent authorized by the laws of your jurisdiction.
+
 ## 10. Disclaimer of Warranty
 
 You acknowledge that you are using the platform at your own risk. The platform is provided "as is," and the Strawbees Entities hereby expressly disclaim any and all warranties, express and implied, including but not limited to any warranties of accuracy, reliability, title, merchantability, non-infringement, fitness for a particular purpose or any other warranty, condition, guarantee or representation, whether oral, in writing or in electronic form, including but not limited to the accuracy or completeness of any information contained therein or provided by the platform. Without limiting the foregoing, the Strawbees Entities disclaim any and all warranties, express and implied, regarding user-generated content and our events. The Strawbees Entities and their third party service providers do not represent or warrant that access to the platform will be uninterrupted or that there will be no failures, errors or omissions or loss of transmitted information, or that no viruses will be transmitted through the platform.
@@ -101,6 +103,8 @@ The platform is offered by the us from its facilities in Sweden. We makes no rep
 ## 13. Choice of Law and Venue
 
 You agree that these Terms of Use, for all purposes, shall be governed and construed in accordance with the laws of Sweden, applicable to contracts to be wholly performed therein, and any action based on, relating to, or alleging a breach of the Terms of Use must be brought in a federal Swedish court. In addition, both parties agree to submit to the exclusive personal jurisdiction and venue of such courts.
+
+If you are a federal, state, or local government entity in the United States using Strawbees CODE in your official capacity and legally unable to accept the controlling law, jurisdiction or venue clauses above, then those clauses do not apply to you. For such U.S. federal government entities, these Terms and any action related thereto will be governed by the laws of the United States of America (without reference to conflict of laws) and, in the absence of federal law and to the extent permitted under federal law, the laws of Sweden (excluding choice of law).
 
 ## 14. Choice of Language
 
