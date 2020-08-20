@@ -1,6 +1,16 @@
 import thunkMiddleware from 'redux-thunk'
 import { createStore, applyMiddleware, compose } from 'redux'
+import { HYDRATE, createWrapper } from 'next-redux-wrapper'
 import reducer from 'src/reducers/index'
+
+const hidratableReducer = (state, action) => {
+	switch (action.type) {
+		case HYDRATE:
+			return { ...state, ...action.payload }
+		default:
+			return reducer(state, action)
+	}
+}
 
 const composeEnhancers = (
 	typeof window !== 'undefined' &&
@@ -8,7 +18,7 @@ const composeEnhancers = (
 	window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
 ) || compose
 
-export default (state = {}) => {
+const initStore = () => {
 	const middlewares = []
 	middlewares.push(thunkMiddleware)
 	if (process.browser && process.env.NODE_ENV !== 'production') {
@@ -21,8 +31,7 @@ export default (state = {}) => {
 	}
 
 	const store = createStore(
-		reducer,
-		state,
+		hidratableReducer,
 		composeEnhancers(applyMiddleware(...middlewares))
 	)
 
@@ -35,3 +44,5 @@ export default (state = {}) => {
 	}
 	return store
 }
+
+export const wrapper = createWrapper(initStore)
