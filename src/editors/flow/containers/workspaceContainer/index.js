@@ -7,8 +7,10 @@ import mergeProps from './mergeProps'
 const WorkspaceContainer = (props) =>
 	<Workspace {...props} />
 
-export default connect(
+const workspaceContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(WorkspaceContainer)
+
+export default workspaceContainerConnected

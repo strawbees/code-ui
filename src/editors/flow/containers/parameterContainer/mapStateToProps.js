@@ -3,8 +3,10 @@ import parameterNameSelector from 'src/editors/flow/selectors/parameterNameSelec
 import parameterIsMultipleSelector from 'src/editors/flow/selectors/parameterIsMultipleSelector'
 import parameterNumItemsSelector from 'src/editors/flow/selectors/parameterNumItemsSelector'
 
-export default () => createStructuredSelector({
+const mapStateToProps = () => createStructuredSelector({
 	name       : parameterNameSelector(),
 	isMultiple : parameterIsMultipleSelector(),
 	numItems   : parameterNumItemsSelector(),
 })
+
+export default mapStateToProps

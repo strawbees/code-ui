@@ -1,1 +1,3 @@
-export default null
+const mergeProps = null
+
+export default mergeProps

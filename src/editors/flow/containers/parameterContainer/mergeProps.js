@@ -1,4 +1,4 @@
-export default (stateProps, dispatchProps, ownProps) => {
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
 	const {
 		addInstanceParameterItem,
 		removeInstanceParameterItem,
@@ -25,3 +25,5 @@ export default (stateProps, dispatchProps, ownProps) => {
 		}),
 	}
 }
+
+export default mergeProps

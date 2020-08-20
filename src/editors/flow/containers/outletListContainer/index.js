@@ -25,8 +25,10 @@ OutletListContainer.propTypes = {
 	id : PropTypes.string,
 }
 
-export default connect(
+const outletListContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(OutletListContainer)
+
+export default outletListContainerConnected

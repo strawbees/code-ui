@@ -1,6 +1,8 @@
 import { createStructuredSelector } from 'reselect'
 import instanceOutletIdsSelector from 'src/editors/flow/selectors/instanceOutletIdsSelector'
 
-export default () => createStructuredSelector({
+const mapStateToProps = () => createStructuredSelector({
 	outletIds : instanceOutletIdsSelector(),
 })
+
+export default mapStateToProps

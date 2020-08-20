@@ -137,8 +137,10 @@ NodeMiniDraggableContainer.propTypes = {
 	safeAddInstance : PropTypes.func,
 }
 
-export default connect(
+const nodeMiniDraggableContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(NodeMiniDraggableContainer)
+
+export default nodeMiniDraggableContainerConnected

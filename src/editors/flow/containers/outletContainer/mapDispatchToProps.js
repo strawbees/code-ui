@@ -7,10 +7,12 @@ import {
 	setOutletTransferDragMethods,
 } from 'src/editors/flow/actions'
 
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	setInstanceParameter,
 	highlightInstanceParameterDropArea,
 	setIsDraggingOutlet,
 	setActiveOutletLineRects,
 	setOutletTransferDragMethods,
 })
+
+export default mapDispatchToProps

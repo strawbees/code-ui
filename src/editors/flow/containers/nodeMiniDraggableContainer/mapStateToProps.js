@@ -4,9 +4,11 @@ import nodeColorSelector from 'src/editors/flow/selectors/nodeColorSelector'
 import nodeIconSelector from 'src/editors/flow/selectors/nodeIconSelector'
 import dropAreaRectGetterSelector from 'src/editors/flow/selectors/dropAreaRectGetterSelector'
 
-export default () => createStructuredSelector({
+const mapStateToProps = () => createStructuredSelector({
 	name            : nodeNameSelector(),
 	color           : nodeColorSelector(),
 	icon            : nodeIconSelector(),
 	getDropAreaRect : dropAreaRectGetterSelector(),
 })
+
+export default mapStateToProps

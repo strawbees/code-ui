@@ -1,6 +1,8 @@
 import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
 import { registerGetDropAreaRect } from 'src/editors/flow/actions'
 
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	registerGetDropAreaRect,
 })
+
+export default mapDispatchToProps

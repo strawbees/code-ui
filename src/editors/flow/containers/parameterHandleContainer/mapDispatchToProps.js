@@ -4,7 +4,9 @@ import {
 	setDisconnectingParameterId,
 } from 'src/editors/flow/actions'
 
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	safeUpdateInstanceParameterByValueCode,
 	setDisconnectingParameterId,
 })
+
+export default mapDispatchToProps

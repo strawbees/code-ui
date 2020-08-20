@@ -4,8 +4,10 @@ import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
-export default connect(
+const instanceNameContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(InstanceName)
+
+export default instanceNameContainerConnected
