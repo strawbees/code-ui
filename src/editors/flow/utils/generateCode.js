@@ -2,7 +2,7 @@ import instanceNodeSelector from 'src/editors/flow/selectors/instanceNodeSelecto
 import parameterValueParsedSanitisedSelector from 'src/editors/flow/selectors/parameterValueParsedSanitisedSelector'
 import parameterNumItemsSelector from 'src/editors/flow/selectors/parameterNumItemsSelector'
 
-export default (source, state) => {
+const genereateCode = (source, state) => {
 	source = source || []
 
 	// This is hack... as our selectors operate on state.flowEditor.source,
@@ -111,3 +111,5 @@ export default (source, state) => {
 
 	return code
 }
+
+export default genereateCode
