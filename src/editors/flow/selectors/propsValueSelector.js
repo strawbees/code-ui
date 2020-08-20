@@ -1,1 +1,3 @@
-export default () => (state, { value }) => value
+const selector = () => (state, { value }) => value
+
+export default selector

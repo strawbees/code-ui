@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 
-export default () => createSelector(
+const selector = () => createSelector(
 	[
 		(state, { id }) => makeStringSelector(`flow.outlet.${id}`)(state)
 	],
@@ -9,3 +9,5 @@ export default () => createSelector(
 		name,
 	) => name
 )
+
+export default selector

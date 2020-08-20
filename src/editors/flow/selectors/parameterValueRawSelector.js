@@ -4,7 +4,7 @@ import propsIdSelector from 'src/editors/flow/selectors/propsIdSelector'
 import propsInstanceIdSelector from 'src/editors/flow/selectors/propsInstanceIdSelector'
 import instanceSelector from 'src/editors/flow/selectors/instanceSelector'
 
-export default () => createSelector(
+const selector = () => createSelector(
 	[
 		stateSelector(),
 		propsIdSelector(),
@@ -19,3 +19,5 @@ export default () => createSelector(
 		return instance.parameters && instance.parameters[id]
 	}
 )
+
+export default selector

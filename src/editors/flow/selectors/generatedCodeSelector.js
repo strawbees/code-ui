@@ -3,7 +3,7 @@ import stateSelector from 'src/editors/flow/selectors/stateSelector'
 import sourceSelector from 'src/editors/flow/selectors/sourceSelector'
 import generateCode from 'src/editors/flow/utils/generateCode'
 
-export default () => createSelector(
+const selector = () => createSelector(
 	[
 		stateSelector(),
 		sourceSelector()
@@ -13,3 +13,5 @@ export default () => createSelector(
 		source,
 	) => generateCode(source, state)
 )
+
+export default selector

@@ -4,7 +4,7 @@ import valueParsedSelector from 'src/editors/flow/selectors/valueParsedSelector'
 import parameterValueRawSelector from 'src/editors/flow/selectors/parameterValueRawSelector'
 import parameterValueDefaultSelector from 'src/editors/flow/selectors/parameterValueDefaultSelector'
 
-export default () => createSelector(
+const selector = () => createSelector(
 	[
 		stateSelector(),
 		parameterValueRawSelector(),
@@ -18,3 +18,5 @@ export default () => createSelector(
 		valueParsedSelector()(state, { value : valueDefault }) ||
 		{}
 )
+
+export default selector

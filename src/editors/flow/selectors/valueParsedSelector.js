@@ -10,7 +10,7 @@ import stateSelector from 'src/editors/flow/selectors/stateSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 import icons from 'src/editors/flow/assets/icons'
 
-export default () => createSelector(
+const selector = () => createSelector(
 	[
 		sourceSelector(),
 		baseConstantDefinitionsSelector(),
@@ -117,3 +117,5 @@ export default () => createSelector(
 		return null
 	}
 )
+
+export default selector

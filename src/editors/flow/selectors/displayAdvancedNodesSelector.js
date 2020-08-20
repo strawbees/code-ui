@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import flowEditorSelector from 'src/editors/flow/selectors/flowEditorSelector'
 
-export default () => createSelector(
+const selector = () => createSelector(
 	[
 		flowEditorSelector(),
 	],
@@ -9,3 +9,5 @@ export default () => createSelector(
 		flowEditor
 	) => flowEditor.displayAdvancedNodes
 )
+
+export default selector

@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import connectionLineInfosSelector from 'src/editors/flow/selectors/connectionLineInfosSelector'
 
 const CACHE = {}
-export default () => createSelector(
+const selector = () => createSelector(
 	[
 		connectionLineInfosSelector(),
 	],
@@ -17,3 +17,5 @@ export default () => createSelector(
 		return CACHE[key]
 	}
 )
+
+export default selector

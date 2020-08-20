@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import propsIdSelector from 'src/editors/flow/selectors/propsIdSelector'
 import baseCategoryDefinitionsSelector from 'src/editors/flow/selectors/baseCategoryDefinitionsSelector'
 
-export default () => createSelector(
+const selector = () => createSelector(
 	[
 		baseCategoryDefinitionsSelector(),
 		propsIdSelector(),
@@ -12,3 +12,5 @@ export default () => createSelector(
 		id,
 	) => categoryDefinitions[id]
 )
+
+export default selector

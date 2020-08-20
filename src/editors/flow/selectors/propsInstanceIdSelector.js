@@ -1,1 +1,3 @@
-export default () => (state, { instanceId }) => instanceId
+const selector = () => (state, { instanceId }) => instanceId
+
+export default selector

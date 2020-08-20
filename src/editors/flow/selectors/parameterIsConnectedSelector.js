@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import parameterValueDisplaySelector from 'src/editors/flow/selectors/parameterValueDisplaySelector'
 
-export default () => createSelector(
+const selector = () => createSelector(
 	[
 		parameterValueDisplaySelector(),
 	],
@@ -9,3 +9,5 @@ export default () => createSelector(
 		valueDisplay,
 	) => valueDisplay.type === 'OUTLET'
 )
+
+export default selector

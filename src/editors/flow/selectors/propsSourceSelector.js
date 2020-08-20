@@ -1,1 +1,3 @@
-export default () => (state, { source }) => source
+const selector = () => (state, { source }) => source
+
+export default selector

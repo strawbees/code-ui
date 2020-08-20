@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import propsIdSelector from 'src/editors/flow/selectors/propsIdSelector'
 import sourceSelector from 'src/editors/flow/selectors/sourceSelector'
 
-export default () => createSelector(
+const selector = () => createSelector(
 	[
 		sourceSelector(),
 		propsIdSelector(),
@@ -15,3 +15,5 @@ export default () => createSelector(
 		.filter(instance => instance.id === id)
 		.pop()
 )
+
+export default selector

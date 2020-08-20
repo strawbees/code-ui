@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import displayAdvancedNodesSelector from 'src/editors/flow/selectors/displayAdvancedNodesSelector'
 import categoryNodesSelector from 'src/editors/flow/selectors/categoryNodesSelector'
 
-export default () => createSelector(
+const selector = () => createSelector(
 	[
 		displayAdvancedNodesSelector(),
 		categoryNodesSelector(),
@@ -19,3 +19,5 @@ export default () => createSelector(
 		})
 		.map(node => node.id)
 )
+
+export default selector

@@ -3,7 +3,7 @@ import propsIdSelector from 'src/editors/flow/selectors/propsIdSelector'
 import propsInstanceIdSelector from 'src/editors/flow/selectors/propsInstanceIdSelector'
 import highlightedInstanceParameterSelector from 'src/editors/flow/selectors/highlightedInstanceParameterSelector'
 
-export default () => createSelector(
+const selector = () => createSelector(
 	[
 		propsIdSelector(),
 		propsInstanceIdSelector(),
@@ -19,3 +19,5 @@ export default () => createSelector(
 		highlightedInstanceParameter.parameterId === id &&
 		highlightedInstanceParameter.id === instanceId
 )
+
+export default selector
