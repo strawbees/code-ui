@@ -1,6 +1,6 @@
-const selector = () => (state) =>
+const setupOSSelector = () => (state) =>
 	state &&
 	state.setup &&
 	state.setup.os
 
-export default selector
+export default setupOSSelector

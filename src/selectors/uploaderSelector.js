@@ -1,7 +1,7 @@
-const selector = () => (state) =>
+const uploaderSelector = () => (state) =>
 	(
 		state &&
 		state.uploader
 	) || {}
 
-export default selector
+export default uploaderSelector

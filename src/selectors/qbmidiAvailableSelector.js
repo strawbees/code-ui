@@ -1,7 +1,7 @@
-const selector = () => (state) =>
+const qbmidiAvailableSelector = () => (state) =>
 	(
 		state.setup &&
 		state.qbmidi.available
 	) || false
 
-export default selector
+export default qbmidiAvailableSelector

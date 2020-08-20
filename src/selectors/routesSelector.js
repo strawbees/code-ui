@@ -1,8 +1,8 @@
-const selector = () => (state) =>
+const routesSelector = () => (state) =>
 	(
 		state &&
 		state.setup &&
 		state.setup.routes
 	) || []
 
-export default selector
+export default routesSelector

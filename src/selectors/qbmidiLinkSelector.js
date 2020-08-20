@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import qbmidiLinksSelector from 'src/selectors/qbmidiLinksSelector'
 
-const selector = () => createSelector(
+const qbmidiLinkSelector = () => createSelector(
 	[
 		(_, { runtimeId }) => runtimeId,
 		qbmidiLinksSelector(),
@@ -12,4 +12,4 @@ const selector = () => createSelector(
 	) => qbmidiLinks[runtimeId]
 )
 
-export default selector
+export default qbmidiLinkSelector

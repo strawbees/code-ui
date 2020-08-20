@@ -1,5 +1,5 @@
-const selector = () => (state) =>
+const storageRemoteMirrorSelector = () => (state) =>
 	state.storage &&
 	state.storage.remoteMirror
 
-export default selector
+export default storageRemoteMirrorSelector

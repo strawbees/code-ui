@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import refEditorDataSelector from 'src/selectors/refEditorDataSelector'
 
-const selector = () => createSelector(
+const refEditorSourceSelector = () => createSelector(
 	[
 		refEditorDataSelector(),
 	],
@@ -10,4 +10,4 @@ const selector = () => createSelector(
 	) => data && data.source
 )
 
-export default selector
+export default refEditorSourceSelector

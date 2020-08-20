@@ -1,6 +1,6 @@
-const selector = () => (state) =>
+const setupDisplayErrorSelector = () => (state) =>
 	state &&
 	state.setup &&
 	state.setup.displayError
 
-export default selector
+export default setupDisplayErrorSelector

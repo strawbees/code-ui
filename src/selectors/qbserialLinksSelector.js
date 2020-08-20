@@ -1,7 +1,7 @@
-const selector = () => (state) =>
+const qbserialLinksSelector = () => (state) =>
 	(
 		state.setup &&
 		state.qbserial.links
 	) || {}
 
-export default selector
+export default qbserialLinksSelector

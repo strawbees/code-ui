@@ -3,7 +3,7 @@ import uploaderEntrySelector from 'src/selectors/uploaderEntrySelector'
 import uploaderEntryErrorSelector from 'src/selectors/uploaderEntryErrorSelector'
 import uploaderEntrySuccessSelector from 'src/selectors/uploaderEntrySuccessSelector'
 
-const selector = () => createSelector(
+const uploaderEntryUploadingSelector = () => createSelector(
 	[
 		uploaderEntrySelector(),
 		uploaderEntryErrorSelector(),
@@ -21,4 +21,4 @@ const selector = () => createSelector(
 	}
 )
 
-export default selector
+export default uploaderEntryUploadingSelector

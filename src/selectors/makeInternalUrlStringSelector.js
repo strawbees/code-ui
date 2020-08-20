@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 import rootPathSelector from 'src/selectors/rootPathSelector'
 
-const selector = (key, showKeyIfMissing) => createSelector(
+const makeInternalUrlStringSelector = (key, showKeyIfMissing) => createSelector(
 	[
 		makeStringSelector(key, showKeyIfMissing),
 		rootPathSelector()
@@ -13,4 +13,4 @@ const selector = (key, showKeyIfMissing) => createSelector(
 	) => `${rootPath}${string}`
 )
 
-export default selector
+export default makeInternalUrlStringSelector

@@ -1,5 +1,5 @@
-const selector = () => (state) =>
+const editorSelector = () => (state) =>
 	state &&
 	state.editor
 
-export default selector
+export default editorSelector

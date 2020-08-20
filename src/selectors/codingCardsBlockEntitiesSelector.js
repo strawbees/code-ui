@@ -1,4 +1,4 @@
-const selector = () => (state) =>
+const codingCardsBlockEntitiesSelector = () => (state) =>
 	(
 		state.setup &&
 		state.setup.codingCards &&
@@ -6,4 +6,4 @@ const selector = () => (state) =>
 		state.setup.codingCards.cards.block
 	) || {}
 
-export default selector
+export default codingCardsBlockEntitiesSelector

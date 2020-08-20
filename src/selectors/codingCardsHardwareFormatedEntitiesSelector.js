@@ -3,7 +3,7 @@ import stateSelector from 'src/selectors/stateSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 import codingCardsHardwareEntitiesSelector from 'src/selectors/codingCardsHardwareEntitiesSelector'
 
-const selector = () => createSelector(
+const codingCardsHardwareFormatedEntitiesSelector = () => createSelector(
 	[
 		stateSelector(),
 		codingCardsHardwareEntitiesSelector(),
@@ -20,4 +20,4 @@ const selector = () => createSelector(
 	}, {})
 )
 
-export default selector
+export default codingCardsHardwareFormatedEntitiesSelector

@@ -1,8 +1,8 @@
-const selector = () => (state) =>
+const codingCardsHardwareEntitiesSelector = () => (state) =>
 	(
 		state.setup &&
 		state.setup.codingCards &&
 		state.setup.codingCards.hardware
 	) || {}
 
-export default selector
+export default codingCardsHardwareEntitiesSelector

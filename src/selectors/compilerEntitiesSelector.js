@@ -1,8 +1,8 @@
-const selector = () => (state) =>
+const compilerEntitiesSelector = () => (state) =>
 	(
 		state &&
 		state.compiler &&
 		state.compiler.entities
 	) || {}
 
-export default selector
+export default compilerEntitiesSelector

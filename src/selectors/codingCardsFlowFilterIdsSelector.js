@@ -1,8 +1,8 @@
-const selector = () => (state) =>
+const codingCardsFlowFilterIdsSelector = () => (state) =>
 	(
 		state &&
 		state.ui &&
 		state.ui.codingCardsFlowFilterIds
 	) || []
 
-export default selector
+export default codingCardsFlowFilterIdsSelector

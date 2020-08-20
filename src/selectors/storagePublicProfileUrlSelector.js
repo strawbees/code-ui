@@ -14,7 +14,7 @@ const {
 } = getConfig()
 const baseUrl = typeof CANONICAL_URL !== 'undefined' ? CANONICAL_URL : ''
 
-const selector = () => createSelector(
+const storagePublicProfileUrlSelector = () => createSelector(
 	[
 		makeStringSelector('routes.user'),
 		storageUserSelector(),
@@ -46,4 +46,4 @@ const selector = () => createSelector(
 	}
 )
 
-export default selector
+export default storagePublicProfileUrlSelector

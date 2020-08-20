@@ -1,6 +1,6 @@
-const selector = () => (state) =>
+const factoryCodeSelector = () => (state) =>
 	state &&
 	state.setup &&
 	state.setup.factoryCode
 
-export default selector
+export default factoryCodeSelector

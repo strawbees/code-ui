@@ -1,8 +1,8 @@
-const selector = () => (state) =>
+const stringsSelector = () => (state) =>
 	(
 		state &&
 		state.setup &&
 		state.setup.strings
 	) || {}
 
-export default selector
+export default stringsSelector

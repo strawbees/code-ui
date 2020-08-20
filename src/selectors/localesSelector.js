@@ -1,7 +1,7 @@
-const selector = () => (state) =>
+const localesSelector = () => (state) =>
 	(
 		state.setup &&
 		state.setup.locales
 	) || []
 
-export default selector
+export default localesSelector

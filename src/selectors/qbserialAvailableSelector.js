@@ -1,7 +1,7 @@
-const selector = () => (state) =>
+const qbserialAvailableSelector = () => (state) =>
 	(
 		state.setup &&
 		state.qbserial.available
 	) || false
 
-export default selector
+export default qbserialAvailableSelector

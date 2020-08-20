@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import refEditorTypeSelector from 'src/selectors/refEditorTypeSelector'
 import generateNewProgramSource from 'src/utils/generateNewProgramSource'
 
-const selector = () => createSelector(
+const refEditorDefaultSourceSelector = () => createSelector(
 	[
 		refEditorTypeSelector(),
 	],
@@ -11,4 +11,4 @@ const selector = () => createSelector(
 	) => generateNewProgramSource(type)
 )
 
-export default selector
+export default refEditorDefaultSourceSelector

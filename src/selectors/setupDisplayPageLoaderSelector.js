@@ -1,6 +1,6 @@
-const selector = () => (state) =>
+const setupDisplayPageLoaderSelector = () => (state) =>
 	state &&
 	state.setup &&
 	state.setup.displayPageLoader
 
-export default selector
+export default setupDisplayPageLoaderSelector

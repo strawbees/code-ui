@@ -1,8 +1,8 @@
-const selector = () => (state) =>
+const rootPathSelector = () => (state) =>
 	(
 		state &&
 		state.setup &&
 		state.setup.rootPath
 	) || ''
 
-export default selector
+export default rootPathSelector

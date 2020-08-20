@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import refEditorDataSelector from 'src/selectors/refEditorDataSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 
-const selector = (usePlaceholder) => createSelector(
+const refEditorNameSelector = (usePlaceholder) => createSelector(
 	[
 		refEditorDataSelector(),
 		makeStringSelector('ui.editor.program_placeholder_name'),
@@ -15,4 +15,4 @@ const selector = (usePlaceholder) => createSelector(
 		''
 )
 
-export default selector
+export default refEditorNameSelector

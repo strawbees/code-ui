@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import compilerEntitiesSelector from 'src/selectors/compilerEntitiesSelector'
 import hashCode from 'src/utils/hashCode'
 
-const selector = () => createSelector(
+const compilerEntrySelector = () => createSelector(
 	[
 		compilerEntitiesSelector(),
 		(state, { code }) => hashCode(code),
@@ -13,4 +13,4 @@ const selector = () => createSelector(
 	) => compilerEntities[id] || {}
 )
 
-export default selector
+export default compilerEntrySelector

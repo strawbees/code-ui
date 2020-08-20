@@ -5,7 +5,7 @@ import refEditorNameSelector from 'src/selectors/refEditorNameSelector'
 import refEditorSourceSelector from 'src/selectors/refEditorSourceSelector'
 import refEditorDefaultSourceSelector from 'src/selectors/refEditorDefaultSourceSelector'
 
-const selector = () => createSelector(
+const refEditorHasChangesSelector = () => createSelector(
 	[
 		refEditorTypeSelector(),
 		refEditorSavedSelector(),
@@ -38,4 +38,4 @@ const selector = () => createSelector(
 	}
 )
 
-export default selector
+export default refEditorHasChangesSelector

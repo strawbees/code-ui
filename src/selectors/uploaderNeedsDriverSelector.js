@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import setupOSSelector from 'src/selectors/setupOSSelector'
 
-const selector = () => createSelector(
+const uploaderNeedsDriverSelector = () => createSelector(
 	[
 		setupOSSelector(),
 	],
@@ -14,4 +14,4 @@ const selector = () => createSelector(
 		platform.os.version.indexOf('10') !== 0
 )
 
-export default selector
+export default uploaderNeedsDriverSelector

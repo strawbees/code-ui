@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import codingCardsFlowEntitiesSelector from 'src/selectors/codingCardsFlowEntitiesSelector'
 
-const selector = () => createSelector(
+const codingCardsFlowIdsSelector = () => createSelector(
 	[
 		codingCardsFlowEntitiesSelector(),
 	],
@@ -10,4 +10,4 @@ const selector = () => createSelector(
 	) => Object.keys(codingCardsFlowEntities)
 )
 
-export default selector
+export default codingCardsFlowIdsSelector

@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import storageProgramsSelector from 'src/selectors/storageProgramsSelector'
 
-const selector = () => createSelector(
+const storageProgramSelector = () => createSelector(
 	[
 		(_, { id }) => id,
 		storageProgramsSelector(),
@@ -12,4 +12,4 @@ const selector = () => createSelector(
 	) => storagePrograms[id]
 )
 
-export default selector
+export default storageProgramSelector

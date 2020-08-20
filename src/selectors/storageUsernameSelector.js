@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 import storageUserSelector from 'src/selectors/storageUserSelector'
 
-const selector = () => createSelector(
+const storageUsernameSelector = () => createSelector(
 	[
 		makeStringSelector('ui.user.anon_username'),
 		storageUserSelector(),
@@ -13,4 +13,4 @@ const selector = () => createSelector(
 	) => (user && user.username) || anonUsername
 )
 
-export default selector
+export default storageUsernameSelector

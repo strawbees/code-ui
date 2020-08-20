@@ -1,7 +1,7 @@
-const selector = () => (state) =>
+const queryIdSelector = () => (state) =>
 	state &&
 	state.setup &&
 	state.setup.query &&
 	state.setup.query.id
 
-export default selector
+export default queryIdSelector

@@ -4,7 +4,7 @@ import storageProgramSelector from 'src/selectors/storageProgramSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 import formatStorageProgram from 'src/selectors/formatStorageProgram'
 
-const selector = () => createSelector(
+const storageFormatedProgramSelector = () => createSelector(
 	[
 		stateSelector(),
 		storageProgramSelector(),
@@ -13,4 +13,4 @@ const selector = () => createSelector(
 	formatStorageProgram
 )
 
-export default selector
+export default storageFormatedProgramSelector

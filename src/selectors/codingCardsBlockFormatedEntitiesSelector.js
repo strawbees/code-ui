@@ -4,7 +4,7 @@ import rootPathSelector from 'src/selectors/rootPathSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 import codingCardsBlockEntitiesSelector from 'src/selectors/codingCardsBlockEntitiesSelector'
 
-const selector = () => createSelector(
+const codingCardsBlockFormatedEntitiesSelector = () => createSelector(
 	[
 		stateSelector(),
 		rootPathSelector(),
@@ -30,4 +30,4 @@ const selector = () => createSelector(
 	}, {})
 )
 
-export default selector
+export default codingCardsBlockFormatedEntitiesSelector

@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import uploaderSelector from 'src/selectors/uploaderSelector'
 
-const selector = () => createSelector(
+const uploaderEntitiesSelector = () => createSelector(
 	[
 		uploaderSelector(),
 	],
@@ -10,4 +10,4 @@ const selector = () => createSelector(
 	) => uploader.entities
 )
 
-export default selector
+export default uploaderEntitiesSelector

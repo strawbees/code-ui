@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import qbcompoundLinksSelector from 'src/selectors/qbcompoundLinksSelector'
 
-const selector = () => createSelector(
+const qbcompoundRuntimeIdListSelector = () => createSelector(
 	[
 		qbcompoundLinksSelector(),
 	],
@@ -10,4 +10,4 @@ const selector = () => createSelector(
 	) => Object.keys(qbcompoundLinks)
 )
 
-export default selector
+export default qbcompoundRuntimeIdListSelector

@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import compilerEntrySelector from 'src/selectors/compilerEntrySelector'
 
-const selector = () => createSelector(
+const compilerSuccessSelector = () => createSelector(
 	[
 		compilerEntrySelector(),
 	],
@@ -10,4 +10,4 @@ const selector = () => createSelector(
 	) => compilerEntry.success
 )
 
-export default selector
+export default compilerSuccessSelector

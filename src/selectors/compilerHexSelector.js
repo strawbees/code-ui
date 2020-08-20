@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import compilerEntrySelector from 'src/selectors/compilerEntrySelector'
 
-const selector = () => createSelector(
+const compilerHexSelector = () => createSelector(
 	[
 		compilerEntrySelector(),
 	],
@@ -10,4 +10,4 @@ const selector = () => createSelector(
 	) => compilerEntry.hex
 )
 
-export default selector
+export default compilerHexSelector

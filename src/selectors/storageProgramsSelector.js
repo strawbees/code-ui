@@ -1,6 +1,6 @@
-const selector = () => (state) => (
+const storageProgramsSelector = () => (state) => (
 	state.storage &&
 	state.storage.programs
 ) || {}
 
-export default selector
+export default storageProgramsSelector
