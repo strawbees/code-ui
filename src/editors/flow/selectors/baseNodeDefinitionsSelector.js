@@ -1,8 +1,8 @@
-const selector = () => (state) =>
+const baseNodeDefinitionsSelector = () => (state) =>
 	(
 		state &&
 		state.flowEditor &&
 		state.flowEditor.nodeDefinitions
 	) || {}
 
-export default selector
+export default baseNodeDefinitionsSelector

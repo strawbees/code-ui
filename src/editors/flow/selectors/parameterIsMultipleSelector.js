@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import parameterDefinitionSelector from 'src/editors/flow/selectors/parameterDefinitionSelector'
 
-const selector = () => createSelector(
+const parameterIsMultipleSelector = () => createSelector(
 	[
 		parameterDefinitionSelector(),
 	],
@@ -10,4 +10,4 @@ const selector = () => createSelector(
 	) => parameterDefinition.multiple
 )
 
-export default selector
+export default parameterIsMultipleSelector

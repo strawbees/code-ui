@@ -4,7 +4,7 @@ import connectionLineInfosSelector from 'src/editors/flow/selectors/connectionLi
 import dropAreaRectGetterSelector from 'src/editors/flow/selectors/dropAreaRectGetterSelector'
 import disconnectingParameterIdSelector from 'src/editors/flow/selectors/disconnectingParameterIdSelector'
 
-const selector = () => createSelector(
+const connectionLineCoordinatesSelector = () => createSelector(
 	[
 		propsIdSelector(),
 		connectionLineInfosSelector(),
@@ -51,4 +51,4 @@ const selector = () => createSelector(
 	}
 )
 
-export default selector
+export default connectionLineCoordinatesSelector

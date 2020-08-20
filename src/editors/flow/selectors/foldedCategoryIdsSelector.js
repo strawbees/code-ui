@@ -1,8 +1,8 @@
-const selector = () => (state) =>
+const foldedCategoryIdsSelector = () => (state) =>
 	(
 		state &&
 		state.flowEditor &&
 		state.flowEditor.foldedCategories
 	) || {}
 
-export default selector
+export default foldedCategoryIdsSelector

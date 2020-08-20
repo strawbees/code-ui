@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import nodeDefinitionSelector from 'src/editors/flow/selectors/nodeDefinitionSelector'
 
-const selector = () => createSelector(
+const nodeCodeNameSelector = () => createSelector(
 	[
 		nodeDefinitionSelector(),
 	],
@@ -10,4 +10,4 @@ const selector = () => createSelector(
 	) => nodeDefinition.code
 )
 
-export default selector
+export default nodeCodeNameSelector

@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 
-const selector = () => createSelector(
+const parameterNameSelector = () => createSelector(
 	[
 		(state, { id }) => makeStringSelector(`flow.parameter.${id}`)(state)
 	],
@@ -10,4 +10,4 @@ const selector = () => createSelector(
 	) => name
 )
 
-export default selector
+export default parameterNameSelector

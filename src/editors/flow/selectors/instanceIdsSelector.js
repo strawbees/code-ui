@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import sourceSelector from 'src/editors/flow/selectors/sourceSelector'
 
 const CACHE = {}
-const selector = () => createSelector(
+const instanceIdsSelector = () => createSelector(
 	[
 		sourceSelector(),
 	],
@@ -18,4 +18,4 @@ const selector = () => createSelector(
 	}
 )
 
-export default selector
+export default instanceIdsSelector

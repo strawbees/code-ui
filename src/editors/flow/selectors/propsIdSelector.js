@@ -1,3 +1,3 @@
-const selector = () => (state, { id }) => id
+const propsIdSelector = () => (state, { id }) => id
 
-export default selector
+export default propsIdSelector

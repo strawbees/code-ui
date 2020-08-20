@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import nodeDefinitionSelector from 'src/editors/flow/selectors/nodeDefinitionSelector'
 
-const selector = () => createSelector(
+const nodeParametersSelector = () => createSelector(
 	[
 		nodeDefinitionSelector(),
 	],
@@ -10,4 +10,4 @@ const selector = () => createSelector(
 	) => nodeDefinition.parameters || []
 )
 
-export default selector
+export default nodeParametersSelector

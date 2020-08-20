@@ -1,3 +1,3 @@
-const selector = () => (state) => state
+const stateSelector = () => (state) => state
 
-export default selector
+export default stateSelector

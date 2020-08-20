@@ -5,7 +5,7 @@ import propsInstanceIdSelector from 'src/editors/flow/selectors/propsInstanceIdS
 import parameterIsMultipleSelector from 'src/editors/flow/selectors/parameterIsMultipleSelector'
 import instanceSelector from 'src/editors/flow/selectors/instanceSelector'
 
-const selector = () => createSelector(
+const parameterNumItemsSelector = () => createSelector(
 	[
 		stateSelector(),
 		propsIdSelector(),
@@ -37,4 +37,4 @@ const selector = () => createSelector(
 	}
 )
 
-export default selector
+export default parameterNumItemsSelector

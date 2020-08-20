@@ -1,6 +1,6 @@
-const selector = () => (state) =>
+const activeOutletLineRectsSelector = () => (state) =>
 	state &&
 	state.flowEditor &&
 	state.flowEditor.activeOutletLineRects
 
-export default selector
+export default activeOutletLineRectsSelector

@@ -3,7 +3,7 @@ import stateSelector from 'src/editors/flow/selectors/stateSelector'
 import instanceSelector from 'src/editors/flow/selectors/instanceSelector'
 import nodeParametersSelector from 'src/editors/flow/selectors/nodeParametersSelector'
 
-const selector = () => createSelector(
+const instanceParametersSelector = () => createSelector(
 	[
 		instanceSelector(),
 		stateSelector(),
@@ -14,4 +14,4 @@ const selector = () => createSelector(
 	) => nodeParametersSelector()(state, { id })
 )
 
-export default selector
+export default instanceParametersSelector

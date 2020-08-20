@@ -1,8 +1,8 @@
-const selector = () => (state) =>
+const highlightedInstanceParameterSelector = () => (state) =>
 	(
 		state &&
 		state.flowEditor &&
 		state.flowEditor.highlightedInstanceParameter
 	) || {}
 
-export default selector
+export default highlightedInstanceParameterSelector

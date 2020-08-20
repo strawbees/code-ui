@@ -1,6 +1,6 @@
-const selector = () => (state) =>
+const disconnectingParameterIdSelector = () => (state) =>
 	state &&
 	state.flowEditor &&
 	state.flowEditor.disconnectingParameterId
 
-export default selector
+export default disconnectingParameterIdSelector

@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import nodeCategoryDefinitionSelector from 'src/editors/flow/selectors/nodeCategoryDefinitionSelector'
 
-const selector = () => createSelector(
+const nodeColorSelector = () => createSelector(
 	[
 		nodeCategoryDefinitionSelector(),
 	],
@@ -10,4 +10,4 @@ const selector = () => createSelector(
 	) => color
 )
 
-export default selector
+export default nodeColorSelector

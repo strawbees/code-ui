@@ -1,7 +1,7 @@
-const selector = () => (state) =>
+const flowEditorSelector = () => (state) =>
 	(
 		state &&
 		state.flowEditor
 	) || {}
 
-export default selector
+export default flowEditorSelector

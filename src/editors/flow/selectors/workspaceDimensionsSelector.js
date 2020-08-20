@@ -3,7 +3,7 @@ import sourceSelector from 'src/editors/flow/selectors/sourceSelector'
 import instanceNodeSelector from 'src/editors/flow/selectors/instanceNodeSelector'
 import stateSelector from 'src/editors/flow/selectors/stateSelector'
 
-const selector = () => createSelector(
+const workspaceDimensionsSelector = () => createSelector(
 	[
 		stateSelector(),
 		sourceSelector(),
@@ -63,4 +63,4 @@ const selector = () => createSelector(
 	}
 )
 
-export default selector
+export default workspaceDimensionsSelector

@@ -1,6 +1,6 @@
-const selector = () => (state) =>
+const dropAreaRectGetterSelector = () => (state) =>
 	state &&
 	state.flowEditor &&
 	state.flowEditor.getDropAreaRect
 
-export default selector
+export default dropAreaRectGetterSelector

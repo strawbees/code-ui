@@ -3,7 +3,7 @@ import stateSelector from 'src/editors/flow/selectors/stateSelector'
 import propsInstanceIdSelector from 'src/editors/flow/selectors/propsInstanceIdSelector'
 import instanceColorSelector from 'src/editors/flow/selectors/instanceColorSelector'
 
-const selector = () => createSelector(
+const parameterColorSelector = () => createSelector(
 	[
 		stateSelector(),
 		propsInstanceIdSelector()
@@ -14,4 +14,4 @@ const selector = () => createSelector(
 	) => instanceColorSelector()(state, { id : instanceId })
 )
 
-export default selector
+export default parameterColorSelector

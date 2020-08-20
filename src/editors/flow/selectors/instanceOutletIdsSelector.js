@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import instanceOutletsSelector from 'src/editors/flow/selectors/instanceOutletsSelector'
 
-const selector = () => createSelector(
+const instanceOutletIdsSelector = () => createSelector(
 	[
 		instanceOutletsSelector(),
 	],
@@ -10,4 +10,4 @@ const selector = () => createSelector(
 	) => parameters.map(({ id }) => id)
 )
 
-export default selector
+export default instanceOutletIdsSelector

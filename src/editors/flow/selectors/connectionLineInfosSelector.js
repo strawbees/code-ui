@@ -3,7 +3,7 @@ import stateSelector from 'src/editors/flow/selectors/stateSelector'
 import sourceSelector from 'src/editors/flow/selectors/sourceSelector'
 import instanceOutletIdsSelector from 'src/editors/flow/selectors/instanceOutletIdsSelector'
 
-const selector = () => createSelector(
+const connectionLineInfosSelector = () => createSelector(
 	[
 		stateSelector(),
 		sourceSelector(),
@@ -50,4 +50,4 @@ const selector = () => createSelector(
 	}
 )
 
-export default selector
+export default connectionLineInfosSelector

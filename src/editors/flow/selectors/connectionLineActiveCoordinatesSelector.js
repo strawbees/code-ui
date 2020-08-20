@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import activeOutletLineRectsSelector from 'src/editors/flow/selectors/activeOutletLineRectsSelector'
 import dropAreaRectGetterSelector from 'src/editors/flow/selectors/dropAreaRectGetterSelector'
 
-const selector = () => createSelector(
+const connectionLineActiveCoordinatesSelector = () => createSelector(
 	[
 		activeOutletLineRectsSelector(),
 		dropAreaRectGetterSelector(),
@@ -35,4 +35,4 @@ const selector = () => createSelector(
 	}
 )
 
-export default selector
+export default connectionLineActiveCoordinatesSelector

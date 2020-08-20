@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import instanceSelector from 'src/editors/flow/selectors/instanceSelector'
 
-const selector = () => createSelector(
+const instanceYSelector = () => createSelector(
 	[
 		instanceSelector(),
 	],
@@ -10,4 +10,4 @@ const selector = () => createSelector(
 	) => y
 )
 
-export default selector
+export default instanceYSelector

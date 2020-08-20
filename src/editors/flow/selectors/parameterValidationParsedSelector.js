@@ -4,7 +4,7 @@ import valueParsedSelector from 'src/editors/flow/selectors/valueParsedSelector'
 import stateSelector from 'src/editors/flow/selectors/stateSelector'
 
 
-const selector = () => createSelector(
+const parameterValidationParsedSelector = () => createSelector(
 	[
 		parameterValidationSelector(),
 		stateSelector(),
@@ -38,4 +38,4 @@ const selector = () => createSelector(
 	}
 )
 
-export default selector
+export default parameterValidationParsedSelector

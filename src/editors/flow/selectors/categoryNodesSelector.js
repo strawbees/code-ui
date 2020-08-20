@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import categoryDefinitionSelector from 'src/editors/flow/selectors/categoryDefinitionSelector'
 import baseNodeDefinitionsSelector from 'src/editors/flow/selectors/baseNodeDefinitionsSelector'
 
-const selector = () => createSelector(
+const categoryNodesSelector = () => createSelector(
 	[
 		categoryDefinitionSelector(),
 		baseNodeDefinitionsSelector(),
@@ -23,4 +23,4 @@ const selector = () => createSelector(
 		})
 )
 
-export default selector
+export default categoryNodesSelector

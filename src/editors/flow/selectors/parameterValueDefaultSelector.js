@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import parameterDefinitionSelector from 'src/editors/flow/selectors/parameterDefinitionSelector'
 
-const selector = () => createSelector(
+const parameterValueDefaultSelector = () => createSelector(
 	[
 		parameterDefinitionSelector(),
 	],
@@ -11,4 +11,4 @@ const selector = () => createSelector(
 		&& parameterDefinition.default
 )
 
-export default selector
+export default parameterValueDefaultSelector
