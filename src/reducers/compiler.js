@@ -6,7 +6,6 @@ import {
 } from 'src/constants/actionTypes'
 import hashCode from 'src/utils/hashCode'
 
-
 const entities = (state = {}, { type, payload }) => {
 	switch (type) {
 		case COMPILER_ADD_GENERATED_CODE: {

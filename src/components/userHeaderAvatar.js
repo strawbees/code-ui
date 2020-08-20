@@ -130,5 +130,4 @@ UserHeaderAvatar.propTypes = {
 	])
 }
 
-
 export default UserHeaderAvatar

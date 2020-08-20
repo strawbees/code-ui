@@ -229,5 +229,4 @@ AccountSettings.propTypes = {
 	collapseAccountSettings : PropTypes.func,
 }
 
-
 export default AccountSettings

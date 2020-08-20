@@ -238,7 +238,6 @@ export const confirmEmail = async (id) => {
 	return json
 }
 
-
 // Api handlers
 const registerRemoteUser = async (
 	{
@@ -424,7 +423,6 @@ const deleteRemoteUser = async (credentials, data) => {
 	}
 	return json
 }
-
 
 // Helpers
 const apiCall = async (

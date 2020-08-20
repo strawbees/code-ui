@@ -23,5 +23,4 @@ const SvgIcon = ({ icon : Icon, className = '' }) => {
 	)
 }
 
-
 export default SvgIcon

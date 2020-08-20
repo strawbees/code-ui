@@ -78,7 +78,6 @@ const config = {
 	}, {}))
 }
 
-
 module.exports = {
 	useFileSystemPublicRoutes : false,
 	publicRuntimeConfig       : config,

@@ -98,7 +98,6 @@ const Dialog = ({
 		}
 	</div>
 
-
 Dialog.defaultProps = {
 	displayConfirm        : true,
 	displayCancel         : true,
