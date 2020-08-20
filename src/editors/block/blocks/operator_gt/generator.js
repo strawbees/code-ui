@@ -4,7 +4,7 @@ import {
 	getBlockBody
 } from '../../utils/parsing'
 
-export default ({ value, next }, structure) => {
+const generator = ({ value, next }, structure) => {
 	const operand1Block = getValueBlockByAttributeName(value, 'OPERAND1')
 	const operand2Block = getValueBlockByAttributeName(value, 'OPERAND2')
 	if (!operand1Block || !operand2Block) {
@@ -16,3 +16,5 @@ export default ({ value, next }, structure) => {
 	structure.body += `(${operand1} > ${operand2})`
 	parseNext(next, structure)
 }
+
+export default generator

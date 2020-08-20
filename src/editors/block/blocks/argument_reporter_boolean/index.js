@@ -1,7 +1,9 @@
 import definition from './definition'
 import generator from './generator'
 
-export default {
+const argument_reporter_boolean = {
 	definition,
 	generator
 }
+
+export default argument_reporter_boolean

@@ -1,6 +1,6 @@
 /* eslint-disable no-shadow */
 /* eslint-disable indent */
-export default toolbox => `<xml>
+const toolboxToXmlString = (toolbox) => `<xml>
 	${toolbox.reduce((xml, {
 		id, name, colour, secondaryColour, blocks = [], custom
 	}) => {
@@ -29,3 +29,5 @@ export default toolbox => `<xml>
 		return xml
 	}, '')}
 </xml>`
+
+export default toolboxToXmlString

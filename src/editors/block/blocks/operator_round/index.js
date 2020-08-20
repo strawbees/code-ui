@@ -1,7 +1,9 @@
 import definition from './definition'
 import generator from './generator'
 
-export default {
+const operator_round = {
 	definition,
 	generator
 }
+
+export default operator_round

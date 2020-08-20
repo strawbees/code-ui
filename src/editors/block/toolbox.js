@@ -1,6 +1,6 @@
 import s from 'src/utils/s'
 
-export default (strings) => ([
+const toolbox = (strings) => ([
 	{
 		id              : 'input',
 		name            : s(strings, 'block.toolbox.category.input'),
@@ -483,3 +483,5 @@ export default (strings) => ([
 		custom          : 'PROCEDURE'
 	}
 ])
+
+export default toolbox

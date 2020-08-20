@@ -1,4 +1,4 @@
-export default (strings) => ({
+const definition = (strings) => ({
 	message0 : window.Blockly.Msg.DATA_SETVARIABLETO,
 	args0    : [
 		{
@@ -16,3 +16,5 @@ export default (strings) => ({
 		'shape_statement'
 	],
 })
+
+export default definition

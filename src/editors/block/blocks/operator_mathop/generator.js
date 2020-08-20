@@ -4,7 +4,7 @@ import {
 	getBlockBody
 } from '../../utils/parsing'
 
-export default ({ value, field, next }, structure) => {
+const generator = ({ value, field, next }, structure) => {
 	const numBlock = getValueBlockByAttributeName(value, 'NUM')
 	if (!numBlock) {
 		parseNext(next, structure)
@@ -64,3 +64,5 @@ export default ({ value, field, next }, structure) => {
 	structure.body += code
 	parseNext(next, structure)
 }
+
+export default generator

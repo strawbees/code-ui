@@ -1,5 +1,5 @@
 import s from 'src/utils/s'
-export default (strings) => ({
+const definition = (strings) => ({
 	message0 : '%1',
 	args0    : [
 		{
@@ -13,3 +13,5 @@ export default (strings) => ({
 	colourTertiary  : '#FF3355',
 	outputShape     : window.Blockly.OUTPUT_SHAPE_HEXAGONAL
 })
+
+export default definition

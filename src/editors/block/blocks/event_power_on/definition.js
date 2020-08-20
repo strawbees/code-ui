@@ -1,6 +1,6 @@
 import s from 'src/utils/s'
 
-export default (strings) => ({
+const definition = (strings) => ({
 	message0        : s(strings, 'block.blocks.event_power_on.message0'),
 	inputsInline    : true,
 	nextStatement   : null,
@@ -8,3 +8,5 @@ export default (strings) => ({
 	colourSecondary : '#E6AC00',
 	colourTertiary  : '#CC9900'
 })
+
+export default definition

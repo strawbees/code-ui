@@ -1,6 +1,6 @@
 import s from 'src/utils/s'
 
-export default (strings) => ({
+const definition = (strings) => ({
 	message0 : s(strings, 'block.blocks.output_servo_transition.message0'),
 	args0    : [
 		{
@@ -31,3 +31,5 @@ export default (strings) => ({
 	colourSecondary   : '#f75abb',
 	colourTertiary    : '#f442b0',
 })
+
+export default definition

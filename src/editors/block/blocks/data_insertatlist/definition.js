@@ -1,6 +1,6 @@
 import s from 'src/utils/s'
 
-export default (strings) => ({
+const definition = (strings) => ({
 	message0 : Blockly.Msg.DATA_INSERTATLIST,
 	args0    : [
 		{
@@ -24,3 +24,5 @@ export default (strings) => ({
 	colourSecondary   : '#FF5500',
 	colourTertiary    : '#E64D00',
 })
+
+export default definition
