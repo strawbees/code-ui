@@ -1,4 +1,4 @@
-export default (input, init = {}) => {
+const abortableFetch = (input, init = {}) => {
 	let controller
 	if (typeof window.AbortController !== 'undefined') {
 		controller = new AbortController()
@@ -12,3 +12,5 @@ export default (input, init = {}) => {
 	init.signal = controller.signal
 	return fetch(input, init)
 }
+
+export default abortableFetch

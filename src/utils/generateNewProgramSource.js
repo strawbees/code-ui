@@ -1,4 +1,4 @@
-export default (type) => {
+const generateNewProgramSource = (type) => {
 	switch (type) {
 		case 'flow':
 			return []
@@ -10,3 +10,5 @@ export default (type) => {
 			return null
 	}
 }
+
+export default generateNewProgramSource

@@ -9,7 +9,7 @@ const {
 
 const baseUrl = typeof CANONICAL_URL !== 'undefined' ? CANONICAL_URL : ''
 
-export default (to) => {
+const resolveLinkUrl = (to) => {
 	let href
 	let as
 	to = (to || '').replace(baseUrl, '')
@@ -37,3 +37,5 @@ export default (to) => {
 		href
 	}
 }
+
+export default resolveLinkUrl

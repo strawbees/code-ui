@@ -1,4 +1,4 @@
-export default (targetType, defaultState = null) =>
+const generateReducer = (targetType, defaultState = null) =>
 	(state = defaultState, { type, payload }) => {
 		switch (type) {
 			case targetType: {
@@ -8,3 +8,5 @@ export default (targetType, defaultState = null) =>
 				return state
 		}
 	}
+
+export default generateReducer
