@@ -4,7 +4,7 @@ import stateSelector from 'src/selectors/stateSelector'
 import propsSelector from 'src/selectors/propsSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 
-export default () => createSelector(
+const mapStateToProps = () => createSelector(
 	[
 		stateSelector(),
 		propsSelector(),
@@ -31,3 +31,5 @@ export default () => createSelector(
 		}
 	}
 )
+
+export default mapStateToProps

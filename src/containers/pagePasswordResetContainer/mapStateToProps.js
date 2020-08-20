@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import urlVarsSelector from 'src/selectors/urlVarsSelector'
 
-export default () => createSelector(
+const mapStateToProps = () => createSelector(
 	[
 		urlVarsSelector()
 	],
@@ -11,3 +11,5 @@ export default () => createSelector(
 		token : urlVars.t
 	})
 )
+
+export default mapStateToProps

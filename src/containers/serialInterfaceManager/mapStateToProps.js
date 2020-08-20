@@ -2,7 +2,9 @@ import { createStructuredSelector } from 'reselect'
 import qbserialAvailableSelector from 'src/selectors/qbserialAvailableSelector'
 import qbserialReadySelector from 'src/selectors/qbserialReadySelector'
 
-export default () => createStructuredSelector({
+const mapStateToProps = () => createStructuredSelector({
 	available : qbserialAvailableSelector(),
 	ready     : qbserialReadySelector(),
 })
+
+export default mapStateToProps

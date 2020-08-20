@@ -5,8 +5,10 @@ import {
 	setQbmidiReady,
 } from 'src/actions/qbmidi'
 
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	setQbmidiLinks,
 	setQbmidiAvailable,
 	setQbmidiReady,
 })
+
+export default mapDispatchToProps

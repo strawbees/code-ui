@@ -5,7 +5,7 @@ import uploaderEntrySuccessSelector from 'src/selectors/uploaderEntrySuccessSele
 import uploaderEntryFormatedErrorSelector from 'src/selectors/uploaderEntryFormatedErrorSelector'
 import uploaderBusySelector from 'src/selectors/uploaderBusySelector'
 
-export default () => createSelector(
+const mapStateToProps = () => createSelector(
 	[
 		qbcompoundLinkSelector(),
 		uploaderEntryUploadingSelector(),
@@ -37,3 +37,5 @@ export default () => createSelector(
 		uploaderBusy,
 	})
 )
+
+export default mapStateToProps

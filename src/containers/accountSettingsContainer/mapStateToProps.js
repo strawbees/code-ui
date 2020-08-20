@@ -3,8 +3,10 @@ import storagePublicProfileUrlSelector from 'src/selectors/storagePublicProfileU
 import storageIsAnonSelector from 'src/selectors/storageIsAnonSelector'
 import uiAccountSettingsOpenSelector from 'src/selectors/uiAccountSettingsOpenSelector'
 
-export default () => createStructuredSelector({
+const mapStateToProps = () => createStructuredSelector({
 	publicProfileUrl : storagePublicProfileUrlSelector(),
 	isAnon           : storageIsAnonSelector(),
 	isOpen           : uiAccountSettingsOpenSelector(),
 })
+
+export default mapStateToProps

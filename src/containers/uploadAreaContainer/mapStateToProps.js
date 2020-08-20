@@ -4,9 +4,11 @@ import compilerFormatedErrorSelector from 'src/selectors/compilerFormatedErrorSe
 import uploaderFormatedLastErrorSelector from 'src/selectors/uploaderFormatedLastErrorSelector'
 import compilerHexSelector from 'src/selectors/compilerHexSelector'
 
-export default () => createStructuredSelector({
+const mapStateToProps = () => createStructuredSelector({
 	boardIds      : qbcompoundRuntimeIdListSelector(),
 	compilerError : compilerFormatedErrorSelector(),
 	uploaderError : uploaderFormatedLastErrorSelector(),
 	hex           : compilerHexSelector(),
 })
+
+export default mapStateToProps

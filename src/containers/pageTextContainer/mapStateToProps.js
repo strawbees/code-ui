@@ -1,6 +1,8 @@
 import { createStructuredSelector } from 'reselect'
 import refEditorSourceSelector from 'src/selectors/refEditorSourceSelector'
 
-export default () => createStructuredSelector({
+const mapStateToProps = () => createStructuredSelector({
 	source : refEditorSourceSelector()
 })
+
+export default mapStateToProps

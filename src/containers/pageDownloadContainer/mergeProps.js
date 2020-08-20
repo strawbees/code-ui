@@ -6,7 +6,7 @@ const {
 	}
 } = getConfig()
 
-export default (stateProps, dispatchProps, ownProps) => {
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
 	const {
 		setupOS,
 		...otherStateProps
@@ -28,3 +28,5 @@ export default (stateProps, dispatchProps, ownProps) => {
 		}
 	}
 }
+
+export default mergeProps

@@ -10,7 +10,7 @@ import {
 	collapseAccountSettings,
 } from 'src/actions/ui'
 
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	logout         : safeClearLoggedInData,
 	downloadData   : safeDownloadCompleteData,
 	deleteAccount  : modalDeleteAccount,
@@ -18,3 +18,5 @@ export default autobindDispatchToActionCreators({
 	expandAccountSettings,
 	collapseAccountSettings,
 })
+
+export default mapDispatchToProps

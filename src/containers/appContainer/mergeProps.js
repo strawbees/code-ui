@@ -1,2 +1,4 @@
-export default (stateProps = {}, dispatchProps = {}, ownProps = {}) =>
-	Object.assign({}, ownProps, stateProps, dispatchProps)
+const mergeProps = (stateProps = {}, dispatchProps = {}, ownProps = {}) =>
+	({ ...ownProps, ...stateProps, ...dispatchProps })
+
+export default mergeProps

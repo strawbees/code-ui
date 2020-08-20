@@ -7,11 +7,12 @@ import {
 	safeOpenDialogModal
 } from 'src/actions/modal'
 
-
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	openDialog     : safeOpenDialogModal,
 	openConfirm    : safeOpenConfirmAlternative,
 	openAlert      : safeOpenAlertAlternative,
 	openPrompt     : safeOpenPromptAlternative,
 	onSourceChange : updateCurrentEditorProgramSource
 })
+
+export default mapDispatchToProps

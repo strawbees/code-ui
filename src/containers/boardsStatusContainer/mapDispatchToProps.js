@@ -3,6 +3,8 @@ import {
 	modalOpenUploaderDependencies
 } from 'src/actions/uploader'
 
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	openUploaderDependencies : modalOpenUploaderDependencies
 })
+
+export default mapDispatchToProps

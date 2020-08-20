@@ -8,8 +8,7 @@ import qbmidiRuntimeIdListSelector from 'src/selectors/qbmidiRuntimeIdListSelect
 import qbmidiAvailableSelector from 'src/selectors/qbmidiAvailableSelector'
 import qbmidiReadySelector from 'src/selectors/qbmidiReadySelector'
 
-
-export default () => createStructuredSelector({
+const mapStateToProps = () => createStructuredSelector({
 	rootPath            : rootPathSelector(),
 	uploaderNeedsDriver : uploaderNeedsDriverSelector(),
 	serialBoardIds      : qbserialRuntimeIdListSelector(),
@@ -19,3 +18,5 @@ export default () => createStructuredSelector({
 	midiAvailable       : qbmidiAvailableSelector(),
 	midiReady           : qbmidiReadySelector(),
 })
+
+export default mapStateToProps

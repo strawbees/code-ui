@@ -4,10 +4,11 @@ import storageProgramsSortedIdsSelector from 'src/selectors/storageProgramsSorte
 import storageIsAnonSelector from 'src/selectors/storageIsAnonSelector'
 import storageStatusSelector from 'src/selectors/storageStatusSelector'
 
-
-export default () => createStructuredSelector({
+const mapStateToProps = () => createStructuredSelector({
 	isAnon        : storageIsAnonSelector(),
 	// title      : makeStringSelector('ui.program_list.title.storage'),
 	ids           : storageProgramsSortedIdsSelector(),
 	storageStatus : storageStatusSelector(),
 })
+
+export default mapStateToProps

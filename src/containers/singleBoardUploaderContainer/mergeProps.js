@@ -1,4 +1,4 @@
-export default (stateProps, dispatchProps, ownProps) => {
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
 	const {
 		uploadHex,
 		...otherDispatchProps
@@ -14,3 +14,5 @@ export default (stateProps, dispatchProps, ownProps) => {
 		onUploadPress : () => uploadHex(runtimeId, hex)
 	}
 }
+
+export default mergeProps

@@ -1,4 +1,4 @@
-export default (stateProps, dispatchProps, ownProps) => {
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
 	const {
 		flowEntry,
 		blockEntry,
@@ -31,3 +31,5 @@ export default (stateProps, dispatchProps, ownProps) => {
 		onClick,
 	}
 }
+
+export default mergeProps

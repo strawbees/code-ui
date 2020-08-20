@@ -1,4 +1,4 @@
-export default (stateProps, dispatchProps, ownProps) => {
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
 	const {
 		modalSignup,
 		modalSignin,
@@ -13,3 +13,5 @@ export default (stateProps, dispatchProps, ownProps) => {
 		signin : () => modalSignin('strawbees'),
 	}
 }
+
+export default mergeProps

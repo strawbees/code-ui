@@ -1,6 +1,8 @@
 import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
 import { updateCurrentEditorProgramSource } from 'src/actions/editor'
 
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	onSourceChange : updateCurrentEditorProgramSource
 })
+
+export default mapDispatchToProps

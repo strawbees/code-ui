@@ -5,7 +5,7 @@ import queryLocaleSelector from 'src/selectors/queryLocaleSelector'
 import setupAsPathSelector from 'src/selectors/setupAsPathSelector'
 import refEditorHasChangesSelector from 'src/selectors/refEditorHasChangesSelector'
 
-export default () => createStructuredSelector({
+const mapStateToProps = () => createStructuredSelector({
 	refEditorHasChanges : refEditorHasChangesSelector(),
 	queryRef            : queryRefSelector(),
 	queryLocale         : queryLocaleSelector(),
@@ -14,3 +14,5 @@ export default () => createStructuredSelector({
 	urlVarU             : makeUrlVarSelector('u'),
 	urlVarData          : makeUrlVarSelector('data'),
 })
+
+export default mapStateToProps

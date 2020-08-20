@@ -3,6 +3,8 @@ import {
 	modalViewCodingCards,
 } from 'src/actions/codingCards'
 
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	modalViewCodingCards,
 })
+
+export default mapDispatchToProps

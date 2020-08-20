@@ -13,7 +13,7 @@ import {
 	setup as setupEditor
 } from 'src/actions/editor'
 
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	setSetup,
 	setLocales,
 	setStrings,
@@ -22,3 +22,5 @@ export default autobindDispatchToActionCreators({
 	setupEditor,
 	setOS,
 })
+
+export default mapDispatchToProps

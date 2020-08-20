@@ -4,7 +4,7 @@ import localeStringsSelector from 'src/selectors/localeStringsSelector'
 import refEditorSourceSelector from 'src/selectors/refEditorSourceSelector'
 import rootPathSelector from 'src/selectors/rootPathSelector'
 
-export default () => createSelector(
+const mapStateToProps = () => createSelector(
 	[
 		refEditorSourceSelector(),
 		queryLocaleSelector(),
@@ -23,3 +23,5 @@ export default () => createSelector(
 		mediaPath : `${rootPath}/static/lib/scratch-blocks/media/`,
 	})
 )
+
+export default mapStateToProps

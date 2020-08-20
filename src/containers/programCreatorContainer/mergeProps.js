@@ -1,4 +1,4 @@
-export default (stateProps, dispatchProps, ownProps) => {
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
 	const {
 		factoryCode,
 		...otherStateProps
@@ -18,3 +18,5 @@ export default (stateProps, dispatchProps, ownProps) => {
 		onUploadFactoryCodePress : () => modalUploadCode(factoryCode),
 	}
 }
+
+export default mergeProps
