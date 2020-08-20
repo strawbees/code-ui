@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import uploaderSelector from 'src/selectors/uploaderSelector'
 
-export default () => createSelector(
+const selector = () => createSelector(
 	[
 		uploaderSelector(),
 	],
@@ -14,3 +14,5 @@ export default () => createSelector(
 		return false
 	}
 )
+
+export default selector

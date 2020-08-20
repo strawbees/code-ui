@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import codingCardsBlockEntitiesSelector from 'src/selectors/codingCardsBlockEntitiesSelector'
 
-export default () => createSelector(
+const selector = () => createSelector(
 	[
 		codingCardsBlockEntitiesSelector(),
 	],
@@ -9,3 +9,5 @@ export default () => createSelector(
 		codingCardsBlockEntities,
 	) => Object.keys(codingCardsBlockEntities)
 )
+
+export default selector

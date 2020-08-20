@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import queryRefSelector from 'src/selectors/queryRefSelector'
 
-export default () => createSelector(
+const selector = () => createSelector(
 	[
 		queryRefSelector(),
 	],
@@ -18,3 +18,5 @@ export default () => createSelector(
 		}
 	}
 )
+
+export default selector

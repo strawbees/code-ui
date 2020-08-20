@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import editorSelector from 'src/selectors/editorSelector'
 import refEditorTypeSelector from 'src/selectors/refEditorTypeSelector'
 
-export default () => createSelector(
+const selector = () => createSelector(
 	[
 		editorSelector(),
 		refEditorTypeSelector(),
@@ -12,3 +12,5 @@ export default () => createSelector(
 		type,
 	) => editor[type]
 )
+
+export default selector

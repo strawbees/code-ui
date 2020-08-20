@@ -14,7 +14,7 @@ const {
 } = getConfig()
 const baseUrl = typeof CANONICAL_URL !== 'undefined' ? CANONICAL_URL : ''
 
-export default () => createSelector(
+const selector = () => createSelector(
 	[
 		makeStringSelector('routes.user'),
 		storageUserSelector(),
@@ -45,3 +45,5 @@ export default () => createSelector(
 		return ''
 	}
 )
+
+export default selector

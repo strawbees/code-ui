@@ -4,7 +4,7 @@ import rootPathSelector from 'src/selectors/rootPathSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 import codingCardsBlockEntitiesSelector from 'src/selectors/codingCardsBlockEntitiesSelector'
 
-export default () => createSelector(
+const selector = () => createSelector(
 	[
 		stateSelector(),
 		rootPathSelector(),
@@ -29,3 +29,5 @@ export default () => createSelector(
 		return acc
 	}, {})
 )
+
+export default selector

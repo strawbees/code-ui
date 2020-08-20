@@ -1,2 +1,4 @@
-export default () => (state) =>
+const selector = () => (state) =>
 	state.modal
+
+export default selector

@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import setupOSSelector from 'src/selectors/setupOSSelector'
 
-export default () => createSelector(
+const selector = () => createSelector(
 	[
 		setupOSSelector(),
 	],
@@ -13,3 +13,5 @@ export default () => createSelector(
 		platform.os.family.indexOf('Windows') !== -1 &&
 		platform.os.version.indexOf('10') !== 0
 )
+
+export default selector

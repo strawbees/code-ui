@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import stringsSelector from 'src/selectors/stringsSelector'
 import queryLocaleSelector from 'src/selectors/queryLocaleSelector'
 
-export default () => createSelector(
+const selector = () => createSelector(
 	[
 		stringsSelector(),
 		queryLocaleSelector(),
@@ -12,3 +12,5 @@ export default () => createSelector(
 		queryLocale,
 	) => strings[queryLocale]
 )
+
+export default selector

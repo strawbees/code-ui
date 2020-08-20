@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import codingCardsBlockFormatedEntitiesSelector from 'src/selectors/codingCardsBlockFormatedEntitiesSelector'
 
-export default () => createSelector(
+const selector = () => createSelector(
 	[
 		(_, props) => props && props.id,
 		codingCardsBlockFormatedEntitiesSelector(),
@@ -11,3 +11,5 @@ export default () => createSelector(
 		codingCardsBlockFormatedEntities,
 	) => codingCardsBlockFormatedEntities && codingCardsBlockFormatedEntities[id]
 )
+
+export default selector

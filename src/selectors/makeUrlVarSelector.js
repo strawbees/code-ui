@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import urlVarsSelector from 'src/selectors/urlVarsSelector'
 
-export default (key) => createSelector(
+const selector = (key) => createSelector(
 	[
 		urlVarsSelector(),
 	],
@@ -9,3 +9,5 @@ export default (key) => createSelector(
 		urlVars
 	) => urlVars[key] || ''
 )
+
+export default selector

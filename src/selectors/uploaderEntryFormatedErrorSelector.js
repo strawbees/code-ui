@@ -3,7 +3,7 @@ import stateSelector from 'src/selectors/stateSelector'
 import uploaderEntryErrorSelector from 'src/selectors/uploaderEntryErrorSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 
-export default () => createSelector(
+const selector = () => createSelector(
 	[
 		stateSelector(),
 		uploaderEntryErrorSelector(),
@@ -23,3 +23,5 @@ export default () => createSelector(
 		}
 	}
 )
+
+export default selector
