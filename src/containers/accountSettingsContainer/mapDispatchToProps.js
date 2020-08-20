@@ -10,7 +10,6 @@ import {
 	collapseAccountSettings,
 } from 'src/actions/ui'
 
-
 export default autobindDispatchToActionCreators({
 	logout         : safeClearLoggedInData,
 	downloadData   : safeDownloadCompleteData,
