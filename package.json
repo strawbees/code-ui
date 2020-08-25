@@ -1,6 +1,6 @@
 {
   "name": "@strawbees/code-ui",
-  "version": "1.10.6",
+  "version": "1.10.8",
   "scripts": {
     "dev": "node lib/scripts/dev.js",
     "build": "node lib/scripts/build.js",
