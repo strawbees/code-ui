@@ -11,8 +11,10 @@ const OpenInTextEditorButtonContainer = (props) =>
 OpenInTextEditorButtonContainer.propTypes = {
 	onClick : PropTypes.func,
 }
-export default connect(
+const openInTextEditorButtonContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(OpenInTextEditorButtonContainer)
+
+export default openInTextEditorButtonContainerConnected

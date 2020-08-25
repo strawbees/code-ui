@@ -7,8 +7,10 @@ import mergeProps from './mergeProps'
 const ProgramImporterContainer = (props) =>
 	<ProgramImporter {...props} />
 
-export default connect(
+const programImporterContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(ProgramImporterContainer)
+
+export default programImporterContainerConnected

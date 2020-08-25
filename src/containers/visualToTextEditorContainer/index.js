@@ -17,8 +17,10 @@ VisualToTextEditorContainer.propTypes = {
 	]),
 }
 
-export default connect(
+const visualToTextEditorContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(VisualToTextEditorContainer)
+
+export default visualToTextEditorContainerConnected

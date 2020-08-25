@@ -66,8 +66,10 @@ PageContainer.propTypes = {
 	])
 }
 
-export default connect(
+const pageContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(PageContainer)
+
+export default pageContainerConnected

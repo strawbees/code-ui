@@ -7,8 +7,10 @@ import mergeProps from './mergeProps'
 const PageUserContainer = (props) =>
 	<PageUser {...props}/>
 
-export default connect(
+const pageUserContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(PageUserContainer)
+
+export default pageUserContainerConnected

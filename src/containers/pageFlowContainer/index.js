@@ -12,9 +12,10 @@ const PageFlowContainer = (props) =>
 		{...props}
 	/>
 
-
-export default connect(
+const pageFlowContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(PageFlowContainer)
+
+export default pageFlowContainerConnected

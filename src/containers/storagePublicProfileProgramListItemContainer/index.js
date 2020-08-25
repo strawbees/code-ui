@@ -12,8 +12,10 @@ StoragePublicProfileProgramListItemContainer.propTypes = {
 	id : PropTypes.string
 }
 
-export default connect(
+const storagePublicProfileProgramListItemContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(StoragePublicProfileProgramListItemContainer)
+
+export default storagePublicProfileProgramListItemContainerConnected

@@ -8,8 +8,10 @@ import mergeProps from './mergeProps'
 const HelpMenuContainer = (props) =>
 	<HelpMenu {...props}/>
 
-export default connect(
+const helpMenuContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(HelpMenuContainer)
+
+export default helpMenuContainerConnected

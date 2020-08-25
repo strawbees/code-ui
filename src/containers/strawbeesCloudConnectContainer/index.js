@@ -9,8 +9,10 @@ const StrawbeesCloudConnectContainer = (props) =>
 		{...props}
 	/>
 
-export default connect(
+const strawbeesCloudConnectContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(StrawbeesCloudConnectContainer)
+
+export default strawbeesCloudConnectContainerConnected

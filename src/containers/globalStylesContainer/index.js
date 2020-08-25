@@ -7,8 +7,10 @@ import mergeProps from './mergeProps'
 const GlobalStylesContainer = (props) =>
 	<GlobalStyles {...props}/>
 
-export default connect(
+const globalStylesContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(GlobalStylesContainer)
+
+export default globalStylesContainerConnected

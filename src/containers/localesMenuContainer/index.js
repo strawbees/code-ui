@@ -7,8 +7,10 @@ import mergeProps from './mergeProps'
 const LocalesMenuContainer = (props) =>
 	<LocalesMenu {...props}/>
 
-export default connect(
+const localesMenuContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(LocalesMenuContainer)
+
+export default localesMenuContainerConnected

@@ -18,8 +18,10 @@ ProgramDataButtonContainer.propTypes = {
 	]),
 }
 
-export default connect(
+const programDataButtonContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(ProgramDataButtonContainer)
+
+export default programDataButtonContainerConnected

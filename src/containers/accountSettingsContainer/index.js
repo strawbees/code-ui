@@ -7,8 +7,10 @@ import mergeProps from './mergeProps'
 const AccountSettingsContainer = (props) =>
 	<AccountSettings {...props} />
 
-export default connect(
+const accountSettingsContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(AccountSettingsContainer)
+
+export default accountSettingsContainerConnected

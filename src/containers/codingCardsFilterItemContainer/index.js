@@ -15,8 +15,10 @@ CodingCardsFilterItem.propTypes = {
 	onClick  : PropTypes.func,
 }
 
-export default connect(
+const codingCardsFilterItemContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(CodingCardsFilterItemContainer)
+
+export default codingCardsFilterItemContainerConnected

@@ -7,8 +7,10 @@ import mergeProps from './mergeProps'
 const PagePasswordResetContainer = (props) =>
 	<PagePasswordReset {...props}/>
 
-export default connect(
+const pagePasswordResetContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(PagePasswordResetContainer)
+
+export default pagePasswordResetContainerConnected

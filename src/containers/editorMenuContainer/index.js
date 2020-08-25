@@ -13,8 +13,10 @@ EditorMenuContainer.propTypes = {
 	disabled : PropTypes.bool
 }
 
-export default connect(
+const editorMenuContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(EditorMenuContainer)
+
+export default editorMenuContainerConnected

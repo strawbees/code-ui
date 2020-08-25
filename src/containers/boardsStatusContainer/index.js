@@ -12,8 +12,10 @@ BoardsStatusContainer.propTypes = {
 	scale : PropTypes.number,
 }
 
-export default connect(
+const boardsStatusContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(BoardsStatusContainer)
+
+export default boardsStatusContainerConnected

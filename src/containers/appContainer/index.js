@@ -119,8 +119,10 @@ AppContainer.propTypes = {
 	setOS                : PropTypes.func,
 }
 
-export default connect(
+const appContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(AppContainer)
+
+export default appContainerConnected

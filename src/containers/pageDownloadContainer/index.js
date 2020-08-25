@@ -7,8 +7,10 @@ import mergeProps from './mergeProps'
 const PageDownloadContainer = (props) =>
 	<PageDownload {...props}/>
 
-export default connect(
+const pageDownloadContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(PageDownloadContainer)
+
+export default pageDownloadContainerConnected
