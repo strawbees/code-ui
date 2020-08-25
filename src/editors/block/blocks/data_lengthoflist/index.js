@@ -1,7 +1,9 @@
 import definition from './definition'
 import generator from './generator'
 
-export default {
+const data_lengthoflist = {
 	definition,
 	generator
 }
+
+export default data_lengthoflist

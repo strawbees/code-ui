@@ -16,7 +16,6 @@ const {
 	}
 } = getConfig()
 
-
 export const addCompilerCode = generateAction(COMPILER_ADD_GENERATED_CODE)
 export const setCompilerCompilationError = generateAction(COMPILER_SET_COMPILATION_ERROR)
 export const setCompilerHex = generateAction(COMPILER_SET_HEX)

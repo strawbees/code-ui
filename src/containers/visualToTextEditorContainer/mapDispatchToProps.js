@@ -4,7 +4,9 @@ import {
 	closeModal,
 } from 'src/actions/modal'
 
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	safeOpenModal,
 	closeModal,
 })
+
+export default mapDispatchToProps

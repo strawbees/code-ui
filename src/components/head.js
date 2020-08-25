@@ -45,7 +45,6 @@ const Head = ({
 		<script src={`${rootPath}/static/lib/scratch-blocks/vertical.js`}/>
 	</DocumentHead>
 
-
 Head.propTypes = {
 	rootPath      : PropTypes.string,
 	ogTitle       : PropTypes.string,

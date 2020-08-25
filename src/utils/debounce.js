@@ -1,6 +1,6 @@
 const hash = {}
 
-export default (id, fn, timeout = 0) => {
+const debounce = (id, fn, timeout = 0) => {
 	clearTimeout(hash[id])
 	hash[id] = setTimeout(() => {
 		delete hash[id]
@@ -11,3 +11,5 @@ export default (id, fn, timeout = 0) => {
 		delete hash[id]
 	}
 }
+
+export default debounce

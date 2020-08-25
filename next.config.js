@@ -78,12 +78,11 @@ const config = {
 	}, {}))
 }
 
-
 module.exports = {
 	useFileSystemPublicRoutes : false,
 	publicRuntimeConfig       : config,
 	assetPrefix               : config.ROOT_PATH,
-	exportTrailingSlash       : true,
+	trailingSlash             : true,
 	exportPathMap             : async () => JSON.parse(await fs.readFile(path.resolve(__dirname, 'static', 'routes.json'))),
 	webpack                   : (webpackConfig) => {
 		// svg loader
@@ -115,11 +114,5 @@ module.exports = {
 			src    : path.resolve(__dirname, 'src'),
 		}
 		return webpackConfig
-	},
-	experimental : {
-		// had to add this after next 9.2, since it's true by defautl
-		// and enabling a feature to handle FOUC that was breaking Blockly.
-		// (on the first load of /block blockly was not getting the correct size)
-		css : false
 	}
 }

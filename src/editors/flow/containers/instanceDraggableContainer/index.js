@@ -206,8 +206,10 @@ InstanceDraggableContainer.propTypes = {
 	removeInstance         : PropTypes.func,
 }
 
-export default connect(
+const instanceDraggableContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(InstanceDraggableContainer)
+
+export default instanceDraggableContainerConnected

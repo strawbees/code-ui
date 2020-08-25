@@ -1,1 +1,3 @@
-export default () => (state, { name }) => name
+const propsNameSelector = () => (state, { name }) => name
+
+export default propsNameSelector

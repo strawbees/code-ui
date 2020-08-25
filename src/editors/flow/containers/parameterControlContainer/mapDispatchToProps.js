@@ -1,6 +1,8 @@
 import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
 import { safeUpdateInstanceParameterByValueCode } from 'src/editors/flow/actions'
 
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	safeUpdateInstanceParameterByValueCode
 })
+
+export default mapDispatchToProps

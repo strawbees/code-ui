@@ -5,9 +5,10 @@ import {
 	modalSignup,
 } from 'src/actions/storage'
 
-
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	signin : () => modalSignin('strawbees'),
 	signup : () => modalSignup('strawbees'),
 	logout : safeClearLoggedInData,
 })
+
+export default mapDispatchToProps

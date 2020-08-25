@@ -1,6 +1,6 @@
 import s from 'src/utils/s'
 
-export default (strings) => ({
+const definition = (strings) => ({
 	message0 : s(strings, 'block.blocks.input_circuit_touch.message0'),
 	args0    : [
 		{
@@ -16,3 +16,5 @@ export default (strings) => ({
 	colourTertiary  : '#01adee',
 	outputShape     : window.Blockly.OUTPUT_SHAPE_ROUND
 })
+
+export default definition

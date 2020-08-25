@@ -1,4 +1,4 @@
-export default (url) => {
+const redirects = (url) => {
 	let pathname
 	let search
 	let hash
@@ -89,3 +89,5 @@ export default (url) => {
 	}
 	return undefined
 }
+
+export default redirects

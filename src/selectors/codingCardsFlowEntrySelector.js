@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import codingCardsFlowFormatedEntitiesSelector from 'src/selectors/codingCardsFlowFormatedEntitiesSelector'
 
-export default () => createSelector(
+const codingCardsFlowEntrySelector = () => createSelector(
 	[
 		(_, props) => props && props.id,
 		codingCardsFlowFormatedEntitiesSelector(),
@@ -11,3 +11,5 @@ export default () => createSelector(
 		codingCardsFlowFormatedEntities,
 	) => codingCardsFlowFormatedEntities && codingCardsFlowFormatedEntities[id]
 )
+
+export default codingCardsFlowEntrySelector

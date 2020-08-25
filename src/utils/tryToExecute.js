@@ -1,6 +1,6 @@
 import delay from './delay'
 
-export default async (generator, maxTries = 5, interval = 100) => {
+const tryToExecute = async (generator, maxTries = 5, interval = 100) => {
 	let success = false
 	let tries = 0
 	let error
@@ -26,3 +26,5 @@ export default async (generator, maxTries = 5, interval = 100) => {
 	}
 	return result
 }
+
+export default tryToExecute

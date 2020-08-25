@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import refEditorIdSelector from 'src/selectors/refEditorIdSelector'
 import storageProgramsSelector from 'src/selectors/storageProgramsSelector'
 
-export default () => createSelector(
+const refEditorSavedSelector = () => createSelector(
 	[
 		refEditorIdSelector(),
 		storageProgramsSelector()
@@ -17,3 +17,5 @@ export default () => createSelector(
 		return false
 	}
 )
+
+export default refEditorSavedSelector

@@ -1,4 +1,4 @@
-export default (stateProps, dispatchProps, ownProps) => {
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
 	const {
 		flowFilterIds,
 		blockFilterIds,
@@ -38,3 +38,5 @@ export default (stateProps, dispatchProps, ownProps) => {
 		setFilterIds,
 	}
 }
+
+export default mergeProps

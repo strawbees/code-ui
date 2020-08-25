@@ -1,4 +1,4 @@
-export default (arrA, arrB) => {
+const shallowCompareArrays = (arrA, arrB) => {
 	if (arrA === arrB) {
 		return true
 	}
@@ -25,3 +25,5 @@ export default (arrA, arrB) => {
 
 	return true
 }
+
+export default shallowCompareArrays

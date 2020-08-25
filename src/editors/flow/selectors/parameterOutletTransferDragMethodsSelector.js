@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import parameterValueRawSelector from 'src/editors/flow/selectors/parameterValueRawSelector'
 import outletTransferDragMethodsSelector from 'src/editors/flow/selectors/outletTransferDragMethodsSelector'
 
-export default () => createSelector(
+const parameterOutletTransferDragMethodsSelector = () => createSelector(
 	[
 		parameterValueRawSelector(),
 		outletTransferDragMethodsSelector(),
@@ -15,3 +15,5 @@ export default () => createSelector(
 		outletTransferDragMethods &&
 		outletTransferDragMethods[parameterValueRaw]
 )
+
+export default parameterOutletTransferDragMethodsSelector

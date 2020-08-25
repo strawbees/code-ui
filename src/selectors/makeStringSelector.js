@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import localeStringsSelector from 'src/selectors/localeStringsSelector'
 import s from 'src/utils/s'
 
-export default (key, showKeyIfMissing) => createSelector(
+const makeStringSelector = (key, showKeyIfMissing) => createSelector(
 	[
 		localeStringsSelector(),
 	],
@@ -10,3 +10,5 @@ export default (key, showKeyIfMissing) => createSelector(
 		localeStrings
 	) => s(localeStrings, key, showKeyIfMissing)
 )
+
+export default makeStringSelector

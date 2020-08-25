@@ -1,7 +1,9 @@
 import definition from './definition'
 import generator from './generator'
 
-export default {
+const undefined = {
 	definition,
 	generator
 }
+
+export default undefined

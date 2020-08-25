@@ -12,8 +12,10 @@ ConnectionLineContainer.propTypes = {
 	id : PropTypes.string,
 }
 
-export default connect(
+const connectionLineContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(ConnectionLineContainer)
+
+export default connectionLineContainerConnected

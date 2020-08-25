@@ -3,8 +3,10 @@ import instanceNodeNameSelector from 'src/editors/flow/selectors/instanceNodeNam
 import instanceColorSelector from 'src/editors/flow/selectors/instanceColorSelector'
 import instanceIconSelector from 'src/editors/flow/selectors/instanceIconSelector'
 
-export default () => createStructuredSelector({
+const mapStateToProps = () => createStructuredSelector({
 	nodeName : instanceNodeNameSelector(),
 	color    : instanceColorSelector(),
 	icon     : instanceIconSelector(),
 })
+
+export default mapStateToProps

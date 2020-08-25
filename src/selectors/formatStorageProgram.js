@@ -16,7 +16,7 @@ const formatDate = (ts) => {
 	return `${year}-${month}-${day}`
 }
 
-export default (
+const formatStorageProgram = (
 	state,
 	{
 		id,
@@ -33,3 +33,5 @@ export default (
 	type,
 	source,
 })
+
+export default formatStorageProgram

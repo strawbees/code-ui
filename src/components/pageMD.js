@@ -51,5 +51,4 @@ PageMD.propTypes = {
 	queryId  : PropTypes.string
 }
 
-
 export default PageMD

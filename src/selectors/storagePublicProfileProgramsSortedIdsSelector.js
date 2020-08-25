@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import storagePublicProfileProgramsSelector from 'src/selectors/storagePublicProfileProgramsSelector'
 
-export default () => createSelector(
+const storagePublicProfileProgramsSortedIdsSelector = () => createSelector(
 	[
 		storagePublicProfileProgramsSelector(),
 	],
@@ -16,3 +16,5 @@ export default () => createSelector(
 		})
 		.map(([id]) => id)
 )
+
+export default storagePublicProfileProgramsSortedIdsSelector

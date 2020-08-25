@@ -3,7 +3,7 @@ import stateSelector from 'src/editors/flow/selectors/stateSelector'
 import instanceSelector from 'src/editors/flow/selectors/instanceSelector'
 import nodeOutletsSelector from 'src/editors/flow/selectors/nodeOutletsSelector'
 
-export default () => createSelector(
+const instanceOutletsSelector = () => createSelector(
 	[
 		instanceSelector(),
 		stateSelector(),
@@ -13,3 +13,5 @@ export default () => createSelector(
 		state
 	) => nodeOutletsSelector()(state, { id })
 )
+
+export default instanceOutletsSelector

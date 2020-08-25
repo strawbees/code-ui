@@ -51,8 +51,10 @@ SourceSyncManager.propTypes = {
 }
 
 
-export default connect(
+const sourceSyncManagerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(SourceSyncManager)
+
+export default sourceSyncManagerConnected

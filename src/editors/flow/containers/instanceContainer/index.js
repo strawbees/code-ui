@@ -12,8 +12,10 @@ InstanceContainer.propTypes = {
 	id : PropTypes.string,
 }
 
-export default connect(
+const instanceContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(InstanceContainer)
+
+export default instanceContainerConnected

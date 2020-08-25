@@ -5,10 +5,12 @@ import storageStatusSelector from 'src/selectors/storageStatusSelector'
 import storageUserSelector from 'src/selectors/storageUserSelector'
 import storageRemoteMirrorSelector from 'src/selectors/storageRemoteMirrorSelector'
 
-export default () => createStructuredSelector({
+const mapStateToProps = () => createStructuredSelector({
 	programs     : storageProgramsSelector(),
 	credentials  : storageCredentialsSelector(),
 	status       : storageStatusSelector(),
 	user         : storageUserSelector(),
 	remoteMirror : storageRemoteMirrorSelector()
 })
+
+export default mapStateToProps

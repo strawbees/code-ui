@@ -1,7 +1,9 @@
 import definition from './definition'
 import generator from './generator'
 
-export default {
+const control_wait_until = {
 	definition,
 	generator
 }
+
+export default control_wait_until

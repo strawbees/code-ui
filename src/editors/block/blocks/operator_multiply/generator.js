@@ -4,7 +4,7 @@ import {
 	getBlockBody
 } from '../../utils/parsing'
 
-export default ({ value, next }, structure) => {
+const generator = ({ value, next }, structure) => {
 	const num1Block = getValueBlockByAttributeName(value, 'NUM1')
 	const num2Block = getValueBlockByAttributeName(value, 'NUM2')
 	if (!num1Block || !num2Block) {
@@ -16,3 +16,5 @@ export default ({ value, next }, structure) => {
 	structure.body += `((float)${num1} * (float)${num2})`
 	parseNext(next, structure)
 }
+
+export default generator

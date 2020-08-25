@@ -73,7 +73,6 @@ const ProgramTitle = ({
 	)
 }
 
-
 ProgramTitle.defaultProps = {
 	displayAsButton : true
 }

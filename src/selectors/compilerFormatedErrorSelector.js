@@ -3,7 +3,7 @@ import stateSelector from 'src/selectors/stateSelector'
 import compilerErrorSelector from 'src/selectors/compilerErrorSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 
-export default () => createSelector(
+const compilerFormatedErrorSelector = () => createSelector(
 	[
 		stateSelector(),
 		compilerErrorSelector(),
@@ -29,3 +29,5 @@ export default () => createSelector(
 		}
 	}
 )
+
+export default compilerFormatedErrorSelector

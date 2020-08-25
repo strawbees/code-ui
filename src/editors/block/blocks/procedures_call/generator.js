@@ -3,7 +3,7 @@ import {
 	getBlockBody
 } from '../../utils/parsing'
 
-export default ({ next, mutation, value }, structure) => {
+const generator = ({ next, mutation, value }, structure) => {
 	const procCode = (
 		mutation &&
 		mutation[0] &&
@@ -45,3 +45,5 @@ export default ({ next, mutation, value }, structure) => {
 
 	parseNext(next, structure)
 }
+
+export default generator

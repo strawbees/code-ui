@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import qbserialLinksSelector from 'src/selectors/qbserialLinksSelector'
 
-export default () => createSelector(
+const qbserialRuntimeIdListSelector = () => createSelector(
 	[
 		qbserialLinksSelector(),
 	],
@@ -9,3 +9,5 @@ export default () => createSelector(
 		qbserialLinks,
 	) => Object.keys(qbserialLinks)
 )
+
+export default qbserialRuntimeIdListSelector

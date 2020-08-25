@@ -1,6 +1,6 @@
 import abortableFetch from './abortableFetch'
 
-export default async (input, init = {}, timeout) => {
+const timeoutFetch = async (input, init = {}, timeout) => {
 	if (!timeout) {
 		return fetch(input, init)
 	}
@@ -14,3 +14,5 @@ export default async (input, init = {}, timeout) => {
 		throw e
 	}
 }
+
+export default timeoutFetch

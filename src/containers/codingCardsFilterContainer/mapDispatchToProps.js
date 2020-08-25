@@ -4,7 +4,9 @@ import {
 	setCodingCardsBlockFilterIds,
 } from 'src/actions/ui'
 
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	setCodingCardsFlowFilterIds,
 	setCodingCardsBlockFilterIds,
 })
+
+export default mapDispatchToProps

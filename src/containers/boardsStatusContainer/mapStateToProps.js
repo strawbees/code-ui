@@ -6,7 +6,7 @@ import qbserialReadySelector from 'src/selectors/qbserialReadySelector'
 // import qbmidiReadySelector from 'src/selectors/qbmidiReadySelector'
 
 
-export default () => createSelector(
+const mapStateToProps = () => createSelector(
 	[
 		qbcompoundLinksSelector(),
 		qbserialAvailableSelector(),
@@ -24,3 +24,5 @@ export default () => createSelector(
 		ready,
 	})
 )
+
+export default mapStateToProps

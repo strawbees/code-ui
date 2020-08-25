@@ -58,5 +58,4 @@ UserProfileAvatar.propTypes = {
 	isAnon   : PropTypes.bool,
 }
 
-
 export default UserProfileAvatar

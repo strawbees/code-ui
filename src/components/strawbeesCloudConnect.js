@@ -6,7 +6,6 @@ import IconButton from 'src/components/iconButton'
 // import signinIcon from 'src/assets/icons/user/login.svg'
 import { fireGlobalEvent } from 'src/utils/globalEvents'
 
-
 import {
 	WHITE,
 	PINK,

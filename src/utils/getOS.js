@@ -13,4 +13,6 @@ parsedPlatform.node = {
 			'ia32' :
 			''
 }
-export default () => parsedPlatform
+const getOS = () => parsedPlatform
+
+export default getOS

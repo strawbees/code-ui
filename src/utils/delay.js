@@ -1,1 +1,3 @@
-export default millis => new Promise(r => setTimeout(r, millis))
+const delay = (millis) => new Promise(r => setTimeout(r, millis))
+
+export default delay

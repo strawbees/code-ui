@@ -5,7 +5,7 @@ import {
 	getBlockBody,
 } from '../../utils/parsing'
 
-export default ({ statement, next }, structure, shallow) => {
+const generator = ({ statement, next }, structure, shallow) => {
 	const procCode = (
 		statement &&
 		statement[0] &&
@@ -92,3 +92,5 @@ export default ({ statement, next }, structure, shallow) => {
 
 	parseProcedureDefinition(structure, instance, args, body, type)
 }
+
+export default generator

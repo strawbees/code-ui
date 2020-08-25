@@ -9,10 +9,12 @@ import {
 	exportProgramToFile,
 } from 'src/actions/program'
 
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	safeOpenModal,
 	modalDuplicateProgramData,
 	modalShareProgramData,
 	modalUploadCode,
 	exportProgramToFile,
 })
+
+export default mapDispatchToProps

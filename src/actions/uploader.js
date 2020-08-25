@@ -17,7 +17,6 @@ import {
 	UPLOADER_CLEAR_ERROR,
 } from 'src/constants/actionTypes'
 
-
 const {
 	publicRuntimeConfig : {
 		CHROME_EXTENSION_ID

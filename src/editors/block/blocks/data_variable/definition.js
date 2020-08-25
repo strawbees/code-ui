@@ -1,4 +1,4 @@
-export default (strings) => ({
+const definition = (strings) => ({
 	message0        : '%1',
 	lastDummyAlign0 : 'CENTRE',
 	args0           : [
@@ -15,3 +15,5 @@ export default (strings) => ({
 	colourSecondary : '#FF8000',
 	colourTertiary  : '#DB6E00'
 })
+
+export default definition

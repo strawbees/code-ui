@@ -4,7 +4,7 @@ import {
 	getBlockBody
 } from '../../utils/parsing'
 
-export default ({ value, next }, structure) => {
+const generator = ({ value, next }, structure) => {
 	const numBlock = getValueBlockByAttributeName(value, 'NUM')
 	if (!numBlock) {
 		parseNext(next, structure)
@@ -14,3 +14,5 @@ export default ({ value, next }, structure) => {
 	structure.body += `round(${num})`
 	parseNext(next, structure)
 }
+
+export default generator

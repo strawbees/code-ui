@@ -1,4 +1,4 @@
-export default (stateProps, dispatchProps, ownProps) => {
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
 	const {
 		flowTitle,
 		blockTitle,
@@ -51,3 +51,5 @@ export default (stateProps, dispatchProps, ownProps) => {
 		setCurrentCardId
 	}
 }
+
+export default mergeProps

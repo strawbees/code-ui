@@ -13,7 +13,6 @@ import {
 	STORAGE_CLEAR
 } from 'src/constants/actionTypes'
 
-
 const status = (state = null, { type, payload }) => {
 	switch (type) {
 		case STORAGE_SET_STATUS:

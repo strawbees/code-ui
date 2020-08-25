@@ -12,8 +12,10 @@ const EditorContainer = () =>
 		<Editor/>
 	</React.Fragment>
 
-export default connect(
+const editorContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(EditorContainer)
+
+export default editorContainerConnected

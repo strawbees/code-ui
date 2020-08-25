@@ -4,7 +4,9 @@ import {
 	clearUploadError,
 } from 'src/actions/uploader'
 
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	uploadHex,
 	clearUploadError,
 })
+
+export default mapDispatchToProps

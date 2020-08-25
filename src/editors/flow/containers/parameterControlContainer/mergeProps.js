@@ -1,4 +1,4 @@
-export default (stateProps, dispatchProps, ownProps) => {
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
 	const {
 		id : parameterId,
 		instanceId : id,
@@ -19,3 +19,5 @@ export default (stateProps, dispatchProps, ownProps) => {
 		})
 	}
 }
+
+export default mergeProps

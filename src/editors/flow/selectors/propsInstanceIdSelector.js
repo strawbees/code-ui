@@ -1,1 +1,3 @@
-export default () => (state, { instanceId }) => instanceId
+const propsInstanceIdSelector = () => (state, { instanceId }) => instanceId
+
+export default propsInstanceIdSelector

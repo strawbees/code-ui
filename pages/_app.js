@@ -1,10 +1,8 @@
 import React from 'react'
-import { Provider } from 'react-redux'
 import App from 'next/app'
 import Router from 'next/router'
-import withRedux from 'next-redux-wrapper'
 import getConfig from 'next/config'
-import makeStore from 'src/store'
+import { wrapper } from 'src/store'
 import redirects from 'src/redirects'
 import resolveLinkUrl from 'src/utils/resolveLinkUrl'
 
@@ -108,15 +106,11 @@ class NextApp extends App {
 	}
 
 	render() {
-		const { Component, pageProps, store } = this.props
+		const { Component, pageProps } = this.props
 		return (
-			<Provider store={store}>
-				<Component {...pageProps} />
-			</Provider>
+			<Component {...pageProps} />
 		)
 	}
 }
 
-export default withRedux(
-	makeStore
-)(NextApp)
+export default wrapper.withRedux(NextApp)

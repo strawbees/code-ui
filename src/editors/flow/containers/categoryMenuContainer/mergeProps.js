@@ -1,4 +1,4 @@
-export default (stateProps, dispatchProps, ownProps) => {
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
 	const {
 		toggleFoldedCategory,
 		...otherDispatchProps
@@ -16,3 +16,5 @@ export default (stateProps, dispatchProps, ownProps) => {
 		toggle : () => toggleFoldedCategory(id)
 	}
 }
+
+export default mergeProps

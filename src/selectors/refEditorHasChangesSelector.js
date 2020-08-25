@@ -5,7 +5,7 @@ import refEditorNameSelector from 'src/selectors/refEditorNameSelector'
 import refEditorSourceSelector from 'src/selectors/refEditorSourceSelector'
 import refEditorDefaultSourceSelector from 'src/selectors/refEditorDefaultSourceSelector'
 
-export default () => createSelector(
+const refEditorHasChangesSelector = () => createSelector(
 	[
 		refEditorTypeSelector(),
 		refEditorSavedSelector(),
@@ -37,3 +37,5 @@ export default () => createSelector(
 		return source !== defaultSource
 	}
 )
+
+export default refEditorHasChangesSelector

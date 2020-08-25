@@ -1,1 +1,3 @@
-export default null
+const definition = null
+
+export default definition

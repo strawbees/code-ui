@@ -253,5 +253,4 @@ PageDownload.propTypes = {
 	})
 }
 
-
 export default PageDownload

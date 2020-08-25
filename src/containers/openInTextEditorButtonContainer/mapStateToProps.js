@@ -5,7 +5,7 @@ import refEditorNameSelector from 'src/selectors/refEditorNameSelector'
 import refEditorGeneratedCodeSelector from 'src/selectors/refEditorGeneratedCodeSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 
-export default () => createSelector(
+const mapStateToProps = () => createSelector(
 	[
 		stateSelector(),
 		refEditorNameSelector(),
@@ -29,3 +29,5 @@ export default () => createSelector(
 		}
 	}
 )
+
+export default mapStateToProps

@@ -1,4 +1,4 @@
-export default async (canvas, name) => {
+const downloadCanvasToFile = async (canvas, name) => {
 	const userAgent = navigator.userAgent || navigator.vendor || window.opera
 	// for iphone
 	if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
@@ -23,3 +23,5 @@ export default async (canvas, name) => {
 	}
 	link.click()
 }
+
+export default downloadCanvasToFile
