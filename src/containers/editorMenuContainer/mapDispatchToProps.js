@@ -11,7 +11,7 @@ import {
 	exportProgramToFile,
 } from 'src/actions/program'
 
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	updateCurrentEditorProgramName,
 	saveCurrentEditorProgram,
 	modalUploadCode,
@@ -20,3 +20,5 @@ export default autobindDispatchToActionCreators({
 	modalImportProgram,
 	exportProgramToFile,
 })
+
+export default mapDispatchToProps

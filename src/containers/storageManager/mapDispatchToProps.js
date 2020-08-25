@@ -12,7 +12,7 @@ import {
 	removeProgramByIdAndClearEditor,
 } from 'src/actions/program'
 
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	setCredentials,
 	setPrograms,
 	setRemoteMirror,
@@ -22,3 +22,5 @@ export default autobindDispatchToActionCreators({
 	removeProgramByIdAndClearEditor,
 	safeSync,
 })
+
+export default mapDispatchToProps

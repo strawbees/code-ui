@@ -25,9 +25,10 @@ class AppContainer extends React.Component {
 	static async getInitialProps({
 		query,
 		asPath,
-		isServer,
 		store,
 	}) {
+		const isServer = typeof window === 'undefined'
+
 		const {
 			stringsLoaded,
 			setSetup,

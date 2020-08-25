@@ -5,7 +5,7 @@ import codingCardsBlockFilteredIdsSelector from 'src/selectors/codingCardsBlockF
 import codingCardsFlowCurrentCardIdSelector from 'src/selectors/codingCardsFlowCurrentCardIdSelector'
 import codingCardsBlockCurrentCardIdSelector from 'src/selectors/codingCardsBlockCurrentCardIdSelector'
 
-export default () => createStructuredSelector({
+const mapStateToProps = () => createStructuredSelector({
 	flowTitle          : makeStringSelector('coding_cards.flow.title'),
 	blockTitle         : makeStringSelector('coding_cards.block.title'),
 	flowCardIds        : codingCardsFlowFilteredIdsSelector(),
@@ -13,3 +13,5 @@ export default () => createStructuredSelector({
 	flowCurrentCardId  : codingCardsFlowCurrentCardIdSelector(),
 	blockCurrentCardId : codingCardsBlockCurrentCardIdSelector(),
 })
+
+export default mapStateToProps

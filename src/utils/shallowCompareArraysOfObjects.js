@@ -1,6 +1,6 @@
 import shallowCompareObjects from './shallowCompareObjects'
 
-export default (arrA, arrB) => {
+const shallowCompareArraysOfObjects = (arrA, arrB) => {
 	if (arrA === arrB) {
 		return true
 	}
@@ -27,3 +27,5 @@ export default (arrA, arrB) => {
 
 	return true
 }
+
+export default shallowCompareArraysOfObjects

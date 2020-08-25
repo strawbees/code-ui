@@ -126,5 +126,4 @@ SingleBoardStatus.propTypes = {
 	labelKey : PropTypes.string,
 }
 
-
 export default SingleBoardStatus

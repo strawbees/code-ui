@@ -9,7 +9,7 @@ import {
 	setInstacePropertyOneTimeAssignment
 } from '../../utils/parsing'
 
-export default ({ value, next }, structure) => {
+const generator = ({ value, next }, structure) => {
 	const placeBlock = getValueBlockByAttributeName(value, 'PLACE')
 	if (!placeBlock) {
 		parseNext(next, structure)
@@ -55,3 +55,5 @@ export default ({ value, next }, structure) => {
 
 	parseNext(next, structure)
 }
+
+export default generator

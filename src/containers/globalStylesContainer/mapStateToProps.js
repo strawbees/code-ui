@@ -1,6 +1,8 @@
 import { createStructuredSelector } from 'reselect'
 import rootPathSelector from 'src/selectors/rootPathSelector'
 
-export default () => createStructuredSelector({
+const mapStateToProps = () => createStructuredSelector({
 	rootPath : rootPathSelector(),
 })
+
+export default mapStateToProps

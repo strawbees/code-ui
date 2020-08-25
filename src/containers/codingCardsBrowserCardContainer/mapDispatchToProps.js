@@ -7,8 +7,10 @@ import {
 	setCodingCardsBlockCurrentCardId,
 } from 'src/actions/ui'
 
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	closeModal,
 	setCodingCardsFlowCurrentCardId,
 	setCodingCardsBlockCurrentCardId,
 })
+
+export default mapDispatchToProps

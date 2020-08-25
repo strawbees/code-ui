@@ -1,6 +1,8 @@
 import { createStructuredSelector } from 'reselect'
 import storagePublicProfileUsernameSelector from 'src/selectors/storagePublicProfileUsernameSelector'
 
-export default () => createStructuredSelector({
+const mapStateToProps = () => createStructuredSelector({
 	username : storagePublicProfileUsernameSelector(),
 })
+
+export default mapStateToProps

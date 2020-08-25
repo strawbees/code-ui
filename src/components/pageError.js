@@ -29,5 +29,4 @@ PageError.propTypes = {
 	statusCode : PropTypes.number
 }
 
-
 export default PageError

@@ -7,10 +7,12 @@ const {
 	}
 } = getConfig()
 
-export default (stateProps, dispatchProps, ownProps) => ({
+const mergeProps = (stateProps, dispatchProps, ownProps) => ({
 	...stateProps,
 	...dispatchProps,
 	...ownProps,
 	generateMethod,
 	extensionId : CHROME_EXTENSION_ID
 })
+
+export default mergeProps

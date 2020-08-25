@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import codingCardsHardwareFormatedEntitiesSelector from 'src/selectors/codingCardsHardwareFormatedEntitiesSelector'
 
-export default () => createSelector(
+const codingCardsHardwareEntrySelector = () => createSelector(
 	[
 		(_, props) => props && props.id,
 		codingCardsHardwareFormatedEntitiesSelector(),
@@ -11,3 +11,5 @@ export default () => createSelector(
 		codingCardsHardwareFormatedEntities,
 	) => codingCardsHardwareFormatedEntities && codingCardsHardwareFormatedEntities[id]
 )
+
+export default codingCardsHardwareEntrySelector

@@ -1,3 +1,5 @@
 import parameterValueDisplaySelector from 'src/editors/flow/selectors/parameterValueDisplaySelector'
 
-export default () => parameterValueDisplaySelector()
+const mapStateToProps = () => parameterValueDisplaySelector()
+
+export default mapStateToProps

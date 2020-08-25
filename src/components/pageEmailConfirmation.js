@@ -53,5 +53,4 @@ PageEmailConfirmation.propTypes = {
 	onSubmit : PropTypes.func,
 }
 
-
 export default PageEmailConfirmation

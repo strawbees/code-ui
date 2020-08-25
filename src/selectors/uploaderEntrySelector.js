@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import uploaderEntitiesSelector from 'src/selectors/uploaderEntitiesSelector'
 import hashCode from 'src/utils/hashCode'
 
-export default () => createSelector(
+const uploaderEntrySelector = () => createSelector(
 	[
 		uploaderEntitiesSelector(),
 		(state, { hex, runtimeId }) => hashCode(`${hex}${runtimeId}`),
@@ -12,3 +12,5 @@ export default () => createSelector(
 		id,
 	) => compilerEntities[id]
 )
+
+export default uploaderEntrySelector

@@ -1,6 +1,8 @@
 import { createStructuredSelector } from 'reselect'
 import instanceNameSelector from 'src/editors/flow/selectors/instanceNameSelector'
 
-export default () => createStructuredSelector({
+const mapStateToProps = () => createStructuredSelector({
 	name : instanceNameSelector(),
 })
+
+export default mapStateToProps

@@ -4,7 +4,7 @@ import {
 	getBlockBody
 } from '../../utils/parsing'
 
-export default ({ value, next }, structure) => {
+const generator = ({ value, next }, structure) => {
 	const operandBlock = getValueBlockByAttributeName(value, 'OPERAND')
 	if (!operandBlock) {
 		parseNext(next, structure)
@@ -14,3 +14,5 @@ export default ({ value, next }, structure) => {
 	structure.body += `!${operand}`
 	parseNext(next, structure)
 }
+
+export default generator

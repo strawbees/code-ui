@@ -4,7 +4,7 @@ import storageProgramSelector from 'src/selectors/storageProgramSelector'
 import generateFlowCode from 'src/editors/flow/utils/generateCode'
 import generateBlockCode from 'src/editors/block/utils/generateCode'
 
-export default () => createSelector(
+const storageProgramGeneratedCodeSelector = () => createSelector(
 	[
 		stateSelector(),
 		storageProgramSelector(),
@@ -25,3 +25,5 @@ export default () => createSelector(
 		}
 	}
 )
+
+export default storageProgramGeneratedCodeSelector

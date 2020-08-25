@@ -13,8 +13,10 @@ ParameterDisplayValueContainer.propTypes = {
 	instanceId : PropTypes.string,
 }
 
-export default connect(
+const parameterDisplayValueContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(ParameterDisplayValueContainer)
+
+export default parameterDisplayValueContainerConnected

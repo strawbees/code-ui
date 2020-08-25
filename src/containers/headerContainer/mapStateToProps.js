@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import queryRefSelector from 'src/selectors/queryRefSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 
-export default () => createSelector(
+const mapStateToProps = () => createSelector(
 	[
 		queryRefSelector(),
 		makeStringSelector('routes.home'),
@@ -15,3 +15,5 @@ export default () => createSelector(
 		homeUrl
 	})
 )
+
+export default mapStateToProps

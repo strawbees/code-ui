@@ -1,9 +1,8 @@
-export default (stateProps, dispatchProps, ownProps) => {
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
 	const {
 		hardware,
 		...otherStateProps
 	} = stateProps
-
 
 	return {
 		...otherStateProps,
@@ -13,3 +12,5 @@ export default (stateProps, dispatchProps, ownProps) => {
 		iconId : hardware.id,
 	}
 }
+
+export default mergeProps

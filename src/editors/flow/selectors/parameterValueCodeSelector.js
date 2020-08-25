@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import parameterValueParsedSanitisedSelector from 'src/editors/flow/selectors/parameterValueParsedSanitisedSelector'
 
-export default () => createSelector(
+const parameterValueCodeSelector = () => createSelector(
 	[
 		parameterValueParsedSanitisedSelector(),
 	],
@@ -11,3 +11,5 @@ export default () => createSelector(
 		}
 	) => code
 )
+
+export default parameterValueCodeSelector

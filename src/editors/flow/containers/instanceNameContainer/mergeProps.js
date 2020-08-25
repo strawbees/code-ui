@@ -1,4 +1,4 @@
-export default (stateProps, dispatchProps, ownProps) => {
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
 	const {
 		id,
 		...otherOwnProps
@@ -14,3 +14,5 @@ export default (stateProps, dispatchProps, ownProps) => {
 		onNameInputChange : (name) => safeUpdateInstanceName({ id, name })
 	}
 }
+
+export default mergeProps

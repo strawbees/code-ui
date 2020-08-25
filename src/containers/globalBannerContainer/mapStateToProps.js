@@ -10,7 +10,7 @@ const {
 	}
 } = getConfig()
 
-export default () => createSelector(
+const mapStateToProps = () => createSelector(
 	[
 		queryLocaleSelector(),
 		uiHiddenGlobalBannersSelector(),
@@ -29,3 +29,5 @@ export default () => createSelector(
 			}))
 	})
 )
+
+export default mapStateToProps

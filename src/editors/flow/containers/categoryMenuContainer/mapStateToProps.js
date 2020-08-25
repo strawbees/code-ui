@@ -4,9 +4,11 @@ import categoryNameSelector from 'src/editors/flow/selectors/categoryNameSelecto
 import categoryIsFoldedSelector from 'src/editors/flow/selectors/categoryIsFoldedSelector'
 import categoryVisibleNodeIdsSelector from 'src/editors/flow/selectors/categoryVisibleNodeIdsSelector'
 
-export default () => createStructuredSelector({
+const mapStateToProps = () => createStructuredSelector({
 	color   : categoryColorSelector(),
 	name    : categoryNameSelector(),
 	folded  : categoryIsFoldedSelector(),
 	nodeIds : categoryVisibleNodeIdsSelector(),
 })
+
+export default mapStateToProps

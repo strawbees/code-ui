@@ -3,8 +3,10 @@ import codingCardsHardwareIdsSelector from 'src/selectors/codingCardsHardwareIds
 import codingCardsFlowFilterIdsSelector from 'src/selectors/codingCardsFlowFilterIdsSelector'
 import codingCardsBlockFilterIdsSelector from 'src/selectors/codingCardsBlockFilterIdsSelector'
 
-export default () => createStructuredSelector({
+const mapStateToProps = () => createStructuredSelector({
 	filterIds      : codingCardsHardwareIdsSelector(),
 	flowFilterIds  : codingCardsFlowFilterIdsSelector(),
 	blockFilterIds : codingCardsBlockFilterIdsSelector(),
 })
+
+export default mapStateToProps

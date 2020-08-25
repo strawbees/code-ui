@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import uploaderSelector from 'src/selectors/uploaderSelector'
 
-export default () => createSelector(
+const uploaderLastErrorSelector = () => createSelector(
 	[
 		uploaderSelector(),
 	],
@@ -9,3 +9,5 @@ export default () => createSelector(
 		uploader,
 	) => uploader && uploader.lastError
 )
+
+export default uploaderLastErrorSelector

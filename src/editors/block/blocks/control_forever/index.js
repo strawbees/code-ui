@@ -1,7 +1,9 @@
 import definition from './definition'
 import generator from './generator'
 
-export default {
+const control_forever = {
 	definition,
 	generator
 }
+
+export default control_forever

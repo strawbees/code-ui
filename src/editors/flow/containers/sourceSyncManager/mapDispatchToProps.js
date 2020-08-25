@@ -2,7 +2,9 @@ import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToAction
 import { setSource } from 'src/editors/flow/actions'
 import { updateCurrentEditorProgramSource } from 'src/actions/editor'
 
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	setSource,
 	setRefEditorSource : updateCurrentEditorProgramSource,
 })
+
+export default mapDispatchToProps

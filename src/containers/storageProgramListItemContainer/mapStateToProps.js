@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import storageFormatedProgramSelector from 'src/selectors/storageFormatedProgramSelector'
 import storageProgramGeneratedCodeSelector from 'src/selectors/storageProgramGeneratedCodeSelector'
 
-export default () => createSelector(
+const mapStateToProps = () => createSelector(
 	[
 		storageFormatedProgramSelector(),
 		storageProgramGeneratedCodeSelector(),
@@ -25,3 +25,5 @@ export default () => createSelector(
 		generatedCode,
 	})
 )
+
+export default mapStateToProps

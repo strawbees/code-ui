@@ -1,4 +1,4 @@
-export default (strings) => ({
+const definition = (strings) => ({
 	message0 : window.Blockly.Msg.DATA_CHANGEVARIABLEBY,
 	args0    : [
 		{
@@ -18,3 +18,5 @@ export default (strings) => ({
 	colourSecondary   : '#FF8000',
 	colourTertiary    : '#DB6E00',
 })
+
+export default definition

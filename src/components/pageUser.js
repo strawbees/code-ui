@@ -39,5 +39,4 @@ PageUser.propTypes = {
 	username : PropTypes.string
 }
 
-
 export default PageUser

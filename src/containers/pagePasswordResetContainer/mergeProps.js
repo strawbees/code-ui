@@ -2,7 +2,7 @@ import {
 	resolveBackendFromBackendName,
 } from 'src/storage'
 
-export default (stateProps, dispatchProps, ownProps) => {
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
 	const {
 		token,
 		...otherStateProps
@@ -18,3 +18,5 @@ export default (stateProps, dispatchProps, ownProps) => {
 		}
 	}
 }
+
+export default mergeProps

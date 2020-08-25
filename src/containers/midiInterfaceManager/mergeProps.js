@@ -5,7 +5,7 @@ import {
 	disableLogs
 } from 'quirkbot-midi-interface'
 
-export default (stateProps, dispatchProps, ownProps) => ({
+const mergeProps = (stateProps, dispatchProps, ownProps) => ({
 	...stateProps,
 	...dispatchProps,
 	...ownProps,
@@ -14,3 +14,5 @@ export default (stateProps, dispatchProps, ownProps) => ({
 	midiEnableLogs  : enableLogs,
 	midiDisableLogs : disableLogs,
 })
+
+export default mergeProps

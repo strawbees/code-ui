@@ -1,4 +1,4 @@
-export default (stateProps, dispatchProps, ownProps) => {
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
 	const {
 		entry,
 		...otherStateProps
@@ -39,3 +39,5 @@ export default (stateProps, dispatchProps, ownProps) => {
 		onOpenCode : closeModal
 	}
 }
+
+export default mergeProps

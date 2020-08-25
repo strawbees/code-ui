@@ -1,4 +1,4 @@
-export default (url) => {
+const parseUrlVars = (url) => {
 	const vars = {}
 	url.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m, key, value) => {
 		vars[key] = value
@@ -10,3 +10,5 @@ export default (url) => {
 	})
 	return vars
 }
+
+export default parseUrlVars

@@ -1,7 +1,9 @@
 import definition from './definition'
 import generator from './generator'
 
-export default {
+const math_number = {
 	definition,
 	generator
 }
+
+export default math_number

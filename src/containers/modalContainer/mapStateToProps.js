@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import modalSelector from 'src/selectors/modalSelector'
 
-export default () => createSelector(
+const mapStateToProps = () => createSelector(
 	[
 		modalSelector(),
 	],
@@ -17,3 +17,5 @@ export default () => createSelector(
 		onRequestClose,
 	})
 )
+
+export default mapStateToProps

@@ -6,7 +6,7 @@ import queryLocaleSelector from 'src/selectors/queryLocaleSelector'
 import queryRefSelector from 'src/selectors/queryRefSelector'
 import urlVarsStringSelector from 'src/selectors/urlVarsStringSelector'
 
-export default () => createSelector(
+const mapStateToProps = () => createSelector(
 	[
 		currentLocaleSelector(),
 		otherLocalesSelector(),
@@ -38,3 +38,5 @@ export default () => createSelector(
 		]
 	})
 )
+
+export default mapStateToProps

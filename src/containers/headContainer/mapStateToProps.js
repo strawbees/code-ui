@@ -44,7 +44,7 @@ const makeRefOgSelector = (ref, id) => createSelector(
 	}
 )
 
-export default () => createSelector(
+const mapStateToProps = () => createSelector(
 	[
 		rootPathSelector(),
 		queryRefSelector(),
@@ -61,3 +61,5 @@ export default () => createSelector(
 		...makeRefOgSelector(queryRef, queryId)(state)
 	})
 )
+
+export default mapStateToProps

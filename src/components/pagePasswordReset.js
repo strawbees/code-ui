@@ -53,5 +53,4 @@ PagePasswordReset.propTypes = {
 	onSubmit : PropTypes.func,
 }
 
-
 export default PagePasswordReset

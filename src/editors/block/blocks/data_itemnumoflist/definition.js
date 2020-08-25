@@ -1,6 +1,6 @@
 import s from 'src/utils/s'
 
-export default (strings) => ({
+const definition = (strings) => ({
 	message0 : window.Blockly.Msg.DATA_ITEMNUMOFLIST,
 	args0    : [
 		{
@@ -20,3 +20,5 @@ export default (strings) => ({
 	colourTertiary  : '#E64D00',
 	outputShape     : window.Blockly.OUTPUT_SHAPE_ROUND,
 })
+
+export default definition

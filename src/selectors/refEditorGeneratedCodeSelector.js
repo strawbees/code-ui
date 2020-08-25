@@ -6,7 +6,7 @@ import refEditorSourceSelector from 'src/selectors/refEditorSourceSelector'
 import generateFlowCode from 'src/editors/flow/utils/generateCode'
 import generateBlockCode from 'src/editors/block/utils/generateCode'
 
-export default () => createSelector(
+const refEditorGeneratedCodeSelector = () => createSelector(
 	[
 		stateSelector(),
 		refEditorTypeSelector(),
@@ -29,3 +29,5 @@ export default () => createSelector(
 		}
 	}
 )
+
+export default refEditorGeneratedCodeSelector

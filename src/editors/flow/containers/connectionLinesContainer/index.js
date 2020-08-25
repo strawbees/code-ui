@@ -7,8 +7,10 @@ import mergeProps from './mergeProps'
 const ConnectionLinesContainer = (props) =>
 	<ConnectionLines {...props} />
 
-export default connect(
+const connectionLinesContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(ConnectionLinesContainer)
+
+export default connectionLinesContainerConnected

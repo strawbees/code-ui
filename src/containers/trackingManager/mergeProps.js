@@ -6,9 +6,11 @@ const {
 	}
 } = getConfig()
 
-export default (stateProps, dispatchProps, ownProps) => ({
+const mergeProps = (stateProps, dispatchProps, ownProps) => ({
 	...stateProps,
 	...dispatchProps,
 	...ownProps,
 	gaId : GAID,
 })
+
+export default mergeProps

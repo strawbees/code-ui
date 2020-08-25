@@ -1,4 +1,4 @@
-export default (strings, key, showKeyIfMissing = true) => {
+const s = (strings, key, showKeyIfMissing = true) => {
 	if (!strings) {
 		// strings are not loaded
 		return ''
@@ -16,3 +16,5 @@ export default (strings, key, showKeyIfMissing = true) => {
 	}
 	return ''
 }
+
+export default s

@@ -14,7 +14,7 @@ const {
 } = getConfig()
 const baseUrl = typeof CANONICAL_URL !== 'undefined' ? CANONICAL_URL : ''
 
-export default () => createSelector(
+const programDynamicUrlSelector = () => createSelector(
 	[
 		stateSelector(),
 		propsSelector(),
@@ -38,3 +38,5 @@ export default () => createSelector(
 		return ''
 	}
 )
+
+export default programDynamicUrlSelector

@@ -9,7 +9,7 @@ import factoryCodeSelector from 'src/selectors/factoryCodeSelector'
 import storageStatusSelector from 'src/selectors/storageStatusSelector'
 import makeStringSelector from 'src/selectors/makeStringSelector'
 
-export default () => createStructuredSelector({
+const mapStateToProps = () => createStructuredSelector({
 	type               : refEditorTypeSelector(),
 	id                 : refEditorIdSelector(),
 	source             : refEditorSourceSelector(),
@@ -24,3 +24,5 @@ export default () => createStructuredSelector({
 	newBlockProgramUrl : makeStringSelector('routes.block'),
 	newTextProgramUrl  : makeStringSelector('routes.text'),
 })
+
+export default mapStateToProps

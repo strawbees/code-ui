@@ -4,7 +4,9 @@ import {
 	removeInstance,
 } from 'src/editors/flow/actions'
 
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	updateInstancePosition,
 	removeInstance,
 })
+
+export default mapDispatchToProps

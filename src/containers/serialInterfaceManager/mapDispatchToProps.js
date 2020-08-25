@@ -5,8 +5,10 @@ import {
 	setQbserialReady,
 } from 'src/actions/qbserial'
 
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	setQbserialLinks,
 	setQbserialAvailable,
 	setQbserialReady,
 })
+
+export default mapDispatchToProps

@@ -1,6 +1,6 @@
 import s from 'src/utils/s'
 
-export default (strings) => ({
+const definition = (strings) => ({
 	message0 : window.Blockly.Msg.DATA_DELETEALLOFLIST,
 	args0    : [
 		{
@@ -16,3 +16,5 @@ export default (strings) => ({
 	colourSecondary   : '#FF5500',
 	colourTertiary    : '#E64D00',
 })
+
+export default definition

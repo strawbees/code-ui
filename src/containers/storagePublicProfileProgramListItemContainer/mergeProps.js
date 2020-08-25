@@ -1,4 +1,4 @@
-export default (stateProps, dispatchProps, ownProps) => {
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
 	const {
 		generatedCode,
 		...otherStateProps
@@ -37,3 +37,5 @@ export default (stateProps, dispatchProps, ownProps) => {
 		onExportPress : () => exportProgramToFile({ type, source, name }),
 	}
 }
+
+export default mergeProps

@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 import localesSelector from 'src/selectors/localesSelector'
 import queryLocaleSelector from 'src/selectors/queryLocaleSelector'
 
-export default () => createSelector(
+const currentLocaleSelector = () => createSelector(
 	[
 		localesSelector(),
 		queryLocaleSelector(),
@@ -14,3 +14,5 @@ export default () => createSelector(
 		locale => locale.id === queryLocale
 	).pop()
 )
+
+export default currentLocaleSelector

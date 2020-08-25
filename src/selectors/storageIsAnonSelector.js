@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import storageCredentialsSelector from 'src/selectors/storageCredentialsSelector'
 
-export default () => createSelector(
+const storageIsAnonSelector = () => createSelector(
 	[
 		storageCredentialsSelector(),
 	],
@@ -14,3 +14,5 @@ export default () => createSelector(
 		return true
 	}
 )
+
+export default storageIsAnonSelector

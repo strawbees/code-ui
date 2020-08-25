@@ -94,5 +94,4 @@ PageHome.defaultProps = {}
 
 PageHome.propTypes = {}
 
-
 export default PageHome

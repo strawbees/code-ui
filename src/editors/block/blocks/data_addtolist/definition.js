@@ -1,6 +1,6 @@
 import s from 'src/utils/s'
 
-export default () => ({
+const definition = () => ({
 	message0 : window.Blockly.Msg.DATA_ADDTOLIST,
 	args0    : [
 		{
@@ -20,3 +20,5 @@ export default () => ({
 	colourSecondary   : '#FF5500',
 	colourTertiary    : '#E64D00',
 })
+
+export default definition

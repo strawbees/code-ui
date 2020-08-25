@@ -1,1 +1,3 @@
-export default null
+const mapStateToProps = null
+
+export default mapStateToProps

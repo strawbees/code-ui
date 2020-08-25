@@ -4,7 +4,9 @@ import {
 	modalSignin,
 } from 'src/actions/storage'
 
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	modalSignup,
 	modalSignin,
 })
+
+export default mapDispatchToProps

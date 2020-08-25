@@ -4,7 +4,9 @@ import {
 	modalUploadCode,
 } from 'src/actions/program'
 
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	modalImportProgram,
 	modalUploadCode,
 })
+
+export default mapDispatchToProps

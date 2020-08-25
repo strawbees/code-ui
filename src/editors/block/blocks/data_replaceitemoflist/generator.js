@@ -6,7 +6,7 @@ import {
 	getBlockBody
 } from '../../utils/parsing'
 
-export default ({ value, field, next }, structure) => {
+const generator = ({ value, field, next }, structure) => {
 	const itemBlock = getValueBlockByAttributeName(value, 'ITEM')
 	if (!itemBlock) {
 		parseNext(next, structure)
@@ -29,3 +29,5 @@ export default ({ value, field, next }, structure) => {
 
 	parseNext(next, structure)
 }
+
+export default generator

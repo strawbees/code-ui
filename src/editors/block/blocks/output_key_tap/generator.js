@@ -8,7 +8,7 @@ import {
 	parseInstacePropertyAssignmentFromValue,
 } from '../../utils/parsing'
 
-export default ({ value, next }, structure) => {
+const generator = ({ value, next }, structure) => {
 	const keyBlock = getValueBlockByAttributeName(value, 'KEY')
 	if (!keyBlock) {
 		parseNext(next, structure)
@@ -29,3 +29,5 @@ export default ({ value, next }, structure) => {
 
 	parseNext(next, structure)
 }
+
+export default generator

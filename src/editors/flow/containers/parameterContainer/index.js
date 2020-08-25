@@ -13,8 +13,10 @@ ParameterContainer.propTypes = {
 	instanceId : PropTypes.string,
 }
 
-export default connect(
+const parameterContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(ParameterContainer)
+
+export default parameterContainerConnected

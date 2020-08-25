@@ -1,4 +1,4 @@
-export default (objA, objB, interestKeys) => {
+const shallowCompareObjects = (objA, objB, interestKeys) => {
 	if (objA === objB) {
 		return true
 	}
@@ -29,3 +29,5 @@ export default (objA, objB, interestKeys) => {
 
 	return true
 }
+
+export default shallowCompareObjects

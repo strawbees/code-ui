@@ -1,1 +1,3 @@
-export default null
+const mapDispatchToProps = null
+
+export default mapDispatchToProps

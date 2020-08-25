@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import sourceSelector from 'src/editors/flow/selectors/sourceSelector'
 
-export default () => createSelector(
+const nextInstanceIdSelector = () => createSelector(
 	[
 		sourceSelector(),
 	],
@@ -14,3 +14,5 @@ export default () => createSelector(
 		return `${acc}_`
 	}, '0_')
 )
+
+export default nextInstanceIdSelector

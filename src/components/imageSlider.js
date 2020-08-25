@@ -4,7 +4,6 @@ import IconButton from 'src/components/iconButton'
 import arrowPreviousIcon from 'src/assets/icons/general/arrowPrevious.svg'
 import arrowNextIcon from 'src/assets/icons/general/arrowNext.svg'
 import {
-	WHITE,
 	GRAY,
 } from 'src/constants/colors'
 
@@ -14,7 +13,7 @@ const ImageSlider = ({
 }) => {
 	const [index, setIndex] = useState(0)
 	const length = items && items.length
-	const changeIndex = (i) => setIndex(Math.abs(length + i) % length)
+	// const changeIndex = (i) => setIndex(Math.abs(length + i) % length)
 	if (!length) {
 		return null
 	}

@@ -14,8 +14,10 @@ ParameterControlContainer.propTypes = {
 	disabled   : PropTypes.bool,
 }
 
-export default connect(
+const parameterControlContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(ParameterControlContainer)
+
+export default parameterControlContainerConnected

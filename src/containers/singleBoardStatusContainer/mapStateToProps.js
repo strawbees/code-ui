@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import qbcompoundLinkSelector from 'src/selectors/qbcompoundLinkSelector'
 
-export default () => createSelector(
+const mapStateToProps = () => createSelector(
 	[
 		qbcompoundLinkSelector(),
 	],
@@ -30,3 +30,5 @@ export default () => createSelector(
 		return result
 	}
 )
+
+export default mapStateToProps

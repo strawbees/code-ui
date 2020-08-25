@@ -3,8 +3,10 @@ import parameterValueCodeSelector from 'src/editors/flow/selectors/parameterValu
 import parameterValidationParsedSelector from 'src/editors/flow/selectors/parameterValidationParsedSelector'
 import parameterColorSelector from 'src/editors/flow/selectors/parameterColorSelector'
 
-export default () => createStructuredSelector({
+const mapStateToProps = () => createStructuredSelector({
 	valueCode  : parameterValueCodeSelector(),
 	validation : parameterValidationParsedSelector(),
 	color      : parameterColorSelector()
 })
+
+export default mapStateToProps

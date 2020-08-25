@@ -4,7 +4,7 @@ import {
 	parseInstaceDefinition,
 } from '../../utils/parsing'
 
-export default ({ field, next }, structure) => {
+const generator = ({ field, next }, structure) => {
 	const name = sanitizeCPPVariableName(`list_${field && field[0]}`)
 	if (!name) {
 		parseNext(next, structure)
@@ -16,3 +16,5 @@ export default ({ field, next }, structure) => {
 
 	parseNext(next, structure)
 }
+
+export default generator

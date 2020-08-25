@@ -14,7 +14,7 @@ import {
 	setPublicProfile,
 } from 'src/actions/storage'
 
-export default autobindDispatchToActionCreators({
+const mapDispatchToProps = autobindDispatchToActionCreators({
 	safeOpenDialogModal,
 	setCurrentEditorProgram,
 	resetCurrentEditorProgram,
@@ -22,3 +22,5 @@ export default autobindDispatchToActionCreators({
 	setDisplayError,
 	setPublicProfile,
 })
+
+export default mapDispatchToProps
