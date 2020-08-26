@@ -4,10 +4,12 @@ import tinycolor from 'tinycolor2'
 import SvgIcon from 'src/components/svgIcon'
 import S from 'src/containers/sManager'
 import MirrorEditorContainer from 'src/containers/mirrorEditorContainer'
+import QuirkbotSimulatorContainer from 'src/containers/quirkbotSimulatorContainer'
 import OpenInTextEditorButtonContainer from 'src/containers/openInTextEditorButtonContainer'
 import { WHITE, BLACK } from 'src/constants/colors'
 import editorIcons from 'src/assets/icons/editors/small'
 import arrowIcon from 'src/assets/icons/general/arrowRight.svg'
+
 
 const TextEditorPreview = ({
 	type,
@@ -167,6 +169,11 @@ const VisualToTextEditor = ({
 				transform: scaleX(1);
 				transition: width 0.2s, opacity 0.2s 0.2s, transform 0.2s 0.2s;
 			}
+			.root :global(.quirkbotSimulator) {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+			}
 		`}</style>
 		<VisualEditor {...visualEditorProps} />
 		<button
@@ -181,7 +188,7 @@ const VisualToTextEditor = ({
 				<S value='ui.editor.text_preview.button'/>
 			</div>
 		</button>
-
+		<QuirkbotSimulatorContainer/>
 	</div>
 
 VisualToTextEditor.propTypes = {
