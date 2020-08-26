@@ -117,8 +117,10 @@ SerialInterfaceManager.propTypes = {
 	ready                : PropTypes.bool,
 }
 
-export default connect(
+const serialInterfaceManagerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(SerialInterfaceManager)
+
+export default serialInterfaceManagerConnected

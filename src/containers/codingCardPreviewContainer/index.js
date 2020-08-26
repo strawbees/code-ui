@@ -18,8 +18,10 @@ CodingCardPreview.propTypes = {
 	onClick : PropTypes.func
 }
 
-export default connect(
+const codingCardPreviewContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(CodingCardPreviewContainer)
+
+export default codingCardPreviewContainerConnected

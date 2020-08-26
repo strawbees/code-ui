@@ -344,8 +344,10 @@ NavigationManager.propTypes = {
 	setPublicProfile          : PropTypes.func,
 }
 
-export default connect(
+const navigationManagerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(NavigationManager)
+
+export default navigationManagerConnected

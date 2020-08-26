@@ -34,8 +34,10 @@ class GlobalBannerContainer extends React.Component {
 	}
 }
 
-export default connect(
+const globalBannerContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(GlobalBannerContainer)
+
+export default globalBannerContainerConnected

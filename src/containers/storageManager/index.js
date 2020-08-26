@@ -11,7 +11,6 @@ import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
-
 class StorageManager extends React.Component {
 	async componentDidMount() {
 		const {
@@ -39,7 +38,6 @@ class StorageManager extends React.Component {
 			browserStorage.remove('anonProgramsBackup', 'data')
 			this.programs = anonPrograms
 		}
-
 
 		// Pass it to the state
 		setCredentials(this.credentials)
@@ -221,8 +219,10 @@ StorageManager.propTypes = {
 	user                            : PropTypes.object,
 }
 
-export default connect(
+const storageManagerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(StorageManager)
+
+export default storageManagerConnected

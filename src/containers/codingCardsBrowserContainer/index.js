@@ -16,8 +16,10 @@ CodingCardsBrowser.propTypes = {
 	]),
 }
 
-export default connect(
+const codingCardsBrowserContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(CodingCardsBrowserContainer)
+
+export default codingCardsBrowserContainerConnected

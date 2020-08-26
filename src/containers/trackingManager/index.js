@@ -19,7 +19,6 @@ const {
 	}
 } = getConfig()
 
-
 class TrackingManager extends React.Component {
 	componentDidMount() {
 		const { gaId } = this.props
@@ -78,8 +77,10 @@ TrackingManager.propTypes = {
 	gaId   : PropTypes.string,
 }
 
-export default connect(
+const trackingManagerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(TrackingManager)
+
+export default trackingManagerConnected

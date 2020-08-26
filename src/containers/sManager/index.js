@@ -28,8 +28,10 @@ SManager.propTypes = {
 	value    : PropTypes.string,
 	string   : PropTypes.string,
 }
-export default connect(
+const sManagerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(SManager)
+
+export default sManagerConnected

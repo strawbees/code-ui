@@ -75,8 +75,10 @@ MidiInterfaceManager.propTypes = {
 	ready              : PropTypes.bool,
 }
 
-export default connect(
+const midiInterfaceManagerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(MidiInterfaceManager)
+
+export default midiInterfaceManagerConnected
