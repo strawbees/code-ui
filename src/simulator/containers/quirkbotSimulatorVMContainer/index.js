@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import {  useEffect, useRef } from 'react'
 import { connect } from 'react-redux'
 import createDelay from '../../utils/createDelay'
 import mapStateToProps from './mapStateToProps'
@@ -12,10 +12,6 @@ const QuirkbotSimulatorVMContainer = ({
 }) => {
 	const delayRef = useRef()
 	const loopTimerRef = useRef()
-
-	/* useEffect(() => {
-		delayRef.current = createDelay()
-	}, [])*/
 
 	useEffect(() => {
 		const codeJS = `
@@ -116,10 +112,7 @@ const QuirkbotSimulatorVMContainer = ({
 			loopTimerRef.current = setTimeout(loop, 0)
 		}
 		start()
-		return () => {
-			console.log('unmoumt')
-			cleanup()
-		}
+		return cleanup
 		/* eslint-enable consistent-return, no-console */
 	}, [code])
 
