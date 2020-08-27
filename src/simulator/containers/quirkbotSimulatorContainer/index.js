@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import QuirkbotSimulator from 'src/components/quirkbotSimulator'
+import QuirkbotSimulator from '../../components/quirkbotSimulator'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
