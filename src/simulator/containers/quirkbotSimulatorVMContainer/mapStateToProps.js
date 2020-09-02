@@ -1,8 +1,8 @@
 import { createStructuredSelector } from 'reselect'
-import refEditorGeneratedCodeSelector from 'src/selectors/refEditorGeneratedCodeSelector'
+import refEditorGeneratedSimulatorCodeSelector from 'src/selectors/refEditorGeneratedSimulatorCodeSelector'
 
 const mapStateToProps = () => createStructuredSelector({
-	code : refEditorGeneratedCodeSelector(),
+	code : refEditorGeneratedSimulatorCodeSelector(),
 })
 
 export default mapStateToProps
