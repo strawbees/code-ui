@@ -6,6 +6,7 @@ import modal from 'src/reducers/modal'
 import qbmidi from 'src/reducers/qbmidi'
 import qbserial from 'src/reducers/qbserial'
 import setup from 'src/reducers/setup'
+import simulator from 'src/simulator/reducer'
 import storage from 'src/reducers/storage'
 import ui from 'src/reducers/ui'
 import uploader from 'src/reducers/uploader'
@@ -18,6 +19,7 @@ export default combineReducers({
 	qbmidi,
 	qbserial,
 	setup,
+	simulator,
 	storage,
 	ui,
 	uploader,
