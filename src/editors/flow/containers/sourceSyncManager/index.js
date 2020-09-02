@@ -50,7 +50,6 @@ SourceSyncManager.propTypes = {
 	setSource          : PropTypes.func,
 }
 
-
 const sourceSyncManagerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
