@@ -3,9 +3,9 @@
 
 // Minimal class to replace std::vector
 export class Vector {
-	d_size; // Stores no. of actually stored objects
+	d_size = 0; // Stores no. of actually stored objects
 
-	d_capacity; // Stores allocated capacity
+	d_capacity = 0; // Stores allocated capacity
 
 	d_data = []; // Stores data
 

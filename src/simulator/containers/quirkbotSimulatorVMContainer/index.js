@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import * as Quirkbot from 'src/simulator/quirkbotArduinoLibrary/Quirkbot'
@@ -7,14 +8,14 @@ import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
-let PROGRAM_ID = 0
-
 const QuirkbotSimulatorVMContainer = ({
 	code,
+	setReport,
 }) => {
 	const programRef = useRef()
 	const loopTimerRef = useRef()
 	const reportTimerRef = useRef()
+	const lastReportRef = useRef()
 
 	useEffect(() => {
 		/* eslint-disable consistent-return, no-console */
@@ -34,6 +35,9 @@ const QuirkbotSimulatorVMContainer = ({
 				cancelAnimationFrame(reportTimerRef.current)
 				reportTimerRef.current = null
 			}
+			if (lastReportRef.current) {
+				lastReportRef.current = null
+			}
 		}
 		cleanup()
 
@@ -43,6 +47,7 @@ const QuirkbotSimulatorVMContainer = ({
 				/* eslint-disable no-new-func */
 				const createProgramClass = (generatedCode) => new Function(...Object.keys(Quirkbot), `
 					'use strict'
+					Node.ID_FACTORY = 0 // reset the node ids
 					Bot = new Bot() // overload bot class with an instance
 					delay.registerUpdatable(Bot)
 					delayMicroseconds.registerUpdatable(Bot)
@@ -65,8 +70,9 @@ const QuirkbotSimulatorVMContainer = ({
 						await loop()
 					}
 					const _report = () => {
-						return Bot.report
+						return Bot.report()
 					}
+					Object.defineProperty(this, 'Bot', { value : Bot })
 					Object.defineProperty(this, 'cancel', { value : _cancel })
 					Object.defineProperty(this, 'setup', { value : _setup })
 					Object.defineProperty(this, 'loop', { value : _loop })
@@ -98,6 +104,27 @@ const QuirkbotSimulatorVMContainer = ({
 				return
 			}
 
+			const report = async () => {
+				try {
+					const newReport = program.report()
+					const newReportString = JSON.stringify(newReport)
+					const lastReportString = JSON.stringify(lastReportRef.current)
+					lastReportRef.current = newReport
+					if (newReportString !== lastReportString) {
+						setReport(newReport)
+					}
+				} catch (e) {
+					console.groupCollapsed('Error calling program.report()')
+					console.log('This is likely an error in code inside report()')
+					console.log('Error:', e)
+					console.groupEnd()
+					// TODO: dispatch error action to signal the current't program crashed on loop
+					return
+				}
+				reportTimerRef.current = requestAnimationFrame(report, 0)
+			}
+			reportTimerRef.current = requestAnimationFrame(report)
+
 			try {
 				await program.setup()
 			} catch (e) {
@@ -125,21 +152,6 @@ const QuirkbotSimulatorVMContainer = ({
 				loopTimerRef.current = setTimeout(loop, 0)
 			}
 			loopTimerRef.current = setTimeout(loop, 0)
-
-			const report = async () => {
-				try {
-					program.report()
-				} catch (e) {
-					console.groupCollapsed('Error calling program.report()')
-					console.log('This is likely an error in code inside report()')
-					console.log('Error:', e)
-					console.groupEnd()
-					// TODO: dispatch error action to signal the current't program crashed on loop
-					return
-				}
-				reportTimerRef.current = requestAnimationFrame(report, 0)
-			}
-			reportTimerRef.current = requestAnimationFrame(report)
 		}
 		start()
 		return cleanup
@@ -147,6 +159,11 @@ const QuirkbotSimulatorVMContainer = ({
 	}, [code])
 
 	return null
+}
+
+QuirkbotSimulatorVMContainer.propTypes = {
+	code      : PropTypes.string,
+	setReport : PropTypes.func,
 }
 
 const quirkbotSimulatorVMContainerConnected = connect(

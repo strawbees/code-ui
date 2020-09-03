@@ -1,10 +1,10 @@
 import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
 import {
-	setSimulatorReport,
-} from 'src/editors/flow/actions'
+	setReport,
+} from 'src/simulator/actions'
 
 const mapDispatchToProps = autobindDispatchToActionCreators({
-	setSimulatorReport,
+	setReport,
 })
 
 export default mapDispatchToProps

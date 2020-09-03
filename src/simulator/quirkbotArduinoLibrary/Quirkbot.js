@@ -3,6 +3,7 @@ import { createDoWhile } from './core/createDoWhile'
 
 export * from './core/constants'
 export { Bot } from './Bot'
+export { Node } from './Node'
 
 // Inputs
 // export { AnalogSensor } from './NodeAnalogSensor'

@@ -56,11 +56,14 @@ export class Bot {
 		for (let i = 0; i < this.updatables.size(); i++) {
 			await this.updatables.get(i).update()
 		}
+	}
 
-		this.report = []
+	report() {
+		const data = []
 		for (let i = 0; i < this.nodes.size(); i++) {
-			this.report.push(this.this.nodes.get(i).serialReport())
+			data.push(this.nodes.get(i).report())
 		}
+		return data
 	}
 
 	async interruptUpdate() {
@@ -187,13 +190,15 @@ export class Bot {
 
 	startTime = 0
 
-	static INTERUPT_COUNT_OVERFLOW = 100;
+	frames = 0
 
-	nodes = new Vector();
+	static INTERUPT_COUNT_OVERFLOW = 100
 
-	updatables = new Vector();
+	nodes = new Vector()
 
-	interruptUpdatables = new Vector();
+	updatables = new Vector()
+
+	interruptUpdatables = new Vector()
 }
 
 export default Bot

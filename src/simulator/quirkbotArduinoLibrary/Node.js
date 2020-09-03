@@ -29,7 +29,7 @@ export class Node {
 
 	Bot;
 
-	static ID_FACTORY;
+	static ID_FACTORY = 0;
 }
 
 export default Node
