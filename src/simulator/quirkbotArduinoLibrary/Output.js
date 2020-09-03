@@ -1,4 +1,4 @@
-import Event from './Event'
+import { Event } from './Event'
 
 export class Output {
 	constructor() {
@@ -28,7 +28,5 @@ export class Output {
 
 	event = new Event()
 
-	value;
+	value
 }
-
-export default Output

@@ -36,5 +36,3 @@ export class Event {
 
 	inputs = new Vector()
 }
-
-export default Event

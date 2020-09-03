@@ -23,13 +23,13 @@ export class Node {
 		inputCollection.node = this
 	}
 
-	onInternalInputChange() {} // <-- unnamed parameter to avoid compiler warnings
+	onInternalInputChange() {}
 
-	id;
+	id
 
-	Bot;
+	Bot
 
-	static ID_FACTORY = 0;
+	static ID_FACTORY = 0
 }
 
 export default Node

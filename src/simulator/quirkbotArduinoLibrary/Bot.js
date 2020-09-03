@@ -20,7 +20,18 @@ import {
 	RLF,
 } from './core/constants'
 
+import { millis } from './core/Arduino'
+
 import Vector from './Vector'
+
+// Serial Report constants
+export const REPORT_INTERVAL_MILLIS = 100
+export const REPORT_UUID_INTERVAL_TICKS = 10
+export const REPORT_START_DELIMITER = 250
+export const REPORT_END_DELIMITER = 255
+export const REPORT_UUID_DELIMITER = 251
+export const REPORT_NUMBER_OF_NODES_DELIMITER = 252
+export const REPORT_NODE_CONTENT_DELIMITER = 253
 
 // Enums
 export class BotMIDICommands {
@@ -37,13 +48,9 @@ export class BotSerialCommands {
 	static EnterBootloader = 0xb
 }
 
-/* class Node;
-class Updatable;
-class InterruptUpdatable; */
-
 export class Bot {
 	async start() {
-		this.startTime = Date.now()
+		this.startTime = millis()
 	}
 
 	async afterStart() {
@@ -78,7 +85,7 @@ export class Bot {
 	}
 
 	// Utils
-	static map(x, inMin, inMax, outMin, outMax) {
+	map(x, inMin, inMax, outMin, outMax) {
 		if (inMin === inMax) {
 			return inMin
 		}
@@ -92,7 +99,7 @@ export class Bot {
 		return result
 	}
 
-	static constrainValue(x, min, max) {
+	constrainValue(x, min, max) {
 		// Just return quick in case min and max are equal
 		if (min === max) {
 			return min
@@ -118,18 +125,18 @@ export class Bot {
 	}
 
 	seconds() {
-		return (Date.now() - this.startTime) * 0.001
+		return (millis() - this.startTime) * 0.001
 	}
 
-	static minimum(a, b) {
+	minimum(a, b) {
 		return Math.min(a, b)
 	}
 
-	static maximum(a, b) {
+	maximum(a, b) {
 		return Math.max(a, b)
 	}
 
-	static locationToAnalogPin(location) {
+	locationToAnalogPin(location) {
 		switch (location) {
 			case LL:
 				return LLB
@@ -154,7 +161,7 @@ export class Bot {
 		}
 	}
 
-	static locationToBackPin(location) {
+	locationToBackPin(location) {
 		switch (location) {
 			case LL:
 				return LLB
@@ -171,7 +178,7 @@ export class Bot {
 		}
 	}
 
-	static locationToFrontPin(location) {
+	locationToFrontPin(location) {
 		switch (location) {
 			case LL:
 				return LLF
@@ -192,7 +199,7 @@ export class Bot {
 
 	frames = 0
 
-	static INTERUPT_COUNT_OVERFLOW = 100
+	INTERUPT_COUNT_OVERFLOW = 100
 
 	nodes = new Vector()
 
@@ -200,5 +207,3 @@ export class Bot {
 
 	interruptUpdatables = new Vector()
 }
-
-export default Bot

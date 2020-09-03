@@ -1,11 +1,13 @@
 import {
 	DISCONNECTED
 } from './core/constants'
-import Node from './Node'
-import Input from './Input'
+import {
+	Node,
+	Input
+} from './CommonNodeIncludes'
 
 export class Led extends Node {
-	type = 'Led'
+	nodeType = 'Led'
 
 	constructor(Bot, id) {
 		super(Bot, id)
@@ -27,7 +29,7 @@ export class Led extends Node {
 
 	report() {
 		return [
-			this.type,
+			this.nodeType,
 			this.id,
 			this.light.get(),
 			this.place.get(),

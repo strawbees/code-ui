@@ -106,14 +106,3 @@ export const PULL_UP_PIN = 4
 
 // UUID
 export const QB_UUID_SIZE = 16
-
-// quirkbotArduinoLibrary/src/Bot.h --------------------------------------------
-
-// Serial Report constants
-export const REPORT_INTERVAL_MILLIS = 100
-export const REPORT_UUID_INTERVAL_TICKS = 10
-export const REPORT_START_DELIMITER = 250
-export const REPORT_END_DELIMITER = 255
-export const REPORT_UUID_DELIMITER = 251
-export const REPORT_NUMBER_OF_NODES_DELIMITER = 252
-export const REPORT_NODE_CONTENT_DELIMITER = 253
