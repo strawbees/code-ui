@@ -65,7 +65,6 @@ export class Input {
 	}
 
 	onOutputChange(value) {
-		//console.log(this)
 		if (this.value === value) {
 			return
 		}
