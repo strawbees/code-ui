@@ -9,8 +9,8 @@ import {
 export class Led extends Node {
 	nodeType = 'Led'
 
-	constructor(Bot, id) {
-		super(Bot, id)
+	constructor(...args) {
+		super(...args)
 
 		this.registerInput(this.light)
 		this.registerInput(this.place)
