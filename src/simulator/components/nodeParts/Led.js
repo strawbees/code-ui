@@ -51,7 +51,7 @@ export const Led = ({
 			return null
 	}
 	return (
-		<div className='root node-part wave'>
+		<div className='root node-part Led'>
 			<style jsx>{`
 				.root {
 					background-color: ${color};
@@ -61,7 +61,7 @@ export const Led = ({
 					opacity: ${1 - light};
 				}
 			`}</style>
-			led
+			Led
 		</div>
 	)
 }

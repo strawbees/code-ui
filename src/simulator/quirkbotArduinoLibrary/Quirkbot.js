@@ -8,7 +8,7 @@ export * from './Node'
 // Inputs
 // export * from './NodeAnalogSensor'
 // export * from './NodeDigitalSensor'
-// export * from './NodeCircuitTouch'
+export * from './NodeCircuitTouch'
 // export * from './NodeSqueezeSensor'
 // export * from './NodeIRProximity'
 // export * from './NodeLightSensor'

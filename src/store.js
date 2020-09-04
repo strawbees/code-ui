@@ -35,7 +35,7 @@ const composeEnhancers = (
 const initStore = () => {
 	const middlewares = []
 	middlewares.push(thunkMiddleware)
-	if (process.browser && process.env.NODE_ENV !== 'production') {
+	if (false && process.browser && process.env.NODE_ENV !== 'production') {
 		// eslint-disable-next-line global-require
 		const { createLogger } = require('redux-logger')
 		middlewares.push(createLogger({
