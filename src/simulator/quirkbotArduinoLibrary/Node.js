@@ -30,6 +30,8 @@ export class Node {
 	Bot
 
 	static ID_FACTORY = 0
+
+	report() {}
 }
 
 export default Node

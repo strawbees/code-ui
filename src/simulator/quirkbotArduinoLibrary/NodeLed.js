@@ -28,12 +28,12 @@ export class Led extends Node {
 	place = new Input()
 
 	report() {
-		return [
-			this.nodeType,
-			this.id,
-			this.light.get(),
-			this.place.get(),
-		]
+		return {
+			nodeType : this.nodeType,
+			id       : this.id,
+			light    : this.light.get(),
+			place    : this.place.get(),
+		}
 	}
 }
 

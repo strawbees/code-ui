@@ -123,15 +123,15 @@ export class Wave extends HasInterval(Node) {
 	position;
 
 	report() {
-		return [
-			this.nodeType,
-			this.id,
-			this.length.get(),
-			this.min.get(),
-			this.max.get(),
-			this.offset.get(),
-			this.type.get(),
-			this.out.get(),
-		]
+		return {
+			nodeType : this.nodeType,
+			id       : this.id,
+			length   : this.length.get(),
+			min      : this.min.get(),
+			max      : this.max.get(),
+			offset   : this.offset.get(),
+			type     : this.type.get(),
+			out      : this.out.get(),
+		}
 	}
 }

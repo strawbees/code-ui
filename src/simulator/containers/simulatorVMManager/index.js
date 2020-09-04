@@ -2,20 +2,28 @@ import { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
+import shallowCompareArrays from 'src/utils/shallowCompareArrays'
+
 import * as Quirkbot from 'src/simulator/quirkbotArduinoLibrary/Quirkbot'
 
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
-const QuirkbotSimulatorVMContainer = ({
+const SimulatorVMManager = ({
 	code,
 	setReport,
 }) => {
 	const programRef = useRef()
 	const loopTimerRef = useRef()
 	const reportTimerRef = useRef()
-	const lastReportRef = useRef()
+	const dataRef = useRef()
+	useEffect(() => {
+		dataRef.current = {
+			ids      : null,
+			entities : {}
+		}
+	}, [])
 
 	useEffect(() => {
 		/* eslint-disable consistent-return, no-console */
@@ -34,9 +42,6 @@ const QuirkbotSimulatorVMContainer = ({
 			if (reportTimerRef.current) {
 				cancelAnimationFrame(reportTimerRef.current)
 				reportTimerRef.current = null
-			}
-			if (lastReportRef.current) {
-				lastReportRef.current = null
 			}
 		}
 		cleanup()
@@ -106,13 +111,41 @@ const QuirkbotSimulatorVMContainer = ({
 
 			const report = async () => {
 				try {
-					const newReport = program.report()
-					const newReportString = JSON.stringify(newReport)
-					const lastReportString = JSON.stringify(lastReportRef.current)
-					lastReportRef.current = newReport
-					if (newReportString !== lastReportString) {
-						setReport(newReport)
+					// Get the report and normalize it
+					const dataRaw = [...program.report()]
+					dataRaw.forEach((node) => node.id = `${node.nodeType}${node.id}`)
+					const data = {
+						ids      : dataRaw.map(({ id }) => id),
+						entities : dataRaw.reduce((acc, node) => {
+							acc[node.id] = node
+							return acc
+						}, {})
 					}
+					setReport(data)
+					/* let hasChange = false
+
+					// dataRef.current = { ...dataRef.current }
+					// Now sync, in place, the data with our data reference
+					// 1. sync ids
+					if (!shallowCompareArrays(data.ids, dataRef.current.ids)) {
+						dataRef.current.ids = [...data.ids]
+						hasChange = true
+					}
+					// 1. sync entities
+					Object.keys(dataRef.current.entities).forEach(id => {
+						if (typeof data.entities === 'undefined') {
+							delete dataRef.current.entities[id]
+						}
+					})
+					Object.keys(data.entities).forEach(id => {
+						Object.keys(data.entities[id]).forEach(key => {
+							if (typeof dataRef.current.entities[id] === 'undefined') {
+								dataRef.current.entities[id] = {}
+							}
+							dataRef.current.entities[id][key] = data.entities[id][key]
+						})
+					})
+					setReport(data) */
 				} catch (e) {
 					console.groupCollapsed('Error calling program.report()')
 					console.log('This is likely an error in code inside report()')
@@ -161,15 +194,15 @@ const QuirkbotSimulatorVMContainer = ({
 	return null
 }
 
-QuirkbotSimulatorVMContainer.propTypes = {
+SimulatorVMManager.propTypes = {
 	code      : PropTypes.string,
 	setReport : PropTypes.func,
 }
 
-const quirkbotSimulatorVMContainerConnected = connect(
+const SimulatorVMManagerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
-)(QuirkbotSimulatorVMContainer)
+)(SimulatorVMManager)
 
-export default quirkbotSimulatorVMContainerConnected
+export default SimulatorVMManagerConnected

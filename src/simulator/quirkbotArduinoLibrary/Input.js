@@ -58,14 +58,14 @@ export class Input {
 		if (this.output === output) {
 			return
 		}
-
 		this.clearOutput()
 		this.output = output
-		this.output.event.add(this, this.onOutputChange)
+		this.output.event.add(this, this.onOutputChange.bind(this))
 		this.onOutputChange(this.output.get())
 	}
 
 	onOutputChange(value) {
+		//console.log(this)
 		if (this.value === value) {
 			return
 		}
@@ -84,5 +84,5 @@ export class Input {
 
 	node
 
-	output;
+	output
 }
