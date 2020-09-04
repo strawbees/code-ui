@@ -4,45 +4,45 @@ import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
 // Inputs
-// import AnalogSensorContainer from '../nodeIconsContainers/AnalogSensor'
-// import DigitalSensorContainer from '../nodeIconsContainers/DigitalSensor'
-// import CircuitTouchContainer from '../nodeIconsContainers/CircuitTouch'
-// import SqueezeSensorContainer from '../nodeIconsContainers/SqueezeSensor'
-// import IRProximityContainer from '../nodeIconsContainers/IRProximity'
-// import LightSensorContainer from '../nodeIconsContainers/LightSensor'
-// import SonarContainer from '../nodeIconsContainers/Sonar'
+// import AnalogSensorContainer from '../nodePartsContainers/AnalogSensor'
+// import DigitalSensorContainer from '../nodePartsContainers/DigitalSensor'
+// import CircuitTouchContainer from '../nodePartsContainers/CircuitTouch'
+// import SqueezeSensorContainer from '../nodePartsContainers/SqueezeSensor'
+// import IRProximityContainer from '../nodePartsContainers/IRProximity'
+// import LightSensorContainer from '../nodePartsContainers/LightSensor'
+// import SonarContainer from '../nodePartsContainers/Sonar'
 
 // Brains
-// import ConverterContainer from '../nodeIconsContainers/Converter'
-// import ComparisonContainer from '../nodeIconsContainers/Comparison'
-// import ConstrainContainer from '../nodeIconsContainers/Constrain'
-// import CounterContainer from '../nodeIconsContainers/Counter'
-// import GateContainer from '../nodeIconsContainers/Gate'
-// import ListContainer from '../nodeIconsContainers/List'
-// import LogicContainer from '../nodeIconsContainers/Logic'
-// import MathContainer from '../nodeIconsContainers/Math'
-// import RandomizerContainer from '../nodeIconsContainers/Randomizer'
-// import SequenceContainer from '../nodeIconsContainers/Sequence'
-// import StatisticsContainer from '../nodeIconsContainers/Statistics'
-import WaveContainer from '../nodeIconsContainers/Wave'
+// import ConverterContainer from '../nodePartsContainers/Converter'
+// import ComparisonContainer from '../nodePartsContainers/Comparison'
+// import ConstrainContainer from '../nodePartsContainers/Constrain'
+// import CounterContainer from '../nodePartsContainers/Counter'
+// import GateContainer from '../nodePartsContainers/Gate'
+// import ListContainer from '../nodePartsContainers/List'
+// import LogicContainer from '../nodePartsContainers/Logic'
+// import MathContainer from '../nodePartsContainers/Math'
+// import RandomizerContainer from '../nodePartsContainers/Randomizer'
+// import SequenceContainer from '../nodePartsContainers/Sequence'
+// import StatisticsContainer from '../nodePartsContainers/Statistics'
+// import WaveContainer from '../nodePartsContainers/Wave'
 
 // Outputs
-import LedContainer from '../nodeIconsContainers/Led'
-// import DualColorLedContainer from '../nodeIconsContainers/DualColorLed'
-// import ServoMotorContainer from '../nodeIconsContainers/ServoMotor'
-// import ContinuousServoContainer from '../nodeIconsContainers/ContinuousServo'
-// import BuzzerContainer from '../nodeIconsContainers/Buzzer'
-// import RGBLedContainer from '../nodeIconsContainers/RGBLed'
-// import KeyPressContainer from '../nodeIconsContainers/KeyPress'
-// import KeySequenceContainer from '../nodeIconsContainers/KeySequence'
-// import VoltageOutputContainer from '../nodeIconsContainers/VoltageOutput'
+import LedContainer from '../nodePartsContainers/Led'
+// import DualColorLedContainer from '../nodePartsContainers/DualColorLed'
+// import ServoMotorContainer from '../nodePartsContainers/ServoMotor'
+// import ContinuousServoContainer from '../nodePartsContainers/ContinuousServo'
+// import BuzzerContainer from '../nodePartsContainers/Buzzer'
+// import RGBLedContainer from '../nodePartsContainers/RGBLed'
+// import KeyPressContainer from '../nodePartsContainers/KeyPress'
+// import KeySequenceContainer from '../nodePartsContainers/KeySequence'
+// import VoltageOutputContainer from '../nodePartsContainers/VoltageOutput'
 
 // Debug
-// import SystemMemoryContainer from '../nodeIconsContainers/SystemMemory'
-// import SerialMonitorContainer from '../nodeIconsContainers/SerialMonitor'
-// import TimeContainer from '../nodeIconsContainers/Time'
+// import SystemMemoryContainer from '../nodePartsContainers/SystemMemory'
+// import SerialMonitorContainer from '../nodePartsContainers/SerialMonitor'
+// import TimeContainer from '../nodePartsContainers/Time'
 
-const NodeIconResolverContainer = ({
+const NodePartResolverContainer = ({
 	nodeType,
 	id,
 }) => {
@@ -102,9 +102,9 @@ const NodeIconResolverContainer = ({
 		// case 'Statistics':
 		//	 NodeIconContainer = StatisticsContainer
 		//	 break
-		case 'Wave':
-			NodeIconContainer = WaveContainer
-			break
+		// case 'Wave':
+		// 	NodeIconContainer = WaveContainer
+		// 	break
 		case 'Led':
 			NodeIconContainer = LedContainer
 			break
@@ -148,10 +148,10 @@ const NodeIconResolverContainer = ({
 		<NodeIconContainer id={id}/>
 	)
 }
-const NodeIconResolverContainerConnected = connect(
+const NodePartResolverContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
-)(NodeIconResolverContainer)
+)(NodePartResolverContainer)
 
-export default NodeIconResolverContainerConnected
+export default NodePartResolverContainerConnected

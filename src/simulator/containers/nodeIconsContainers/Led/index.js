@@ -1,18 +1,18 @@
 import { connect } from 'react-redux'
-import Wave from '../../../components/nodeIcons/wave'
+import Led from '../../../components/nodeIcons/Led'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
-const WaveContainer = (props) =>
-	<Wave
+const LedContainer = (props) =>
+	<Led
 		{...props}
 	/>
 
-const waveContainerConnected = connect(
+const LedContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
-)(WaveContainer)
+)(LedContainer)
 
-export default waveContainerConnected
+export default LedContainerConnected

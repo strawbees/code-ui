@@ -1,8 +1,8 @@
 import { createStructuredSelector } from 'reselect'
-import reportSelector from '../../../selectors/reportSelector'
+import reportIdsSelector from '../../selectors/reportIdsSelector'
 
 const mapStateToProps = () => createStructuredSelector({
-	report : reportSelector(),
+	reportIds : reportIdsSelector(),
 })
 
 export default mapStateToProps

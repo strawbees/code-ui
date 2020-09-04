@@ -1,18 +1,15 @@
 import { createSelector } from 'reselect'
-import reportNodeSelector from '../../selectors/reportNodeSelector'
+import reportNodeSelector from '../../../selectors/reportNodeSelector'
 
 const mapStateToProps = () => createSelector(
 	[
 		reportNodeSelector(),
 	],
 	(
-		{
-			nodeType,
-			id,
-		},
+		node,
 	) => ({
-		nodeType,
-		id,
+		place : node.place,
+		light : node.light,
 	})
 )
 
