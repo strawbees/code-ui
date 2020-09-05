@@ -1,10 +1,10 @@
 import { createSelector } from 'reselect'
-import internalDataEntitiesSelector from './internalDataEntitiesSelector'
+import internalDataNodeEntitiesSelector from './internalDataNodeEntitiesSelector'
 
 const internalDataNodeSelector = (fnId) => createSelector(
 	[
 		(_, { id }) => id,
-		internalDataEntitiesSelector(),
+		internalDataNodeEntitiesSelector(),
 	],
 	(
 		id,

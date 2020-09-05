@@ -2,23 +2,23 @@ import PropTypes from 'prop-types'
 import NodeIconResolverContainer from '../containers/nodeIconResolverContainer'
 
 const NodeIconsList = ({
-	internalDataIds
+	internalDataNodeIds
 }) => {
-	internalDataIds = JSON.parse(internalDataIds)
+	internalDataNodeIds = JSON.parse(internalDataNodeIds)
 	return (
 		<div className='root nodeIconsList'>
-			{internalDataIds && internalDataIds.map(id =>
+			{internalDataNodeIds && internalDataNodeIds.map(id =>
 				<NodeIconResolverContainer key={id} id={id}/>
 			)}
 		</div>
 	)
 }
 NodeIconsList.defaultProps = {
-	internalDataIds : '[]'
+	internalDataNodeIds : '[]'
 }
 
 NodeIconsList.propTypes = {
-	internalDataIds : PropTypes.string
+	internalDataNodeIds : PropTypes.string
 }
 
 export default NodeIconsList

@@ -8,13 +8,16 @@ import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
+let SIMULATOR_PROGRAM_ID = 0
+
 const SimulatorVMManager = ({
 	code,
+	externalData,
 	setInternalData,
 }) => {
 	const programRef = useRef()
 	const loopTimerRef = useRef()
-	const internalDataTimerRef = useRef()
+	const handleDataIOTimerRef = useRef()
 	const dataRef = useRef()
 	useEffect(() => {
 		dataRef.current = {
@@ -37,9 +40,9 @@ const SimulatorVMManager = ({
 				clearTimeout(loopTimerRef.current)
 				loopTimerRef.current = null
 			}
-			if (internalDataTimerRef.current) {
-				cancelAnimationFrame(internalDataTimerRef.current)
-				internalDataTimerRef.current = null
+			if (handleDataIOTimerRef.current) {
+				cancelAnimationFrame(handleDataIOTimerRef.current)
+				handleDataIOTimerRef.current = null
 			}
 		}
 		cleanup()
@@ -50,6 +53,7 @@ const SimulatorVMManager = ({
 				/* eslint-disable no-new-func */
 				const createProgramClass = (generatedCode) => new Function(...Object.keys(Quirkbot), `
 					'use strict'
+					const SIMULATOR_PROGRAM_ID = ${SIMULATOR_PROGRAM_ID}++
 					Node.ID_FACTORY = 0 // reset the node ids
 					Bot = new Bot() // overload bot class with an instance
 					delay.registerUpdatable(Bot)
@@ -75,11 +79,15 @@ const SimulatorVMManager = ({
 					const _getInternalData = () => {
 						return Bot.getInternalData()
 					}
+					const _setExternalData = (data) => {
+						return Bot.setExternalData(data)
+					}
 					Object.defineProperty(this, 'Bot', { value : Bot })
 					Object.defineProperty(this, 'cancel', { value : _cancel })
 					Object.defineProperty(this, 'setup', { value : _setup })
 					Object.defineProperty(this, 'loop', { value : _loop })
 					Object.defineProperty(this, 'getInternalData', { value : _getInternalData })
+					Object.defineProperty(this, 'setExternalData', { value : _setExternalData })
 				`)
 				/* eslint-enable no-new-func */
 				Program = createProgramClass(code)
@@ -107,8 +115,11 @@ const SimulatorVMManager = ({
 				return
 			}
 
-			const internalData = async () => {
+			const handleDataIO = async () => {
 				try {
+					// Pass the externalData directly
+					program.setExternalData(externalData)
+
 					// Get the internalData and normalize it
 					const dataRaw = [...program.getInternalData()]
 					dataRaw.forEach((node) => node.id = `${node.nodeType}${node.id}`)
@@ -128,9 +139,9 @@ const SimulatorVMManager = ({
 					// TODO: dispatch error action to signal the current't program crashed on loop
 					return
 				}
-				internalDataTimerRef.current = requestAnimationFrame(internalData, 0)
+				handleDataIOTimerRef.current = requestAnimationFrame(handleDataIO, 0)
 			}
-			internalDataTimerRef.current = requestAnimationFrame(internalData)
+			handleDataIOTimerRef.current = requestAnimationFrame(handleDataIO)
 
 			try {
 				await program.setup()
@@ -170,6 +181,7 @@ const SimulatorVMManager = ({
 
 SimulatorVMManager.propTypes = {
 	code            : PropTypes.string,
+	externalData    : PropTypes.array,
 	setInternalData : PropTypes.func,
 }
 

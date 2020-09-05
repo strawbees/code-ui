@@ -73,6 +73,14 @@ export class Bot {
 		return data
 	}
 
+	setExternalData(data) {
+		/* const data = []
+		for (let i = 0; i < this.nodes.size(); i++) {
+			data.push(this.nodes.get(i).getInternalData())
+		}
+		return data */
+	}
+
 	async interruptUpdate() {
 		for (let i = 0; i < this.interruptUpdatables.size(); i++) {
 			await this.interruptUpdatables.get(i).interruptUpdate()
