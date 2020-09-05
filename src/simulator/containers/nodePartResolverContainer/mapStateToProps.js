@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect'
-import reportNodeSelector from '../../selectors/reportNodeSelector'
+import internalDataNodeSelector from '../../selectors/internalDataNodeSelector'
 
 const mapStateToProps = () => createSelector(
 	[
-		reportNodeSelector(),
+		internalDataNodeSelector(),
 	],
 	(
 		{

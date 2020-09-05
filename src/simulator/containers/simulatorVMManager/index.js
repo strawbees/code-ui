@@ -2,8 +2,6 @@ import { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import shallowCompareArrays from 'src/utils/shallowCompareArrays'
-
 import * as Quirkbot from 'src/simulator/quirkbotArduinoLibrary/Quirkbot'
 
 import mapStateToProps from './mapStateToProps'
@@ -12,11 +10,11 @@ import mergeProps from './mergeProps'
 
 const SimulatorVMManager = ({
 	code,
-	setReport,
+	setInternalData,
 }) => {
 	const programRef = useRef()
 	const loopTimerRef = useRef()
-	const reportTimerRef = useRef()
+	const internalDataTimerRef = useRef()
 	const dataRef = useRef()
 	useEffect(() => {
 		dataRef.current = {
@@ -39,9 +37,9 @@ const SimulatorVMManager = ({
 				clearTimeout(loopTimerRef.current)
 				loopTimerRef.current = null
 			}
-			if (reportTimerRef.current) {
-				cancelAnimationFrame(reportTimerRef.current)
-				reportTimerRef.current = null
+			if (internalDataTimerRef.current) {
+				cancelAnimationFrame(internalDataTimerRef.current)
+				internalDataTimerRef.current = null
 			}
 		}
 		cleanup()
@@ -74,14 +72,14 @@ const SimulatorVMManager = ({
 						await Bot.update()
 						await loop()
 					}
-					const _report = () => {
-						return Bot.report()
+					const _getInternalData = () => {
+						return Bot.getInternalData()
 					}
 					Object.defineProperty(this, 'Bot', { value : Bot })
 					Object.defineProperty(this, 'cancel', { value : _cancel })
 					Object.defineProperty(this, 'setup', { value : _setup })
 					Object.defineProperty(this, 'loop', { value : _loop })
-					Object.defineProperty(this, 'report', { value : _report })
+					Object.defineProperty(this, 'getInternalData', { value : _getInternalData })
 				`)
 				/* eslint-enable no-new-func */
 				Program = createProgramClass(code)
@@ -109,10 +107,10 @@ const SimulatorVMManager = ({
 				return
 			}
 
-			const report = async () => {
+			const internalData = async () => {
 				try {
-					// Get the report and normalize it
-					const dataRaw = [...program.report()]
+					// Get the internalData and normalize it
+					const dataRaw = [...program.getInternalData()]
 					dataRaw.forEach((node) => node.id = `${node.nodeType}${node.id}`)
 					const data = {
 						ids      : dataRaw.map(({ id }) => id),
@@ -121,42 +119,18 @@ const SimulatorVMManager = ({
 							return acc
 						}, {})
 					}
-					setReport(data)
-					/* let hasChange = false
-
-					// dataRef.current = { ...dataRef.current }
-					// Now sync, in place, the data with our data reference
-					// 1. sync ids
-					if (!shallowCompareArrays(data.ids, dataRef.current.ids)) {
-						dataRef.current.ids = [...data.ids]
-						hasChange = true
-					}
-					// 1. sync entities
-					Object.keys(dataRef.current.entities).forEach(id => {
-						if (typeof data.entities === 'undefined') {
-							delete dataRef.current.entities[id]
-						}
-					})
-					Object.keys(data.entities).forEach(id => {
-						Object.keys(data.entities[id]).forEach(key => {
-							if (typeof dataRef.current.entities[id] === 'undefined') {
-								dataRef.current.entities[id] = {}
-							}
-							dataRef.current.entities[id][key] = data.entities[id][key]
-						})
-					})
-					setReport(data) */
+					setInternalData(data)
 				} catch (e) {
-					console.groupCollapsed('Error calling program.report()')
-					console.log('This is likely an error in code inside report()')
+					console.groupCollapsed('Error calling program.internalData()')
+					console.log('This is likely an error in code inside internalData()')
 					console.log('Error:', e)
 					console.groupEnd()
 					// TODO: dispatch error action to signal the current't program crashed on loop
 					return
 				}
-				reportTimerRef.current = requestAnimationFrame(report, 0)
+				internalDataTimerRef.current = requestAnimationFrame(internalData, 0)
 			}
-			reportTimerRef.current = requestAnimationFrame(report)
+			internalDataTimerRef.current = requestAnimationFrame(internalData)
 
 			try {
 				await program.setup()
@@ -195,8 +169,8 @@ const SimulatorVMManager = ({
 }
 
 SimulatorVMManager.propTypes = {
-	code      : PropTypes.string,
-	setReport : PropTypes.func,
+	code            : PropTypes.string,
+	setInternalData : PropTypes.func,
 }
 
 const SimulatorVMManagerConnected = connect(

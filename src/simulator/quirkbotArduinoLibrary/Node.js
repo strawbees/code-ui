@@ -31,7 +31,7 @@ export class Node {
 
 	static ID_FACTORY = 0
 
-	report() {}
+	getInternalData() {}
 }
 
 export default Node

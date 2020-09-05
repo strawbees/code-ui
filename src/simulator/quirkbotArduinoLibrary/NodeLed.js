@@ -27,7 +27,7 @@ export class Led extends Node {
 
 	place = new Input()
 
-	report() {
+	getInternalData() {
 		return {
 			nodeType : this.nodeType,
 			id       : this.id,

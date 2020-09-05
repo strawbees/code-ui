@@ -65,10 +65,10 @@ export class Bot {
 		}
 	}
 
-	report() {
+	getInternalData() {
 		const data = []
 		for (let i = 0; i < this.nodes.size(); i++) {
-			data.push(this.nodes.get(i).report())
+			data.push(this.nodes.get(i).getInternalData())
 		}
 		return data
 	}

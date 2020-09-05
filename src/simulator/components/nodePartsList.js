@@ -2,23 +2,23 @@ import PropTypes from 'prop-types'
 import NodePartResolverContainer from '../containers/nodePartResolverContainer'
 
 const NodePartsList = ({
-	reportIds
+	internalDataIds
 }) => {
-	reportIds = JSON.parse(reportIds)
+	internalDataIds = JSON.parse(internalDataIds)
 	return (
 		<div className='root nodePartsList'>
-			{reportIds && reportIds.map(id =>
+			{internalDataIds && internalDataIds.map(id =>
 				<NodePartResolverContainer key={id} id={id}/>
 			)}
 		</div>
 	)
 }
 NodePartsList.defaultProps = {
-	reportIds : '[]'
+	internalDataIds : '[]'
 }
 
 NodePartsList.propTypes = {
-	reportIds : PropTypes.string
+	internalDataIds : PropTypes.string
 }
 
 export default NodePartsList

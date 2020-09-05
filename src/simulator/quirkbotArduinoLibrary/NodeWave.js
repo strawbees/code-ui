@@ -122,7 +122,7 @@ export class Wave extends HasInterval(Node) {
 
 	position;
 
-	report() {
+	getInternalData() {
 		return {
 			nodeType : this.nodeType,
 			id       : this.id,
