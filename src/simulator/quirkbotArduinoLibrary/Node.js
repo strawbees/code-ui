@@ -31,6 +31,10 @@ export class Node {
 
 	static ID_FACTORY = 0
 
+	getTypedId() {
+		return `${this.nodeType}${this.id}`
+	}
+
 	getInternalData() {}
 }
 

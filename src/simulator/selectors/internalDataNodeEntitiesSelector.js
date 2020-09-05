@@ -1,4 +1,4 @@
 const internalDataNodeEntitiesSelector = () => (state) =>
-	state?.simulator?.internalData.entities || []
+	state?.simulator?.internalData?.nodes?.entities || []
 
 export default internalDataNodeEntitiesSelector

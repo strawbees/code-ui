@@ -92,10 +92,9 @@ const SimulatorVMManager = ({
 				/* eslint-enable no-new-func */
 				Program = createProgramClass(code)
 			} catch (e) {
-				console.groupCollapsed('Error creating program class')
+				console.groupCollapsed('Error creating program class', e)
 				console.log('This is likely an error in the generated code. See below.')
 				console.log('Generated code:', code)
-				console.log('Error:', e)
 				console.groupEnd()
 				// TODO: dispatch error action to signal the current't program is invalid
 				return
@@ -107,9 +106,8 @@ const SimulatorVMManager = ({
 				programRef.current = program
 			} catch (e) {
 				console.groupCollapsed('Error creating program instance')
-				console.log('This is likely an error in program class. See below.')
-				console.log('Program:', Program)
 				console.log('Error:', e)
+				console.log('Program:', Program)
 				console.groupEnd()
 				// TODO: dispatch error action to signal the current't program is invalid
 				return
@@ -117,23 +115,10 @@ const SimulatorVMManager = ({
 
 			const handleDataIO = async () => {
 				try {
-					// Pass the externalData directly
 					program.setExternalData(externalData)
-
-					// Get the internalData and normalize it
-					const dataRaw = [...program.getInternalData()]
-					dataRaw.forEach((node) => node.id = `${node.nodeType}${node.id}`)
-					const data = {
-						ids      : dataRaw.map(({ id }) => id),
-						entities : dataRaw.reduce((acc, node) => {
-							acc[node.id] = node
-							return acc
-						}, {})
-					}
-					setInternalData(data)
+					setInternalData(program.getInternalData())
 				} catch (e) {
-					console.groupCollapsed('Error calling program.internalData()')
-					console.log('This is likely an error in code inside internalData()')
+					console.groupCollapsed('Error calling program.handleDataIO()')
 					console.log('Error:', e)
 					console.groupEnd()
 					// TODO: dispatch error action to signal the current't program crashed on loop
@@ -147,9 +132,9 @@ const SimulatorVMManager = ({
 				await program.setup()
 			} catch (e) {
 				console.groupCollapsed('Error calling program.setup()')
+				console.log('Error:', e)
 				console.log('This is likely an error in code inside setup(). See below.')
 				console.log('setup():', program.setup)
-				console.log('Error:', e)
 				console.groupEnd()
 				// TODO: dispatch error action to signal the current't program crashed on setup
 				return
@@ -160,9 +145,9 @@ const SimulatorVMManager = ({
 					await program.loop()
 				} catch (e) {
 					console.groupCollapsed('Error calling program.loop()')
+					console.log('Error:', e)
 					console.log('This is likely an error in code inside loop(). See below.')
 					console.log('loop():', program.loop)
-					console.log('Error:', e)
 					console.groupEnd()
 					// TODO: dispatch error action to signal the current't program crashed on loop
 					return

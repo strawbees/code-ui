@@ -6,7 +6,7 @@ import {
 	SET_EXTERNAL_DATA,
 } from './actionTypes'
 
-const internalData = generateReducer(SET_INTERNAL_DATA, [])
+const internalData = generateReducer(SET_INTERNAL_DATA, {})
 const externalData = generateReducer(SET_EXTERNAL_DATA, [])
 
 /* const externalData = (state = {}, { type, payload }) => {

@@ -66,14 +66,23 @@ export class Bot {
 	}
 
 	getInternalData() {
-		const data = []
+		const data = {
+			frames : this.frames,
+			time   : this.seconds(),
+			nodes  : {
+				ids      : [],
+				entities : {}
+			}
+		}
 		for (let i = 0; i < this.nodes.size(); i++) {
-			data.push(this.nodes.get(i).getInternalData())
+			const entity = this.nodes.get(i).getInternalData()
+			data.nodes.ids.push(entity.id)
+			data.nodes.entities[entity.id] = entity
 		}
 		return data
 	}
 
-	setExternalData(data) {
+	setExternalData(/* data */) {
 		/* const data = []
 		for (let i = 0; i < this.nodes.size(); i++) {
 			data.push(this.nodes.get(i).getInternalData())

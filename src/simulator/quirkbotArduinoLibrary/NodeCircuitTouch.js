@@ -49,7 +49,7 @@ export class CircuitTouch extends Updatable(Node) {
 	getInternalData() {
 		return {
 			nodeType    : this.nodeType,
-			id          : this.id,
+			id          : this.getTypedId(),
 			place       : this.place.get(),
 			min         : this.min.get(),
 			max         : this.max.get(),

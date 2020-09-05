@@ -30,7 +30,7 @@ export class Led extends Node {
 	getInternalData() {
 		return {
 			nodeType : this.nodeType,
-			id       : this.id,
+			id       : this.getTypedId(),
 			light    : this.light.get(),
 			place    : this.place.get(),
 		}
