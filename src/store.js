@@ -35,12 +35,14 @@ const composeEnhancers = (
 const initStore = () => {
 	const middlewares = []
 	middlewares.push(thunkMiddleware)
-	if (false && process.browser && process.env.NODE_ENV !== 'production') {
+	if (process.browser && process.env.NODE_ENV !== 'production') {
 		// eslint-disable-next-line global-require
 		const { createLogger } = require('redux-logger')
 		middlewares.push(createLogger({
 			collapsed : true,
-			diff      : true
+			diff      : true,
+			// avoid clutering from the simulator
+			predicate : (_, action) => action.type !== 'SIMULATOR_SET_INTERNAL_DATA'
 		}))
 	}
 
