@@ -58,7 +58,7 @@ export const Led = ({
 					width: 20px;
 					heigth: 20px;
 					border-radius: 20px;
-					opacity: ${1 - light};
+					transform: scale(${0.2 + 0.8 * light})
 				}
 			`}</style>
 			Led

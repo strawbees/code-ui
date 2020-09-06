@@ -8,8 +8,6 @@ import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
-let SIMULATOR_PROGRAM_ID = 0
-
 const SimulatorVMManager = ({
 	code,
 	externalData,
@@ -17,20 +15,15 @@ const SimulatorVMManager = ({
 }) => {
 	const programRef = useRef()
 	const loopTimerRef = useRef()
-	const handleDataIOTimerRef = useRef()
-	const dataRef = useRef()
+	const handleInternalDataTimerRef = useRef()
+
+	const externalDataRef = useRef()
 	useEffect(() => {
-		dataRef.current = {
-			ids      : null,
-			entities : {}
-		}
-	}, [])
+		externalDataRef.current = externalData
+	}, [externalData, code])
 
 	useEffect(() => {
 		/* eslint-disable consistent-return, no-console */
-		// if (!code) {
-		// 	return
-		// }
 		const cleanup = () => {
 			if (programRef.current) {
 				programRef.current.cancel()
@@ -40,9 +33,9 @@ const SimulatorVMManager = ({
 				clearTimeout(loopTimerRef.current)
 				loopTimerRef.current = null
 			}
-			if (handleDataIOTimerRef.current) {
-				cancelAnimationFrame(handleDataIOTimerRef.current)
-				handleDataIOTimerRef.current = null
+			if (handleInternalDataTimerRef.current) {
+				cancelAnimationFrame(handleInternalDataTimerRef.current)
+				handleInternalDataTimerRef.current = null
 			}
 		}
 		cleanup()
@@ -53,7 +46,6 @@ const SimulatorVMManager = ({
 				/* eslint-disable no-new-func */
 				const createProgramClass = (generatedCode) => new Function(...Object.keys(Quirkbot), `
 					'use strict'
-					const SIMULATOR_PROGRAM_ID = ${SIMULATOR_PROGRAM_ID}++
 					Node.ID_FACTORY = 0 // reset the node ids
 					Bot = new Bot() // overload bot class with an instance
 					delay.registerUpdatable(Bot)
@@ -92,18 +84,16 @@ const SimulatorVMManager = ({
 				/* eslint-enable no-new-func */
 				Program = createProgramClass(code)
 			} catch (e) {
-				console.groupCollapsed('Error creating program class', e)
-				console.log('This is likely an error in the generated code. See below.')
+				console.groupCollapsed('Error creating program class')
+				console.log('Error:', e)
 				console.log('Generated code:', code)
 				console.groupEnd()
 				// TODO: dispatch error action to signal the current't program is invalid
 				return
 			}
 
-			let program
 			try {
-				program = new Program(...Object.values(Quirkbot))
-				programRef.current = program
+				programRef.current = new Program(...Object.values(Quirkbot))
 			} catch (e) {
 				console.groupCollapsed('Error creating program instance')
 				console.log('Error:', e)
@@ -113,28 +103,28 @@ const SimulatorVMManager = ({
 				return
 			}
 
-			const handleDataIO = async () => {
+			const handleInternalData = async () => {
 				try {
-					program.setExternalData(externalData)
-					setInternalData(program.getInternalData())
+					setInternalData(programRef.current.getInternalData())
+					programRef.current.setExternalData(externalDataRef.current)
 				} catch (e) {
-					console.groupCollapsed('Error calling program.handleDataIO()')
+					console.groupCollapsed('Error calling program.handleInternalData()')
 					console.log('Error:', e)
 					console.groupEnd()
 					// TODO: dispatch error action to signal the current't program crashed on loop
 					return
 				}
-				handleDataIOTimerRef.current = requestAnimationFrame(handleDataIO, 0)
+				handleInternalDataTimerRef.current = requestAnimationFrame(handleInternalData, 0)
 			}
-			handleDataIOTimerRef.current = requestAnimationFrame(handleDataIO)
+			handleInternalDataTimerRef.current = requestAnimationFrame(handleInternalData)
 
 			try {
-				await program.setup()
+				await programRef.current.setup()
 			} catch (e) {
 				console.groupCollapsed('Error calling program.setup()')
 				console.log('Error:', e)
 				console.log('This is likely an error in code inside setup(). See below.')
-				console.log('setup():', program.setup)
+				console.log('setup():', programRef.current.setup)
 				console.groupEnd()
 				// TODO: dispatch error action to signal the current't program crashed on setup
 				return
@@ -142,12 +132,12 @@ const SimulatorVMManager = ({
 
 			const loop = async () => {
 				try {
-					await program.loop()
+					await programRef.current.loop()
 				} catch (e) {
 					console.groupCollapsed('Error calling program.loop()')
 					console.log('Error:', e)
 					console.log('This is likely an error in code inside loop(). See below.')
-					console.log('loop():', program.loop)
+					console.log('loop():', programRef.current.loop)
 					console.groupEnd()
 					// TODO: dispatch error action to signal the current't program crashed on loop
 					return
@@ -166,7 +156,7 @@ const SimulatorVMManager = ({
 
 SimulatorVMManager.propTypes = {
 	code            : PropTypes.string,
-	externalData    : PropTypes.array,
+	externalData    : PropTypes.object,
 	setInternalData : PropTypes.func,
 }
 

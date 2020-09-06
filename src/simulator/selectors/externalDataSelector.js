@@ -1,4 +1,4 @@
-const internalDataNodeEntitiesSelector = () => (state) =>
-	state?.simulator?.internalData.entities || []
+const externalDataSelector = () => (state) =>
+	state?.simulator?.externalData
 
-export default internalDataNodeEntitiesSelector
+export default externalDataSelector

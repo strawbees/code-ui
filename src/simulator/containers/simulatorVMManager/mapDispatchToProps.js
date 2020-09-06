@@ -1,7 +1,7 @@
 import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
 import {
 	setInternalData,
-} from 'src/simulator/actions'
+} from '../../actions'
 
 const mapDispatchToProps = autobindDispatchToActionCreators({
 	setInternalData,

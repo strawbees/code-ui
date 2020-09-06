@@ -1,10 +1,6 @@
 import PropTypes from 'prop-types'
 import {
 	DISCONNECTED,
-	PLACE_LEFT_MOUTH,
-	PLACE_RIGHT_MOUTH,
-	PLACE_LEFT_EYE,
-	PLACE_RIGHT_EYE,
 	PLACE_LEFT_LEG,
 	PLACE_RIGHT_LEG,
 	PLACE_LEFT_ARM,
@@ -14,8 +10,11 @@ import {
 
 export const CircuitTouch = ({
 	place,
-	out
+	out,
+	setData,
 }) => {
+	const activate = () => setData({ value : 1 })
+	const deactivate = () => setData({ value : 0 })
 	switch (place) {
 		case PLACE_LEFT_LEG:
 		case PLACE_RIGHT_LEG:
@@ -30,9 +29,17 @@ export const CircuitTouch = ({
 		<div className='root node-part CircuitTouch'>
 			<style jsx>{`
 				.root {
+					background-color: ${out === 1 ? 'yellow' : 'transparent'}
 				}
 			`}</style>
-			CircuitTouch
+			<button
+				onMouseDown={activate}
+				onTouchStart={activate}
+				onMouseUp={deactivate}
+				onTouchEnd={deactivate}>
+				CircuitTouch
+			</button>
+
 		</div>
 	)
 }
@@ -42,8 +49,9 @@ CircuitTouch.defaultProps = {
 }
 
 CircuitTouch.propTypes = {
-	place : PropTypes.number,
-	out   : PropTypes.number,
+	place   : PropTypes.number,
+	out     : PropTypes.number,
+	setData : PropTypes.func,
 }
 
 export default CircuitTouch

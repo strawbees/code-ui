@@ -42,8 +42,9 @@ export class CircuitTouch extends Updatable(Node) {
 	out = new Output()
 
 	update() {
-		// TODO find a way to get data
-		// this.out.set();
+		if (this.externalData) {
+			this.out.set(this.externalData.value)
+		}
 	}
 
 	getInternalData() {

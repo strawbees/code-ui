@@ -36,6 +36,12 @@ export class Node {
 	}
 
 	getInternalData() {}
+
+	externalData = null
+
+	setExternalData(data) {
+		this.externalData = data
+	}
 }
 
 export default Node

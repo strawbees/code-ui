@@ -3,8 +3,8 @@ import refEditorGeneratedSimulatorCodeSelector from 'src/selectors/refEditorGene
 import externalDataSelector from '../../selectors/externalDataSelector'
 
 const mapStateToProps = () => createStructuredSelector({
-	code                 : refEditorGeneratedSimulatorCodeSelector(),
-	externalDataSelector : externalDataSelector()
+	code         : refEditorGeneratedSimulatorCodeSelector(),
+	externalData : externalDataSelector()
 })
 
 export default mapStateToProps

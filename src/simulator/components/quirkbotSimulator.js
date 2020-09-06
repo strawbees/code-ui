@@ -6,6 +6,7 @@ const QuirkbotSimulator = () =>
 	<div className='root quirkbotSimulator'>
 		<style jsx>{`
 			.root {
+				z-index: 100;
 				background-color: red;
 			}
 		`}</style>

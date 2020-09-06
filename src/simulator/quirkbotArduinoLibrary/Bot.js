@@ -48,7 +48,14 @@ export class BotSerialCommands {
 	static EnterBootloader = 0xb
 }
 
+let ID_FACTORY = 0
 export class Bot {
+	id
+
+	constructor() {
+		this.id = ID_FACTORY++
+	}
+
 	async start() {
 		this.startTime = millis()
 	}
@@ -67,6 +74,7 @@ export class Bot {
 
 	getInternalData() {
 		const data = {
+			id     : this.id,
 			frames : this.frames,
 			time   : this.seconds(),
 			nodes  : {
@@ -82,12 +90,13 @@ export class Bot {
 		return data
 	}
 
-	setExternalData(/* data */) {
-		/* const data = []
+	setExternalData(data) {
 		for (let i = 0; i < this.nodes.size(); i++) {
-			data.push(this.nodes.get(i).getInternalData())
+			const id = this.nodes.get(i).getTypedId()
+			if (typeof data.nodes[id] !== 'undefined') {
+				this.nodes.get(i).setExternalData(data.nodes[id])
+			}
 		}
-		return data */
 	}
 
 	async interruptUpdate() {

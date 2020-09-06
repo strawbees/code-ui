@@ -9,7 +9,7 @@ const mapStateToProps = () => createSelector(
 		node,
 	) => ({
 		place : node.place,
-		light : node.light,
+		out   : node.out,
 	})
 )
 
