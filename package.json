@@ -12,7 +12,7 @@
     "i18n:zanata:push:translations": "zanata-cli push --username $ZANATA_USER --key $ZANATA_KEY --push-type trans --errors",
     "i18n:pull": "npm run i18n:zanata:pull && npm run i18n:scratch-blocks:pull",
     "prepublishOnly": "npm run build-targets",
-    "lint": "eslint --fix ./*.js src/**.js pages/**.js"
+    "lint": "eslint --fix ./*.js ./src/**.js ./src/**/**.js ./pages/**.js"
   },
   "bin": {
     "strawbees-code-ui-build": "./lib/scripts/build.js"
