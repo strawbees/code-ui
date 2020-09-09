@@ -71,18 +71,17 @@ class SerialInterfaceManager extends React.Component {
 			return
 		}
 
-		const timeoutPing = () => new Promise(async (resolve, reject) => {
+		const timeoutPing = () => new Promise((resolve, reject) => {
 			const timeout = setTimeout(() => {
 				reject(new Error('Timeout'))
 			}, 500)
-			try {
-				await this.ping()
+			this.ping().then(() => {
 				clearTimeout(timeout)
 				resolve()
-			} catch (error) {
+			}).catch((error) => {
 				clearTimeout(timeout)
 				reject(error)
-			}
+			})
 		})
 		try {
 			await timeoutPing()
