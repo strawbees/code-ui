@@ -3,7 +3,6 @@ import parameterValidationSelector from 'src/editors/flow/selectors/parameterVal
 import valueParsedSelector from 'src/editors/flow/selectors/valueParsedSelector'
 import stateSelector from 'src/editors/flow/selectors/stateSelector'
 
-
 const parameterValidationParsedSelector = () => createSelector(
 	[
 		parameterValidationSelector(),

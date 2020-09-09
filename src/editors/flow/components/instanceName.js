@@ -24,7 +24,6 @@ const InstanceName = ({
 		/>
 	</div>
 
-
 InstanceName.propTypes = {
 	name              : PropTypes.string,
 	onNameInputChange : PropTypes.func,
