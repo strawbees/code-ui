@@ -6,16 +6,18 @@ import {
 	Input
 } from './CommonNodeIncludes'
 
-export class Led extends Node {
-	nodeType = 'Led'
+export class DualColorLed extends Node {
+	nodeType = 'DualColorLed'
 
 	constructor(...args) {
 		super(...args)
 
-		this.registerInput(this.light)
 		this.registerInput(this.place)
+		this.registerInput(this.light)
+		this.registerInput(this.color)
 
 		this.light.set(1)
+		this.color.set(0)
 		this.place.set(DISCONNECTED)
 	}
 
@@ -23,9 +25,11 @@ export class Led extends Node {
 		super.destructor()
 	}
 
+	place = new Input()
+
 	light = new Input()
 
-	place = new Input()
+	color = new Input()
 
 	getInternalData() {
 		return {
@@ -33,6 +37,7 @@ export class Led extends Node {
 			id       : this.getTypedId(),
 			light    : this.light.get(),
 			place    : this.place.get(),
+			color    : this.color.get(),
 		}
 	}
 }
