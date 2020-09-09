@@ -57,7 +57,9 @@ class SerialInterfaceManager extends React.Component {
 		if (!available) {
 			// connect to the extension
 			if (QuirkbotChromeApp.init) {
+				/* eslint-disable no-console */
 				console.log('Using in memory quirkbotChromeApp')
+				/* eslint-enable no-console */
 				QuirkbotChromeApp.init()
 				this.ping = QuirkbotChromeApp.ping
 				this.getModel = QuirkbotChromeApp.getModel
@@ -86,12 +88,16 @@ class SerialInterfaceManager extends React.Component {
 		try {
 			await timeoutPing()
 			if (!ready) {
+				/* eslint-disable no-console */
 				console.log(`Connected to extensionId: ${extensionId}`)
+				/* eslint-enable no-console */
 				setQbserialReady(true)
 			}
 		} catch (error) {
 			if (ready) {
+				/* eslint-disable no-console */
 				console.log(`Disconnected to extensionId: ${extensionId}`)
+				/* eslint-enable no-console */
 				setQbserialReady(false)
 			}
 		}
