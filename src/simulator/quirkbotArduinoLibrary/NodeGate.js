@@ -30,6 +30,7 @@ export class Gate extends HasTrigger(Node) {
 			nodeType : this.nodeType,
 			id       : this.getTypedId(),
 			in       : this.in.get(),
+			trigger  : this.trigger.get(),
 			out      : this.out.get(),
 		}
 	}

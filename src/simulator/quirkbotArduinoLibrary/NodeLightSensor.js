@@ -36,4 +36,16 @@ export class LightSensor extends HasInterval(Node) {
 	max = new Input()
 
 	out = new Output()
+
+	getInternalData() {
+		return {
+			nodeType : this.nodeType,
+			id       : this.getTypedId(),
+			interval : this.interval.get(),
+			place    : this.place.get(),
+			min      : this.min.get(),
+			max      : this.max.get(),
+			out      : this.out.get(),
+		}
+	}
 }

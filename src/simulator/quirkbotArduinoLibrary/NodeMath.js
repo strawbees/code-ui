@@ -12,7 +12,7 @@ export const MATH_DIVIDE = 3
 export const MATH_MODULO = 4
 
 export class Math extends Node {
-	nodeType = 'Logic'
+	nodeType = 'Math'
 
 	constructor(...args) {
 		super(...args)

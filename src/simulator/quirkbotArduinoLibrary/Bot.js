@@ -224,6 +224,22 @@ export class Bot {
 		}
 	}
 
+	// Keyboard management
+	pressKey(/* key */) {}
+
+	releaseKey(/* key */) {}
+
+	releaseAllKeys() {}
+
+	// Bootloader support
+	readFlashWord(/* address */) {}
+
+	getBootloaderId() {}
+
+	getBootloaderVersion() {}
+
+	enterBootloader() {}
+
 	startTime = 0
 
 	frames = 0

@@ -1,46 +1,37 @@
 import {
-	DISCONNECTED
+	DISCONNECTED,
 } from './core/board'
 import {
 	Node,
 	Input,
 	Output,
-	HasInterval
+	HasInterval,
 } from './CommonNodeIncludes'
 
-export class AnalogSensor extends HasInterval(Node) {
-	nodeType = 'AnalogSensor'
+export class Sonar extends HasInterval(Node) {
+	nodeType = 'Sonar'
 
 	constructor(...args) {
 		super(...args)
+
+		this.registerInput(this.meters)
 		this.registerInput(this.place)
 		this.registerInput(this.min)
 		this.registerInput(this.max)
 
+		this.meters.set(4)
 		this.place.set(DISCONNECTED)
 		this.min.set(0)
 		this.max.set(1)
-
-		this.pin = DISCONNECTED
-	}
-
-	onInternalInputChange(internalInput) {
-		if (internalInput === this.place) {
-			this.pin = this.Bot.locationToAnalogPin(this.place.get())
-
-			if (this.pin === DISCONNECTED) {
-				this.pin = this.place.get()
-			}
-		}
 	}
 
 	onInterval() {
-		if (this.pin === DISCONNECTED) return
-
 		if (this.externalData) {
-			this.out.set(this.externalData.value)
+			this.out.set(this.Bot.map(this.externalData.centimeters, 0, this.meters.get() * 100, this.min.get(), this.max.get()))
 		}
 	}
+
+	meters = new Input()
 
 	place = new Input()
 
@@ -50,13 +41,12 @@ export class AnalogSensor extends HasInterval(Node) {
 
 	out = new Output()
 
-	pin
-
 	getInternalData() {
 		return {
 			nodeType : this.nodeType,
 			id       : this.getTypedId(),
 			interval : this.interval.get(),
+			meters   : this.meters.get(),
 			place    : this.place.get(),
 			min      : this.min.get(),
 			max      : this.max.get(),

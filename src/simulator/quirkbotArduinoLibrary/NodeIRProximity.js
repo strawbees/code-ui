@@ -43,6 +43,7 @@ export class IRProximity extends HasInterval(Node) {
 		return {
 			nodeType : this.nodeType,
 			id       : this.getTypedId(),
+			interval : this.interval.get(),
 			min      : this.min.get(),
 			max      : this.max.get(),
 			out      : this.out.get(),

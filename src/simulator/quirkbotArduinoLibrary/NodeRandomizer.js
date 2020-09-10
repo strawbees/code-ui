@@ -33,4 +33,15 @@ export class Randomizer extends HasInterval(Node) {
 			this.min.get(), this.max.get()
 		))
 	}
+
+	getInternalData() {
+		return {
+			nodeType : this.nodeType,
+			id       : this.getTypedId(),
+			interval : this.interval.get(),
+			min      : this.min.get(),
+			max      : this.max.get(),
+			out      : this.out.get(),
+		}
+	}
 }

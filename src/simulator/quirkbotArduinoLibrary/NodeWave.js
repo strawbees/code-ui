@@ -127,6 +127,7 @@ export class Wave extends HasInterval(Node) {
 		return {
 			nodeType : this.nodeType,
 			id       : this.getTypedId(),
+			interval : this.interval.get(),
 			length   : this.length.get(),
 			min      : this.min.get(),
 			max      : this.max.get(),

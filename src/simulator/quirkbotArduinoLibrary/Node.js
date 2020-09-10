@@ -35,7 +35,12 @@ export class Node {
 		return `${this.nodeType}${this.id}`
 	}
 
-	getInternalData() {}
+	getInternalData() {
+		return {
+			nodeType : this.nodeType,
+			id       : this.getTypedId(),
+		}
+	}
 
 	externalData = null
 
