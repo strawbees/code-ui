@@ -1,6 +1,6 @@
 import {
 	DISCONNECTED
-} from './core/constants'
+} from './core/board'
 import {
 	Node,
 	Input,
@@ -22,10 +22,6 @@ export class AnalogSensor extends HasInterval(Node) {
 		this.max.set(1)
 
 		this.pin = DISCONNECTED
-	}
-
-	destructor() {
-		super.destructor()
 	}
 
 	onInternalInputChange(internalInput) {

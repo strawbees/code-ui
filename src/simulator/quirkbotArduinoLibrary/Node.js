@@ -43,5 +43,3 @@ export class Node {
 		this.externalData = data
 	}
 }
-
-export default Node

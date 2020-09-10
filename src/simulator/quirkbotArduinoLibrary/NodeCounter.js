@@ -19,10 +19,6 @@ export class Counter extends HasTrigger(Node) {
 		this.active = false
 	}
 
-	destructor() {
-		super.destructor()
-	}
-
 	amount = new Input()
 
 	out = new Output()

@@ -18,11 +18,14 @@ import {
 	RL,
 	RLB,
 	RLF,
-} from './core/constants'
+} from './core/board'
 
 import { millis } from './core/Arduino'
 
 import Vector from './Vector'
+
+export * from './core/wdt'
+export * from './core/Arduino'
 
 // Serial Report constants
 export const REPORT_INTERVAL_MILLIS = 100

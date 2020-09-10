@@ -19,10 +19,6 @@ export class Constrain extends Node {
 		this.max.set(1.0)
 	}
 
-	destructor() {
-		super.destructor()
-	}
-
 	in = new Input()
 
 	min = new Input()

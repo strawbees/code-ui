@@ -1,6 +1,6 @@
 import {
 	DISCONNECTED
-} from './core/constants'
+} from './core/board'
 import {
 	Node,
 	Input,
@@ -21,10 +21,6 @@ export class DigitalSensor extends HasInterval(Node) {
 		this.place.set(DISCONNECTED)
 		this.min.set(0)
 		this.max.set(1)
-	}
-
-	destructor() {
-		super.destructor()
 	}
 
 	onInterval() {

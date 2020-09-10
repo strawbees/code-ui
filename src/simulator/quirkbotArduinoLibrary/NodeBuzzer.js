@@ -1,6 +1,6 @@
 import {
 	DISCONNECTED
-} from './core/constants'
+} from './core/board'
 import {
 	Node,
 	Input,
@@ -17,10 +17,6 @@ export class Buzzer extends Node {
 
 		this.note.set(NO_NOTE)
 		this.place.set(DISCONNECTED)
-	}
-
-	destructor() {
-		super.destructor()
 	}
 
 	note = new Input()

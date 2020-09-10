@@ -1,6 +1,6 @@
 import {
 	DISCONNECTED
-} from './core/constants'
+} from './core/board'
 import {
 	Node,
 	Input
@@ -17,10 +17,6 @@ export class Led extends Node {
 
 		this.light.set(1)
 		this.place.set(DISCONNECTED)
-	}
-
-	destructor() {
-		super.destructor()
 	}
 
 	light = new Input()

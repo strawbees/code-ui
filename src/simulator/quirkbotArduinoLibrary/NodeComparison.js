@@ -30,10 +30,6 @@ export class Comparison extends Node {
 		this.ifElse.set(0.0)
 	}
 
-	destructor() {
-		super.destructor()
-	}
-
 	in = new Input()
 
 	operation = new Input()

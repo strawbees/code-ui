@@ -1,7 +1,7 @@
 import {
 	BP2,
 	BP4,
-} from './core/constants'
+} from './core/board'
 import {
 	Node,
 	Input,
@@ -25,10 +25,6 @@ export class IRProximity extends HasInterval(Node) {
 		this.min.set(0)
 		this.max.set(1)
 		this.interval.set(0.05)
-	}
-
-	destructor() {
-		super.destructor()
 	}
 
 	onInterval() {

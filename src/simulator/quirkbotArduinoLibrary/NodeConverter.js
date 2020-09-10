@@ -23,10 +23,6 @@ export class Converter extends Node {
 		this.outMax.set(1.0)
 	}
 
-	destructor() {
-		super.destructor()
-	}
-
 	in = new Input()
 
 	inMin = new Input()

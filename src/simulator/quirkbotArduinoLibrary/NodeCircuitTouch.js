@@ -1,6 +1,6 @@
 import {
 	DISCONNECTED
-} from './core/constants'
+} from './core/board'
 import {
 	Node,
 	Input,
@@ -25,10 +25,6 @@ export class CircuitTouch extends Updatable(Node) {
 		this.min.set(0)
 		this.max.set(1)
 		this.sensitivity.set(0)
-	}
-
-	destructor() {
-		super.destructor()
 	}
 
 	place = new Input()

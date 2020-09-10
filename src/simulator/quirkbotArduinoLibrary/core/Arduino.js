@@ -1,3 +1,2 @@
-// export * as Serial from './Serial'
-// export * as Keyboard from './Keyboard'
 export const millis = Date.now
+export const fmod = (a, b) => a % b

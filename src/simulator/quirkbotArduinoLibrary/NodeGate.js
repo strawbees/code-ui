@@ -15,10 +15,6 @@ export class Gate extends HasTrigger(Node) {
 		this.in.set(0.0)
 	}
 
-	destructor() {
-		super.destructor()
-	}
-
 	in = new Input()
 
 	out = new Output()

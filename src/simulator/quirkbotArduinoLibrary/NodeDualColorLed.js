@@ -1,6 +1,6 @@
 import {
 	DISCONNECTED
-} from './core/constants'
+} from './core/board'
 import {
 	Node,
 	Input
@@ -19,10 +19,6 @@ export class DualColorLed extends Node {
 		this.light.set(1)
 		this.color.set(0)
 		this.place.set(DISCONNECTED)
-	}
-
-	destructor() {
-		super.destructor()
 	}
 
 	place = new Input()
