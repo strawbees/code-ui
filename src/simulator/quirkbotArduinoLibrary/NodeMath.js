@@ -67,4 +67,14 @@ export class Math extends Node {
 			this.out.set(fmod(this.in.get(), this.value.get()))
 		}
 	}
+
+	getInternalData() {
+		return {
+			nodeType  : this.nodeType,
+			id        : this.getTypedId(),
+			operation : this.operation.get(),
+			value     : this.value.get(),
+			out       : this.out.get(),
+		}
+	}
 }

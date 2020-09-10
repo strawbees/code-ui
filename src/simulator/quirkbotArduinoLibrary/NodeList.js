@@ -3,6 +3,7 @@ import {
 	Input,
 	Output,
 	InputCollection,
+	floor,
 } from './CommonNodeIncludes'
 
 export class List extends Node {
@@ -36,7 +37,7 @@ export class List extends Node {
 
 	refreshSelected() {
 		if (this.items.collection.size()) {
-			let i = Math.floor(this.in.get() * this.items.collection.size())
+			let i = floor(this.in.get() * this.items.collection.size())
 			if (i >= this.items.collection.size()) i = this.items.collection.size() - 1
 			if (this.items.collection.get(i) !== this.selected) {
 				this.selected = this.items.collection.get(i)

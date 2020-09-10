@@ -1,3 +1,6 @@
+import {
+	min,
+} from './core/Arduino'
 import { FilterBase } from './FilterBase'
 
 export class FilterLower extends FilterBase {
@@ -20,7 +23,7 @@ export class FilterLower extends FilterBase {
 		this.c = this.d
 		this.d = number
 
-		this.value = Math.min(Math.min(Math.min(this.a, this.b), this.c), this.d)
+		this.value = min(min(min(this.a, this.b), this.c), this.d)
 	}
 
 	a

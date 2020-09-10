@@ -2,7 +2,8 @@ import {
 	Node,
 	Input,
 	Output,
-	HasInterval
+	HasInterval,
+	floor,
 } from './CommonNodeIncludes'
 
 import {
@@ -58,7 +59,7 @@ export class Wave extends HasInterval(Node) {
 			this.position = 0
 		}
 
-		const index = Math.floor(this.position * 256.0)
+		const index = floor(this.position * 256.0)
 		this.out.set(
 			this.Bot.map(
 				this.table[index],

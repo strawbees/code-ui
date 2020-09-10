@@ -1,3 +1,6 @@
+import {
+	max,
+} from './core/Arduino'
 import { FilterBase } from './FilterBase'
 
 export class FilterUpper extends FilterBase {
@@ -20,7 +23,7 @@ export class FilterUpper extends FilterBase {
 		this.c = this.d
 		this.d = number
 
-		this.value = Math.max(Math.max(Math.max(this.a, this.b), this.c), this.d)
+		this.value = max(max(max(this.a, this.b), this.c), this.d)
 	}
 
 	a
