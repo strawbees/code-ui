@@ -5,6 +5,9 @@ export * from './core/board'
 export * from './Bot'
 export * from './Node'
 
+// Easing
+export * from './Easing'
+
 // Inputs
 export * from './NodeAnalogSensor'
 export * from './NodeDigitalSensor'

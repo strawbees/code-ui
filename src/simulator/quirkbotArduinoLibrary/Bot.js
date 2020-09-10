@@ -21,11 +21,16 @@ import {
 } from './core/board'
 
 import { millis } from './core/Arduino'
+import { Keyboard } from './core/Keyboard'
+// #include "Keyboard.h"
+// #include "Mouse.h"
+// #include "MIDIUSB.h"
 
 import Vector from './Vector'
 
 export * from './core/wdt'
 export * from './core/Arduino'
+export * from './core/Keyboard'
 
 // Serial Report constants
 export const REPORT_INTERVAL_MILLIS = 100
@@ -225,11 +230,17 @@ export class Bot {
 	}
 
 	// Keyboard management
-	pressKey(/* key */) {}
+	pressKey(key) {
+		Keyboard.pressKey(key)
+	}
 
-	releaseKey(/* key */) {}
+	releaseKey(key) {
+		Keyboard.releaseKey(key)
+	}
 
-	releaseAllKeys() {}
+	releaseAllKeys() {
+		Keyboard.releaseAll()
+	}
 
 	// Bootloader support
 	readFlashWord(/* address */) {}
