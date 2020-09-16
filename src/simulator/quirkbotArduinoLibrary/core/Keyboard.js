@@ -67,7 +67,7 @@ export class Keyboard /* : public Print */ {
 
 	end() {}
 
-	write(k) { console.log('Arduino>> Serial.write:', k) }
+	write(k) { console.log('Arduino>> Keyboard.write:', k) }
 
 	press(k) { console.log('Arduino>> Keyboard.press:', k) }
 
