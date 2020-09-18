@@ -67,7 +67,7 @@ const generator = ({ attributes, value, next }, structure) => {
 	parseInstacePropertyAssignmentFromValue(structure, instance, 'position',
 		`Easing::function(${easing}, Bot::seconds() - ${startVar}, ${beginVar}, ${changeVar}, ${durationVar})`
 	)
-	structure.body += 'Bot::update();\n'
+	structure.body += 'ptYield();\n'
 	structure.body += '}\n'
 	parseInstacePropertyAssignmentFromValue(structure, instance, 'position', position)
 	structure.body += '}\n'

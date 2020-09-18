@@ -88,7 +88,7 @@ const generator = ({ statement, next }, structure, shallow) => {
 	}
 
 	const type = 'void'
-	const body = `Bot::update();\n${getBlockBody(getNext(next), structure)}`
+	const body = `ptYield();\n${getBlockBody(getNext(next), structure)}`
 
 	parseProcedureDefinition(structure, instance, args, body, type)
 }

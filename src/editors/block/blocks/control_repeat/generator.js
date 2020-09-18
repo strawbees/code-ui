@@ -35,7 +35,7 @@ const generator = ({
 	structure.body += `// Repeat ${times} times:\n`
 	structure.body += `for (${indexInstance} = 0; ${indexInstance} < ${times}; ${indexInstance}++) {\n`
 	parseNext(statement, structure)
-	structure.body += 'Bot::update();\n}\n'
+	structure.body += 'ptYield();\n}\n'
 	parseNext(next, structure)
 }
 

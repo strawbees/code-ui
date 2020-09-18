@@ -13,7 +13,7 @@ const generator = ({ value, next, statement }, structure) => {
 	const condition = getBlockBody(conditionBlock, structure)
 	structure.body += `while(!${condition}) {\n`
 	parseNext(statement, structure)
-	structure.body += 'Bot::update();\n'
+	structure.body += 'ptYield();\n'
 	structure.body += '}\n'
 	parseNext(next, structure)
 }
