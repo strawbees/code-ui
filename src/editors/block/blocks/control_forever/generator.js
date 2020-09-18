@@ -1,6 +1,7 @@
 import { parseNext } from '../../utils/parsing'
 
 const generator = ({ next, statement }, structure) => {
+	structure.body += '// Repeat forever:\n'
 	structure.body += 'while(true) {\n'
 	parseNext(statement, structure)
 	structure.body += 'ptYield();\n}\n'
