@@ -11,9 +11,7 @@ const generator = ({ value, next }, structure) => {
 		return
 	}
 	const condition = getBlockBody(conditionBlock, structure)
-	structure.body += `while(!${condition}) {\n`
-	structure.body += 'ptYield();\n'
-	structure.body += '}\n'
+	structure.body += `ptWaitUntil(${condition});\n`
 	parseNext(next, structure)
 }
 
