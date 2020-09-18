@@ -137,7 +137,6 @@ export const assembleStructure = structure => {
 	'}\n\n' +
 	'void loop() {\n}\n'
 
-
 	return indent(raw)
 }
 const indent = string => {
