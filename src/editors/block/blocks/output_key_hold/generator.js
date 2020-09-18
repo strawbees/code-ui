@@ -30,7 +30,7 @@ const generator = ({ value, next }, structure) => {
 	setInstacePropertyOneTimeAssignment(structure, instance, 'key', key)
 
 	parseInstacePropertyAssignmentFromValue(structure, instance, 'trigger', 1)
-	structure.body += `delay(${getBlockBody(durationBlock, structure)} * 1000);\n`
+	structure.body += `ptSleep(${getBlockBody(durationBlock, structure)} * 1000);\n`
 	parseInstacePropertyAssignmentFromValue(structure, instance, 'trigger', 0)
 
 	parseNext(next, structure)
