@@ -60,6 +60,14 @@ export const parseProcedureDefinition = (structure, instance, args, body, type) 
 	parseInstaceDefinition(structure, call, type)
 	structure.procedureDefinition[instance] = `${type} ${call} {\n${body}};\n`
 }
+export const parseThreadDefinition = (structure, instance, args, body) => {
+	const argsString = `${(args && args.length) ? ',' : ''}${args.map(arg => `${arg.type} ${arg.name})`).join(', ')}`
+	const call = `ptDefine(${instance}${argsString})`
+	parseInstaceDefinition(structure, call, '')
+	structure.threadDefinition[instance] = `ptDeclare(${instance}${argsString}){\nptBegin();\n${body}\nptEnd();\n};\n`
+	structure.threadInit[instance] = `ptInit(${instance});\n`
+	structure.threadSchedule[instance] = `ptSchedule(${instance});\n`
+}
 export const parseInstacePropertyRetrieval = (structure, instance, property) => {
 	structure.body += `${instance}.${property}.get()`
 }
@@ -113,12 +121,18 @@ export const assembleStructure = structure => {
 	let {
 		definitions,
 		procedureDefinition,
+		threadDefinition,
+		threadInit,
+		threadSchedule,
 		oneTimeStatements,
 		oneTimeAssignments,
 	} = structure
 
 	definitions = Object.values(definitions).sort().join('')
 	procedureDefinition = Object.values(procedureDefinition).sort().join('')
+	threadDefinition = Object.values(threadDefinition).sort().join('')
+	threadInit = Object.values(threadInit).sort().join('')
+	threadSchedule = Object.values(threadSchedule).sort().join('')
 	oneTimeStatements = Object.values(oneTimeStatements).sort().join('')
 	oneTimeAssignments = Object.values(oneTimeAssignments).sort().join('')
 
@@ -130,12 +144,16 @@ export const assembleStructure = structure => {
 	const raw = `${header}\n` +
 	`${definitions}\n` +
 	`${procedureDefinition}\n` +
+	`${threadDefinition}\n` +
 	'void setup() {\n' +
-	`${oneTimeStatements}\n` +
-	`${oneTimeAssignments}\n` +
-	`${body}` +
+		`${threadInit}\n` +
+		`${oneTimeStatements}\n` +
+		`${oneTimeAssignments}\n` +
+		`${body}` +
 	'}\n\n' +
-	'void loop() {\n}\n'
+	'void loop() {\n' +
+		`${threadSchedule}\n` +
+	'}\n'
 
 	return indent(raw)
 }
@@ -176,6 +194,10 @@ export const generateCode = source => {
 		instances           : {},
 		procedures          : {},
 		procedureDefinition : {},
+		threads             : {},
+		threadDefinition    : {},
+		threadInit          : {},
+		threadSchedule      : {},
 		definitions         : {},
 		oneTimeAssignments  : {},
 		oneTimeStatements   : {},
@@ -183,7 +205,7 @@ export const generateCode = source => {
 	}
 
 	if (json && json.block) {
-		// First deal with the procedures definitions
+		// First deal with the threads definitions
 		json.block
 			.filter(block =>
 				block.attributes &&
