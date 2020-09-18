@@ -53,7 +53,7 @@ export const computeInstanceName = (structure, type, id) => {
 }
 
 export const parseInstaceDefinition = (structure, instance, type) => {
-	structure.definitions[instance] = `${type} ${instance};\n`
+	structure.definitions[instance] = `${type}${type ? ' ' : ''}${instance};\n`
 }
 export const parseProcedureDefinition = (structure, instance, args, body, type) => {
 	const call = `${instance}(${args.map(arg => `${arg.type} ${arg.name}`).join(', ')})`
