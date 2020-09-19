@@ -233,7 +233,6 @@ class BlockEditor extends React.Component {
 			xmlList, variable, 'data_listcontainsitem', 'LIST', ['ITEM', 'math_number', 0.5]
 		)
 
-
 		// Handle custom blocks creation
 		this.proceduresMutationRoot = null
 		this.proceduresCallback = null
