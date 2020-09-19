@@ -2,6 +2,18 @@ import s from 'src/utils/s'
 
 const toolbox = (strings) => ([
 	{
+		id              : 'operators',
+		name            : window.Blockly.Msg.CATEGORY_EVENTS,
+		colour          : window.Blockly.Colours.event.primary,
+		secondaryColour : window.Blockly.Colours.event.secondary,
+		blocks          : [
+			{
+				type   : 'event_power_on',
+				values : [],
+			},
+		]
+	},
+	{
 		id              : 'input',
 		name            : s(strings, 'block.toolbox.category.input'),
 		colour          : '#7fd5f0',
