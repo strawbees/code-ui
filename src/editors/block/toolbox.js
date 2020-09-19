@@ -246,8 +246,8 @@ const toolbox = (strings) => ([
 	{
 		id              : 'control',
 		name            : window.Blockly.Msg.CATEGORY_CONTROL,
-		colour          : '#FFAB19',
-		secondaryColour : '#CF8B17',
+		colour          : window.Blockly.Colours.control.primary,
+		secondaryColour : window.Blockly.Colours.control.secondary,
 		blocks          : [
 			{
 				type   : 'control_wait',
@@ -291,8 +291,8 @@ const toolbox = (strings) => ([
 	{
 		id              : 'operators',
 		name            : window.Blockly.Msg.CATEGORY_OPERATORS,
-		colour          : '#40BF4A',
-		secondaryColour : '#389438',
+		colour          : window.Blockly.Colours.operators.primary,
+		secondaryColour : window.Blockly.Colours.operators.secondary,
 		blocks          : [
 			{
 				type   : 'operator_add',
@@ -483,15 +483,15 @@ const toolbox = (strings) => ([
 	{
 		id              : 'variables',
 		name            : window.Blockly.Msg.CATEGORY_VARIABLES,
-		colour          : '#FF8C1A',
-		secondaryColour : '#DB6E00',
+		colour          : window.Blockly.Colours.data.primary,
+		secondaryColour : window.Blockly.Colours.data.secondary,
 		custom          : 'VARIABLE'
 	},
 	{
 		id              : 'myBlocks',
 		name            : window.Blockly.Msg.CATEGORY_MYBLOCKS,
-		colour          : '#FF6680',
-		secondaryColour : '#FF4D6A',
+		colour          : window.Blockly.Colours.more.primary,
+		secondaryColour : window.Blockly.Colours.more.secondary,
 		custom          : 'PROCEDURE'
 	}
 ])
