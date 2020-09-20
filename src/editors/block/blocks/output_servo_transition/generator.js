@@ -54,9 +54,7 @@ const generator = ({ attributes, value, next }, structure) => {
 	parseInstaceDefinition(structure, changeVar, 'float')
 	parseInstaceDefinition(structure, durationVar, 'float')
 
-	structure.body += `// Transition the position of the servo at ${place}\n`
-	structure.body += `// to ${position}, over ${duration}s, using the ${easing} function:\n`
-	structure.body += '{\n'
+	structure.body += '// Transition the position of the servo:\n'
 	structure.body += `${startVar} = Bot::seconds();\n`
 	structure.body += `${beginVar} = `
 	parseInstacePropertyRetrieval(structure, instance, 'position')
@@ -70,7 +68,6 @@ const generator = ({ attributes, value, next }, structure) => {
 	structure.body += 'ptYield();\n'
 	structure.body += '}\n'
 	parseInstacePropertyAssignmentFromValue(structure, instance, 'position', position)
-	structure.body += '}\n'
 
 	parseNext(next, structure)
 }
