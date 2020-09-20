@@ -7,7 +7,11 @@ import {
 
 const generator = ({ attributes, next }, structure) => {
 	const instance = computeInstanceName(structure, 'event_power_on_', attributes.id)
-	const body = getBlockBody(getNext(next), structure)
+	let body = ''
+	body += '// Code that runs when the program starts:\n'
+	body += '{\n'
+	body += getBlockBody(getNext(next), structure)
+	body += '}\n'
 	parseThreadDefinition(structure, instance, body)
 }
 

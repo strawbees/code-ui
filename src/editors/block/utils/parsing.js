@@ -56,15 +56,21 @@ export const parseInstaceDefinition = (structure, instance, type) => {
 	structure.definitions[instance] = `${type ? `${type} ` : ''}${instance};\n`
 }
 export const parseProcedureDefinition = (structure, instance, args, body) => {
-	const argsString = `${(args && args.length) ? ',' : ''}${args.map(arg => `${arg.type} ${arg.name}`).join(', ')}`
+	const argsString = `${(args && args.length) ? ', ' : ''}${args.map(arg => `${arg.type} ${arg.name}`).join(', ')}`
 	const call = `ptDeclare(${instance}${argsString})`
 	parseInstaceDefinition(structure, call)
-	structure.procedureDefinition[instance] = `ptDefine(${instance}${argsString}){\nptBegin();\n${body}\nptExit();\nptEnd();\n};\n`
+	structure.procedureDefinition[instance] = `ptDefine(${instance}${argsString}){\n`
+	structure.procedureDefinition[instance] += 'ptBeginProcedure();\n'
+	structure.procedureDefinition[instance] += body
+	structure.procedureDefinition[instance] += 'ptEndProcedure();\n};\n'
 }
 export const parseThreadDefinition = (structure, instance, body) => {
 	const call = `ptDeclare(${instance})`
 	parseInstaceDefinition(structure, call)
-	structure.threadDefinition[instance] = `ptDefine(${instance}){\nptBegin();\n${body}\nptYieldUntil(false);\nptEnd();\n};\n`
+	structure.threadDefinition[instance] = `ptDefine(${instance}){\n`
+	structure.threadDefinition[instance] += 'ptBeginThread();\n'
+	structure.threadDefinition[instance] += body
+	structure.threadDefinition[instance] += 'ptEndThread();\n};\n'
 	structure.threadInit[instance] = `ptInit(${instance});\n`
 	structure.threadSchedule[instance] = `ptSchedule(${instance});\n`
 }
@@ -136,23 +142,33 @@ export const assembleStructure = structure => {
 	oneTimeStatements = Object.values(oneTimeStatements).sort().join('')
 	oneTimeAssignments = Object.values(oneTimeAssignments).sort().join('')
 
+	const protothreadDefinitions = procedureDefinition + threadDefinition
 	const {
 		header,
 		body
 	} = structure
 
 	const raw = `${header}\n` +
-	`${definitions}\n` +
-	`${procedureDefinition}\n` +
-	`${threadDefinition}\n` +
+	`${definitions ?
+		'// Forward declarations:\n' +
+		`${definitions}\n` : ''}` +
+	`${protothreadDefinitions ?
+		'// Protothread definitions:\n' +
+		`${protothreadDefinitions}\n` : ''}` +
+	'// Setup code, that runs only once:\n' +
 	'void setup() {\n' +
-		`${oneTimeStatements}\n` +
-		`${oneTimeAssignments}\n` +
-		`${threadInit}\n` +
-		`${body}` +
+		`${oneTimeStatements ? `${oneTimeStatements}\n` : ''}` +
+		`${oneTimeAssignments ? `${oneTimeAssignments}\n` : ''}` +
+		`${threadInit ?
+			'// Initialize threads:\n' +
+			`${threadInit}\n` : ''}` +
+		`${body ? `${body}\n` : ''}` +
 	'}\n\n' +
+	'// Loop code, that runs repeatedly:\n' +
 	'void loop() {\n' +
-		`${threadSchedule}\n` +
+		`${threadSchedule ?
+			'// Schedule threads:\n' +
+			`${threadSchedule}\n` : ''}` +
 	'}\n'
 
 	return indent(raw)
@@ -175,6 +191,8 @@ const indent = string => {
 		}
 		formated += char
 	}
+	formated = formated.split('{\n\t\n').join('{\n')
+	formated = formated.split('\n\t\n}').join('\n}')
 	return formated
 }
 export const generateCode = source => {

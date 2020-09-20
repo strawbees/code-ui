@@ -85,7 +85,11 @@ const generator = ({ statement, next }, structure, shallow) => {
 	}
 
 	const type = 'void'
-	const body = `ptYield();\n${getBlockBody(getNext(next), structure)}`
+	let body = ''
+	body += '// Code that runs when the custom block is called:\n'
+	body += '{\n'
+	body += `${getBlockBody(getNext(next), structure)}`
+	body += '}\n'
 
 	parseProcedureDefinition(structure, instance, args, body, type)
 }
