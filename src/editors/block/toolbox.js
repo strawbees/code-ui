@@ -8,8 +8,10 @@ const toolbox = (strings) => ([
 		secondaryColour : window.Blockly.Colours.event.secondary,
 		blocks          : [
 			{
-				type   : 'event_power_on',
-				values : [],
+				type : 'event_power_on',
+			},
+			{
+				type : 'event_when',
 			},
 		]
 	},

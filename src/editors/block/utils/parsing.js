@@ -215,12 +215,13 @@ export const generateCode = source => {
 			// procedure body
 			.forEach(block => parseBlock(block, structure, true))
 
-		// Now parse both the procedureDefinition and the power on event
+		// Now parse both the procedureDefinition and the events
 		json.block
 			.filter(block =>
 				block.attributes &&
 				(
 					block.attributes.type === 'event_power_on' ||
+					block.attributes.type === 'event_when' ||
 					block.attributes.type === 'procedures_definition'
 				)
 			)
