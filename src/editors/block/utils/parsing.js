@@ -146,9 +146,9 @@ export const assembleStructure = structure => {
 	`${procedureDefinition}\n` +
 	`${threadDefinition}\n` +
 	'void setup() {\n' +
-		`${threadInit}\n` +
 		`${oneTimeStatements}\n` +
 		`${oneTimeAssignments}\n` +
+		`${threadInit}\n` +
 		`${body}` +
 	'}\n\n' +
 	'void loop() {\n' +
