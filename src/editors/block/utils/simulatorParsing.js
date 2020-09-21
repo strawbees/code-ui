@@ -51,7 +51,6 @@ export const computeInstanceName = (structure, type, id) => {
 	structure.instances[`${type}${id}`] = name
 	return name
 }
-
 export const parseInstaceDefinition = (structure, instance, type) => {
 	structure.definitions[instance] = `${type ? `${type} ` : ''}${instance};\n`
 }
