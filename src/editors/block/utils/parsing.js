@@ -53,12 +53,26 @@ export const computeInstanceName = (structure, type, id) => {
 }
 
 export const parseInstaceDefinition = (structure, instance, type) => {
-	structure.definitions[instance] = `${type} ${instance};\n`
+	structure.definitions[instance] = `${type ? `${type} ` : ''}${instance};\n`
 }
-export const parseProcedureDefinition = (structure, instance, args, body, type) => {
-	const call = `${instance}(${args.map(arg => `${arg.type} ${arg.name}`).join(', ')})`
-	parseInstaceDefinition(structure, call, type)
-	structure.procedureDefinition[instance] = `${type} ${call} {\n${body}};\n`
+export const parseProcedureDefinition = (structure, instance, args, body) => {
+	const argsString = `${(args && args.length) ? ', ' : ''}${args.map(arg => `${arg.type} ${arg.name}`).join(', ')}`
+	const call = `ptDeclare(${instance}${argsString})`
+	parseInstaceDefinition(structure, call)
+	structure.procedureDefinition[instance] = `ptDefine(${instance}${argsString}){\n`
+	structure.procedureDefinition[instance] += 'ptBeginProcedure();\n'
+	structure.procedureDefinition[instance] += body
+	structure.procedureDefinition[instance] += 'ptEndProcedure();\n};\n'
+}
+export const parseThreadDefinition = (structure, instance, body) => {
+	const call = `ptDeclare(${instance})`
+	parseInstaceDefinition(structure, call)
+	structure.threadDefinition[instance] = `ptDefine(${instance}){\n`
+	structure.threadDefinition[instance] += 'ptBeginThread();\n'
+	structure.threadDefinition[instance] += body
+	structure.threadDefinition[instance] += 'ptEndThread();\n};\n'
+	structure.threadInit[instance] = `ptInit(${instance});\n`
+	structure.threadSchedule[instance] = `ptSchedule(${instance});\n`
 }
 export const parseInstacePropertyRetrieval = (structure, instance, property) => {
 	structure.body += `${instance}.${property}.get()`
@@ -113,29 +127,49 @@ export const assembleStructure = structure => {
 	let {
 		definitions,
 		procedureDefinition,
+		threadDefinition,
+		threadInit,
+		threadSchedule,
 		oneTimeStatements,
 		oneTimeAssignments,
 	} = structure
 
 	definitions = Object.values(definitions).sort().join('')
 	procedureDefinition = Object.values(procedureDefinition).sort().join('')
+	threadDefinition = Object.values(threadDefinition).sort().join('')
+	threadInit = Object.values(threadInit).sort().join('')
+	threadSchedule = Object.values(threadSchedule).sort().join('')
 	oneTimeStatements = Object.values(oneTimeStatements).sort().join('')
 	oneTimeAssignments = Object.values(oneTimeAssignments).sort().join('')
 
+	const protothreadDefinitions = threadDefinition + procedureDefinition
 	const {
 		header,
 		body
 	} = structure
 
 	const raw = `${header}\n` +
-	`${definitions}\n` +
-	`${procedureDefinition}\n` +
+	`${definitions ?
+		'// Forward declarations:\n' +
+		`${definitions}\n` : ''}` +
+	`${protothreadDefinitions ?
+		'// Protothread definitions:\n' +
+		`${protothreadDefinitions}\n` : ''}` +
+	'// Setup code, that runs only once:\n' +
 	'void setup() {\n' +
-	`${oneTimeStatements}\n` +
-	`${oneTimeAssignments}\n` +
-	`${body}` +
+		`${oneTimeStatements ? `${oneTimeStatements}\n` : ''}` +
+		`${oneTimeAssignments ? `${oneTimeAssignments}\n` : ''}` +
+		`${threadInit ?
+			'// Initialize the protothreads:\n' +
+			`${threadInit}\n` : ''}` +
+		`${body ? `${body}\n` : ''}` +
 	'}\n\n' +
-	'void loop() {\n}\n'
+	'// Loop code, that runs repeatedly:\n' +
+	'void loop() {\n' +
+		`${threadSchedule ?
+			'// Schedule the protothreads:\n' +
+			`${threadSchedule}\n` : ''}` +
+	'}\n'
 
 	return indent(raw)
 }
@@ -157,6 +191,8 @@ const indent = string => {
 		}
 		formated += char
 	}
+	formated = formated.split('{\n\t\n').join('{\n')
+	formated = formated.split('\n\t\n}').join('\n}')
 	return formated
 }
 export const generateCode = source => {
@@ -176,6 +212,10 @@ export const generateCode = source => {
 		instances           : {},
 		procedures          : {},
 		procedureDefinition : {},
+		threads             : {},
+		threadDefinition    : {},
+		threadInit          : {},
+		threadSchedule      : {},
 		definitions         : {},
 		oneTimeAssignments  : {},
 		oneTimeStatements   : {},
@@ -183,7 +223,7 @@ export const generateCode = source => {
 	}
 
 	if (json && json.block) {
-		// First deal with the procedures definitions
+		// First deal with the threads definitions
 		json.block
 			.filter(block =>
 				block.attributes &&
@@ -193,12 +233,13 @@ export const generateCode = source => {
 			// procedure body
 			.forEach(block => parseBlock(block, structure, true))
 
-		// Now parse both the procedureDefinition and the power on event
+		// Now parse both the procedureDefinition and the events
 		json.block
 			.filter(block =>
 				block.attributes &&
 				(
 					block.attributes.type === 'event_power_on' ||
+					block.attributes.type === 'event_when' ||
 					block.attributes.type === 'procedures_definition'
 				)
 			)

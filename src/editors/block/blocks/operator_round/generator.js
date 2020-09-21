@@ -11,7 +11,7 @@ const generator = ({ value, next }, structure) => {
 		return
 	}
 	const num = getBlockBody(numBlock, structure)
-	structure.body += `round(${num})`
+	structure.body += `/* round number */ round(${num})`
 	parseNext(next, structure)
 }
 

@@ -20,10 +20,12 @@ const generator = ({ value, next }, structure) => {
 		parseNext(next, structure)
 		return
 	}
+
 	const type = 'ServoMotor'
 	const instance = computeInstanceName(structure, type, place)
 
 	parseInstaceDefinition(structure, instance, type)
+	structure.body += '// Set servo position:\n'
 	setInstacePropertyOneTimeAssignment(structure, instance, 'place', place)
 	parseInstacePropertyAssignment(positionBlock, structure, instance, 'position')
 

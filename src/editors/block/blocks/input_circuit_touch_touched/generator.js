@@ -19,7 +19,7 @@ const generator = ({ value, next }, structure) => {
 
 	parseInstaceDefinition(structure, instance, type)
 	setInstacePropertyOneTimeAssignment(structure, instance, 'place', place)
-	structure.body += `(${instance}.out.get() == 1.0)`
+	structure.body += `/* circuit touch touched */ (${instance}.out.get() == 1.0)`
 
 	parseNext(next, structure)
 }

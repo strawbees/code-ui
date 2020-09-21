@@ -25,6 +25,7 @@ const generator = ({ value, field, next }, structure) => {
 
 	parseInstaceDefinition(structure, name, 'Vector<float>')
 
+	structure.body += '// Add one item at a specific position of the list:\n'
 	structure.body += `${name}.addAt(${indexBody} - 1, ${itemBody});\n`
 
 	parseNext(next, structure)

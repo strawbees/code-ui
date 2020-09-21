@@ -41,10 +41,7 @@ const generator = ({ statement, next }, structure, shallow) => {
 
 	const procId = `${procCode}${argumentIds.join('')}`
 
-	let procName = procCode.split('%b').join('%s') // convert all %b to %s
-	argumentNames.forEach(argumentName =>
-		procName = procName.replace('%s', 'x')
-	)
+	const procName = procCode.split('%').join('')
 
 	const instance = sanitizeCPPVariableName(`block_${procName}`)
 
@@ -88,7 +85,11 @@ const generator = ({ statement, next }, structure, shallow) => {
 	}
 
 	const type = 'void'
-	const body = `Bot::update();\n${getBlockBody(getNext(next), structure)}`
+	let body = ''
+	body += '// Code that runs when custom block is called:\n'
+	body += '{\n'
+	body += `${getBlockBody(getNext(next), structure)}`
+	body += '}\n'
 
 	parseProcedureDefinition(structure, instance, args, body, type)
 }
