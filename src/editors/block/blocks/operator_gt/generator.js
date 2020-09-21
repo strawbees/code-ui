@@ -13,7 +13,7 @@ const generator = ({ value, next }, structure) => {
 	}
 	const operand1 = getBlockBody(operand1Block, structure)
 	const operand2 = getBlockBody(operand2Block, structure)
-	structure.body += `(${operand1} > ${operand2})`
+	structure.body += `/* number is greater than */ (${operand1} > ${operand2})`
 	parseNext(next, structure)
 }
 

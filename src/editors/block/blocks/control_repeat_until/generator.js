@@ -11,9 +11,10 @@ const generator = ({ value, next, statement }, structure) => {
 		return
 	}
 	const condition = getBlockBody(conditionBlock, structure)
+	structure.body += '// Repeat until the condition is false:\n'
 	structure.body += `while(!${condition}) {\n`
 	parseNext(statement, structure)
-	structure.body += 'Bot::update();\n'
+	structure.body += 'ptYield();\n'
 	structure.body += '}\n'
 	parseNext(next, structure)
 }

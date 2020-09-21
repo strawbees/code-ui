@@ -11,9 +11,8 @@ const generator = ({ value, next }, structure) => {
 		return
 	}
 	const condition = getBlockBody(conditionBlock, structure)
-	structure.body += `while(!${condition}) {\n`
-	structure.body += 'Bot::update();\n'
-	structure.body += '}\n'
+	structure.body += '// Wait until the condition is true...\n'
+	structure.body += `ptWaitUntil(${condition});\n`
 	parseNext(next, structure)
 }
 

@@ -13,7 +13,7 @@ const generator = ({ value, next }, structure) => {
 	}
 	const num1 = getBlockBody(num1Block, structure)
 	const num2 = getBlockBody(num2Block, structure)
-	structure.body += `(${num1} - ${num2})`
+	structure.body += `/* subtract number */ (${num1} - ${num2})`
 	parseNext(next, structure)
 }
 
