@@ -1,8 +1,11 @@
 const generator = ({ field }, structure) => {
-	if (!field || !field[0]) {
-		return
+	let value
+	if (field && field[0] && typeof field[0] === 'number') {
+		[value] = field
+	} else {
+		value = 0
 	}
-	structure.body += field[0]
+	structure.body += value
 }
 
 export default generator

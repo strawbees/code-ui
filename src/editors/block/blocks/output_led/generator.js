@@ -26,6 +26,7 @@ const generator = ({ value, next }, structure) => {
 	parseInstaceDefinition(structure, instance, type)
 	setInstacePropertyOneTimeAssignment(structure, instance, 'place', place)
 	setInstacePropertyOneTimeAssignment(structure, instance, 'light', '0')
+	structure.body += '// Set LED light intensity:\n'
 	parseInstacePropertyAssignment(lightBlock, structure, instance, 'light')
 
 	parseNext(next, structure)

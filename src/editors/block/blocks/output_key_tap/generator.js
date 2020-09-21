@@ -23,6 +23,7 @@ const generator = ({ value, next }, structure) => {
 
 	setInstacePropertyOneTimeAssignment(structure, instance, 'key', key)
 
+	structure.body += '// Quickly tap a key:\n'
 	parseInstacePropertyAssignmentFromValue(structure, instance, 'trigger', 1)
 	structure.body += 'ptSleep(100);\n'
 	parseInstacePropertyAssignmentFromValue(structure, instance, 'trigger', 0)

@@ -86,7 +86,7 @@ const generator = ({ statement, next }, structure, shallow) => {
 
 	const type = 'void'
 	let body = ''
-	body += '// Code that runs when the custom block is called:\n'
+	body += '// Code that runs when custom block is called:\n'
 	body += '{\n'
 	body += `${getBlockBody(getNext(next), structure)}`
 	body += '}\n'

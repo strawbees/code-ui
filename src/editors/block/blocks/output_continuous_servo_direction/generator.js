@@ -24,6 +24,7 @@ const generator = ({ value, next }, structure) => {
 	const instance = computeInstanceName(structure, type, place)
 
 	parseInstaceDefinition(structure, instance, type)
+	structure.body += '// Set continuous servo direction:\n'
 	setInstacePropertyOneTimeAssignment(structure, instance, 'place', place)
 	parseInstacePropertyAssignment(directionBlock, structure, instance, 'direction')
 

@@ -142,7 +142,7 @@ export const assembleStructure = structure => {
 	oneTimeStatements = Object.values(oneTimeStatements).sort().join('')
 	oneTimeAssignments = Object.values(oneTimeAssignments).sort().join('')
 
-	const protothreadDefinitions = procedureDefinition + threadDefinition
+	const protothreadDefinitions = threadDefinition + procedureDefinition
 	const {
 		header,
 		body
@@ -160,14 +160,14 @@ export const assembleStructure = structure => {
 		`${oneTimeStatements ? `${oneTimeStatements}\n` : ''}` +
 		`${oneTimeAssignments ? `${oneTimeAssignments}\n` : ''}` +
 		`${threadInit ?
-			'// Initialize threads:\n' +
+			'// Initialize the protothreads:\n' +
 			`${threadInit}\n` : ''}` +
 		`${body ? `${body}\n` : ''}` +
 	'}\n\n' +
 	'// Loop code, that runs repeatedly:\n' +
 	'void loop() {\n' +
 		`${threadSchedule ?
-			'// Schedule threads:\n' +
+			'// Schedule the protothreads:\n' +
 			`${threadSchedule}\n` : ''}` +
 	'}\n'
 

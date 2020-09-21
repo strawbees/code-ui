@@ -32,7 +32,7 @@ const generator = ({
 	const indexInstance = computeInstanceName(structure, 'Repeat', attributes.id)
 	parseInstaceDefinition(structure, indexInstance, indexInstanceType)
 
-	structure.body += `// Repeat ${times} times:\n`
+	structure.body += '// Repeat a specific number of times:\n'
 	structure.body += `for (${indexInstance} = 0; ${indexInstance} < ${times}; ${indexInstance}++) {\n`
 	parseNext(statement, structure)
 	structure.body += 'ptYield();\n}\n'

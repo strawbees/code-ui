@@ -41,6 +41,7 @@ const generator = ({ next, mutation, value }, structure) => {
 		return argValue
 	})
 
+	structure.body += '// Call custom block:\n'
 	structure.body += `ptSpawn(${instance}${(args && args.length) ? ',' : ''}${args.join(', ')});\n`
 
 	parseNext(next, structure)

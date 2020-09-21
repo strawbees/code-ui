@@ -11,6 +11,7 @@ const generator = ({ value, next, statement }, structure) => {
 		return
 	}
 	const condition = getBlockBody(conditionBlock, structure)
+	structure.body += '// Runs only if the condition is true:\n'
 	structure.body += `if (${condition}) {\n`
 	parseNext(statement, structure)
 	structure.body += '}\n'

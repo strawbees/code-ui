@@ -17,6 +17,7 @@ const generator = ({ value, field, next }, structure) => {
 
 	parseInstaceDefinition(structure, name, 'Vector<float>')
 
+	structure.body += '// Delete an item from a specific position of list:\n'
 	structure.body += `${name}.removeAt(${valueBody} - 1);\n`
 
 	parseNext(next, structure)
