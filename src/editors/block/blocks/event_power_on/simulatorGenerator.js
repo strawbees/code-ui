@@ -1,7 +1,7 @@
 import {
 	getNext,
 	computeInstanceName,
-	parseThreadDefinition,
+	parseEventDefinition,
 	getBlockBody,
 } from '../../utils/simulatorParsing'
 
@@ -12,7 +12,7 @@ const generator = ({ attributes, next }, structure) => {
 	body += '{\n'
 	body += getBlockBody(getNext(next), structure)
 	body += '}\n'
-	parseThreadDefinition(structure, instance, body)
+	parseEventDefinition(structure, instance, body)
 }
 
 export default generator

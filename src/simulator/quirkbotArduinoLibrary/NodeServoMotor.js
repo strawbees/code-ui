@@ -4,9 +4,10 @@ import {
 import {
 	Node,
 	Input,
+	HasInterval,
 } from './CommonNodeIncludes'
 
-export class ServoMotor extends Node {
+export class ServoMotor extends HasInterval(Node) {
 	nodeType = 'ServoMotor'
 
 	constructor(...args) {

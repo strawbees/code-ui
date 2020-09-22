@@ -72,6 +72,6 @@ export class DelayUs extends DelayMs {
 	}
 }
 
-export const createDelayMs = () => new DelayMs()
+export const createDelay = () => new DelayMs()
 
-export const createDelayUs = () => new DelayUs()
+export const createDelayMicroseconds = () => new DelayUs()

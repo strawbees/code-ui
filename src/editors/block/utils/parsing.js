@@ -56,20 +56,20 @@ export const parseInstaceDefinition = (structure, instance, type) => {
 }
 export const parseProcedureDefinition = (structure, instance, args, body) => {
 	const argsString = `${(args && args.length) ? ', ' : ''}${args.map(arg => `${arg.type} ${arg.name}`).join(', ')}`
-	const call = `ptDeclare(${instance}${argsString})`
+	const call = `ptDeclareBlock(${instance}${argsString})`
 	parseInstaceDefinition(structure, call)
-	structure.procedureDefinition[instance] = `ptDefine(${instance}${argsString}){\n`
-	structure.procedureDefinition[instance] += 'ptBeginProcedure();\n'
+	structure.procedureDefinition[instance] = `ptDefineBlock(${instance}${argsString}){\n`
+	structure.procedureDefinition[instance] += 'ptBeginBlock();\n'
 	structure.procedureDefinition[instance] += body
-	structure.procedureDefinition[instance] += 'ptEndProcedure();\n};\n'
+	structure.procedureDefinition[instance] += 'ptEndBlock();\n};\n'
 }
-export const parseThreadDefinition = (structure, instance, body) => {
-	const call = `ptDeclare(${instance})`
+export const parseEventDefinition = (structure, instance, body) => {
+	const call = `ptDeclareEvent(${instance})`
 	parseInstaceDefinition(structure, call)
-	structure.threadDefinition[instance] = `ptDefine(${instance}){\n`
-	structure.threadDefinition[instance] += 'ptBeginThread();\n'
+	structure.threadDefinition[instance] = `ptDefineEvent(${instance}){\n`
+	structure.threadDefinition[instance] += 'ptBeginEvent();\n'
 	structure.threadDefinition[instance] += body
-	structure.threadDefinition[instance] += 'ptEndThread();\n};\n'
+	structure.threadDefinition[instance] += 'ptEndEvent();\n};\n'
 	structure.threadInit[instance] = `ptInit(${instance});\n`
 	structure.threadSchedule[instance] = `ptSchedule(${instance});\n`
 }

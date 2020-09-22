@@ -59,17 +59,17 @@ export const parseProcedureDefinition = (structure, instance, args, body) => {
 	const call = `pt.Declare('${instance}'${args && args.length ? ', ' : ''}${args.map(arg => `'${arg.name}'`).join(', ')})`
 	parseInstaceDefinition(structure, call)
 	structure.procedureDefinition[instance] = `pt.Define('${instance}', async (${args.map(arg => arg.name).join(', ')}) => {\n`
-	structure.procedureDefinition[instance] += 'pt.BeginProcedure();\n'
+	structure.procedureDefinition[instance] += 'pt.BeginBlock();\n'
 	structure.procedureDefinition[instance] += body
-	structure.procedureDefinition[instance] += 'pt.EndProcedure();\n});\n'
+	structure.procedureDefinition[instance] += 'pt.EndBlock();\n});\n'
 }
-export const parseThreadDefinition = (structure, instance, body) => {
+export const parseEventDefinition = (structure, instance, body) => {
 	const call = `pt.Declare('${instance}')`
 	parseInstaceDefinition(structure, call)
 	structure.threadDefinition[instance] = `pt.Define('${instance}', async () => {\n`
-	structure.threadDefinition[instance] += 'pt.BeginThread();\n'
+	structure.threadDefinition[instance] += 'pt.BeginEvent();\n'
 	structure.threadDefinition[instance] += body
-	structure.threadDefinition[instance] += 'pt.EndThread();\n});\n'
+	structure.threadDefinition[instance] += 'pt.EndEvent();\n});\n'
 	structure.threadInit[instance] = `pt.Init('${instance}');\n`
 	structure.threadSchedule[instance] = `pt.Schedule('${instance}');\n`
 }
@@ -77,20 +77,20 @@ export const parseInstacePropertyRetrieval = (structure, instance, property) => 
 	structure.body += `${instance}.${property}.get()`
 }
 export const parseInstacePropertyAssignment = (block, structure, instance, property) => {
-	structure.body += `${instance}.${property} = `
+	structure.body += `${instance}.${property}.set(`
 	parseBlock(block, structure)
-	structure.body += ';\n'
+	structure.body += ');\n'
 }
 export const parseInstacePropertyAssignmentFromValue = (structure, instance, property, value) => {
-	structure.body += `${instance}.${property} = ${value}; \n`
+	structure.body += `${instance}.${property}.set(${value}); \n`
 }
 export const parseInstacePropertyOneTimeAssignment = (block, structure, instance, property) => {
 	structure.oneTimeAssignments[`${instance}.${property}`] =
-		`${instance}.${property} = ${getBlockBody(block, structure)};\n`
+		`${instance}.${property}.set(${getBlockBody(block, structure)});\n`
 }
 export const setInstacePropertyOneTimeAssignment = (structure, instance, property, value) => {
 	structure.oneTimeAssignments[`${instance}.${property}`] =
-		`${instance}.${property} = ${value}; \n`
+		`${instance}.${property}.set(${value}); \n`
 }
 export const setGlobalOneTimeStatement = (structure, statement) => {
 	structure.oneTimeStatements[statement] =
@@ -163,7 +163,7 @@ export const assembleStructure = structure => {
 		`${body ? `${body}\n` : ''}` +
 	'}\n\n' +
 	'// Loop code, that runs repeatedly:\n' +
-	'const setup = loop () => {\n' +
+	'const loop = async () => {\n' +
 		`${threadSchedule ?
 			'// Schedule the protothreads:\n' +
 			`${threadSchedule}\n` : ''}` +

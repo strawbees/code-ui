@@ -1,6 +1,6 @@
 import { createWhileLoop } from './cancelableLoops'
 
-export class Prototreads {
+export class Protothreads {
 	STORE = {}
 
 	updatable
@@ -14,15 +14,15 @@ export class Prototreads {
 		args
 	}
 
-	DeclareThread = this.Declare
+	DeclareEvent = this.Declare
 
-	DeclareProcedure = this.Declare
+	DeclareBlock = this.Declare
 
 	Define = (name, fn) => this.STORE[name].fn = fn
 
-	DefineThread = this.Define
+	DefineEvent = this.Define
 
-	DefineProcedure = this.Define
+	DefineBlock = this.Define
 
 	Init = (/* name */) => {}
 
@@ -69,11 +69,11 @@ export class Prototreads {
 		}
 	}
 
-	BeginThread = () => {}
+	BeginEvent = () => {}
 
-	BeginProcedure = () => {}
+	BeginBlock = () => {}
 
-	EndThread = () => {}
+	EndEvent = () => {}
 
-	EndProcedure = () => {}
+	EndBlock = () => {}
 }

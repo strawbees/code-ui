@@ -52,6 +52,7 @@ const SimulatorVMManager = ({
 					* allow us to run multiple instances of the simulator. So
 					* we overload certain variables with versions that we
 					* dynamicaly initialize.
+					**/
 					Bot = new Bot()
 					const delay = createDelay(Bot)
 					const delayMicroseconds = createDelayMicroseconds(Bot)
@@ -115,6 +116,7 @@ const SimulatorVMManager = ({
 				} catch (e) {
 					console.groupCollapsed('Error calling program.handleInternalData()')
 					console.log('Error:', e)
+					console.log('Program:', Program)
 					console.groupEnd()
 					// TODO: dispatch error action to signal the current't program crashed on loop
 					return
@@ -130,6 +132,7 @@ const SimulatorVMManager = ({
 				console.log('Error:', e)
 				console.log('This is likely an error in code inside setup(). See below.')
 				console.log('setup():', programRef.current.setup)
+				console.log('Program:', Program)
 				console.groupEnd()
 				// TODO: dispatch error action to signal the current't program crashed on setup
 				return
@@ -143,6 +146,7 @@ const SimulatorVMManager = ({
 					console.log('Error:', e)
 					console.log('This is likely an error in code inside loop(). See below.')
 					console.log('loop():', programRef.current.loop)
+					console.log('Program:', Program)
 					console.groupEnd()
 					// TODO: dispatch error action to signal the current't program crashed on loop
 					return

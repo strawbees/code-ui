@@ -24,12 +24,6 @@ export const createForLoop = async (statement1, statement2, statement3, doFuncti
 	return loop.exec()
 }
 
-export const createDelay = async (ms, updatable) => {
-	const deadline = Date.now() + ms
-	const loop = new WhileLoop(() => Date.now() < deadline, updatable.update)
-	return loop.exec()
-}
-
 export class WhileLoop {
 	key = null
 

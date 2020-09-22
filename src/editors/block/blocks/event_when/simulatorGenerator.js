@@ -2,7 +2,7 @@ import {
 	getNext,
 	computeInstanceName,
 	getValueBlockByAttributeName,
-	parseThreadDefinition,
+	parseEventDefinition,
 	getBlockBody,
 } from '../../utils/simulatorParsing'
 
@@ -22,7 +22,7 @@ const generator = ({ attributes, next, value }, structure) => {
 	body += 'await pt.Yield();\n})\n'
 
 	const instance = computeInstanceName(structure, 'event_when', attributes.id)
-	parseThreadDefinition(structure, instance, body)
+	parseEventDefinition(structure, instance, body)
 }
 
 export default generator
