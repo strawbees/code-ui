@@ -19,7 +19,7 @@ const generator = ({ value, next }, structure) => {
 
 	parseInstaceDefinition(structure, instance, type)
 	setInstacePropertyOneTimeAssignment(structure, instance, 'place', place)
-	structure.body += `/* light sensor value */ ${instance}.out.get()`
+	structure.body += `${instance}.out.get()/* light sensor value */`
 
 	parseNext(next, structure)
 }

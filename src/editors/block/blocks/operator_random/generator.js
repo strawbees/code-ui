@@ -13,7 +13,7 @@ const generator = ({ value, next }, structure) => {
 	}
 	const from = getBlockBody(fromBlock, structure)
 	const to = getBlockBody(toBlock, structure)
-	structure.body += `/* random */ ((float)random(${from} * 1000, ${to}  * 1000) / 1000.0)`
+	structure.body += `((float)random(${from} * 1000, ${to}  * 1000) / 1000.0)/* random */`
 	parseNext(next, structure)
 }
 

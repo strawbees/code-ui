@@ -17,7 +17,7 @@ const generator = ({ value, field, next }, structure) => {
 
 	parseInstaceDefinition(structure, name, 'Vector')
 
-	structure.body += `/* position of item in list */ (${name}.position(${valueBody}) + 1)`
+	structure.body += `(${name}.position(${valueBody}) + 1)/* position of item in list */`
 
 	parseNext(next, structure)
 }

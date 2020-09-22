@@ -82,6 +82,11 @@ export class Vector {
 		return this.d_data[index]
 	}
 
+	// Const setter
+	set(index, data) {
+		return this.d_data[index] = data
+	}
+
 	// Allocates more space
 	resize(newsize) {
 		this.d_capacity = newsize

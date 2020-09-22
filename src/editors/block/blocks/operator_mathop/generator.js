@@ -76,7 +76,7 @@ const generator = ({ value, field, next }, structure) => {
 			code = ''
 			break
 	}
-	structure.body += `/* ${comment} */ ${code}`
+	structure.body += `${code}/* ${comment} */`
 	parseNext(next, structure)
 }
 

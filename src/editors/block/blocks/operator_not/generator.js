@@ -11,7 +11,7 @@ const generator = ({ value, next }, structure) => {
 		return
 	}
 	const operand = getBlockBody(operandBlock, structure)
-	structure.body += `/* not */ !${operand}`
+	structure.body += `!${operand}/* not */`
 	parseNext(next, structure)
 }
 

@@ -25,7 +25,7 @@ import { Keyboard } from './core/Keyboard'
 // #include "Mouse.h"
 // #include "MIDIUSB.h"
 
-import Vector from './Vector'
+import { Vector } from './Vector'
 
 export * from './core/wdt'
 export * from './core/Arduino'

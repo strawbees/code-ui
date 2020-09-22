@@ -26,7 +26,7 @@ const generator = ({ value, field, next }, structure) => {
 	parseInstaceDefinition(structure, name, 'Vector')
 
 	structure.body += '// Replace the item at a specific position of list:\n'
-	structure.body += `${name}[${indexBody} - 1] = ${itemBody};\n`
+	structure.body += `${name}.set(${indexBody} - 1, ${itemBody});\n`
 
 	parseNext(next, structure)
 }

@@ -52,8 +52,26 @@ export const computeInstanceName = (structure, type, id) => {
 	return name
 }
 export const parseInstaceDefinition = (structure, instance, type) => {
-	const varType = type !== 'Number' ? 'const' : 'let'
-	structure.definitions[instance] = `${type ? `${varType} ` : ''}${instance}${type ? ` = new ${type}(${type !== 'Number' ? 'Bot' : ''})` : ''};\n`
+	let varType
+	switch (type) {
+		case 'Number':
+			varType = 'let'
+			break
+		default:
+			varType = 'const'
+			break
+	}
+	let constructorArgs
+	switch (type) {
+		case 'Number':
+		case 'Vector':
+			constructorArgs = ''
+			break
+		default:
+			constructorArgs = 'Bot'
+			break
+	}
+	structure.definitions[instance] = `${type ? `${varType} ` : ''}${instance}${type ? ` = new ${type}(${constructorArgs})` : ''};\n`
 }
 export const parseProcedureDefinition = (structure, instance, args, body) => {
 	const call = `pt.Declare('${instance}'${args && args.length ? ', ' : ''}${args.map(arg => `'${arg.name}'`).join(', ')})`

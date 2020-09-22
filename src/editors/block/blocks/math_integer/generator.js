@@ -5,7 +5,7 @@ const generator = ({ field }, structure) => {
 	} else {
 		value = 0
 	}
-	structure.body += `/* integer */ ${value}`
+	structure.body += `${value}/* integer */`
 }
 
 export default generator

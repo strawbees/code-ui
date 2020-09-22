@@ -9,7 +9,7 @@ const generator = ({ field, next }, structure) => {
 
 	parseInstaceDefinition(structure, name, 'float')
 
-	structure.body += `/* value of variable */ ${name}`
+	structure.body += `${name}/* value of variable */`
 
 	parseNext(next, structure)
 }

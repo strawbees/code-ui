@@ -17,7 +17,7 @@ const generator = ({ value, field, next }, structure) => {
 
 	parseInstaceDefinition(structure, name, 'Vector')
 
-	structure.body += `/* does list contains item?  */ ${name}.contains(${valueBody})`
+	structure.body += `${name}.contains(${valueBody})/* does list contains item? */ `
 
 	parseNext(next, structure)
 }

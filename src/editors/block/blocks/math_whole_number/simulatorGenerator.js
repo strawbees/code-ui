@@ -5,7 +5,7 @@ const generator = ({ field }, structure) => {
 	} else {
 		value = 0
 	}
-	structure.body += `/* whole number */ ${value}`
+	structure.body += `${value}/* whole number */`
 }
 
 export default generator
