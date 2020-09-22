@@ -12,10 +12,10 @@ const generator = ({ value, next, statement }, structure) => {
 	}
 	const condition = getBlockBody(conditionBlock, structure)
 	structure.body += '// Repeat until the condition is false:\n'
-	structure.body += `while(!${condition}) {\n`
+	structure.body += `await createWhileLoop(() => !${condition}, async () => {\n`
 	parseNext(statement, structure)
-	structure.body += 'ptYield();\n'
-	structure.body += '}\n'
+	structure.body += 'await pt.Yield();\n'
+	structure.body += '})\n'
 	parseNext(next, structure)
 }
 

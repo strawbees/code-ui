@@ -49,24 +49,24 @@ const generator = ({ attributes, value, next }, structure) => {
 	const beginVar = computeInstanceName(structure, 'servoB', attributes.id)
 	const changeVar = computeInstanceName(structure, 'servoC', attributes.id)
 	const durationVar = computeInstanceName(structure, 'servoD', attributes.id)
-	parseInstaceDefinition(structure, startVar, 'float')
-	parseInstaceDefinition(structure, beginVar, 'float')
-	parseInstaceDefinition(structure, changeVar, 'float')
-	parseInstaceDefinition(structure, durationVar, 'float')
+	parseInstaceDefinition(structure, startVar, 'Number')
+	parseInstaceDefinition(structure, beginVar, 'Number')
+	parseInstaceDefinition(structure, changeVar, 'Number')
+	parseInstaceDefinition(structure, durationVar, 'Number')
 
 	structure.body += '// Gradually transition servo position:\n'
-	structure.body += `${startVar} = Bot::seconds(); // start time\n`
+	structure.body += `${startVar} = Bot.seconds(); // start time\n`
 	structure.body += `${beginVar} = `
 	parseInstacePropertyRetrieval(structure, instance, 'position')
 	structure.body += '; // begin position\n'
 	structure.body += `${changeVar} = ${position} - ${beginVar}; // change in position\n`
 	structure.body += `${durationVar} = ${duration}; // duration of transition\n`
-	structure.body += `while (Bot::seconds() < ${startVar} + ${durationVar}) {\n`
+	structure.body += `await createWhileLoop(() => Bot.seconds() < ${startVar} + ${durationVar}, async () => {\n`
 	parseInstacePropertyAssignmentFromValue(structure, instance, 'position',
-		`Easing::function(${easing}, Bot::seconds() - ${startVar}, ${beginVar}, ${changeVar}, ${durationVar})`
+		`Easing.function(${easing}, Bot.seconds() - ${startVar}, ${beginVar}, ${changeVar}, ${durationVar})`
 	)
-	structure.body += 'ptYield();\n'
-	structure.body += '}\n'
+	structure.body += 'await pt.Yield();\n'
+	structure.body += '})\n'
 	parseInstacePropertyAssignmentFromValue(structure, instance, 'position', position)
 
 	parseNext(next, structure)

@@ -10,12 +10,10 @@ const generator = ({ field, next }, structure) => {
 		parseNext(next, structure)
 		return
 	}
-	parseInstaceDefinition(structure, name, 'Vector<float>')
+	parseInstaceDefinition(structure, name, 'Vector')
 
 	structure.body += '// Delete all items from list:\n'
-	structure.body += `while(${name}.size()) {\n`
-	structure.body += `${name}.removeAt(0);\n`
-	structure.body += '}\n'
+	structure.body += `${name}.clear();\n`
 
 	parseNext(next, structure)
 }

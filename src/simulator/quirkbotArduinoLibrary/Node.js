@@ -3,12 +3,12 @@ export class Node {
 		this.Bot = Bot
 		if (id) {
 			this.id = id
-			if (Node.ID_FACTORY < id) Node.ID_FACTORY = id
+			if (this.Bot.NODE_ID_FACTORY < id) this.Bot.NODE_ID_FACTORY = id
 		} else {
-			this.id = Node.ID_FACTORY++
+			this.id = this.Bot.NODE_ID_FACTORY++
 		}
 
-		Bot.nodes.add(this)
+		this.Bot.nodes.add(this)
 	}
 
 	destructor() {
@@ -29,7 +29,7 @@ export class Node {
 
 	Bot
 
-	static ID_FACTORY = 0
+	static ID_FACTORY = 0 // we use instead the Bot.NOTE_ID_FACTORY
 
 	getTypedId() {
 		return `${this.nodeType}${this.id}`

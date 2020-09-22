@@ -31,7 +31,7 @@ const generator = ({ value, next }, structure) => {
 
 	structure.body += '// Hold a key down, for a specific amount of time:\n'
 	parseInstacePropertyAssignmentFromValue(structure, instance, 'trigger', 1)
-	structure.body += `ptSleep(${getBlockBody(durationBlock, structure)} * 1000);\n`
+	structure.body += `await pt.Sleep(${getBlockBody(durationBlock, structure)} * 1000);\n`
 	parseInstacePropertyAssignmentFromValue(structure, instance, 'trigger', 0)
 
 	parseNext(next, structure)

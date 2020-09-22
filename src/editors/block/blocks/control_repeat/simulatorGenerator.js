@@ -33,9 +33,9 @@ const generator = ({
 	parseInstaceDefinition(structure, indexInstance, indexInstanceType)
 
 	structure.body += '// Repeat a specific number of times:\n'
-	structure.body += `for (${indexInstance} = 0; ${indexInstance} < ${times}; ${indexInstance}++) {\n`
+	structure.body += `await createForLoop(() => ${indexInstance} = 0, () => ${indexInstance} < ${times}, () => ${indexInstance}++, () => {\n`
 	parseNext(statement, structure)
-	structure.body += 'ptYield();\n}\n'
+	structure.body += 'await pt.Yield();\n})\n'
 	parseNext(next, structure)
 }
 

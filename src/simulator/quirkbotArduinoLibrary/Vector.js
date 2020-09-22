@@ -69,7 +69,7 @@ export class Vector {
 	clear() {
 		this.d_size = 0
 		this.d_capacity = 0
-		this.d_data = 0
+		this.d_data = []
 	}
 
 	// Size getter

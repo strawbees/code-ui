@@ -61,7 +61,7 @@ const generator = ({ statement, next }, structure, shallow) => {
 				value.shadow[0].field &&
 				value.shadow[0].field[0]
 			const name = sanitizeCPPVariableName(id)
-			const type = rawType === 'argument_reporter_boolean' ? 'bool' : 'float'
+			const type = rawType === 'argument_reporter_boolean' ? 'let' : 'let'
 			const argDefault = rawType === 'argument_reporter_boolean' ? false : 0
 			acc[id] = {
 				id,

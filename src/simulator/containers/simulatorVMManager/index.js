@@ -46,18 +46,23 @@ const SimulatorVMManager = ({
 				/* eslint-disable no-new-func */
 				const createProgramClass = (generatedCode) => new Function(...Object.keys(Quirkbot), `
 					'use strict'
-					Node.ID_FACTORY = 0 // reset the node ids
-					Bot = new Bot() // overload bot class with an instance
-					delay.registerUpdatable(Bot)
-					delayMicroseconds.registerUpdatable(Bot)
-					doWhile.registerUpdatable(Bot)
+					/**
+					* Adaptations from the static C++ source to JS
+					* The Quirkbot C++ source uses static data - this would not
+					* allow us to run multiple instances of the simulator. So
+					* we overload certain variables with versions that we
+					* dynamicaly initialize.
+					Bot = new Bot()
+					const delay = createDelay(Bot)
+					const delayMicroseconds = createDelayMicroseconds(Bot)
+					const pt = new Protothreads(Bot)
 
 					${generatedCode}
 
 					const _cancel = () => {
 						delay.cancel()
 						delayMicroseconds.cancel()
-						doWhile.cancel()
+						cancelAllLoops()
 					}
 					const _setup = async () => {
 						await Bot.start()

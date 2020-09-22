@@ -1,7 +1,7 @@
 const generator = ({ field }, structure) => {
 	let value
-	if (field && field[0] && typeof field[0] === 'number') {
-		[value] = field
+	if (field && field[0] && typeof field[0] === 'string') {
+		value = Number.parseInt(field[0], 10)
 	} else {
 		value = 0
 	}

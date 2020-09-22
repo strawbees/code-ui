@@ -2,9 +2,9 @@ import { parseNext } from '../../utils/simulatorParsing'
 
 const generator = ({ next, statement }, structure) => {
 	structure.body += '// Repeat forever:\n'
-	structure.body += 'while(true) {\n'
+	structure.body += 'await createWhileLoop(() => true, async () => {\n'
 	parseNext(statement, structure)
-	structure.body += 'ptYield();\n}\n'
+	structure.body += 'await pt.Yield();\n})\n'
 	parseNext(next, structure)
 }
 

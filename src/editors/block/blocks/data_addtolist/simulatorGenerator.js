@@ -15,7 +15,7 @@ const generator = ({ value, field, next }, structure) => {
 	const valueBody = getBlockBody(valueBlock, structure)
 	const name = sanitizeCPPVariableName(`list_${field && field[0]}`)
 
-	parseInstaceDefinition(structure, name, 'Vector<float>')
+	parseInstaceDefinition(structure, name, 'Vector')
 
 	structure.body += '// Add one item at the end of list:\n'
 	structure.body += `${name}.add(${valueBody});\n`

@@ -1,7 +1,10 @@
-import { createDelayMs, createDelayUs } from './core/createDelay'
-import { createDoWhile } from './core/createDoWhile'
+/* eslint-disable import/export,no-underscore-dangle,camelcase */
+export * from './core/board' //
 
-export * from './core/board'
+export const Quirkbot_h_ = true
+
+export * from './core/Arduino'
+export * from './core/protothreads'
 export * from './Bot'
 export * from './Node'
 
@@ -47,7 +50,6 @@ export * from './NodeSystemMemory'
 export * from './NodeSerialMonitor'
 export * from './NodeTime'
 
-// Overloaded delays and loops
-export const delay = createDelayMs()
-export const delayMicroseconds = createDelayUs()
-export const doWhile = createDoWhile()
+// Safe delays and loops need to be created on the program itself
+export * from './core/createDelay'
+export * from './core/cancelableLoops'

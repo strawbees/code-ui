@@ -14,12 +14,12 @@ const generator = ({ attributes, next, value }, structure) => {
 	const condition = getBlockBody(conditionBlock, structure)
 
 	let body = ''
-	body += 'while (true) {\n'
+	body += 'await createWhileLoop(() => true, async () => {\n'
 	body += '// Code that runs everytime an event happens:\n'
 	body += `if (${condition}) {\n`
 	body += getBlockBody(getNext(next), structure)
 	body += '}\n'
-	body += 'ptYield();\n}\n'
+	body += 'await pt.Yield();\n})\n'
 
 	const instance = computeInstanceName(structure, 'event_when', attributes.id)
 	parseThreadDefinition(structure, instance, body)

@@ -52,26 +52,26 @@ export const computeInstanceName = (structure, type, id) => {
 	return name
 }
 export const parseInstaceDefinition = (structure, instance, type) => {
-	structure.definitions[instance] = `${type ? `${type} ` : ''}${instance};\n`
+	const varType = type !== 'Number' ? 'const' : 'let'
+	structure.definitions[instance] = `${type ? `${varType} ` : ''}${instance}${type ? ` = new ${type}(${type !== 'Number' ? 'Bot' : ''})` : ''};\n`
 }
 export const parseProcedureDefinition = (structure, instance, args, body) => {
-	const argsString = `${(args && args.length) ? ', ' : ''}${args.map(arg => `${arg.type} ${arg.name}`).join(', ')}`
-	const call = `ptDeclare(${instance}${argsString})`
+	const call = `pt.Declare('${instance}'${args && args.length ? ', ' : ''}${args.map(arg => `'${arg.name}'`).join(', ')})`
 	parseInstaceDefinition(structure, call)
-	structure.procedureDefinition[instance] = `ptDefine(${instance}${argsString}){\n`
-	structure.procedureDefinition[instance] += 'ptBeginProcedure();\n'
+	structure.procedureDefinition[instance] = `pt.Define('${instance}', async (${args.map(arg => arg.name).join(', ')}) => {\n`
+	structure.procedureDefinition[instance] += 'pt.BeginProcedure();\n'
 	structure.procedureDefinition[instance] += body
-	structure.procedureDefinition[instance] += 'ptEndProcedure();\n};\n'
+	structure.procedureDefinition[instance] += 'pt.EndProcedure();\n});\n'
 }
 export const parseThreadDefinition = (structure, instance, body) => {
-	const call = `ptDeclare(${instance})`
+	const call = `pt.Declare('${instance}')`
 	parseInstaceDefinition(structure, call)
-	structure.threadDefinition[instance] = `ptDefine(${instance}){\n`
-	structure.threadDefinition[instance] += 'ptBeginThread();\n'
+	structure.threadDefinition[instance] = `pt.Define('${instance}', async () => {\n`
+	structure.threadDefinition[instance] += 'pt.BeginThread();\n'
 	structure.threadDefinition[instance] += body
-	structure.threadDefinition[instance] += 'ptEndThread();\n};\n'
-	structure.threadInit[instance] = `ptInit(${instance});\n`
-	structure.threadSchedule[instance] = `ptSchedule(${instance});\n`
+	structure.threadDefinition[instance] += 'pt.EndThread();\n});\n'
+	structure.threadInit[instance] = `pt.Init('${instance}');\n`
+	structure.threadSchedule[instance] = `pt.Schedule('${instance}');\n`
 }
 export const parseInstacePropertyRetrieval = (structure, instance, property) => {
 	structure.body += `${instance}.${property}.get()`
@@ -143,11 +143,10 @@ export const assembleStructure = structure => {
 
 	const protothreadDefinitions = threadDefinition + procedureDefinition
 	const {
-		header,
 		body
 	} = structure
 
-	const raw = `${header}\n` +
+	const raw = '' +
 	`${definitions ?
 		'// Forward declarations:\n' +
 		`${definitions}\n` : ''}` +
@@ -155,7 +154,7 @@ export const assembleStructure = structure => {
 		'// Protothread definitions:\n' +
 		`${protothreadDefinitions}\n` : ''}` +
 	'// Setup code, that runs only once:\n' +
-	'void setup() {\n' +
+	'const setup = async () => {\n' +
 		`${oneTimeStatements ? `${oneTimeStatements}\n` : ''}` +
 		`${oneTimeAssignments ? `${oneTimeAssignments}\n` : ''}` +
 		`${threadInit ?
@@ -164,7 +163,7 @@ export const assembleStructure = structure => {
 		`${body ? `${body}\n` : ''}` +
 	'}\n\n' +
 	'// Loop code, that runs repeatedly:\n' +
-	'void loop() {\n' +
+	'const setup = loop () => {\n' +
 		`${threadSchedule ?
 			'// Schedule the protothreads:\n' +
 			`${threadSchedule}\n` : ''}` +
@@ -206,7 +205,6 @@ export const generateCode = source => {
 	}
 
 	const structure = {
-		header              : '#include "Quirkbot.h"\n',
 		types               : {},
 		instances           : {},
 		procedures          : {},

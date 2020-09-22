@@ -22,7 +22,6 @@ import {
 
 import { millis } from './core/Arduino'
 import { Keyboard } from './core/Keyboard'
-// #include "Keyboard.h"
 // #include "Mouse.h"
 // #include "MIDIUSB.h"
 
@@ -60,8 +59,11 @@ let ID_FACTORY = 0
 export class Bot {
 	id
 
+	NODE_ID_FACTORY
+
 	constructor() {
 		this.id = ID_FACTORY++
+		this.NODE_ID_FACTORY = 0
 	}
 
 	async start() {

@@ -23,7 +23,7 @@ const generator = ({ value, field, next }, structure) => {
 
 	const name = sanitizeCPPVariableName(`list_${field && field[0]}`)
 
-	parseInstaceDefinition(structure, name, 'Vector<float>')
+	parseInstaceDefinition(structure, name, 'Vector')
 
 	structure.body += '// Add one item at a specific position of the list:\n'
 	structure.body += `${name}.addAt(${indexBody} - 1, ${itemBody});\n`

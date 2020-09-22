@@ -7,6 +7,10 @@ export class DelayMs {
 
 	reject = null
 
+	constructor(updatable) {
+		this.updatable = updatable
+	}
+
 	registerUpdatable = (updatable) => {
 		this.updatable = updatable
 	}
