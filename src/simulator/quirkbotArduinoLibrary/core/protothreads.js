@@ -30,7 +30,7 @@ export class Protothreads {
 
 	Sleep = async (ms) => {
 		const deadline = Date.now() + ms
-		await createWhileLoop(() => Date.now() < deadline, this.Yield, 'sleep '+Date.now())
+		await createWhileLoop(() => Date.now() < deadline, this.Yield)
 	}
 
 	WaitUntil = async (condition) => {
@@ -50,7 +50,7 @@ export class Protothreads {
 	}
 
 	YieldUntil = async (condition) => {
-		await createWhileLoop(async () => !await condition(), this.Yield, 'Yield '+Date.now())
+		await createWhileLoop(async () => !await condition(), this.Yield)
 	}
 
 	Spawn = async (name, ...args) => {
@@ -83,12 +83,10 @@ export class Protothreads {
 	EndEvent = async () => {
 		await this.YieldUntil(async () => false)
 		await this.End()
-		console.log('Event ended')
 	}
 
 	EndBlock = async () => {
 		await this.Exit()
 		await this.End()
-		console.log('Block ended')
 	}
 }

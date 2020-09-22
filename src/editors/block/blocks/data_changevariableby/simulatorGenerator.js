@@ -18,7 +18,7 @@ const generator = ({ value, field, next }, structure) => {
 	parseInstaceDefinition(structure, name, 'Number')
 
 	structure.body += '// Increment the value of variable:\n'
-	structure.body += `${name} += ${valueBody};console.log(${name})\n`
+	structure.body += `${name} += ${valueBody};\n`
 
 	parseNext(next, structure)
 }

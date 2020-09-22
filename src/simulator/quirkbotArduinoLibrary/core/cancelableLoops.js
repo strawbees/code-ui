@@ -84,7 +84,6 @@ export class WhileLoop {
 
 		const tick = async () => {
 			clearTimeout(this.timer)
-			//console.log('loop', this.name)
 			if (!await this.testFunction()) {
 				resolve()
 				this.destructor()
