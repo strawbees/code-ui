@@ -11,19 +11,19 @@ export class DelayMs {
 		this.updatable = updatable
 	}
 
-	registerUpdatable = (updatable) => {
-		this.updatable = updatable
-	}
-
-	cancel = () => {
+	destructor() {
 		clearTimeout(this.timer)
 		this.timer = null
-		if (this.reject) {
-			this.reject(new Error('Delay was cancelled.'))
-		}
 		this.resolve = null
 		this.reject = null
 		this.updatable = null
+	}
+
+	cancel = () => {
+		if (this.resolve) {
+			this.resolve()
+		}
+		this.destructor()
 	}
 
 	end = () => {

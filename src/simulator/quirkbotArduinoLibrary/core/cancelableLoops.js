@@ -5,11 +5,6 @@ export const cancelAllLoops = () => {
 	STORE.clear()
 }
 
-export const endAllLoops = () => {
-	STORE.forEach((value) => value.end())
-	STORE.clear()
-}
-
 export const createWhileLoop = async (testFunction, doFunction) => {
 	const loop = new WhileLoop(testFunction, doFunction)
 	return loop.exec()
@@ -59,13 +54,6 @@ export class WhileLoop {
 	}
 
 	cancel = () => {
-		if (this.reject) {
-			this.reject(new Error('Delay was cancelled.'))
-		}
-		this.destructor()
-	}
-
-	end = () => {
 		if (this.resolve) {
 			this.resolve()
 		}
