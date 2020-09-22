@@ -12,7 +12,7 @@ const generator = ({ value, next }, structure) => {
 	}
 	const condition = getBlockBody(conditionBlock, structure)
 	structure.body += '// Wait until the condition is true...\n'
-	structure.body += `await pt.WaitUntil(() => ${condition});\n`
+	structure.body += `await pt.WaitUntil(async () => ${condition});\n`
 	parseNext(next, structure)
 }
 

@@ -15,10 +15,10 @@ const generator = ({ value, field, next }, structure) => {
 	const valueBody = getBlockBody(valueBlock, structure)
 	const name = sanitizeCPPVariableName(`var_${field && field[0]}`)
 
-	parseInstaceDefinition(structure, name, 'float')
+	parseInstaceDefinition(structure, name, 'Number')
 
 	structure.body += '// Increment the value of variable:\n'
-	structure.body += `${name} += ${valueBody};\n`
+	structure.body += `${name} += ${valueBody};console.log(${name})\n`
 
 	parseNext(next, structure)
 }

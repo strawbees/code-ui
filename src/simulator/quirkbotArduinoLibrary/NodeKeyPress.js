@@ -46,7 +46,6 @@ export class KeyPress extends HasTrigger(Node) {
 		return {
 			nodeType   : this.nodeType,
 			id         : this.getTypedId(),
-			interval   : this.interval.get(),
 			key        : this.key.get(),
 			currentKey : this.currentKey,
 			pressed    : this.pressed,

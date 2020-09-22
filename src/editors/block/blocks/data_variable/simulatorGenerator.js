@@ -7,7 +7,7 @@ import {
 const generator = ({ field, next }, structure) => {
 	const name = sanitizeCPPVariableName(`var_${field && field[0]}`)
 
-	parseInstaceDefinition(structure, name, 'float')
+	parseInstaceDefinition(structure, name, 'Number')
 
 	structure.body += `/* value of variable */ ${name}`
 

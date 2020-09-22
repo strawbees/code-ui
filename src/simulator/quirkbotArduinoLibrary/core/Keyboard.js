@@ -63,16 +63,16 @@ export const KEY_F24 = 0xFB
 
 /* eslint-disable no-console */
 export class Keyboard /* : public Print */ {
-	begin() {}
+	static begin() {}
 
-	end() {}
+	static end() {}
 
-	write(k) { console.log('Arduino>> Keyboard.write:', k) }
+	static write(k) { console.log('Arduino>> Keyboard.write:', k) }
 
-	press(k) { console.log('Arduino>> Keyboard.press:', k) }
+	static press(k) { console.log('Arduino>> Keyboard.press:', k) }
 
-	release(k) { console.log('Arduino>> Keyboard.release:', k) }
+	static release(k) { console.log('Arduino>> Keyboard.release:', k) }
 
-	releaseAll() {}
+	static releaseAll() {}
 }
 /* eslint-enable no-console */

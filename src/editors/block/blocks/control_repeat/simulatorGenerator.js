@@ -28,12 +28,12 @@ const generator = ({
 		parseNext(next, structure)
 		return
 	}
-	const indexInstanceType = 'int'
+	const indexInstanceType = 'Number'
 	const indexInstance = computeInstanceName(structure, 'Repeat', attributes.id)
 	parseInstaceDefinition(structure, indexInstance, indexInstanceType)
 
 	structure.body += '// Repeat a specific number of times:\n'
-	structure.body += `await createForLoop(() => ${indexInstance} = 0, () => ${indexInstance} < ${times}, () => ${indexInstance}++, () => {\n`
+	structure.body += `await createForLoop(async () => ${indexInstance} = 0, async () => ${indexInstance} < ${times}, async () => ${indexInstance}++, async () => {\n`
 	parseNext(statement, structure)
 	structure.body += 'await pt.Yield();\n})\n'
 	parseNext(next, structure)

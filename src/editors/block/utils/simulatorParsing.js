@@ -59,19 +59,19 @@ export const parseProcedureDefinition = (structure, instance, args, body) => {
 	const call = `pt.Declare('${instance}'${args && args.length ? ', ' : ''}${args.map(arg => `'${arg.name}'`).join(', ')})`
 	parseInstaceDefinition(structure, call)
 	structure.procedureDefinition[instance] = `pt.Define('${instance}', async (${args.map(arg => arg.name).join(', ')}) => {\n`
-	structure.procedureDefinition[instance] += 'pt.BeginBlock();\n'
+	structure.procedureDefinition[instance] += 'await pt.BeginBlock();\n'
 	structure.procedureDefinition[instance] += body
-	structure.procedureDefinition[instance] += 'pt.EndBlock();\n});\n'
+	structure.procedureDefinition[instance] += 'await pt.EndBlock();\n});\n'
 }
 export const parseEventDefinition = (structure, instance, body) => {
 	const call = `pt.Declare('${instance}')`
 	parseInstaceDefinition(structure, call)
 	structure.threadDefinition[instance] = `pt.Define('${instance}', async () => {\n`
-	structure.threadDefinition[instance] += 'pt.BeginEvent();\n'
+	structure.threadDefinition[instance] += 'await pt.BeginEvent();\n'
 	structure.threadDefinition[instance] += body
-	structure.threadDefinition[instance] += 'pt.EndEvent();\n});\n'
-	structure.threadInit[instance] = `pt.Init('${instance}');\n`
-	structure.threadSchedule[instance] = `pt.Schedule('${instance}');\n`
+	structure.threadDefinition[instance] += 'await pt.EndEvent();\n});\n'
+	structure.threadInit[instance] = `await pt.Init('${instance}');\n`
+	structure.threadSchedule[instance] = `await pt.Schedule('${instance}');\n`
 }
 export const parseInstacePropertyRetrieval = (structure, instance, property) => {
 	structure.body += `${instance}.${property}.get()`

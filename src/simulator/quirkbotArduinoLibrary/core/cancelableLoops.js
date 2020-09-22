@@ -5,13 +5,23 @@ export const cancelAllLoops = () => {
 	STORE.clear()
 }
 
-export const createWhileLoop = async (testFunction, doFunction) => {
+export const endAllLoops = () => {
+	STORE.forEach((value) => value.end())
+	STORE.clear()
+}
+
+export const createWhileLoop = async (testFunction, doFunction, name) => {
 	const loop = new WhileLoop(testFunction, doFunction)
-	return loop.exec()
+	loop.name = name
+	try {
+		await loop.exec()
+	} catch (e) {
+
+	}
 }
 
 export const createForLoop = async (statement1, statement2, statement3, doFunction) => {
-	statement1()
+	await statement1()
 	const loop = new WhileLoop(statement2, async () => {
 		await doFunction()
 		await statement3()
@@ -46,6 +56,7 @@ export class WhileLoop {
 	destructor() {
 		clearTimeout(this.timer)
 		STORE.delete(this.key)
+		this.timer = null
 		this.key = null
 		this.resolve = null
 		this.reject = null
@@ -54,6 +65,13 @@ export class WhileLoop {
 	}
 
 	cancel = () => {
+		if (this.reject) {
+			this.reject(new Error('Loop was canceled.'))
+		}
+		this.destructor()
+	}
+
+	end = () => {
 		if (this.resolve) {
 			this.resolve()
 		}
@@ -66,6 +84,7 @@ export class WhileLoop {
 
 		const tick = async () => {
 			clearTimeout(this.timer)
+			//console.log('loop', this.name)
 			if (!await this.testFunction()) {
 				resolve()
 				this.destructor()

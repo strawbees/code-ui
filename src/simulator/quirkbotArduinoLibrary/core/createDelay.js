@@ -20,8 +20,8 @@ export class DelayMs {
 	}
 
 	cancel = () => {
-		if (this.resolve) {
-			this.resolve()
+		if (this.reject) {
+			this.reject(new Error('Delay was canceled.'))
 		}
 		this.destructor()
 	}

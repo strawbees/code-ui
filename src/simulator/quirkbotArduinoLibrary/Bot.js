@@ -233,11 +233,11 @@ export class Bot {
 
 	// Keyboard management
 	pressKey(key) {
-		Keyboard.pressKey(key)
+		Keyboard.press(key)
 	}
 
 	releaseKey(key) {
-		Keyboard.releaseKey(key)
+		Keyboard.release(key)
 	}
 
 	releaseAllKeys() {

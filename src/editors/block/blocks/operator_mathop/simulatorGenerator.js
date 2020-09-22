@@ -11,7 +11,6 @@ const generator = ({ value, field, next }, structure) => {
 		return
 	}
 	const num = getBlockBody(numBlock, structure)
-	console.log(num)
 
 	const op = field && field[0]
 	let code = ''
@@ -19,59 +18,59 @@ const generator = ({ value, field, next }, structure) => {
 	switch (op) {
 		case 'abs':
 			code = `abs(${num})`
-			comment = 'absolute value of number'
+			comment = 'absolute value'
 			break
 		case 'floor':
 			code = `floor(${num})`
-			comment = 'floor of number'
+			comment = 'floor'
 			break
 		case 'ceiling':
 			code = `ceil(${num})`
-			comment = 'ceiling of number'
+			comment = 'ceiling'
 			break
 		case 'sqrt':
 			code = `sqrt(${num})`
-			comment = 'square root of number'
+			comment = 'square root'
 			break
 		case 'sin':
 			code = `sin(${num})`
-			comment = 'sine of number'
+			comment = 'sine'
 			break
 		case 'cos':
 			code = `cos(${num})`
-			comment = 'cosine of number'
+			comment = 'cosine'
 			break
 		case 'tan':
 			code = `tan(${num})`
-			comment = 'tangent of number'
+			comment = 'tangent'
 			break
 		case 'asin':
 			code = `asin(${num})`
-			comment = 'arc sine of number'
+			comment = 'arc sine'
 			break
 		case 'acos':
 			code = `acos(${num})`
-			comment = 'arc cosine of number'
+			comment = 'arc cosine'
 			break
 		case 'atan':
 			code = `atan(${num})`
-			comment = 'arc tangent of number'
+			comment = 'arc tangent'
 			break
 		case 'ln':
 			code = `log(${num})`
-			comment = 'arc tangent of number'
+			comment = 'arc tangent'
 			break
 		case 'log':
 			code = `log10(${num})`
-			comment = 'natural logarithm of number'
+			comment = 'natural logarithm'
 			break
 		case 'e ^':
 			code = `exp(${num})`
-			comment = 'exponetial function of number'
+			comment = 'exponetial function'
 			break
 		case '10 ^':
 			code = `pow(10,${num})`
-			comment = 'base 10 exponet of number'
+			comment = 'base 10 exponet'
 			break
 		default:
 			code = ''

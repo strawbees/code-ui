@@ -24,13 +24,13 @@ export class Protothreads {
 
 	DefineBlock = this.Define
 
-	Init = (/* name */) => {}
+	Init = async (/* name */) => {}
 
-	Begin = () => {}
+	Begin = async () => {}
 
 	Sleep = async (ms) => {
 		const deadline = Date.now() + ms
-		await createWhileLoop(() => Date.now() < deadline, this.Yield)
+		await createWhileLoop(() => Date.now() < deadline, this.Yield, 'sleep '+Date.now())
 	}
 
 	WaitUntil = async (condition) => {
@@ -45,10 +45,12 @@ export class Protothreads {
 		await createWhileLoop(() => this.STORE[name].running, this.Yield)
 	}
 
-	Yield = async () => this.updatable.update()
+	Yield = async () => {
+		await this.updatable.update()
+	}
 
 	YieldUntil = async (condition) => {
-		await createWhileLoop(async () => !await condition(), this.Yield)
+		await createWhileLoop(async () => !await condition(), this.Yield, 'Yield '+Date.now())
 	}
 
 	Spawn = async (name, ...args) => {
@@ -57,23 +59,36 @@ export class Protothreads {
 		this.STORE[name].running = false
 	}
 
-	// Restart = () => {}
+	Restart = async () => {}
 
-	Exit = () => {}
+	Exit = async () => {}
 
-	End = () => {}
+	End = async () => {}
 
-	Schedule = (name, ...args) => {
+	Schedule = async (name, ...args) => {
 		if (!this.STORE[name].running) {
-			this.STORE[name].fn(...args)
+			this.Spawn(name, ...args)
 		}
 	}
 
-	BeginEvent = () => {}
+	BeginEvent = async () => {
+		await this.Begin()
+	}
 
-	BeginBlock = () => {}
+	BeginBlock = async () => {
+		await this.Begin()
+		await this.Yield()
+	}
 
-	EndEvent = () => {}
+	EndEvent = async () => {
+		await this.YieldUntil(async () => false)
+		await this.End()
+		console.log('Event ended')
+	}
 
-	EndBlock = () => {}
+	EndBlock = async () => {
+		await this.Exit()
+		await this.End()
+		console.log('Block ended')
+	}
 }
