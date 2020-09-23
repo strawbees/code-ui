@@ -74,17 +74,17 @@ export const parseInstaceDefinition = (structure, instance, type) => {
 	structure.definitions[instance] = `${type ? `${varType} ` : ''}${instance}${type ? ` = new ${type}(${constructorArgs})` : ''};\n`
 }
 export const parseProcedureDefinition = (structure, instance, args, body) => {
-	const call = `pt.Declare('${instance}'${args && args.length ? ', ' : ''}${args.map(arg => `'${arg.name}'`).join(', ')})`
+	const call = `pt.DeclareBlock('${instance}'${args && args.length ? ', ' : ''}${args.map(arg => `'${arg.name}'`).join(', ')})`
 	parseInstaceDefinition(structure, call)
-	structure.procedureDefinition[instance] = `pt.Define('${instance}', async (${args.map(arg => arg.name).join(', ')}) => {\n`
+	structure.procedureDefinition[instance] = `pt.DefineBlock('${instance}', async (${args.map(arg => arg.name).join(', ')}) => {\n`
 	structure.procedureDefinition[instance] += 'await pt.BeginBlock();\n'
 	structure.procedureDefinition[instance] += body
 	structure.procedureDefinition[instance] += 'await pt.EndBlock();\n});\n'
 }
 export const parseEventDefinition = (structure, instance, body) => {
-	const call = `pt.Declare('${instance}')`
+	const call = `pt.DeclareEvent('${instance}')`
 	parseInstaceDefinition(structure, call)
-	structure.threadDefinition[instance] = `pt.Define('${instance}', async () => {\n`
+	structure.threadDefinition[instance] = `pt.DefineBlock('${instance}', async () => {\n`
 	structure.threadDefinition[instance] += 'await pt.BeginEvent();\n'
 	structure.threadDefinition[instance] += body
 	structure.threadDefinition[instance] += 'await pt.EndEvent();\n});\n'

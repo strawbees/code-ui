@@ -28,6 +28,15 @@ export class Protothreads {
 
 	Begin = async () => {}
 
+	BeginEvent = async () => {
+		await this.Begin()
+	}
+
+	BeginBlock = async () => {
+		await this.Begin()
+		await this.Yield()
+	}
+
 	Sleep = async (ms) => {
 		const deadline = Date.now() + ms
 		await createWhileLoop(() => Date.now() < deadline, this.Yield)
@@ -59,26 +68,15 @@ export class Protothreads {
 		this.STORE[name].running = false
 	}
 
+	SpawnEvent = this.Spawn
+
+	SpawnBlock = this.Spawn
+
 	Restart = async () => {}
 
 	Exit = async () => {}
 
 	End = async () => {}
-
-	Schedule = async (name, ...args) => {
-		if (!this.STORE[name].running) {
-			this.Spawn(name, ...args)
-		}
-	}
-
-	BeginEvent = async () => {
-		await this.Begin()
-	}
-
-	BeginBlock = async () => {
-		await this.Begin()
-		await this.Yield()
-	}
 
 	EndEvent = async () => {
 		await this.YieldUntil(async () => false)
@@ -88,5 +86,12 @@ export class Protothreads {
 	EndBlock = async () => {
 		await this.Exit()
 		await this.End()
+	}
+
+	Schedule = async (name, ...args) => {
+		if (!this.STORE[name].running) {
+			this.Spawn(name, ...args)
+				.catch(() => {})
+		}
 	}
 }

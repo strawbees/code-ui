@@ -13,11 +13,7 @@ export const endAllLoops = () => {
 export const createWhileLoop = async (testFunction, doFunction, name) => {
 	const loop = new WhileLoop(testFunction, doFunction)
 	loop.name = name
-	try {
-		await loop.exec()
-	} catch (e) {
-
-	}
+	await loop.exec()
 }
 
 export const createForLoop = async (statement1, statement2, statement3, doFunction) => {
@@ -42,10 +38,8 @@ export class WhileLoop {
 
 	doFunction = null
 
-	constructor(...args) {
-		this.key = args
-
-		const [testFunction, doFunction] = args
+	constructor(testFunction, doFunction) {
+		this.key = this
 
 		this.testFunction = testFunction
 		this.doFunction = doFunction
@@ -89,9 +83,16 @@ export class WhileLoop {
 				this.destructor()
 				return
 			}
-			await this.doFunction()
-			this.timer = setTimeout(tick, 0)
+			try {
+				await this.doFunction()
+			} catch (e) {
+				reject(e)
+				this.destructor()
+				return
+			}
+
+			this.timer = setTimeout(tick, 250)
 		}
-		this.timer = setTimeout(tick, 0)
+		this.timer = setTimeout(tick, 250)
 	})
 }
