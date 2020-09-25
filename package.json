@@ -18,7 +18,7 @@
     "strawbees-code-ui-build": "./lib/scripts/build.js"
   },
   "dependencies": {
-    "@babel/core": "^7.11.1",
+    "@babel/core": "^7.11.6",
     "@strawbees/quirkbot-chrome-app": "^0.3.4",
     "@svgr/webpack": "^5.4.0",
     "file-saver": "^2.0.2",
