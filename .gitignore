@@ -9,3 +9,5 @@ node_modules
 /static/lib/scratch-blocks
 /static/i18n/
 /static/routes.json
+/src/simulator/quirkbotArduinoLibrary/*.cpp
+/src/simulator/quirkbotArduinoLibrary/*.h

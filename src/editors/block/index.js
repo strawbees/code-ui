@@ -190,7 +190,9 @@ class BlockEditor extends React.Component {
 						onSourceChange(currentSource)
 					}
 				} catch (error) {
+					/* eslint-disable no-console */
 					console.log('Error handling blockly source', error)
+					/* eslint-enable no-console */
 				}
 			}, 1000)
 		})

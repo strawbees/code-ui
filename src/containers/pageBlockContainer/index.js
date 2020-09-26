@@ -12,7 +12,6 @@ const PageHomeContainer = (props) =>
 		{...props}
 	/>
 
-
 const pageBlockContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,

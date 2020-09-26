@@ -40,7 +40,9 @@ const initStore = () => {
 		const { createLogger } = require('redux-logger')
 		middlewares.push(createLogger({
 			collapsed : true,
-			diff      : true
+			diff      : true,
+			// avoid clutering from the simulator
+			predicate : (_, action) => action.type !== 'SIMULATOR_SET_INTERNAL_DATA'
 		}))
 	}
 

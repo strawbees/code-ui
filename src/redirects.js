@@ -9,7 +9,9 @@ const redirects = (url) => {
 			hash
 		} = new URL(url))
 	} catch (e) {
+		/* eslint-disable no-console */
 		console.log('Error trying to parse URL for redirect', e)
+		/* eslint-enable no-console */
 		return undefined
 	}
 	const searchHash = `${search}${hash}`

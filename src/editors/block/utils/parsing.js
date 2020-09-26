@@ -51,28 +51,27 @@ export const computeInstanceName = (structure, type, id) => {
 	structure.instances[`${type}${id}`] = name
 	return name
 }
-
 export const parseInstaceDefinition = (structure, instance, type) => {
 	structure.definitions[instance] = `${type ? `${type} ` : ''}${instance};\n`
 }
-export const parseProcedureDefinition = (structure, instance, args, body) => {
+export const parseCustomBlockDefinition = (structure, instance, args, body) => {
 	const argsString = `${(args && args.length) ? ', ' : ''}${args.map(arg => `${arg.type} ${arg.name}`).join(', ')}`
-	const call = `ptDeclare(${instance}${argsString})`
+	const call = `ptDeclareBlock(${instance}${argsString})`
 	parseInstaceDefinition(structure, call)
-	structure.procedureDefinition[instance] = `ptDefine(${instance}${argsString}){\n`
-	structure.procedureDefinition[instance] += 'ptBeginProcedure();\n'
-	structure.procedureDefinition[instance] += body
-	structure.procedureDefinition[instance] += 'ptEndProcedure();\n};\n'
+	structure.customBlockDefinition[instance] = `ptDefineBlock(${instance}${argsString}){\n`
+	structure.customBlockDefinition[instance] += 'ptBeginBlock();\n'
+	structure.customBlockDefinition[instance] += body
+	structure.customBlockDefinition[instance] += 'ptEndBlock();\n};\n'
 }
-export const parseThreadDefinition = (structure, instance, body) => {
-	const call = `ptDeclare(${instance})`
+export const parseEventDefinition = (structure, instance, body) => {
+	const call = `ptDeclareEvent(${instance})`
 	parseInstaceDefinition(structure, call)
-	structure.threadDefinition[instance] = `ptDefine(${instance}){\n`
-	structure.threadDefinition[instance] += 'ptBeginThread();\n'
-	structure.threadDefinition[instance] += body
-	structure.threadDefinition[instance] += 'ptEndThread();\n};\n'
-	structure.threadInit[instance] = `ptInit(${instance});\n`
-	structure.threadSchedule[instance] = `ptSchedule(${instance});\n`
+	structure.eventDefinition[instance] = `ptDefineEvent(${instance}){\n`
+	structure.eventDefinition[instance] += 'ptBeginEvent();\n'
+	structure.eventDefinition[instance] += body
+	structure.eventDefinition[instance] += 'ptEndEvent();\n};\n'
+	structure.eventInit[instance] = `ptInit(${instance});\n`
+	structure.eventSchedule[instance] = `ptSchedule(${instance});\n`
 }
 export const parseInstacePropertyRetrieval = (structure, instance, property) => {
 	structure.body += `${instance}.${property}.get()`
@@ -126,23 +125,22 @@ export const indentString = (string, num = 1, template = '\t') => {
 export const assembleStructure = structure => {
 	let {
 		definitions,
-		procedureDefinition,
-		threadDefinition,
-		threadInit,
-		threadSchedule,
+		customBlockDefinition,
+		eventDefinition,
+		eventInit,
+		eventSchedule,
 		oneTimeStatements,
 		oneTimeAssignments,
 	} = structure
 
 	definitions = Object.values(definitions).sort().join('')
-	procedureDefinition = Object.values(procedureDefinition).sort().join('')
-	threadDefinition = Object.values(threadDefinition).sort().join('')
-	threadInit = Object.values(threadInit).sort().join('')
-	threadSchedule = Object.values(threadSchedule).sort().join('')
+	customBlockDefinition = Object.values(customBlockDefinition).sort().join('')
+	eventDefinition = Object.values(eventDefinition).sort().join('')
+	eventInit = Object.values(eventInit).sort().join('')
+	eventSchedule = Object.values(eventSchedule).sort().join('')
 	oneTimeStatements = Object.values(oneTimeStatements).sort().join('')
 	oneTimeAssignments = Object.values(oneTimeAssignments).sort().join('')
 
-	const protothreadDefinitions = threadDefinition + procedureDefinition
 	const {
 		header,
 		body
@@ -152,23 +150,26 @@ export const assembleStructure = structure => {
 	`${definitions ?
 		'// Forward declarations:\n' +
 		`${definitions}\n` : ''}` +
-	`${protothreadDefinitions ?
-		'// Protothread definitions:\n' +
-		`${protothreadDefinitions}\n` : ''}` +
+	`${customBlockDefinition ?
+		'// Custom blocks definitions:\n' +
+		`${customBlockDefinition}\n` : ''}` +
+	`${eventDefinition ?
+		'// Events definitions:\n' +
+		`${eventDefinition}\n` : ''}` +
 	'// Setup code, that runs only once:\n' +
 	'void setup() {\n' +
 		`${oneTimeStatements ? `${oneTimeStatements}\n` : ''}` +
 		`${oneTimeAssignments ? `${oneTimeAssignments}\n` : ''}` +
-		`${threadInit ?
-			'// Initialize the protothreads:\n' +
-			`${threadInit}\n` : ''}` +
+		`${eventInit ?
+			'// Initialize the events:\n' +
+			`${eventInit}\n` : ''}` +
 		`${body ? `${body}\n` : ''}` +
 	'}\n\n' +
 	'// Loop code, that runs repeatedly:\n' +
 	'void loop() {\n' +
-		`${threadSchedule ?
-			'// Schedule the protothreads:\n' +
-			`${threadSchedule}\n` : ''}` +
+		`${eventSchedule ?
+			'// Schedule the events:\n' +
+			`${eventSchedule}\n` : ''}` +
 	'}\n'
 
 	return indent(raw)
@@ -207,23 +208,22 @@ export const generateCode = source => {
 	}
 
 	const structure = {
-		header              : '#include "Quirkbot.h"\n',
-		types               : {},
-		instances           : {},
-		procedures          : {},
-		procedureDefinition : {},
-		threads             : {},
-		threadDefinition    : {},
-		threadInit          : {},
-		threadSchedule      : {},
-		definitions         : {},
-		oneTimeAssignments  : {},
-		oneTimeStatements   : {},
-		body                : ''
+		header                : '#include "Quirkbot.h"\n',
+		types                 : {},
+		instances             : {},
+		procedures            : {},
+		customBlockDefinition : {},
+		eventDefinition       : {},
+		eventInit            : {},
+		eventSchedule        : {},
+		definitions           : {},
+		oneTimeAssignments    : {},
+		oneTimeStatements     : {},
+		body                  : ''
 	}
 
 	if (json && json.block) {
-		// First deal with the threads definitions
+		// First deal with the events definitions
 		json.block
 			.filter(block =>
 				block.attributes &&
@@ -233,7 +233,7 @@ export const generateCode = source => {
 			// procedure body
 			.forEach(block => parseBlock(block, structure, true))
 
-		// Now parse both the procedureDefinition and the events
+		// Now parse both the customBlockDefinition and the events
 		json.block
 			.filter(block =>
 				block.attributes &&

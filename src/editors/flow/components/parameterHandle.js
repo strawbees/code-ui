@@ -278,7 +278,6 @@ class ParameterHandle extends React.Component {
 	}
 }
 
-
 ParameterHandle.propTypes = {
 	id                        : PropTypes.string,
 	instanceId                : PropTypes.string,

@@ -88,7 +88,6 @@ const CategoryMenu = ({
 		</div>
 	</div>
 
-
 CategoryMenu.propTypes = {
 	name    : PropTypes.string,
 	color   : PropTypes.string,

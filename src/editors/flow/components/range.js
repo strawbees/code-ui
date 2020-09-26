@@ -178,7 +178,6 @@ class Range extends React.Component {
 	}
 }
 
-
 Range.defaultProps = {
 	min  : 0,
 	max  : 1,
