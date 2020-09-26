@@ -5,7 +5,7 @@ import SvgIcon from 'src/components/svgIcon'
 import S from 'src/containers/sManager'
 import MirrorEditorContainer from 'src/containers/mirrorEditorContainer'
 import SimulatorVMManager from 'src/simulator/containers/simulatorVMManager'
-import QuirkbotSimulatorContainer from 'src/simulator/containers/quirkbotSimulatorContainer'
+// import QuirkbotSimulatorContainer from 'src/simulator/containers/quirkbotSimulatorContainer'
 import OpenInTextEditorButtonContainer from 'src/containers/openInTextEditorButtonContainer'
 import { WHITE, BLACK } from 'src/constants/colors'
 import editorIcons from 'src/assets/icons/editors/small'
@@ -189,7 +189,7 @@ const VisualToTextEditor = ({
 			</div>
 		</button>
 		<SimulatorVMManager />
-		<QuirkbotSimulatorContainer />
+		{/* <QuirkbotSimulatorContainer /> */}
 	</div>
 
 VisualToTextEditor.propTypes = {
