@@ -6,7 +6,7 @@ import {
 } from '../../utils/simulatorParsing'
 
 const generator = ({ attributes, next }, structure) => {
-	const instance = computeInstanceName(structure, 'event_power_on_', attributes.id)
+	const instance = computeInstanceName(structure, 'event_power_on', attributes.id)
 	let body = ''
 	body += '// Code that runs when program starts:\n'
 	body += '{\n'
