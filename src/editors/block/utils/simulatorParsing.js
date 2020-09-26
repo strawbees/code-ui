@@ -73,23 +73,23 @@ export const parseInstaceDefinition = (structure, instance, type) => {
 	}
 	structure.definitions[instance] = `${type ? `${varType} ` : ''}${instance}${type ? ` = new ${type}(${constructorArgs})` : ''};\n`
 }
-export const parseProcedureDefinition = (structure, instance, args, body) => {
+export const parseCustomBlockDefinition = (structure, instance, args, body) => {
 	const call = `pt.DeclareBlock('${instance}'${args && args.length ? ', ' : ''}${args.map(arg => `'${arg.name}'`).join(', ')})`
 	parseInstaceDefinition(structure, call)
-	structure.procedureDefinition[instance] = `pt.DefineBlock('${instance}', async (${args.map(arg => arg.name).join(', ')}) => {\n`
-	structure.procedureDefinition[instance] += 'await pt.BeginBlock();\n'
-	structure.procedureDefinition[instance] += body
-	structure.procedureDefinition[instance] += 'await pt.EndBlock();\n});\n'
+	structure.customBlockDefinition[instance] = `pt.DefineBlock('${instance}', async (${args.map(arg => arg.name).join(', ')}) => {\n`
+	structure.customBlockDefinition[instance] += 'await pt.BeginBlock();\n'
+	structure.customBlockDefinition[instance] += body
+	structure.customBlockDefinition[instance] += 'await pt.EndBlock();\n});\n'
 }
 export const parseEventDefinition = (structure, instance, body) => {
 	const call = `pt.DeclareEvent('${instance}')`
 	parseInstaceDefinition(structure, call)
-	structure.threadDefinition[instance] = `pt.DefineBlock('${instance}', async () => {\n`
-	structure.threadDefinition[instance] += 'await pt.BeginEvent();\n'
-	structure.threadDefinition[instance] += body
-	structure.threadDefinition[instance] += 'await pt.EndEvent();\n});\n'
-	structure.threadInit[instance] = `await pt.Init('${instance}');\n`
-	structure.threadSchedule[instance] = `await pt.Schedule('${instance}');\n`
+	structure.eventDefinition[instance] = `pt.DefineBlock('${instance}', async () => {\n`
+	structure.eventDefinition[instance] += 'await pt.BeginEvent();\n'
+	structure.eventDefinition[instance] += body
+	structure.eventDefinition[instance] += 'await pt.EndEvent();\n});\n'
+	structure.eventInit[instance] = `await pt.Init('${instance}');\n`
+	structure.eventSchedule[instance] = `await pt.Schedule('${instance}');\n`
 }
 export const parseInstacePropertyRetrieval = (structure, instance, property) => {
 	structure.body += `${instance}.${property}.get()`
@@ -143,23 +143,22 @@ export const indentString = (string, num = 1, template = '\t') => {
 export const assembleStructure = structure => {
 	let {
 		definitions,
-		procedureDefinition,
-		threadDefinition,
-		threadInit,
-		threadSchedule,
+		customBlockDefinition,
+		eventDefinition,
+		eventInit,
+		eventSchedule,
 		oneTimeStatements,
 		oneTimeAssignments,
 	} = structure
 
 	definitions = Object.values(definitions).sort().join('')
-	procedureDefinition = Object.values(procedureDefinition).sort().join('')
-	threadDefinition = Object.values(threadDefinition).sort().join('')
-	threadInit = Object.values(threadInit).sort().join('')
-	threadSchedule = Object.values(threadSchedule).sort().join('')
+	customBlockDefinition = Object.values(customBlockDefinition).sort().join('')
+	eventDefinition = Object.values(eventDefinition).sort().join('')
+	eventInit = Object.values(eventInit).sort().join('')
+	eventSchedule = Object.values(eventSchedule).sort().join('')
 	oneTimeStatements = Object.values(oneTimeStatements).sort().join('')
 	oneTimeAssignments = Object.values(oneTimeAssignments).sort().join('')
 
-	const protothreadDefinitions = threadDefinition + procedureDefinition
 	const {
 		body
 	} = structure
@@ -168,23 +167,26 @@ export const assembleStructure = structure => {
 	`${definitions ?
 		'// Forward declarations:\n' +
 		`${definitions}\n` : ''}` +
-	`${protothreadDefinitions ?
-		'// Protothread definitions:\n' +
-		`${protothreadDefinitions}\n` : ''}` +
+	`${customBlockDefinition ?
+		'// Custom blocks definitions:\n' +
+		`${customBlockDefinition}\n` : ''}` +
+	`${eventDefinition ?
+		'// Events definitions:\n' +
+		`${eventDefinition}\n` : ''}` +
 	'// Setup code, that runs only once:\n' +
 	'const setup = async () => {\n' +
 		`${oneTimeStatements ? `${oneTimeStatements}\n` : ''}` +
 		`${oneTimeAssignments ? `${oneTimeAssignments}\n` : ''}` +
-		`${threadInit ?
-			'// Initialize the protothreads:\n' +
-			`${threadInit}\n` : ''}` +
+		`${eventInit ?
+			'// Initialize the events:\n' +
+			`${eventInit}\n` : ''}` +
 		`${body ? `${body}\n` : ''}` +
 	'}\n\n' +
 	'// Loop code, that runs repeatedly:\n' +
 	'const loop = async () => {\n' +
-		`${threadSchedule ?
-			'// Schedule the protothreads:\n' +
-			`${threadSchedule}\n` : ''}` +
+		`${eventSchedule ?
+			'// Schedule the events:\n' +
+			`${eventSchedule}\n` : ''}` +
 	'}\n'
 
 	return indent(raw)
@@ -223,22 +225,21 @@ export const generateCode = source => {
 	}
 
 	const structure = {
-		types               : {},
-		instances           : {},
-		procedures          : {},
-		procedureDefinition : {},
-		threads             : {},
-		threadDefinition    : {},
-		threadInit          : {},
-		threadSchedule      : {},
-		definitions         : {},
-		oneTimeAssignments  : {},
-		oneTimeStatements   : {},
-		body                : ''
+		types                 : {},
+		instances             : {},
+		procedures            : {},
+		customBlockDefinition : {},
+		eventDefinition       : {},
+		eventInit            : {},
+		eventSchedule        : {},
+		definitions           : {},
+		oneTimeAssignments    : {},
+		oneTimeStatements     : {},
+		body                  : ''
 	}
 
 	if (json && json.block) {
-		// First deal with the threads definitions
+		// First deal with the events definitions
 		json.block
 			.filter(block =>
 				block.attributes &&
@@ -248,7 +249,7 @@ export const generateCode = source => {
 			// procedure body
 			.forEach(block => parseBlock(block, structure, true))
 
-		// Now parse both the procedureDefinition and the events
+		// Now parse both the customBlockDefinition and the events
 		json.block
 			.filter(block =>
 				block.attributes &&

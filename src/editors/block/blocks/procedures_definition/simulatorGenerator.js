@@ -1,7 +1,7 @@
 import { sanitizeCPPVariableName } from 'src/utils/string'
 import {
 	getNext,
-	parseProcedureDefinition,
+	parseCustomBlockDefinition,
 	getBlockBody,
 } from '../../utils/simulatorParsing'
 
@@ -91,7 +91,7 @@ const generator = ({ statement, next }, structure, shallow) => {
 	body += `${getBlockBody(getNext(next), structure)}`
 	body += '}\n'
 
-	parseProcedureDefinition(structure, instance, args, body, type)
+	parseCustomBlockDefinition(structure, instance, args, body, type)
 }
 
 export default generator
