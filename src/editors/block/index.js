@@ -304,12 +304,23 @@ class BlockEditor extends React.Component {
 					titleKey        : isNew ? 'block.procedures.title' : 'block.procedures.edit.title',
 					confirmLabelKey : isNew ? 'block.procedures.confirm' : 'block.procedures.edit.confirm',
 					onConfirm       : () => {
+						// There is current a bug (https://github.com/LLK/scratch-blocks/issues/2107),
+						// that will crash everything in case there the block name starts with %.
+						// So meanwhile we will just replace that...
+						/* eslint-disable no-underscore-dangle */
+						if (this.proceduresMutationRoot.procCode_ && this.proceduresMutationRoot.procCode_.indexOf('%') === 0) {
+							this.proceduresMutationRoot.procCode_ = this.proceduresMutationRoot.procCode_.replace('%', '_')
+						}
+						/* eslint-enable no-underscore-dangle */
+
+						// create/modify a procedure).
 						// Extract the proceure mutation (the actual data that
 						// create/modify a procedure).
 						const procedureMutation = this.proceduresMutationRoot.mutationToDom(true)
 						// Extract the procedureCode (will be used as the id
 						// of the procedure).
 						const procedureCode = this.proceduresMutationRoot.getProcCode()
+						console.log(this.proceduresMutationRoot, procedureCode)
 						// Check if procedureCode is empty. If so, cancel early
 						if (!procedureCode) {
 							this.proceduresCallback = null
