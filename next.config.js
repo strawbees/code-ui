@@ -33,7 +33,7 @@ const commonConfigs = {
 	},
 	web_production : {
 		CANONICAL_URL            : 'https://code.strawbees.com',
-		COMPILER_URL             : 'https://compiler.strawbees.com',
+		COMPILER_URL             : 'https://strawbees-compiler.us-east-1.elasticbeanstalk.com',
 		STRAWBEES_CODE_API_URL   : 'https://cloud-api.strawbees.com',
 		LOCALES                  : ['en', 'pt_BR', 'sv', 'zh-Hans-CN', 'ja'],
 		ROOT_PATH                : '',
