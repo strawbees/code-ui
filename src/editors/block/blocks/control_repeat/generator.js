@@ -17,7 +17,7 @@ const generator = ({
 		parseNext(next, structure)
 		return
 	}
-	const times = parseInt(getBlockBody(timesBlock, structure), 10)
+	const times = getBlockBody(timesBlock, structure)
 
 	if (times < 1) {
 		parseNext(next, structure)
