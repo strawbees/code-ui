@@ -11,6 +11,7 @@ import {
 	BLUE
 } from 'src/constants/colors'
 import sortBlocklyDomNode from './utils/sortBlocklyDomNode'
+import makeRootBlockDeletableOnSource from './utils/makeRootBlockDeletableOnSource'
 import toolboxToXmlString from './utils/toolboxToXmlString'
 import xmlToJson from './utils/xmlToJson'
 import blocks from './blocks/index'
@@ -93,10 +94,17 @@ class BlockEditor extends React.Component {
 		} = window
 		this.mainWorkspace.clear()
 
-		// important to sort the xml here, beacuse some sources may have the
+		const sourceXml = Blockly.Xml.textToDom(source)
+		// Older versions of CODE didn't support multiple events, so older
+		// programs may have "event power on" blocks defined as:
+		// <block type="event_power_on" id="rootblock" deletable="false">
+		// This a bug where those blocks cannot be deleted. The following
+		// function will take care of that by remving the 'deletable' attribute
+		makeRootBlockDeletableOnSource(sourceXml)
+
+		// Important to sort the xml here, beacuse some sources may have the
 		// "<variables>" node in the end, and that will cause a bug on blockly
 		// once it loads it.
-		const sourceXml = Blockly.Xml.textToDom(source)
 		sortBlocklyDomNode(sourceXml)
 
 		Blockly.Xml.domToWorkspace(
