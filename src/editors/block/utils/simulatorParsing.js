@@ -74,7 +74,8 @@ export const parseInstaceDefinition = (structure, instance, type) => {
 	structure.definitions[instance] = `${type ? `${varType} ` : ''}${instance}${type ? ` = new ${type}(${constructorArgs})` : ''};\n`
 }
 export const parseCustomBlockDefinition = (structure, instance, args, body) => {
-	const call = `pt.DeclareBlock('${instance}'${args && args.length ? ', ' : ''}${args.map(arg => `'${arg.name}'`).join(', ')})`
+	const callArgs = `[${args.map(arg => arg.name).join(', ')}]`
+	const call = `p.tDeclareBlock('${instance}'${args.length ? `, ${callArgs}` : ''})`
 	parseInstaceDefinition(structure, call)
 	structure.customBlockDefinition[instance] = `pt.DefineBlock('${instance}', async (${args.map(arg => arg.name).join(', ')}) => {\n`
 	structure.customBlockDefinition[instance] += 'await pt.BeginBlock();\n'

@@ -55,10 +55,11 @@ export const parseInstaceDefinition = (structure, instance, type) => {
 	structure.definitions[instance] = `${type ? `${type} ` : ''}${instance};\n`
 }
 export const parseCustomBlockDefinition = (structure, instance, args, body) => {
-	const argsString = `${(args && args.length) ? ', ' : ''}${args.map(arg => `${arg.type} ${arg.name}`).join(', ')}`
-	const call = `ptDeclareBlock(${instance}${argsString})`
+	const defArgs = `(${args.map(arg => `${arg.type} ${arg.name}`).join(', ')})`
+	const callArgs = `(${args.map(arg => arg.name).join(', ')})`
+	const call = `ptDeclareBlock(${instance}${args.length ? `, ${defArgs}, ${callArgs}` : ''})`
 	parseInstaceDefinition(structure, call)
-	structure.customBlockDefinition[instance] = `ptDefineBlock(${instance}${argsString}){\n`
+	structure.customBlockDefinition[instance] = `ptDefineBlock(${instance}${args.length ? `, ${defArgs}` : ''}){\n`
 	structure.customBlockDefinition[instance] += 'ptBeginBlock();\n'
 	structure.customBlockDefinition[instance] += body
 	structure.customBlockDefinition[instance] += 'ptEndBlock();\n};\n'
