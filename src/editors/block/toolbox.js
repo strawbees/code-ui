@@ -2,7 +2,7 @@ import s from 'src/utils/s'
 
 const toolbox = (strings) => ([
 	{
-		id              : 'operators',
+		id              : 'events',
 		name            : window.Blockly.Msg.CATEGORY_EVENTS,
 		colour          : window.Blockly.Colours.event.primary,
 		secondaryColour : window.Blockly.Colours.event.secondary,
