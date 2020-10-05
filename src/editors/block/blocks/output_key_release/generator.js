@@ -23,6 +23,7 @@ const generator = ({ value, next }, structure) => {
 
 	setInstacePropertyOneTimeAssignment(structure, instance, 'key', key)
 
+	structure.body += '// Release a key:\n'
 	parseInstacePropertyAssignmentFromValue(structure, instance, 'trigger', 0)
 
 	parseNext(next, structure)

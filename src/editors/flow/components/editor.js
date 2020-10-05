@@ -32,5 +32,4 @@ const Editor = () =>
 		<WorkspaceContainer />
 	</div>
 
-
 export default Editor

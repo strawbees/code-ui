@@ -50,7 +50,9 @@ class MidiInterfaceManager extends React.Component {
 				window.midiDisableLogs = midiDisableLogs
 				this.timer = window.setInterval(() => this.onTick(), 1000)
 			} catch (e) {
+				/* eslint-disable no-console */
 				console.log('Cannot intialize midi')
+				/* eslint-enable no-console */
 			}
 		}
 	}
@@ -75,8 +77,10 @@ MidiInterfaceManager.propTypes = {
 	ready              : PropTypes.bool,
 }
 
-export default connect(
+const midiInterfaceManagerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(MidiInterfaceManager)
+
+export default midiInterfaceManagerConnected

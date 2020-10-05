@@ -17,6 +17,7 @@ const generator = ({ value, field, next }, structure) => {
 
 	parseInstaceDefinition(structure, name, 'float')
 
+	structure.body += '// Increment the value of variable:\n'
 	structure.body += `${name} += ${valueBody};\n`
 
 	parseNext(next, structure)

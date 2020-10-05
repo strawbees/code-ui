@@ -7,8 +7,10 @@ import mergeProps from './mergeProps'
 const HeaderContainer = (props) =>
 	<Header {...props} />
 
-export default connect(
+const headerContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(HeaderContainer)
+
+export default headerContainerConnected

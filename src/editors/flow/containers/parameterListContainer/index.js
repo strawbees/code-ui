@@ -20,7 +20,6 @@ const ParameterListContainer = ({
 		)}
 	</React.Fragment>
 
-
 ParameterListContainer.propTypes = {
 	id : PropTypes.string,
 }

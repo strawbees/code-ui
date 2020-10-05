@@ -12,9 +12,10 @@ const PageHomeContainer = (props) =>
 		{...props}
 	/>
 
-
-export default connect(
+const pageBlockContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(PageHomeContainer)
+
+export default pageBlockContainerConnected

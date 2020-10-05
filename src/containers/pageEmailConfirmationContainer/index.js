@@ -7,8 +7,10 @@ import mergeProps from './mergeProps'
 const PageEmailConfirmationContainer = (props) =>
 	<PageEmailConfirmation {...props}/>
 
-export default connect(
+const pageEmailConfirmationContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(PageEmailConfirmationContainer)
+
+export default pageEmailConfirmationContainerConnected

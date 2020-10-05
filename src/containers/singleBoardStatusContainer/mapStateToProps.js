@@ -8,7 +8,6 @@ const mapStateToProps = () => createSelector(
 	({
 		hardwareInterface,
 		midi,
-		serial,
 		uuid,
 		bootloader,
 		uploading,

@@ -20,7 +20,6 @@ const OutletListContainer = ({
 		)}
 	</React.Fragment>
 
-
 OutletListContainer.propTypes = {
 	id : PropTypes.string,
 }

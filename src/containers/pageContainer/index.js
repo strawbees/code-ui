@@ -15,7 +15,6 @@ import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
-
 const PageContainer = (props) => {
 	const components = {
 		'email-confirmation' : PageEmailConfirmationContainer,
@@ -66,8 +65,10 @@ PageContainer.propTypes = {
 	])
 }
 
-export default connect(
+const pageContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(PageContainer)
+
+export default pageContainerConnected

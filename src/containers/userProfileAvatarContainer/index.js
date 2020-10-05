@@ -7,8 +7,10 @@ import mergeProps from './mergeProps'
 const UserProfileAvatarContainer = (props) =>
 	<UserProfileAvatar {...props} />
 
-export default connect(
+const userProfileAvatarContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(UserProfileAvatarContainer)
+
+export default userProfileAvatarContainerConnected

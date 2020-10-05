@@ -7,8 +7,10 @@ import mergeProps from './mergeProps'
 const PageMDContainer = (props) =>
 	<PageMD {...props}/>
 
-export default connect(
+const pageMDContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(PageMDContainer)
+
+export default pageMDContainerConnected

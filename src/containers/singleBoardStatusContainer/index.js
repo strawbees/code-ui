@@ -13,8 +13,10 @@ SingleBoardStatusContainer.propTypes = {
 	labelKey  : PropTypes.string,
 }
 
-export default connect(
+const singleBoardStatusContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(SingleBoardStatusContainer)
+
+export default singleBoardStatusContainerConnected

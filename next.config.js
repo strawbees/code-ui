@@ -4,7 +4,7 @@ const path = require('path')
 // default configs
 const defaults = {
 	CANONICAL_URL                 : 'http://code-dev.strawbees.com:3000',
-	COMPILER_URL                  : 'http://code-compiler-service-stage.us-east-1.elasticbeanstalk.com',
+	COMPILER_URL                  : 'https://strawbees-compiler-stage.us-east-1.elasticbeanstalk.com',
 	STRAWBEES_CODE_API_URL        : 'https://cloud-api-stage.strawbees.com',
 	LOCALES                       : ['en', 'pt_BR', 'sv', 'zh-Hans-CN', 'ja'],
 	ROOT_PATH                     : '',
@@ -22,7 +22,7 @@ const defaults = {
 const commonConfigs = {
 	web_stage : {
 		CANONICAL_URL            : 'https://code-stage.strawbees.com',
-		COMPILER_URL             : 'https://compiler.strawbees.com',
+		COMPILER_URL             : 'https://strawbees-compiler-stage.us-east-1.elasticbeanstalk.com',
 		STRAWBEES_CODE_API_URL   : 'https://cloud-api-stage.strawbees.com',
 		LOCALES                  : ['en', 'pt_BR', 'sv', 'zh-Hans-CN', 'ja'],
 		ROOT_PATH                : '',
@@ -33,7 +33,7 @@ const commonConfigs = {
 	},
 	web_production : {
 		CANONICAL_URL            : 'https://code.strawbees.com',
-		COMPILER_URL             : 'https://compiler.strawbees.com',
+		COMPILER_URL             : 'https://strawbees-compiler.us-east-1.elasticbeanstalk.com',
 		STRAWBEES_CODE_API_URL   : 'https://cloud-api.strawbees.com',
 		LOCALES                  : ['en', 'pt_BR', 'sv', 'zh-Hans-CN', 'ja'],
 		ROOT_PATH                : '',

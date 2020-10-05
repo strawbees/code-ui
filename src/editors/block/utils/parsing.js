@@ -51,14 +51,28 @@ export const computeInstanceName = (structure, type, id) => {
 	structure.instances[`${type}${id}`] = name
 	return name
 }
-
 export const parseInstaceDefinition = (structure, instance, type) => {
-	structure.definitions[instance] = `${type} ${instance};\n`
+	structure.definitions[instance] = `${type ? `${type} ` : ''}${instance};\n`
 }
-export const parseProcedureDefinition = (structure, instance, args, body, type) => {
-	const call = `${instance}(${args.map(arg => `${arg.type} ${arg.name}`).join(', ')})`
-	parseInstaceDefinition(structure, call, type)
-	structure.procedureDefinition[instance] = `${type} ${call} {\n${body}};\n`
+export const parseCustomBlockDefinition = (structure, instance, args, body) => {
+	const defArgs = `(${args.map(arg => `${arg.type} ${arg.name}`).join(', ')})`
+	const callArgs = `(${args.map(arg => arg.name).join(', ')})`
+	const call = `ptDeclareBlock(${instance}${args.length ? `, ${defArgs}, ${callArgs}` : ''})`
+	parseInstaceDefinition(structure, call)
+	structure.customBlockDefinition[instance] = `ptDefineBlock(${instance}${args.length ? `, ${defArgs}` : ''}){\n`
+	structure.customBlockDefinition[instance] += 'ptBeginBlock();\n'
+	structure.customBlockDefinition[instance] += body
+	structure.customBlockDefinition[instance] += 'ptEndBlock();\n};\n'
+}
+export const parseEventDefinition = (structure, instance, body) => {
+	const call = `ptDeclareEvent(${instance})`
+	parseInstaceDefinition(structure, call)
+	structure.eventDefinition[instance] = `ptDefineEvent(${instance}){\n`
+	structure.eventDefinition[instance] += 'ptBeginEvent();\n'
+	structure.eventDefinition[instance] += body
+	structure.eventDefinition[instance] += 'ptEndEvent();\n};\n'
+	structure.eventInit[instance] = `ptInit(${instance});\n`
+	structure.eventSchedule[instance] = `ptSchedule(${instance});\n`
 }
 export const parseInstacePropertyRetrieval = (structure, instance, property) => {
 	structure.body += `${instance}.${property}.get()`
@@ -112,13 +126,19 @@ export const indentString = (string, num = 1, template = '\t') => {
 export const assembleStructure = structure => {
 	let {
 		definitions,
-		procedureDefinition,
+		customBlockDefinition,
+		eventDefinition,
+		eventInit,
+		eventSchedule,
 		oneTimeStatements,
 		oneTimeAssignments,
 	} = structure
 
 	definitions = Object.values(definitions).sort().join('')
-	procedureDefinition = Object.values(procedureDefinition).sort().join('')
+	customBlockDefinition = Object.values(customBlockDefinition).sort().join('')
+	eventDefinition = Object.values(eventDefinition).sort().join('')
+	eventInit = Object.values(eventInit).sort().join('')
+	eventSchedule = Object.values(eventSchedule).sort().join('')
 	oneTimeStatements = Object.values(oneTimeStatements).sort().join('')
 	oneTimeAssignments = Object.values(oneTimeAssignments).sort().join('')
 
@@ -128,15 +148,30 @@ export const assembleStructure = structure => {
 	} = structure
 
 	const raw = `${header}\n` +
-	`${definitions}\n` +
-	`${procedureDefinition}\n` +
+	`${definitions ?
+		'// Forward declarations:\n' +
+		`${definitions}\n` : ''}` +
+	`${customBlockDefinition ?
+		'// Custom blocks definitions:\n' +
+		`${customBlockDefinition}\n` : ''}` +
+	`${eventDefinition ?
+		'// Events definitions:\n' +
+		`${eventDefinition}\n` : ''}` +
+	'// Setup code, that runs only once:\n' +
 	'void setup() {\n' +
-	`${oneTimeStatements}\n` +
-	`${oneTimeAssignments}\n` +
-	`${body}` +
+		`${oneTimeStatements ? `${oneTimeStatements}\n` : ''}` +
+		`${oneTimeAssignments ? `${oneTimeAssignments}\n` : ''}` +
+		`${eventInit ?
+			'// Initialize the events:\n' +
+			`${eventInit}\n` : ''}` +
+		`${body ? `${body}\n` : ''}` +
 	'}\n\n' +
-	'void loop() {\n}\n'
-
+	'// Loop code, that runs repeatedly:\n' +
+	'void loop() {\n' +
+		`${eventSchedule ?
+			'// Schedule the events:\n' +
+			`${eventSchedule}\n` : ''}` +
+	'}\n'
 
 	return indent(raw)
 }
@@ -158,6 +193,8 @@ const indent = string => {
 		}
 		formated += char
 	}
+	formated = formated.split('{\n\t\n').join('{\n')
+	formated = formated.split('\n\t\n}').join('\n}')
 	return formated
 }
 export const generateCode = source => {
@@ -172,19 +209,22 @@ export const generateCode = source => {
 	}
 
 	const structure = {
-		header              : '#include "Quirkbot.h"\n',
-		types               : {},
-		instances           : {},
-		procedures          : {},
-		procedureDefinition : {},
-		definitions         : {},
-		oneTimeAssignments  : {},
-		oneTimeStatements   : {},
-		body                : ''
+		header                : '#include "Quirkbot.h"\n',
+		types                 : {},
+		instances             : {},
+		procedures            : {},
+		customBlockDefinition : {},
+		eventDefinition       : {},
+		eventInit             : {},
+		eventSchedule         : {},
+		definitions           : {},
+		oneTimeAssignments    : {},
+		oneTimeStatements     : {},
+		body                  : ''
 	}
 
 	if (json && json.block) {
-		// First deal with the procedures definitions
+		// First deal with the events definitions
 		json.block
 			.filter(block =>
 				block.attributes &&
@@ -194,12 +234,13 @@ export const generateCode = source => {
 			// procedure body
 			.forEach(block => parseBlock(block, structure, true))
 
-		// Now parse both the procedureDefinition and the power on event
+		// Now parse both the customBlockDefinition and the events
 		json.block
 			.filter(block =>
 				block.attributes &&
 				(
 					block.attributes.type === 'event_power_on' ||
+					block.attributes.type === 'event_when' ||
 					block.attributes.type === 'procedures_definition'
 				)
 			)

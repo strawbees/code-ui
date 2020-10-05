@@ -37,6 +37,10 @@ msgctxt "block.blocks.event_power_on.message0"
 msgid "when program starts"
 msgstr "当程序开始"
 
+msgctxt "block.blocks.event_when.message0"
+msgid "when %1"
+msgstr "当 %1"
+
 msgctxt "block.blocks.input_circuit_touch.message0"
 msgid "value of circuit touch %1"
 msgstr "触摸传感器%1数值"

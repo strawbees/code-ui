@@ -13,8 +13,10 @@ SingleBoardUploaderContainer.propTypes = {
 	hex       : PropTypes.string,
 }
 
-export default connect(
+const singleBoardUploaderContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(SingleBoardUploader)
+
+export default singleBoardUploaderContainerConnected

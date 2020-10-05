@@ -11,7 +11,8 @@ const generator = ({ value, next }, structure) => {
 		return
 	}
 	const seconds = getBlockBody(durationBlock, structure) || 0
-	structure.body += `delay(${seconds} * 1000);\n`
+	structure.body += '// Wait...\n'
+	structure.body += `ptSleep(${seconds} * 1000)/* seconds to milliseconds */;\n`
 	parseNext(next, structure)
 }
 

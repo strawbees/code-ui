@@ -52,7 +52,6 @@ class UploadAreaContainer extends React.Component {
 	}
 }
 
-
 UploadAreaContainer.propTypes = {
 	code             : PropTypes.string,
 	boardIds         : PropTypes.arrayOf(PropTypes.string),
@@ -60,8 +59,10 @@ UploadAreaContainer.propTypes = {
 	uploadHex        : PropTypes.func,
 	clearUploadError : PropTypes.func,
 }
-export default connect(
+const uploadAreaContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(UploadAreaContainer)
+
+export default uploadAreaContainerConnected

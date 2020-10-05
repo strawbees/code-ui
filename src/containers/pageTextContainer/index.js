@@ -7,8 +7,10 @@ import mergeProps from './mergeProps'
 const PageTextContainer = (props) =>
 	<TextEditor {...props}/>
 
-export default connect(
+const pageTextContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(PageTextContainer)
+
+export default pageTextContainerConnected

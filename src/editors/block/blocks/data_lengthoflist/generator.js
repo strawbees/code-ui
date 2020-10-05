@@ -12,7 +12,7 @@ const generator = ({ field, next }, structure) => {
 	}
 	parseInstaceDefinition(structure, name, 'Vector<float>')
 
-	structure.body += `${name}.size()`
+	structure.body += `${name}.size()/* length of list */`
 
 	parseNext(next, structure)
 }

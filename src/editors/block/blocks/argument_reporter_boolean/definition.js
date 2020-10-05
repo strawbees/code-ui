@@ -1,4 +1,5 @@
 import s from 'src/utils/s'
+
 const definition = (strings) => ({
 	message0 : '%1',
 	args0    : [

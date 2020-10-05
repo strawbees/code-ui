@@ -16,8 +16,10 @@ CodingCardsFilter.propTypes = {
 	]),
 }
 
-export default connect(
+const codingCardsFilterContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(CodingCardsFilterContainer)
+
+export default codingCardsFilterContainerConnected

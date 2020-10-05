@@ -171,7 +171,7 @@ class DropdownMenu extends React.Component {
 					onClick={openList}>
 					{icon &&
 						<SvgIcon icon={icon}
-						className='icon'/>
+							className='icon'/>
 					}
 					<span className='text'>
 						{label}
@@ -180,7 +180,7 @@ class DropdownMenu extends React.Component {
 						}
 					</span>
 					<SvgIcon icon={expandIcon}
-					className='expand-icon'/>
+						className='expand-icon'/>
 				</button>
 				<ul className='list'
 					role='listbox'
@@ -205,7 +205,7 @@ class DropdownMenu extends React.Component {
 								onKeyUp={onClickOrEnter}>
 								{option.icon &&
 									<SvgIcon icon={option.icon}
-									className='option-icon'/>
+										className='option-icon'/>
 								}
 								{option.disabled &&
 									<S value={

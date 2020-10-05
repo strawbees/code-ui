@@ -12,8 +12,10 @@ const StoragePublicProfileProgramListContainer = (props) =>
 		ItemContainer={StoragePublicProfileProgramListItemContainer}
 	/>
 
-export default connect(
+const storagePublicProfileProgramListContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(StoragePublicProfileProgramListContainer)
+
+export default storagePublicProfileProgramListContainerConnected

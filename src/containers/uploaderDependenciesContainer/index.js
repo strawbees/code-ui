@@ -12,8 +12,10 @@ UploaderDependenciesContainer.propTypes = {
 	hideTitle : PropTypes.bool,
 }
 
-export default connect(
+const uploaderDependenciesContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(UploaderDependenciesContainer)
+
+export default uploaderDependenciesContainerConnected
