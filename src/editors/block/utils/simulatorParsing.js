@@ -75,7 +75,7 @@ export const parseInstaceDefinition = (structure, instance, type) => {
 }
 export const parseCustomBlockDefinition = (structure, instance, args, body) => {
 	const callArgs = `[${args.map(arg => arg.name).join(', ')}]`
-	const call = `p.tDeclareBlock('${instance}'${args.length ? `, ${callArgs}` : ''})`
+	const call = `pt.DeclareBlock('${instance}'${args.length ? `, ${callArgs}` : ''})`
 	parseInstaceDefinition(structure, call)
 	structure.customBlockDefinition[instance] = `pt.DefineBlock('${instance}', async (${args.map(arg => arg.name).join(', ')}) => {\n`
 	structure.customBlockDefinition[instance] += 'await pt.BeginBlock();\n'
