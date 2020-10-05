@@ -328,7 +328,6 @@ class BlockEditor extends React.Component {
 						// Extract the procedureCode (will be used as the id
 						// of the procedure).
 						const procedureCode = this.proceduresMutationRoot.getProcCode()
-						console.log(this.proceduresMutationRoot, procedureCode)
 						// Check if procedureCode is empty. If so, cancel early
 						if (!procedureCode) {
 							this.proceduresCallback = null
