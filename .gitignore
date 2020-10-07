@@ -7,6 +7,7 @@ node_modules
 /.zanata-cache
 /out
 /static/lib/scratch-blocks
+/static/lib/tree-sitter
 /static/i18n/
 /static/routes.json
 /src/simulator/quirkbotArduinoLibrary/*.cpp
