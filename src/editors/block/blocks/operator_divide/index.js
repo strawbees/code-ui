@@ -10,3 +10,4 @@ const operator_divide = {
 }
 
 export default operator_divide
+/* eslint-enable camelcase */

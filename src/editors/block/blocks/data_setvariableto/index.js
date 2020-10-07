@@ -10,3 +10,4 @@ const data_setvariableto = {
 }
 
 export default data_setvariableto
+/* eslint-enable camelcase */

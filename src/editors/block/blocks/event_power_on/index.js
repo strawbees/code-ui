@@ -10,3 +10,4 @@ const event_power_on = {
 }
 
 export default event_power_on
+/* eslint-enable camelcase */

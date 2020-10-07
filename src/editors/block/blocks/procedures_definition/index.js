@@ -10,3 +10,4 @@ const procedures_definition = {
 }
 
 export default procedures_definition
+/* eslint-enable camelcase */

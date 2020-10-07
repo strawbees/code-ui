@@ -10,3 +10,4 @@ const argument_reporter_boolean = {
 }
 
 export default argument_reporter_boolean
+/* eslint-enable camelcase */

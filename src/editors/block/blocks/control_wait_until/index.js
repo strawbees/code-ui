@@ -10,3 +10,4 @@ const control_wait_until = {
 }
 
 export default control_wait_until
+/* eslint-enable camelcase */

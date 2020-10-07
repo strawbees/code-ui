@@ -10,3 +10,4 @@ const data_deleteoflist = {
 }
 
 export default data_deleteoflist
+/* eslint-enable camelcase */

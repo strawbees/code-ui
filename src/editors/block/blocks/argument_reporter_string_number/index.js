@@ -10,3 +10,4 @@ const argument_reporter_string_number = {
 }
 
 export default argument_reporter_string_number
+/* eslint-enable camelcase */

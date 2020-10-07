@@ -10,3 +10,4 @@ const operator_subtract = {
 }
 
 export default operator_subtract
+/* eslint-enable camelcase */

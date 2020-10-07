@@ -10,3 +10,4 @@ const output_continuous_servo_speed = {
 }
 
 export default output_continuous_servo_speed
+/* eslint-enable camelcase */

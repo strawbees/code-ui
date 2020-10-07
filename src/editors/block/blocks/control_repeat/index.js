@@ -10,3 +10,4 @@ const control_repeat = {
 }
 
 export default control_repeat
+/* eslint-enable camelcase */

@@ -10,3 +10,4 @@ const dropdown_key_keys = {
 }
 
 export default dropdown_key_keys
+/* eslint-enable camelcase */

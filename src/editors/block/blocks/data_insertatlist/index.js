@@ -10,3 +10,4 @@ const data_insertatlist = {
 }
 
 export default data_insertatlist
+/* eslint-enable camelcase */

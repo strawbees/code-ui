@@ -10,3 +10,4 @@ const control_if = {
 }
 
 export default control_if
+/* eslint-enable camelcase */

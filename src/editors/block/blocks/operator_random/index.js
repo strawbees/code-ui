@@ -10,3 +10,4 @@ const operator_random = {
 }
 
 export default operator_random
+/* eslint-enable camelcase */

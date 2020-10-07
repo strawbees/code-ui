@@ -10,3 +10,4 @@ const operator_round = {
 }
 
 export default operator_round
+/* eslint-enable camelcase */
