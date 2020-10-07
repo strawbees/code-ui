@@ -4,8 +4,8 @@ import {
 	getValueBlockByAttributeName,
 	computeInstanceName,
 	parseInstaceDefinition,
-	setInstacePropertyOneTimeAssignment,
-	parseInstacePropertyAssignmentFromValue,
+	setNodeInstacePropertyOneTimeAssignment,
+	parseNodeInstacePropertyAssignmentFromValue,
 } from '../../utils/parsing'
 
 const generator = ({ value, next }, structure) => {
@@ -27,12 +27,12 @@ const generator = ({ value, next }, structure) => {
 
 	parseInstaceDefinition(structure, instance, type)
 
-	setInstacePropertyOneTimeAssignment(structure, instance, 'key', key)
+	setNodeInstacePropertyOneTimeAssignment(structure, instance, 'key', key)
 
 	structure.body += '// Hold a key down, for a specific amount of time:\n'
-	parseInstacePropertyAssignmentFromValue(structure, instance, 'trigger', 1)
+	parseNodeInstacePropertyAssignmentFromValue(structure, instance, 'trigger', 1)
 	structure.body += `ptSleep(${getBlockBody(durationBlock, structure)} * 1000);\n`
-	parseInstacePropertyAssignmentFromValue(structure, instance, 'trigger', 0)
+	parseNodeInstacePropertyAssignmentFromValue(structure, instance, 'trigger', 0)
 
 	parseNext(next, structure)
 }

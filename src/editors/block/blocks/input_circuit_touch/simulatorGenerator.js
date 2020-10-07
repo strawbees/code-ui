@@ -4,7 +4,7 @@ import {
 	getBlockBody,
 	getValueBlockByAttributeName,
 	parseInstaceDefinition,
-	setInstacePropertyOneTimeAssignment
+	setNodeInstacePropertyOneTimeAssignment
 } from '../../utils/simulatorParsing'
 
 const generator = ({ value, next }, structure) => {
@@ -18,7 +18,7 @@ const generator = ({ value, next }, structure) => {
 	const instance = computeInstanceName(structure, type, place)
 
 	parseInstaceDefinition(structure, instance, type)
-	setInstacePropertyOneTimeAssignment(structure, instance, 'place', place)
+	setNodeInstacePropertyOneTimeAssignment(structure, instance, 'place', place)
 	structure.body += `${instance}.out.get()/* circuit touch value */`
 
 	parseNext(next, structure)

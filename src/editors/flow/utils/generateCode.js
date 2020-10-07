@@ -93,7 +93,7 @@ const genereateCode = (source, state) => {
 					if (value.type === 'OUTLET') {
 						cc += `.connect(${value.code});`
 					} else {
-						cc += ` = ${value.code};`
+						cc += `.set(${value.code});`
 					}
 					return cc
 				}).join('\n')

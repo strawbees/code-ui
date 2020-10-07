@@ -92,22 +92,18 @@ export const parseEventDefinition = (structure, instance, body) => {
 	structure.eventInit[instance] = `await pt.Init('${instance}');\n`
 	structure.eventSchedule[instance] = `await pt.Schedule('${instance}');\n`
 }
-export const parseInstacePropertyRetrieval = (structure, instance, property) => {
+export const parseNodeInstacePropertyRetrieval = (structure, instance, property) => {
 	structure.body += `${instance}.${property}.get()`
 }
-export const parseInstacePropertyAssignment = (block, structure, instance, property) => {
+export const parseNodeInstacePropertyAssignment = (block, structure, instance, property) => {
 	structure.body += `${instance}.${property}.set(`
 	parseBlock(block, structure)
 	structure.body += ');\n'
 }
-export const parseInstacePropertyAssignmentFromValue = (structure, instance, property, value) => {
+export const parseNodeInstacePropertyAssignmentFromValue = (structure, instance, property, value) => {
 	structure.body += `${instance}.${property}.set(${value}); \n`
 }
-export const parseInstacePropertyOneTimeAssignment = (block, structure, instance, property) => {
-	structure.oneTimeAssignments[`${instance}.${property}`] =
-		`${instance}.${property}.set(${getBlockBody(block, structure)});\n`
-}
-export const setInstacePropertyOneTimeAssignment = (structure, instance, property, value) => {
+export const setNodeInstacePropertyOneTimeAssignment = (structure, instance, property, value) => {
 	structure.oneTimeAssignments[`${instance}.${property}`] =
 		`${instance}.${property}.set(${value}); \n`
 }

@@ -4,8 +4,8 @@ import {
 	getValueBlockByAttributeName,
 	computeInstanceName,
 	parseInstaceDefinition,
-	parseInstacePropertyAssignment,
-	setInstacePropertyOneTimeAssignment
+	parseNodeInstacePropertyAssignment,
+	setNodeInstacePropertyOneTimeAssignment
 } from '../../utils/parsing'
 
 const generator = ({ value, next }, structure) => {
@@ -25,8 +25,8 @@ const generator = ({ value, next }, structure) => {
 
 	parseInstaceDefinition(structure, instance, type)
 	structure.body += '// Set continuous servo speed:\n'
-	setInstacePropertyOneTimeAssignment(structure, instance, 'place', place)
-	parseInstacePropertyAssignment(speedBlock, structure, instance, 'speed')
+	setNodeInstacePropertyOneTimeAssignment(structure, instance, 'place', place)
+	parseNodeInstacePropertyAssignment(speedBlock, structure, instance, 'speed')
 
 	parseNext(next, structure)
 }
