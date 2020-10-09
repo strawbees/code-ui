@@ -35,7 +35,7 @@ const generator = ({
 	structure.body += '// Repeat a specific number of times:\n'
 	structure.body += `for (${indexInstance} = 0; ${indexInstance} < ${times}; ${indexInstance}++) {\n`
 	parseNext(statement, structure)
-	structure.body += 'ptYield();\n}\n'
+	structure.body += 'yield();/* always yeild in the end of a loop */\n}\n'
 	parseNext(next, structure)
 }
 

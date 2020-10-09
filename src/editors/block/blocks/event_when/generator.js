@@ -15,11 +15,11 @@ const generator = ({ attributes, next, value }, structure) => {
 
 	let body = ''
 	body += 'while (true) {\n'
-	body += '// Code that runs everytime an event happens:\n'
+	body += '// Code that runs when an event happens:\n'
 	body += `if (${condition}) {\n`
 	body += getBlockBody(getNext(next), structure)
 	body += '}\n'
-	body += 'ptYield();\n}\n'
+	body += 'yield();/* always yeild in the end of a loop */\n}\n'
 
 	const instance = computeInstanceName(structure, 'event_when', attributes.id)
 	parseEventDefinition(structure, instance, body)

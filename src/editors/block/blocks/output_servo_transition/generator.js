@@ -65,7 +65,7 @@ const generator = ({ attributes, value, next }, structure) => {
 	parseNodeInstacePropertyAssignmentFromValue(structure, instance, 'position',
 		`Easing::function(${easing}, Bot::seconds() - ${startVar}, ${beginVar}, ${changeVar}, ${durationVar})`
 	)
-	structure.body += 'ptYield();\n'
+	structure.body += 'yield();/* always yeild in the end of a loop */\n'
 	structure.body += '}\n'
 	parseNodeInstacePropertyAssignmentFromValue(structure, instance, 'position', position)
 
