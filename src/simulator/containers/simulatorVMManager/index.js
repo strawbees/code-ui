@@ -150,7 +150,7 @@ const SimulatorVMManager = ({
 				console.groupCollapsed('Error calling program.setup()')
 				console.log('Error:', e)
 				console.log('This is likely an error in code inside setup(). See below.')
-				console.log('setup():', programRef.current.setup)
+				console.log('setup():', programRef.current?.setup)
 				console.log('Program:', Program)
 				console.groupEnd()
 				// TODO: dispatch error action to signal the current't program crashed on setup
@@ -164,7 +164,7 @@ const SimulatorVMManager = ({
 					console.groupCollapsed('Error calling program.loop()')
 					console.log('Error:', e)
 					console.log('This is likely an error in code inside loop(). See below.')
-					console.log('loop():', programRef.current.loop)
+					console.log('loop():', programRef.current?.loop)
 					console.log('Program:', Program)
 					console.groupEnd()
 					// TODO: dispatch error action to signal the current't program crashed on loop
