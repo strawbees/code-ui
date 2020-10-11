@@ -1,6 +1,8 @@
 export class Node {
-	constructor(Bot, id) {
-		this.Bot = Bot
+	static Bot = null
+
+	constructor(id) {
+		this.Bot = Node.Bot
 		if (id) {
 			this.id = id
 			if (this.Bot.NODE_ID_FACTORY < id) this.Bot.NODE_ID_FACTORY = id

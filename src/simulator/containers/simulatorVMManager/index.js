@@ -57,68 +57,84 @@ const SimulatorVMManager = ({
 
 		const start = async () => {
 			const ast = parser.parse(code)
-			console.log(ast)
 			const transpiledCode = generateJsfromCppAst(ast)
-			console.log(transpiledCode)
 			let Program
 			try {
 				/* eslint-disable no-new-func */
-				const createProgramClass = (generatedCode) => new Function(...Object.keys(Quirkbot), `
-					'use strict'
-					/**
-					* Adaptations from the static C++ source to JS
-					* The Quirkbot C++ source uses static data - this would not
-					* allow us to run multiple instances of the simulator. So
-					* we overload certain variables with versions that we
-					* dynamicaly initialize.
-					**/
-					Bot = new Bot()
-					const delay = createDelay(Bot)
-					const delayMicroseconds = createDelayMicroseconds(Bot)
-					const pt = new Protothreads(Bot)
+				const createProgramClass = (jsCode) => new Function(...Object.keys(Quirkbot), `
+					const bootstrap = async () => {
+						/**
+						* Adaptations from the static C++ source to JS
+						* The Quirkbot C++ source uses static data - this would not
+						* allow us to run multiple instances of the simulator. So
+						* we overload certain variables with versions that we
+						* dynamicaly initialize.
+						**/
+						Bot = new Bot()
+						Node.Bot = Bot
+						const delay = createDelay(Bot)
+						const delayMicroseconds = createDelayMicroseconds(Bot)
+						const {
+							blockBegin,
+							blockEnd,
+							eventBegin,
+							eventEnd,
+							getBlockArg,
+							initEvent,
+							registerBlock,
+							registerEvent,
+							scheduleEvent,
+							wait,
+							waitUntil,
+							waitWhile,
+							spawnBlock,
+							yield,
+							yieldUntil,
+							threadBegin,
+							threadEnd,
+							THREAD,
+						} = new Protothreads(Bot)
 
-					${generatedCode}
+						${jsCode}
 
-					const _cancel = () => {
-						delay.cancel()
-						delayMicroseconds.cancel()
-						cancelAllLoops()
+						return {
+							cancel : () => {
+								delay.cancel()
+								delayMicroseconds.cancel()
+								cancelAllLoops()
+							},
+							setup : async () => {
+								await Bot.start()
+								await setup()
+								await Bot.afterStart()
+							},
+							loop : async () => {
+								await Bot.update()
+								await loop()
+							},
+							getInternalData : () => {
+								return Bot.getInternalData()
+							},
+							setExternalData : (data) => {
+								return Bot.setExternalData(data)
+							}
+						}
 					}
-					const _setup = async () => {
-						await Bot.start()
-						await setup()
-						await Bot.afterStart()
-					}
-					const _loop = async () => {
-						await Bot.update()
-						await loop()
-					}
-					const _getInternalData = () => {
-						return Bot.getInternalData()
-					}
-					const _setExternalData = (data) => {
-						return Bot.setExternalData(data)
-					}
-					Object.defineProperty(this, 'Bot', { value : Bot })
-					Object.defineProperty(this, 'cancel', { value : _cancel })
-					Object.defineProperty(this, 'setup', { value : _setup })
-					Object.defineProperty(this, 'loop', { value : _loop })
-					Object.defineProperty(this, 'getInternalData', { value : _getInternalData })
-					Object.defineProperty(this, 'setExternalData', { value : _setExternalData })
+					return bootstrap()
 				`)
 				/* eslint-enable no-new-func */
-				Program = createProgramClass(code)
+				Program = createProgramClass(transpiledCode)
 			} catch (e) {
 				console.groupCollapsed('Error creating program class')
 				console.log('Error:', e)
-				console.log('Generated code:', code)
+				console.log('Transpiled code:', transpiledCode)
 				console.groupEnd()
 				// TODO: dispatch error action to signal the current't program is invalid
 				return
 			}
 
 			try {
-				programRef.current = new Program(...Object.values(Quirkbot))
+				programRef.current = await new Program(...Object.values(Quirkbot))
 			} catch (e) {
 				console.groupCollapsed('Error creating program instance')
 				console.log('Error:', e)
