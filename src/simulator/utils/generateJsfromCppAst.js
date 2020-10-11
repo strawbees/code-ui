@@ -41,6 +41,7 @@ GENERATORS['<='] = textOutputGenerator
 GENERATORS['!'] = textOutputGenerator
 GENERATORS['=='] = () => '==='
 GENERATORS['!='] = () => '!=='
+GENERATORS['::'] = () => '.'
 GENERATORS.true = textOutputGenerator
 GENERATORS.false = textOutputGenerator
 GENERATORS.if = textOutputGenerator
@@ -49,6 +50,7 @@ GENERATORS.while = textOutputGenerator
 GENERATORS.string_literal = textOutputGenerator
 GENERATORS.char_literal = textOutputGenerator
 GENERATORS.field_identifier = textOutputGenerator
+GENERATORS.namespace_identifier = textOutputGenerator
 GENERATORS.for = textOutputGenerator
 GENERATORS['#include'] = () => 'import * from'
 
@@ -66,6 +68,7 @@ GENERATORS.binary_expression = passThroughGenerator
 GENERATORS.assignment_expression = passThroughGenerator
 GENERATORS.update_expression = passThroughGenerator
 GENERATORS.unary_expression = passThroughGenerator
+GENERATORS.scoped_identifier = passThroughGenerator
 
 GENERATORS.call_expression = (node) => {
 	let { children } = node
