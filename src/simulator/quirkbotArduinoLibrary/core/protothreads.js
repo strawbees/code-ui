@@ -73,6 +73,7 @@ export class Protothreads {
 
 	spawnBlock = async (name, ...args) => {
 		this.STORE[name].running = true
+		this.STORE[name].args = args
 		await this.THREAD[name](...args)
 		this.STORE[name].running = false
 	}

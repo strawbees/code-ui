@@ -14,6 +14,10 @@ const generator = ({ statement, next }, structure, shallow) => {
 
 	const argNames = JSON.parse(statement?.[0]?.shadow?.[0]?.mutation?.[0]?.attributes?.argumentnames || '[]')
 
+	const argumentIds = JSON.parse(statement?.[0]?.shadow?.[0]?.mutation?.[0]?.attributes?.argumentids || '[]')
+
+	const procId = `${procCode}${argumentIds.join('')}`
+
 	const argsById = statement?.[0]?.shadow?.[0]?.value?.reduce?.((acc, value) => {
 		const rawType = value?.shadow?.[0]?.attributes?.type
 		const id = value?.shadow?.[0]?.field?.[0]
@@ -30,6 +34,16 @@ const generator = ({ statement, next }, structure, shallow) => {
 	}, {}) || {}
 
 	const args = argNames.map(id => argsById[id])
+
+	structure.procedures[procId] = {
+		instance,
+		args
+	}
+
+	// don't further process the body in case this is shallow run
+	if (shallow) {
+		return
+	}
 
 	// don't further process the body in case this is shallow run
 	if (shallow) {
