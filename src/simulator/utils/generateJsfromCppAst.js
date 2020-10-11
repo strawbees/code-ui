@@ -47,6 +47,7 @@ GENERATORS.if = textOutputGenerator
 GENERATORS.else = textOutputGenerator
 GENERATORS.while = textOutputGenerator
 GENERATORS.string_literal = textOutputGenerator
+GENERATORS.char_literal = textOutputGenerator
 GENERATORS.field_identifier = textOutputGenerator
 GENERATORS.for = textOutputGenerator
 GENERATORS['#include'] = () => 'import * from'
