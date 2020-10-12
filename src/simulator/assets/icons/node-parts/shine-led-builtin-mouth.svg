@@ -1,0 +1,15 @@
+<svg width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path style="mix-blend-mode:hard-light" d="M20 40c11.046 0 20-8.954 20-20S31.046 0 20 0 0 8.954 0 20s8.954 20 20 20z" fill="url(#paint0_radial)"/>
+    <defs>
+        <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(20 0 0 20 20 20)">
+            <stop stop-color="green"/>
+            <stop offset=".22" stop-color="green" stop-opacity=".98"/>
+            <stop offset=".39" stop-color="green" stop-opacity=".9"/>
+            <stop offset=".55" stop-color="green" stop-opacity=".76"/>
+            <stop offset=".7" stop-color="green" stop-opacity=".58"/>
+            <stop offset=".84" stop-color="green" stop-opacity=".34"/>
+            <stop offset=".98" stop-color="green" stop-opacity=".05"/>
+            <stop offset="1" stop-color="green" stop-opacity="0"/>
+        </radialGradient>
+    </defs>
+</svg>
