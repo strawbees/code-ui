@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import SimulatorVMManager from 'src/simulator/containers/simulatorVMManager'
+import EditorWithSimulatorContainer from 'src/containers/editorWithSimulatorContainer'
 import VisualToTextEditorContainer from 'src/containers/visualToTextEditorContainer'
 import FlowEditor from 'src/editors/flow'
 import mapStateToProps from './mapStateToProps'
@@ -7,14 +7,13 @@ import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
 const PageFlowContainer = (props) =>
-	<>
-		<SimulatorVMManager/>
+	<EditorWithSimulatorContainer>
 		<VisualToTextEditorContainer
 			VisualEditor={FlowEditor}
 			type='flow'
 			{...props}
 		/>
-	</>
+	</EditorWithSimulatorContainer>
 
 const pageFlowContainerConnected = connect(
 	mapStateToProps,

@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import QuirkbotSimulatorContainer from 'src/simulator/containers/quirkbotSimulatorContainer'
 
 const TextOnlyEditor = ({
 	safeOpenModal,
@@ -9,7 +8,7 @@ const TextOnlyEditor = ({
 	type,
 	...textEditorProps
 }) =>
-	<div className='root visualToTextEditor'>
+	<div className='root textOnlyEditor'>
 		<style jsx>{`
 			.root {
 				position: relative;
@@ -17,14 +16,8 @@ const TextOnlyEditor = ({
 				height: 100%;
 				overflow: hidden;
 			}
-			.root :global(.quirkbotSimulator) {
-				position: absolute;
-				bottom: 0;
-				right: 0;
-			}
 		`}</style>
 		<TextEditor {...textEditorProps} />
-		<QuirkbotSimulatorContainer />
 	</div>
 
 TextOnlyEditor.propTypes = {
