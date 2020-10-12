@@ -53,9 +53,9 @@ const SimulatorVMManager = ({
 				handleInternalDataTimerRef.current = null
 			}
 		}
-		cleanup()
-
 		const start = async () => {
+			cleanup()
+
 			const ast = parser.parse(code)
 			const transpiledCode = generateJsfromCppAst(ast)
 			let Program
