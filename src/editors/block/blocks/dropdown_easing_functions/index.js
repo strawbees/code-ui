@@ -10,3 +10,4 @@ const dropdown_easing_functions = {
 }
 
 export default dropdown_easing_functions
+/* eslint-enable camelcase */

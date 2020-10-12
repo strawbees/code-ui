@@ -10,3 +10,4 @@ const operator_and = {
 }
 
 export default operator_and
+/* eslint-enable camelcase */

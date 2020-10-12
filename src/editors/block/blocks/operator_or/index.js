@@ -10,3 +10,4 @@ const operator_or = {
 }
 
 export default operator_or
+/* eslint-enable camelcase */

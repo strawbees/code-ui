@@ -10,3 +10,4 @@ const data_addtolist = {
 }
 
 export default data_addtolist
+/* eslint-enable camelcase */

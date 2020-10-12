@@ -10,3 +10,4 @@ const operator_gt = {
 }
 
 export default operator_gt
+/* eslint-enable camelcase */

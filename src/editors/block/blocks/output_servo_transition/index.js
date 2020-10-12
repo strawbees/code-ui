@@ -10,3 +10,4 @@ const output_servo_transition = {
 }
 
 export default output_servo_transition
+/* eslint-enable camelcase */

@@ -55,43 +55,40 @@ export const parseInstaceDefinition = (structure, instance, type) => {
 	structure.definitions[instance] = `${type ? `${type} ` : ''}${instance};\n`
 }
 export const parseCustomBlockDefinition = (structure, instance, args, body) => {
-	const defArgs = `(${args.map(arg => `${arg.type} ${arg.name}`).join(', ')})`
-	const callArgs = `(${args.map(arg => arg.name).join(', ')})`
-	const call = `ptDeclareBlock(${instance}${args.length ? `, ${defArgs}, ${callArgs}` : ''})`
-	parseInstaceDefinition(structure, call)
-	structure.customBlockDefinition[instance] = `ptDefineBlock(${instance}${args.length ? `, ${defArgs}` : ''}){\n`
-	structure.customBlockDefinition[instance] += 'ptBeginBlock();\n'
+	structure.customBlockDeclaration[instance] = `registerBlock(${instance}/* name */, ${args.length}/* number of arguments */);\n`
+	structure.customBlockDefinition[instance] = `THREAD(${instance}){\n`
+	structure.customBlockDefinition[instance] += args.length ? '// Get block arguments:\n' : ''
+	structure.customBlockDefinition[instance] += args.map((arg, i) =>
+		`static ${arg.type} ${arg.name} = getBlockArg(${instance}, ${i});`
+	).join('\n')
+	structure.customBlockDefinition[instance] += args.length ? '\n\n' : ''
+	structure.customBlockDefinition[instance] += '// Begin block code:\nblockBegin()/* all blocks must begin with this! */;\n\n'
 	structure.customBlockDefinition[instance] += body
-	structure.customBlockDefinition[instance] += 'ptEndBlock();\n};\n'
+	structure.customBlockDefinition[instance] += '\n// End block code:\nblockEnd()/* all blocks must end with this! */;\n}\n'
 }
 export const parseEventDefinition = (structure, instance, body) => {
-	const call = `ptDeclareEvent(${instance})`
-	parseInstaceDefinition(structure, call)
-	structure.eventDefinition[instance] = `ptDefineEvent(${instance}){\n`
-	structure.eventDefinition[instance] += 'ptBeginEvent();\n'
+	structure.eventDeclaration[instance] = `registerEvent(${instance}/* name */);\n`
+	structure.eventDefinition[instance] = `THREAD(${instance}){\n`
+	structure.eventDefinition[instance] += '// Begin event code:\neventBegin()/* all events must begin with this! */;\n\n'
 	structure.eventDefinition[instance] += body
-	structure.eventDefinition[instance] += 'ptEndEvent();\n};\n'
-	structure.eventInit[instance] = `ptInit(${instance});\n`
-	structure.eventSchedule[instance] = `ptSchedule(${instance});\n`
+	structure.eventDefinition[instance] += '\n// End event code:\neventEnd()/* all events must end with this! */;\n}\n'
+	structure.eventInit[instance] = `initEvent(${instance});\n`
+	structure.eventSchedule[instance] = `scheduleEvent(${instance});\n`
 }
-export const parseInstacePropertyRetrieval = (structure, instance, property) => {
+export const parseNodeInstacePropertyRetrieval = (structure, instance, property) => {
 	structure.body += `${instance}.${property}.get()`
 }
-export const parseInstacePropertyAssignment = (block, structure, instance, property) => {
-	structure.body += `${instance}.${property} = `
+export const parseNodeInstacePropertyAssignment = (block, structure, instance, property) => {
+	structure.body += `${instance}.${property}.set(`
 	parseBlock(block, structure)
-	structure.body += ';\n'
+	structure.body += ');\n'
 }
-export const parseInstacePropertyAssignmentFromValue = (structure, instance, property, value) => {
-	structure.body += `${instance}.${property} = ${value}; \n`
+export const parseNodeInstacePropertyAssignmentFromValue = (structure, instance, property, value) => {
+	structure.body += `${instance}.${property}.set(${value}); \n`
 }
-export const parseInstacePropertyOneTimeAssignment = (block, structure, instance, property) => {
+export const setNodeInstacePropertyOneTimeAssignment = (structure, instance, property, value) => {
 	structure.oneTimeAssignments[`${instance}.${property}`] =
-		`${instance}.${property} = ${getBlockBody(block, structure)};\n`
-}
-export const setInstacePropertyOneTimeAssignment = (structure, instance, property, value) => {
-	structure.oneTimeAssignments[`${instance}.${property}`] =
-		`${instance}.${property} = ${value}; \n`
+		`${instance}.${property}.set(${value}); \n`
 }
 export const setGlobalOneTimeStatement = (structure, statement) => {
 	structure.oneTimeStatements[statement] =
@@ -126,7 +123,9 @@ export const indentString = (string, num = 1, template = '\t') => {
 export const assembleStructure = structure => {
 	let {
 		definitions,
+		customBlockDeclaration,
 		customBlockDefinition,
+		eventDeclaration,
 		eventDefinition,
 		eventInit,
 		eventSchedule,
@@ -135,7 +134,9 @@ export const assembleStructure = structure => {
 	} = structure
 
 	definitions = Object.values(definitions).sort().join('')
+	customBlockDeclaration = Object.values(customBlockDeclaration).sort().join('')
 	customBlockDefinition = Object.values(customBlockDefinition).sort().join('')
+	eventDeclaration = Object.values(eventDeclaration).sort().join('')
 	eventDefinition = Object.values(eventDefinition).sort().join('')
 	eventInit = Object.values(eventInit).sort().join('')
 	eventSchedule = Object.values(eventSchedule).sort().join('')
@@ -151,12 +152,18 @@ export const assembleStructure = structure => {
 	`${definitions ?
 		'// Forward declarations:\n' +
 		`${definitions}\n` : ''}` +
-	`${customBlockDefinition ?
-		'// Custom blocks definitions:\n' +
-		`${customBlockDefinition}\n` : ''}` +
+	`${eventDeclaration ?
+		'// Register events:\n' +
+		`${eventDeclaration}\n` : ''}` +
+	`${customBlockDeclaration ?
+		'// Register blocks:\n' +
+		`${customBlockDeclaration}\n` : ''}` +
 	`${eventDefinition ?
-		'// Events definitions:\n' +
+		'// Define events:\n' +
 		`${eventDefinition}\n` : ''}` +
+	`${customBlockDefinition ?
+		'// Define blocks:\n' +
+		`${customBlockDefinition}\n` : ''}` +
 	'// Setup code, that runs only once:\n' +
 	'void setup() {\n' +
 		`${oneTimeStatements ? `${oneTimeStatements}\n` : ''}` +
@@ -209,18 +216,20 @@ export const generateCode = source => {
 	}
 
 	const structure = {
-		header                : '#include "Quirkbot.h"\n',
-		types                 : {},
-		instances             : {},
-		procedures            : {},
-		customBlockDefinition : {},
-		eventDefinition       : {},
-		eventInit             : {},
-		eventSchedule         : {},
-		definitions           : {},
-		oneTimeAssignments    : {},
-		oneTimeStatements     : {},
-		body                  : ''
+		header                 : '#include "Quirkbot.h"\n',
+		types                  : {},
+		instances              : {},
+		procedures             : {},
+		customBlockDeclaration : {},
+		customBlockDefinition  : {},
+		eventDeclaration       : {},
+		eventDefinition        : {},
+		eventInit              : {},
+		eventSchedule          : {},
+		definitions            : {},
+		oneTimeAssignments     : {},
+		oneTimeStatements      : {},
+		body                   : ''
 	}
 
 	if (json && json.block) {

@@ -10,3 +10,4 @@ const text = {
 }
 
 export default text
+/* eslint-enable camelcase */

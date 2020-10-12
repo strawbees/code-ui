@@ -4,8 +4,8 @@ import {
 	getValueBlockByAttributeName,
 	computeInstanceName,
 	parseInstaceDefinition,
-	setInstacePropertyOneTimeAssignment,
-	parseInstacePropertyAssignmentFromValue,
+	setNodeInstacePropertyOneTimeAssignment,
+	parseNodeInstacePropertyAssignmentFromValue,
 } from '../../utils/parsing'
 
 const generator = ({ value, next }, structure) => {
@@ -21,12 +21,12 @@ const generator = ({ value, next }, structure) => {
 
 	parseInstaceDefinition(structure, instance, type)
 
-	setInstacePropertyOneTimeAssignment(structure, instance, 'key', key)
+	setNodeInstacePropertyOneTimeAssignment(structure, instance, 'key', key)
 
 	structure.body += '// Quickly tap a key:\n'
-	parseInstacePropertyAssignmentFromValue(structure, instance, 'trigger', 1)
-	structure.body += 'ptSleep(100);\n'
-	parseInstacePropertyAssignmentFromValue(structure, instance, 'trigger', 0)
+	parseNodeInstacePropertyAssignmentFromValue(structure, instance, 'trigger', 1)
+	structure.body += 'wait(0.1);\n'
+	parseNodeInstacePropertyAssignmentFromValue(structure, instance, 'trigger', 0)
 
 	parseNext(next, structure)
 }

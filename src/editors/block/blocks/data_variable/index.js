@@ -10,3 +10,4 @@ const data_variable = {
 }
 
 export default data_variable
+/* eslint-enable camelcase */

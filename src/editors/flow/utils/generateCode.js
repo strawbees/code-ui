@@ -82,7 +82,7 @@ const genereateCode = (source, state) => {
 				if (value.type === 'OUTLET') {
 					c += `.connect(${value.code});`
 				} else {
-					c += ` = ${value.code};`
+					c += `.set(${value.code});`
 				}
 			} else {
 				const numItems = parameterNumItemsSelector()(state, { id : parameter.id, instanceId : instance.id })
@@ -93,7 +93,7 @@ const genereateCode = (source, state) => {
 					if (value.type === 'OUTLET') {
 						cc += `.connect(${value.code});`
 					} else {
-						cc += ` = ${value.code};`
+						cc += `.set(${value.code});`
 					}
 					return cc
 				}).join('\n')

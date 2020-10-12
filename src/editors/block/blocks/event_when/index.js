@@ -10,3 +10,4 @@ const event_when = {
 }
 
 export default event_when
+/* eslint-enable camelcase */

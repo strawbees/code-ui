@@ -4,8 +4,8 @@ import {
 	getValueBlockByAttributeName,
 	computeInstanceName,
 	parseInstaceDefinition,
-	setInstacePropertyOneTimeAssignment,
-	parseInstacePropertyAssignmentFromValue,
+	setNodeInstacePropertyOneTimeAssignment,
+	parseNodeInstacePropertyAssignmentFromValue,
 } from '../../utils/parsing'
 
 const generator = ({ value, next }, structure) => {
@@ -21,10 +21,10 @@ const generator = ({ value, next }, structure) => {
 
 	parseInstaceDefinition(structure, instance, type)
 
-	setInstacePropertyOneTimeAssignment(structure, instance, 'key', key)
+	setNodeInstacePropertyOneTimeAssignment(structure, instance, 'key', key)
 
 	structure.body += '// Press a key:\n'
-	parseInstacePropertyAssignmentFromValue(structure, instance, 'trigger', 1)
+	parseNodeInstacePropertyAssignmentFromValue(structure, instance, 'trigger', 1)
 
 	parseNext(next, structure)
 }

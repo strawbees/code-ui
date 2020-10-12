@@ -10,3 +10,4 @@ const operator_multiply = {
 }
 
 export default operator_multiply
+/* eslint-enable camelcase */

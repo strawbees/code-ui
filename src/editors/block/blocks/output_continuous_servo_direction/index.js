@@ -10,3 +10,4 @@ const output_continuous_servo_direction = {
 }
 
 export default output_continuous_servo_direction
+/* eslint-enable camelcase */

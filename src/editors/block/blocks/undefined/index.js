@@ -3,10 +3,11 @@ import definition from './definition'
 import generator from './generator'
 import simulatorGenerator from './simulatorGenerator'
 
-const undefined = {
+const undef = {
 	definition,
 	generator,
 	simulatorGenerator,
 }
 
-export default undefined
+export default undef
+/* eslint-enable camelcase */

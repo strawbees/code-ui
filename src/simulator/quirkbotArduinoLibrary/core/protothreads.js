@@ -3,95 +3,78 @@ import { createWhileLoop } from './cancelableLoops'
 export class Protothreads {
 	STORE = {}
 
+	THREAD = {}
+
 	updatable
 
 	constructor(updatable) {
 		this.updatable = updatable
 	}
 
-	Declare = (name, ...args) => this.STORE[name] = {
+	registerEvent = (name) => this.STORE[name] = {
+		name,
 		running : false,
-		args
 	}
 
-	DeclareEvent = this.Declare
-
-	DeclareBlock = this.Declare
-
-	Define = (name, fn) => this.STORE[name].fn = fn
-
-	DefineEvent = this.Define
-
-	DefineBlock = this.Define
-
-	Init = async (/* name */) => {}
-
-	Begin = async () => {}
-
-	BeginEvent = async () => {
-		await this.Begin()
+	registerBlock = (name, numArgs) => this.STORE[name] = {
+		name,
+		numArgs,
+		args    : [],
+		running : false,
 	}
 
-	BeginBlock = async () => {
-		await this.Begin()
-		await this.Yield()
+	getBlockArg = async (name, arg) => this.STORE[name].args[arg]
+
+	threadBegin = async () => {}
+
+	threadEnd = async () => {}
+
+	eventBegin = async () => {}
+
+	eventEnd = async () => {
+		await this.yieldUntil(async () => false)
 	}
 
-	Sleep = async (ms) => {
-		const deadline = Date.now() + ms
-		await createWhileLoop(() => Date.now() < deadline, this.Yield)
+	blockBegin = async () => {
+		await this.yield()
 	}
 
-	WaitUntil = async (condition) => {
-		await createWhileLoop(async () => !await condition(), this.Yield)
+	blockEnd = async () => {}
+
+	wait = async (seconds) => {
+		const deadline = Date.now() + seconds * 1000
+		await createWhileLoop(() => Date.now() < deadline, this.yield)
 	}
 
-	WaitWhile = async (condition) => {
-		await createWhileLoop(condition, this.Yield)
-	}
-
-	WaitThread = async (name) => {
-		await createWhileLoop(() => this.STORE[name].running, this.Yield)
-	}
-
-	Yield = async () => {
+	yield = async () => {
 		await this.updatable.update()
 	}
 
-	YieldUntil = async (condition) => {
-		await createWhileLoop(async () => !await condition(), this.Yield)
+	yieldUntil = async (condition) => {
+		await createWhileLoop(async () => !await condition(), this.yield)
 	}
 
-	Spawn = async (name, ...args) => {
-		this.STORE[name].running = true
-		await this.STORE[name].fn(...args)
-		this.STORE[name].running = false
+	waitUntil = async (condition) => {
+		await createWhileLoop(async () => !await condition(), this.yield)
 	}
 
-	SpawnEvent = this.Spawn
-
-	SpawnBlock = this.Spawn
-
-	Restart = async () => {}
-
-	Exit = async () => {}
-
-	End = async () => {}
-
-	EndEvent = async () => {
-		await this.YieldUntil(async () => false)
-		await this.End()
+	waitWhile = async (condition) => {
+		await createWhileLoop(condition, this.yield)
 	}
 
-	EndBlock = async () => {
-		await this.Exit()
-		await this.End()
-	}
+	initEvent = async () => {}
 
-	Schedule = async (name, ...args) => {
+	scheduleEvent = async (name, ...args) => {
 		if (!this.STORE[name].running) {
-			this.Spawn(name, ...args)
+			this.spawnBlock(name, ...args)
 				.catch(() => {})
 		}
+	}
+
+	spawnBlock = async (name, ...args) => {
+		this.STORE[name].running = true
+		this.STORE[name].args = args
+		await this.THREAD[name](...args)
+		this.STORE[name].running = false
 	}
 }

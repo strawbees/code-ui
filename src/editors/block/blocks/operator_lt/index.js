@@ -10,3 +10,4 @@ const operator_lt = {
 }
 
 export default operator_lt
+/* eslint-enable camelcase */

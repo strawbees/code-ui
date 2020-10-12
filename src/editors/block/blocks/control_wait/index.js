@@ -10,3 +10,4 @@ const control_wait = {
 }
 
 export default control_wait
+/* eslint-enable camelcase */

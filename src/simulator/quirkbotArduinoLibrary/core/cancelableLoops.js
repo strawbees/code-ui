@@ -10,17 +10,16 @@ export const endAllLoops = () => {
 	STORE.clear()
 }
 
-export const createWhileLoop = async (testFunction, doFunction, name) => {
+export const createWhileLoop = async (testFunction, doFunction) => {
 	const loop = new WhileLoop(testFunction, doFunction)
-	loop.name = name
 	await loop.exec()
 }
 
-export const createForLoop = async (statement1, statement2, statement3, doFunction) => {
-	await statement1()
-	const loop = new WhileLoop(statement2, async () => {
+export const createForLoop = async (initFunction, conditionFunction, updateFunction, doFunction) => {
+	await initFunction()
+	const loop = new WhileLoop(conditionFunction, async () => {
 		await doFunction()
-		await statement3()
+		await updateFunction()
 	})
 	return loop.exec()
 }
@@ -91,8 +90,8 @@ export class WhileLoop {
 				return
 			}
 
-			this.timer = setTimeout(tick, 250)
+			this.timer = setTimeout(tick, 0)
 		}
-		this.timer = setTimeout(tick, 250)
+		this.timer = setTimeout(tick, 0)
 	})
 }

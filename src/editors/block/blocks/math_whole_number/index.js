@@ -10,3 +10,4 @@ const math_whole_number = {
 }
 
 export default math_whole_number
+/* eslint-enable camelcase */

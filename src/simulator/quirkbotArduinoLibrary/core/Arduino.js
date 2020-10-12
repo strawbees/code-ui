@@ -94,7 +94,7 @@ export const analogReference = (/* mode */) => {}
 export const analogWrite = (/* a, int */) => {}
 
 export const millis = Date.now
-export const micros = () => Date.now() * 1000
+export const micros = () => millis() * 1000
 // void delay(unsigned long);
 // void delayMicroseconds(unsigned int us);
 export const pulseIn = (/* pin, state, timeout */) => {}

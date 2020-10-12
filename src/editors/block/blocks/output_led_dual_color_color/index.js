@@ -10,3 +10,4 @@ const output_led_dual_color_color = {
 }
 
 export default output_led_dual_color_color
+/* eslint-enable camelcase */

@@ -10,3 +10,4 @@ const data_lengthoflist = {
 }
 
 export default data_lengthoflist
+/* eslint-enable camelcase */

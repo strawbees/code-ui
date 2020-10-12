@@ -10,3 +10,4 @@ const data_itemnumoflist = {
 }
 
 export default data_itemnumoflist
+/* eslint-enable camelcase */

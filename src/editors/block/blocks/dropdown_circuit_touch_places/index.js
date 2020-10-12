@@ -10,3 +10,4 @@ const dropdown_circuit_touch_places = {
 }
 
 export default dropdown_circuit_touch_places
+/* eslint-enable camelcase */
