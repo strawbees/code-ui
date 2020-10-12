@@ -4,10 +4,10 @@ import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
-const QuirkbotSimulatorContainer = (props) =>
-	<QuirkbotSimulator
+const QuirkbotSimulatorContainer = (props) => null
+	/* <QuirkbotSimulator
 		{...props}
-	/>
+	/> */
 
 const quirkbotSimulatorContainerConnected = connect(
 	mapStateToProps,
