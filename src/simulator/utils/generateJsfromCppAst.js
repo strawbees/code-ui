@@ -555,9 +555,10 @@ const generateJsfromCppAst = (tree) => {
 		} else {
 			cursor.gotoParent()
 		}
-	}
-	iteratorLog(tree.walk()) */
-	const recursiveLog = (node) => {
+	} */
+	// iteratorLog(tree.walk())
+
+	/* const recursiveLog = (node) => {
 		console.groupCollapsed(node.type)
 		console.log(node.text)
 		removeChildrenOfType(node.children, 'comment').forEach(child => {
@@ -565,9 +566,9 @@ const generateJsfromCppAst = (tree) => {
 		})
 		console.groupEnd()
 	}
-	recursiveLog(tree.rootNode)
+	recursiveLog(tree.rootNode) */
 	const js = generate(tree.rootNode)
-	console.log(js)
+	// console.log(js)
 	return js
 }
 
