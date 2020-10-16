@@ -54,7 +54,9 @@ const EditorWithSimulator = ({
 				onClick={isSimulatorVisible ? hideSimulator : showSimulator}
 			/>
 		</div>
-		{isSimulatorVisible && <QuirkbotSimulatorContainer />}
+		{isSimulatorVisible &&
+			<QuirkbotSimulatorContainer />
+		}
 	</div>
 
 EditorWithSimulator.propTypes = {
