@@ -23,6 +23,7 @@
     "@svgr/webpack": "^5.4.0",
     "file-saver": "^2.0.2",
     "informed": "1.10.12",
+    "js-interpreter": "^2.2.0",
     "lz-string": "^1.4.4",
     "next": "9.3.0",
     "next-redux-wrapper": "^6.0.2",
