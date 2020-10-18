@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import JSInterpreter from 'js-interpreter'
 import loadCppParser from 'src/utils/loadCppParser'
 import * as Quirkbot from 'src/simulator/quirkbotArduinoLibrary/Quirkbot'
 
@@ -16,7 +17,7 @@ const SimulatorVMManager = ({
 	setInternalData,
 }) => {
 	const programRef = useRef()
-	const loopTimerRef = useRef()
+	const stepTimerRef = useRef()
 	const handleInternalDataTimerRef = useRef()
 
 	const externalDataRef = useRef()
@@ -41,12 +42,11 @@ const SimulatorVMManager = ({
 		/* eslint-disable consistent-return, no-console */
 		const cleanup = () => {
 			if (programRef.current) {
-				programRef.current.cancel()
 				programRef.current = null
 			}
-			if (loopTimerRef.current) {
-				clearTimeout(loopTimerRef.current)
-				loopTimerRef.current = null
+			if (stepTimerRef.current) {
+				clearTimeout(stepTimerRef.current)
+				stepTimerRef.current = null
 			}
 			if (handleInternalDataTimerRef.current) {
 				cancelAnimationFrame(handleInternalDataTimerRef.current)
@@ -58,18 +58,59 @@ const SimulatorVMManager = ({
 
 			const ast = parser.parse(code)
 			const transpiledCode = generateJsfromCppAst(ast)
-			let Program
+			const interpreterCode = `
+				${transpiledCode}
+				setup();
+				while(true){
+					loop();
+				}
+			`
+			const initInterpreter = (interpreter, globalObject) => {
+				// Define 'console.log' object.
+				const _console = interpreter.nativeToPseudo({})
+				interpreter.setProperty(globalObject, 'console', _console)
+
+				// Define 'console.log' function.
+				interpreter.setProperty(
+					_console,
+					'log',
+					interpreter.createNativeFunction((...args) => console.log(...args))
+				)
+			}
 			try {
-				/* eslint-disable no-new-func */
+				programRef.current = new JSInterpreter(interpreterCode, initInterpreter)
+			} catch (e) {
+				console.groupCollapsed('Error creating program instance')
+				console.log('Error:', e)
+				console.log('interpreterCode:', interpreterCode)
+				console.groupEnd()
+				// TODO: dispatch error action to signal the current't program is invalid
+			}
+			let stepCounter = 0
+			const step = async () => {
+				stepCounter++
+				try {
+					if (programRef.current.step()) {
+						if (stepCounter % 10 === 0) {
+							stepTimerRef.current = setTimeout(step, 0)
+						} else {
+							step()
+						}
+					}
+				} catch (e) {
+					console.groupCollapsed('Error calling program.step()')
+					console.log('Error:', e)
+					console.log('interpreterCode:', interpreterCode)
+					console.groupEnd()
+					// TODO: dispatch error action to signal the current't program crashed on step
+				}
+			}
+			step()
+			//
+			// let Program = new JSInterpreter(transpiledCode)
+			/* try {
 				const createProgramClass = (jsCode) => new Function(...Object.keys(Quirkbot), `
 					const bootstrap = async () => {
-						/**
-						* Adaptations from the static C++ source to JS
-						* The Quirkbot C++ source uses static data - this would not
-						* allow us to run multiple instances of the simulator. So
-						* we overload certain variables with versions that we
-						* dynamicaly initialize.
-						**/
 						Bot = new Bot()
 						Node.Bot = Bot
 						const delay = createDelay(Bot)
@@ -122,7 +163,6 @@ const SimulatorVMManager = ({
 					}
 					return bootstrap()
 				`)
-				/* eslint-enable no-new-func */
 				Program = createProgramClass(transpiledCode)
 			} catch (e) {
 				console.groupCollapsed('Error creating program class')
@@ -131,20 +171,9 @@ const SimulatorVMManager = ({
 				console.groupEnd()
 				// TODO: dispatch error action to signal the current't program is invalid
 				return
-			}
+			} */
 
-			try {
-				programRef.current = await new Program(...Object.values(Quirkbot))
-			} catch (e) {
-				console.groupCollapsed('Error creating program instance')
-				console.log('Error:', e)
-				console.log('Program:', Program)
-				console.groupEnd()
-				// TODO: dispatch error action to signal the current't program is invalid
-				return
-			}
-
-			const handleInternalData = async () => {
+			/* const handleInternalData = async () => {
 				try {
 					setInternalData(programRef.current.getInternalData())
 					programRef.current.setExternalData(externalDataRef.current)
@@ -158,9 +187,9 @@ const SimulatorVMManager = ({
 				}
 				handleInternalDataTimerRef.current = requestAnimationFrame(handleInternalData, 0)
 			}
-			handleInternalDataTimerRef.current = requestAnimationFrame(handleInternalData)
+			handleInternalDataTimerRef.current = requestAnimationFrame(handleInternalData) */
 
-			try {
+			/* try {
 				await programRef.current.setup()
 			} catch (e) {
 				console.groupCollapsed('Error calling program.setup()')
@@ -171,24 +200,9 @@ const SimulatorVMManager = ({
 				console.groupEnd()
 				// TODO: dispatch error action to signal the current't program crashed on setup
 				return
-			}
+			} */
 
-			const loop = async () => {
-				try {
-					await programRef.current.loop()
-				} catch (e) {
-					console.groupCollapsed('Error calling program.loop()')
-					console.log('Error:', e)
-					console.log('This is likely an error in code inside loop(). See below.')
-					console.log('loop():', programRef.current?.loop)
-					console.log('Program:', Program)
-					console.groupEnd()
-					// TODO: dispatch error action to signal the current't program crashed on loop
-					return
-				}
-				loopTimerRef.current = setTimeout(loop, 0)
-			}
-			loopTimerRef.current = setTimeout(loop, 0)
+
 		}
 		start()
 		return cleanup

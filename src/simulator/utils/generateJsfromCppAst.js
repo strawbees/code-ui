@@ -12,6 +12,15 @@ const passThroughGenerator = (node, spacer = '') => {
 	code += children.map(generate).join(spacer)
 	return code
 }
+const passThroughMaybeNewLinwGenerator = (node, spacer = '') => {
+	const { children } = node
+	const [, semiColon] = children
+	const maybeNewLine = semiColon ? '\n' : ''
+	let code = ''
+	code += passThroughGenerator(node)
+	code += maybeNewLine
+	return code
+}
 
 const GENERATORS = {}
 
@@ -144,7 +153,7 @@ GENERATORS.call_expression = (node) => {
 		}
 	}
 
-	let code = 'await '
+	let code = ''
 	code += children.map(generate).join('')
 	return code
 }
@@ -179,7 +188,7 @@ GENERATORS.thread_definition = (node) => {
 	children = removeChildrenOfType(children, 'comment')
 	const [function_declarator, compound_statement] = children.slice(-2)
 
-	return `${generateWithType('thread_declarator', function_declarator)} = async function _thread_ () ${generate(compound_statement)}\n`
+	return `${generateWithType('thread_declarator', function_declarator)} = function() ${generate(compound_statement)}\n`
 }
 GENERATORS.thread_declarator = (node) => {
 	let { children } = node
@@ -198,14 +207,14 @@ GENERATORS.function_definition = (node) => {
 	if (isThread) {
 		return generateWithType('thread_definition', node)
 	}
-	return `async function ${[function_declarator, compound_statement].map(generate).join(' ')}\n`
+	return `function ${[function_declarator, compound_statement].map(generate).join(' ')}\n`
 }
 GENERATORS.declaration = (node) => {
 	let { children } = node
 	children = removeChildrenOfType(children, 'comment')
 	children = removeChildrenOfType(children, 'storage_class_specifier')
 
-	const resolvedType = 'let'
+	const resolvedType = 'var'
 	let resolvedIndentifier
 	let resolvedConstructur
 	let resolvedSemi = ''
@@ -348,6 +357,12 @@ GENERATORS.identifier = (node) => {
 	code += text
 	return code
 }
+GENERATORS.parameter_declaration = (node) => {
+	let { children } = node
+	children = removeChildrenOfType(children, 'comment')
+	const [type, identifier] = children
+	return identifier ? generate(identifier) : `'${type.text}'`
+}
 GENERATORS.compound_statement = (node) => {
 	let { children } = node
 	children = removeChildrenOfType(children, 'comment')
@@ -360,90 +375,9 @@ GENERATORS.compound_statement = (node) => {
 	}
 	return code
 }
-GENERATORS.expression_statement = (node) => {
-	let { children } = node
-	children = removeChildrenOfType(children, 'comment')
-	const [, semiColon] = children
-	const maybeNewLine = semiColon ? '\n' : ''
-	let code = ''
-	code += children.map(generate).join('')
-	code += maybeNewLine
-	return code
-}
-GENERATORS.parameter_declaration = (node) => {
-	let { children } = node
-	children = removeChildrenOfType(children, 'comment')
-	const [type, identifier] = children
-	return identifier ? generate(identifier) : `'${type.text}'`
-}
-GENERATORS.while_statement = (node) => {
-	let { children } = node
-	children = removeChildrenOfType(children, 'comment')
-
-	if (areChildrenOfExactTypes(children, ['while', 'parenthesized_expression', 'compound_statement'])) {
-		const [, parenthesized_expression, compound_statement] = children
-		return `await createWhileLoop(async() => ${generate(parenthesized_expression)}, async() => ${generate(compound_statement)})\n`
-	}
-
-	return passThroughGenerator(node)
-}
-GENERATORS.for_statement = (node) => {
-	let { children } = node
-	children = removeChildrenOfType(children, 'comment')
-
-	const [compound_statement] = children.slice(-1)
-
-	const init = []
-	const condition = []
-	const update = []
-
-	let parseState = 'init'
-	let tempStructurehildren = children.slice(2)
-
-	if (childrenStartsWithExactTypes(children, ['for', '(', 'declaration'])) {
-		const [,, declaration] = children
-		init.push(declaration)
-		tempStructurehildren = children.slice(3)
-		parseState = 'condition'
-	}
-	for (let i = 0; i < tempStructurehildren.length; i++) {
-		const child = tempStructurehildren[i]
-		if (child.type === ')') {
-			break
-		}
-		switch (parseState) {
-			case 'init':
-				if (child.type === ';') {
-					parseState = 'condition'
-					break
-				}
-				init.push(child)
-				break
-			case 'condition':
-				if (child.type === ';') {
-					parseState = 'update'
-					break
-				}
-				condition.push(child)
-				break
-			case 'update':
-				if (child.type === ';') {
-					parseState = 'end'
-					break
-				}
-				update.push(child)
-				break
-			default:
-		}
-	}
-	const initString = init.map(generate).join('')
-	const conditionString = condition.map(generate).join('')
-	const updateString = update.map(generate).join('')
-	const initFn = initString ? `async() => ${initString}` : '() => {}'
-	const conditionFn = conditionString ? `async() => ${conditionString}` : '() => true'
-	const updateFn = updateString ? `async() => ${updateString}` : '() => {}'
-	return `await createForLoop(${initFn}, ${conditionFn}, ${updateFn}, async() => ${generate(compound_statement)})\n`
-}
+GENERATORS.expression_statement = passThroughMaybeNewLinwGenerator
+GENERATORS.while_statement = passThroughMaybeNewLinwGenerator
+GENERATORS.for_statement = passThroughMaybeNewLinwGenerator
 GENERATORS.cast_expression = (node) => {
 	let { children } = node
 	children = removeChildrenOfType(children, 'comment')
@@ -558,7 +492,7 @@ const generateJsfromCppAst = (tree) => {
 	} */
 	// iteratorLog(tree.walk())
 
-	/* const recursiveLog = (node) => {
+	const recursiveLog = (node) => {
 		console.groupCollapsed(node.type)
 		console.log(node.text)
 		removeChildrenOfType(node.children, 'comment').forEach(child => {
@@ -566,9 +500,9 @@ const generateJsfromCppAst = (tree) => {
 		})
 		console.groupEnd()
 	}
-	recursiveLog(tree.rootNode) */
+	recursiveLog(tree.rootNode)
 	const js = generate(tree.rootNode)
-	// console.log(js)
+	console.log(js)
 	return js
 }
 

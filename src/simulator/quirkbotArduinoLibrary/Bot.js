@@ -66,19 +66,19 @@ export class Bot {
 		this.NODE_ID_FACTORY = 0
 	}
 
-	async start() {
+	start() {
 		this.startTime = millis()
 	}
 
-	async afterStart() {
+	afterStart() {
 		// nothing to do
 	}
 
-	async update() {
+	update() {
 		this.frames++
 
 		for (let i = 0; i < this.updatables.size(); i++) {
-			await this.updatables.get(i).update()
+			this.updatables.get(i).update()
 		}
 	}
 
@@ -109,9 +109,9 @@ export class Bot {
 		}
 	}
 
-	async interruptUpdate() {
+	interruptUpdate() {
 		for (let i = 0; i < this.interruptUpdatables.size(); i++) {
-			await this.interruptUpdatables.get(i).interruptUpdate()
+			this.interruptUpdatables.get(i).interruptUpdate()
 		}
 
 		this.interruptCount++
