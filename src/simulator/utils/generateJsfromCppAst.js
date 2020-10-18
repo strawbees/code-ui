@@ -87,6 +87,7 @@ GENERATORS.char_literal = textOutputGenerator
 GENERATORS.field_identifier = textOutputGenerator
 GENERATORS.namespace_identifier = textOutputGenerator
 GENERATORS.for = textOutputGenerator
+GENERATORS.new = () => 'new '
 GENERATORS['#include'] = () => 'import * from'
 
 GENERATORS.storage_class_specifier = emptyGenerator
@@ -98,12 +99,14 @@ GENERATORS.translation_unit = passThroughGenerator
 GENERATORS.initializer_list = passThroughGenerator
 GENERATORS.field_expression = passThroughGenerator
 GENERATORS.parenthesized_expression = passThroughGenerator
-GENERATORS.if_statement = (node) => `${passThroughGenerator(node, ' ')}\n`
 GENERATORS.binary_expression = passThroughGenerator
 GENERATORS.assignment_expression = passThroughGenerator
 GENERATORS.update_expression = passThroughGenerator
 GENERATORS.unary_expression = passThroughGenerator
+GENERATORS.new_expression = passThroughGenerator
 GENERATORS.scoped_identifier = passThroughGenerator
+GENERATORS.if_statement = (node) => `${passThroughGenerator(node, ' ')}\n`
+
 
 GENERATORS.call_expression = (node) => {
 	let { children } = node
@@ -558,7 +561,7 @@ const generateJsfromCppAst = (tree) => {
 	} */
 	// iteratorLog(tree.walk())
 
-	/* const recursiveLog = (node) => {
+	const recursiveLog = (node) => {
 		console.groupCollapsed(node.type)
 		console.log(node.text)
 		removeChildrenOfType(node.children, 'comment').forEach(child => {
@@ -566,9 +569,9 @@ const generateJsfromCppAst = (tree) => {
 		})
 		console.groupEnd()
 	}
-	recursiveLog(tree.rootNode) */
+	recursiveLog(tree.rootNode)
 	const js = generate(tree.rootNode)
-	// console.log(js)
+	console.log(js)
 	return js
 }
 
