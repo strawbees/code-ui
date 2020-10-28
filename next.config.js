@@ -86,6 +86,14 @@ module.exports = {
 	exportTrailingSlash       : true,
 	exportPathMap             : async () => JSON.parse(await fs.readFile(path.resolve(__dirname, 'static', 'routes.json'))),
 	webpack                   : (webpackConfig) => {
+		// console.log(webpackConfig)
+		const originalEntry = webpackConfig.entry
+		webpackConfig.entry = async () => {
+			const entry = await originalEntry()
+			// console.log(entry)
+			entry['quirkbotArduinoLibrary.js'] = './src/simulator/quirkbotArduinoLibrary/Quirkbot.js'
+			return entry
+		}
 		// svg loader
 		// first remove any existing rules for svg
 		const fileLoaderRule = webpackConfig.module.rules.find(rule => rule.test && rule.test.test('.svg'))
