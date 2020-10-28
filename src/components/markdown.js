@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown from 'react-markdown/with-html'
+import gfm from 'remark-gfm'
 import {
 	PINK,
 	GRAY,
@@ -65,7 +66,7 @@ const Markdown = ({
 			}
 			/* End Table */
 		`}</style>
-		<ReactMarkdown source={source} escapeHtml={false}/>
+		<ReactMarkdown children={source} allowDangerousHtml={true} plugins={[gfm]}/>
 	</div>
 
 Markdown.propTypes = {
