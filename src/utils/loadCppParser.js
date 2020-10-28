@@ -1,14 +1,22 @@
 const MEMORY = {}
+let TreeSitter
 const loadCppParser = async (rootPath = '') => {
-	if (typeof window === 'undefined' || typeof window.TreeSitter === 'undefined') {
-		throw new Error('tree-sitter is not loaded, cannot load cpp parser')
+	if (!TreeSitter) {
+		// Set the correct path for loding the wasm module
+		window.Module = {
+			locateFile : (s) => `${rootPath}/static/lib/tree-sitter/${s}`
+		}
+		TreeSitter = (await import('static/lib/tree-sitter/tree-sitter')).default
+	}
+	if (!MEMORY.inited) {
+		await TreeSitter.init()
+		MEMORY.inited = true
 	}
 	if (MEMORY[rootPath]) {
 		return MEMORY[rootPath]
 	}
-	await window.TreeSitter.init()
-	const parser = new window.TreeSitter()
-	const Lang = await window.TreeSitter.Language.load(`${rootPath}/static/lib/tree-sitter/tree-sitter-cpp.wasm`)
+	const parser = new TreeSitter()
+	const Lang = await TreeSitter.Language.load(`${rootPath}/static/lib/tree-sitter/tree-sitter-cpp.wasm`)
 	parser.setLanguage(Lang)
 	MEMORY[rootPath] = parser
 	return MEMORY[rootPath]

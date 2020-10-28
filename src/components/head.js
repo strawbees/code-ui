@@ -43,7 +43,6 @@ const Head = ({
 		<meta name="theme-color" content="#ffffff"/>
 
 		<script src={`${rootPath}/static/lib/scratch-blocks/vertical.js`}/>
-		<script src={`${rootPath}/static/lib/tree-sitter/tree-sitter.js`}/>
 	</DocumentHead>
 
 Head.propTypes = {
