@@ -86,7 +86,13 @@ module.exports = {
 	exportTrailingSlash       : true,
 	exportPathMap             : async () => JSON.parse(await fs.readFile(path.resolve(__dirname, 'static', 'routes.json'))),
 	webpack                   : (webpackConfig) => {
-		// svg loader
+		/**
+		* mock fs, needed for the tree-sitter module
+		*/
+		webpackConfig.node = { fs : 'empty' }
+		/**
+		* svg loader
+		*/
 		// first remove any existing rules for svg
 		const fileLoaderRule = webpackConfig.module.rules.find(rule => rule.test && rule.test.test('.svg'))
 		if (fileLoaderRule) {
@@ -106,7 +112,9 @@ module.exports = {
 				}
 			}],
 		})
-		// alias
+		/**
+		* aliases
+		*/
 		webpackConfig.resolve.alias = {
 			...webpackConfig.resolve.alias,
 			root   : path.resolve(__dirname),
