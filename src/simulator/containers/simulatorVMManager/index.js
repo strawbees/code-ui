@@ -35,8 +35,9 @@ const SimulatorVMManager = ({
 
 	useEffect(() => {
 		iframeContainerRef.current = document.createElement('div')
+		iframeContainerRef.current.className = 'simulator-sandbox'
 		iframeContainerRef.current.style.display = 'none'
-		iframeContainerRef.current.innerHTML = `<iframe id='simulator-sandbox-iframe' sandbox="allow-scripts" src="data:text/html;charset=utf-8,${encodeURI(`
+		iframeContainerRef.current.innerHTML = `<iframe class='simulator-sandbox-iframe' sandbox="allow-scripts" src="data:text/html;charset=utf-8,${encodeURI(`
 			<script src="${window.location.origin}${rootPath}/static/lib/quirkbot-arduino-library/quirkbot-arduino-library.js"></script>
 			<script>
 				const programRef = {}
@@ -181,7 +182,7 @@ const SimulatorVMManager = ({
 							}
 							handleInternalDataTimerRef.current = requestAnimationFrame(handleInternalData, 0)
 						}
-						handleInternalDataTimerRef.current = requestAnimationFrame(handleInternalData)
+						handleInternalData()
 
 						try {
 							await programRef.current.setup()
@@ -208,13 +209,13 @@ const SimulatorVMManager = ({
 							}
 							loopTimerRef.current = setTimeout(loop, 0)
 						}
-						loopTimerRef.current = setTimeout(loop, 0)
+						loop()
 					}
 					start()
 				}
 				</script>
 		`)}"/>`
-		const iframe = iframeContainerRef.current.querySelector('#simulator-sandbox-iframe')
+		const iframe = iframeContainerRef.current.querySelector('.simulator-sandbox-iframe')
 		onMessageHandlerRef.current = (e) => {
 			if (e.origin !== 'null' || e.source !== iframe.contentWindow) {
 				return
@@ -255,7 +256,7 @@ const SimulatorVMManager = ({
 		const ast = parser.parse(code)
 		const transpiledCode = generateJsfromCppAst(ast)
 
-		const iframe = iframeContainerRef.current.querySelector('#simulator-sandbox-iframe')
+		const iframe = iframeContainerRef.current.querySelector('.simulator-sandbox-iframe')
 
 		const handleInternalData = async () => {
 			iframe.contentWindow.postMessage({
