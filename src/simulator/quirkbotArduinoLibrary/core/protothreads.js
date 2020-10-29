@@ -72,6 +72,7 @@ export class Protothreads {
 	}
 
 	spawnBlock = async (name, ...args) => {
+		await new Promise(r => setTimeout(r, 0))
 		this.STORE[name].running = true
 		this.STORE[name].args = args
 		await this.THREAD[name](...args)
