@@ -107,7 +107,6 @@ GENERATORS.new_expression = passThroughGenerator
 GENERATORS.scoped_identifier = passThroughGenerator
 GENERATORS.if_statement = (node) => `${passThroughGenerator(node, ' ')}\n`
 
-
 GENERATORS.call_expression = (node) => {
 	let { children } = node
 	children = removeChildrenOfType(children, 'comment')
@@ -386,6 +385,17 @@ GENERATORS.while_statement = (node) => {
 	if (areChildrenOfExactTypes(children, ['while', 'parenthesized_expression', 'compound_statement'])) {
 		const [, parenthesized_expression, compound_statement] = children
 		return `await createWhileLoop(async() => ${generate(parenthesized_expression)}, async() => ${generate(compound_statement)})\n`
+	}
+
+	return passThroughGenerator(node)
+}
+GENERATORS.do_statement = (node) => {
+	let { children } = node
+	children = removeChildrenOfType(children, 'comment')
+
+	if (areChildrenOfExactTypes(children, ['do', 'compound_statement', 'while', 'parenthesized_expression', ';'])) {
+		const [, compound_statement,, parenthesized_expression] = children
+		return `await createWhileLoop(async() => ${generate(parenthesized_expression)}, async() => ${generate(compound_statement)}, true)\n`
 	}
 
 	return passThroughGenerator(node)
