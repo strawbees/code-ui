@@ -163,7 +163,6 @@ class BlockEditor extends React.Component {
 				scrollbar : 'rgba(0, 0, 0, 0.05)',
 			}
 		})
-		window.workspace = this.mainWorkspace
 
 		// HACK: as way to avoid spurious variables from being created at
 		// random while moving blocks around.
