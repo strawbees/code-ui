@@ -17,7 +17,7 @@ import xmlToJson from './utils/xmlToJson'
 import blocks from './blocks/index'
 import toolbox from './toolbox'
 
-class Container extends React.Component {
+class ExternalProceduresContainer extends React.Component {
 	constructor(props) {
 		super(props)
 		this.ref = React.createRef()
@@ -460,7 +460,7 @@ class BlockEditor extends React.Component {
 						this.mainWorkspace.refreshToolboxSelection_()
 					}
 				},
-				<Container
+				<ExternalProceduresContainer
 					onMount={setup}
 					onAddNumber={() => this.proceduresMutationRoot.addStringNumberExternal()}
 					onAddBoolean={() => this.proceduresMutationRoot.addBooleanExternal()}
