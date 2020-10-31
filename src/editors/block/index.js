@@ -217,6 +217,7 @@ class BlockEditor extends React.Component {
 		this.originalBlocklyPrompt = Blockly.prompt
 		Blockly.prompt = (m, d, cb) => setTimeout(() => this.props.openPrompt(m, d, cb), 0)
 
+		// Modify the data category, so that it only uses numbers
 		const { DataCategory } = Blockly
 		DataCategory.createValue = (valueName, type, value) =>
 			`<value name="${valueName}">
