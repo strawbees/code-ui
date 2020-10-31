@@ -506,10 +506,16 @@ class BlockEditor extends React.Component {
 	}
 
 	componentDidUpdate() {
-		const { refEditorSource } = this.props
-		const { source } = this
+		const { refEditorSource, isSimulatorVisible } = this.props
+		const { source, isSimulatorVisibleCache } = this
 		if (refEditorSource !== source) {
 			this.loadSource(refEditorSource)
+		}
+		// resize when we show/hide the simulator
+		if (isSimulatorVisible !== isSimulatorVisibleCache) {
+			if (typeof window !== 'undefined') {
+				window.Blockly.svgResize(this.mainWorkspace)
+			}
 		}
 	}
 
