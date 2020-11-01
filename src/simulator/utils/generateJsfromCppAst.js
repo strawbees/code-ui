@@ -103,6 +103,7 @@ GENERATORS.binary_expression = passThroughGenerator
 GENERATORS.assignment_expression = passThroughGenerator
 GENERATORS.update_expression = passThroughGenerator
 GENERATORS.unary_expression = passThroughGenerator
+GENERATORS.subscript_expression = passThroughGenerator
 GENERATORS.new_expression = passThroughGenerator
 GENERATORS.scoped_identifier = passThroughGenerator
 GENERATORS.if_statement = (node) => `${passThroughGenerator(node, ' ')}\n`
