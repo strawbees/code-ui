@@ -253,6 +253,15 @@ GENERATORS.declaration = (node) => {
 	}
 
 	/**
+	* Vector<Type> a;
+	*/
+	if (areChildrenOfExactTypes(children, ['template_type', 'identifier', ';'])) {
+		const [template_type, identifier] = children
+		resolvedIndentifier = generate(identifier)
+		resolvedConstructur = `new ${generate(template_type)}()`
+	}
+
+	/**
 	* int a[3];
 	* int a[];
 	* Custom b[3];
@@ -497,12 +506,22 @@ GENERATORS.primitive_type = (node) => {
 			return 'Object'
 	}
 }
+GENERATORS.template_type = (node) => {
+	const { text } = node
+
+	if (text.indexOf('Vector<') === 0) {
+		return 'Array'
+	}
+	return text.replace('<', '_').replace('>', '').split(',').join('_')
+}
 GENERATORS.type_identifier = (node) => {
 	const { text } = node
 
 	switch (text) {
 		case 'string':
 			return 'String'
+		case 'Vecor':
+			return 'Array'
 		default:
 			return text
 	}
