@@ -6,11 +6,11 @@ const NodePartsList = ({
 }) => {
 	internalDataNodeIds = JSON.parse(internalDataNodeIds)
 	return (
-		<div className='root nodePartsList'>
+		<>
 			{internalDataNodeIds && internalDataNodeIds.map(id =>
 				<NodePartResolverContainer key={id} id={id}/>
 			)}
-		</div>
+		</>
 	)
 }
 NodePartsList.defaultProps = {
