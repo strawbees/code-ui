@@ -28,7 +28,7 @@ import CircuitTouchContainer from '../nodePartsContainers/CircuitTouch'
 
 // Outputs
 import LedContainer from '../nodePartsContainers/Led'
-// import DualColorLedContainer from '../nodePartsContainers/DualColorLed'
+import DualColorLedContainer from '../nodePartsContainers/DualColorLed'
 // import ServoMotorContainer from '../nodePartsContainers/ServoMotor'
 // import ContinuousServoContainer from '../nodePartsContainers/ContinuousServo'
 // import BuzzerContainer from '../nodePartsContainers/Buzzer'
@@ -108,9 +108,9 @@ const NodePartResolverContainer = ({
 		case 'Led':
 			NodeIconContainer = LedContainer
 			break
-		// case 'DualColorLed':
-		// 	NodeIconContainer = DualColorLedContainer
-		// 	break
+		case 'DualColorLed':
+			NodeIconContainer = DualColorLedContainer
+			break
 		// case 'ServoMotor':
 		// 	NodeIconContainer = ServoMotorContainer
 		// 	break

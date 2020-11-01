@@ -16,7 +16,7 @@ const QuirkbotSimulator = () =>
 				position: relative;
 				width: 100%;
 				height 300px;
-				background-color: yellow;
+				background-color: white;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
