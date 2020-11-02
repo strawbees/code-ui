@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
-import NodeIconsListContainer from '../containers/nodeIconsListContainer'
+// import PropTypes from 'prop-types'
+// import NodeIconsListContainer from '../containers/nodeIconsListContainer'
 import NodePartsListContainer from '../containers/nodePartsListContainer'
 import Figure from './figure'
 import QuirkbotSVG from '../assets/images/general/quirkbot.svg'
@@ -8,8 +8,6 @@ const QuirkbotSimulator = () =>
 	<div className='root quirkbotSimulator'>
 		<style jsx>{`
 			.root {
-				z-index: 100;
-				width: 50vw;
 				background-color: red;
 			}
 			.quirkbot {
@@ -22,24 +20,31 @@ const QuirkbotSimulator = () =>
 				align-items: center;
 				justify-content: center;
 			}
-			.origin {
+			.quirkbot .origin {
 				transform: scale(0.5);
 			}
+			.quirkbot .origin :global(> *) {
+				position: absolute;
+			}
+
 
 		`}</style>
-		<div className='controls'>
+		{/*
+			<div className='controls'>
 			<div>controls</div>
-		</div>
+			</div>
+		*/}
 		<div className='quirkbot'>
-			<div className='origin' id='origin'>
+			<div className='origin'>
 				<Figure svg={QuirkbotSVG} className='board'/>
 				<NodePartsListContainer/>
 			</div>
 		</div>
-		<div className='nodes'>
+		{/* <div className='nodes'>
 			<div>nodes</div>
 			<NodeIconsListContainer/>
-		</div>
+			</div>
+		*/}
 	</div>
 
 QuirkbotSimulator.defaultProps = {

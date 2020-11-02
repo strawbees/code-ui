@@ -32,19 +32,29 @@ const EditorWithSimulator = ({
 				position: relative;
 				height: 100%;
 			}
-			.editor :global(.tabButton) {
+			.editor :global(.simulator-toggle) {
 				position: absolute;
-				right: -0.2rem;
+				right: -0.175rem;
 				top: calc(50% - 6rem);
 				z-index: 50;
 				transform: rotate(270deg);
 				transform-origin: 100% 100%;
+			}
+			.simulator-container {
+				z-index: 1;
+				box-shadow: -2px 0px 3px 0px rgba(50, 50, 50, 0.3);
+			}
+			.simulator-container :global(> *) {
+				width: 20vw;
+				min-width: 16em;
+				min-height: 100%;
 			}
 		`}</style>
 		<SimulatorVMManager/>
 		<div className='editor'>
 			{children}
 			<TabButton
+				className='simulator-toggle'
 				textColor={WHITE}
 				bgColor={GRAY}
 				textHoverColor={WHITE}
@@ -55,7 +65,9 @@ const EditorWithSimulator = ({
 			/>
 		</div>
 		{isSimulatorVisible &&
-			<QuirkbotSimulatorContainer />
+			<div className='simulator-container'>
+				<QuirkbotSimulatorContainer />
+			</div>
 		}
 	</div>
 
