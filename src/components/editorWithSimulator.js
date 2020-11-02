@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import TabButton from 'src/components/tabButton'
-import ExpandIcon from 'src/simulator/assets/icons/general/expand.svg'
-import CollapseIcon from 'src/simulator/assets/icons/general/collapse.svg'
+import ExpandIcon from 'src/simulator/assets/images/general/expand.svg'
+import CollapseIcon from 'src/simulator/assets/images/general/collapse.svg'
 import SimulatorVMManager from 'src/simulator/containers/simulatorVMManager'
 import QuirkbotSimulatorContainer from 'src/simulator/containers/quirkbotSimulatorContainer'
 
