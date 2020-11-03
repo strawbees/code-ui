@@ -43,6 +43,7 @@ const EditorWithSimulator = ({
 			.simulator-container {
 				z-index: 1;
 				box-shadow: -2px 0px 3px 0px rgba(50, 50, 50, 0.3);
+				overflow-y: scroll;
 			}
 			.simulator-container :global(> *) {
 				width: 20vw;

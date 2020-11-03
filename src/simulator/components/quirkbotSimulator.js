@@ -9,6 +9,10 @@ const QuirkbotSimulator = () =>
 		<style jsx>{`
 			.root {
 				background-color: red;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
 			}
 			.quirkbot {
 				position: relative;
