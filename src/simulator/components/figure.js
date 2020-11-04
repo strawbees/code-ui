@@ -6,12 +6,13 @@ const Figure = ({
 	opacity = 1,
 	scale = 1,
 	className = '',
+	...otherProps
 }) => {
 	if (!SvgFile) {
 		return null
 	}
 	return (
-		<div className={`root figure ${className}`}>
+		<div className={`root figure ${className}`} {...otherProps}>
 			<style jsx>{`
 				.root {
 					//position: absolute;
