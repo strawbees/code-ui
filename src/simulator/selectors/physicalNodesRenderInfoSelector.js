@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect'
 import internalDataNodeEntitiesSelector from './internalDataNodeEntitiesSelector'
-import internalDataNodeIdsSelector from './internalDataNodeIdsSelector'
 
 import {
 	PLACE_SERVO_MOTOR_1,
@@ -28,15 +27,13 @@ const hasNodes = (entities, kind) => {
 const physicalNodesRenderInfoSelector = () => createSelector(
 	[
 		internalDataNodeEntitiesSelector(),
-		internalDataNodeIdsSelector(),
 	],
 	(
 		entities,
-		ids,
 	) => {
 		let width = 450
 		let height = 430
-		let originScale = 1
+		const originScale = 1
 		let originOffsetX = 0
 		let originOffsetY = 0
 
@@ -57,17 +54,22 @@ const physicalNodesRenderInfoSelector = () => createSelector(
 		let hasMotors
 		let hasKeys
 
-		if (hasNodes(entities, { place : PLACE_HORN })) {
+		if (hasNodes(entities, { nodeType : 'Led', place : PLACE_HORN }) ||
+			hasNodes(entities, { nodeType : 'DualColorLed', place : PLACE_HORN })) {
 			hasTopLimbs = true
 		}
-		if (hasNodes(entities, { place : PLACE_LEFT_ARM })) {
+		if (hasNodes(entities, { nodeType : 'Led', place : PLACE_LEFT_ARM }) ||
+			hasNodes(entities, { nodeType : 'DualColorLed', place : PLACE_LEFT_ARM })) {
 			hasLeftLimbs = true
 		}
-		if (hasNodes(entities, { place : PLACE_RIGHT_ARM })) {
+		if (hasNodes(entities, { nodeType : 'Led', place : PLACE_RIGHT_ARM }) ||
+			hasNodes(entities, { nodeType : 'DualColorLed', place : PLACE_RIGHT_ARM })) {
 			hasRightLimbs = true
 		}
-		if (hasNodes(entities, { place : PLACE_LEFT_LEG }) ||
-			hasNodes(entities, { place : PLACE_RIGHT_LEG })) {
+		if (hasNodes(entities, { nodeType : 'Led', place : PLACE_LEFT_LEG }) ||
+			hasNodes(entities, { nodeType : 'DualColorLed', place : PLACE_LEFT_LEG }) ||
+			hasNodes(entities, { nodeType : 'Led', place : PLACE_RIGHT_LEG }) ||
+			hasNodes(entities, { nodeType : 'DualColorLed', place : PLACE_RIGHT_LEG })) {
 			hasBottomLimbs = true
 		}
 		if (hasNodes(entities, { nodeType : 'ServoMotor', place : PLACE_SERVO_MOTOR_1 }) ||
