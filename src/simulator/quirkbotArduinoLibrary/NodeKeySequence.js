@@ -86,7 +86,7 @@ export class KeySequence extends HasInterval(Node) {
 			holdTime     : this.holdTime.get(),
 			index        : this.index,
 			scheduleKey  : [...this.scheduleKey],
-			scheduleTime : [...this.scheduleKey],
+			scheduleTime : [...this.scheduleTime],
 		}
 	}
 }

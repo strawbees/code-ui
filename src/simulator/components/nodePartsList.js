@@ -2,9 +2,9 @@ import PropTypes from 'prop-types'
 import NodePartResolverContainer from '../containers/nodePartResolverContainer'
 
 const NodePartsList = ({
-	internalDataNodeIds
+	internalDataNodeIdsString
 }) => {
-	internalDataNodeIds = JSON.parse(internalDataNodeIds)
+	const internalDataNodeIds = JSON.parse(internalDataNodeIdsString)
 	return (
 		<>
 			{internalDataNodeIds && internalDataNodeIds.map(id =>
@@ -14,11 +14,11 @@ const NodePartsList = ({
 	)
 }
 NodePartsList.defaultProps = {
-	internalDataNodeIds : '[]'
+	internalDataNodeIdsString : '[]'
 }
 
 NodePartsList.propTypes = {
-	internalDataNodeIds : PropTypes.string
+	internalDataNodeIdsString : PropTypes.string
 }
 
 export default NodePartsList
