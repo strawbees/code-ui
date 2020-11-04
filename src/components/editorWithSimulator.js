@@ -46,8 +46,8 @@ const EditorWithSimulator = ({
 				overflow-y: scroll;
 			}
 			.simulator-container :global(> *) {
-				width: 40vw;
-				min-width: 16em;
+				width: 20vw;
+				min-width: 20em;
 				min-height: 100%;
 			}
 		`}</style>
