@@ -6,33 +6,28 @@ import PhysicalNodesContainer from '../containers/physicalNodesContainer'
 const QuirkbotSimulator = ({
 	width,
 	targetRef,
-}) => {
-	console.log(width, targetRef.current)
-	return (
-		<div className='root quirkbotSimulator' ref={targetRef}>
-			<style jsx>{`
-				.root {
-					background-color: white;
-					display: flex;
-					flex-direction: column;
-					justify-content: center;
-				}
-			`}</style>
-			{/*
-				<div className='controls'>
-				<div>controls</div>
-				</div>
-			*/}
-			<PhysicalNodesContainer containerWidth={width}/>
-			{/* <div className='nodes'>
-				<div>nodes</div>
-				<NodeIconsListContainer/>
-				</div>
-			*/}
-		</div>
-	)
-}
-
+}) =>
+	<div className='root quirkbotSimulator' ref={targetRef}>
+		<style jsx>{`
+			.root {
+				background-color: white;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+		`}</style>
+		{/*
+			<div className='controls'>
+			<div>controls</div>
+			</div>
+		*/}
+		<PhysicalNodesContainer containerWidth={width}/>
+		{/* <div className='nodes'>
+			<div>nodes</div>
+			<NodeIconsListContainer/>
+			</div>
+		*/}
+	</div>
 
 QuirkbotSimulator.defaultProps = {
 }
