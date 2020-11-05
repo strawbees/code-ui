@@ -129,6 +129,9 @@ export const CircuitTouch = ({
 				.root:hover .indicator .radial-2 {
 					border-color: #F06364;
 				}
+				.root.active .indicator {
+					display: none;
+				}
 				@keyframes grow {
 					0% {
 						opacity: 0.7;
