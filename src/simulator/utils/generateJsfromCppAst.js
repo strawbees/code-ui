@@ -1,6 +1,8 @@
 /* eslint-disable camelcase */
 const THREAD_METHODS_SIGNATURE = ['registerEvent', 'registerBlock', 'initEvent',
 	'scheduleEvent', 'spawnBlock', 'getBlockArg']
+const THREAD_ASYNC_CONDITIONAL_METHODS_SIGNATURE = ['yieldUntil', 'waitUntil',
+	'waitWhile']
 const THREAD_DEFININITON_SIGNATURE = 'THREAD'
 
 const textOutputGenerator = (node) => node.text
@@ -112,7 +114,7 @@ GENERATORS.call_expression = (node) => {
 	let { children } = node
 	children = removeChildrenOfType(children, 'comment')
 
-	// special case for thread methods
+	// special cases for thread methods
 	if (childrenStartsWithExactTypes(children, ['identifier']) &&
 		THREAD_METHODS_SIGNATURE.includes(children[0].text)) {
 		// make a clone of the children array and of the argument_list child
@@ -145,6 +147,22 @@ GENERATORS.call_expression = (node) => {
 				break
 			}
 		}
+	}
+
+	// special cases for thread methods with async conditionals
+	if (childrenStartsWithExactTypes(children, ['identifier', 'argument_list']) &&
+		THREAD_ASYNC_CONDITIONAL_METHODS_SIGNATURE.includes(children[0].text)) {
+		const [identifier, argument_list] = children
+
+		// remove parenthesis
+		let parsedArgumentList = generate(argument_list)
+		if (parsedArgumentList[0] === '(') {
+			parsedArgumentList = parsedArgumentList.substring(1)
+		}
+		if (parsedArgumentList[parsedArgumentList.length - 1] === ')') {
+			parsedArgumentList = parsedArgumentList.slice(0, -1)
+		}
+		return `await ${generate(identifier)}(async() => ${parsedArgumentList})`
 	}
 
 	let code = 'await '
