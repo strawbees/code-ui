@@ -599,9 +599,15 @@ const generateJsfromCppAst = (tree) => {
 		})
 		console.groupEnd()
 	}
-	recursiveLog(tree.rootNode)
 	const js = generate(tree.rootNode)
+	console.groupCollapsed('C++ to JS')
+	console.groupCollapsed('Parsed C++')
+	recursiveLog(tree.rootNode)
+	console.groupEnd()
+	console.groupCollapsed('Generated JS')
 	console.log(js)
+	console.groupEnd()
+	console.groupEnd()
 	return js
 }
 
