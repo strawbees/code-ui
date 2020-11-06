@@ -75,6 +75,9 @@ export const DualColorLed = ({
 	return (
 		<div className={`root nodePart DualColorLed ${place}`}>
 			<style jsx>{`
+				.root {
+					z-index:1;
+				}
 				.root :global(.light) {
 					mix-blend-mode: hard-light;
 				}

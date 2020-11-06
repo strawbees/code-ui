@@ -115,6 +115,9 @@ export const Led = ({
 	return (
 		<div className={`root nodePart Led ${place}`}>
 			<style jsx>{`
+				.root {
+					z-index:1;
+				}
 				.root :global(.light) {
 					mix-blend-mode: hard-light;
 				}

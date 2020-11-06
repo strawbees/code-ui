@@ -40,8 +40,8 @@ const physicalNodesRenderInfoSelector = () => createSelector(
 		const increaseTopLimbs = 60
 		const increaseBottomLimbs = 55
 		const increaseXLimbs = 50
-		const increaseYMotors = 150
-		const increaseXMotors = 100
+		const increaseYMotors = 415
+		const increaseXMotors = 200
 		const increaseXKeys = 200
 		const increaseYKeys = 160
 
@@ -139,8 +139,8 @@ const physicalNodesRenderInfoSelector = () => createSelector(
 			(hasTopLimbs && hasBottomLimbs && hasMotors) ||
 			(hasTopLimbs && hasMotors)
 		) {
-			height += increaseYMotors + increaseYKeys
-			originOffsetY += increaseYMotors * 0.5 - increaseYKeys * 0.5
+			height += increaseYMotors + increaseTopLimbs
+			originOffsetY -= increaseYMotors * 0.5 - increaseTopLimbs * 0.5
 		} else if (
 			(hasTopLimbs && hasBottomLimbs && hasKeys) ||
 			(hasTopLimbs && hasKeys)

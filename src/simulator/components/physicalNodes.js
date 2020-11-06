@@ -21,7 +21,7 @@ const PhysicalNodes = ({
 					width: ${width * adjustScale}px;
 					height: ${height * adjustScale}px;
 					overflow: hidden;
-					background-color: white;
+					background-color: yellow;
 				}
 				.resize-area {
 					position: absolute;
@@ -37,6 +37,9 @@ const PhysicalNodes = ({
 					left: 50%;
 					top: 50%;
 					transform: scale(${originScale}) translate3d(${originOffsetX}px, ${originOffsetY}px, 0px);
+				}
+				.origin :global(> .board) {
+					z-index: 1;
 				}
 				.origin :global(> *) {
 					position: absolute;

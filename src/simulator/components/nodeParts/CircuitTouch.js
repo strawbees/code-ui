@@ -78,6 +78,7 @@ export const CircuitTouch = ({
 		<div className={`root nodePart CircuitTouch ${place} ${out === 1 ? 'active' : ''}`}>
 			<style jsx>{`
 				.root {
+					z-index: 1;
 					position: relative;
 				}
 				.root :global(>*) {
