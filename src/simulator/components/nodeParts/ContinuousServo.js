@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { useRef, useState } from 'react'
-import useAnimationFrame from '../../utils/useAnimationFrame'
 import Figure from '../figure'
+import useAnimationFrame from '../../utils/useAnimationFrame'
 import ServoBodySVG from '../../assets/images/node-parts/servo-body.svg'
 import ServoArmSingleSVG from '../../assets/images/node-parts/servo-arm-single.svg'
 import ServoCable1SVG from '../../assets/images/node-parts/servo-cable-1.svg'
@@ -11,11 +11,14 @@ import {
 	DISCONNECTED,
 	PLACE_SERVO_MOTOR_1,
 	PLACE_SERVO_MOTOR_2,
+	DIRECTION_COUNTER_CLOCKWISE,
+	DIRECTION_CLOCKWISE,
 } from '../../quirkbotArduinoLibrary/Quirkbot'
 
-export const ServoMotor = ({
+export const ContinuousServo = ({
 	place,
-	position,
+	speed,
+	direction,
 }) => {
 	switch (place) {
 		case PLACE_SERVO_MOTOR_1:
@@ -26,7 +29,6 @@ export const ServoMotor = ({
 	}
 	let x = 195
 	const y = 450
-	let armAgle = 0
 	let cableX = 0
 	let cableY = 0
 	let armX = 0
@@ -34,7 +36,6 @@ export const ServoMotor = ({
 
 	const armWidth = 74
 	const armHeight = 226
-	const armMaxAngle = 120
 	switch (place) {
 		case PLACE_SERVO_MOTOR_1:
 			cableX = x - 42
@@ -49,36 +50,25 @@ export const ServoMotor = ({
 	}
 	armX = x - 36
 	armY = y - 223
-	armAgle = position * armMaxAngle - 90 + (180 - armMaxAngle) * 0.5
 
-	const armAngleRef = useRef(armAgle)
-	armAngleRef.current = armAgle
-	const armRealAngleRef = useRef(0)
-	const [armRealAngle, setArmRealAngle] = useState(armRealAngleRef.current)
-
+	const speedRef = useRef(0)
+	speedRef.current = speed
+	const directionRef = useRef(0)
+	directionRef.current = direction
+	const armAngleRef = useRef(0)
+	const [armAngle, setArmAngle] = useState(armAngleRef.current)
 	useAnimationFrame((dt) => {
-		if (armRealAngleRef.current === armAngleRef.current) {
-			return
+		const turnSpeed = 0.2 * speedRef.current
+		if (directionRef.current === DIRECTION_CLOCKWISE) {
+			armAngleRef.current += dt * turnSpeed
+		} else if (directionRef.current === DIRECTION_COUNTER_CLOCKWISE) {
+			armAngleRef.current -= dt * turnSpeed
 		}
-		const speed = 0.2
-		let a = armRealAngleRef.current
-		if (armRealAngleRef.current < armAngleRef.current) {
-			a += dt * speed
-			if (a > armAngleRef.current) {
-				a = armAngleRef.current
-			}
-		} else {
-			a -= dt * speed
-			if (a < armAngleRef.current) {
-				a = armAngleRef.current
-			}
-		}
-		armRealAngleRef.current = a
-		setArmRealAngle(armRealAngleRef.current)
+		setArmAngle(armAngleRef.current)
 	})
 
 	return (
-		<div className={`root nodePart ServoMotor ${place}`}>
+		<div className={`root nodePart ContinuousServo ${place}`}>
 			<style jsx>{`
 				.root {
 					z-index:0;
@@ -88,7 +78,7 @@ export const ServoMotor = ({
 					width: ${armWidth}px;
 					height: ${armHeight}px;
 					transform-origin: ${armWidth * 0.5}px ${armHeight - 36}px;
-					transform: translate3d(${armX}px, ${armY}px, 0) rotate(${armRealAngle}deg);
+					transform: translate3d(${armX}px, ${armY}px, 0) rotate(${armAngle}deg);
 				}
 			`}</style>
 			{(place === PLACE_SERVO_MOTOR_1 || place === PLACE_SERVO_MOTOR_2) &&
@@ -114,14 +104,16 @@ export const ServoMotor = ({
 		</div>
 	)
 }
-ServoMotor.defaultProps = {
-	place    : DISCONNECTED,
-	position : 0,
+ContinuousServo.defaultProps = {
+	place     : DISCONNECTED,
+	speed     : 0,
+	direction : 0,
 }
 
-ServoMotor.propTypes = {
-	place    : PropTypes.number,
-	position : PropTypes.number,
+ContinuousServo.propTypes = {
+	place     : PropTypes.number,
+	speed     : PropTypes.number,
+	direction : PropTypes.number,
 }
 
-export default ServoMotor
+export default ContinuousServo
