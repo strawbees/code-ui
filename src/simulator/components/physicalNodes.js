@@ -21,7 +21,6 @@ const PhysicalNodes = ({
 					width: ${width * adjustScale}px;
 					height: ${height * adjustScale}px;
 					overflow: hidden;
-					background-color: yellow;
 				}
 				.resize-area {
 					position: absolute;
