@@ -31,7 +31,7 @@ const physicalNodesRenderInfoSelector = () => createSelector(
 	(
 		entities,
 	) => {
-		let width = 450
+		let width = 480
 		let height = 430
 		const originScale = 1
 		let originOffsetX = 0
@@ -55,21 +55,26 @@ const physicalNodesRenderInfoSelector = () => createSelector(
 		let hasKeys
 
 		if (hasNodes(entities, { nodeType : 'Led', place : PLACE_HORN }) ||
-			hasNodes(entities, { nodeType : 'DualColorLed', place : PLACE_HORN })) {
+			hasNodes(entities, { nodeType : 'DualColorLed', place : PLACE_HORN }) ||
+			hasNodes(entities, { nodeType : 'LightSensor', place : PLACE_HORN })) {
 			hasTopLimbs = true
 		}
 		if (hasNodes(entities, { nodeType : 'Led', place : PLACE_LEFT_ARM }) ||
-			hasNodes(entities, { nodeType : 'DualColorLed', place : PLACE_LEFT_ARM })) {
+			hasNodes(entities, { nodeType : 'DualColorLed', place : PLACE_LEFT_ARM }) ||
+			hasNodes(entities, { nodeType : 'LightSensor', place : PLACE_LEFT_ARM })) {
 			hasLeftLimbs = true
 		}
 		if (hasNodes(entities, { nodeType : 'Led', place : PLACE_RIGHT_ARM }) ||
-			hasNodes(entities, { nodeType : 'DualColorLed', place : PLACE_RIGHT_ARM })) {
+			hasNodes(entities, { nodeType : 'DualColorLed', place : PLACE_RIGHT_ARM }) ||
+			hasNodes(entities, { nodeType : 'LightSensor', place : PLACE_RIGHT_ARM })) {
 			hasRightLimbs = true
 		}
 		if (hasNodes(entities, { nodeType : 'Led', place : PLACE_LEFT_LEG }) ||
 			hasNodes(entities, { nodeType : 'DualColorLed', place : PLACE_LEFT_LEG }) ||
+			hasNodes(entities, { nodeType : 'LightSensor', place : PLACE_LEFT_LEG }) ||
 			hasNodes(entities, { nodeType : 'Led', place : PLACE_RIGHT_LEG }) ||
-			hasNodes(entities, { nodeType : 'DualColorLed', place : PLACE_RIGHT_LEG })) {
+			hasNodes(entities, { nodeType : 'DualColorLed', place : PLACE_RIGHT_LEG }) ||
+			hasNodes(entities, { nodeType : 'LightSensor', place : PLACE_RIGHT_LEG })) {
 			hasBottomLimbs = true
 		}
 		if (hasNodes(entities, { nodeType : 'ServoMotor', place : PLACE_SERVO_MOTOR_1 }) ||

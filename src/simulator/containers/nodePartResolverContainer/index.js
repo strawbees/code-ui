@@ -9,7 +9,7 @@ import mergeProps from './mergeProps'
 import CircuitTouchContainer from '../nodePartsContainers/CircuitTouch'
 // import SqueezeSensorContainer from '../nodePartsContainers/SqueezeSensor'
 // import IRProximityContainer from '../nodePartsContainers/IRProximity'
-// import LightSensorContainer from '../nodePartsContainers/LightSensor'
+import LightSensorContainer from '../nodePartsContainers/LightSensor'
 // import SonarContainer from '../nodePartsContainers/Sonar'
 
 // Brains
@@ -63,9 +63,9 @@ const NodePartResolverContainer = ({
 		// case 'IRProximity':
 		// 	NodeIconContainer = IRProximityContainer
 		// 	break
-		// case 'LightSensor':
-		// 	NodeIconContainer = LightSensorContainer
-		// 	break
+		case 'LightSensor':
+			NodeIconContainer = LightSensorContainer
+			break
 		// case 'Sonar':
 		// 	NodeIconContainer = SonarContainer
 		// 	break

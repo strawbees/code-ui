@@ -135,7 +135,7 @@ export const CircuitTouch = ({
 				}
 				@keyframes grow {
 					0% {
-						opacity: 0.7;
+						opacity: 1;
 						transform: scale(1);
 					}
 					100% {

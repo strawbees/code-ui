@@ -60,6 +60,7 @@ const externalData = (state = defaultExternalDataState, { type, payload }) => {
 		case SET_EXTERNAL_NODE_DATA: {
 			const { id, data } = payload
 			const nodes = { ...state.nodes }
+			console.log('SET_EXTERNAL_NODE_DATA', id, nodes)
 			nodes[id] = { ...data }
 			return {
 				...state,
