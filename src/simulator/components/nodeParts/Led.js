@@ -117,6 +117,7 @@ export const Led = ({
 			<style jsx>{`
 				.root {
 					z-index:1;
+					mix-blend-mode: hard-light;
 				}
 				.root :global(.light) {
 					mix-blend-mode: hard-light;
