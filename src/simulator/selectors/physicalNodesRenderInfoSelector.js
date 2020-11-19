@@ -42,7 +42,7 @@ const physicalNodesRenderInfoSelector = () => createSelector(
 		const increaseXLimbs = 50
 		const increaseYMotors = 415
 		const increaseXMotors = 200
-		const increaseXKeys = 200
+		const increaseXKeys = 400
 		const increaseYKeys = 160
 
 		let hasTopLimbs

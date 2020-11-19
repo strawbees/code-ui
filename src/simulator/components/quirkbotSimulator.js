@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import { withResizeDetector } from 'react-resize-detector'
 // import NodeIconsListContainer from '../containers/nodeIconsListContainer'
 import PhysicalNodesContainer from '../containers/physicalNodesContainer'
@@ -30,9 +30,16 @@ const QuirkbotSimulator = ({
 	</div>
 
 QuirkbotSimulator.defaultProps = {
+	width : 100
 }
 
 QuirkbotSimulator.propTypes = {
+	width     : PropTypes.number,
+	targetRef : PropTypes.oneOfType([
+		PropTypes.func,
+		PropTypes.shape({ current : PropTypes.any }
+		)]
+	),
 }
 
 const QuirkbotSimulatorWithResizeDetector = withResizeDetector(QuirkbotSimulator)
