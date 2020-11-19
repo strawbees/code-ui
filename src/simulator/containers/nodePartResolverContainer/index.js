@@ -34,7 +34,7 @@ import ContinuousServoContainer from '../nodePartsContainers/ContinuousServo'
 // import BuzzerContainer from '../nodePartsContainers/Buzzer'
 // import RGBLedContainer from '../nodePartsContainers/RGBLed'
 import KeyPressContainer from '../nodePartsContainers/KeyPress'
-// import KeySequenceContainer from '../nodePartsContainers/KeySequence'
+import KeySequenceContainer from '../nodePartsContainers/KeySequence'
 // import VoltageOutputContainer from '../nodePartsContainers/VoltageOutput'
 
 // Debug
@@ -126,9 +126,9 @@ const NodePartResolverContainer = ({
 		case 'KeyPress':
 			NodeIconContainer = KeyPressContainer
 			break
-		// case 'KeySequence':
-		// 	NodeIconContainer = KeySequenceContainer
-		// 	break
+		case 'KeySequence':
+			NodeIconContainer = KeySequenceContainer
+			break
 		// case 'VoltageOutput':
 		// 	NodeIconContainer = VoltageOutputContainer
 		// 	break
