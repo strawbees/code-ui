@@ -20,7 +20,7 @@ const NodePartsList = ({
 		}
 		idsByType[type].push(id)
 	})
-	const keyAreaHeight = 150
+	const keyAreaHeight = 140
 
 	const keyNodeIds = Object.keys(idsByType)
 		.filter(type => keyNodeTypes.indexOf(type) !== -1)
@@ -32,18 +32,25 @@ const NodePartsList = ({
 			<style jsx>{`
 				.key-nodes {
 					position: absolute;
-					background-color:rgba(155,1,0,0.3);
 					width: ${width}px;
 					height: ${keyAreaHeight}px;
 					top: ${(height / 2) - originOffsetY - keyAreaHeight}px;
 					left: -${width / 2}px;
+					overflow-x: scroll;
+				}
+				.key-nodes .container {
+					display: flex;
+					flex-direction: row;
+					width: auto;
 				}
 			`}</style>
 			{keyNodeIds.length > 0 &&
 				<div className='key-nodes'>
-					{keyNodeIds.map((type) => idsByType[type].map((id) =>
-						<NodePartResolverContainer key={id} id={id}/>
-					))}
+					<div className='container'>
+						{keyNodeIds.map((type) => idsByType[type].map((id) =>
+							<NodePartResolverContainer key={id} id={id}/>
+						))}
+					</div>
 				</div>
 			}
 			{otherNodeIds.map((type) => idsByType[type].map((id) =>
