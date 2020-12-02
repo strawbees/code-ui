@@ -8,7 +8,7 @@ export const DIRECTION_COUNTER_CLOCKWISE = 0
 export const DIRECTION_CLOCKWISE = 1
 
 export class ContinuousServo extends ServoMotor {
-	nodeType = 'ServoMotor'
+	nodeType = 'ContinuousServo'
 
 	constructor(...args) {
 		super(...args)

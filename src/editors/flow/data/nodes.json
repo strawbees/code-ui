@@ -795,7 +795,7 @@
 			},
 			{
 				"id": "holdTime",
-				"default": 0,
+				"default": 0.1,
 				"validation": {
 					"type": "range",
 					"data": {

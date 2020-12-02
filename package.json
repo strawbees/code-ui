@@ -17,10 +17,21 @@
   "bin": {
     "strawbees-code-ui-build": "./lib/scripts/build.js"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "@babel/core": "^7.12.3",
     "@strawbees/quirkbot-chrome-app": "^0.3.4",
     "@svgr/webpack": "^5.4.0",
+    "babel-eslint": "^10.1.0",
+    "babel-polyfill": "^6.26.0",
+    "eslint": "^7.12.1",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "file-saver": "^2.0.2",
     "informed": "1.10.12",
     "lz-string": "^1.4.4",
@@ -40,6 +51,7 @@
     "react-markdown": "^5.0.2",
     "react-modal": "^3.11.2",
     "react-redux": "^7.2.2",
+    "react-resize-detector": "^5.2.0",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
@@ -50,19 +62,9 @@
     "tinycolor2": "^1.4.2",
     "tree-sitter-wasm-prebuilt": "0.0.1",
     "web-tree-sitter": "^0.17.1",
+    "webpack-cli": "^4.1.0",
     "workbox-build": "^5.1.4",
     "xxhashjs": "^0.2.2"
-  },
-  "devDependencies": {
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.12.1",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^4.2.0"
   },
   "engines": {
     "node": ">=10.13.0"

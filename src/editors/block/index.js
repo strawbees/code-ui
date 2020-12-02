@@ -17,7 +17,7 @@ import xmlToJson from './utils/xmlToJson'
 import blocks from './blocks/index'
 import toolbox from './toolbox'
 
-class Container extends React.Component {
+class ExternalProceduresContainer extends React.Component {
 	constructor(props) {
 		super(props)
 		this.ref = React.createRef()
@@ -163,7 +163,6 @@ class BlockEditor extends React.Component {
 				scrollbar : 'rgba(0, 0, 0, 0.05)',
 			}
 		})
-		window.workspace = this.mainWorkspace
 
 		// HACK: as way to avoid spurious variables from being created at
 		// random while moving blocks around.
@@ -217,6 +216,7 @@ class BlockEditor extends React.Component {
 		this.originalBlocklyPrompt = Blockly.prompt
 		Blockly.prompt = (m, d, cb) => setTimeout(() => this.props.openPrompt(m, d, cb), 0)
 
+		// Modify the data category, so that it only uses numbers
 		const { DataCategory } = Blockly
 		DataCategory.createValue = (valueName, type, value) =>
 			`<value name="${valueName}">
@@ -460,7 +460,7 @@ class BlockEditor extends React.Component {
 						this.mainWorkspace.refreshToolboxSelection_()
 					}
 				},
-				<Container
+				<ExternalProceduresContainer
 					onMount={setup}
 					onAddNumber={() => this.proceduresMutationRoot.addStringNumberExternal()}
 					onAddBoolean={() => this.proceduresMutationRoot.addBooleanExternal()}
@@ -506,10 +506,16 @@ class BlockEditor extends React.Component {
 	}
 
 	componentDidUpdate() {
-		const { refEditorSource } = this.props
-		const { source } = this
+		const { refEditorSource, isSimulatorVisible } = this.props
+		const { source, isSimulatorVisibleCache } = this
 		if (refEditorSource !== source) {
 			this.loadSource(refEditorSource)
+		}
+		// resize when we show/hide the simulator
+		if (isSimulatorVisible !== isSimulatorVisibleCache) {
+			if (typeof window !== 'undefined') {
+				window.Blockly.svgResize(this.mainWorkspace)
+			}
 		}
 	}
 

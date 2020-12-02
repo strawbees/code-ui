@@ -9,7 +9,7 @@ import mergeProps from './mergeProps'
 import CircuitTouchContainer from '../nodePartsContainers/CircuitTouch'
 // import SqueezeSensorContainer from '../nodePartsContainers/SqueezeSensor'
 // import IRProximityContainer from '../nodePartsContainers/IRProximity'
-// import LightSensorContainer from '../nodePartsContainers/LightSensor'
+import LightSensorContainer from '../nodePartsContainers/LightSensor'
 // import SonarContainer from '../nodePartsContainers/Sonar'
 
 // Brains
@@ -28,13 +28,13 @@ import CircuitTouchContainer from '../nodePartsContainers/CircuitTouch'
 
 // Outputs
 import LedContainer from '../nodePartsContainers/Led'
-// import DualColorLedContainer from '../nodePartsContainers/DualColorLed'
-// import ServoMotorContainer from '../nodePartsContainers/ServoMotor'
-// import ContinuousServoContainer from '../nodePartsContainers/ContinuousServo'
+import DualColorLedContainer from '../nodePartsContainers/DualColorLed'
+import ServoMotorContainer from '../nodePartsContainers/ServoMotor'
+import ContinuousServoContainer from '../nodePartsContainers/ContinuousServo'
 // import BuzzerContainer from '../nodePartsContainers/Buzzer'
 // import RGBLedContainer from '../nodePartsContainers/RGBLed'
-// import KeyPressContainer from '../nodePartsContainers/KeyPress'
-// import KeySequenceContainer from '../nodePartsContainers/KeySequence'
+import KeyPressContainer from '../nodePartsContainers/KeyPress'
+import KeySequenceContainer from '../nodePartsContainers/KeySequence'
 // import VoltageOutputContainer from '../nodePartsContainers/VoltageOutput'
 
 // Debug
@@ -63,9 +63,9 @@ const NodePartResolverContainer = ({
 		// case 'IRProximity':
 		// 	NodeIconContainer = IRProximityContainer
 		// 	break
-		// case 'LightSensor':
-		// 	NodeIconContainer = LightSensorContainer
-		// 	break
+		case 'LightSensor':
+			NodeIconContainer = LightSensorContainer
+			break
 		// case 'Sonar':
 		// 	NodeIconContainer = SonarContainer
 		// 	break
@@ -108,27 +108,27 @@ const NodePartResolverContainer = ({
 		case 'Led':
 			NodeIconContainer = LedContainer
 			break
-		// case 'DualColorLed':
-		// 	NodeIconContainer = DualColorLedContainer
-		// 	break
-		// case 'ServoMotor':
-		// 	NodeIconContainer = ServoMotorContainer
-		// 	break
-		// case 'ContinuousServo':
-		// 	NodeIconContainer = ContinuousServoContainer
-		// 	break
+		case 'DualColorLed':
+			NodeIconContainer = DualColorLedContainer
+			break
+		case 'ServoMotor':
+			NodeIconContainer = ServoMotorContainer
+			break
+		case 'ContinuousServo':
+			NodeIconContainer = ContinuousServoContainer
+			break
 		// case 'Buzzer':
 		// 	NodeIconContainer = BuzzerContainer
 		// 	break
 		// case 'RGBLed':
 		// 	NodeIconContainer = RGBLedContainer
 		// 	break
-		// case 'KeyPress':
-		// 	NodeIconContainer = KeyPressContainer
-		// 	break
-		// case 'KeySequence':
-		// 	NodeIconContainer = KeySequenceContainer
-		// 	break
+		case 'KeyPress':
+			NodeIconContainer = KeyPressContainer
+			break
+		case 'KeySequence':
+			NodeIconContainer = KeySequenceContainer
+			break
 		// case 'VoltageOutput':
 		// 	NodeIconContainer = VoltageOutputContainer
 		// 	break

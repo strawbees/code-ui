@@ -10,8 +10,8 @@ export const endAllLoops = () => {
 	STORE.clear()
 }
 
-export const createWhileLoop = async (testFunction, doFunction) => {
-	const loop = new WhileLoop(testFunction, doFunction)
+export const createWhileLoop = async (testFunction, doFunction, testOnExit) => {
+	const loop = new WhileLoop(testFunction, doFunction, testOnExit)
 	await loop.exec()
 }
 
@@ -37,11 +37,14 @@ export class WhileLoop {
 
 	doFunction = null
 
-	constructor(testFunction, doFunction) {
+	testOnExit = null
+
+	constructor(testFunction, doFunction, testOnExit = false) {
 		this.key = this
 
 		this.testFunction = testFunction
 		this.doFunction = doFunction
+		this.testOnExit = testOnExit
 
 		STORE.set(this.key, this)
 	}
@@ -55,6 +58,7 @@ export class WhileLoop {
 		this.reject = null
 		this.testFunction = null
 		this.doFunction = null
+		this.testOnExit = null
 	}
 
 	cancel = () => {
@@ -77,17 +81,33 @@ export class WhileLoop {
 
 		const tick = async () => {
 			clearTimeout(this.timer)
+			// If we test on exit, execute the doFunction first
+			if (this.testOnExit) {
+				try {
+					await this.doFunction()
+				} catch (e) {
+					reject(e)
+					this.destructor()
+					return
+				}
+			}
+
+			// Test
 			if (!await this.testFunction()) {
 				resolve()
 				this.destructor()
 				return
 			}
-			try {
-				await this.doFunction()
-			} catch (e) {
-				reject(e)
-				this.destructor()
-				return
+
+			// If we don't on exit, execute the doFunction after the test
+			if (!this.testOnExit) {
+				try {
+					await this.doFunction()
+				} catch (e) {
+					reject(e)
+					this.destructor()
+					return
+				}
 			}
 
 			this.timer = setTimeout(tick, 0)

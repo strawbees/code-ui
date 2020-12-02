@@ -1,6 +1,8 @@
 /* eslint-disable camelcase */
 const THREAD_METHODS_SIGNATURE = ['registerEvent', 'registerBlock', 'initEvent',
 	'scheduleEvent', 'spawnBlock', 'getBlockArg']
+const THREAD_ASYNC_CONDITIONAL_METHODS_SIGNATURE = ['yieldUntil', 'waitUntil',
+	'waitWhile']
 const THREAD_DEFININITON_SIGNATURE = 'THREAD'
 
 const textOutputGenerator = (node) => node.text
@@ -87,6 +89,7 @@ GENERATORS.char_literal = textOutputGenerator
 GENERATORS.field_identifier = textOutputGenerator
 GENERATORS.namespace_identifier = textOutputGenerator
 GENERATORS.for = textOutputGenerator
+GENERATORS.new = () => 'new '
 GENERATORS['#include'] = () => 'import * from'
 
 GENERATORS.storage_class_specifier = emptyGenerator
@@ -98,18 +101,20 @@ GENERATORS.translation_unit = passThroughGenerator
 GENERATORS.initializer_list = passThroughGenerator
 GENERATORS.field_expression = passThroughGenerator
 GENERATORS.parenthesized_expression = passThroughGenerator
-GENERATORS.if_statement = (node) => `${passThroughGenerator(node, ' ')}\n`
 GENERATORS.binary_expression = passThroughGenerator
 GENERATORS.assignment_expression = passThroughGenerator
 GENERATORS.update_expression = passThroughGenerator
 GENERATORS.unary_expression = passThroughGenerator
+GENERATORS.subscript_expression = passThroughGenerator
+GENERATORS.new_expression = passThroughGenerator
 GENERATORS.scoped_identifier = passThroughGenerator
+GENERATORS.if_statement = (node) => `${passThroughGenerator(node, ' ')}\n`
 
 GENERATORS.call_expression = (node) => {
 	let { children } = node
 	children = removeChildrenOfType(children, 'comment')
 
-	// special case for thread methods
+	// special cases for thread methods
 	if (childrenStartsWithExactTypes(children, ['identifier']) &&
 		THREAD_METHODS_SIGNATURE.includes(children[0].text)) {
 		// make a clone of the children array and of the argument_list child
@@ -142,6 +147,22 @@ GENERATORS.call_expression = (node) => {
 				break
 			}
 		}
+	}
+
+	// special cases for thread methods with async conditionals
+	if (childrenStartsWithExactTypes(children, ['identifier', 'argument_list']) &&
+		THREAD_ASYNC_CONDITIONAL_METHODS_SIGNATURE.includes(children[0].text)) {
+		const [identifier, argument_list] = children
+
+		// remove parenthesis
+		let parsedArgumentList = generate(argument_list)
+		if (parsedArgumentList[0] === '(') {
+			parsedArgumentList = parsedArgumentList.substring(1)
+		}
+		if (parsedArgumentList[parsedArgumentList.length - 1] === ')') {
+			parsedArgumentList = parsedArgumentList.slice(0, -1)
+		}
+		return `await ${generate(identifier)}(async() => ${parsedArgumentList})`
 	}
 
 	let code = 'await '
@@ -247,6 +268,15 @@ GENERATORS.declaration = (node) => {
 				children : [type, child, maybeSemi]
 			}))
 		return generatedNodes.map(generate).join('')
+	}
+
+	/**
+	* Vector<Type> a;
+	*/
+	if (areChildrenOfExactTypes(children, ['template_type', 'identifier', ';'])) {
+		const [template_type, identifier] = children
+		resolvedIndentifier = generate(identifier)
+		resolvedConstructur = `new ${generate(template_type)}()`
 	}
 
 	/**
@@ -387,6 +417,17 @@ GENERATORS.while_statement = (node) => {
 
 	return passThroughGenerator(node)
 }
+GENERATORS.do_statement = (node) => {
+	let { children } = node
+	children = removeChildrenOfType(children, 'comment')
+
+	if (areChildrenOfExactTypes(children, ['do', 'compound_statement', 'while', 'parenthesized_expression', ';'])) {
+		const [, compound_statement,, parenthesized_expression] = children
+		return `await createWhileLoop(async() => ${generate(parenthesized_expression)}, async() => ${generate(compound_statement)}, true)\n`
+	}
+
+	return passThroughGenerator(node)
+}
 GENERATORS.for_statement = (node) => {
 	let { children } = node
 	children = removeChildrenOfType(children, 'comment')
@@ -483,12 +524,22 @@ GENERATORS.primitive_type = (node) => {
 			return 'Object'
 	}
 }
+GENERATORS.template_type = (node) => {
+	const { text } = node
+
+	if (text.indexOf('Vector<') === 0) {
+		return 'Array'
+	}
+	return text.replace('<', '_').replace('>', '').split(',').join('_')
+}
 GENERATORS.type_identifier = (node) => {
 	const { text } = node
 
 	switch (text) {
 		case 'string':
 			return 'String'
+		case 'Vecor':
+			return 'Array'
 		default:
 			return text
 	}
@@ -558,7 +609,7 @@ const generateJsfromCppAst = (tree) => {
 	} */
 	// iteratorLog(tree.walk())
 
-	/* const recursiveLog = (node) => {
+	const recursiveLog = (node) => {
 		console.groupCollapsed(node.type)
 		console.log(node.text)
 		removeChildrenOfType(node.children, 'comment').forEach(child => {
@@ -566,9 +617,15 @@ const generateJsfromCppAst = (tree) => {
 		})
 		console.groupEnd()
 	}
-	recursiveLog(tree.rootNode) */
 	const js = generate(tree.rootNode)
-	// console.log(js)
+	console.groupCollapsed('C++ to JS')
+	console.groupCollapsed('Parsed C++')
+	recursiveLog(tree.rootNode)
+	console.groupEnd()
+	console.groupCollapsed('Generated JS')
+	console.log(js)
+	console.groupEnd()
+	console.groupEnd()
 	return js
 }
 

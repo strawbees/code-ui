@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import SimulatorVMManager from 'src/simulator/containers/simulatorVMManager'
+import EditorWithSimulatorContainer from 'src/containers/editorWithSimulatorContainer'
 import VisualToTextEditorContainer from 'src/containers/visualToTextEditorContainer'
 import BlockEditor from 'src/editors/block'
 import mapStateToProps from './mapStateToProps'
@@ -7,14 +7,13 @@ import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
 const PageHomeContainer = (props) =>
-	<>
-		<SimulatorVMManager/>
+	<EditorWithSimulatorContainer>
 		<VisualToTextEditorContainer
 			VisualEditor={BlockEditor}
 			type='block'
 			{...props}
 		/>
-	</>
+	</EditorWithSimulatorContainer>
 
 const pageBlockContainerConnected = connect(
 	mapStateToProps,

@@ -11,16 +11,16 @@ const TextOnlyEditorContainer = (props) =>
 	/>
 
 TextOnlyEditorContainer.propTypes = {
-	VisualEditor : PropTypes.oneOfType([
+	TextEditor : PropTypes.oneOfType([
 		PropTypes.func,
 		PropTypes.object,
 	]),
 }
 
-const visualToTextEditorContainerConnected = connect(
+const textOnlyEditorContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 	mergeProps
 )(TextOnlyEditorContainer)
 
-export default visualToTextEditorContainerConnected
+export default textOnlyEditorContainerConnected

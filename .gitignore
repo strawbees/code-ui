@@ -6,6 +6,7 @@ node_modules
 /.prebuild-cache
 /.zanata-cache
 /out
+/static/lib/quirkbot-arduino-library
 /static/lib/scratch-blocks
 /static/lib/tree-sitter
 /static/i18n/

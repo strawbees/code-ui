@@ -67,11 +67,8 @@ const App = ({
 		<TrackingManager />
 		<HeadContainer />
 		<HeaderContainer />
-		{displayError ?
-			<PageError statusCode={displayError} />
-			:
-			<PageContainer />
-		}
+		{displayError && <PageError statusCode={displayError} />}
+		{displayError || <PageContainer />}
 		<FooterContainer />
 		<ModalContainer />
 		{displayPageLoader &&

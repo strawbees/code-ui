@@ -89,7 +89,7 @@ const genereateCode = (source, state) => {
 				c = [...Array(numItems)].map((_, num) => {
 					const value = parameterValueParsedSanitisedSelector()(state, { id : `${parameter.id}.${num}`, instanceId : instance.id })
 					let cc = ''
-					cc += `\t${instance.name}.${parameter.code}[${num}]`
+					cc += `\t${instance.name}.${parameter.code}.get(${num})`
 					if (value.type === 'OUTLET') {
 						cc += `.connect(${value.code});`
 					} else {
