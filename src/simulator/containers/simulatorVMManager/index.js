@@ -70,20 +70,20 @@ const SimulatorVMManager = ({
 
 		const ast = parser.parse(code)
 		const transpiledCode = generateJsfromCppAst(ast).split('window').join('_window')
-		// console.log(transpiledCode)
-		// workerRef.current.postMessage({
-		// 	key   : 'code',
-		// 	value : transpiledCode
-		// })
-		// const handleInternalData = async () => {
-		// 	workerRef.current.postMessage({
-		// 		key   : 'data',
-		// 		value : externalDataRef.current
-		// 	})
-		// 	handleInternalDataTimerRef.current = requestAnimationFrame(handleInternalData, 0)
-		// }
-		// handleInternalDataTimerRef.current = requestAnimationFrame(handleInternalData)
-		// return cleanup
+		console.log(transpiledCode)
+		workerRef.current.postMessage({
+			key   : 'code',
+			value : transpiledCode
+		})
+		const handleInternalData = async () => {
+			workerRef.current.postMessage({
+				key   : 'data',
+				value : externalDataRef.current
+			})
+			handleInternalDataTimerRef.current = requestAnimationFrame(handleInternalData, 0)
+		}
+		handleInternalDataTimerRef.current = requestAnimationFrame(handleInternalData)
+		return cleanup
 	}, [code, parser])
 
 	return null
