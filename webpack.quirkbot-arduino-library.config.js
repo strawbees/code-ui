@@ -13,9 +13,12 @@ module.exports = {
 	],
 	output : {
 		path          : path.resolve(__dirname, path.join('static', 'lib', 'quirkbot-arduino-library')),
-		library       : 'quirkbot-arduino-library',
-		libraryTarget : 'umd',
+		library       : 'QuirkbotArduinoLibrary',
+		libraryTarget : 'var',
 		filename      : 'quirkbot-arduino-library.js',
+	},
+	optimization : {
+		minimize : true
 	},
 	module : {
 		rules : [

@@ -5,9 +5,13 @@ const THREAD_ASYNC_CONDITIONAL_METHODS_SIGNATURE = ['yieldUntil', 'waitUntil',
 	'waitWhile']
 const THREAD_DEFININITON_SIGNATURE = 'THREAD'
 
-const textOutputGenerator = (node) => node.text
-const emptyGenerator = () => ''
-const passThroughGenerator = (node, spacer = '') => {
+function textOutputGenerator(node) {
+	return node.text
+}
+function emptyGenerator() {
+	return ''
+}
+function passThroughGenerator(node, spacer = '') {
 	let { children } = node
 	children = removeChildrenOfType(children, 'comment')
 	let code = ''
@@ -65,8 +69,8 @@ GENERATORS['<<'] = textOutputGenerator
 GENERATORS['>>'] = textOutputGenerator
 GENERATORS['>>='] = textOutputGenerator
 GENERATORS['<<='] = textOutputGenerator
-GENERATORS['=='] = () => '==='
-GENERATORS['!='] = () => '!=='
+GENERATORS['=='] = function equal() { return '===' }
+GENERATORS['!='] = function different() { return '!==' }
 GENERATORS['<='] = textOutputGenerator
 GENERATORS['>='] = textOutputGenerator
 GENERATORS['&&'] = textOutputGenerator
@@ -78,7 +82,7 @@ GENERATORS['->*'] = textOutputGenerator
 GENERATORS['->'] = textOutputGenerator
 GENERATORS['()'] = textOutputGenerator
 GENERATORS['[]'] = textOutputGenerator
-GENERATORS['::'] = () => '.'
+GENERATORS['::'] = function namespaceSeparator() { return '.' }
 GENERATORS.true = textOutputGenerator
 GENERATORS.false = textOutputGenerator
 GENERATORS.if = textOutputGenerator
@@ -89,8 +93,8 @@ GENERATORS.char_literal = textOutputGenerator
 GENERATORS.field_identifier = textOutputGenerator
 GENERATORS.namespace_identifier = textOutputGenerator
 GENERATORS.for = textOutputGenerator
-GENERATORS.new = () => 'new '
-GENERATORS['#include'] = () => 'import * from'
+GENERATORS.new = function newfn() { return 'new ' }
+GENERATORS['#include'] = function include() { return 'import * from' }
 
 GENERATORS.storage_class_specifier = emptyGenerator
 
@@ -546,8 +550,10 @@ GENERATORS.type_identifier = (node) => {
 }
 GENERATORS.auto = () => 'Object'
 
-const removeChildrenOfType = (children, type) => children.filter(c => c.type !== type)
-const areChildrenOfExactTypes = (children, types = []) => {
+function removeChildrenOfType(children, type) {
+	return children.filter(c => c.type !== type)
+}
+function areChildrenOfExactTypes(children, types = []) {
 	if (children.length !== types.length) {
 		return false
 	}
@@ -558,7 +564,7 @@ const areChildrenOfExactTypes = (children, types = []) => {
 	}
 	return true
 }
-const childrenStartsWithExactTypes = (children, types = []) => {
+function childrenStartsWithExactTypes(children, types = []) {
 	for (let i = 0; i < children.length; i++) {
 		if (i === types.length) {
 			return true
@@ -569,7 +575,7 @@ const childrenStartsWithExactTypes = (children, types = []) => {
 	}
 	return true
 }
-const childrenEndsWithExactTypes = (children, types = []) => {
+function childrenEndsWithExactTypes(children, types = []) {
 	if (types.length > children.length) {
 		return false
 	}
@@ -577,7 +583,7 @@ const childrenEndsWithExactTypes = (children, types = []) => {
 	return areChildrenOfExactTypes(lastChildren, types)
 }
 
-const generate = (node) => {
+function generate(node) {
 	if (!node) {
 		return '/**error: undefined node**/'
 	}
@@ -586,48 +592,60 @@ const generate = (node) => {
 	}
 	return GENERATORS[node.type](node)
 }
-const generateWithType = (type, node) => {
+function generateWithType(type, node) {
 	if (!GENERATORS[type]) {
 		return `/**${node.type}**/`
 	}
 	return GENERATORS[type](node)
 }
 
-const generateJsfromCppAst = (tree) => {
-	/* const iteratorLog = (cursor) => {
-		console.groupCollapsed(cursor.nodeType)
-		console.log(cursor.nodeText)
-		if (cursor.gotoFirstChild()) {
-			iteratorLog(cursor)
-		}
-		console.groupEnd()
-		if (cursor.gotoNextSibling()) {
-			iteratorLog(cursor)
-		} else {
-			cursor.gotoParent()
-		}
-	} */
-	// iteratorLog(tree.walk())
-
-	const recursiveLog = (node) => {
-		console.groupCollapsed(node.type)
-		console.log(node.text)
-		removeChildrenOfType(node.children, 'comment').forEach(child => {
-			recursiveLog(child)
-		})
-		console.groupEnd()
+function generateSimplifiedNode(nativeNode) {
+	const { type, text, children } = nativeNode
+	const simplifiedNode = {
+		type,
+		text,
+		children : [],
 	}
-	const js = generate(tree.rootNode)
-	console.groupCollapsed('C++ to JS')
-	console.groupCollapsed('Parsed C++')
-	recursiveLog(tree.rootNode)
+	// For each doesn't work here (ios crazy bug)
+	for (let i = 0; i < children.length; i++) {
+		simplifiedNode.children.push(generateSimplifiedNode(children[i]))
+	}
+	return simplifiedNode
+}
+function iteratorLog(cursor) {
+	console.groupCollapsed(cursor.nodeType)
+	console.log(cursor.nodeText)
+	if (cursor.gotoFirstChild()) {
+		iteratorLog(cursor)
+	}
 	console.groupEnd()
-	console.groupCollapsed('Generated JS')
-	console.log(js)
+	if (cursor.gotoNextSibling()) {
+		iteratorLog(cursor)
+	} else {
+		cursor.gotoParent()
+	}
+}
+function recursiveLog(node) {
+	console.groupCollapsed(node.type)
+	console.log(node.text)
+	removeChildrenOfType(node.children, 'comment').forEach(recursiveLog)
 	console.groupEnd()
-	console.groupEnd()
-	return js
 }
 
+function generateJsfromCppAst(tree) {
+	const rootNode = generateSimplifiedNode(tree.rootNode)
+	debugger
+	const js = generate(rootNode)
+	// console.groupCollapsed('C++ to JS')
+	// console.groupCollapsed('Parsed C++')
+	// recursiveLog(rootNode)
+	// iteratorLog(tree.walk())
+	// console.groupEnd()
+	// console.groupCollapsed('Generated JS')
+	// console.log(js)
+	// console.groupEnd()
+	// console.groupEnd()
+	return js
+}
 export default generateJsfromCppAst
 /* eslint-enable camelcase */
