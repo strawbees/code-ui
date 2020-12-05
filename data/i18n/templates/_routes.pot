@@ -54,3 +54,7 @@ msgstr ""
 msgctxt "routes.md.terms-of-use"
 msgid "/terms/"
 msgstr ""
+
+msgctxt "routes.simulator-sandbox"
+msgid "/simulator-sandbox/"
+msgstr ""

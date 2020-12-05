@@ -73,5 +73,9 @@
 			"ref" : "md",
 			"id" : "terms-of-use"
 		}
+	},
+	"routes.simulator-sandbox": {
+		"page": "/simulator-sandbox",
+		"query": {}
 	}
 }
