@@ -61,7 +61,7 @@ const EditorWithSimulator = ({
 				textHoverColor={WHITE}
 				bgHoverColor={GRAY}
 				icon={isSimulatorVisible ? ExpandIcon : CollapseIcon}
-				labelKey='simulalor.button.show_hide'
+				labelKey='simulator.button.show_hide'
 				onClick={isSimulatorVisible ? hideSimulator : showSimulator}
 			/>
 		</div>

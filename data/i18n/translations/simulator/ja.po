@@ -13,6 +13,6 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "Language: ja\n"
 
-msgctxt "simulalor.button.show_hide"
+msgctxt "simulator.button.show_hide"
 msgid "Simulator"
 msgstr "Simulator"

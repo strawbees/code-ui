@@ -9,8 +9,9 @@ import {
 
 const Markdown = ({
 	source,
+	className,
 }) =>
-	<div className='root markdown'>
+	<div className={`root markdown ${className}`}>
 		<style jsx>{`
 			/* Remove marging */
 			.root :global(> *:first-child){
@@ -69,8 +70,13 @@ const Markdown = ({
 		<ReactMarkdown children={source} allowDangerousHtml={true} plugins={[gfm]}/>
 	</div>
 
+Markdown.defaultProps = {
+	className : '',
+}
+
 Markdown.propTypes = {
-	source : PropTypes.string,
+	source    : PropTypes.string,
+	className : PropTypes.string,
 }
 
 export default Markdown

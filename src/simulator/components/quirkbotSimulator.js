@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types'
 import { withResizeDetector } from 'react-resize-detector'
+import ErrorSamePlaceReportListContainer from '../containers/errorSamePlaceReportListContainer'
+
 // import NodeIconsListContainer from '../containers/nodeIconsListContainer'
 import PhysicalRepresentationContainer from '../containers/physicalRepresentationContainer'
 
@@ -13,7 +15,7 @@ const QuirkbotSimulator = ({
 				background-color: white;
 				display: flex;
 				flex-direction: column;
-				justify-content: center;
+				justify-content: flex-start;
 			}
 		`}</style>
 		{/*
@@ -22,6 +24,7 @@ const QuirkbotSimulator = ({
 			</div>
 		*/}
 		<PhysicalRepresentationContainer containerWidth={width}/>
+		<ErrorSamePlaceReportListContainer />
 		{/* <div className='nodes'>
 			<div>nodes</div>
 			<NodeIconsListContainer/>

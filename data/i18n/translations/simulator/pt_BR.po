@@ -13,6 +13,6 @@ msgstr ""
 "X-Generator: Zanata 4.6.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-msgctxt "simulalor.button.show_hide"
+msgctxt "simulator.button.show_hide"
 msgid "Simulator"
 msgstr "Simulador"

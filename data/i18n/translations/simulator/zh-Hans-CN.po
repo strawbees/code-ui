@@ -13,6 +13,6 @@ msgstr ""
 "X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-msgctxt "simulalor.button.show_hide"
+msgctxt "simulator.button.show_hide"
 msgid "Simulator"
 msgstr "Simulator"

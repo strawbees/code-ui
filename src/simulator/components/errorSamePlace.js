@@ -91,13 +91,7 @@ export const ErrorSamePlace = ({
 			<style jsx>{`
 				.root {
 					z-index: 1;
-					position: relative;
 				}
-
-				.indicator {
-					pointer-events: none;
-				}
-
 			`}</style>
 			<Figure
 				svg={ErrorSvg}
