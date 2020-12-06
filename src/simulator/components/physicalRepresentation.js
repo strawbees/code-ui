@@ -22,6 +22,13 @@ const PhysicalRepresentation = ({
 					width: ${width * adjustScale}px;
 					height: ${height * adjustScale}px;
 					overflow: hidden;
+					//animation-fill-mode: backwards;
+					//animation: 0.5s linear fadein;
+				}
+				@keyframes fadein {
+					0%   { opacity: 0; }
+					50%   { opacity: 0; }
+					100% { opacity: 1; }
 				}
 				.resize-area {
 					position: absolute;

@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Figure from '../figure'
+import LightSensorRangeSVG from '../../assets/images/node-parts/light-sensor-range.svg'
 
 class LightSensorRange extends React.Component {
 	constructor(props) {
@@ -34,6 +36,8 @@ class LightSensorRange extends React.Component {
 			step,
 		} = this.props
 
+		const width = 60
+
 		return (
 			<div className='root LightSensorRange'>
 				<style jsx>{`
@@ -44,7 +48,7 @@ class LightSensorRange extends React.Component {
 						display: flex;
 						flex-direction: column;
 						border-radius: 20px;
-						width: 60px;
+						width: ${width}px;
 					}
 					.container {
 						height: 100%;
@@ -55,7 +59,7 @@ class LightSensorRange extends React.Component {
 						align-items: center;
 					}
 					.container .track {
-						border: solid 2px rgb(51,51,51);
+						border: solid 1px rgb(51,51,51);
 						position: absolute;
 						width: 100%;
 						box-sizing: border-box;
@@ -88,44 +92,44 @@ class LightSensorRange extends React.Component {
 					}
 					input[type=range]::-webkit-slider-thumb {
 						-webkit-appearance: none;
-						border: solid 2px rgb(51,51,51);
-						height: 25px;
-						width: 25px;
-						border-radius: 25px;
-						background: white;
+						border: solid 2px rgb(255,255,255);
+						height: 28px;
+						width: 28px;
+						border-radius: 28px;
+						background: #ddd;
 						cursor: pointer;
 						margin-top: 0;
 						box-sizing: border-box;
 					}
 					input[type=range]::-moz-range-thumb {
-						border: solid 2px rgb(51,51,51);
-						height: 25px;
-						width: 25px;
-						border-radius: 25px;
-						background: white;
+						border: solid 2px rgb(255,255,255);
+						height: 28px;
+						width: 28px;
+						border-radius: 28px;
+						background: #ddd;
 						cursor: pointer;
 						margin-top: 0;
 						box-sizing: border-box;
 					}
 					input[type=range]::-ms-thumb {
-						border: solid 2px rgb(51,51,51);
-						height: 25px;
-						width: 25px;
-						border-radius: 25px;
-						background: white;
+						border: solid 2px rgb(255,255,255);
+						height: 28px;
+						width: 28px;
+						border-radius: 28px;
+						background: #ddd;
 						cursor: pointer;
 						margin-top: 0;
 						box-sizing: border-box;
 					}
-					input[type=range]:focus::-webkit-slider-thumb {
-						border: solid 5px rgb(51,51,51);
-					}
-					input[type=range]:focus::-moz-range-thumb {
-						border: solid 5px rgb(51,51,51);
-					}
-					input[type=range]:focus::-ms-thumb {
-						border: solid 5px rgb(51,51,51);
-					}
+					// input[type=range]:focus::-webkit-slider-thumb {
+					// 	border: solid 5px rgb(51,51,51);
+					// }
+					// input[type=range]:focus::-moz-range-thumb {
+					// 	border: solid 5px rgb(51,51,51);
+					// }
+					// input[type=range]:focus::-ms-thumb {
+					// 	border: solid 5px rgb(51,51,51);
+					// }
 
 					input[type=range]::-webkit-slider-runnable-track {
 						width: 100%;
@@ -156,6 +160,10 @@ class LightSensorRange extends React.Component {
 						background: rgba(0,0,0,0);
 						border: none;
 					}
+					.root :global(.sun) {
+						z-index:2;
+						pointer-events: none;
+					}
 				`}</style>
 				<div className='container'>
 					<div className='track'>
@@ -171,6 +179,12 @@ class LightSensorRange extends React.Component {
 						onKeyDown={onKeyDown}
 						onFocus={cancelEvent}
 						onChange={(e) => onChange(e.target.value)}
+					/>
+					<Figure
+						className='sun'
+						svg={LightSensorRangeSVG}
+						x={13.5 + value * width * 0.54}
+						y={0}
 					/>
 				</div>
 			</div>
