@@ -8,10 +8,12 @@ export const DIRECTION_COUNTER_CLOCKWISE = 0
 export const DIRECTION_CLOCKWISE = 1
 
 export class ContinuousServo extends ServoMotor {
-	nodeType = 'ContinuousServo'
+	static nodeType = 'ContinuousServo'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = ContinuousServo.nodeType
+
 		this.speed = this.position
 
 		this.registerInput(this.direction)
@@ -26,6 +28,7 @@ export class ContinuousServo extends ServoMotor {
 	getInternalData() {
 		return {
 			...super.getInternalData(),
+			nodeType  : this.nodeTypeInternal,
 			speed     : this.speed.get(),
 			direction : this.direction.get(),
 		}

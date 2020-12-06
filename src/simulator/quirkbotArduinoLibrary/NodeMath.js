@@ -12,10 +12,11 @@ export const MATH_DIVIDE = 3
 export const MATH_MODULO = 4
 
 export class Math extends Node {
-	nodeType = 'Math'
+	static nodeType = 'Math'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = Math.nodeType
 
 		this.registerInput(this.in)
 		this.registerInput(this.operation)
@@ -70,7 +71,7 @@ export class Math extends Node {
 
 	getInternalData() {
 		return {
-			nodeType  : this.nodeType,
+			nodeType  : this.nodeTypeInternal,
 			id        : this.getTypedId(),
 			operation : this.operation.get(),
 			value     : this.value.get(),

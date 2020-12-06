@@ -9,10 +9,11 @@ import {
 export const QB_MAX_SIMULTANEOUS_KEYS = 20
 
 export class KeySequence extends HasInterval(Node) {
-	nodeType = 'KeySequence'
+	static nodeType = 'KeySequence'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = KeySequence.nodeType
 
 		this.registerInput(this.key)
 		this.registerInput(this.holdTime)
@@ -80,7 +81,7 @@ export class KeySequence extends HasInterval(Node) {
 
 	getInternalData() {
 		return {
-			nodeType     : this.nodeType,
+			nodeType     : this.nodeTypeInternal,
 			id           : this.getTypedId(),
 			key          : this.key.get(),
 			holdTime     : this.holdTime.get(),

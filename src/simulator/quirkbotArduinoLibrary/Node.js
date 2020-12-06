@@ -34,7 +34,7 @@ export class Node {
 	static ID_FACTORY = 0 // we use instead the Bot.NOTE_ID_FACTORY
 
 	getTypedId() {
-		return `${this.nodeType}${this.id}`
+		return `${this.nodeTypeInternal}${this.id}`
 	}
 
 	getInternalData() {

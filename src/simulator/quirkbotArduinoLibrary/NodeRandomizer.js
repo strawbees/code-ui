@@ -7,10 +7,11 @@ import {
 } from './CommonNodeIncludes'
 
 export class Randomizer extends HasInterval(Node) {
-	nodeType = 'Randomizer'
+	static nodeType = 'Randomizer'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = Randomizer.nodeType
 
 		this.registerInput(this.min)
 		this.registerInput(this.max)
@@ -36,7 +37,7 @@ export class Randomizer extends HasInterval(Node) {
 
 	getInternalData() {
 		return {
-			nodeType : this.nodeType,
+			nodeType : this.nodeTypeInternal,
 			id       : this.getTypedId(),
 			interval : this.interval.get(),
 			min      : this.min.get(),

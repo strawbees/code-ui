@@ -1,0 +1,23 @@
+import { createSelector } from 'reselect'
+import internalDataNodeEntitiesStringSelector from './internalDataNodeEntitiesStringSelector'
+
+import {
+	DISCONNECTED,
+} from '../quirkbotArduinoLibrary/Quirkbot'
+
+const nodeTypesWithDisconnectedWarningSelector = () => createSelector(
+	[
+		internalDataNodeEntitiesStringSelector(),
+	],
+	(
+		entitiesString,
+	) => {
+		const entities = JSON.parse(entitiesString)
+		console.log(entities)
+		return Object.keys(entities)
+			.filter(key => entities[key].place === DISCONNECTED)
+			.map(key => entities[key].nodeType)
+	}
+)
+
+export default nodeTypesWithDisconnectedWarningSelector

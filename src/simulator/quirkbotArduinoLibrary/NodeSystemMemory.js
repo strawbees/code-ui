@@ -5,10 +5,11 @@ import {
 } from './CommonNodeIncludes'
 
 export class SystemMemory extends HasInterval(Node) {
-	nodeType = 'SystemMemory'
+	static nodeType = 'SystemMemory'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = SystemMemory.nodeType
 
 		this.interval.set(0.01)
 	}
@@ -25,7 +26,7 @@ export class SystemMemory extends HasInterval(Node) {
 
 	getInternalData() {
 		return {
-			nodeType : this.nodeType,
+			nodeType : this.nodeTypeInternal,
 			id       : this.getTypedId(),
 			interval : this.interval.get(),
 			out      : this.out.get(),

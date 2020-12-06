@@ -9,10 +9,11 @@ import {
 } from './CommonNodeIncludes'
 
 export class SqueezeSensor extends HasInterval(Node) {
-	nodeType = 'SqueezeSensor'
+	static nodeType = 'SqueezeSensor'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = SqueezeSensor.nodeType
 
 		this.registerInput(this.place)
 		this.registerInput(this.min)
@@ -40,7 +41,7 @@ export class SqueezeSensor extends HasInterval(Node) {
 
 	getInternalData() {
 		return {
-			nodeType : this.nodeType,
+			nodeType : this.nodeTypeInternal,
 			id       : this.getTypedId(),
 			interval : this.interval.get(),
 			place    : this.place.get(),

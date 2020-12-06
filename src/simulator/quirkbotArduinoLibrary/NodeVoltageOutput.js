@@ -1,10 +1,11 @@
 import { Led } from './NodeLed'
 
 export class VoltageOutput extends Led {
-	nodeType = 'VoltageOutput'
+	static nodeType = 'VoltageOutput'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = VoltageOutput.nodeType
 
 		this.in = this.light
 	}
@@ -14,7 +15,8 @@ export class VoltageOutput extends Led {
 	getInternalData() {
 		return {
 			...super.getInternalData(),
-			in : this.in.get(),
+			nodeType : this.nodeTypeInternal,
+			in       : this.in.get(),
 		}
 	}
 }

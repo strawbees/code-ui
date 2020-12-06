@@ -5,10 +5,11 @@ import {
 } from './CommonNodeIncludes'
 
 export class Converter extends Node {
-	nodeType = 'Converter'
+	static nodeType = 'Converter'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = Converter.nodeType
 
 		this.registerInput(this.in)
 		this.registerInput(this.inMin)
@@ -49,7 +50,7 @@ export class Converter extends Node {
 
 	getInternalData() {
 		return {
-			nodeType : this.nodeType,
+			nodeType : this.nodeTypeInternal,
 			id       : this.getTypedId(),
 			inMin    : this.inMin.get(),
 			inMax    : this.inMax.get(),

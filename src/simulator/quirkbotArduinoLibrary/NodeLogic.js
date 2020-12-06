@@ -10,10 +10,11 @@ export const LOGIC_OR = 1
 export const LOGIC_XOR = 2
 
 export class Logic extends Node {
-	nodeType = 'Logic'
+	static nodeType = 'Logic'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = Logic.nodeType
 
 		this.registerInput(this.operation)
 		this.registerInputCollection(this.items)
@@ -72,7 +73,7 @@ export class Logic extends Node {
 			items.push(this.items.collection.get(i).get())
 		}
 		return {
-			nodeType  : this.nodeType,
+			nodeType  : this.nodeTypeInternal,
 			id        : this.getTypedId(),
 			operation : this.operation.get(),
 			close     : this.close.get(),

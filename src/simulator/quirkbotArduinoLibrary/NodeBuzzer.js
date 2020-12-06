@@ -7,10 +7,11 @@ import {
 } from './CommonNodeIncludes'
 
 export class Buzzer extends Node {
-	nodeType = 'Buzzer'
+	static nodeType = 'Buzzer'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = Buzzer.nodeType
 
 		this.registerInput(this.note)
 		this.registerInput(this.place)
@@ -27,7 +28,7 @@ export class Buzzer extends Node {
 
 	getInternalData() {
 		return {
-			nodeType     : this.nodeType,
+			nodeType     : this.nodeTypeInternal,
 			id           : this.getTypedId(),
 			place        : this.place.get(),
 			note         : this.note.get(),

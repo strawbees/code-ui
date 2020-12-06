@@ -12,5 +12,9 @@ msgid "Simulator"
 msgstr ""
 
 msgctxt "simulator.error.same-place"
-msgid "Only one component can be at the **%1**."
+msgid "**%1** has more than one component."
+msgstr ""
+
+msgctxt "simulator.warning.disconnected"
+msgid "**%1** is disconnected."
 msgstr ""

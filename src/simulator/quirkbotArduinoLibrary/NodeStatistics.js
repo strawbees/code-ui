@@ -11,10 +11,11 @@ export const STAT_MAX = 2
 export const STAT_SUM = 3
 
 export class Statistics extends Node {
-	nodeType = 'Statistics'
+	static nodeType = 'Statistics'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = Statistics.nodeType
 
 		this.registerInput(this.operation)
 		this.registerInputCollection(this.items)
@@ -75,7 +76,7 @@ export class Statistics extends Node {
 			items.push(this.items.collection.get(i).get())
 		}
 		return {
-			nodeType  : this.nodeType,
+			nodeType  : this.nodeTypeInternal,
 			id        : this.getTypedId(),
 			operation : this.operation.get(),
 			out       : this.out.get(),

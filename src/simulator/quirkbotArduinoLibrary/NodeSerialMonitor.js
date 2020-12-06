@@ -6,10 +6,11 @@ import {
 } from './CommonNodeIncludes'
 
 export class SerialMonitor extends HasInterval(Node) {
-	nodeType = 'SerialMonitor'
+	static nodeType = 'SerialMonitor'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = SerialMonitor.nodeType
 
 		this.registerInputCollection(this.items)
 		this.interval.set(0.1)
@@ -35,7 +36,7 @@ export class SerialMonitor extends HasInterval(Node) {
 			items.push(this.items.collection.get(i).get())
 		}
 		return {
-			nodeType : this.nodeType,
+			nodeType : this.nodeTypeInternal,
 			id       : this.getTypedId(),
 			interval : this.interval.get(),
 			items

@@ -14,10 +14,11 @@ export const QB_IR_PROXIMITY_INPUT_PIN = BP2
 export const QB_IR_PROXIMITY_MAX = 120
 
 export class IRProximity extends HasInterval(Node) {
-	nodeType = 'IRProximity'
+	static nodeType = 'IRProximity'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = IRProximity.nodeType
 
 		this.registerInput(this.min)
 		this.registerInput(this.max)
@@ -41,7 +42,7 @@ export class IRProximity extends HasInterval(Node) {
 
 	getInternalData() {
 		return {
-			nodeType : this.nodeType,
+			nodeType : this.nodeTypeInternal,
 			id       : this.getTypedId(),
 			interval : this.interval.get(),
 			min      : this.min.get(),

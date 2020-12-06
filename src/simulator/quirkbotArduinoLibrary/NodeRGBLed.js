@@ -8,10 +8,11 @@ import {
 } from './CommonNodeIncludes'
 
 export class RGBLed extends Node {
-	nodeType = 'RGBLed'
+	static nodeType = 'RGBLed'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = RGBLed.nodeType
 
 		this.registerInput(this.in)
 		this.registerInput(this.pinR)
@@ -42,7 +43,7 @@ export class RGBLed extends Node {
 
 	getInternalData() {
 		return {
-			nodeType   : this.nodeType,
+			nodeType   : this.nodeTypeInternal,
 			id         : this.getTypedId(),
 			pinR       : this.pinR.get(),
 			pinG       : this.pinG.get(),

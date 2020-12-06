@@ -5,10 +5,11 @@ import {
 } from './CommonNodeIncludes'
 
 export class Constrain extends Node {
-	nodeType = 'Constrain'
+	static nodeType = 'Constrain'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = Constrain.nodeType
 
 		this.registerInput(this.in)
 		this.registerInput(this.min)
@@ -33,7 +34,7 @@ export class Constrain extends Node {
 
 	getInternalData() {
 		return {
-			nodeType : this.nodeType,
+			nodeType : this.nodeTypeInternal,
 			id       : this.getTypedId(),
 			in       : this.in.get(),
 			min      : this.min.get(),

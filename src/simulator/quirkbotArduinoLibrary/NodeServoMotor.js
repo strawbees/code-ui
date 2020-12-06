@@ -8,10 +8,11 @@ import {
 } from './CommonNodeIncludes'
 
 export class ServoMotor extends HasInterval(Node) {
-	nodeType = 'ServoMotor'
+	static nodeType = 'ServoMotor'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = ServoMotor.nodeType
 
 		this.registerInput(this.position)
 		this.registerInput(this.place)
@@ -31,7 +32,7 @@ export class ServoMotor extends HasInterval(Node) {
 
 	getInternalData() {
 		return {
-			nodeType  : this.nodeType,
+			nodeType  : this.nodeTypeInternal,
 			id        : this.getTypedId(),
 			interval  : this.interval.get(),
 			position  : this.position.get(),

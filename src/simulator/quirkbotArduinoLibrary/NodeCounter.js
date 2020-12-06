@@ -6,10 +6,11 @@ import {
 } from './CommonNodeIncludes'
 
 export class Counter extends HasTrigger(Node) {
-	nodeType = 'Counter'
+	static nodeType = 'Counter'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = Counter.nodeType
 
 		this.registerInput(this.amount)
 
@@ -41,7 +42,7 @@ export class Counter extends HasTrigger(Node) {
 
 	getInternalData() {
 		return {
-			nodeType : this.nodeType,
+			nodeType : this.nodeTypeInternal,
 			id       : this.getTypedId(),
 			trigger  : this.trigger.get(),
 			amount   : this.amount.get(),

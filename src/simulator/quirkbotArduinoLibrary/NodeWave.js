@@ -23,10 +23,11 @@ export const WAVE_RAMP_UP = 4
 export const WAVE_RAMP_DOWN = 5
 
 export class Wave extends HasInterval(Node) {
-	nodeType = 'Wave'
+	static nodeType = 'Wave'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = Wave.nodeType
 
 		this.registerInput(this.length)
 		this.registerInput(this.min)
@@ -125,7 +126,7 @@ export class Wave extends HasInterval(Node) {
 
 	getInternalData() {
 		return {
-			nodeType : this.nodeType,
+			nodeType : this.nodeTypeInternal,
 			id       : this.getTypedId(),
 			interval : this.interval.get(),
 			length   : this.length.get(),

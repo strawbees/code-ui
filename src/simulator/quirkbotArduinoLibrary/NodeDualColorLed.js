@@ -7,10 +7,11 @@ import {
 } from './CommonNodeIncludes'
 
 export class DualColorLed extends Node {
-	nodeType = 'DualColorLed'
+	static nodeType = 'DualColorLed'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = DualColorLed.nodeType
 
 		this.registerInput(this.place)
 		this.registerInput(this.light)
@@ -29,7 +30,7 @@ export class DualColorLed extends Node {
 
 	getInternalData() {
 		return {
-			nodeType : this.nodeType,
+			nodeType : this.nodeTypeInternal,
 			id       : this.getTypedId(),
 			light    : this.light.get(),
 			place    : this.place.get(),

@@ -1,7 +1,5 @@
 /* eslint-disable camelcase */
-import { useState } from 'react'
 import PropTypes from 'prop-types'
-import S from 'src/containers/sManager'
 import Markdown from 'src/components/markdown'
 import Figure from './figure'
 import ErrorSvg from '../assets/images/general/error.svg'
@@ -23,6 +21,7 @@ import {
 
 export const ErrorSamePlaceReport = ({
 	place,
+	messageTemplate,
 	label_PLACE_LEFT_LEG,
 	label_PLACE_RIGHT_LEG,
 	label_PLACE_LEFT_ARM,
@@ -63,7 +62,6 @@ export const ErrorSamePlaceReport = ({
 	placeLabels.set(PLACE_RIGHT_MOUTH, label_PLACE_RIGHT_MOUTH)
 	placeLabels.set(PLACE_SERVO_MOTOR_1, label_PLACE_SERVO_MOTOR_1)
 	placeLabels.set(PLACE_SERVO_MOTOR_2, label_PLACE_SERVO_MOTOR_2)
-	const [messageTemplate, setMessageTemplate] = useState('')
 	const message = messageTemplate.split('%1').join(placeLabels.get(place))
 	return (
 		<div className={`root errorSamePlaceReport ${place} `}>
@@ -84,7 +82,6 @@ export const ErrorSamePlaceReport = ({
 					top: 11px;
 				}
 			`}</style>
-			<S value='simulator.error.same-place' onChange={setMessageTemplate} render={false}/>
 			<Figure
 				className='icon'
 				svg={ErrorSvg}

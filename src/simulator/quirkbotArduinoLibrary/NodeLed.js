@@ -7,10 +7,11 @@ import {
 } from './CommonNodeIncludes'
 
 export class Led extends Node {
-	nodeType = 'Led'
+	static nodeType = 'Led'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = Led.nodeType
 
 		this.registerInput(this.light)
 		this.registerInput(this.place)
@@ -25,7 +26,7 @@ export class Led extends Node {
 
 	getInternalData() {
 		return {
-			nodeType : this.nodeType,
+			nodeType : this.nodeTypeInternal,
 			id       : this.getTypedId(),
 			light    : this.light.get(),
 			place    : this.place.get(),

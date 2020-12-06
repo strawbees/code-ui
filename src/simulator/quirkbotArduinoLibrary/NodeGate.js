@@ -6,10 +6,11 @@ import {
 } from './CommonNodeIncludes'
 
 export class Gate extends HasTrigger(Node) {
-	nodeType = 'Gate'
+	static nodeType = 'Gate'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = Gate.nodeType
 
 		this.registerInput(this.in)
 		this.in.set(0.0)
@@ -27,7 +28,7 @@ export class Gate extends HasTrigger(Node) {
 
 	getInternalData() {
 		return {
-			nodeType : this.nodeType,
+			nodeType : this.nodeTypeInternal,
 			id       : this.getTypedId(),
 			in       : this.in.get(),
 			trigger  : this.trigger.get(),

@@ -528,6 +528,70 @@
 		],
 		"code": "Counter"
 	},
+	"digital-sensor": {
+		"id": "digital-sensor",
+		"index": 3,
+		"taxonomy": {
+			"advanced": true,
+			"category": "input"
+		},
+		"parameters": [
+			{
+				"id": "place",
+				"default": "DISCONNECTED",
+				"validation": {
+					"type": "list",
+					"data": [
+						"DISCONNECTED",
+						"PLACE_HORN_BACK",
+						"PLACE_LEFT_ARM_BACK",
+						"PLACE_RIGHT_ARM_BACK",
+						"PLACE_LEFT_LEG_BACK",
+						"PLACE_RIGHT_LEG_BACK",
+						"PLACE_BP1",
+						"PLACE_BP2",
+						"PLACE_HORN_FRONT",
+						"PLACE_LEFT_ARM_FRONT",
+						"PLACE_RIGHT_ARM_FRONT",
+						"PLACE_LEFT_LEG_FRONT",
+						"PLACE_LEFT_ARM_FRONT"
+					]
+				},
+				"code": "place"
+			},
+			{
+				"id": "min",
+				"default": 0,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "min"
+			},
+			{
+				"id": "max",
+				"default": 1,
+				"validation": {
+					"type": "range",
+					"data": {
+						"min": 0,
+						"max": 1
+					}
+				},
+				"code": "max"
+			}
+		],
+		"outlets": [
+			{
+				"id": "out",
+				"code": "out"
+			}
+		],
+		"code": "DigitalSensor"
+	},
 	"dual-color-led": {
 		"id": "dual-color-led",
 		"index": 1,

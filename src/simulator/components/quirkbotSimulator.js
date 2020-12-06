@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { withResizeDetector } from 'react-resize-detector'
+import WarningDisconnectedReportListContainer from '../containers/warningDisconnectedReportListContainer'
 import ErrorSamePlaceReportListContainer from '../containers/errorSamePlaceReportListContainer'
 
 // import NodeIconsListContainer from '../containers/nodeIconsListContainer'
@@ -24,6 +25,7 @@ const QuirkbotSimulator = ({
 			</div>
 		*/}
 		<PhysicalRepresentationContainer containerWidth={width}/>
+		<WarningDisconnectedReportListContainer />
 		<ErrorSamePlaceReportListContainer />
 		{/* <div className='nodes'>
 			<div>nodes</div>

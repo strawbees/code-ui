@@ -12,10 +12,11 @@ export const COMP_LESS = 4
 export const COMP_LESS_EQ = 5
 
 export class Comparison extends Node {
-	nodeType = 'Comparison'
+	static nodeType = 'Comparison'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = Comparison.nodeType
 
 		this.registerInput(this.in)
 		this.registerInput(this.operation)
@@ -64,7 +65,7 @@ export class Comparison extends Node {
 
 	getInternalData() {
 		return {
-			nodeType  : this.nodeType,
+			nodeType  : this.nodeTypeInternal,
 			id        : this.getTypedId(),
 			in        : this.in.get(),
 			operation : this.operation.get(),

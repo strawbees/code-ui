@@ -7,10 +7,11 @@ import {
 } from './CommonNodeIncludes'
 
 export class List extends Node {
-	nodeType = 'List'
+	static nodeType = 'List'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = List.nodeType
 
 		this.registerInput(this.in)
 		this.registerInputCollection(this.items)
@@ -57,7 +58,7 @@ export class List extends Node {
 			items.push(this.items.collection.get(i).get())
 		}
 		return {
-			nodeType : this.nodeType,
+			nodeType : this.nodeTypeInternal,
 			id       : this.getTypedId(),
 			in       : this.in.get(),
 			out      : this.out.get(),

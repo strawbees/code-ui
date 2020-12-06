@@ -9,10 +9,12 @@ import {
 } from './CommonNodeIncludes'
 
 export class AnalogSensor extends HasInterval(Node) {
-	nodeType = 'AnalogSensor'
+	static nodeType = 'AnalogSensor'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = AnalogSensor.nodeType
+
 		this.registerInput(this.place)
 		this.registerInput(this.min)
 		this.registerInput(this.max)
@@ -54,7 +56,7 @@ export class AnalogSensor extends HasInterval(Node) {
 
 	getInternalData() {
 		return {
-			nodeType : this.nodeType,
+			nodeType : this.nodeTypeInternal,
 			id       : this.getTypedId(),
 			interval : this.interval.get(),
 			place    : this.place.get(),

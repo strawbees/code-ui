@@ -9,10 +9,11 @@ import {
 } from './CommonNodeIncludes'
 
 export class Sequence extends HasTrigger(HasInterval(Node)) {
-	nodeType = 'Sequence'
+	static nodeType = 'Sequence'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = Sequence.nodeType
 
 		this.registerInput(this.duration)
 		this.registerInputCollection(this.items)
@@ -72,7 +73,7 @@ export class Sequence extends HasTrigger(HasInterval(Node)) {
 			items.push(this.items.collection.get(i).get())
 		}
 		return {
-			nodeType : this.nodeType,
+			nodeType : this.nodeTypeInternal,
 			id       : this.getTypedId(),
 			interval : this.interval.get(),
 			duration : this.duration.get(),

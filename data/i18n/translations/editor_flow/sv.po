@@ -78,6 +78,10 @@ msgctxt "flow.node.counter"
 msgid "Counter"
 msgstr "Räknare"
 
+msgctxt "flow.node.digital-sensor"
+msgid "Digital Sensor"
+msgstr "Digital digital"
+
 msgctxt "flow.node.dual-color-led"
 msgid "Dual Color LED"
 msgstr "Tvåfärgad LED"

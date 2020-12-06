@@ -12,10 +12,12 @@ export const QB_CIRCUIT_TOUCH_MAX_TIME = 10000
 export const QB_CIRCUIT_TOUCH_DISCHARGE_TIME = 1000
 
 export class CircuitTouch extends Updatable(Node) {
-	nodeType = 'CircuitTouch'
+	static nodeType = 'CircuitTouch'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = CircuitTouch.nodeType
+
 		this.registerInput(this.place)
 		this.registerInput(this.min)
 		this.registerInput(this.max)
@@ -45,7 +47,7 @@ export class CircuitTouch extends Updatable(Node) {
 
 	getInternalData() {
 		return {
-			nodeType    : this.nodeType,
+			nodeType    : this.nodeTypeInternal,
 			id          : this.getTypedId(),
 			place       : this.place.get(),
 			min         : this.min.get(),

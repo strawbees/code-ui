@@ -6,10 +6,11 @@ import {
 } from './CommonNodeIncludes'
 
 export class KeyPress extends HasTrigger(Node) {
-	nodeType = 'KeyPress'
+	static nodeType = 'KeyPress'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = KeyPress.nodeType
 
 		this.registerInput(this.key)
 
@@ -44,7 +45,7 @@ export class KeyPress extends HasTrigger(Node) {
 
 	getInternalData() {
 		return {
-			nodeType   : this.nodeType,
+			nodeType   : this.nodeTypeInternal,
 			id         : this.getTypedId(),
 			key        : this.key.get(),
 			currentKey : this.currentKey,

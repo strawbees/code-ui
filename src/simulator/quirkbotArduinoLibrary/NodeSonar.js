@@ -9,10 +9,11 @@ import {
 } from './CommonNodeIncludes'
 
 export class Sonar extends HasInterval(Node) {
-	nodeType = 'Sonar'
+	static nodeType = 'Sonar'
 
 	constructor(...args) {
 		super(...args)
+		this.nodeTypeInternal = Sonar.nodeType
 
 		this.registerInput(this.meters)
 		this.registerInput(this.place)
@@ -43,7 +44,7 @@ export class Sonar extends HasInterval(Node) {
 
 	getInternalData() {
 		return {
-			nodeType : this.nodeType,
+			nodeType : this.nodeTypeInternal,
 			id       : this.getTypedId(),
 			interval : this.interval.get(),
 			meters   : this.meters.get(),
