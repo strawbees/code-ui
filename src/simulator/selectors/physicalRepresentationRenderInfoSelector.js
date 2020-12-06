@@ -32,10 +32,10 @@ const physicalRepresentationRenderInfoSelector = () => createSelector(
 		entities,
 	) => {
 		let width = 480
-		let height = 430
+		let height = 480
 		const originScale = 1
 		let originOffsetX = 0
-		let originOffsetY = 0
+		let originOffsetY = -20
 
 		const increaseTopLimbs = 60
 		const increaseBottomLimbs = 55

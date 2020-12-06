@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import ErrorSamePlaceListContainer from '../containers/errorSamePlaceListContainer'
 import NodePartsListContainer from '../containers/nodePartsListContainer'
 import Figure from './figure'
 import QuirkbotSVG from '../assets/images/general/quirkbot.svg'
@@ -48,6 +49,7 @@ const PhysicalRepresentation = ({
 				<div className='origin'>
 					<Figure svg={QuirkbotSVG} className='board'/>
 					<NodePartsListContainer/>
+					<ErrorSamePlaceListContainer/>
 				</div>
 			</div>
 		</div>
