@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
@@ -45,109 +46,117 @@ import KeySequenceContainer from '../nodePartsContainers/KeySequence'
 const NodePartResolverContainer = ({
 	nodeType,
 	id,
+	adjustScale,
 }) => {
-	let NodeIconContainer
+	let NodePartContainer
 	switch (nodeType) {
 		// case 'AnalogSensor':
-		// 	NodeIconContainer = AnalogSensorContainer
+		// 	NodePartContainer = AnalogSensorContainer
 		// 	break
 		// case 'DigitalSensor':
-		// 	NodeIconContainer = DigitalSensorContainer
+		// 	NodePartContainer = DigitalSensorContainer
 		// 	break
 		case 'CircuitTouch':
-			NodeIconContainer = CircuitTouchContainer
+			NodePartContainer = CircuitTouchContainer
 			break
 		// case 'SqueezeSensor':
-		// 	NodeIconContainer = SqueezeSensorContainer
+		// 	NodePartContainer = SqueezeSensorContainer
 		// 	break
 		// case 'IRProximity':
-		// 	NodeIconContainer = IRProximityContainer
+		// 	NodePartContainer = IRProximityContainer
 		// 	break
 		case 'LightSensor':
-			NodeIconContainer = LightSensorContainer
+			NodePartContainer = LightSensorContainer
 			break
 		// case 'Sonar':
-		// 	NodeIconContainer = SonarContainer
+		// 	NodePartContainer = SonarContainer
 		// 	break
 		// case 'Converter':
-		// 	NodeIconContainer = ConverterContainer
+		// 	NodePartContainer = ConverterContainer
 		// 	break
 		// case 'Comparison':
-		// 	NodeIconContainer = ComparisonContainer
+		// 	NodePartContainer = ComparisonContainer
 		// 	break
 		// case 'Constrain':
-		// 	NodeIconContainer = ConstrainContainer
+		// 	NodePartContainer = ConstrainContainer
 		// 	break
 		// case 'Counter':
-		// 	NodeIconContainer = CounterContainer
+		// 	NodePartContainer = CounterContainer
 		// 	break
 		// case 'Gate':
-		// 	NodeIconContainer = GateContainer
+		// 	NodePartContainer = GateContainer
 		// 	break
 		// case 'List':
-		// 	NodeIconContainer = ListContainer
+		// 	NodePartContainer = ListContainer
 		// 	break
 		// case 'Logic':
-		// 	NodeIconContainer = LogicContainer
+		// 	NodePartContainer = LogicContainer
 		// 	break
 		// case 'Math':
-		// 	NodeIconContainer = MathContainer
+		// 	NodePartContainer = MathContainer
 		// 	break
 		// case 'Randomizer':
-		// 	NodeIconContainer = RandomizerContainer
+		// 	NodePartContainer = RandomizerContainer
 		// 	break
 		// case 'Sequence':
-		// 	NodeIconContainer = SequenceContainer
+		// 	NodePartContainer = SequenceContainer
 		// 	break
 		// case 'Statistics':
-		// 	NodeIconContainer = StatisticsContainer
+		// 	NodePartContainer = StatisticsContainer
 		// 	break
 		// case 'Wave':
-		// 	NodeIconContainer = WaveContainer
+		// 	NodePartContainer = WaveContainer
 		// 	break
 		case 'Led':
-			NodeIconContainer = LedContainer
+			NodePartContainer = LedContainer
 			break
 		case 'DualColorLed':
-			NodeIconContainer = DualColorLedContainer
+			NodePartContainer = DualColorLedContainer
 			break
 		case 'ServoMotor':
-			NodeIconContainer = ServoMotorContainer
+			NodePartContainer = ServoMotorContainer
 			break
 		case 'ContinuousServo':
-			NodeIconContainer = ContinuousServoContainer
+			NodePartContainer = ContinuousServoContainer
 			break
 		// case 'Buzzer':
-		// 	NodeIconContainer = BuzzerContainer
+		// 	NodePartContainer = BuzzerContainer
 		// 	break
 		// case 'RGBLed':
-		// 	NodeIconContainer = RGBLedContainer
+		// 	NodePartContainer = RGBLedContainer
 		// 	break
 		case 'KeyPress':
-			NodeIconContainer = KeyPressContainer
+			NodePartContainer = KeyPressContainer
 			break
 		case 'KeySequence':
-			NodeIconContainer = KeySequenceContainer
+			NodePartContainer = KeySequenceContainer
 			break
 		// case 'VoltageOutput':
-		// 	NodeIconContainer = VoltageOutputContainer
+		// 	NodePartContainer = VoltageOutputContainer
 		// 	break
 		// case 'SystemMemory':
-		// 	NodeIconContainer = SystemMemoryContainer
+		// 	NodePartContainer = SystemMemoryContainer
 		// 	break
 		// case 'SerialMonitor':
-		// 	NodeIconContainer = SerialMonitorContainer
+		// 	NodePartContainer = SerialMonitorContainer
 		// 	break
 		// case 'Time':
-		// 	NodeIconContainer = TimeContainer
+		// 	NodePartContainer = TimeContainer
 		// 	break
 		default:
 			return null
 	}
 	return (
-		<NodeIconContainer id={id}/>
+		<NodePartContainer id={id} adjustScale={adjustScale}/>
 	)
 }
+
+NodePartResolverContainer.propTypes = {
+	nodeType    : PropTypes.string,
+	id          : PropTypes.string,
+	adjustScale : PropTypes.number,
+}
+
 const NodePartResolverContainerConnected = connect(
 	mapStateToProps,
 	mapDispatchToProps,

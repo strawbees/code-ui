@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import LightSensor from '../../../components/nodeParts/LightSensor'
 import mapStateToProps from './mapStateToProps'
@@ -8,6 +9,10 @@ const LightSensorContainer = (props) =>
 	<LightSensor
 		{...props}
 	/>
+
+LightSensorContainer.propTypes = {
+	adjustScale : PropTypes.number,
+}
 
 const LightSensorContainerConnected = connect(
 	mapStateToProps,

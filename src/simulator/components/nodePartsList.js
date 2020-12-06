@@ -10,6 +10,7 @@ const NodePartsList = ({
 	height,
 	originOffsetY,
 	originOffsetX,
+	adjustScale,
 }) => {
 	const internalDataNodeIds = JSON.parse(internalDataNodeIdsString)
 	const internalDataNodeTypes = JSON.parse(internalDataNodeTypesString)
@@ -49,13 +50,21 @@ const NodePartsList = ({
 				<div className='key-nodes'>
 					<div className='container'>
 						{keyNodeIds.map((type) => idsByType[type].map((id) =>
-							<NodePartResolverContainer key={id} id={id}/>
+							<NodePartResolverContainer
+								key={id}
+								id={id}
+								adjustScale={adjustScale}
+							/>
 						))}
 					</div>
 				</div>
 			}
 			{otherNodeIds.map((type) => idsByType[type].map((id) =>
-				<NodePartResolverContainer key={id} id={id}/>
+				<NodePartResolverContainer
+					key={id}
+					id={id}
+					adjustScale={adjustScale}
+				/>
 			))}
 		</>
 	)
@@ -67,6 +76,7 @@ NodePartsList.defaultProps = {
 	height                      : 500,
 	originOffsetY               : 0,
 	originOffsetX               : 0,
+	adjustScale                 : 1,
 }
 
 NodePartsList.propTypes = {
@@ -76,6 +86,7 @@ NodePartsList.propTypes = {
 	height                      : PropTypes.number,
 	originOffsetY               : PropTypes.number,
 	originOffsetX               : PropTypes.number,
+	adjustScale                 : PropTypes.number,
 }
 
 export default NodePartsList

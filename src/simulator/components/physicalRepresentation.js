@@ -48,7 +48,7 @@ const PhysicalRepresentation = ({
 			<div className='resize-area'>
 				<div className='origin'>
 					<Figure svg={QuirkbotSVG} className='board'/>
-					<NodePartsListContainer/>
+					<NodePartsListContainer adjustScale={adjustScale}/>
 					<ErrorSamePlaceListContainer/>
 				</div>
 			</div>

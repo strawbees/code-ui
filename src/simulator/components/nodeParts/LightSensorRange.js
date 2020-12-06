@@ -1,7 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import tinycolor from 'tinycolor2'
-import { GRAY, WHITE } from 'src/constants/colors'
 
 class LightSensorRange extends React.Component {
 	constructor(props) {
@@ -46,7 +44,7 @@ class LightSensorRange extends React.Component {
 						display: flex;
 						flex-direction: column;
 						border-radius: 20px;
-						width: 80px;
+						width: 60px;
 					}
 					.container {
 						height: 100%;

@@ -12,5 +12,5 @@ msgid "Simulator"
 msgstr ""
 
 msgctxt "simulator.error.same-place"
-msgid "**%1** should only have one item."
+msgid "Only one component can be at the **%1**."
 msgstr ""

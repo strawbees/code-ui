@@ -16,6 +16,7 @@ export const LightSensor = ({
 	place,
 	out,
 	setData,
+	adjustScale,
 }) => {
 	switch (place) {
 		case PLACE_LEFT_LEG:
@@ -44,14 +45,14 @@ export const LightSensor = ({
 			componentX = 109
 			componentY = 163
 			componentAngle = 144
-			rangeX = componentX + 40
+			rangeX = componentX + 50
 			rangeY = componentY - 10
 			break
 		case PLACE_RIGHT_LEG:
 			componentX = -109
 			componentY = 164
 			componentAngle = -144
-			rangeX = componentX - 120
+			rangeX = componentX - 110
 			rangeY = componentY - 10
 			break
 		case PLACE_LEFT_ARM:
@@ -59,18 +60,18 @@ export const LightSensor = ({
 			componentY = -45
 			componentAngle = 72
 			rangeX = componentX
-			rangeY = componentY - 64
+			rangeY = componentY - 74
 			break
 		case PLACE_RIGHT_ARM:
 			componentX = -178
 			componentY = -42
 			componentAngle = -72
-			rangeX = componentX - 80
-			rangeY = componentY - 64
+			rangeX = componentX - 60
+			rangeY = componentY - 74
 			break
 		default:
 	}
-
+	const scale = (1 / adjustScale) * 0.70
 	return (
 		<div className={`root nodePart LightSensor ${place}`}>
 			<style jsx>{`
@@ -79,7 +80,7 @@ export const LightSensor = ({
 				}
 				.root :global(> .LightSensorRange){
 					position: absolute;
-					transform: translate3d(${rangeX}px, ${rangeY}px, 0px);
+					transform: translate3d(${rangeX}px, ${rangeY}px, 0px) scale(${scale});
 				}
 			`}</style>
 			<Figure
@@ -96,14 +97,16 @@ export const LightSensor = ({
 	)
 }
 LightSensor.defaultProps = {
-	place : DISCONNECTED,
-	out   : 0,
+	place       : DISCONNECTED,
+	out         : 0,
+	adjustScale : 1,
 }
 
 LightSensor.propTypes = {
-	place   : PropTypes.number,
-	out     : PropTypes.number,
-	setData : PropTypes.func,
+	place       : PropTypes.number,
+	out         : PropTypes.number,
+	adjustScale : PropTypes.number,
+	setData     : PropTypes.func,
 }
 
 export default LightSensor
