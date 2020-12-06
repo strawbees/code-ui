@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { withResizeDetector } from 'react-resize-detector'
 // import NodeIconsListContainer from '../containers/nodeIconsListContainer'
-import PhysicalNodesContainer from '../containers/physicalNodesContainer'
+import PhysicalRepresentationContainer from '../containers/physicalRepresentationContainer'
 
 const QuirkbotSimulator = ({
 	width,
@@ -21,7 +21,7 @@ const QuirkbotSimulator = ({
 			<div>controls</div>
 			</div>
 		*/}
-		<PhysicalNodesContainer containerWidth={width}/>
+		<PhysicalRepresentationContainer containerWidth={width}/>
 		{/* <div className='nodes'>
 			<div>nodes</div>
 			<NodeIconsListContainer/>

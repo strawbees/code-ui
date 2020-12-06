@@ -24,7 +24,7 @@ const hasNodes = (entities, kind) => {
 	return false
 }
 
-const physicalNodesRenderInfoSelector = () => createSelector(
+const physicalRepresentationRenderInfoSelector = () => createSelector(
 	[
 		internalDataNodeEntitiesSelector(),
 	],
@@ -186,4 +186,4 @@ const physicalNodesRenderInfoSelector = () => createSelector(
 	}
 )
 
-export default physicalNodesRenderInfoSelector
+export default physicalRepresentationRenderInfoSelector

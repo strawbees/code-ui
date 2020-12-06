@@ -3,7 +3,7 @@ import NodePartsListContainer from '../containers/nodePartsListContainer'
 import Figure from './figure'
 import QuirkbotSVG from '../assets/images/general/quirkbot.svg'
 
-const PhysicalNodes = ({
+const PhysicalRepresentation = ({
 	originScale,
 	width,
 	height,
@@ -14,7 +14,7 @@ const PhysicalNodes = ({
 	if (!containerWidth) return null
 	const adjustScale = containerWidth / width
 	return (
-		<div className='root physicalNodes'>
+		<div className='root physicalRepresentation'>
 			<style jsx>{`
 				.root {
 					position: relative;
@@ -54,7 +54,7 @@ const PhysicalNodes = ({
 	)
 }
 
-PhysicalNodes.defaultProps = {
+PhysicalRepresentation.defaultProps = {
 	originScale    : 1,
 	originOffsetX  : 0,
 	originOffsetY  : 0,
@@ -63,7 +63,7 @@ PhysicalNodes.defaultProps = {
 	containerWidth : null,
 }
 
-PhysicalNodes.propTypes = {
+PhysicalRepresentation.propTypes = {
 	originScale    : PropTypes.number,
 	originOffsetX  : PropTypes.number,
 	originOffsetY  : PropTypes.number,
@@ -72,4 +72,4 @@ PhysicalNodes.propTypes = {
 	containerWidth : PropTypes.number,
 }
 
-export default PhysicalNodes
+export default PhysicalRepresentation
