@@ -183,7 +183,7 @@ const SimulatorSandbox = () => {
 					// TODO: dispatch error action to signal the current't program crashed on loop
 					return
 				}
-				handleInternalDataTimerRef.current = requestAnimationFrame(handleInternalData, 0)
+				handleInternalDataTimerRef.current = requestAnimationFrame(handleInternalData)
 			}
 			handleInternalData()
 
