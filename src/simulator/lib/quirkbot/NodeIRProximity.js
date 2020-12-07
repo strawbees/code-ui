@@ -30,7 +30,7 @@ export class IRProximity extends HasInterval(Node) {
 
 	onInterval() {
 		if (this.externalData) {
-			this.out.set(this.Bot.map(this.externalData.value, 0, QB_IR_PROXIMITY_MAX, this.this.min.get(), this.max.get()))
+			this.out.set(this.Bot.map(this.externalData.value, 0, QB_IR_PROXIMITY_MAX, this.min.get(), this.max.get()))
 		}
 	}
 

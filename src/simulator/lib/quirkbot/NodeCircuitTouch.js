@@ -41,7 +41,13 @@ export class CircuitTouch extends Updatable(Node) {
 
 	update() {
 		if (this.externalData) {
-			this.out.set(this.externalData.value)
+			this.out.set(this.Bot.map(
+				this.externalData.value,
+				0,
+				1,
+				this.min.get(),
+				this.max.get()
+			))
 		}
 	}
 
