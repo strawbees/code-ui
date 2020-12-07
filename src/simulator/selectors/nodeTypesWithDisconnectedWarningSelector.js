@@ -13,7 +13,6 @@ const nodeTypesWithDisconnectedWarningSelector = () => createSelector(
 		entitiesString,
 	) => {
 		const entities = JSON.parse(entitiesString)
-		console.log(entities)
 		return Object.keys(entities)
 			.filter(key => entities[key].place === DISCONNECTED)
 			.map(key => entities[key].nodeType)
