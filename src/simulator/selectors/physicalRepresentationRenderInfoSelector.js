@@ -9,7 +9,7 @@ import {
 	PLACE_HORN,
 	PLACE_LEFT_LEG,
 	PLACE_RIGHT_LEG,
-} from '../quirkbotArduinoLibrary/Quirkbot'
+} from '../lib/quirkbot'
 
 const findNodes = (entities, kind) =>
 	Object.values(entities).filter(node => {

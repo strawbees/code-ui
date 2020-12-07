@@ -41,7 +41,7 @@ import {
 	KEY_F10,
 	KEY_F11,
 	KEY_F12,
-} from '../../quirkbotArduinoLibrary/Quirkbot'
+} from '../../lib/quirkbot'
 
 const keyNames = {}
 keyNames[KEY_SPACE] = 'space'

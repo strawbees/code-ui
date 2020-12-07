@@ -3,7 +3,7 @@ import KeyPress from './KeyPress'
 
 import {
 	NO_KEY,
-} from '../../quirkbotArduinoLibrary/Quirkbot'
+} from '../../lib/quirkbot'
 
 export const KeySequence = ({
 	scheduleKey,

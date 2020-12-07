@@ -16,7 +16,7 @@ import {
 	PLACE_LEFT_ARM,
 	PLACE_RIGHT_ARM,
 	PLACE_HORN,
-} from '../../quirkbotArduinoLibrary/Quirkbot'
+} from '../../lib/quirkbot'
 
 export const Led = ({
 	place,

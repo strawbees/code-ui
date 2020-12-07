@@ -3,7 +3,7 @@ import internalDataNodeEntitiesStringSelector from './internalDataNodeEntitiesSt
 
 import {
 	DISCONNECTED,
-} from '../quirkbotArduinoLibrary/Quirkbot'
+} from '../lib/quirkbot'
 
 const nodeTypesWithDisconnectedWarningSelector = () => createSelector(
 	[

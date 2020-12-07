@@ -11,7 +11,7 @@ import {
 	DISCONNECTED,
 	PLACE_SERVO_MOTOR_1,
 	PLACE_SERVO_MOTOR_2,
-} from '../../quirkbotArduinoLibrary/Quirkbot'
+} from '../../lib/quirkbot'
 
 export const ServoMotor = ({
 	place,

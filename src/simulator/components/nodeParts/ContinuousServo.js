@@ -13,7 +13,7 @@ import {
 	PLACE_SERVO_MOTOR_2,
 	DIRECTION_COUNTER_CLOCKWISE,
 	DIRECTION_CLOCKWISE,
-} from '../../quirkbotArduinoLibrary/Quirkbot'
+} from '../../lib/quirkbot'
 
 export const ContinuousServo = ({
 	place,
