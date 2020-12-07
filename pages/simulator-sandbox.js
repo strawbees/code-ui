@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import * as Quirkbot from 'src/simulator/quirkbotArduinoLibrary/Quirkbot'
+import * as Quirkbot from 'src/simulator/lib/quirkbot'
 // import getConfig from 'next/config'
 // const {
 // 	publicRuntimeConfig : {

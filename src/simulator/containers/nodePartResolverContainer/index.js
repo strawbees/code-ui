@@ -163,4 +163,9 @@ const NodePartResolverContainerConnected = connect(
 	mergeProps
 )(NodePartResolverContainer)
 
+NodePartResolverContainerConnected.propTypes = {
+	id          : PropTypes.string,
+	adjustScale : PropTypes.number,
+}
+
 export default NodePartResolverContainerConnected
