@@ -9,13 +9,13 @@ module.exports = {
 	},
 	entry : [
 		'babel-polyfill',
-		path.resolve(__dirname, path.join('src', 'simulator', 'quirkbotArduinoLibrary', 'Quirkbot.js')),
+		path.resolve(__dirname, path.join('src', 'simulator', 'lib', 'quirkbot', 'index.js')),
 	],
 	output : {
-		path          : path.resolve(__dirname, path.join('static', 'lib', 'quirkbot-arduino-library')),
-		library       : 'quirkbot-arduino-library',
+		path          : path.resolve(__dirname, path.join('static', 'lib', 'quirkbot.js')),
+		library       : 'quirkbot',
 		libraryTarget : 'umd',
-		filename      : 'quirkbot-arduino-library.js',
+		filename      : 'quirkbot.js',
 	},
 	module : {
 		rules : [

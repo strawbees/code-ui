@@ -17,7 +17,7 @@ import {
 	Sonar,
 	SqueezeSensor,
 	VoltageOutput,
-} from '../quirkbotArduinoLibrary/Quirkbot'
+} from '../lib/quirkbot'
 
 export const WarningDisconnectedReport = ({
 	nodeType,

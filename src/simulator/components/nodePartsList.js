@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import NodePartResolverContainer from '../containers/nodePartResolverContainer'
 
-const keyNodeTypes = ['KeyPress', 'KeySequence']
+const knownKeyNodeTypes = ['KeyPress', 'KeySequence']
 
 const NodePartsList = ({
 	internalDataNodeIdsString,
@@ -24,11 +24,11 @@ const NodePartsList = ({
 	})
 	const keyAreaHeight = 140
 
-	const keyNodeIds = Object.keys(idsByType)
-		.filter(type => keyNodeTypes.indexOf(type) !== -1)
+	const keyNodeTypes = Object.keys(idsByType)
+		.filter(type => knownKeyNodeTypes.indexOf(type) !== -1)
 
-	const otherNodeIds = Object.keys(idsByType)
-		.filter(type => keyNodeTypes.indexOf(type) === -1)
+	const otherNodeTypes = Object.keys(idsByType)
+		.filter(type => knownKeyNodeTypes.indexOf(type) === -1)
 	return (
 		<>
 			<style jsx>{`
@@ -46,10 +46,10 @@ const NodePartsList = ({
 					width: auto;
 				}
 			`}</style>
-			{keyNodeIds.length > 0 &&
+			{keyNodeTypes.length > 0 &&
 				<div className='key-nodes'>
 					<div className='container'>
-						{keyNodeIds.map((type) => idsByType[type].map((id) =>
+						{keyNodeTypes.map((type) => idsByType[type].map((id) =>
 							<NodePartResolverContainer
 								key={id}
 								id={id}
@@ -59,7 +59,7 @@ const NodePartsList = ({
 					</div>
 				</div>
 			}
-			{otherNodeIds.map((type) => idsByType[type].map((id) =>
+			{otherNodeTypes.map((type) => idsByType[type].map((id) =>
 				<NodePartResolverContainer
 					key={id}
 					id={id}
