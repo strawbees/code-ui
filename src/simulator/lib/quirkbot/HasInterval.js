@@ -7,7 +7,7 @@ export const HasInterval = (superclass) => class extends superclass {
 		this.intervalNode = this
 		this.Bot.updatables.add(this)
 		this.intervalNode.registerInput(this.interval)
-		this.interval.set(0.1)
+		this.interval.set(0.01)
 		this.nextTick = millis() + this.interval.get() * 1000
 	}
 

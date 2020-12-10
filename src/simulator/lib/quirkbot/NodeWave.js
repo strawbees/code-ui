@@ -37,7 +37,7 @@ export class Wave extends HasInterval(Node) {
 
 		this.position = 0
 
-		this.interval.set(0.033)
+		this.interval.set(0.01)
 		this.length.set(1.0)
 		this.min.set(0)
 		this.max.set(1)

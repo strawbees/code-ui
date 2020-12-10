@@ -18,7 +18,7 @@ export class Sequence extends HasTrigger(HasInterval(Node)) {
 		this.registerInput(this.duration)
 		this.registerInputCollection(this.items)
 
-		this.interval.set(0.033)
+		this.interval.set(0.01)
 		this.duration.set(1.0)
 
 		this.running = false

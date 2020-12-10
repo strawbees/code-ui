@@ -18,7 +18,7 @@ export class ServoMotor extends HasInterval(Node) {
 		this.registerInput(this.place)
 		this.registerInput(this.iddleTime)
 
-		this.interval.set(0.1)
+		this.interval.set(0.01)
 		this.position.set(0.5)
 		this.place.set(DISCONNECTED)
 		this.iddleTime.set(1.5)
