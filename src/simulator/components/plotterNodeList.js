@@ -2,7 +2,19 @@ import PropTypes from 'prop-types'
 import PlotterNodeContainer from '../containers/plotterNodeContainer'
 
 const knownPlotterNodeTypes = [
-	'Wave'
+	// Brains
+	'Wave',
+	'Randomizer',
+	'Constrain',
+	'Converter',
+	// Inputs
+	'CircuitTouch',
+	'LightSensor',
+	'SqueezeSensor',
+	'IRProximity',
+	'Sonar',
+	'AnalogSensor',
+	'DigitalSensor',
 ]
 
 const PlotterNodeList = ({

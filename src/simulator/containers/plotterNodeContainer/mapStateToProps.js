@@ -12,6 +12,8 @@ const mapStateToProps = () => createSelector(
 			out,
 			min,
 			max,
+			outMin,
+			outMax,
 		},
 	) => ({
 		nodeType,
@@ -19,6 +21,8 @@ const mapStateToProps = () => createSelector(
 		out : Number.parseFloat(out.toFixed(2)),
 		min,
 		max,
+		outMin,
+		outMax,
 	})
 )
 

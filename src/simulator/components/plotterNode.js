@@ -8,13 +8,48 @@ import {
 import useAnimationFrame from '../utils/useAnimationFrame'
 import Figure from './figure'
 import WaveSVG from '../assets/images/nodes/wave.svg'
+import RandomizerSVG from '../assets/images/nodes/randomizer.svg'
+import ConstrainSVG from '../assets/images/nodes/constrain.svg'
+import ConverterSVG from '../assets/images/nodes/converter.svg'
+
+import CircuitTouchSVG from '../assets/images/nodes/makey-touch.svg'
+import LightSensorSVG from '../assets/images/nodes/light-sensor.svg'
+import SqueezeSensorSVG from '../assets/images/nodes/squeeze-sensor.svg'
+import IRProximitySVG from '../assets/images/nodes/ir-proximity.svg'
+import SonarSVG from '../assets/images/nodes/sonar.svg'
+import AnalogSensorSVG from '../assets/images/nodes/analog-sensor.svg'
+import DigitalSensorSVG from '../assets/images/nodes/digital-sensor.svg'
 
 const SVGMap = {
-	Wave : WaveSVG,
+	Wave          : WaveSVG,
+	Randomizer    : RandomizerSVG,
+	Constrain     : ConstrainSVG,
+	Converter     : ConverterSVG,
+	CircuitTouch  : CircuitTouchSVG,
+	LightSensor   : LightSensorSVG,
+	SqueezeSensor : SqueezeSensorSVG,
+	IRProximity   : IRProximitySVG,
+	Sonar         : SonarSVG,
+	AnalogSensor  : AnalogSensorSVG,
+	DigitalSensor : DigitalSensorSVG,
 }
 
 const ColorMap = {
-	Wave : GREEN,
+	Wave          : GREEN,
+	Randomizer    : GREEN,
+	Constrain     : GREEN,
+	Converter     : GREEN,
+	CircuitTouch  : BLUE,
+	LightSensor   : BLUE,
+	SqueezeSensor : BLUE,
+	IRProximity   : BLUE,
+	Sonar         : BLUE,
+	AnalogSensor  : BLUE,
+	DigitalSensor : BLUE,
+}
+
+const OutMinMaxMap = {
+	Converter : true,
 }
 
 const map = (x, inMin, inMax, outMin, outMax) => {
@@ -39,6 +74,8 @@ export const PlotterNode = ({
 	out,
 	min,
 	max,
+	outMin,
+	outMax,
 }) => {
 	const containerRef = useRef()
 	const containerInitRef = useRef()
@@ -50,12 +87,17 @@ export const PlotterNode = ({
 
 	const marginLeft = 55
 	const marginRight = 55
-	const height = 40
-	const plotMin = height - 2
-	const plotMax = 2
+	const height = 35
+	const plotMin = height - 4
+	const plotMax = 4
 	const lineResolution = 320
 	const lineWidth = containerWidth - marginLeft - marginRight
 	const pointSpacing = (lineWidth + 5) / lineResolution
+
+	if (OutMinMaxMap[nodeType]) {
+		min = outMin
+		max = outMax
+	}
 
 	const minString = min.toFixed(2)
 	const outString = out.toFixed(2)
@@ -65,6 +107,7 @@ export const PlotterNode = ({
 	outRef.current = out
 	minRef.current = min
 	maxRef.current = max
+
 
 	// Init and destroy Two
 	useEffect(() => {
@@ -168,7 +211,7 @@ export const PlotterNode = ({
 					position: absolute;
 					top: ${height / 2}px;
 					left: ${marginLeft / 2}px;
-					transform: scale(0.7);
+					transform: scale(0.55);
 				}
 				.info {
 					position: absolute;
@@ -192,6 +235,7 @@ export const PlotterNode = ({
 				}
 				.info .out {
 					font-size: 11px;
+					line-height: 11px;
 				}
 			`}</style>
 			{SVGMap[nodeType] &&
@@ -216,6 +260,8 @@ PlotterNode.defaultProps = {
 	out            : 0,
 	min            : 0,
 	max            : 0,
+	outMin         : 0,
+	outMax         : 0,
 }
 
 PlotterNode.propTypes = {
@@ -224,6 +270,8 @@ PlotterNode.propTypes = {
 	out            : PropTypes.number,
 	min            : PropTypes.number,
 	max            : PropTypes.number,
+	outMin         : PropTypes.number,
+	outMax         : PropTypes.number,
 }
 
 export default PlotterNode
