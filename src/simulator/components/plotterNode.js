@@ -66,7 +66,7 @@ const map = (x, inMin, inMax, outMin, outMax) => {
 	return result
 }
 
-// const mix = (x, y, a) => x * (1 - a) + y * a
+const mix = (x, y, a) => x * (1 - a) + y * a
 
 export const PlotterNode = ({
 	containerWidth,
@@ -99,6 +99,12 @@ export const PlotterNode = ({
 		max = outMax
 	}
 
+	if (max < min) {
+		const temp = max
+		max = min
+		min = temp
+	}
+
 	const minString = min.toFixed(2)
 	const outString = out.toFixed(2)
 	const maxString = max.toFixed(2)
@@ -107,7 +113,6 @@ export const PlotterNode = ({
 	outRef.current = out
 	minRef.current = min
 	maxRef.current = max
-
 
 	// Init and destroy Two
 	useEffect(() => {
@@ -156,18 +161,32 @@ export const PlotterNode = ({
 	}, [lineWidth])
 
 	// Plot the line and capture changes in out
-	useAnimationFrame(() => {
+	useAnimationFrame((dt) => {
 		if (twoJsRef.current && lineRef.current) {
 			const two = twoJsRef.current
 			const line = lineRef.current
 			const lastIndex = line.vertices.length - 1
-			line.vertices.forEach((v, i) => {
-				if (i === lastIndex) {
-					v.y = map(outRef.current, minRef.current, maxRef.current, plotMin, plotMax)
-				} else {
-					v.y = line.vertices[i + 1].y
-				}
-			})
+			const currentLast = line.vertices[lastIndex].y
+			let lastOut = map(outRef.current, minRef.current, maxRef.current, plotMin, plotMax)
+			if (minRef.current === 0 && maxRef.current === 0) {
+				lastOut = plotMin
+			}
+			const updateTick = (totalTicks, iTick) => {
+				line.vertices.forEach((v, i) => {
+					if (i === lastIndex) {
+						v.y = mix(currentLast, lastOut, (iTick + 1) / totalTicks)
+						if (v.y > plotMin) {
+							v.y = plotMin
+						} else if (v.y < plotMax) {
+							v.y = plotMax
+						}
+					} else {
+						v.y = line.vertices[i + 1].y
+					}
+				})
+			}
+			const nTicks = Math.round(dt / 16)
+			Array(nTicks).fill().map((_, i) => updateTick(nTicks, i))
 			two.update()
 		}
 	})
@@ -196,16 +215,17 @@ export const PlotterNode = ({
 					width: ${lineWidth}px;
 					height: ${height}px;
 					border-radius: 5px;
-					box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5) inset;
 					overflow: hidden;
 				}
 				.line .fade {
-					//position: absolute;
-					//top: 0;
-					//left: 0;
-					//width: 100%;
-					//heigh: 100%;
-					//background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.5) 60%, rgba(255,255,255,0) 100%);
+					border-radius: 5px;
+					box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5) inset;
 				}
 				.root :global(.icon) {
 					position: absolute;
@@ -257,11 +277,11 @@ export const PlotterNode = ({
 }
 PlotterNode.defaultProps = {
 	containerWidth : 400,
-	out            : 0,
-	min            : 0,
-	max            : 0,
-	outMin         : 0,
-	outMax         : 0,
+	// out            : 0,
+	// min            : 0,
+	// max            : 0,
+	// outMin         : 0,
+	// outMax         : 0,
 }
 
 PlotterNode.propTypes = {
