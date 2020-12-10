@@ -112,6 +112,12 @@ export const Led = ({
 		default:
 	}
 
+	let constrainedLight = light
+	if (light > 1) {
+		constrainedLight = 1
+	} else if (light < 0) {
+		constrainedLight = 0
+	}
 	return (
 		<div className={`root nodePart Led ${place}`}>
 			<style jsx>{`
@@ -136,7 +142,7 @@ export const Led = ({
 					svg={ShineLedRedSVG}
 					x={componentLightX}
 					y={componentLightY}
-					scale={light}
+					scale={constrainedLight}
 					className='light'
 				/>
 			}
@@ -145,7 +151,7 @@ export const Led = ({
 					svg={ShineLedBuiltinEyeSVG}
 					x={eyeX}
 					y={eyeY}
-					scale={light}
+					scale={constrainedLight}
 					className='light'
 				/>
 			}
@@ -154,7 +160,7 @@ export const Led = ({
 					svg={ShineLedBuiltinMouthSVG}
 					x={mouthX}
 					y={mouthY}
-					scale={light}
+					scale={constrainedLight}
 					className='light'
 				/>
 			}

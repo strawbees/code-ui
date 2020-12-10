@@ -6,6 +6,7 @@ const knownPlotterNodeTypes = [
 ]
 
 const PlotterNodeList = ({
+	containerWidth,
 	internalDataNodeIdsString,
 	internalDataNodeTypesString,
 }) => {
@@ -28,6 +29,7 @@ const PlotterNodeList = ({
 				<PlotterNodeContainer
 					key={id}
 					id={id}
+					containerWidth={containerWidth}
 				/>
 			))}
 		</>
@@ -39,6 +41,7 @@ PlotterNodeList.defaultProps = {
 }
 
 PlotterNodeList.propTypes = {
+	containerWidth              : PropTypes.number,
 	internalDataNodeIdsString   : PropTypes.string,
 	internalDataNodeTypesString : PropTypes.string,
 }

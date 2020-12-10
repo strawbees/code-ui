@@ -23,10 +23,10 @@ const QuirkbotSimulator = ({
 			<div>controls</div>
 			</div>
 		*/}
-		<PhysicalRepresentationContainer containerWidth={width}/>
-		<PlotterNodeListContainer/>
 		<WarningDisconnectedReportListContainer />
 		<ErrorSamePlaceReportListContainer />
+		<PhysicalRepresentationContainer containerWidth={width}/>
+		<PlotterNodeListContainer containerWidth={width}/>
 		{/* <div className='nodes'>
 			<div>nodes</div>
 			<NodeIconsListContainer/>
@@ -35,7 +35,7 @@ const QuirkbotSimulator = ({
 	</div>
 
 QuirkbotSimulator.defaultProps = {
-	width : 100
+	width : 320
 }
 
 QuirkbotSimulator.propTypes = {

@@ -89,38 +89,7 @@ const SimulatorSandbox = () => {
 						/**
 						* Override globals
 						*/
-						const {
-							_babelPolyfill,addEventListener,alert,asap,atob,blur,btoa,cancelAnimationFrame,
-							cancelIdleCallback,captureEvents,chrome,clearImmediate,clearInterval,clearTimeout,
-							clientInformation,close,closed,confirm,core,createImageBitmap,crypto,customElements,
-							defaultstatus,defaultStatus,devicePixelRatio,dispatchEvent,document,external,fetch,
-							find,focus,frameElement,frames,getComputedStyle,getSelection,global,history,
-							indexedDB,innerHeight,innerWidth,isSecureContext,length,localStorage,location,
-							locationbar,matchMedia,menubar,moveBy,moveTo,name,navigator,Observable,onabort,
-							onafterprint,onanimationend,onanimationiteration,onanimationstart,onappinstalled,
-							onauxclick,onbeforeinstallprompt,onbeforeprint,onbeforeunload,onblur,oncancel,
-							oncanplay,oncanplaythrough,onchange,onclick,onclose,oncontextmenu,oncuechange,
-							ondblclick,ondrag,ondragend,ondragenter,ondragleave,ondragover,ondragstart,
-							ondrop,ondurationchange,onemptied,onended,onerror,onfocus,onformdata,
-							ongotpointercapture,onhashchange,oninput,oninvalid,onkeydown,onkeypress,onkeyup,
-							onlanguagechange,onload,onloadeddata,onloadedmetadata,onloadstart,
-							onlostpointercapture,onmessage,onmessageerror,onmousedown,onmouseenter,onmouseleave,
-							onmousemove,onmouseout,onmouseover,onmouseup,onmousewheel,onoffline,ononline,
-							onpagehide,onpageshow,onpause,onplay,onplaying,onpointercancel,onpointerdown,
-							onpointerenter,onpointerleave,onpointermove,onpointerout,onpointerover,onpointerrawupdate,
-							onpointerup,onpopstate,onprogress,onratechange,onrejectionhandled,onreset,onresize,
-							onscroll,onsearch,onseeked,onseeking,onselect,onselectionchange,onselectstart,onstalled,
-							onstorage,onsubmit,onsuspend,ontimeupdate,ontoggle,ontransitionend,onunhandledrejection,
-							onunload,onvolumechange,onwaiting,onwebkitanimationend,onwebkitanimationiteration,
-							onwebkitanimationstart,onwebkittransitionend,onwheel,open,openDatabase,opener,origin,
-							outerHeight,outerWidth,pageXOffset,pageYOffset,parent,performance,PERSISTENT,personalbar
-							,postMessage,print,prompt,queueMicrotask,regeneratorRuntime,releaseEvents,
-							requestAnimationFrame,requestIdleCallback,resizeBy,resizeTo,screen,screenLeft,screenTop,
-							screenX,screenY,scroll,scrollbars,scrollBy,scrollTo,scrollX,scrollY,self,sessionStorage,
-							setImmediate,setInterval,setTimeout,speechSynthesis,status,statusbar,stop,styleMedia,System,
-							TEMPORARY,toolbar,top,trustedTypes,visualViewport,webkitCancelAnimationFrame,
-							webkitRequestAnimationFrame,webkitRequestFileSystem,webkitResolveLocalFileSystemURL,
-							webkitStorageInfo,console} = {}
+						const {${Object.keys(window).toString()}} = {}
 
 						${jsCode}
 

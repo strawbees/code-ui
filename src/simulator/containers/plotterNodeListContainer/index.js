@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import PlotterNodeList from '../../components/plotterNodeList'
 import mapStateToProps from './mapStateToProps'
@@ -8,6 +9,10 @@ const PlotterNodeListContainer = (props) =>
 	<PlotterNodeList
 		{...props}
 	/>
+
+PlotterNodeListContainer.propTypes = {
+	containerWidth : PropTypes.number,
+}
 
 const PlotterNodeListContainerConnected = connect(
 	mapStateToProps,

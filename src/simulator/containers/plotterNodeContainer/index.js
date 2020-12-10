@@ -17,7 +17,8 @@ const PlotterNodeContainerConnected = connect(
 )(PlotterNodeContainer)
 
 PlotterNodeContainerConnected.propTypes = {
-	id : PropTypes.string,
+	containerWidth : PropTypes.number,
+	id             : PropTypes.string,
 }
 
 export default PlotterNodeContainerConnected
