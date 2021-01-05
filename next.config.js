@@ -23,7 +23,7 @@ const commonConfigs = {
 	web_stage : {
 		CANONICAL_URL            : 'https://code-stage.strawbees.com',
 		COMPILER_URL             : 'https://strawbees-compiler-stage.us-east-1.elasticbeanstalk.com',
-		STRAWBEES_CODE_API_URL   : 'https://cloud-api-stage.strawbees.com',
+		STRAWBEES_CODE_API_URL   : 'https://cloud-api.strawbees.com',
 		LOCALES                  : ['en', 'pt_BR', 'sv', 'zh-Hans-CN', 'ja'],
 		ROOT_PATH                : '',
 		URL_SCHEME               : 'strawbeescode-stage',
