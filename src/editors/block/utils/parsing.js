@@ -55,13 +55,14 @@ export const parseInstaceDefinition = (structure, instance, type) => {
 	structure.definitions[instance] = `${type ? `${type} ` : ''}${instance};\n`
 }
 export const parseCustomBlockDefinition = (structure, instance, args, body) => {
-	structure.customBlockDeclaration[instance] = `registerBlock(${instance}/* name */, ${args.length}/* number of arguments */);\n`
+	const safeArgs = args.filter(a => a)
+	structure.customBlockDeclaration[instance] = `registerBlock(${instance}/* name */, ${safeArgs.length}/* number of arguments */);\n`
 	structure.customBlockDefinition[instance] = `THREAD(${instance}){\n`
-	structure.customBlockDefinition[instance] += args.length ? '// Get block arguments:\n' : ''
-	structure.customBlockDefinition[instance] += args.map((arg, i) =>
+	structure.customBlockDefinition[instance] += safeArgs.length ? '// Get block arguments:\n' : ''
+	structure.customBlockDefinition[instance] += safeArgs.map((arg, i) =>
 		`static ${arg.type} ${arg.name} = getBlockArg(${instance}, ${i});`
 	).join('\n')
-	structure.customBlockDefinition[instance] += args.length ? '\n\n' : ''
+	structure.customBlockDefinition[instance] += safeArgs.length ? '\n\n' : ''
 	structure.customBlockDefinition[instance] += '// Begin block code:\nblockBegin()/* all blocks must begin with this! */;\n\n'
 	structure.customBlockDefinition[instance] += body
 	structure.customBlockDefinition[instance] += '\n// End block code:\nblockEnd()/* all blocks must end with this! */;\n}\n'

@@ -20,7 +20,10 @@ const generator = ({ statement, next }, structure, shallow) => {
 
 	const argsById = statement?.[0]?.shadow?.[0]?.value?.reduce?.((acc, value) => {
 		const rawType = value?.shadow?.[0]?.attributes?.type
-		const id = value?.shadow?.[0]?.field?.[0]
+		let id = value?.shadow?.[0]?.field?.[0]
+		if (typeof id !== 'string') {
+			id = 'arg'
+		}
 		const name = sanitizeCPPVariableName(id)
 		const type = rawType === 'argument_reporter_boolean' ? 'bool' : 'float'
 		const argDefault = rawType === 'argument_reporter_boolean' ? false : 0
@@ -38,11 +41,6 @@ const generator = ({ statement, next }, structure, shallow) => {
 	structure.procedures[procId] = {
 		instance,
 		args
-	}
-
-	// don't further process the body in case this is shallow run
-	if (shallow) {
-		return
 	}
 
 	// don't further process the body in case this is shallow run
