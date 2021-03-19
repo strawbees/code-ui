@@ -85,6 +85,7 @@ GENERATORS.if = textOutputGenerator
 GENERATORS.else = textOutputGenerator
 GENERATORS.while = textOutputGenerator
 GENERATORS.string_literal = textOutputGenerator
+GENERATORS.system_lib_string = textOutputGenerator
 GENERATORS.char_literal = textOutputGenerator
 GENERATORS.field_identifier = textOutputGenerator
 GENERATORS.namespace_identifier = textOutputGenerator
@@ -108,6 +109,7 @@ GENERATORS.unary_expression = passThroughGenerator
 GENERATORS.subscript_expression = passThroughGenerator
 GENERATORS.new_expression = passThroughGenerator
 GENERATORS.scoped_identifier = passThroughGenerator
+GENERATORS.condition_clause = passThroughGenerator
 GENERATORS.if_statement = (node) => `${passThroughGenerator(node, ' ')}\n`
 
 GENERATORS.call_expression = (node) => {
@@ -172,9 +174,16 @@ GENERATORS.call_expression = (node) => {
 GENERATORS.preproc_include = (node) => {
 	let { children } = node
 	children = removeChildrenOfType(children, 'comment')
-	const [include, string_literal] = children.slice(-2)
+	const [include, string_literal_or_system_lib_string] = children.slice(0, 2)
+	let path = ''
+	if (string_literal_or_system_lib_string.type === 'string_literal') {
+		path = generate(string_literal_or_system_lib_string)
+			.replace('.h"', '"').split('"').join('\'')
+	} else if (string_literal_or_system_lib_string.type === 'system_lib_string') {
+		path = generate(string_literal_or_system_lib_string)
+			.replace('<', '\'').replace('>', '\'')
+	}
 
-	const path = generate(string_literal).replace('.h"', '"').split('"').join('\'')
 	return `// ${generate(include)} ${path}\n`
 }
 GENERATORS.number_literal = (node) => {
@@ -410,9 +419,9 @@ GENERATORS.while_statement = (node) => {
 	let { children } = node
 	children = removeChildrenOfType(children, 'comment')
 
-	if (areChildrenOfExactTypes(children, ['while', 'parenthesized_expression', 'compound_statement'])) {
-		const [, parenthesized_expression, compound_statement] = children
-		return `await createWhileLoop(async() => ${generate(parenthesized_expression)}, async() => ${generate(compound_statement)})\n`
+	if (areChildrenOfExactTypes(children, ['while', 'condition_clause', 'compound_statement'])) {
+		const [, condition_clause, compound_statement] = children
+		return `await createWhileLoop(async() => ${generate(condition_clause)}, async() => ${generate(compound_statement)})\n`
 	}
 
 	return passThroughGenerator(node)
@@ -593,6 +602,7 @@ const generateWithType = (type, node) => {
 	return GENERATORS[type](node)
 }
 
+/* eslint-disable no-console */
 const generateJsfromCppAst = (tree) => {
 	/* const iteratorLog = (cursor) => {
 		console.groupCollapsed(cursor.nodeType)
@@ -628,6 +638,7 @@ const generateJsfromCppAst = (tree) => {
 	console.groupEnd()
 	return js
 }
+/* eslint-enable no-console */
 
 export default generateJsfromCppAst
 /* eslint-enable camelcase */

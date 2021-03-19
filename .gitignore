@@ -13,3 +13,7 @@ node_modules
 /static/routes.json
 /src/simulator/quirkbotArduinoLibrary/*.cpp
 /src/simulator/quirkbotArduinoLibrary/*.h
+
+/lib/tree-sitter/*
+!/lib/tree-sitter/build-wasm.md
+!/lib/tree-sitter/tree-sitter-cpp.wasm
