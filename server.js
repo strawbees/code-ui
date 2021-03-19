@@ -3,7 +3,7 @@ const url = require('url')
 const fs = require('fs').promises
 const path = require('path')
 const next = require('next')
-const getNextConfig = require('next/config').default
+const nextConfig = require('./next.config.js')
 
 const init = async () => {
 	const dev = process.env.NODE_ENV !== 'production'
@@ -12,7 +12,7 @@ const init = async () => {
 	const routes = JSON.parse(await fs.readFile(path.join('static', 'routes.json')))
 	const {
 		publicRuntimeConfig
-	} = getNextConfig()
+	} = nextConfig
 	// eslint-disable-next-line no-console
 	console.log('CONFIG:', publicRuntimeConfig)
 	const {
