@@ -53,7 +53,7 @@ const EditorWithSimulator = ({
 		`}</style>
 		<div className='editor'>
 			{children}
-			{true && // TODO: reenable simulator
+			{false && // TODO: reenable simulator
 				<TabButton
 					className='simulator-toggle'
 					textColor={WHITE}
