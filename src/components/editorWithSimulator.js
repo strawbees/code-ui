@@ -53,16 +53,18 @@ const EditorWithSimulator = ({
 		`}</style>
 		<div className='editor'>
 			{children}
-			<TabButton
-				className='simulator-toggle'
-				textColor={WHITE}
-				bgColor={GRAY}
-				textHoverColor={WHITE}
-				bgHoverColor={GRAY}
-				icon={isSimulatorVisible ? ExpandIcon : CollapseIcon}
-				labelKey='simulator.button.show_hide'
-				onClick={isSimulatorVisible ? hideSimulator : showSimulator}
-			/>
+			{false && // TODO: reenable simulator
+				<TabButton
+					className='simulator-toggle'
+					textColor={WHITE}
+					bgColor={GRAY}
+					textHoverColor={WHITE}
+					bgHoverColor={GRAY}
+					icon={isSimulatorVisible ? ExpandIcon : CollapseIcon}
+					labelKey='simulator.button.show_hide'
+					onClick={isSimulatorVisible ? hideSimulator : showSimulator}
+				/>
+			}
 		</div>
 		{isSimulatorVisible && <SimulatorVMManager/>}
 		{isSimulatorVisible &&
