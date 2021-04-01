@@ -22,7 +22,10 @@ export const setCompilerHex = generateAction(COMPILER_SET_HEX)
 
 const enterCompilationQueue = async (code) => {
 	try {
-		const response = await timeoutFetch(`${COMPILER_URL}/${window.encodeURIComponent(code)}`, {}, 15000)
+		const response = await timeoutFetch(`${COMPILER_URL}/q`, {
+			method : 'POST',
+			body   : code,
+		}, 15000)
 		const { _id, id } = await response.json()
 
 		if (!_id && !id) {

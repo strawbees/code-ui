@@ -56,11 +56,11 @@ export const parseInstaceDefinition = (structure, instance, type) => {
 }
 export const parseCustomBlockDefinition = (structure, instance, args, body) => {
 	const safeArgs = args.filter(a => a)
-	structure.customBlockDeclaration[instance] = `registerBlock(${instance}/* name */, ${safeArgs.length}/* number of arguments */);\n`
+	structure.customBlockDeclaration[instance] = `registerBlock(${instance}, ${safeArgs.length}/* number of arguments */);\n`
 	structure.customBlockDefinition[instance] = `THREAD(${instance}){\n`
 	structure.customBlockDefinition[instance] += safeArgs.length ? '// Get block arguments:\n' : ''
 	structure.customBlockDefinition[instance] += safeArgs.map((arg, i) =>
-		`static ${arg.type} ${arg.name} = getBlockArg(${instance}, ${i});`
+		`${arg.type} ${arg.name} = getBlockArg(${instance}, ${i});`
 	).join('\n')
 	structure.customBlockDefinition[instance] += safeArgs.length ? '\n\n' : ''
 	structure.customBlockDefinition[instance] += '// Begin block code:\nblockBegin()/* all blocks must begin with this! */;\n\n'
@@ -68,7 +68,7 @@ export const parseCustomBlockDefinition = (structure, instance, args, body) => {
 	structure.customBlockDefinition[instance] += '\n// End block code:\nblockEnd()/* all blocks must end with this! */;\n}\n'
 }
 export const parseEventDefinition = (structure, instance, body) => {
-	structure.eventDeclaration[instance] = `registerEvent(${instance}/* name */);\n`
+	structure.eventDeclaration[instance] = `registerEvent(${instance});\n`
 	structure.eventDefinition[instance] = `THREAD(${instance}){\n`
 	structure.eventDefinition[instance] += '// Begin event code:\neventBegin()/* all events must begin with this! */;\n\n'
 	structure.eventDefinition[instance] += body
