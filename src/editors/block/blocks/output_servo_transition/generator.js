@@ -4,9 +4,9 @@ import {
 	computeInstanceName,
 	parseInstaceDefinition,
 	getBlockBody,
-	parseInstacePropertyAssignmentFromValue,
-	parseInstacePropertyRetrieval,
-	setInstacePropertyOneTimeAssignment
+	parseNodeInstacePropertyAssignmentFromValue,
+	parseNodeInstacePropertyRetrieval,
+	setNodeInstacePropertyOneTimeAssignment
 } from '../../utils/parsing'
 
 const generator = ({ attributes, value, next }, structure) => {
@@ -42,7 +42,7 @@ const generator = ({ attributes, value, next }, structure) => {
 	const instance = computeInstanceName(structure, type, place)
 
 	parseInstaceDefinition(structure, instance, type)
-	setInstacePropertyOneTimeAssignment(structure, instance, 'place', place)
+	setNodeInstacePropertyOneTimeAssignment(structure, instance, 'place', place)
 
 	// global variables to control to feed into the tweening function
 	const startVar = computeInstanceName(structure, 'servoS', attributes.id)
@@ -57,17 +57,17 @@ const generator = ({ attributes, value, next }, structure) => {
 	structure.body += '// Gradually transition servo position:\n'
 	structure.body += `${startVar} = Bot::seconds(); // start time\n`
 	structure.body += `${beginVar} = `
-	parseInstacePropertyRetrieval(structure, instance, 'position')
+	parseNodeInstacePropertyRetrieval(structure, instance, 'position')
 	structure.body += '; // begin position\n'
 	structure.body += `${changeVar} = ${position} - ${beginVar}; // change in position\n`
 	structure.body += `${durationVar} = ${duration}; // duration of transition\n`
 	structure.body += `while (Bot::seconds() < ${startVar} + ${durationVar}) {\n`
-	parseInstacePropertyAssignmentFromValue(structure, instance, 'position',
+	parseNodeInstacePropertyAssignmentFromValue(structure, instance, 'position',
 		`Easing::function(${easing}, Bot::seconds() - ${startVar}, ${beginVar}, ${changeVar}, ${durationVar})`
 	)
-	structure.body += 'ptYield();\n'
+	structure.body += 'yield();/* always yeild in the end of a loop */\n'
 	structure.body += '}\n'
-	parseInstacePropertyAssignmentFromValue(structure, instance, 'position', position)
+	parseNodeInstacePropertyAssignmentFromValue(structure, instance, 'position', position)
 
 	parseNext(next, structure)
 }

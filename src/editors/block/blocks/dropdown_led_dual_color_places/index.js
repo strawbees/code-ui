@@ -10,3 +10,4 @@ const dropdown_led_dual_color_places = {
 }
 
 export default dropdown_led_dual_color_places
+/* eslint-enable camelcase */

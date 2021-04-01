@@ -5,6 +5,8 @@ import {
 	SET_INTERNAL_DATA,
 	SET_EXTERNAL_DATA,
 	SET_EXTERNAL_NODE_DATA,
+	SHOW_SIMULATOR,
+	HIDE_SIMULATOR
 } from './actionTypes'
 
 const defaultInternalDataState = {
@@ -68,8 +70,21 @@ const externalData = (state = defaultExternalDataState, { type, payload }) => {
 			return state
 	}
 }
+const isSimulatorVisible = (state = false, { type }) => {
+	switch (type) {
+		case SHOW_SIMULATOR: {
+			return true
+		}
+		case HIDE_SIMULATOR: {
+			return false
+		}
+		default:
+			return state
+	}
+}
 
 export default combineReducers({
 	internalData,
 	externalData,
+	isSimulatorVisible,
 })

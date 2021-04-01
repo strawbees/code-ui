@@ -72,8 +72,10 @@ class Workspace extends React.Component {
 		diff.x = diff.x < 0 ? 0 : diff.x
 		diff.y = diff.y < 0 ? 0 : diff.y
 
-		this.selfRef.current.scrollLeft = diff.x
-		this.selfRef.current.scrollTop = diff.y
+		if (this.selfRef.current) {
+			this.selfRef.current.scrollLeft = diff.x
+			this.selfRef.current.scrollTop = diff.y
+		}
 	}
 
 	onUp = () => {

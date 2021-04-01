@@ -10,3 +10,4 @@ const operator_add = {
 }
 
 export default operator_add
+/* eslint-enable camelcase */

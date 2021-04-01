@@ -10,3 +10,4 @@ const math_number = {
 }
 
 export default math_number
+/* eslint-enable camelcase */

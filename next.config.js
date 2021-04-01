@@ -5,7 +5,7 @@ const path = require('path')
 const defaults = {
 	CANONICAL_URL                 : 'http://code-dev.strawbees.com:3000',
 	COMPILER_URL                  : 'https://strawbees-compiler-stage.us-east-1.elasticbeanstalk.com',
-	STRAWBEES_CODE_API_URL        : 'https://cloud-api-stage.strawbees.com',
+	STRAWBEES_CODE_API_URL        : 'https://cloud-api.strawbees.com',
 	LOCALES                       : ['en', 'pt_BR', 'sv', 'zh-Hans-CN', 'ja'],
 	ROOT_PATH                     : '',
 	SHARE_LINKS_OMIT_ROOT_PATH    : true,
@@ -23,7 +23,7 @@ const commonConfigs = {
 	web_stage : {
 		CANONICAL_URL            : 'https://code-stage.strawbees.com',
 		COMPILER_URL             : 'https://strawbees-compiler-stage.us-east-1.elasticbeanstalk.com',
-		STRAWBEES_CODE_API_URL   : 'https://cloud-api-stage.strawbees.com',
+		STRAWBEES_CODE_API_URL   : 'https://cloud-api.strawbees.com',
 		LOCALES                  : ['en', 'pt_BR', 'sv', 'zh-Hans-CN', 'ja'],
 		ROOT_PATH                : '',
 		URL_SCHEME               : 'strawbeescode-stage',
@@ -83,10 +83,15 @@ module.exports = {
 	publicRuntimeConfig       : config,
 	assetPrefix               : config.ROOT_PATH,
 	trailingSlash             : true,
-	exportTrailingSlash       : true,
 	exportPathMap             : async () => JSON.parse(await fs.readFile(path.resolve(__dirname, 'static', 'routes.json'))),
 	webpack                   : (webpackConfig) => {
-		// svg loader
+		/**
+		* mock fs, needed for the tree-sitter module
+		*/
+		webpackConfig.node = { fs : 'empty' }
+		/**
+		* svg loader
+		*/
 		// first remove any existing rules for svg
 		const fileLoaderRule = webpackConfig.module.rules.find(rule => rule.test && rule.test.test('.svg'))
 		if (fileLoaderRule) {
@@ -106,7 +111,9 @@ module.exports = {
 				}
 			}],
 		})
-		// alias
+		/**
+		* aliases
+		*/
 		webpackConfig.resolve.alias = {
 			...webpackConfig.resolve.alias,
 			root   : path.resolve(__dirname),

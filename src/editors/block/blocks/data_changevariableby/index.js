@@ -10,3 +10,4 @@ const data_changevariableby = {
 }
 
 export default data_changevariableby
+/* eslint-enable camelcase */

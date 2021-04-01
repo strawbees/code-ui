@@ -10,3 +10,4 @@ const output_key_release = {
 }
 
 export default output_key_release
+/* eslint-enable camelcase */

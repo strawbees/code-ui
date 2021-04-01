@@ -12,12 +12,13 @@ import {
 } from 'src/constants/colors'
 import sortBlocklyDomNode from './utils/sortBlocklyDomNode'
 import makeRootBlockDeletableOnSource from './utils/makeRootBlockDeletableOnSource'
+import fixProceduresWithEmptyNameArguments from './utils/fixProceduresWithEmptyNameArguments'
 import toolboxToXmlString from './utils/toolboxToXmlString'
 import xmlToJson from './utils/xmlToJson'
 import blocks from './blocks/index'
 import toolbox from './toolbox'
 
-class Container extends React.Component {
+class ExternalProceduresContainer extends React.Component {
 	constructor(props) {
 		super(props)
 		this.ref = React.createRef()
@@ -102,6 +103,12 @@ class BlockEditor extends React.Component {
 		// function will take care of that by remving the 'deletable' attribute
 		makeRootBlockDeletableOnSource(sourceXml)
 
+		// Older versions of CODE didn't allowed for creating procedures with
+		// arguments without any name (just an empty string). This later caused many
+		// other issues, that are now fixed. The following function will fix the
+		// procedures and rename the empty strings to "arg".
+		fixProceduresWithEmptyNameArguments(sourceXml)
+
 		// Important to sort the xml here, beacuse some sources may have the
 		// "<variables>" node in the end, and that will cause a bug on blockly
 		// once it loads it.
@@ -163,7 +170,6 @@ class BlockEditor extends React.Component {
 				scrollbar : 'rgba(0, 0, 0, 0.05)',
 			}
 		})
-		window.workspace = this.mainWorkspace
 
 		// HACK: as way to avoid spurious variables from being created at
 		// random while moving blocks around.
@@ -217,6 +223,7 @@ class BlockEditor extends React.Component {
 		this.originalBlocklyPrompt = Blockly.prompt
 		Blockly.prompt = (m, d, cb) => setTimeout(() => this.props.openPrompt(m, d, cb), 0)
 
+		// Modify the data category, so that it only uses numbers
 		const { DataCategory } = Blockly
 		DataCategory.createValue = (valueName, type, value) =>
 			`<value name="${valueName}">
@@ -341,32 +348,14 @@ class BlockEditor extends React.Component {
 						// proccode. If so, cancel.
 						const procedureSource = xmlToJson(Blockly.Xml.workspaceToDom(this.mainWorkspace))
 						const existingProcedure =
-							procedureSource &&
-							procedureSource.BLOCK &&
-							procedureSource.BLOCK.filter(block =>
+							procedureSource?.BLOCK?.filter(block =>
 								block.attributes &&
 								block.attributes.type === 'procedures_definition'
 							).filter(block =>
-								block.STATEMENT &&
-								block.STATEMENT[0] &&
-								block.STATEMENT[0].SHADOW &&
-								block.STATEMENT[0].SHADOW[0] &&
-								block.STATEMENT[0].SHADOW[0].MUTATION &&
-								block.STATEMENT[0].SHADOW[0].MUTATION[0] &&
-								block.STATEMENT[0].SHADOW[0].MUTATION[0].attributes &&
-								block.STATEMENT[0].SHADOW[0].MUTATION[0].attributes.proccode &&
-								block.STATEMENT[0].SHADOW[0].MUTATION[0].attributes.proccode === procedureCode
+								block?.STATEMENT?.[0]?.SHADOW?.[0]?.MUTATION?.[0]?.attributes?.proccode === procedureCode
 							).pop()
 						const existingProcedureArgumentIds = JSON.parse((
-							existingProcedure &&
-							existingProcedure.STATEMENT &&
-							existingProcedure.STATEMENT[0] &&
-							existingProcedure.STATEMENT[0].SHADOW &&
-							existingProcedure.STATEMENT[0].SHADOW[0] &&
-							existingProcedure.STATEMENT[0].SHADOW[0].MUTATION &&
-							existingProcedure.STATEMENT[0].SHADOW[0].MUTATION[0] &&
-							existingProcedure.STATEMENT[0].SHADOW[0].MUTATION[0].attributes &&
-							existingProcedure.STATEMENT[0].SHADOW[0].MUTATION[0].attributes.argumentids
+							existingProcedure?.STATEMENT?.[0]?.SHADOW?.[0]?.MUTATION?.[0]?.attributes?.argumentids
 						) || '[]')
 						const originalMutationArgumentIds = JSON.parse(mutation.getAttribute('argumentids'))
 						if (
@@ -435,6 +424,10 @@ class BlockEditor extends React.Component {
 						if (argumentNames.length) {
 							const nameHash = {}
 							const uniqueArgumentNames = argumentNames.map(name => {
+								// Prevent empty arguments, as it causes huge bugs down the line
+								if (!name) {
+									name = 'arg'
+								}
 								if (typeof nameHash[name] === 'undefined') {
 									nameHash[name] = 1
 									return name
@@ -444,6 +437,7 @@ class BlockEditor extends React.Component {
 							})
 							procedureMutation.setAttribute('argumentnames', JSON.stringify(uniqueArgumentNames))
 						}
+
 						procedureMutation.setAttribute('exists', 'true')
 						this.proceduresCallback(procedureMutation)
 						this.proceduresCallback = null
@@ -460,7 +454,7 @@ class BlockEditor extends React.Component {
 						this.mainWorkspace.refreshToolboxSelection_()
 					}
 				},
-				<Container
+				<ExternalProceduresContainer
 					onMount={setup}
 					onAddNumber={() => this.proceduresMutationRoot.addStringNumberExternal()}
 					onAddBoolean={() => this.proceduresMutationRoot.addBooleanExternal()}
@@ -506,10 +500,16 @@ class BlockEditor extends React.Component {
 	}
 
 	componentDidUpdate() {
-		const { refEditorSource } = this.props
-		const { source } = this
+		const { refEditorSource, isSimulatorVisible } = this.props
+		const { source, isSimulatorVisibleCache } = this
 		if (refEditorSource !== source) {
 			this.loadSource(refEditorSource)
+		}
+		// resize when we show/hide the simulator
+		if (isSimulatorVisible !== isSimulatorVisibleCache) {
+			if (typeof window !== 'undefined') {
+				window.Blockly.svgResize(this.mainWorkspace)
+			}
 		}
 	}
 

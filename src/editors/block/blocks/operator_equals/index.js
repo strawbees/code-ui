@@ -10,3 +10,4 @@ const operator_equals = {
 }
 
 export default operator_equals
+/* eslint-enable camelcase */

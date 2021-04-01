@@ -10,3 +10,4 @@ const control_forever = {
 }
 
 export default control_forever
+/* eslint-enable camelcase */

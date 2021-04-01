@@ -10,3 +10,4 @@ const operator_mod = {
 }
 
 export default operator_mod
+/* eslint-enable camelcase */

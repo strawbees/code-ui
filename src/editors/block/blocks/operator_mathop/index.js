@@ -10,3 +10,4 @@ const operator_mathop = {
 }
 
 export default operator_mathop
+/* eslint-enable camelcase */

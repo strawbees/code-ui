@@ -10,3 +10,4 @@ const dropdown_led_places = {
 }
 
 export default dropdown_led_places
+/* eslint-enable camelcase */

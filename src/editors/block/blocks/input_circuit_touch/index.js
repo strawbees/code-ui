@@ -10,3 +10,4 @@ const input_circuit_touch = {
 }
 
 export default input_circuit_touch
+/* eslint-enable camelcase */

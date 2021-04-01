@@ -10,3 +10,4 @@ const dropdown_continuous_servo_directions = {
 }
 
 export default dropdown_continuous_servo_directions
+/* eslint-enable camelcase */

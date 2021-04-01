@@ -10,3 +10,4 @@ const operator_not = {
 }
 
 export default operator_not
+/* eslint-enable camelcase */

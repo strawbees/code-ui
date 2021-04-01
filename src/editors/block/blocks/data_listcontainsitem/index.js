@@ -10,3 +10,4 @@ const data_listcontainsitem = {
 }
 
 export default data_listcontainsitem
+/* eslint-enable camelcase */

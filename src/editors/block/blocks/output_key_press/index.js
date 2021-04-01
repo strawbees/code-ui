@@ -10,3 +10,4 @@ const output_key_press = {
 }
 
 export default output_key_press
+/* eslint-enable camelcase */

@@ -6,8 +6,14 @@ node_modules
 /.prebuild-cache
 /.zanata-cache
 /out
+/static/lib/quirkbot-arduino-library
 /static/lib/scratch-blocks
+/static/lib/tree-sitter
 /static/i18n/
 /static/routes.json
 /src/simulator/quirkbotArduinoLibrary/*.cpp
 /src/simulator/quirkbotArduinoLibrary/*.h
+
+/lib/tree-sitter/*
+!/lib/tree-sitter/build-wasm.md
+!/lib/tree-sitter/tree-sitter-cpp.wasm

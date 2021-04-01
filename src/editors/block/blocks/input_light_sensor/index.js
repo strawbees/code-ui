@@ -10,3 +10,4 @@ const input_light_sensor = {
 }
 
 export default input_light_sensor
+/* eslint-enable camelcase */

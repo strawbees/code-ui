@@ -10,3 +10,4 @@ const data_replaceitemoflist = {
 }
 
 export default data_replaceitemoflist
+/* eslint-enable camelcase */

@@ -1,0 +1,20 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgctxt "simulator.button.show_hide"
+msgid "Simulator"
+msgstr ""
+
+msgctxt "simulator.error.same-place"
+msgid "**%1** has more than one component."
+msgstr ""
+
+msgctxt "simulator.warning.disconnected"
+msgid "**%1** is disconnected."
+msgstr ""

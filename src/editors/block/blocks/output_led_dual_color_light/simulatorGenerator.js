@@ -4,8 +4,8 @@ import {
 	getValueBlockByAttributeName,
 	computeInstanceName,
 	parseInstaceDefinition,
-	parseInstacePropertyAssignment,
-	setInstacePropertyOneTimeAssignment
+	parseNodeInstacePropertyAssignment,
+	setNodeInstacePropertyOneTimeAssignment
 } from '../../utils/simulatorParsing'
 
 const generator = ({ value, next }, structure) => {
@@ -24,10 +24,10 @@ const generator = ({ value, next }, structure) => {
 	const instance = computeInstanceName(structure, type, place)
 
 	parseInstaceDefinition(structure, instance, type)
-	setInstacePropertyOneTimeAssignment(structure, instance, 'place', place)
-	setInstacePropertyOneTimeAssignment(structure, instance, 'light', '0')
+	setNodeInstacePropertyOneTimeAssignment(structure, instance, 'place', place)
+	setNodeInstacePropertyOneTimeAssignment(structure, instance, 'light', '0')
 	structure.body += '// Set dual color LED light intensity:\n'
-	parseInstacePropertyAssignment(lightBlock, structure, instance, 'light')
+	parseNodeInstacePropertyAssignment(lightBlock, structure, instance, 'light')
 
 	parseNext(next, structure)
 }

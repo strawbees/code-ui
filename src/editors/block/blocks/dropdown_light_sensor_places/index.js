@@ -10,3 +10,4 @@ const dropdown_light_sensor_places = {
 }
 
 export default dropdown_light_sensor_places
+/* eslint-enable camelcase */

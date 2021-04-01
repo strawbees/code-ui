@@ -5,6 +5,7 @@ import constrain from './constrain.svg'
 import continuousServo from './continuous-servo.svg'
 import converter from './converter.svg'
 import counter from './counter.svg'
+import digitalSensor from './digital-sensor.svg'
 import dualColorLed from './dual-color-led.svg'
 import gate from './gate.svg'
 import irProximity from './ir-proximity.svg'
@@ -34,6 +35,7 @@ export default {
 	'continuous-servo' : continuousServo,
 	converter,
 	counter,
+	'digital-sensor'   : digitalSensor,
 	'dual-color-led'   : dualColorLed,
 	gate,
 	'ir-proximity'     : irProximity,

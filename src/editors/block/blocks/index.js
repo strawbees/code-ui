@@ -139,3 +139,4 @@ export default {
 	text,
 	undefined
 }
+/* eslint-enable camelcase */

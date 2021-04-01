@@ -10,3 +10,4 @@ const output_led = {
 }
 
 export default output_led
+/* eslint-enable camelcase */

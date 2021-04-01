@@ -4,8 +4,8 @@ import {
 	getValueBlockByAttributeName,
 	computeInstanceName,
 	parseInstaceDefinition,
-	parseInstacePropertyAssignment,
-	setInstacePropertyOneTimeAssignment
+	parseNodeInstacePropertyAssignment,
+	setNodeInstacePropertyOneTimeAssignment
 } from '../../utils/simulatorParsing'
 
 const generator = ({ value, next }, structure) => {
@@ -26,8 +26,8 @@ const generator = ({ value, next }, structure) => {
 
 	parseInstaceDefinition(structure, instance, type)
 	structure.body += '// Set servo position:\n'
-	setInstacePropertyOneTimeAssignment(structure, instance, 'place', place)
-	parseInstacePropertyAssignment(positionBlock, structure, instance, 'position')
+	setNodeInstacePropertyOneTimeAssignment(structure, instance, 'place', place)
+	parseNodeInstacePropertyAssignment(positionBlock, structure, instance, 'position')
 
 	parseNext(next, structure)
 }
