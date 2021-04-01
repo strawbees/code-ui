@@ -51,7 +51,6 @@ const EditorWithSimulator = ({
 				min-height: 100%;
 			}
 		`}</style>
-		<SimulatorVMManager/>
 		<div className='editor'>
 			{children}
 			<TabButton
@@ -65,6 +64,7 @@ const EditorWithSimulator = ({
 				onClick={isSimulatorVisible ? hideSimulator : showSimulator}
 			/>
 		</div>
+		{isSimulatorVisible && <SimulatorVMManager/>}
 		{isSimulatorVisible &&
 			<div className='simulator-container'>
 				<QuirkbotSimulatorContainer />
