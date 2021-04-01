@@ -12,9 +12,9 @@ const fixProceduresWithEmptyNameArguments = (xml) => {
 		if (!mutation) {
 			continue
 		}
-		let argumentnames
+		let argumentnames = []
 		try {
-			argumentnames = JSON.parse(mutation.getAttribute('argumentnames'))
+			argumentnames = JSON.parse(mutation.getAttribute('argumentnames')) || []
 		} catch (e) {
 			continue
 		}
