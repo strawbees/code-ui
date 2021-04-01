@@ -1,6 +1,6 @@
 {
   "name": "@strawbees/code-ui",
-  "version": "1.11.2",
+  "version": "1.12.0",
   "scripts": {
     "tree-sitter-cli": "tree-sitter",
     "dev": "node lib/scripts/dev.js",
@@ -16,7 +16,7 @@
     "lint": "eslint --fix ./*.js ./src/**.js ./src/**/**.js ./src/**/**/**.js ./src/**/**/**/**.js ./src/**/**/**/**/**.js ./pages/**.js"
   },
   "bin": {
-    "strawbees-code-ui-build": "./lib/scripts/build.js"
+    "strawbees-code-ui-build": "lib/scripts/build.js"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
