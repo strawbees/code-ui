@@ -70,7 +70,7 @@ const externalData = (state = defaultExternalDataState, { type, payload }) => {
 			return state
 	}
 }
-const isSimulatorVisible = (state = true, { type }) => {
+const isSimulatorVisible = (state = false, { type }) => {
 	switch (type) {
 		case SHOW_SIMULATOR: {
 			return true
