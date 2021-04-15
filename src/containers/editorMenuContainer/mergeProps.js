@@ -14,6 +14,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
 		updateCurrentEditorProgramName,
 		saveCurrentEditorProgram,
 		modalUploadCode,
+		modalUploadBootloaderUpdater,
 		modalDuplicateProgramData,
 		modalShareProgramData,
 		modalImportProgram,
@@ -34,9 +35,10 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
 			source,
 			name,
 		}),
-		onImportPress            : () => modalImportProgram(),
-		onExportPress            : () => exportProgramToFile({ type, source, name }),
-		onUploadFactoryCodePress : () => modalUploadCode(factoryCode),
+		onImportPress                     : () => modalImportProgram(),
+		onExportPress                     : () => exportProgramToFile({ type, source, name }),
+		onUploadFactoryCodePress          : () => modalUploadCode(factoryCode),
+		onUploadBootloaderUpdateCodePress : () => modalUploadBootloaderUpdater(),
 	}
 }
 

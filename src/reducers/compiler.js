@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux'
+import generateReducer from 'src/utils/generateReducer'
 import {
 	COMPILER_ADD_GENERATED_CODE,
 	COMPILER_SET_COMPILATION_ERROR,
+	COMPILER_SET_BOOTLOADER_UPDATER_HEX,
+	COMPILER_SET_BOOTLOADER_UPDATER_RETRIVAL_ERROR,
 	COMPILER_SET_HEX
 } from 'src/constants/actionTypes'
 import hashCode from 'src/utils/hashCode'
@@ -51,7 +54,10 @@ const entities = (state = {}, { type, payload }) => {
 			return state
 	}
 }
-
+const bootloaderUpdaterHex = generateReducer(COMPILER_SET_BOOTLOADER_UPDATER_HEX)
+const bootloaderUpdaterRetrivalError = generateReducer(COMPILER_SET_BOOTLOADER_UPDATER_RETRIVAL_ERROR)
 export default combineReducers({
-	entities
+	entities,
+	bootloaderUpdaterHex,
+	bootloaderUpdaterRetrivalError,
 })

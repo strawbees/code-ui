@@ -411,6 +411,10 @@ msgctxt "ui.file_menu.options.upload-factory"
 msgid "Upload Factory Program..."
 msgstr "上传一个预设程序."
 
+msgctxt "ui.file_menu.options.upload-bootloader-updater"
+msgid "Update firmware..."
+msgstr "更新固件"
+
 msgctxt "ui.file_menu.options.save"
 msgid "Save"
 msgstr "保存"
