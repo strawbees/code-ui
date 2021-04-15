@@ -18,7 +18,7 @@ const fields = [
 			if (!value || value.length < 6) {
 				return 'short'
 			}
-			return null
+			return undefined
 		},
 		// validateOnBlur : true,
 		errorKeys : {
@@ -39,7 +39,7 @@ const fields = [
 			if (values.password !== values['password-confirm']) {
 				return 'missmatch'
 			}
-			return null
+			return undefined
 		},
 		// validateOnBlur : true,
 		errorKeys : {
