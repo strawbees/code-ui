@@ -54,6 +54,16 @@ class SerialInterfaceManager extends React.Component {
 			setQbserialAvailable
 		} = this.props
 
+		// Determine if we are using the webserial or Chrome App Version
+		if ('serial' in navigator) {
+			// The Web Serial API is supported.
+			if (!available) {
+
+			}
+			return
+		}
+		// Using Chrome app...
+
 		if (!available) {
 			// connect to the extension
 			if (QuirkbotChromeApp.init) {
