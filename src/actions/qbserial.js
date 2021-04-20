@@ -1,3 +1,4 @@
+import { requestAccess } from 'src/serial'
 import generateAction from 'src/utils/generateAction'
 import {
 	QBSERIAL_SET_LINKS,
@@ -10,3 +11,9 @@ export const setQbserialLinks = generateAction(QBSERIAL_SET_LINKS)
 export const setQbserialAvailable = generateAction(QBSERIAL_SET_AVAILABLE)
 export const setQbserialAllowed = generateAction(QBSERIAL_SET_ALLOWED)
 export const setQbserialReady = generateAction(QBSERIAL_SET_READY)
+
+export const requestWebSerialAccess = () => async (dispatch, getState) => {
+	const state = getState()
+	const ports = await requestAccess()
+	console.log('requestWebSerialAccess', ports)
+}

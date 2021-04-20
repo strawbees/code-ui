@@ -15,9 +15,11 @@ const UploaderDependencies = ({
 	uploaderNeedsDriver,
 	serialBoardIds,
 	serialAvailable,
+	serialAllowed,
 	serialReady,
 	extensionUrl,
 	driverUrl,
+	requestWebSerialAccess,
 }) =>
 	<div className='root uploaderDependencies'>
 		<style jsx>{`
@@ -32,7 +34,8 @@ const UploaderDependencies = ({
 			.root :global(.link) {
 				text-decoration: none;
 			}
-			.root :global(.install-button) {
+			.root :global(.install-button),
+			.root :global(.install-button-link) {
 				align-self: flex-end;
 			}
 			.root :global(.not-detected) :global(.singleBoardStatus) {
@@ -42,7 +45,7 @@ const UploaderDependencies = ({
 				align-self: center;
 			}
 		`}</style>
-		{!serialAvailable && !serialReady &&
+		{!serialAvailable && !serialAllowed && !serialReady &&
 			<>
 				{!hideTitle &&
 					<div className='title global-type global-type-h3'>
@@ -57,7 +60,31 @@ const UploaderDependencies = ({
 				</Message>
 			</>
 		}
-		{serialAvailable && !serialReady &&
+		{serialAvailable && !serialAllowed && !serialReady &&
+			<>
+				{!hideTitle &&
+					<div className='title global-type global-type-h3'>
+						<S value='ui.board.dependencies.serial.title.allow_web_serial_access' />
+					</div>
+				}
+				<Message type='warning'>
+					<S
+						value='ui.board.dependencies.serial.allow_web_serial_access.text'
+						markdown={true}
+					/>
+				</Message>
+				<IconButton
+					onClick={requestWebSerialAccess}
+					className='install-button'
+					labelKey='ui.board.dependencies.serial.allow_web_serial_access.cta'
+					textColor={WHITE}
+					textHoverColor={WHITE}
+					bgColor={GREEN}
+					bgHoverColor={GREEN}
+				/>
+			</>
+		}
+		{serialAvailable && serialAllowed && !serialReady &&
 			<>
 				{!hideTitle &&
 					<div className='title global-type global-type-h3'>
@@ -76,7 +103,8 @@ const UploaderDependencies = ({
 				</Message>
 				<Link to={extensionUrl}
 					external={true}
-					className='install-button'>
+					className='install-button'
+				>
 					<IconButton
 						labelKey='ui.board.dependencies.serial.install.cta'
 						textColor={WHITE}
@@ -87,7 +115,7 @@ const UploaderDependencies = ({
 				</Link>
 			</>
 		}
-		{serialAvailable && serialReady &&
+		{serialAvailable && serialAllowed && serialReady &&
 			<>
 				{!hideTitle &&
 					<div className='title global-type global-type-h3'>
@@ -136,17 +164,19 @@ const UploaderDependencies = ({
 	</div>
 
 UploaderDependencies.propTypes = {
-	rootPath            : PropTypes.string,
-	hideTitle           : PropTypes.bool,
-	uploaderNeedsDriver : PropTypes.bool,
-	serialBoardsIds     : PropTypes.arrayOf(PropTypes.string),
-	serialAvailable     : PropTypes.bool,
-	serialReady         : PropTypes.bool,
-	midiBoardIds        : PropTypes.arrayOf(PropTypes.string),
-	midiAvailable       : PropTypes.bool,
-	midiReady           : PropTypes.bool,
-	extensionUrl        : PropTypes.string,
-	driverUrl           : PropTypes.string,
+	rootPath               : PropTypes.string,
+	hideTitle              : PropTypes.bool,
+	uploaderNeedsDriver    : PropTypes.bool,
+	serialBoardsIds        : PropTypes.arrayOf(PropTypes.string),
+	serialAvailable        : PropTypes.bool,
+	serialAllowed          : PropTypes.bool,
+	serialReady            : PropTypes.bool,
+	midiBoardIds           : PropTypes.arrayOf(PropTypes.string),
+	midiAvailable          : PropTypes.bool,
+	midiReady              : PropTypes.bool,
+	extensionUrl           : PropTypes.string,
+	driverUrl              : PropTypes.string,
+	requestWebSerialAccess : PropTypes.func,
 }
 
 export default UploaderDependencies

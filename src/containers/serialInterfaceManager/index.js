@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import * as QuirkbotWebSerial from 'src/serial'
 import QuirkbotChromeApp from '@strawbees/quirkbot-chrome-app'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
@@ -48,17 +49,23 @@ class SerialInterfaceManager extends React.Component {
 		const {
 			extensionId,
 			available,
+			allowed,
 			ready,
+			setQbserialAvailable,
+			setQbserialAllowed,
 			setQbserialReady,
 			generateMethod,
-			setQbserialAvailable
 		} = this.props
 
 		// Determine if we are using the webserial or Chrome App Version
 		if ('serial' in navigator) {
 			// The Web Serial API is supported.
 			if (!available) {
+				await QuirkbotWebSerial.init()
+				setQbserialAvailable(true)
+				if (!allowed) {
 
+				}
 			}
 			return
 		}
@@ -74,11 +81,13 @@ class SerialInterfaceManager extends React.Component {
 				this.ping = QuirkbotChromeApp.ping
 				this.getModel = QuirkbotChromeApp.getModel
 				setQbserialAvailable(true)
+				setQbserialAllowed(true)
 			} else if (typeof window.chrome !== 'undefined') {
 				this.inited = true
 				this.ping = generateMethod('ping', extensionId)
 				this.getModel = generateMethod('getModel', extensionId)
 				setQbserialAvailable(true)
+				setQbserialAllowed(true)
 			}
 			return
 		}
@@ -126,9 +135,11 @@ class SerialInterfaceManager extends React.Component {
 SerialInterfaceManager.propTypes = {
 	setQbserialLinks     : PropTypes.func,
 	setQbserialAvailable : PropTypes.func,
+	setQbserialAllowed   : PropTypes.func,
 	setQbserialReady     : PropTypes.func,
 	extensionId          : PropTypes.string,
 	available            : PropTypes.bool,
+	allowed              : PropTypes.bool,
 	ready                : PropTypes.bool,
 }
 

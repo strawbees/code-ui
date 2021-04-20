@@ -17,10 +17,10 @@ const defaults = {
 	NEXT_SERVER_PORT              : 3000,
 	NEXT_EXPORT_PATH              : path.resolve(__dirname, 'out'),
 	QUIRKBOT_USB_SERIAL_IDS       : [
-		{ usbVendorId : 0x2886, usbProductId : 0xf004, bootloader : true },
-		{ usbVendorId : 0x2886, usbProductId : 0xf005 },
-		{ usbVendorId : 0x2886, usbProductId : 0xf006, bootloader : true },
-		{ usbVendorId : 0x2886, usbProductId : 0xf007 },
+		{ usbVendorId : 0x2886, usbProductId : 0xF004 },
+		{ usbVendorId : 0x2886, usbProductId : 0xF005, isBootloader : true },
+		{ usbVendorId : 0x2886, usbProductId : 0xF006, isBootloader : true },
+		{ usbVendorId : 0x2886, usbProductId : 0xF007, isBootloader : true },
 	]
 }
 

@@ -10,6 +10,7 @@ import {
 const BoardsStatus = ({
 	openUploaderDependencies,
 	available,
+	allowed,
 	ready,
 	boards,
 	scale,
@@ -19,6 +20,8 @@ const BoardsStatus = ({
 		let label
 		if (!available) {
 			label = 'not available'
+		} else if (available && !allowed) {
+			label = 'not allowed'
 		} else if (available && !ready) {
 			label = 'not ready'
 		} else if (available && ready && boards.length > 0) {
@@ -65,21 +68,26 @@ const BoardsStatus = ({
 						status='notAvailable'
 					/>
 				}
-				{available && !ready &&
+				{available && !allowed && !ready &&
+					<SingleBoardStatus
+						scale={scale}
+						status='notAllowed'
+					/>
+				}
+				{available && allowed && !ready &&
 					<SingleBoardStatus
 						scale={scale}
 						status='notReady'
 					/>
-
 				}
-				{available && ready && boards.length > 0 && boards.map(runtimeId =>
+				{available && allowed && ready && boards.length > 0 && boards.map(runtimeId =>
 					<SingleBoardStatusContainer
 						key={runtimeId}
 						runtimeId={runtimeId}
 						scale={scale}
 					/>
 				)}
-				{available && ready && boards.length === 0 &&
+				{available && allowed && ready && boards.length === 0 &&
 					<SingleBoardStatus
 						scale={scale}
 						status='notConnected'
@@ -97,6 +105,7 @@ BoardsStatus.defaultProps = {
 BoardsStatus.propTypes = {
 	openUploaderDependencies : PropTypes.func,
 	available                : PropTypes.bool,
+	allowed                  : PropTypes.bool,
 	ready                    : PropTypes.bool,
 	boards                   : PropTypes.arrayOf(PropTypes.string),
 	scale                    : PropTypes.number,
