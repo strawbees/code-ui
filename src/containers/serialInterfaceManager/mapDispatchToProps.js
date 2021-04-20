@@ -2,12 +2,14 @@ import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToAction
 import {
 	setQbserialLinks,
 	setQbserialAvailable,
+	setQbserialAllowed,
 	setQbserialReady,
 } from 'src/actions/qbserial'
 
 const mapDispatchToProps = autobindDispatchToActionCreators({
 	setQbserialLinks,
 	setQbserialAvailable,
+	setQbserialAllowed,
 	setQbserialReady,
 })
 
