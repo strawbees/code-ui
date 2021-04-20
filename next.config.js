@@ -16,6 +16,12 @@ const defaults = {
 	DOWNLOAD_DESKTOP_APP_URL      : 'https://downloads.strawbees.com/code-desktop',
 	NEXT_SERVER_PORT              : 3000,
 	NEXT_EXPORT_PATH              : path.resolve(__dirname, 'out'),
+	QUIRKBOT_USB_SERIAL_IDS       : [
+		{ usbVendorId : 0x2886, usbProductId : 0xf004, bootloader : true },
+		{ usbVendorId : 0x2886, usbProductId : 0xf005 },
+		{ usbVendorId : 0x2886, usbProductId : 0xf006, bootloader : true },
+		{ usbVendorId : 0x2886, usbProductId : 0xf007 },
+	]
 }
 
 // configs for common known targets
