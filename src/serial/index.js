@@ -133,7 +133,9 @@ export async function requestAccess() {
 		// If the bootloader was detected, great! We are done.
 		if (bootloader) {
 			// For convenience, we exit the bootloader mode
-			await writeDataToFirstAvaiblePort([0x45]) // 0x45 == "exit bootloader"
+			try {
+				await writeDataToFirstAvaiblePort([0x45]) // 0x45 == "exit bootloader"
+			} catch (e) {}
 			// Success!
 			return
 		}
@@ -146,7 +148,9 @@ export async function requestAccess() {
 		// If the bootloader was detected, great! We are done.
 		if (bootloader) {
 			// For convenience, we exit the bootloader mode
-			await writeDataToFirstAvaiblePort([0x45]) // 0x45 == "exit bootloader"
+			try {
+				await writeDataToFirstAvaiblePort([0x45]) // 0x45 == "exit bootloader"
+			} catch (e) {}
 			// Success!
 			return
 		}
@@ -181,8 +185,6 @@ export async function requestAccess() {
 		setRequestAccessStatus({ bootloader, program })
 		// If the program was detected, great! We are done.
 		if (program) {
-			// For convenience, we exit the bootloader mode
-			await writeDataToFirstAvaiblePort([0x45]) // 0x45 == "exit bootloader"
 			// Success!
 			return
 		}
