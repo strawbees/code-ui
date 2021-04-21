@@ -1136,7 +1136,7 @@ msgstr "&"
 
 msgctxt "flow.constant.key-single_quote"
 msgid "'"
-msgid "'"
+msgstr "'"
 
 msgctxt "flow.constant.key-opening_parenthesis"
 msgid "("

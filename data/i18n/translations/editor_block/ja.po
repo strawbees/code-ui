@@ -592,7 +592,7 @@ msgstr "&"
 
 msgctxt "block.blocks.keys.key-single_quote"
 msgid "'"
-msgid "'"
+msgstr "'"
 
 msgctxt "block.blocks.keys.key-opening_parenthesis"
 msgid "("
