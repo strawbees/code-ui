@@ -50,9 +50,11 @@ class SerialInterfaceManager extends React.Component {
 			extensionId,
 			available,
 			allowed,
+			allowedStatus,
 			ready,
 			setQbserialAvailable,
 			setQbserialAllowed,
+			setQbserialAllowedStatus,
 			setQbserialReady,
 			generateMethod,
 		} = this.props
@@ -62,15 +64,25 @@ class SerialInterfaceManager extends React.Component {
 			// The Web Serial API is supported.
 			if (!available) {
 				await QuirkbotWebSerial.init()
+				// this.ping = QuirkbotWebSerial.ping // no need for ping on web serial
+				this.getModel = QuirkbotWebSerial.getModel
 				setQbserialAvailable(true)
-				if (!allowed) {
+			}
 
-				}
+			const currentAllowedStatus = await QuirkbotWebSerial.getRequestAccessStatus()
+			if (currentAllowedStatus[0] !== allowedStatus[0] || currentAllowedStatus[1] !== allowedStatus[1]) {
+				setQbserialAllowedStatus(currentAllowedStatus)
+			}
+			if (currentAllowedStatus.every(status => status === true)) {
+				if (!allowed) setQbserialAllowed(true)
+				if (!ready) setQbserialReady(true)
+			} else {
+				if (allowed) setQbserialAllowed(false)
+				if (ready) setQbserialReady(false)
 			}
 			return
 		}
 		// Using Chrome app...
-
 		if (!available) {
 			// connect to the extension
 			if (QuirkbotChromeApp.init) {
@@ -81,12 +93,14 @@ class SerialInterfaceManager extends React.Component {
 				this.ping = QuirkbotChromeApp.ping
 				this.getModel = QuirkbotChromeApp.getModel
 				setQbserialAvailable(true)
+				setQbserialAllowedStatus([true, true])
 				setQbserialAllowed(true)
 			} else if (typeof window.chrome !== 'undefined') {
 				this.inited = true
 				this.ping = generateMethod('ping', extensionId)
 				this.getModel = generateMethod('getModel', extensionId)
 				setQbserialAvailable(true)
+				setQbserialAllowedStatus([true, true])
 				setQbserialAllowed(true)
 			}
 			return
@@ -133,14 +147,21 @@ class SerialInterfaceManager extends React.Component {
 }
 
 SerialInterfaceManager.propTypes = {
-	setQbserialLinks     : PropTypes.func,
-	setQbserialAvailable : PropTypes.func,
-	setQbserialAllowed   : PropTypes.func,
-	setQbserialReady     : PropTypes.func,
-	extensionId          : PropTypes.string,
-	available            : PropTypes.bool,
-	allowed              : PropTypes.bool,
-	ready                : PropTypes.bool,
+	setQbserialLinks         : PropTypes.func,
+	setQbserialAvailable     : PropTypes.func,
+	setQbserialAllowed       : PropTypes.func,
+	setQbserialAllowedStatus : PropTypes.func,
+	setQbserialReady         : PropTypes.func,
+	extensionId              : PropTypes.string,
+	available                : PropTypes.bool,
+	allowed                  : PropTypes.bool,
+	ready                    : PropTypes.bool,
+	allowedStatus(props, propName) {
+		if (!Array.isArray(props[propName]) || props[propName].length !== 2 || !props[propName].every((v) => typeof v === 'boolean')) {
+			return new Error(`${propName} needs to be an array of two booleans.`)
+		}
+		return null
+	},
 }
 
 const serialInterfaceManagerConnected = connect(

@@ -68,51 +68,49 @@ async function refreshPorts({ bootloader, program }) {
 	}
 }
 
+export async function setRequestAccessStatus({ bootloader, program }) {
+	browserStorage.set('web-serial', 'bootloader-detected', bootloader)
+	browserStorage.set('web-serial', 'program-detected', program)
+}
+
+export async function getRequestAccessStatus() {
+	const bootloader = browserStorage.get('web-serial', 'bootloader-detected') || false
+	const program = browserStorage.get('web-serial', 'program-detected') || false
+	return [bootloader, program]
+}
+
 export async function requestAccess() {
 	// Check if permission settings have been saved already
-	let bootloaderAllowed = browserStorage.get('web-serial', 'bootloaderAllowed')
-	let programAllowed = browserStorage.get('web-serial', 'programAllowed')
-	if (bootloaderAllowed && programAllowed) {
+	let [bootloader, program] = await getRequestAccessStatus()
+	if (bootloader && program) {
 		// Success!
 		return
 	}
-	// Make a function that check if anything was detected and save the result
-	// to the permissions storage.
-	function resolveAllowed() {
-		if (bootloaderDetected) {
-			bootloaderAllowed = true
-			browserStorage.set('web-serial', 'bootloaderAllowed', true)
-		}
-		if (programDetected) {
-			programAllowed = true
-			browserStorage.set('web-serial', 'programAllowed', true)
-		}
-	}
 	// Initial check for permissions (if there's a device already connected)
-	let bootloaderDetected = await detectInPorts({ bootloader : true })
-	let programDetected = await detectInPorts({ program : true })
-	resolveAllowed()
-	if (bootloaderAllowed && programAllowed) {
+	bootloader = await detectInPorts({ bootloader : true })
+	program = await detectInPorts({ program : true })
+	setRequestAccessStatus({ bootloader, program })
+	if (bootloader && program) {
 		// Success!
 		return
 	}
 	// If we don't have anything allowed yet...
-	if (!bootloaderAllowed && !programAllowed) {
+	if (!bootloader && !program) {
 		// Request access to both
 		await refreshPorts({ bootloader : true, program : true })
-		bootloaderDetected = await detectInPorts({ bootloader : true })
-		programDetected = await detectInPorts({ program : true })
-		resolveAllowed()
+		bootloader = await detectInPorts({ bootloader : true })
+		program = await detectInPorts({ program : true })
+		setRequestAccessStatus({ bootloader, program })
 		// If nothing was detected, we are out of luck and this routine can end now.
-		if (!bootloaderAllowed && !programAllowed) {
-			throw new Error('No device is connected.')
+		if (!bootloader && !program) {
+			return
 		}
 	}
 	// At this point, at least one device was allowed.
-	if (programAllowed) {
+	if (program) {
 		// We can be in these three states:
 		// 1. No device is connected (no port avaiable)
-		// 2. Device is connected on bootloader mode (no port avaiable - no permissions yet)
+		// 2. Device is connected on bootloader mode (no port avaiable - probably no permissions yet)
 		// 3. Device is connected on program mode (port should be avaible)
 
 		// Anyway, we send a message to put the board on bootloader mode.
@@ -124,24 +122,41 @@ export async function requestAccess() {
 			// State was 1 or 2, ignorig...
 		}
 
-		// Request access, but are only interested in the bootloader
-		await refreshPorts({ bootloader : true })
-		bootloaderDetected = await detectInPorts({ bootloader : true })
-		resolveAllowed()
-		// If the booloader was detected, great! We have access to both!
-		if (bootloaderAllowed) {
+		// There's a chance the bootloader is actually already allowed, but the
+		// permissions have been cleared (eg. localStorage deleted). To avoid an
+		// unecessary prompt on this case, we wait a little bit (so the new device
+		// has enought time to be picked up by the OS), and try to detected it,
+		// before refreshing the posts
+		await new Promise(r => setTimeout(r, 200))
+		bootloader = await detectInPorts({ bootloader : true })
+		setRequestAccessStatus({ bootloader, program })
+		// If the bootloader was detected, great! We are done.
+		if (bootloader) {
 			// For convenience, we exit the bootloader mode
-			await writeDataToFirstAvaiblePort([0x45]) // E == "exit bootloader"
+			await writeDataToFirstAvaiblePort([0x45]) // 0x45 == "exit bootloader"
+			// Success!
+			return
+		}
+
+		// Ok, if we got here, maybe the bootloader has not permissions yet. In
+		// that case, request access (only for bootloader)
+		await refreshPorts({ bootloader : true })
+		bootloader = await detectInPorts({ bootloader : true })
+		setRequestAccessStatus({ bootloader, program })
+		// If the bootloader was detected, great! We are done.
+		if (bootloader) {
+			// For convenience, we exit the bootloader mode
+			await writeDataToFirstAvaiblePort([0x45]) // 0x45 == "exit bootloader"
 			// Success!
 			return
 		}
 		// If was not detected it means that either we are in state 1, or that we
 		// were on state 3, but we failed to put the board in bootloader mode.
 		// Anyway, we can't do anything here.
-		throw new Error('Couldn\'t put the board in booloader mode and detect it.')
+		return
 	}
 
-	if (bootloaderAllowed) {
+	if (bootloader) {
 		// We can be in these three states:
 		// 1. No device is connected (no port avaiable)
 		// 2. Device is connected on bootloader mode (port should be avaible)
@@ -156,24 +171,36 @@ export async function requestAccess() {
 			// State was 1 or 3, ignorig...
 		}
 
-		// Request access, but are only interested in the program
-		await refreshPorts({ program : true })
-		programDetected = await detectInPorts({ program : true })
-		resolveAllowed()
-		// If the program was detected, great! We have access to both!
-		if (programAllowed) {
+		// There's a chance the program mode is actually already allowed, but the
+		// permissions have been cleared (eg. localStorage deleted). To avoid an
+		// unecessary prompt on this case, we wait a little bit (so the new device
+		// has enought time to be picked up by the OS), and try to detected it,
+		// before refreshing the posts
+		await new Promise(r => setTimeout(r, 200))
+		program = await detectInPorts({ program : true })
+		setRequestAccessStatus({ bootloader, program })
+		// If the program was detected, great! We are done.
+		if (program) {
+			// For convenience, we exit the bootloader mode
+			await writeDataToFirstAvaiblePort([0x45]) // 0x45 == "exit bootloader"
 			// Success!
 			return
 		}
-		// If was not detected it means that either we are in state 1, or that we
-		// were on state 2, but we failed to enter program mode.
-		// Anyway, we can't do anything here.
-		throw new Error('Couldn\'t put the board in program mode and detect it.')
-	}
 
-	throw new Error('Couldn\'t request access')
+		// Ok, if we got here, maybe the bootloader has not permissions yet. In
+		// that case, request access (only for bootloader)
+		await refreshPorts({ program : true })
+		program = await detectInPorts({ program : true })
+		setRequestAccessStatus({ bootloader, program })
+
+		// Nothing else to do here
+	}
 }
 
 export async function init() {
-	console.log('initqbserial', QUIRKBOT_USB_SERIAL_IDS)
+	// console.log('initqbserial', QUIRKBOT_USB_SERIAL_IDS)
+}
+
+export async function getModel() {
+	return { quirkbots : [] }
 }

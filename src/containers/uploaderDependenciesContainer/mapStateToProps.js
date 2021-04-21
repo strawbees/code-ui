@@ -4,6 +4,7 @@ import uploaderNeedsDriverSelector from 'src/selectors/uploaderNeedsDriverSelect
 import qbserialRuntimeIdListSelector from 'src/selectors/qbserialRuntimeIdListSelector'
 import qbserialAvailableSelector from 'src/selectors/qbserialAvailableSelector'
 import qbserialAllowedSelector from 'src/selectors/qbserialAllowedSelector'
+import qbserialAllowedStatusSelector from 'src/selectors/qbserialAllowedStatusSelector'
 import qbserialReadySelector from 'src/selectors/qbserialReadySelector'
 import qbmidiRuntimeIdListSelector from 'src/selectors/qbmidiRuntimeIdListSelector'
 import qbmidiAvailableSelector from 'src/selectors/qbmidiAvailableSelector'
@@ -15,6 +16,7 @@ const mapStateToProps = () => createStructuredSelector({
 	serialBoardIds      : qbserialRuntimeIdListSelector(),
 	serialAvailable     : qbserialAvailableSelector(),
 	serialAllowed       : qbserialAllowedSelector(),
+	serialAllowedStatus : qbserialAllowedStatusSelector(),
 	serialReady         : qbserialReadySelector(),
 	midiBoardIds        : qbmidiRuntimeIdListSelector(),
 	midiAvailable       : qbmidiAvailableSelector(),

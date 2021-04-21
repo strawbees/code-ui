@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import IconButton from 'src/components/iconButton'
+import Button from 'src/components/button'
 import Link from 'src/components/link'
 import Message from 'src/components/message'
 import SingleBoardStatus from 'src/components/singleBoardStatus'
@@ -16,6 +17,7 @@ const UploaderDependencies = ({
 	serialBoardIds,
 	serialAvailable,
 	serialAllowed,
+	serialAllowedStatus,
 	serialReady,
 	extensionUrl,
 	driverUrl,
@@ -73,15 +75,34 @@ const UploaderDependencies = ({
 						markdown={true}
 					/>
 				</Message>
-				<IconButton
+				{uploaderNeedsDriver &&
+					<Link to={driverUrl}
+						external={true}>
+						<Message type='error'>
+							<S
+								value='ui.board.dependencies.serial.windows_driver'
+								markdown={true}
+							/>
+						</Message>
+					</Link>
+				}
+				<Button
 					onClick={requestWebSerialAccess}
 					className='install-button'
-					labelKey='ui.board.dependencies.serial.allow_web_serial_access.cta'
 					textColor={WHITE}
 					textHoverColor={WHITE}
 					bgColor={GREEN}
 					bgHoverColor={GREEN}
-				/>
+				>
+					<S value='ui.board.dependencies.serial.allow_web_serial_access.cta'	/>
+					{
+						serialAllowedStatus.every(status => !status)
+							? ' (1/2)'
+							: serialAllowedStatus.every(status => status)
+								? ''
+								: ' (2/2)'
+					}
+				</Button>
 			</>
 		}
 		{serialAvailable && serialAllowed && !serialReady &&
@@ -177,6 +198,12 @@ UploaderDependencies.propTypes = {
 	extensionUrl           : PropTypes.string,
 	driverUrl              : PropTypes.string,
 	requestWebSerialAccess : PropTypes.func,
+	serialAllowedStatus(props, propName) {
+		if (!Array.isArray(props[propName]) || props[propName].length !== 2 || !props[propName].every((v) => typeof v === 'boolean')) {
+			return new Error(`${propName} needs to be an array of two booleans.`)
+		}
+		return null
+	},
 }
 
 export default UploaderDependencies
