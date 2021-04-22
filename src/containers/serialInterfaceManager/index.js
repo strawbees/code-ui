@@ -8,12 +8,18 @@ import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
 
 class SerialInterfaceManager extends React.Component {
+	constructor(props) {
+		super(props)
+		this.ping = React.createRef()
+		this.getModel = React.createRef()
+	}
+
 	onTick = async () => {
 		const { ready } = this.props
 		if (!ready) {
 			return
 		}
-		const model = await this.getModel()
+		const model = await this.getModel.current()
 
 		const {
 			setQbserialLinks,
@@ -64,8 +70,8 @@ class SerialInterfaceManager extends React.Component {
 			// The Web Serial API is supported.
 			if (!available) {
 				await QuirkbotWebSerial.init()
-				// this.ping = QuirkbotWebSerial.ping // no need for ping on web serial
-				this.getModel = QuirkbotWebSerial.getModel
+				// this.ping.current = QuirkbotWebSerial.ping // no need for ping on web serial
+				this.getModel.current = QuirkbotWebSerial.getModel
 				setQbserialAvailable(true)
 			}
 
@@ -90,15 +96,15 @@ class SerialInterfaceManager extends React.Component {
 				console.log('Using in memory quirkbotChromeApp')
 				/* eslint-enable no-console */
 				QuirkbotChromeApp.init()
-				this.ping = QuirkbotChromeApp.ping
-				this.getModel = QuirkbotChromeApp.getModel
+				this.ping.current = QuirkbotChromeApp.ping
+				this.getModel.current = QuirkbotChromeApp.getModel
 				setQbserialAvailable(true)
 				setQbserialAllowedStatus([true, true])
 				setQbserialAllowed(true)
 			} else if (typeof window.chrome !== 'undefined') {
 				this.inited = true
-				this.ping = generateMethod('ping', extensionId)
-				this.getModel = generateMethod('getModel', extensionId)
+				this.ping.current = generateMethod('ping', extensionId)
+				this.getModel.current = generateMethod('getModel', extensionId)
 				setQbserialAvailable(true)
 				setQbserialAllowedStatus([true, true])
 				setQbserialAllowed(true)
@@ -110,7 +116,7 @@ class SerialInterfaceManager extends React.Component {
 			const timeout = setTimeout(() => {
 				reject(new Error('Timeout'))
 			}, 500)
-			this.ping().then(() => {
+			this.ping.current().then(() => {
 				clearTimeout(timeout)
 				resolve()
 			}).catch((error) => {
