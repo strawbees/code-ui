@@ -4,9 +4,11 @@ import {
 	logError
 } from './log'
 
-export const delay = m => new Promise(r => setTimeout(r, m))
+export function delay(millis) {
+	return new Promise(r => setTimeout(r, millis))
+}
 
-export const arrayMedian = s => {
+export function arrayMedian(s) {
 	const ordered = []
 	s.reduce((a, c) => a.set(c, (a.get(c) || 0) + 1), new Map())
 		.forEach((count, value) => ordered.push({
@@ -20,9 +22,11 @@ export const arrayMedian = s => {
 	return null
 }
 
-export const arrayDiff = (a, b) => a.filter(o => !b.includes(o))
+export function arrayDiff(a, b) {
+	return a.filter(o => !b.includes(o))
+}
 
-export const inPlaceArrayDiff = (a, b) => {
+export function inPlaceArrayDiff(a, b) {
 	for (let i = a.length - 1; i >= 0; i--) {
 		const o = a[i]
 		const iB = b.indexOf(o)
@@ -33,11 +37,15 @@ export const inPlaceArrayDiff = (a, b) => {
 	}
 }
 
-export const arrayMergeUnique = (a, b) => a.concat(arrayDiff(b, a))
+export function arrayMergeUnique(a, b) {
+	return a.concat(arrayDiff(b, a))
+}
 
-export const inPlaceArrayConcat = (a, b) => 	b.forEach(o => a.push(o))
+export function inPlaceArrayConcat(a, b) {
+	return b.forEach(o => a.push(o))
+}
 
-export const pad = (data, pageSize) => {
+export function pad(data, pageSize) {
 	safeWhile(
 		() => data.length % pageSize !== 0,
 		() => data.push(0),
@@ -48,7 +56,7 @@ export const pad = (data, pageSize) => {
 	return data
 }
 
-export const generateUniqueId = () => {
+export function generateUniqueId() {
 	const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
 	let str = ''
 	for (let i = 0; i < 10; ++i) {
@@ -58,7 +66,7 @@ export const generateUniqueId = () => {
 	return str
 }
 
-export const safeWhile = (conditionFn, loopFn, errorFn, maxIterations) => {
+export function safeWhile(conditionFn, loopFn, errorFn, maxIterations) {
 	maxIterations = maxIterations || 500
 	let count = 0
 	let forceBreak = false
@@ -81,7 +89,7 @@ export const safeWhile = (conditionFn, loopFn, errorFn, maxIterations) => {
 	}
 }
 
-export const asyncSafeWhile = async (conditionFn, loopFn, errorFn, maxIterations) => {
+export async function asyncSafeWhile(conditionFn, loopFn, errorFn, maxIterations) {
 	maxIterations = maxIterations || 500
 	let count = 0
 	let forceBreak = false
