@@ -36,6 +36,7 @@ import {
 	getPorts,
 	openPort,
 	closePort,
+	createPortHash,
 } from './serial'
 
 import {
@@ -332,7 +333,9 @@ export async function controlSingleLinkBootloaderMode(bootloader, link) {
 	// Send the command for the board to enter/exit booloader mode
 	log('Send command')
 	// Send the message
+	await openPort(link.port)
 	await writeBytesToPort(link.port, [bootloader ? COMMANDS.EnterBootloader : COMMANDS.ExitBootloader])
+	await closePort(link.port)
 
 	// Wait for the connection disapear, and a new one to appear
 	logOpenCollapsed('Wait connections to appear/disapear')
@@ -358,6 +361,7 @@ export async function controlSingleLinkBootloaderMode(bootloader, link) {
 
 export async function waitForSingleLinkConnectionToAppear() {
 	let lastPorts = await getPorts()
+
 	log('Original ports', lastPorts)
 
 	let tries = 0
@@ -369,10 +373,15 @@ export async function waitForSingleLinkConnectionToAppear() {
 			logOpen('Appear try', tries)
 
 			const currentPorts = await getPorts()
-			port = port || arrayDiff(
-				currentPorts,
-				lastPorts
+			const currentPortsHashes = currentPorts.map(createPortHash)
+			const lastPortsHashes = lastPorts.map(createPortHash)
+
+			const portHash = arrayDiff(
+				currentPortsHashes,
+				lastPortsHashes
 			).shift()
+
+			port = currentPorts[currentPortsHashes.indexOf(portHash)]
 			lastPorts = currentPorts
 			log('Current ports', currentPorts)
 

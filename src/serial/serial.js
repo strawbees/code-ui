@@ -22,6 +22,11 @@ export async function closePort(port) {
 	await port.close()
 }
 
+export function createPortHash(port) {
+	const info = port.getInfo()
+	return info.usbVendorId + info.usbProductId
+}
+
 export async function writeBytesToPort(port, bytes) {
 	const writer = port.writable.getWriter()
 	const data = new Uint8Array(bytes)

@@ -13,6 +13,7 @@ export const COMMANDS = {
 	EnterProgrammingMode     : 0x50,
 	LeaveProgrammingMode     : 0x4c,
 	SelectDeviceType         : 0x54,
+	EnterBootloader          : 0xb,
 	ExitBootloader           : 0x45,
 	ReadUUID                 : 0x55,
 }
