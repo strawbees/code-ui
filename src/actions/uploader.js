@@ -20,7 +20,8 @@ import {
 
 const {
 	publicRuntimeConfig : {
-		CHROME_EXTENSION_ID
+		CHROME_EXTENSION_ID,
+		PREFER_WEB_SERIAL
 	}
 } = getConfig()
 
@@ -45,7 +46,7 @@ export const uploadHex = (runtimeId, hex) => async (dispatch, getState) => {
 		// uploadFn = async () => uploadHexToLink(getLinkByRuntimeId(runtimeId), hex)
 	} else {
 		let serialUpload
-		if ('serial' in navigator) {
+		if (PREFER_WEB_SERIAL && 'serial' in navigator) {
 			serialUpload = QuirkbotWebSerial.uploadHexToLinkByUuid
 		} else if (QuirkbotChromeApp.init) {
 			serialUpload = QuirkbotChromeApp.upload

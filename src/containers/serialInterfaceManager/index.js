@@ -3,9 +3,16 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import * as QuirkbotWebSerial from 'src/serial'
 import QuirkbotChromeApp from '@strawbees/quirkbot-chrome-app'
+import getConfig from 'next/config'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
+
+const {
+	publicRuntimeConfig : {
+		PREFER_WEB_SERIAL
+	}
+} = getConfig()
 
 class SerialInterfaceManager extends React.Component {
 	constructor(props) {
@@ -51,7 +58,7 @@ class SerialInterfaceManager extends React.Component {
 		this.modelTimer = window.setInterval(this.onTick, 1000)
 
 		// If we are using QuirkbotWebSerial, make it avaiable right away
-		if ('serial' in navigator) {
+		if (PREFER_WEB_SERIAL && 'serial' in navigator) {
 			const {	setQbserialAvailable } = this.props
 			QuirkbotWebSerial.init()
 			this.getModel.current = QuirkbotWebSerial.getModel
@@ -77,7 +84,7 @@ class SerialInterfaceManager extends React.Component {
 
 		// Determine first if we will use the QuirkbotWebSerial or the QuirbotChromeApp...
 
-		if ('serial' in navigator) {
+		if (PREFER_WEB_SERIAL && 'serial' in navigator) {
 			// Using QuirkbotWebSerial!
 
 			// The avaiablity will be handle on componentDidMount/componentWillUnmountMount
@@ -154,7 +161,7 @@ class SerialInterfaceManager extends React.Component {
 		this.ping.current = null
 		this.getModel.current = null
 		// If we are using QuirkbotWebSerial, detroy it
-		if ('serial' in navigator) {
+		if (PREFER_WEB_SERIAL && 'serial' in navigator) {
 			const {	setQbserialAvailable } = this.props
 			QuirkbotWebSerial.destroy()
 			setQbserialAvailable(false)

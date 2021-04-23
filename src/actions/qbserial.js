@@ -1,6 +1,6 @@
 import {
 	requestAccess,
-	getRequestAccessStatus,
+	resetAccess,
 } from 'src/serial'
 import generateAction from 'src/utils/generateAction'
 import {
@@ -19,4 +19,7 @@ export const setQbserialReady = generateAction(QBSERIAL_SET_READY)
 
 export const requestWebSerialAccess = () => async () => {
 	await requestAccess()
+}
+export const resetWebSerialAccess = () => async () => {
+	await resetAccess()
 }

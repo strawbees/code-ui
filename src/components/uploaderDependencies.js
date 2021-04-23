@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import getConfig from 'next/config'
 import IconButton from 'src/components/iconButton'
 import Button from 'src/components/button'
 import Link from 'src/components/link'
@@ -8,7 +9,14 @@ import S from 'src/containers/sManager'
 import {
 	WHITE,
 	GREEN,
+	GRAY,
 } from 'src/constants/colors'
+
+const {
+	publicRuntimeConfig : {
+		PREFER_WEB_SERIAL
+	}
+} = getConfig()
 
 const UploaderDependencies = ({
 	rootPath,
@@ -22,6 +30,7 @@ const UploaderDependencies = ({
 	extensionUrl,
 	driverUrl,
 	requestWebSerialAccess,
+	resetWebSerialAccess,
 }) =>
 	<div className='root uploaderDependencies'>
 		<style jsx>{`
@@ -37,8 +46,12 @@ const UploaderDependencies = ({
 				text-decoration: none;
 			}
 			.root :global(.install-button),
-			.root :global(.install-button-link) {
+			.root :global(.install-button-link),
+			.root :global(.reset-permissions) {
 				align-self: flex-end;
+			}
+			.root :global(.reset-permissions) {
+				margin-top:1rem;
 			}
 			.root :global(.not-detected) :global(.singleBoardStatus) {
 				margin-left: -1rem;
@@ -165,7 +178,19 @@ const UploaderDependencies = ({
 								value='ui.board.dependencies.serial.no_boards_detected'
 								markdown={true}
 							/>
+							{PREFER_WEB_SERIAL &&
+								<IconButton
+									onClick={resetWebSerialAccess}
+									className='reset-permissions'
+									labelKey='ui.board.dependencies.serial.allow_web_serial_access.reset-permissions'
+									textColor={WHITE}
+									textHoverColor={WHITE}
+									bgColor={GRAY}
+									bgHoverColor={GRAY}
+																	 />
+							}
 						</Message>
+
 					</>
 				}
 				{serialBoardIds.length > 0 &&
@@ -198,6 +223,7 @@ UploaderDependencies.propTypes = {
 	extensionUrl           : PropTypes.string,
 	driverUrl              : PropTypes.string,
 	requestWebSerialAccess : PropTypes.func,
+	resetWebSerialAccess   : PropTypes.func,
 	serialAllowedStatus(props, propName) {
 		if (!Array.isArray(props[propName]) || props[propName].length !== 2 || !props[propName].every((v) => typeof v === 'boolean')) {
 			return new Error(`${propName} needs to be an array of two booleans.`)

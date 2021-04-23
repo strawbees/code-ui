@@ -770,6 +770,10 @@ msgctxt "ui.board.dependencies.serial.allow_web_serial_access.cta"
 msgid "Connect to serial"
 msgstr ""
 
+msgctxt "ui.board.dependencies.serial.allow_web_serial_access.reset-permissions"
+msgid "Reset permissions"
+msgstr ""
+
 msgctxt "ui.board.dependencies.serial.install.text"
 msgid ""
 "To be able to communicate with your Quirkbot, you need to first add the "

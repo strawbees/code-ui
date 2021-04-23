@@ -10,7 +10,6 @@ import {
 
 import {
 	log,
-	logOpen,
 	logOpenCollapsed,
 	logClose,
 	enableLogs,
@@ -105,14 +104,22 @@ async function refreshPorts({ bootloader, program }) {
 }
 
 export async function setRequestAccessStatus({ bootloader, program }) {
-	browserStorage.set('web-serial', 'bootloader-detected', bootloader)
-	browserStorage.set('web-serial', 'program-detected', program)
+	if (typeof bootloader !== 'undefined') {
+		browserStorage.set('web-serial', 'bootloader-detected', bootloader)
+	}
+	if (typeof program !== 'undefined') {
+		browserStorage.set('web-serial', 'program-detected', program)
+	}
 }
 
 export async function getRequestAccessStatus() {
 	const bootloader = browserStorage.get('web-serial', 'bootloader-detected') || false
 	const program = browserStorage.get('web-serial', 'program-detected') || false
 	return [bootloader, program]
+}
+
+export async function resetAccess() {
+	await setRequestAccessStatus({ bootloader : false, program : false })
 }
 
 export async function requestAccess() {
@@ -122,10 +129,17 @@ export async function requestAccess() {
 		// Success!
 		return
 	}
-	// Initial check for permissions (if there's a device already connected)
-	bootloader = await detectInPorts({ bootloader : true })
-	program = await detectInPorts({ program : true })
-	await setRequestAccessStatus({ bootloader, program })
+	// If the permissions are not granted, check again, as it may only be the case
+	// that the storage has been cleared, but the permissions are actually in place
+	if (!bootloader) {
+		bootloader = await detectInPorts({ bootloader : true })
+		await setRequestAccessStatus({ bootloader })
+	}
+	if (!program) {
+		program = await detectInPorts({ program : true })
+		await setRequestAccessStatus({ program })
+	}
+
 	if (bootloader && program) {
 		// Success!
 		return
@@ -146,7 +160,7 @@ export async function requestAccess() {
 	if (program) {
 		// We can be in these three states:
 		// 1. No device is connected (no port avaiable)
-		// 2. Device is connected on bootloader mode (no port avaiable - probably no permissions yet)
+		// 2. Device is connected on bootloader mode (no port avaiable - maybe no permissions yet)
 		// 3. Device is connected on program mode (port should be avaible)
 
 		// Anyway, we send a message to put the board on bootloader mode.
@@ -158,29 +172,29 @@ export async function requestAccess() {
 			// State was 1 or 2, ignorig...
 		}
 
-		// There's a chance the bootloader is actually already allowed, but the
-		// permissions have been cleared (eg. localStorage deleted). To avoid an
-		// unecessary prompt on this case, we wait a little bit (so the new device
-		// has enought time to be picked up by the OS), and try to detected it,
-		// before refreshing the posts
-		await new Promise(r => setTimeout(r, 200))
-		bootloader = await detectInPorts({ bootloader : true })
-		await setRequestAccessStatus({ bootloader, program })
-		// If the bootloader was detected, great! We are done.
-		if (bootloader) {
-			// For convenience, we exit the bootloader mode
-			try {
-				await writeDataToFirstAvaiblePort([0x45]) // 0x45 == "exit bootloader"
-			} catch (e) {}
-			// Success!
-			return
-		}
+		// // There's a chance the bootloader is actually already allowed, but the
+		// // permissions have been cleared (eg. localStorage deleted). To avoid an
+		// // unecessary prompt on this case, we wait a little bit (so the new device
+		// // has enought time to be picked up by the OS), and try to detected it,
+		// // before refreshing the posts
+		// await new Promise(r => setTimeout(r, 1000))
+		// bootloader = await detectInPorts({ bootloader : true })
+		// await setRequestAccessStatus({ bootloader })
+		// // If the bootloader was detected, great! We are done.
+		// if (bootloader) {
+		// 	// For convenience, we exit the bootloader mode
+		// 	try {
+		// 		await writeDataToFirstAvaiblePort([0x45]) // 0x45 == "exit bootloader"
+		// 	} catch (e) {}
+		// 	// Success!
+		// 	return
+		// }
 
 		// Ok, if we got here, maybe the bootloader has not permissions yet. In
 		// that case, request access (only for bootloader)
 		await refreshPorts({ bootloader : true })
 		bootloader = await detectInPorts({ bootloader : true })
-		await setRequestAccessStatus({ bootloader, program })
+		await setRequestAccessStatus({ bootloader })
 		// If the bootloader was detected, great! We are done.
 		if (bootloader) {
 			// For convenience, we exit the bootloader mode
@@ -200,7 +214,7 @@ export async function requestAccess() {
 		// We can be in these three states:
 		// 1. No device is connected (no port avaiable)
 		// 2. Device is connected on bootloader mode (port should be avaible)
-		// 3. Device is connected on program mode (no port avaiable - no permissions yet)
+		// 3. Device is connected on program mode (no port avaiable - maybe no permissions yet)
 
 		// Anyway, we send a message to exit bootloader mode.
 		// If state is 1 or 3, it will throw an error, but we can just skip it.
@@ -211,25 +225,25 @@ export async function requestAccess() {
 			// State was 1 or 3, ignorig...
 		}
 
-		// There's a chance the program mode is actually already allowed, but the
-		// permissions have been cleared (eg. localStorage deleted). To avoid an
-		// unecessary prompt on this case, we wait a little bit (so the new device
-		// has enought time to be picked up by the OS), and try to detected it,
-		// before refreshing the posts
-		await new Promise(r => setTimeout(r, 200))
-		program = await detectInPorts({ program : true })
-		await setRequestAccessStatus({ bootloader, program })
-		// If the program was detected, great! We are done.
-		if (program) {
-			// Success!
-			return
-		}
+		// // There's a chance the program mode is actually already allowed, but the
+		// // permissions have been cleared (eg. localStorage deleted). To avoid an
+		// // unecessary prompt on this case, we wait a little bit (so the new device
+		// // has enought time to be picked up by the OS), and try to detected it,
+		// // before refreshing the posts
+		// await new Promise(r => setTimeout(r, 2000))
+		// program = await detectInPorts({ program : true })
+		// await setRequestAccessStatus({ program })
+		// // If the program was detected, great! We are done.
+		// if (program) {
+		// 	// Success!
+		// 	return
+		// }
 
 		// Ok, if we got here, maybe the bootloader has not permissions yet. In
 		// that case, request access (only for bootloader)
 		await refreshPorts({ program : true })
 		program = await detectInPorts({ program : true })
-		await setRequestAccessStatus({ bootloader, program })
+		await setRequestAccessStatus({ program })
 
 		// Nothing else to do here
 	}
@@ -445,6 +459,16 @@ async function continuouslyMonitor(firstRun, linksMap, links, uploads, enterBoot
 	logClose()
 
 	log('Current links', links)
+
+	logOpenCollapsed('Update access permissions')
+	await Promise.all(links.map(async (link) => {
+		if (link.bootloader) {
+			await setRequestAccessStatus({ bootloader : true })
+		} else {
+			await setRequestAccessStatus({ program : true })
+		}
+	}))
+	logClose()
 
 	logOpenCollapsed('Update links info (if needed)')
 	try {
