@@ -56,6 +56,8 @@ class SerialInterfaceManager extends React.Component {
 			QuirkbotWebSerial.init()
 			this.getModel.current = QuirkbotWebSerial.getModel
 			setQbserialAvailable(true)
+			// Make the whole API avaiable on the console
+			window.QuirkbotWebSerial = { ...QuirkbotWebSerial }
 		}
 	}
 
@@ -156,6 +158,8 @@ class SerialInterfaceManager extends React.Component {
 			const {	setQbserialAvailable } = this.props
 			QuirkbotWebSerial.destroy()
 			setQbserialAvailable(false)
+			// Disabled the console API
+			window.QuirkbotWebSerial = null
 		}
 	}
 

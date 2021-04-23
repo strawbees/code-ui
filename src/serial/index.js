@@ -125,7 +125,7 @@ export async function requestAccess() {
 	// Initial check for permissions (if there's a device already connected)
 	bootloader = await detectInPorts({ bootloader : true })
 	program = await detectInPorts({ program : true })
-	setRequestAccessStatus({ bootloader, program })
+	await setRequestAccessStatus({ bootloader, program })
 	if (bootloader && program) {
 		// Success!
 		return
@@ -136,7 +136,7 @@ export async function requestAccess() {
 		await refreshPorts({ bootloader : true, program : true })
 		bootloader = await detectInPorts({ bootloader : true })
 		program = await detectInPorts({ program : true })
-		setRequestAccessStatus({ bootloader, program })
+		await setRequestAccessStatus({ bootloader, program })
 		// If nothing was detected, we are out of luck and this routine can end now.
 		if (!bootloader && !program) {
 			return
@@ -165,7 +165,7 @@ export async function requestAccess() {
 		// before refreshing the posts
 		await new Promise(r => setTimeout(r, 200))
 		bootloader = await detectInPorts({ bootloader : true })
-		setRequestAccessStatus({ bootloader, program })
+		await setRequestAccessStatus({ bootloader, program })
 		// If the bootloader was detected, great! We are done.
 		if (bootloader) {
 			// For convenience, we exit the bootloader mode
@@ -180,7 +180,7 @@ export async function requestAccess() {
 		// that case, request access (only for bootloader)
 		await refreshPorts({ bootloader : true })
 		bootloader = await detectInPorts({ bootloader : true })
-		setRequestAccessStatus({ bootloader, program })
+		await setRequestAccessStatus({ bootloader, program })
 		// If the bootloader was detected, great! We are done.
 		if (bootloader) {
 			// For convenience, we exit the bootloader mode
@@ -218,7 +218,7 @@ export async function requestAccess() {
 		// before refreshing the posts
 		await new Promise(r => setTimeout(r, 200))
 		program = await detectInPorts({ program : true })
-		setRequestAccessStatus({ bootloader, program })
+		await setRequestAccessStatus({ bootloader, program })
 		// If the program was detected, great! We are done.
 		if (program) {
 			// Success!
@@ -229,7 +229,7 @@ export async function requestAccess() {
 		// that case, request access (only for bootloader)
 		await refreshPorts({ program : true })
 		program = await detectInPorts({ program : true })
-		setRequestAccessStatus({ bootloader, program })
+		await setRequestAccessStatus({ bootloader, program })
 
 		// Nothing else to do here
 	}
@@ -240,7 +240,6 @@ export async function requestAccess() {
 export { enableLogs, disableLogs, setCustomLogHandler }
 
 export async function init() {
-	enableLogs()
 	if (monitoring) {
 		log('Already init')
 		return
@@ -417,7 +416,7 @@ async function continuouslyMonitor(firstRun, linksMap, links, uploads, enterBoot
 		logClose()
 	}
 
-	logOpen('Find dead links')
+	logOpenCollapsed('Find dead links')
 	let removedLinks
 	try {
 		removedLinks = await findDeadLinks(links)
@@ -431,7 +430,7 @@ async function continuouslyMonitor(firstRun, linksMap, links, uploads, enterBoot
 	saveLinksStateToLocalStorage(links)
 	logClose()
 
-	logOpen('Find new links')
+	logOpenCollapsed('Find new links')
 	let foundLinks
 	try {
 		foundLinks = await findPossibleLinks(links)
@@ -447,7 +446,7 @@ async function continuouslyMonitor(firstRun, linksMap, links, uploads, enterBoot
 
 	log('Current links', links)
 
-	logOpen('Update links info (if needed)')
+	logOpenCollapsed('Update links info (if needed)')
 	try {
 		await refreshLinksInfoIfNeeded(links)
 	} catch (error) {
@@ -456,7 +455,7 @@ async function continuouslyMonitor(firstRun, linksMap, links, uploads, enterBoot
 	saveLinksStateToLocalStorage(links)
 	logClose()
 
-	logOpen('Handle pending enter bootloader mode')
+	logOpenCollapsed('Handle pending enter bootloader mode')
 	try {
 		await handlePendingEnterBootloaderModes(links, enterBootloaderModes)
 	} catch (error) {
@@ -465,7 +464,7 @@ async function continuouslyMonitor(firstRun, linksMap, links, uploads, enterBoot
 	saveLinksStateToLocalStorage(links)
 	logClose()
 
-	logOpen('Handle pending exit bootloader mode')
+	logOpenCollapsed('Handle pending exit bootloader mode')
 	try {
 		await handlePendingExitBootloaderModes(links, exitBootloaderModes)
 	} catch (error) {
@@ -474,7 +473,7 @@ async function continuouslyMonitor(firstRun, linksMap, links, uploads, enterBoot
 	saveLinksStateToLocalStorage(links)
 	logClose()
 
-	logOpen('Handle pending uploads')
+	logOpenCollapsed('Handle pending uploads')
 	try {
 		await handlePendingUploads(links, uploads)
 	} catch (error) {
@@ -517,7 +516,7 @@ async function handlePendingUploads(links, uploads) {
 }
 
 async function handleSinglePendingUpload(links, upload, uploads) {
-	logOpen('Upload')
+	logOpenCollapsed('Upload')
 	upload.link.uploading = true
 	saveLinksStateToLocalStorage(links)
 	try {
@@ -546,7 +545,7 @@ async function handlePendingEnterBootloaderModes(links, requests) {
 }
 
 async function handleSinglePendingEnterBootloaderMode(links, request, requests) {
-	logOpen('Enter Bootloader Mode')
+	logOpenCollapsed('Enter Bootloader Mode')
 	request.link.enteringBootloaderMode = true
 	saveLinksStateToLocalStorage(links)
 	try {
@@ -571,7 +570,7 @@ async function handlePendingExitBootloaderModes(links, requests) {
 }
 
 async function handleSinglePendingExitBootloaderMode(links, request, requests) {
-	logOpen('Exit Bootloader Mode')
+	logOpenCollapsed('Exit Bootloader Mode')
 	request.link.exitingBootloaderMode = true
 	saveLinksStateToLocalStorage(links)
 	try {

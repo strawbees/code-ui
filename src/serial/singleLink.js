@@ -256,10 +256,13 @@ export async function uploadHexToSingleLink(link, hexString, onUpdate = () => {}
 	onUpdate()
 	logClose()
 
-	logOpen('Exit bootloader')
-	await guaranteeSingleLinkExitBootloaderMode(link)
-	onUpdate()
+	// Exit the bootloader mode. Here we don't want to "guarantee" the booloader
+	// since there could firmwares that will send the board directly back to
+	// bootloader mode (eg. bootloader updater).
+	logOpen('Exit bootloader mode')
+	await exitSingleLinkBootloaderMode(link)
 	logClose()
+	await refreshSingleLinkBootloaderStatus(link)
 
 	await refreshSingleLinkInfo(link)
 	onUpdate()
