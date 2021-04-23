@@ -2,6 +2,7 @@
 // 	getLinkByRuntimeId,
 // 	uploadHexToLink
 // } from 'quirkbot-midi-interface'
+import * as QuirkbotWebSerial from 'src/serial'
 import QuirkbotChromeApp from '@strawbees/quirkbot-chrome-app'
 import getConfig from 'next/config'
 import { generateMethod } from 'src/utils/chromeExtensionApi'
@@ -19,7 +20,8 @@ import {
 
 const {
 	publicRuntimeConfig : {
-		CHROME_EXTENSION_ID
+		CHROME_EXTENSION_ID,
+		PREFER_WEB_SERIAL
 	}
 } = getConfig()
 
@@ -44,11 +46,14 @@ export const uploadHex = (runtimeId, hex) => async (dispatch, getState) => {
 		// uploadFn = async () => uploadHexToLink(getLinkByRuntimeId(runtimeId), hex)
 	} else {
 		let serialUpload
-		if (QuirkbotChromeApp.init) {
+		if (PREFER_WEB_SERIAL && 'serial' in navigator) {
+			serialUpload = QuirkbotWebSerial.uploadHexToLinkByUuid
+		} else if (QuirkbotChromeApp.init) {
 			serialUpload = QuirkbotChromeApp.upload
 		} else {
 			serialUpload = generateMethod('upload', CHROME_EXTENSION_ID)
 		}
+
 		uploadFn = async () => serialUpload(testLink.uuid, hex)
 	}
 

@@ -9,6 +9,7 @@ const defaults = {
 	LOCALES                       : ['en', 'pt_BR', 'sv', 'zh-Hans-CN', 'ja'],
 	ROOT_PATH                     : '',
 	SHARE_LINKS_OMIT_ROOT_PATH    : true,
+	PREFER_WEB_SERIAL             : true,
 	URL_SCHEME                    : 'strawbeescode',
 	GAID                          : 'UA-NNNNNN-N',
 	CHROME_EXTENSION_ID           : 'ackaalhbfjagidmjlhlokoblhbnahegd',
@@ -16,6 +17,12 @@ const defaults = {
 	DOWNLOAD_DESKTOP_APP_URL      : 'https://downloads.strawbees.com/code-desktop',
 	NEXT_SERVER_PORT              : 3000,
 	NEXT_EXPORT_PATH              : path.resolve(__dirname, 'out'),
+	QUIRKBOT_USB_SERIAL_IDS       : [
+		{ usbVendorId : 0x2886, usbProductId : 0xF004 },
+		{ usbVendorId : 0x2886, usbProductId : 0xF005, isBootloader : true },
+		{ usbVendorId : 0x2886, usbProductId : 0xF006, isBootloader : true },
+		{ usbVendorId : 0x2886, usbProductId : 0xF007, isBootloader : true },
+	]
 }
 
 // configs for common known targets
@@ -26,6 +33,7 @@ const commonConfigs = {
 		STRAWBEES_CODE_API_URL   : 'https://cloud-api.strawbees.com',
 		LOCALES                  : ['en', 'pt_BR', 'sv', 'zh-Hans-CN', 'ja'],
 		ROOT_PATH                : '',
+		PREFER_WEB_SERIAL        : true,
 		URL_SCHEME               : 'strawbeescode-stage',
 		GAID                     : 'UA-69443341-7',
 		CHROME_EXTENSION_ID      : 'ackaalhbfjagidmjlhlokoblhbnahegd',
@@ -37,6 +45,7 @@ const commonConfigs = {
 		STRAWBEES_CODE_API_URL   : 'https://cloud-api.strawbees.com',
 		LOCALES                  : ['en', 'pt_BR', 'sv', 'zh-Hans-CN', 'ja'],
 		ROOT_PATH                : '',
+		PREFER_WEB_SERIAL        : false,
 		URL_SCHEME               : 'strawbeescode',
 		GAID                     : 'UA-69443341-8',
 		CHROME_EXTENSION_ID      : 'ackaalhbfjagidmjlhlokoblhbnahegd',
@@ -48,6 +57,7 @@ const commonConfigs = {
 		STRAWBEES_CODE_API_URL   : 'https://cloud-api-stage.strawbees.com',
 		LOCALES                  : ['en', 'pt_BR', 'sv', 'zh-Hans-CN', 'ja'],
 		ROOT_PATH                : '/ui',
+		PREFER_WEB_SERIAL        : true,
 		URL_SCHEME               : 'strawbeescode-stage',
 		GAID                     : 'UA-69443341-7',
 		CHROME_EXTENSION_ID      : 'jgbaejhmonchgianepimdbcpfgcbdmam',
@@ -59,6 +69,7 @@ const commonConfigs = {
 		STRAWBEES_CODE_API_URL   : 'https://cloud-api.strawbees.com',
 		LOCALES                  : ['en', 'pt_BR', 'sv', 'zh-Hans-CN', 'ja'],
 		ROOT_PATH                : '/ui',
+		PREFER_WEB_SERIAL        : false,
 		URL_SCHEME               : 'strawbeescode',
 		GAID                     : 'UA-69443341-8',
 		CHROME_EXTENSION_ID      : 'jgbaejhmonchgianepimdbcpfgcbdmam',
