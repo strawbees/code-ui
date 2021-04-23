@@ -17,6 +17,19 @@ export const COMMANDS = {
 	ExitBootloader           : 0x45,
 	ReadUUID                 : 0x55,
 }
+
+export const AVR = {
+	PageSize              : 128,
+	ProgramAddress        : 0,
+	BaudRateReset         : 1200,
+	BaudRateUpload        : 57600,
+	BaudRateCommunication : 115200,
+	SerialInterface       : 0x53, // S
+	FlashType             : 0x46, // F
+	UnknownCommand        : 0x3F, // ?
+	Ok                    : 0x0D, // Carriage return
+
+}
 export const REPORT_DELIMITERS = {
 	Start         : 0xFA,
 	End           : 0xFF,
@@ -25,5 +38,3 @@ export const REPORT_DELIMITERS = {
 	NodeContent   : 0xFD,
 }
 export const UUID_SIZE = 16
-export const PAGE_SIZE = 128
-export const PROGRAM_ADDRESS = 0

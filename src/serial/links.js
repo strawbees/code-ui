@@ -1,8 +1,4 @@
 import {
-	testSingleLinkConnectionByMessageEcho,
-	refreshSingleLinkUuid,
-	refreshSingleLinkBootloaderStatus,
-	refreshSingleLinkMidiEnabledStatus,
 	refreshSingleLinkInfo,
 	refreshSingleLinkInfoIfNeeded,
 	createNewLink,
@@ -11,18 +7,9 @@ import {
 
 import {
 	log,
-	logOpen,
 	logClose,
 	logOpenCollapsed,
 } from './log'
-
-import {
-	filterValidConnections,
-	// getMIDIInputs,
-	// getMIDIOutputs,
-	getMIDIInputById,
-	getMIDIOutputById,
-} from './midi'
 
 import {
 	getPorts,
@@ -33,7 +20,6 @@ import {
 
 import {
 	arrayDiff,
-	asyncSafeWhile,
 	delay,
 	inPlaceArrayConcat,
 	inPlaceArrayDiff,

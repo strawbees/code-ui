@@ -47,11 +47,19 @@ class SerialInterfaceManager extends React.Component {
 
 	componentDidMount() {
 		// start monitoring the extension
-		this.connectionTimer = window.setInterval(this.monitorExtensionConnection, 1000)
+		this.connectionTimer = window.setInterval(this.monitorSerialInterface, 1000)
 		this.modelTimer = window.setInterval(this.onTick, 1000)
+
+		// If we are using QuirkbotWebSerial, make it avaiable right away
+		if ('serial' in navigator) {
+			const {	setQbserialAvailable } = this.props
+			QuirkbotWebSerial.init()
+			this.getModel.current = QuirkbotWebSerial.getModel
+			setQbserialAvailable(true)
+		}
 	}
 
-	monitorExtensionConnection = async () => {
+	monitorSerialInterface = async () => {
 		const {
 			extensionId,
 			available,
@@ -65,16 +73,14 @@ class SerialInterfaceManager extends React.Component {
 			generateMethod,
 		} = this.props
 
-		// Determine if we are using the webserial or Chrome App Version
-		if ('serial' in navigator) {
-			// The Web Serial API is supported.
-			if (!available) {
-				await QuirkbotWebSerial.init()
-				// this.ping.current = QuirkbotWebSerial.ping // no need for ping on web serial
-				this.getModel.current = QuirkbotWebSerial.getModel
-				setQbserialAvailable(true)
-			}
+		// Determine first if we will use the QuirkbotWebSerial or the QuirbotChromeApp...
 
+		if ('serial' in navigator) {
+			// Using QuirkbotWebSerial!
+
+			// The avaiablity will be handle on componentDidMount/componentWillUnmountMount
+
+			// Constatly monitor the access status
 			const currentAllowedStatus = await QuirkbotWebSerial.getRequestAccessStatus()
 			if (currentAllowedStatus[0] !== allowedStatus[0] || currentAllowedStatus[1] !== allowedStatus[1]) {
 				setQbserialAllowedStatus(currentAllowedStatus)
@@ -86,15 +92,12 @@ class SerialInterfaceManager extends React.Component {
 				if (allowed) setQbserialAllowed(false)
 				if (ready) setQbserialReady(false)
 			}
-			return
-		}
-		// Using Chrome app...
-		if (!available) {
-			// connect to the extension
+		} else if (!available) {
+			// Using QuirbotChromeApp!
+
+			// Determine if we are using the built-in app (desktop client), or the browser version...
 			if (QuirkbotChromeApp.init) {
-				/* eslint-disable no-console */
-				console.log('Using in memory quirkbotChromeApp')
-				/* eslint-enable no-console */
+				// Using built-in app!
 				QuirkbotChromeApp.init()
 				this.ping.current = QuirkbotChromeApp.ping
 				this.getModel.current = QuirkbotChromeApp.getModel
@@ -102,6 +105,7 @@ class SerialInterfaceManager extends React.Component {
 				setQbserialAllowedStatus([true, true])
 				setQbserialAllowed(true)
 			} else if (typeof window.chrome !== 'undefined') {
+				// Using browser version!
 				this.inited = true
 				this.ping.current = generateMethod('ping', extensionId)
 				this.getModel.current = generateMethod('getModel', extensionId)
@@ -109,35 +113,35 @@ class SerialInterfaceManager extends React.Component {
 				setQbserialAllowedStatus([true, true])
 				setQbserialAllowed(true)
 			}
-			return
-		}
 
-		const timeoutPing = () => new Promise((resolve, reject) => {
-			const timeout = setTimeout(() => {
-				reject(new Error('Timeout'))
-			}, 500)
-			this.ping.current().then(() => {
-				clearTimeout(timeout)
-				resolve()
-			}).catch((error) => {
-				clearTimeout(timeout)
-				reject(error)
+			// Create a "ping" that will monitor if the QuirbotChromeApp is avaible
+			const timeoutPing = () => new Promise((resolve, reject) => {
+				const timeout = setTimeout(() => {
+					reject(new Error('Timeout'))
+				}, 500)
+				this.ping.current().then(() => {
+					clearTimeout(timeout)
+					resolve()
+				}).catch((error) => {
+					clearTimeout(timeout)
+					reject(error)
+				})
 			})
-		})
-		try {
-			await timeoutPing()
-			if (!ready) {
-				/* eslint-disable no-console */
-				console.log(`Connected to extensionId: ${extensionId}`)
-				/* eslint-enable no-console */
-				setQbserialReady(true)
-			}
-		} catch (error) {
-			if (ready) {
-				/* eslint-disable no-console */
-				console.log(`Disconnected to extensionId: ${extensionId}`)
-				/* eslint-enable no-console */
-				setQbserialReady(false)
+			try {
+				await timeoutPing()
+				if (!ready) {
+					/* eslint-disable no-console */
+					console.log(`Connected to extensionId: ${extensionId}`)
+					/* eslint-enable no-console */
+					setQbserialReady(true)
+				}
+			} catch (error) {
+				if (ready) {
+					/* eslint-disable no-console */
+					console.log(`Disconnected to extensionId: ${extensionId}`)
+					/* eslint-enable no-console */
+					setQbserialReady(false)
+				}
 			}
 		}
 	}
@@ -145,6 +149,14 @@ class SerialInterfaceManager extends React.Component {
 	componentWillUnmount() {
 		clearInterval(this.connectionTimer)
 		clearInterval(this.modelTimer)
+		this.ping.current = null
+		this.getModel.current = null
+		// If we are using QuirkbotWebSerial, detroy it
+		if ('serial' in navigator) {
+			const {	setQbserialAvailable } = this.props
+			QuirkbotWebSerial.destroy()
+			setQbserialAvailable(false)
+		}
 	}
 
 	render() {

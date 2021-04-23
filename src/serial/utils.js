@@ -135,3 +135,9 @@ export async function tryToExecute(generator, maxTries = 5, interval = 100) {
 	}
 	return result
 }
+
+export function convertToTwoBytes(n) {
+	const lo = (n & 0x00FF)
+	const hi = (n & 0xFF00) >> 8
+	return [hi, lo]
+}

@@ -1,5 +1,9 @@
 import getConfig from 'next/config'
 
+import {
+	AVR
+} from './constants'
+
 const {
 	publicRuntimeConfig : {
 		QUIRKBOT_USB_SERIAL_IDS
@@ -14,8 +18,8 @@ export async function requestPorts(args) {
 	return navigator.serial.requestPorts(args)
 }
 
-export async function openPort(port, baudRate = 9600) {
-	await port.open({ baudRate })
+export async function openPort(port, options = { baudRate : AVR.BaudRateCommunication }) {
+	await port.open(options)
 }
 
 export async function closePort(port) {

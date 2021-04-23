@@ -46,7 +46,7 @@ export const uploadHex = (runtimeId, hex) => async (dispatch, getState) => {
 	} else {
 		let serialUpload
 		if ('serial' in navigator) {
-			serialUpload = QuirkbotWebSerial.enterBootloaderModeByUuid
+			serialUpload = QuirkbotWebSerial.uploadHexToLinkByUuid
 		} else if (QuirkbotChromeApp.init) {
 			serialUpload = QuirkbotChromeApp.upload
 		} else {

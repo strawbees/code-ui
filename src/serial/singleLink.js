@@ -1,9 +1,8 @@
 import {
 	arrayDiff,
-	arrayMedian,
 	delay,
 	pad,
-	safeWhile,
+	convertToTwoBytes,
 	asyncSafeWhile,
 	tryToExecute,
 	generateUniqueId,
@@ -17,18 +16,6 @@ import {
 } from './log'
 
 import { parseIntelHex } from './hex'
-
-import {
-	fromMIDI,
-	getMIDIInputs,
-	getMIDIOutputs,
-	addMIDIMessageListenerToInput,
-	removeMIDIMessageListenerFromInput,
-	sendMIDIToOutput,
-	openMIDIPort,
-	closeMIDIPort,
-	filterValidConnections
-} from './midi'
 
 import {
 	getUsbFilters,
@@ -47,7 +34,7 @@ import {
 import {
 	COMMANDS,
 	REPORT_DELIMITERS,
-	PAGE_SIZE,
+	AVR,
 	UUID_SIZE,
 } from './constants'
 
@@ -65,9 +52,9 @@ export function mergeLinkWithStateLink(link, stateLink) {
 		.forEach(key => link[key] = stateLink[key])
 }
 
-export async function waitForMessageFromSingleLink(link, transformers = [], timeout = 0, openClosePort = true) {
+export async function waitForMessageFromSingleLink(link, transformers = [], timeout = 0, openClosePort = true, portOptions = undefined) {
 	// Open the port
-	if (openClosePort) await openPort(link.port)
+	if (openClosePort) await openPort(link.port, portOptions)
 
 	// Create the variable that will hold the message
 	let message
@@ -126,9 +113,9 @@ export async function waitForMessageFromSingleLink(link, transformers = [], time
 	return message
 }
 
-export async function sendAndReceiveMessageToSingleLink(link, bytes, transformers = [], timeout = 0, openClosePort = true) {
+export async function sendAndReceiveMessageToSingleLink(link, bytes, transformers = [], timeout = 0, openClosePort = true, portOptions = undefined) {
 	// Open the port
-	if (openClosePort) await openPort(link.port)
+	if (openClosePort) await openPort(link.port, portOptions)
 
 	// Send the message
 	await writeBytesToPort(link.port, bytes)
@@ -143,27 +130,20 @@ export async function sendAndReceiveMessageToSingleLink(link, bytes, transformer
 	return message
 }
 
-export async function testSingleLinkConnectionByMessageEcho(link) {
-	logOpenCollapsed('Testing single link by "message echo"')
-	let connected = false
-	const key1 = Math.floor(Math.random() * 256)
-	const key2 = Math.floor(Math.random() * 256)
-	const fn = e => {
-		const message = fromMIDI(e.data)
-		if (message[1] === key1 && message[2] === key2) {
-			log(`Midi response received (expected ${key1}, ${key2})`, message[1], message[2])
-			connected = true
-		}
-	}
-	log(`Sending message: ${key1}, ${key2}`, link)
-	try {
-		await sendAndReceiveMessageToSingleLink(link, [COMMANDS.Sync, key1, key2], fn, 30)
-	} catch (e) {
-		log('Failed to receive message', e)
-	}
+export async function testSingleLinkConnectionByReadingBootloaderInterface(link) {
+	logOpenCollapsed('Testing single link by "reading bootloader interface"')
 
-	if (!connected) {
-		log(`Never received midi response (expected ${key1}, ${key2})`)
+	let connected = false
+
+	const response = await sendAndReceiveMessageToSingleLink(
+		link, [COMMANDS.ReadBootloaderInterface], [], 5, false /* don't open/close port */
+	)
+	log('Received response:', response)
+	if (response[0] === AVR.SerialInterface) {
+		connected = true
+		log('Connection is working.')
+	} else {
+		log(`Never received response "${AVR.SerialInterface}"`)
 	}
 	logClose()
 	return connected
@@ -255,8 +235,8 @@ export async function refreshSingleLinkInfo(link) {
 }
 
 export async function refreshSingleLinkInfoIfNeeded(link) {
-	// Dont update too frequently
-	if (Date.now() - link.updated < 5000) {
+	// Update every 30 seconds
+	if (Date.now() - link.updated < 30000) {
 		return
 	}
 	await refreshSingleLinkInfo(link)
@@ -271,13 +251,13 @@ export async function uploadHexToSingleLink(link, hexString, onUpdate = () => {}
 	logOpen('Send firmware')
 	let data = []
 	parseIntelHex(hexString).data.forEach(o => data.push(o))
-	data = pad(data, PAGE_SIZE)
+	data = pad(data, AVR.PageSize)
 	await tryToExecute(() => sendFirmwareToSingleLinkWithConfidence(link, data), 10, 1000)
 	onUpdate()
 	logClose()
 
 	logOpen('Exit bootloader')
-	await exitSingleLinkBootloaderMode(link)
+	await guaranteeSingleLinkExitBootloaderMode(link)
 	onUpdate()
 	logClose()
 
@@ -289,16 +269,14 @@ export async function guaranteeSingleLinkExitBootloaderMode(link) {
 	if (await discoverSingleLinkBootloaderStatus(link)) {
 		logOpen('Exit bootloader mode')
 		await exitSingleLinkBootloaderMode(link)
+		log('Completed "exit bootloader" routine')
 		logClose()
 		logOpen('Confirm not on bootloader mode')
-		// Add a delay before trying to confirm bootloader status, as Quirkbot
-		// takes a few seconds to initialize (initial led blink animation), so
-		// we dont get a false positive
-		await delay(3000)
-		await refreshSingleLinkInfo(link)
+		await refreshSingleLinkBootloaderStatus(link)
 		if (link.bootloader) {
 			throw new Error('Could not confirm that board is not on bootloader mode.')
 		}
+		log('Confirmed not in bootloader mode')
 		logClose()
 	} else {
 		log('Already not on bootloader mode')
@@ -309,12 +287,14 @@ export async function guaranteeSingleLinkEnterBootloaderMode(link) {
 	if (!await discoverSingleLinkBootloaderStatus(link)) {
 		logOpen('Enter bootloader mode')
 		await enterSingleLinkBootloaderMode(link)
+		log('Completed "enter bootloader" routine')
 		logClose()
 		logOpen('Confirm bootloader mode')
-		await refreshSingleLinkInfo(link)
+		await refreshSingleLinkBootloaderStatus(link)
 		if (!link.bootloader) {
 			throw new Error('Could not confirm that board is on bootloader mode.')
 		}
+		log('Confirmed in bootloader mode')
 		logClose()
 	} else {
 		log('Already on bootloader mode')
@@ -404,62 +384,99 @@ export async function waitForSingleLinkConnectionToAppear() {
 }
 
 export async function sendFirmwareToSingleLinkWithConfidence(link, data) {
-	// TODO: find a way to send data with confidence. As there is a problem
-	// with Quirkbots on bootloader mode on Mac not firing onmidimessage, we
-	// cannot rely the testSingleLinkConnectionByMessageEcho to determine if
-	// the transmission is successfull
-
+	// Open the port only once before the whole process
+	await openPort(link.port, { baudRate : AVR.BaudRateUpload })
+	try {
 	// Test if link is connected
-	let connected = await testSingleLinkConnectionByMessageEcho(link)
-	log('Test link connection before upload', connected)
-	if (!connected) {
-		// throw new Error('Link is not connected')
-		log('Link not connected before upload. Doing nothing...', connected)
-	}
+		let connected = await testSingleLinkConnectionByReadingBootloaderInterface(link)
+		log('Test link connection before upload', connected)
+		if (!connected) {
+			throw new Error('Link is not connected')
+		}
 
-	// Send the data
-	await sendFirmwareToSingleLink(link, data)
+		// Send the data
+		await sendFirmwareToSingleLink(link, data)
 
-	// Test if the link is still connected
-	await delay(30)
-	connected = await testSingleLinkConnectionByMessageEcho(link)
-	log('Test link connection, after upload', connected)
-	if (!connected) {
-		// throw new Error('Link is not connected')
-		log('Link not connected after upload. Doing nothing...', connected)
+		// Test if the link is still connected
+		await delay(30)
+		connected = await testSingleLinkConnectionByReadingBootloaderInterface(link)
+		log('Test link connection, after upload', connected)
+		if (!connected) {
+			throw new Error('Link is not connected')
+		}
+	} catch (e) {
+	// Make sure to close the port in case of an error
+		try {
+			await closePort(link.port)
+		} catch (ee) {
+		// Ignore errors here, cause the error is because the port is already
+		// closed, we don't care and are good to go.
+			log('Error while making sure port is closed, ignoring.', ee)
+		}
+		throw e
 	}
+	// Close the port in the end of the process
+	await closePort(link.port)
 }
 
 export async function sendFirmwareToSingleLink(link, data) {
-	const totalBytes = data.length
-	const speedRate = 1 // 4 empirically found best value
-	const estimatedDuration = (totalBytes / speedRate) + 1000
-	log('Send StartFirmware command', 'Total bytes', totalBytes)
-	log('Transfer estimated duration', estimatedDuration)
-	await sendMIDIToOutput(
-		link.output,
-		COMMANDS.StartFirmware, 0, 0
-	)
-	const transferStartRef = window.performance.now() + 100
-	logOpenCollapsed('Data')
+	await AVRSetProgrammingAddress(link, AVR.ProgramAddress)
+	await AVRWritePagesRecursivelly(link, data)
+}
+
+export async function AVRSetProgrammingAddress(link, pageNumber) {
+	logOpenCollapsed('Set programming address for page:', pageNumber)
+	const address = pageNumber * (AVR.PageSize / 2)
+	const message = [COMMANDS.SetCurrentAddress, ...convertToTwoBytes(address)]
+	const response = await sendAndReceiveMessageToSingleLink(link, message, [], 5, false /* don't open/close port */)
+	log('Received response:', response)
+	if (response && response[0] !== AVR.Ok) {
+		log(`Never received response "${AVR.Ok}"`)
+		logClose()
+		throw new Error('Could not set programming address.')
+	}
+	logClose()
+}
+
+export async function AVRWritePage(link, data, pageNumber) {
+	logOpenCollapsed('Writing page:', pageNumber)
 	try {
-		for (let i = 0; i < data.length; i += 2) {
-			log('Send Data command', data[i], data[i + 1])
-			sendMIDIToOutput(
-				link.output,
-				COMMANDS.Data, data[i], data[i + 1],
-				transferStartRef + (i / speedRate)
-			)
+		const pageData = data.slice(
+			pageNumber * AVR.PageSize,
+			(pageNumber + 1) * AVR.PageSize
+		)
+		const message = [
+			COMMANDS.BlockWrite,
+			...convertToTwoBytes(AVR.PageSize),
+			AVR.FlashType
+		].concat(pageData)
+		const response = await sendAndReceiveMessageToSingleLink(link, message, [], 20, false /* don't open/close port */)
+		log('Received response:', response)
+		if (response && response[0] !== AVR.Ok) {
+			log(`Never received response "${AVR.Ok}"`)
+			logClose()
+			throw new Error('Could not set write page.')
 		}
 	} catch (e) {
-		// Catching this error here just to close the log, throw the error again
-		// so the parent process can catch it.
+		log('Error during AVRWritePage', e)
 		logClose()
 		throw e
 	}
+
 	logClose()
-	const remainingTime = estimatedDuration - (window.performance.now() - transferStartRef)
-	log('Waiting remaining estimated time...', remainingTime)
-	await delay(remainingTime)
-	log('Transfer complete!')
+}
+
+export async function AVRWritePagesRecursivelly(link, data) {
+	logOpenCollapsed('Writing pages')
+	const numPages = data.length / AVR.PageSize
+	log('Total pages:', numPages)
+	for (let page = 0; page < numPages; page++) {
+		try {
+			await AVRWritePage(link, data, page)
+		} catch (e) {
+			logClose()
+			throw	e
+		}
+	}
+	logClose()
 }
