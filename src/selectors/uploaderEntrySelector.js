@@ -8,9 +8,9 @@ const uploaderEntrySelector = () => createSelector(
 		(state, { hex, runtimeId }) => hashCode(`${hex}${runtimeId}`),
 	],
 	(
-		compilerEntities,
+		uploaderEntities,
 		id,
-	) => compilerEntities[id]
+	) => uploaderEntities[id]
 )
 
 export default uploaderEntrySelector
