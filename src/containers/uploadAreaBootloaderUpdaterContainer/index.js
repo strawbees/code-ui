@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import UploadArea from 'src/components/uploadArea'
+import UploadAreaBootloaderUpdater from 'src/components/uploadAreaBootloaderUpdater'
 import mapStateToProps from './mapStateToProps'
 import mapDispatchToProps from './mapDispatchToProps'
 import mergeProps from './mergeProps'
@@ -62,18 +62,8 @@ class UploadAreaBootloadUpdaterContainer extends React.Component {
 	}
 
 	render() {
-		const {
-			bootloaderUpdaterHex,
-			factoryCodeHex,
-			compilerBootloaderUpdaterError,
-			compilerFactoryCodeError,
-			...props
-		} = this.props
-		const hex = bootloaderUpdaterHex && factoryCodeHex
-		const compilerError = compilerBootloaderUpdaterError && compilerFactoryCodeError
-
 		return (
-			<UploadArea hex={hex} compilerError={compilerError} {...props} />
+			<UploadAreaBootloaderUpdater {...this.props} />
 		)
 	}
 }

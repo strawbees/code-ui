@@ -6,6 +6,11 @@ import {
 	setDisplayPageLoader,
 	setOS,
 } from 'src/actions/setup'
+
+import {
+	setCompilerBootloaderUpdaterHex,
+} from 'src/actions/compiler'
+
 import {
 	setHiddenGlobalBanners,
 } from 'src/actions/ui'
@@ -20,6 +25,7 @@ const mapDispatchToProps = autobindDispatchToActionCreators({
 	setDisplayPageLoader,
 	setHiddenGlobalBanners,
 	setupEditor,
+	setCompilerBootloaderUpdaterHex,
 	setOS,
 })
 

@@ -18,6 +18,7 @@ const {
 	publicRuntimeConfig : {
 		NEXT_SERVER_PORT,
 		ROOT_PATH,
+		COMPILER_URL,
 	}
 } = getConfig()
 
@@ -33,6 +34,7 @@ class AppContainer extends React.Component {
 			stringsLoaded,
 			setSetup,
 			setupEditor,
+			setCompilerBootloaderUpdaterHex,
 		} = mergeProps(
 			mapStateToProps()(store.getState(), {}),
 			mapDispatchToProps(store.dispatch)
@@ -55,6 +57,8 @@ class AppContainer extends React.Component {
 				// show the initial page loader
 				displayPageLoader : true
 			})
+			// preload the bootloader updater
+			setCompilerBootloaderUpdaterHex(await (await nodeFetch(`${COMPILER_URL}/cfirmware-booloader-updater`)).json())
 			// Editor setup only needs to happen once, in server
 			setupEditor()
 			return
@@ -110,13 +114,14 @@ class AppContainer extends React.Component {
 }
 
 AppContainer.propTypes = {
-	setSetup             : PropTypes.func,
-	setStrings           : PropTypes.func,
-	setDisplayPageLoader : PropTypes.func,
-	setupEditor          : PropTypes.func,
-	displayPageLoader    : PropTypes.bool,
-	displayError         : PropTypes.PropTypes.oneOf([false, 404, 500]),
-	setOS                : PropTypes.func,
+	setSetup                        : PropTypes.func,
+	setStrings                      : PropTypes.func,
+	setDisplayPageLoader            : PropTypes.func,
+	setupEditor                     : PropTypes.func,
+	setCompilerBootloaderUpdaterHex : PropTypes.func,
+	displayPageLoader               : PropTypes.bool,
+	displayError                    : PropTypes.PropTypes.oneOf([false, 404, 500]),
+	setOS                           : PropTypes.func,
 }
 
 const appContainerConnected = connect(

@@ -5,7 +5,13 @@ import hashCode from 'src/utils/hashCode'
 const uploaderEntrySelector = () => createSelector(
 	[
 		uploaderEntitiesSelector(),
-		(state, { hex, runtimeId }) => hashCode(`${hex}${runtimeId}`),
+		(state, { hex, hexes, runtimeId }) => {
+			let currentHex = hex
+			if (hexes && hexes.length) {
+				currentHex = hexes[hexes.length - 1]
+			}
+			return hashCode(`${currentHex}${runtimeId}`)
+		},
 	],
 	(
 		uploaderEntities,
