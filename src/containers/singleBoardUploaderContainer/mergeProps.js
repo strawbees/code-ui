@@ -18,7 +18,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
 			if (hexes && hexes.length) {
 				allHexes = allHexes.concat(hexes)
 			}
-			uploadMutipleHexes(runtimeId, allHexes)
+			uploadMutipleHexes(runtimeId, allHexes, true)
 		}
 	}
 }

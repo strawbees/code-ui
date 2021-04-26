@@ -8,6 +8,8 @@ import getConfig from 'next/config'
 import { generateMethod } from 'src/utils/chromeExtensionApi'
 import { fireGlobalEvent } from 'src/utils/globalEvents'
 import qbcompoundLinkSelector from 'src/selectors/qbcompoundLinkSelector'
+import qbcompoundLinkBootloaderVersionSelector from 'src/selectors/qbcompoundLinkBootloaderVersionSelector'
+import compilerBootloaderUpdaterHexSelector from 'src/selectors/compilerBootloaderUpdaterHexSelector'
 import generateAction from 'src/utils/generateAction'
 import { safeOpenModal } from 'src/actions/modal'
 import UploaderDependenciesContainer from 'src/containers/uploaderDependenciesContainer'
@@ -78,7 +80,20 @@ export const uploadHex = (runtimeId, hex) => async (dispatch, getState) => {
 	}
 }
 
-export const uploadMutipleHexes = (runtimeId, hexArray) => async (dispatch) => {
+export const uploadMutipleHexes = (runtimeId, hexes, updateBootloader) => async (dispatch, getState) => {
+	const hexArray = [...hexes]
+	if (updateBootloader) {
+		const bootloaderVersion = qbcompoundLinkBootloaderVersionSelector()(getState(), { runtimeId })
+		if (bootloaderVersion && bootloaderVersion < 2) {
+			fireGlobalEvent('track-event', {
+				category : 'quirkbot',
+				action   : 'auto-bootloader-update',
+				label    : bootloaderVersion
+			})
+			const compilerBootloaderUpdaterHex = compilerBootloaderUpdaterHexSelector()(getState())
+			hexArray.unshift(compilerBootloaderUpdaterHex)
+		}
+	}
 	for (let i = 0; i < hexArray.length; i++) {
 		await dispatch(uploadHex(runtimeId, hexArray[i]))
 	}
