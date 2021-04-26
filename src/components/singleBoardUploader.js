@@ -26,6 +26,7 @@ const SingleBoardUploader = ({
 	// bootloader,
 	uploading,
 	hex,
+	hexes,
 	uploaderBusy,
 	uploadSuccess,
 	uploadError
@@ -34,7 +35,7 @@ const SingleBoardUploader = ({
 	if (hardwareInterface === 'midi' && !midi) {
 		// Board is not compatible
 		type = 'NOT_COMPATIBLE'
-	} else if (hex) {
+	} else if (hex || hexes.length > 0) {
 		// There's a hex avaiable
 		if (uploading) {
 			// There's an ongoing upload
@@ -257,6 +258,7 @@ const SingleBoardUploader = ({
 }
 
 SingleBoardUploader.defaultProps = {
+	hexes : []
 }
 
 SingleBoardUploader.propTypes = {
@@ -270,6 +272,7 @@ SingleBoardUploader.propTypes = {
 	bootloader        : PropTypes.bool,
 	uploading         : PropTypes.bool,
 	hex               : PropTypes.string,
+	hexes             : PropTypes.arrayOf(PropTypes.string),
 	uploadSuccess     : PropTypes.bool,
 	uploadError       : PropTypes.string,
 }

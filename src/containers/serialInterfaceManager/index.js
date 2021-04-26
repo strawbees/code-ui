@@ -84,7 +84,6 @@ class SerialInterfaceManager extends React.Component {
 		} = this.props
 
 		// Determine first if we will use the QuirkbotWebSerial or the QuirbotChromeApp...
-
 		if (PREFER_WEB_SERIAL && 'serial' in navigator) {
 			// Using QuirkbotWebSerial!
 
@@ -102,26 +101,28 @@ class SerialInterfaceManager extends React.Component {
 				if (allowed) setQbserialAllowed(false)
 				if (ready) setQbserialReady(false)
 			}
-		} else if (!available) {
-			// Using QuirbotChromeApp!
+		} else {
+			if (!available) {
+				// Using QuirbotChromeApp!
 
-			// Determine if we are using the built-in app (desktop client), or the browser version...
-			if (QuirkbotChromeApp.init) {
+				// Determine if we are using the built-in app (desktop client), or the browser version...
+				if (QuirkbotChromeApp.init) {
 				// Using built-in app!
-				QuirkbotChromeApp.init()
-				this.ping.current = QuirkbotChromeApp.ping
-				this.getModel.current = QuirkbotChromeApp.getModel
-				setQbserialAvailable(true)
-				setQbserialAllowedStatus([true, true])
-				setQbserialAllowed(true)
-			} else if (typeof window.chrome !== 'undefined') {
+					QuirkbotChromeApp.init()
+					this.ping.current = QuirkbotChromeApp.ping
+					this.getModel.current = QuirkbotChromeApp.getModel
+					setQbserialAvailable(true)
+					setQbserialAllowedStatus([true, true])
+					setQbserialAllowed(true)
+				} else if (typeof window.chrome !== 'undefined') {
 				// Using browser version!
-				this.inited = true
-				this.ping.current = generateMethod('ping', extensionId)
-				this.getModel.current = generateMethod('getModel', extensionId)
-				setQbserialAvailable(true)
-				setQbserialAllowedStatus([true, true])
-				setQbserialAllowed(true)
+					this.inited = true
+					this.ping.current = generateMethod('ping', extensionId)
+					this.getModel.current = generateMethod('getModel', extensionId)
+					setQbserialAvailable(true)
+					setQbserialAllowedStatus([true, true])
+					setQbserialAllowed(true)
+				}
 			}
 
 			// Create a "ping" that will monitor if the QuirbotChromeApp is avaible

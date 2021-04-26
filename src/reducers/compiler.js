@@ -5,6 +5,8 @@ import {
 	COMPILER_SET_COMPILATION_ERROR,
 	COMPILER_SET_BOOTLOADER_UPDATER_HEX,
 	COMPILER_SET_BOOTLOADER_UPDATER_RETRIVAL_ERROR,
+	COMPILER_SET_FACTORY_CODE_HEX,
+	COMPILER_SET_FACTORY_CODE_RETRIVAL_ERROR,
 	COMPILER_SET_HEX
 } from 'src/constants/actionTypes'
 import hashCode from 'src/utils/hashCode'
@@ -56,8 +58,12 @@ const entities = (state = {}, { type, payload }) => {
 }
 const bootloaderUpdaterHex = generateReducer(COMPILER_SET_BOOTLOADER_UPDATER_HEX)
 const bootloaderUpdaterRetrivalError = generateReducer(COMPILER_SET_BOOTLOADER_UPDATER_RETRIVAL_ERROR)
+const factoryCodeHex = generateReducer(COMPILER_SET_FACTORY_CODE_HEX)
+const factoryCodeRetrivalError = generateReducer(COMPILER_SET_FACTORY_CODE_RETRIVAL_ERROR)
 export default combineReducers({
 	entities,
 	bootloaderUpdaterHex,
 	bootloaderUpdaterRetrivalError,
+	factoryCodeHex,
+	factoryCodeRetrivalError,
 })

@@ -2,6 +2,7 @@ import FileSaver from 'file-saver'
 import {
 	compileCode,
 	retrieveBootloaderUpdater,
+	retrieveFactoryCode,
 } from 'src/actions/compiler'
 import {
 	safeOpenModal,
@@ -195,6 +196,7 @@ export const modalUploadCode = (code) => async (dispatch) => {
 }
 export const modalUploadBootloaderUpdater = () => async (dispatch) => {
 	dispatch(retrieveBootloaderUpdater())
+	dispatch(retrieveFactoryCode())
 	return dispatch(safeOpenModal(
 		<UploadAreaBootloaderUpdaterContainer/>
 	))
@@ -208,7 +210,6 @@ export const modalImportProgram = () => async (dispatch) =>
 		},
 		<ProgramImporterContainer />
 	))
-
 export const modalShareProgramData = (program) => async (dispatch, getState) => {
 	const state = getState()
 

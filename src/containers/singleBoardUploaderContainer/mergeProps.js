@@ -1,17 +1,25 @@
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
 	const {
-		uploadHex,
+		uploadMutipleHexes,
 		...otherDispatchProps
 	} = dispatchProps
 	const {
 		runtimeId,
-		hex
+		hex,
+		hexes,
 	} = ownProps
 	return {
 		...stateProps,
 		...otherDispatchProps,
 		...ownProps,
-		onUploadPress : () => uploadHex(runtimeId, hex)
+		onUploadPress : () => {
+			let allHexes = []
+			if (hex) allHexes.push(hex)
+			if (hexes && hexes.length) {
+				allHexes = allHexes.concat(hexes)
+			}
+			uploadMutipleHexes(runtimeId, allHexes)
+		}
 	}
 }
 

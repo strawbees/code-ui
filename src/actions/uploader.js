@@ -78,6 +78,12 @@ export const uploadHex = (runtimeId, hex) => async (dispatch, getState) => {
 	}
 }
 
+export const uploadMutipleHexes = (runtimeId, hexArray) => async (dispatch) => {
+	for (let i = 0; i < hexArray.length; i++) {
+		await dispatch(uploadHex(runtimeId, hexArray[i]))
+	}
+}
+
 export const modalOpenUploaderDependencies = () => async (dispatch) =>
 	dispatch(safeOpenModal(
 		<UploaderDependenciesContainer />

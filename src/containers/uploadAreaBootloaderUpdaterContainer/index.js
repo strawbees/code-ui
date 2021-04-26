@@ -11,17 +11,19 @@ class UploadAreaBootloadUpdaterContainer extends React.Component {
 	// upload straight away
 	componentDidMount() {
 		const {
-			hex,
+			bootloaderUpdaterHex,
+			factoryCodeHex,
 			boardIds,
-			uploadHex,
+			uploadMutipleHexes,
 			clearUploadError,
 		} = this.props
 		if (
-			hex &&
+			bootloaderUpdaterHex &&
+			factoryCodeHex &&
 			boardIds &&
 			boardIds.length === 1
 		) {
-			uploadHex(boardIds[0], hex)
+			uploadMutipleHexes(boardIds[0], [bootloaderUpdaterHex, factoryCodeHex])
 		}
 		// Always clean upload errors on mount
 		clearUploadError()
@@ -29,34 +31,59 @@ class UploadAreaBootloadUpdaterContainer extends React.Component {
 
 	// In case a hex get's compiled (and it wasn't before )and there's only
 	// one board connected, upload straight away
-	componentDidUpdate({ hex : prevHex }) {
+	componentDidUpdate({
+		bootloaderUpdaterHex : prevBootloaderUpdaterHex,
+		factoryCodeHex : prevFactoryCodeHex
+	}) {
 		const {
-			hex,
+			bootloaderUpdaterHex,
+			factoryCodeHex,
 			boardIds,
-			uploadHex
+			uploadMutipleHexes
 		} = this.props
 		if (
-			!prevHex &&
-			hex &&
+			(
+				(
+					!prevBootloaderUpdaterHex &&
+					bootloaderUpdaterHex &&
+					factoryCodeHex
+				)	||
+				(
+					bootloaderUpdaterHex &&
+					!prevFactoryCodeHex &&
+					factoryCodeHex
+				)
+			) &&
 			boardIds &&
 			boardIds.length === 1
 		) {
-			uploadHex(boardIds[0], hex)
+			uploadMutipleHexes(boardIds[0], [bootloaderUpdaterHex, factoryCodeHex])
 		}
 	}
 
 	render() {
+		const {
+			bootloaderUpdaterHex,
+			factoryCodeHex,
+			compilerBootloaderUpdaterError,
+			compilerFactoryCodeError,
+			...props
+		} = this.props
+		const hex = bootloaderUpdaterHex && factoryCodeHex
+		const compilerError = compilerBootloaderUpdaterError && compilerFactoryCodeError
+
 		return (
-			<UploadArea {...this.props} />
+			<UploadArea hex={hex} compilerError={compilerError} {...props} />
 		)
 	}
 }
 
 UploadAreaBootloadUpdaterContainer.propTypes = {
-	boardIds         : PropTypes.arrayOf(PropTypes.string),
-	hex              : PropTypes.string,
-	uploadHex        : PropTypes.func,
-	clearUploadError : PropTypes.func,
+	boardIds             : PropTypes.arrayOf(PropTypes.string),
+	bootloaderUpdaterHex : PropTypes.string,
+	factoryCodeHex       : PropTypes.string,
+	uploadMutipleHexes   : PropTypes.func,
+	clearUploadError     : PropTypes.func,
 }
 const uploadAreaContainerConnected = connect(
 	mapStateToProps,

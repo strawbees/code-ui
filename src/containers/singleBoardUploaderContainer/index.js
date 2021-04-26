@@ -11,6 +11,7 @@ const SingleBoardUploaderContainer = props =>
 SingleBoardUploaderContainer.propTypes = {
 	runtimeId : PropTypes.string,
 	hex       : PropTypes.string,
+	hexes     : PropTypes.arrayOf(PropTypes.string),
 }
 
 const singleBoardUploaderContainerConnected = connect(
