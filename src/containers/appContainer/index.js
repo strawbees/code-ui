@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import nodeFecth from 'node-fetch'
+import nodeFetch from 'node-fetch'
 import factoryCode from 'data/firmware/factory'
 import codingCards from 'data/codingCards.json'
 import Router from 'next/router'
@@ -46,11 +46,11 @@ class AppContainer extends React.Component {
 				factoryCode,
 				codingCards,
 				rootPath : ROOT_PATH,
-				routes   : (await (await nodeFecth(`${serverStatic}/routes.json`)).json()),
-				locales  : (await (await nodeFecth(`${serverStatic}/i18n/index.json`)).json()),
+				routes   : (await (await nodeFetch(`${serverStatic}/routes.json`)).json()),
+				locales  : (await (await nodeFetch(`${serverStatic}/i18n/index.json`)).json()),
 				strings  : {
 					locale : query.locale,
-					data   : await (await nodeFecth(`${serverStatic}/i18n/${query.locale}.json`)).json(),
+					data   : await (await nodeFetch(`${serverStatic}/i18n/${query.locale}.json`)).json(),
 				},
 				// show the initial page loader
 				displayPageLoader : true
