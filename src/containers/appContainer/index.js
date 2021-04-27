@@ -34,7 +34,6 @@ class AppContainer extends React.Component {
 			stringsLoaded,
 			setSetup,
 			setupEditor,
-			setCompilerBootloaderUpdaterHex,
 		} = mergeProps(
 			mapStateToProps()(store.getState(), {}),
 			mapDispatchToProps(store.dispatch)
@@ -57,8 +56,6 @@ class AppContainer extends React.Component {
 				// show the initial page loader
 				displayPageLoader : true
 			})
-			// preload the bootloader updater
-			setCompilerBootloaderUpdaterHex(await (await nodeFetch(`${COMPILER_URL}/cfirmware-booloader-updater`)).json())
 			// Editor setup only needs to happen once, in server
 			setupEditor()
 			return
@@ -83,6 +80,7 @@ class AppContainer extends React.Component {
 		const {
 			setSetup,
 			setHiddenGlobalBanners,
+			setCompilerBootloaderUpdaterHex,
 		} = this.props
 
 		setSetup({
@@ -94,6 +92,17 @@ class AppContainer extends React.Component {
 			// hide the initial page loader
 			displayPageLoader : false
 		})
+		// preload the bootloader updater
+		const bootloaderUpdaterRes = await fetch(`${COMPILER_URL}/cfirmware-booloader-updater`)
+		if (bootloaderUpdaterRes.ok) {
+			try {
+				const bootloaderUpdaterHex = await bootloaderUpdaterRes.json()
+				setCompilerBootloaderUpdaterHex(bootloaderUpdaterHex)
+			} catch (e) {
+				console.log('Error while trying to fetch bootloader updater', e)
+			}
+		}
+
 		// hide the global banners
 		setHiddenGlobalBanners(browserStorage.getKeys('hiddenGlobalBanners'))
 	}
