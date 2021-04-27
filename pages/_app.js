@@ -9,7 +9,8 @@ import resolveLinkUrl from 'src/utils/resolveLinkUrl'
 const {
 	publicRuntimeConfig : {
 		URL_SCHEME,
-		ROOT_PATH
+		ROOT_PATH,
+		USE_SERVICE_WORKER,
 	}
 } = getConfig()
 
@@ -22,7 +23,7 @@ if (process.browser) {
 }
 
 // register the service worker
-if (process.browser) {
+if (USE_SERVICE_WORKER && process.browser) {
 	if ('serviceWorker' in navigator) {
 		// Use the window load event to keep the page load performant
 		window.addEventListener('load', () => {
