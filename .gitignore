@@ -5,6 +5,7 @@ node_modules
 /.next
 /.prebuild-cache
 /.zanata-cache
+/.env
 /out
 /static/lib/quirkbot-arduino-library
 /static/lib/scratch-blocks

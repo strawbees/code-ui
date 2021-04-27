@@ -17,7 +17,7 @@ const fields = [
 			if (!value || value.length < 6) {
 				return 'short'
 			}
-			return null
+			return undefined
 		},
 		errorKeys : {
 			blank : 'ui.sb_cloud.reset_password.password.error.blank',

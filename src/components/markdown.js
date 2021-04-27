@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
-import ReactMarkdown from 'react-markdown/with-html'
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
+import rehypeSanitize from 'rehype-sanitize'
 import gfm from 'remark-gfm'
 import {
 	PINK,
@@ -67,7 +69,11 @@ const Markdown = ({
 			}
 			/* End Table */
 		`}</style>
-		<ReactMarkdown children={source} allowDangerousHtml={true} plugins={[gfm]}/>
+		<ReactMarkdown
+			children={source}
+			rehypePlugins={[rehypeRaw, rehypeSanitize]}
+			plugins={[gfm]}
+		/>
 	</div>
 
 Markdown.defaultProps = {

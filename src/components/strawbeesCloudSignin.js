@@ -18,7 +18,7 @@ const signinFields = [
 			if (!value) {
 				return 'blank'
 			}
-			return null
+			return undefined
 		},
 		validateOnBlur : true,
 		errorKeys      : {
@@ -34,7 +34,7 @@ const signinFields = [
 			if (!value) {
 				return 'blank'
 			}
-			return null
+			return undefined
 		},
 		validateOnBlur : true,
 		errorKeys      : {
@@ -59,7 +59,7 @@ const forgotFields = [
 			if (!value) {
 				return 'blank'
 			}
-			return null
+			return undefined
 		},
 		validateOnBlur : true,
 		errorKeys      : {

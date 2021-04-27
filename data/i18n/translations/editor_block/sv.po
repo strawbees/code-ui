@@ -1,5 +1,5 @@
 # Kristofer Hagbard <kristofer@strawbees.com>, 2019. #zanata
-# paulobarcelos <paulo@strawbees.com>, 2019. #zanata
+# Kristofer Hagbard <kristofer@strawbees.com>, 2021. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-10-21 03:22+0000\n"
+"PO-Revision-Date: 2021-04-27 06:13-0400\n"
 "Last-Translator: Kristofer Hagbard <kristofer@strawbees.com>\n"
 "Language-Team: Swedish\n"
 "Language: sv\n"
@@ -92,11 +92,11 @@ msgstr "släpp upp tangent %1"
 
 msgctxt "block.blocks.output_key_tap.message0"
 msgid "tap key %1"
-msgstr "tryck kort på tangent %1""
+msgstr "tryck kort på tangent %1\""
 
 msgctxt "block.blocks.output_key_hold.message0"
-msgid "håll ner tangent %1 i %2 sekunder"
-msgstr ""
+msgid "hold key %1 for %2 seconds"
+msgstr "håll tangent %1 i %2 sekunder"
 
 msgctxt "block.blocks.easing.linear"
 msgid "linear"
@@ -212,7 +212,7 @@ msgstr "elastisk in ut"
 
 msgctxt "block.blocks.easing.bounce-in"
 msgid "bounce in"
-msgstr "in"
+msgstr "studsa in"
 
 msgctxt "block.blocks.easing.bounce-out"
 msgid "bounce out"
@@ -716,12 +716,12 @@ msgstr "Skapa block"
 
 msgctxt "block.procedures.edit.title"
 msgid "Edit block"
-msgstr ""
+msgstr "Redigera block"
 
 msgctxt "block.procedures.edit.confirm"
 msgid "Save"
-msgstr ""
+msgstr "Spara"
 
 msgctxt "block.procedures.error.existing.description"
 msgid "A block with this name already exists."
-msgstr ""
+msgstr "Ett block med detta namn finns redan."

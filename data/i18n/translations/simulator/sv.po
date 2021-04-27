@@ -1,4 +1,4 @@
-# paulobarcelos <paulo@strawbees.com>, 2019. #zanata
+# Kristofer Hagbard <kristofer@strawbees.com>, 2021. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
@@ -6,8 +6,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-04-16 03:59+0000\n"
-"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
+"PO-Revision-Date: 2021-04-27 06:37-0400\n"
+"Last-Translator: Kristofer Hagbard <kristofer@strawbees.com>\n"
 "Language-Team: Swedish\n"
 "Language: sv\n"
 "X-Generator: Zanata 4.6.2\n"
@@ -16,3 +16,11 @@ msgstr ""
 msgctxt "simulator.button.show_hide"
 msgid "Simulator"
 msgstr "Simulator"
+
+msgctxt "simulator.error.same-place"
+msgid "**%1** has more than one component."
+msgstr "**%1** har mer än en komponent."
+
+msgctxt "simulator.warning.disconnected"
+msgid "**%1** is disconnected."
+msgstr "**%1** är frånkopplad."

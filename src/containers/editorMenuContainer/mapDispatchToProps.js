@@ -5,6 +5,7 @@ import {
 } from 'src/actions/editor'
 import {
 	modalUploadCode,
+	modalUploadBootloaderUpdater,
 	modalDuplicateProgramData,
 	modalShareProgramData,
 	modalImportProgram,
@@ -15,6 +16,7 @@ const mapDispatchToProps = autobindDispatchToActionCreators({
 	updateCurrentEditorProgramName,
 	saveCurrentEditorProgram,
 	modalUploadCode,
+	modalUploadBootloaderUpdater,
 	modalDuplicateProgramData,
 	modalShareProgramData,
 	modalImportProgram,

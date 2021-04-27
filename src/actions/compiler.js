@@ -3,10 +3,16 @@ import generateAction from 'src/utils/generateAction'
 import tryToExecute from 'src/utils/tryToExecute'
 import timeoutFetch from 'src/utils/timeoutFetch'
 import compilerHexSelector from 'src/selectors/compilerHexSelector'
+import compilerBootloaderUpdaterHexSelector from 'src/selectors/compilerBootloaderUpdaterHexSelector'
+import compilerFactoryCodeHexSelector from 'src/selectors/compilerFactoryCodeHexSelector'
 import {
 	COMPILER_ADD_GENERATED_CODE,
 	COMPILER_SET_COMPILATION_ERROR,
 	COMPILER_SET_HEX,
+	COMPILER_SET_BOOTLOADER_UPDATER_HEX,
+	COMPILER_SET_BOOTLOADER_UPDATER_RETRIVAL_ERROR,
+	COMPILER_SET_FACTORY_CODE_HEX,
+	COMPILER_SET_FACTORY_CODE_RETRIVAL_ERROR,
 } from 'src/constants/actionTypes'
 import getConfig from 'next/config'
 
@@ -19,6 +25,10 @@ const {
 export const addCompilerCode = generateAction(COMPILER_ADD_GENERATED_CODE)
 export const setCompilerCompilationError = generateAction(COMPILER_SET_COMPILATION_ERROR)
 export const setCompilerHex = generateAction(COMPILER_SET_HEX)
+export const setCompilerBootloaderUpdaterHex = generateAction(COMPILER_SET_BOOTLOADER_UPDATER_HEX)
+export const setCompilerBootloaderUpdaterRetrivalError = generateAction(COMPILER_SET_BOOTLOADER_UPDATER_RETRIVAL_ERROR)
+export const setCompilerFactoryCodeHex = generateAction(COMPILER_SET_FACTORY_CODE_HEX)
+export const setCompilerFactoryCodeRetrivalError = generateAction(COMPILER_SET_FACTORY_CODE_RETRIVAL_ERROR)
 
 const enterCompilationQueue = async (code) => {
 	try {
@@ -81,6 +91,46 @@ const verifyCompilation = async (id) => {
 		throw new Error(error)
 	}
 }
+const retrieveBootloaderUpdaterHex = async () => {
+	try {
+		const response = await timeoutFetch(`${COMPILER_URL}/cfirmware-booloader-updater`, {}, 15000)
+		const hex = await response.json()
+		if (hex) {
+			return hex
+		}
+		throw new Error('UNHANDLED')
+	} catch (e) {
+		let error
+		if (e.message === 'Failed to fetch') {
+			error = 'CONNECTION'
+		} else if (e.name === 'AbortError') {
+			error = 'TIMEOUT'
+		} else {
+			error = e.message
+		}
+		throw new Error(error)
+	}
+}
+const retrieveFactoryCodeHex = async () => {
+	try {
+		const response = await timeoutFetch(`${COMPILER_URL}/cfirmware-reset`, {}, 15000)
+		const hex = await response.json()
+		if (hex) {
+			return hex
+		}
+		throw new Error('UNHANDLED')
+	} catch (e) {
+		let error
+		if (e.message === 'Failed to fetch') {
+			error = 'CONNECTION'
+		} else if (e.name === 'AbortError') {
+			error = 'TIMEOUT'
+		} else {
+			error = e.message
+		}
+		throw new Error(error)
+	}
+}
 export const compileCode = (code) => async (dispatch, getState) => {
 	const state = getState()
 	const stateHex = compilerHexSelector()(state, { code })
@@ -109,5 +159,33 @@ export const compileCode = (code) => async (dispatch, getState) => {
 		dispatch(setCompilerHex({ code, hex }))
 	} catch ({ message : error }) {
 		dispatch(setCompilerCompilationError({ code, error }))
+	}
+}
+export const retrieveBootloaderUpdater = () => async (dispatch, getState) => {
+	const state = getState()
+	const stateHex = compilerBootloaderUpdaterHexSelector()(state)
+	if (stateHex) {
+		return
+	}
+	try {
+		// Retrive the hex directly
+		const hex = await retrieveBootloaderUpdaterHex()
+		dispatch(setCompilerBootloaderUpdaterHex(hex))
+	} catch ({ message : error }) {
+		dispatch(setCompilerBootloaderUpdaterRetrivalError({ error }))
+	}
+}
+export const retrieveFactoryCode = () => async (dispatch, getState) => {
+	const state = getState()
+	const stateHex = compilerFactoryCodeHexSelector()(state)
+	if (stateHex) {
+		return
+	}
+	try {
+		// Retrive the hex directly
+		const hex = await retrieveFactoryCodeHex()
+		dispatch(setCompilerFactoryCodeHex(hex))
+	} catch ({ message : error }) {
+		dispatch(setCompilerFactoryCodeRetrivalError({ error }))
 	}
 }

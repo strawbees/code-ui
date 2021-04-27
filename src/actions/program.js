@@ -1,5 +1,9 @@
 import FileSaver from 'file-saver'
-import { compileCode } from 'src/actions/compiler'
+import {
+	compileCode,
+	retrieveBootloaderUpdater,
+	retrieveFactoryCode,
+} from 'src/actions/compiler'
 import {
 	safeOpenModal,
 	safeOpenDialogModal,
@@ -22,6 +26,7 @@ import CopyableUrl from 'src/components/copyableUrl'
 import FormInput from 'src/components/formInput'
 import ProgramMenuFrame from 'src/components/programMenuFrame'
 import UploadAreaContainer from 'src/containers/uploadAreaContainer'
+import UploadAreaBootloaderUpdaterContainer from 'src/containers/uploadAreaBootloaderUpdaterContainer'
 import ProgramImporterContainer from 'src/containers/programImporterContainer'
 import blockCompressSource from 'src/editors/block/utils/compressSource'
 
@@ -189,6 +194,13 @@ export const modalUploadCode = (code) => async (dispatch) => {
 		/>
 	))
 }
+export const modalUploadBootloaderUpdater = () => async (dispatch) => {
+	dispatch(retrieveBootloaderUpdater())
+	dispatch(retrieveFactoryCode())
+	return dispatch(safeOpenModal(
+		<UploadAreaBootloaderUpdaterContainer/>
+	))
+}
 export const modalImportProgram = () => async (dispatch) =>
 	dispatch(safeOpenDialogModal(
 		{
@@ -198,7 +210,6 @@ export const modalImportProgram = () => async (dispatch) =>
 		},
 		<ProgramImporterContainer />
 	))
-
 export const modalShareProgramData = (program) => async (dispatch, getState) => {
 	const state = getState()
 

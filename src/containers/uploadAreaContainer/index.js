@@ -13,7 +13,7 @@ class UploadAreaContainer extends React.Component {
 		const {
 			hex,
 			boardIds,
-			uploadHex,
+			uploadMutipleHexes,
 			clearUploadError,
 		} = this.props
 		if (
@@ -21,7 +21,7 @@ class UploadAreaContainer extends React.Component {
 			boardIds &&
 			boardIds.length === 1
 		) {
-			uploadHex(boardIds[0], hex)
+			uploadMutipleHexes(boardIds[0], [hex], true)
 		}
 		// Always clean upload errors on mount
 		clearUploadError()
@@ -33,7 +33,7 @@ class UploadAreaContainer extends React.Component {
 		const {
 			hex,
 			boardIds,
-			uploadHex
+			uploadMutipleHexes
 		} = this.props
 		if (
 			!prevHex &&
@@ -41,7 +41,7 @@ class UploadAreaContainer extends React.Component {
 			boardIds &&
 			boardIds.length === 1
 		) {
-			uploadHex(boardIds[0], hex)
+			uploadMutipleHexes(boardIds[0], [hex], true)
 		}
 	}
 
@@ -53,11 +53,11 @@ class UploadAreaContainer extends React.Component {
 }
 
 UploadAreaContainer.propTypes = {
-	code             : PropTypes.string,
-	boardIds         : PropTypes.arrayOf(PropTypes.string),
-	hex              : PropTypes.string,
-	uploadHex        : PropTypes.func,
-	clearUploadError : PropTypes.func,
+	code               : PropTypes.string,
+	boardIds           : PropTypes.arrayOf(PropTypes.string),
+	hex                : PropTypes.string,
+	uploadMutipleHexes : PropTypes.func,
+	clearUploadError   : PropTypes.func,
 }
 const uploadAreaContainerConnected = connect(
 	mapStateToProps,

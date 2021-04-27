@@ -1,4 +1,7 @@
-# paulobarcelos <paulo@strawbees.com>, 2019. #zanata
+# Kristofer Hagbard <kristofer@strawbees.com>, 2019. #zanata
+# Paulo Barcelos <paulo@strawbees.com>, 2019. #zanata
+# Kristofer Hagbard <kristofer@strawbees.com>, 2021. #zanata
+# Paulo Barcelos <paulo@strawbees.com>, 2021. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
@@ -6,21 +9,20 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-06-12 05:36+0000\n"
-"Last-Translator: paulobarcelos <paulo@strawbees.com>\n"
+"PO-Revision-Date: 2021-04-27 05:55-0400\n"
+"Last-Translator: Kristofer Hagbard <kristofer@strawbees.com>\n"
 "Language-Team: Swedish\n"
 "Language: sv\n"
 "X-Generator: Zanata 4.6.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#, fuzzy
 msgctxt "error.og.title"
 msgid "Not found"
 msgstr "Hittades inte"
 
 msgctxt "ui.sb_cloud.delete_account.dialog.title"
 msgid "Delete Strawbees Cloud account"
-msgstr ""
+msgstr "Radera Strawbees användarkonto"
 
 msgctxt "ui.sb_cloud.delete_account.dialog.description"
 msgid ""
@@ -28,10 +30,12 @@ msgid ""
 "\n"
 "Are you sure you want to proceed?"
 msgstr ""
+"Du kommer radera ditt användarkonto **PERMANENT**!\n"
+"Är du säker på att du vill fortsätta?"
 
 msgctxt "ui.sb_cloud.delete_account.dialog.confirm"
 msgid "Delete my account"
-msgstr ""
+msgstr "Radera mitt användarkonto"
 
 msgctxt "ui.sb_cloud.signup.cta"
 msgid "Sign up"
@@ -315,51 +319,51 @@ msgstr "Din e-post är bekräftad."
 
 msgctxt "ui.sb_cloud.change_password.title"
 msgid "Change password"
-msgstr ""
+msgstr "Ändra lösenord"
 
 msgctxt "ui.sb_cloud.change_password.password.label"
 msgid "New password"
-msgstr ""
+msgstr "Nytt lösenord"
 
 msgctxt "ui.sb_cloud.change_password.password.error.blank"
 msgid "You need to fill in your password."
-msgstr ""
+msgstr "Du måste fylla i ditt lösenord."
 
 msgctxt "ui.sb_cloud.change_password.password.error.short"
 msgid "Password needs to be at least 6 characters long."
-msgstr ""
+msgstr "Lösenordet måste vara minst 6 tecken."
 
 msgctxt "ui.sb_cloud.change_password.password_confirm.label"
 msgid "Confirm new password"
-msgstr ""
+msgstr "Bekräfta Lösenord"
 
 msgctxt "ui.sb_cloud.change_password.password_confirm.error.blank"
 msgid "You need to fill in your password."
-msgstr ""
+msgstr "Du måste fylla i ditt lösenord."
 
 msgctxt "ui.sb_cloud.change_password.password_confirm.error.missmatch"
 msgid "Password doesn't match."
-msgstr ""
+msgstr "Lösenordet stämmer inte överens."
 
 msgctxt "ui.sb_cloud.change_password.submit"
 msgid "Sign up"
-msgstr ""
+msgstr "Skapa konto"
 
 msgctxt "ui.sb_cloud.change_password.submit.error.network"
 msgid "There seems to be a connection problem."
-msgstr ""
+msgstr "Det verkar vara problem med anslutningen."
 
 msgctxt "ui.sb_cloud.change_password.submit.error.server"
 msgid "Server is not responding."
-msgstr ""
+msgstr "Servern svarar inte."
 
 msgctxt "ui.sb_cloud.change_password.submit.error.unhandled"
 msgid "We are having problems, please try again later."
-msgstr ""
+msgstr "Vi har problem just nu, vänligen försök igen senare."
 
 msgctxt "ui.sb_cloud.change_password.submit.success"
 msgid "Your password is changed!"
-msgstr ""
+msgstr "Lösenordet har ändrats!"
 
 msgctxt "ui.program_creator.title"
 msgid "Create a program"
@@ -413,6 +417,10 @@ msgctxt "ui.file_menu.options.upload-factory"
 msgid "Upload Factory Program..."
 msgstr "Ladda upp fabriksinställining..."
 
+msgctxt "ui.file_menu.options.upload-bootloader-updater"
+msgid "Update firmware..."
+msgstr "Uppdatera firmware..."
+
 msgctxt "ui.file_menu.options.save"
 msgid "Save"
 msgstr "Spara"
@@ -451,11 +459,11 @@ msgstr "Använda Strawbees CODE"
 
 msgctxt "ui.help_menu.options.coding_cards.flow.title"
 msgid "Flow coding cards..."
-msgstr ""
+msgstr "Kodningskort för flödesprogrammering"
 
 msgctxt "ui.help_menu.options.coding_cards.block.title"
 msgid "Block coding cards..."
-msgstr ""
+msgstr "Kodningskort för blockprogrammering"
 
 msgctxt "ui.help_menu.options.intro_code.video"
 msgid "https://www.youtube.com/watch?v=-D9FhCw9OVA"
@@ -573,7 +581,6 @@ msgctxt "ui.dialog.discard.title"
 msgid "Program not saved!"
 msgstr "Programmet är inte sparat!"
 
-#, fuzzy
 msgctxt "ui.dialog.discard.description"
 msgid ""
 "You are about to leave the current editor and your changes will be lost. Do "
@@ -586,12 +593,10 @@ msgctxt "ui.dialog.discard.confirm"
 msgid "Proceed"
 msgstr "Fortsätt"
 
-#, fuzzy
 msgctxt "ui.dialog.anonymous_copy_programs.title"
 msgid "Copy existing programs?"
 msgstr "Kopiera program till konto?"
 
-#, fuzzy
 msgctxt "ui.dialog.anonymous_copy_programs.description"
 msgid "Would you like to copy the existing programs to your account?"
 msgstr ""
@@ -626,7 +631,6 @@ msgctxt "ui.program_list.sort.modified"
 msgid "last modified"
 msgstr "senast ändrad"
 
-#, fuzzy
 msgctxt "ui.editor.program_placeholder_name"
 msgid "Untitled Program"
 msgstr "Namnlöst Program"
@@ -661,19 +665,19 @@ msgstr "Logga ut"
 
 msgctxt "ui.user.account_settings.download_data"
 msgid "Download all my data"
-msgstr ""
+msgstr "Hämta all min data"
 
 msgctxt "ui.user.account_settings.change_password"
 msgid "Change password"
-msgstr ""
+msgstr "Ändra lösenord"
 
 msgctxt "ui.user.account_settings.danger_zone"
 msgid "Danger zone"
-msgstr ""
+msgstr "Varning för att klicka här!"
 
 msgctxt "ui.user.account_settings.delete_account"
 msgid "Delete my account and data"
-msgstr ""
+msgstr "Radera mitt användarkonto och all min information."
 
 msgctxt "ui.user.account_settings.public_profile.title"
 msgid "Public profile link"
@@ -691,7 +695,6 @@ msgctxt "ui.editor.text_preview.title"
 msgid "Text program preview"
 msgstr "Förhandsvisning av Textprogram"
 
-#, fuzzy
 msgctxt "ui.editor.text_preview.description"
 msgid ""
 "This is the text version of your visual program. To modify it, open it in "
@@ -700,7 +703,6 @@ msgstr ""
 "Det här är textversionen av din kod. Om du vill kan du öppna och redigera "
 "det som textprogram."
 
-#, fuzzy
 msgctxt "ui.editor.text_preview.create"
 msgid "Open in text editor"
 msgstr "Öppna som textprogram"
@@ -817,12 +819,10 @@ msgctxt "ui.board.upload.status.NO_HEX"
 msgid "Preparing program..."
 msgstr "Förbereder programmet..."
 
-#, fuzzy
 msgctxt "ui.board.upload.status.IDDLE"
 msgid "Waiting to start..."
 msgstr "Väntar på att starta..."
 
-#, fuzzy
 msgctxt "ui.board.upload.status.BUSY"
 msgid "Waiting upload to finish..."
 msgstr "Väntar på att avsluta..."
@@ -899,7 +899,6 @@ msgctxt "ui.board.upload.disconnect_warning"
 msgid "Please don't disconnect your Quirkbot."
 msgstr "Behåll din Quirkbot inkopplad till datorn."
 
-#, fuzzy
 msgctxt "ui.board.upload.not_compatible_warning"
 msgid "Your board model is not compatible with this uploader."
 msgstr ""

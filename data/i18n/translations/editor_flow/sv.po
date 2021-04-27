@@ -1,5 +1,6 @@
 # Kristofer Hagbard <kristofer@strawbees.com>, 2019. #zanata
-# paulobarcelos <paulo@strawbees.com>, 2019. #zanata
+# Kristofer Hagbard <kristofer@strawbees.com>, 2021. #zanata
+# Paulo Barcelos <paulo@strawbees.com>, 2021. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
@@ -7,8 +8,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-10-21 03:28+0000\n"
-"Last-Translator: Kristofer Hagbard <kristofer@strawbees.com>\n"
+"PO-Revision-Date: 2021-04-27 06:35-0400\n"
+"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
 "Language-Team: Swedish\n"
 "Language: sv\n"
 "X-Generator: Zanata 4.6.2\n"
@@ -34,10 +35,9 @@ msgctxt "flow.menu.toggle.advanced"
 msgid "advanced"
 msgstr "avancerad"
 
-#, fuzzy
 msgctxt "flow.category.brains"
 msgid "Brains"
-msgstr "Brains"
+msgstr "Hjärna"
 
 msgctxt "flow.category.input"
 msgid "Input"
@@ -55,12 +55,10 @@ msgctxt "flow.node.buzzer"
 msgid "Buzzer"
 msgstr "Buzzer"
 
-#, fuzzy
 msgctxt "flow.node.continuous-servo"
 msgid "Continuous Servo"
-msgstr "Rotations Servo"
+msgstr "Kontinuerlig Servo"
 
-#, fuzzy
 msgctxt "flow.node.comparison"
 msgid "Comparison"
 msgstr "Jämförelse"
@@ -69,7 +67,6 @@ msgctxt "flow.node.constrain"
 msgid "Constrain"
 msgstr "Begränsa"
 
-#, fuzzy
 msgctxt "flow.node.converter"
 msgid "Converter"
 msgstr "Konvertera"
@@ -86,7 +83,6 @@ msgctxt "flow.node.dual-color-led"
 msgid "Dual Color LED"
 msgstr "Tvåfärgad LED"
 
-#, fuzzy
 msgctxt "flow.node.gate"
 msgid "Gate"
 msgstr "Brytare"
@@ -143,16 +139,14 @@ msgctxt "flow.node.sonar"
 msgid "Sonar"
 msgstr "Sonar"
 
-#, fuzzy
 msgctxt "flow.node.squeeze-sensor"
 msgid "Squeeze Sensor"
-msgstr "Kalibrerad sensor"
+msgstr "Kalibrerande sensor"
 
 msgctxt "flow.node.statistics"
 msgid "Statistics"
 msgstr "Statistik"
 
-#, fuzzy
 msgctxt "flow.node.voltage-output"
 msgid "Voltage Output"
 msgstr "PWM utgång"
@@ -225,32 +219,26 @@ msgctxt "flow.parameter.type"
 msgid "type"
 msgstr "typ"
 
-#, fuzzy
 msgctxt "flow.parameter.min"
 msgid "min"
 msgstr "minimum"
 
-#, fuzzy
 msgctxt "flow.parameter.max"
 msgid "max"
 msgstr "maximum"
 
-#, fuzzy
 msgctxt "flow.parameter.inMin"
 msgid "in min"
 msgstr "in minimum"
 
-#, fuzzy
 msgctxt "flow.parameter.inMax"
 msgid "in max"
 msgstr "in maximum"
 
-#, fuzzy
 msgctxt "flow.parameter.outMin"
 msgid "out min"
 msgstr "ut minimum"
 
-#, fuzzy
 msgctxt "flow.parameter.outMax"
 msgid "out max"
 msgstr "ut maximum"
@@ -279,7 +267,6 @@ msgctxt "flow.parameter.offset"
 msgid "offset"
 msgstr "förskjutning"
 
-#, fuzzy
 msgctxt "flow.parameter.channel"
 msgid "channel"
 msgstr "kanal"
@@ -316,7 +303,6 @@ msgctxt "flow.constant.logic-or"
 msgid "OR"
 msgstr "ELLER"
 
-#, fuzzy
 msgctxt "flow.constant.logic-xor"
 msgid "XOR"
 msgstr "XOR"
@@ -413,7 +399,6 @@ msgctxt "flow.constant.servo-motor-2"
 msgid "Servo 2"
 msgstr "Servo 2"
 
-#, fuzzy
 msgctxt "flow.constant.disconnected"
 msgid "Disconnected"
 msgstr "Ej vald"

@@ -268,6 +268,7 @@
 	"NEW_PROCEDURE": "Krei blokon",
 	"PROCEDURE_ALREADY_EXISTS": "Proceduro nomita \"%1\" jam ekzistas.",
 	"PROCEDURE_DEFAULT_NAME": "nomo de bloko",
+	"PROCEDURE_USED": "Antaŭ ol forigi difinon de iu bloko, vi devas unue forigi ĉiun uzon de la bloko",
 	"NEW_LIST": "Krei liston",
 	"NEW_LIST_TITLE": "Nomo de la nova listo:",
 	"LIST_MODAL_TITLE": "Nova listo",

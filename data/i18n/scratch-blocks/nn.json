@@ -268,6 +268,7 @@
 	"NEW_PROCEDURE": "Lag ein kloss",
 	"PROCEDURE_ALREADY_EXISTS": "Det finst alt ein prosedyre som heiter «%1».",
 	"PROCEDURE_DEFAULT_NAME": "klossnamn",
+	"PROCEDURE_USED": "For å sletta definisjonen av ein kloss må du først fjerna han frå alle skripta.",
 	"NEW_LIST": "Lag ei liste",
 	"NEW_LIST_TITLE": "Namn på ny liste:",
 	"LIST_MODAL_TITLE": "Ny liste",

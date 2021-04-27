@@ -16,7 +16,7 @@ const fields = [
 			if (!value || value < 13) {
 				return 'underAge'
 			}
-			return null
+			return undefined
 		},
 		// validateOnBlur : true,
 		errorKeys : {
@@ -41,7 +41,7 @@ const fields = [
 			if (value !== match[0]) {
 				return 'invalid'
 			}
-			return null
+			return undefined
 		},
 		// validateOnBlur : true,
 		errorKeys : {
@@ -64,7 +64,7 @@ const fields = [
 			if (value.indexOf('@') < 1) {
 				return 'invalid'
 			}
-			return null
+			return undefined
 		},
 		// validateOnBlur : true,
 		errorKeys : {
@@ -84,7 +84,7 @@ const fields = [
 	// 		if (values.email !== values['email-confirm']) {
 	// 			return 'missmatch'
 	// 		}
-	// 		return null
+	// 		return undefined
 	// 	},
 	//	// validateOnBlur : true,
 	// 	errorKeys      : {
@@ -105,7 +105,7 @@ const fields = [
 			if (!value || value.length < 6) {
 				return 'short'
 			}
-			return null
+			return undefined
 		},
 		// validateOnBlur : true,
 		errorKeys : {
@@ -126,7 +126,7 @@ const fields = [
 	// 		if (values.password !== values['password-confirm']) {
 	// 			return 'missmatch'
 	// 		}
-	// 		return null
+	// 		return undefined
 	// 	},
 	// 	// validateOnBlur : true,
 	// 	errorKeys      : {
@@ -145,7 +145,7 @@ const fields = [
 			if (!value) {
 				return 'agree'
 			}
-			return null
+			return undefined
 		},
 		// validateOnBlur : true,
 		errorKeys : {
