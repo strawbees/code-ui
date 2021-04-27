@@ -66,9 +66,9 @@ async function writeDataToFirstAvaiblePort(bytes) {
 	await port.close()
 }
 
-async function detectInPorts({ bootloader, program }) {
+async function detectPort({ bootloader, program }) {
 	const filters = getUsbFilters({ bootloader, program })
-	let detected = false
+	let detected
 	const ports = await navigator.serial.getPorts()
 	ports.forEach((port) => {
 		if (detected) {
@@ -80,7 +80,7 @@ async function detectInPorts({ bootloader, program }) {
 				return
 			}
 			if (d.usbProductId === usbProductId && d.usbVendorId === usbVendorId) {
-				detected = true
+				detected = port
 			}
 		})
 	})
@@ -105,10 +105,10 @@ async function refreshPorts({ bootloader, program }) {
 
 export async function setRequestAccessStatus({ bootloader, program }) {
 	if (typeof bootloader !== 'undefined') {
-		browserStorage.set('web-serial', 'bootloader-detected', bootloader)
+		browserStorage.set('web-serial', 'bootloader-detected', !!bootloader)
 	}
 	if (typeof program !== 'undefined') {
-		browserStorage.set('web-serial', 'program-detected', program)
+		browserStorage.set('web-serial', 'program-detected', !!program)
 	}
 }
 
@@ -132,11 +132,11 @@ export async function requestAccess() {
 	// If the permissions are not granted, check again, as it may only be the case
 	// that the storage has been cleared, but the permissions are actually in place
 	if (!bootloader) {
-		bootloader = await detectInPorts({ bootloader : true })
+		bootloader = await detectPort({ bootloader : true })
 		await setRequestAccessStatus({ bootloader })
 	}
 	if (!program) {
-		program = await detectInPorts({ program : true })
+		program = await detectPort({ program : true })
 		await setRequestAccessStatus({ program })
 	}
 
@@ -148,8 +148,8 @@ export async function requestAccess() {
 	if (!bootloader && !program) {
 		// Request access to both
 		await refreshPorts({ bootloader : true, program : true })
-		bootloader = await detectInPorts({ bootloader : true })
-		program = await detectInPorts({ program : true })
+		bootloader = await detectPort({ bootloader : true })
+		program = await detectPort({ program : true })
 		await setRequestAccessStatus({ bootloader, program })
 		// If nothing was detected, we are out of luck and this routine can end now.
 		if (!bootloader && !program) {
@@ -178,7 +178,7 @@ export async function requestAccess() {
 		// // has enought time to be picked up by the OS), and try to detected it,
 		// // before refreshing the posts
 		// await new Promise(r => setTimeout(r, 1000))
-		// bootloader = await detectInPorts({ bootloader : true })
+		// bootloader = await detectPort({ bootloader : true })
 		// await setRequestAccessStatus({ bootloader })
 		// // If the bootloader was detected, great! We are done.
 		// if (bootloader) {
@@ -193,7 +193,7 @@ export async function requestAccess() {
 		// Ok, if we got here, maybe the bootloader has not permissions yet. In
 		// that case, request access (only for bootloader)
 		await refreshPorts({ bootloader : true })
-		bootloader = await detectInPorts({ bootloader : true })
+		bootloader = await detectPort({ bootloader : true })
 		await setRequestAccessStatus({ bootloader })
 		// If the bootloader was detected, great! We are done.
 		if (bootloader) {
@@ -231,7 +231,7 @@ export async function requestAccess() {
 		// // has enought time to be picked up by the OS), and try to detected it,
 		// // before refreshing the posts
 		// await new Promise(r => setTimeout(r, 2000))
-		// program = await detectInPorts({ program : true })
+		// program = await detectPort({ program : true })
 		// await setRequestAccessStatus({ program })
 		// // If the program was detected, great! We are done.
 		// if (program) {
@@ -242,7 +242,7 @@ export async function requestAccess() {
 		// Ok, if we got here, maybe the bootloader has not permissions yet. In
 		// that case, request access (only for bootloader)
 		await refreshPorts({ program : true })
-		program = await detectInPorts({ program : true })
+		program = await detectPort({ program : true })
 		await setRequestAccessStatus({ program })
 
 		// Nothing else to do here
