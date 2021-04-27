@@ -23,7 +23,6 @@ import {
 	getPorts,
 	openPort,
 	closePort,
-	createPortHash,
 } from './serial'
 
 import {
@@ -152,32 +151,37 @@ export async function testSingleLinkConnectionByReadingBootloaderInterface(link)
 export async function discoverSingleLinkUuid(link) {
 	logOpenCollapsed('Aquiring UUID')
 	let uuid = ''
-	if (link.bootloader) {
-		// The booloader will respond with the UUID if queried
-		uuid = await sendAndReceiveMessageToSingleLink(
-			link,
-			[COMMANDS.ReadUUID],
-			[
-				new window.TransformStream(new SlicerTransformer(UUID_SIZE)),
-				new window.TextDecoderStream()
-			],
-			5
-		)
-	} else {
-		// Programs will broadcast the UUID constantly, so we need to monitor it
-		uuid = await waitForMessageFromSingleLink(
-			link,
-			[
-				new window.TransformStream(
-					new RawSerialReportTransformer(
-						REPORT_DELIMITERS.Start, REPORT_DELIMITERS.UUID
-					)
-				),
-				new window.TextDecoderStream()
-			],
-			1000
-		)
+	try {
+		if (link.bootloader) {
+			// The booloader will respond with the UUID if queried
+			uuid = await sendAndReceiveMessageToSingleLink(
+				link,
+				[COMMANDS.ReadUUID],
+				[
+					new window.TransformStream(new SlicerTransformer(UUID_SIZE)),
+					new window.TextDecoderStream()
+				],
+				5
+			)
+		} else {
+			// Programs will broadcast the UUID constantly, so we need to monitor it
+			uuid = await waitForMessageFromSingleLink(
+				link,
+				[
+					new window.TransformStream(
+						new RawSerialReportTransformer(
+							REPORT_DELIMITERS.Start, REPORT_DELIMITERS.UUID
+						)
+					),
+					new window.TextDecoderStream()
+				],
+				1000
+			)
+		}
+	} catch (e) {
+		log('Error trying to discover UUID', e)
 	}
+
 	log('UUID:', uuid)
 	logClose()
 	return uuid
@@ -321,69 +325,57 @@ export async function controlSingleLinkBootloaderMode(bootloader, link) {
 	await closePort(link.port)
 
 	// Wait for the connection disapear, and a new one to appear
-	logOpenCollapsed('Wait connections to appear/disapear')
-	let addedConections
+	logOpenCollapsed('Waiting for port to appear...')
 	try {
-		const connectionHistory = await Promise.all([
-			waitForSingleLinkConnectionToAppear(link)
-		])
-		addedConections = connectionHistory.pop()
+		// Update the link connections
+		const newPort = await waitForPortToAppear(link)
+		log('Port appeared', newPort)
+		link.port = newPort
 	} catch (e) {
-		log('New connection never appeared, continuing with current', e)
-		addedConections = {
-			port : link.port,
-		}
+		log('New port never appeared, continuing with current', e)
 	}
-	log('Added connections', addedConections)
 
 	logClose()
-
-	// Update the link connections
-	link.port = addedConections.port
 }
 
-export async function waitForSingleLinkConnectionToAppear() {
-	let lastPorts = await getPorts()
-
-	log('Original ports', lastPorts)
-
+export async function waitForPortToAppear() {
 	let tries = 0
 	let port = null
 
+	const lastPorts = await getPorts()
 	await asyncSafeWhile(
-		async () => tries < 40 && !port,
+		async () => tries < 50 && !port,
 		async () => {
 			logOpen('Appear try', tries)
+			log('Last ports', lastPorts)
 
 			const currentPorts = await getPorts()
-			const currentPortsHashes = currentPorts.map(createPortHash)
-			const lastPortsHashes = lastPorts.map(createPortHash)
-
-			const portHash = arrayDiff(
-				currentPortsHashes,
-				lastPortsHashes
-			).shift()
-
-			port = currentPorts[currentPortsHashes.indexOf(portHash)]
-			lastPorts = currentPorts
 			log('Current ports', currentPorts)
+
+			port = arrayDiff(
+				currentPorts,
+				lastPorts
+			).pop()
+			if (port) {
+				log('Port appeared!', port)
+			}
 
 			logClose()
 
 			tries++
-			await delay(100)
+			await delay(200)
 		}
 	)
 
-	if (!port) {
-		log('NEVER appeared')
+	if (port) {
+		log('Port appeared!', port)
+	} else {
+		log('Port never appeared.')
 		throw new Error('Port never appeared.')
 	}
-	// We got new inputs and outputs!
-	log('appeared')
-	return {
-		port
-	}
+
+	// We got a new port!
+	return port
 }
 
 export async function sendFirmwareToSingleLinkWithConfidence(link, data) {

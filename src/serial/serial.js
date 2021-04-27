@@ -49,13 +49,27 @@ export function getUsbFilters({ bootloader, program }) {
 	return filters
 }
 
-export async function getPortByFilter({ usbVendorId, usbProductId }) {
+export function generatePortId(port, index) {
+	const info = port.getInfo()
+	return `${info.usbVendorId}_${info.usbProductId}_${index}`
+}
+
+export async function unserializePort(id) {
 	const ports = await getPorts()
 	for (let i = 0; i < ports.length; i++) {
 		const port = ports[i]
-		const info = port.getInfo()
-		if (info.usbVendorId === usbVendorId && info.usbProductId === usbProductId) {
+		if (id === generatePortId(port, i)) {
 			return port
+		}
+	}
+	return null
+}
+
+export async function serializePort(port) {
+	const ports = await getPorts()
+	for (let i = 0; i < ports.length; i++) {
+		if (port === ports[i]) {
+			return generatePortId(port, i)
 		}
 	}
 	return null

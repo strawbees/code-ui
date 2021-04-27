@@ -441,7 +441,7 @@ async function continuouslyMonitor(firstRun, linksMap, links, uploads, enterBoot
 	inPlaceArrayDiff(links, removedLinks)
 	removedLinks.forEach(link => linksMap.delete(link))
 	log('Removed links', removedLinks)
-	saveLinksStateToLocalStorage(links)
+	await saveLinksStateToLocalStorage(links)
 	logClose()
 
 	logOpenCollapsed('Find new links')
@@ -455,7 +455,7 @@ async function continuouslyMonitor(firstRun, linksMap, links, uploads, enterBoot
 	inPlaceArrayConcat(links, foundLinks)
 	foundLinks.forEach(link => linksMap.set(link, link))
 	log('Found links', foundLinks)
-	saveLinksStateToLocalStorage(links)
+	await saveLinksStateToLocalStorage(links)
 	logClose()
 
 	log('Current links', links)
@@ -476,7 +476,7 @@ async function continuouslyMonitor(firstRun, linksMap, links, uploads, enterBoot
 	} catch (error) {
 		log(error)
 	}
-	saveLinksStateToLocalStorage(links)
+	await saveLinksStateToLocalStorage(links)
 	logClose()
 
 	logOpenCollapsed('Handle pending enter bootloader mode')
@@ -485,7 +485,7 @@ async function continuouslyMonitor(firstRun, linksMap, links, uploads, enterBoot
 	} catch (error) {
 		log(error)
 	}
-	saveLinksStateToLocalStorage(links)
+	await saveLinksStateToLocalStorage(links)
 	logClose()
 
 	logOpenCollapsed('Handle pending exit bootloader mode')
@@ -494,7 +494,7 @@ async function continuouslyMonitor(firstRun, linksMap, links, uploads, enterBoot
 	} catch (error) {
 		log(error)
 	}
-	saveLinksStateToLocalStorage(links)
+	await saveLinksStateToLocalStorage(links)
 	logClose()
 
 	logOpenCollapsed('Handle pending uploads')
@@ -503,7 +503,7 @@ async function continuouslyMonitor(firstRun, linksMap, links, uploads, enterBoot
 	} catch (error) {
 		log(error)
 	}
-	saveLinksStateToLocalStorage(links)
+	await saveLinksStateToLocalStorage(links)
 	logClose()
 
 	logOpenCollapsed('Unlock Thread')
@@ -542,7 +542,7 @@ async function handlePendingUploads(links, uploads) {
 async function handleSinglePendingUpload(links, upload, uploads) {
 	logOpenCollapsed('Upload')
 	upload.link.uploading = true
-	saveLinksStateToLocalStorage(links)
+	await saveLinksStateToLocalStorage(links)
 	try {
 		await uploadHexToSingleLink(
 			upload.link,
@@ -556,7 +556,7 @@ async function handleSinglePendingUpload(links, upload, uploads) {
 	}
 	upload.link.uploading = false
 	uploads.splice(uploads.indexOf(upload), 1)
-	saveLinksStateToLocalStorage(links)
+	await saveLinksStateToLocalStorage(links)
 	logClose()
 }
 
@@ -571,7 +571,7 @@ async function handlePendingEnterBootloaderModes(links, requests) {
 async function handleSinglePendingEnterBootloaderMode(links, request, requests) {
 	logOpenCollapsed('Enter Bootloader Mode')
 	request.link.enteringBootloaderMode = true
-	saveLinksStateToLocalStorage(links)
+	await saveLinksStateToLocalStorage(links)
 	try {
 		await guaranteeSingleLinkEnterBootloaderMode(request.link)
 		log('%cSuccess', 'color:green')
@@ -581,7 +581,7 @@ async function handleSinglePendingEnterBootloaderMode(links, request, requests) 
 	}
 	request.link.enteringBootloaderMode = false
 	requests.splice(requests.indexOf(request), 1)
-	saveLinksStateToLocalStorage(links)
+	await saveLinksStateToLocalStorage(links)
 	logClose()
 }
 
@@ -596,7 +596,7 @@ async function handlePendingExitBootloaderModes(links, requests) {
 async function handleSinglePendingExitBootloaderMode(links, request, requests) {
 	logOpenCollapsed('Exit Bootloader Mode')
 	request.link.exitingBootloaderMode = true
-	saveLinksStateToLocalStorage(links)
+	await saveLinksStateToLocalStorage(links)
 	try {
 		await guaranteeSingleLinkExitBootloaderMode(request.link)
 		log('%cSuccess', 'color:green')
@@ -606,7 +606,7 @@ async function handleSinglePendingExitBootloaderMode(links, request, requests) {
 	}
 	request.link.exitingBootloaderMode = false
 	requests.splice(requests.indexOf(request), 1)
-	saveLinksStateToLocalStorage(links)
+	await saveLinksStateToLocalStorage(links)
 	logClose()
 }
 
