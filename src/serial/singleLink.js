@@ -329,31 +329,41 @@ export async function exitSingleLinkBootloaderMode(link) {
 
 export async function controlSingleLinkBootloaderMode(bootloader, link) {
 	// Send the command for the board to enter/exit booloader mode
-	if (!bootloader) {
-		// When trying to exit the bootloader, the board will first respond after
-		// the "exit" command is received, and only then it will reboot.
-		log('Sending command to exit bootloader...')
-		const message = [COMMANDS.ExitBootloader]
-		try {
-			await sendMessageAndExpectExactOneByteResponseToSingleLink(
-				link, message, AVR.Ok, [], 50, true, { baudRate : AVR.BaudRateUpload }
-			)
-		} catch (e) {
-			log('Error trying to exit bootloader, continuing anyway. Error:', e)
-		}
-	} else {
-		// When entering bootloader, the board will NOT respond after the "enter"
-		// command is received. It will only reboot immediatly.
-		log('Sending command to enter bootloader')
-		log('Opening port...')
-		await openPort(link.port, { baudRate : AVR.BaudRateUpload })
-		const command = bootloader ? COMMANDS.EnterBootloader : COMMANDS.ExitBootloader
-		log('Sending command:', command)
-		await writeBytesToPort(link.port, [COMMANDS.EnterBootloader])
-		await delay(10)
-		log('Closing port...')
-		await closePort(link.port)
-	}
+	// if (!bootloader) {
+	// 	// When trying to exit the bootloader, the board will first respond after
+	// 	// the "exit" command is received, and only then it will reboot.
+	// 	log('Sending command to exit bootloader...')
+	// 	const message = [COMMANDS.ExitBootloader]
+	// 	try {
+	// 		await sendMessageAndExpectExactOneByteResponseToSingleLink(
+	// 			link, message, AVR.Ok, [], 50, true, { baudRate : AVR.BaudRateUpload }
+	// 		)
+	// 	} catch (e) {
+	// 		log('Error trying to exit bootloader, continuing anyway. Error:', e)
+	// 	}
+	// } else {
+	// 	// When entering bootloader, the board will NOT respond after the "enter"
+	// 	// command is received. It will only reboot immediatly.
+	// 	log('Sending command to enter bootloader')
+	// 	log('Opening port...')
+	// 	await openPort(link.port, { baudRate : AVR.BaudRateUpload })
+	// 	const command = bootloader ? COMMANDS.EnterBootloader : COMMANDS.ExitBootloader
+	// 	log('Sending command:', command)
+	// 	await writeBytesToPort(link.port, [COMMANDS.EnterBootloader])
+	// 	await delay(10)
+	// 	log('Closing port...')
+	// 	await closePort(link.port)
+	// }
+
+	log('Opening port...')
+	const command = bootloader ? COMMANDS.EnterBootloader : COMMANDS.ExitBootloader
+	const baudRate = bootloader ? COMMANDS.BaudRateCommunication : COMMANDS.BaudRateUpload
+	await openPort(link.port, { baudRate })
+	log('Sending command:', bootloader ? 'enter' : 'exit', command)
+	await writeBytesToPort(link.port, [command])
+	await delay(10)
+	log('Closing port...')
+	await closePort(link.port)
 
 	// Now the device should reconnect, so we monitor the ports
 	logOpenCollapsed('Waiting for new device...')
@@ -503,7 +513,6 @@ export async function AVRWritePagesRecursivelly(link, data) {
 	for (let page = 0; page < numPages; page++) {
 		try {
 			await AVRWritePage(link, data, page)
-			await delay(1)
 		} catch (e) {
 			logClose()
 			throw	e
