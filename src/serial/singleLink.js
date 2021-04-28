@@ -10,7 +10,6 @@ import {
 
 import {
 	log,
-	logOpen,
 	logOpenCollapsed,
 	logClose
 } from './log'
@@ -246,39 +245,38 @@ export async function refreshSingleLinkInfoIfNeeded(link) {
 	await refreshSingleLinkInfo(link)
 }
 
-export async function uploadHexToSingleLink(link, hexString, onUpdate = () => {}) {
-	logOpen('Guarantee bootloader')
+export async function uploadHexToSingleLink(link, hexString, onUpdate = async () => {}) {
+	logOpenCollapsed('Guarantee bootloader')
 	await guaranteeSingleLinkEnterBootloaderMode(link)
-	onUpdate()
+	await onUpdate()
 	logClose()
 
-	logOpen('Send firmware')
+	logOpenCollapsed('Send firmware')
 	let data = []
 	parseIntelHex(hexString).data.forEach(o => data.push(o))
 	data = pad(data, AVR.PageSize)
 	await tryToExecute(() => sendFirmwareToSingleLinkWithConfidence(link, data), 10, 1000)
-	onUpdate()
+	await onUpdate()
 	logClose()
 
 	// Exit the bootloader mode. Here we don't want to "guarantee" the booloader
 	// since there could firmwares that will send the board directly back to
 	// bootloader mode (eg. bootloader updater).
-	logOpen('Exit bootloader mode')
+	logOpenCollapsed('Exit bootloader mode')
 	await exitSingleLinkBootloaderMode(link)
 	logClose()
 	await refreshSingleLinkBootloaderStatus(link)
 
-	await refreshSingleLinkInfo(link)
-	onUpdate()
+	await onUpdate()
 }
 
 export async function guaranteeSingleLinkExitBootloaderMode(link) {
 	if (await discoverSingleLinkBootloaderStatus(link)) {
-		logOpen('Exit bootloader mode')
+		logOpenCollapsed('Exit bootloader mode')
 		await exitSingleLinkBootloaderMode(link)
 		log('Completed "exit bootloader" routine')
 		logClose()
-		logOpen('Confirm not on bootloader mode')
+		logOpenCollapsed('Confirm not on bootloader mode')
 		await refreshSingleLinkBootloaderStatus(link)
 		if (link.bootloader) {
 			throw new Error('Could not confirm that board is not on bootloader mode.')
@@ -292,11 +290,11 @@ export async function guaranteeSingleLinkExitBootloaderMode(link) {
 
 export async function guaranteeSingleLinkEnterBootloaderMode(link) {
 	if (!await discoverSingleLinkBootloaderStatus(link)) {
-		logOpen('Enter bootloader mode')
+		logOpenCollapsed('Enter bootloader mode')
 		await enterSingleLinkBootloaderMode(link)
 		log('Completed "enter bootloader" routine')
 		logClose()
-		logOpen('Confirm bootloader mode')
+		logOpenCollapsed('Confirm bootloader mode')
 		await refreshSingleLinkBootloaderStatus(link)
 		if (!link.bootloader) {
 			throw new Error('Could not confirm that board is on bootloader mode.')
@@ -318,27 +316,30 @@ export async function exitSingleLinkBootloaderMode(link) {
 
 export async function controlSingleLinkBootloaderMode(bootloader, link) {
 	// Send the command for the board to enter/exit booloader mode
-	log('Send command')
-	// Send the message
+	log('Opening port...')
 	await openPort(link.port)
-	await writeBytesToPort(link.port, [bootloader ? COMMANDS.EnterBootloader : COMMANDS.ExitBootloader])
+	const command = bootloader ? COMMANDS.EnterBootloader : COMMANDS.ExitBootloader
+	log('Sending command:', command)
+	await writeBytesToPort(link.port, [command])
+	log('Closing port...')
 	await closePort(link.port)
 
-	// Wait for the connection disapear, and a new one to appear
-	logOpenCollapsed('Waiting for port to appear...')
+	// Now the device should reconnect, so we monitor the ports
+	logOpenCollapsed('Waiting for new device...')
 	try {
 		// Update the link connections
 		const newPort = await waitForPortToAppear(link)
-		log('Port appeared', newPort)
 		link.port = newPort
+		log('Link was updated with a new device port', link)
 	} catch (e) {
-		log('New port never appeared, continuing with current', e)
+		log('Link as not updated, because a new device never appeared ', e)
 	}
 
 	logClose()
 }
 
 export async function waitForPortToAppear() {
+	logOpenCollapsed('Waiting for port to appear...')
 	let tries = 0
 	let port = null
 
@@ -346,7 +347,7 @@ export async function waitForPortToAppear() {
 	await asyncSafeWhile(
 		async () => tries < 50 && !port,
 		async () => {
-			logOpen('Appear try', tries)
+			logOpenCollapsed('Appear try', tries)
 			log('Last ports', lastPorts)
 
 			const currentPorts = await getPorts()
@@ -373,7 +374,7 @@ export async function waitForPortToAppear() {
 		log('Port never appeared.')
 		throw new Error('Port never appeared.')
 	}
-
+	logClose()
 	// We got a new port!
 	return port
 }
@@ -468,6 +469,7 @@ export async function AVRWritePagesRecursivelly(link, data) {
 	for (let page = 0; page < numPages; page++) {
 		try {
 			await AVRWritePage(link, data, page)
+			await delay(1)
 		} catch (e) {
 			logClose()
 			throw	e

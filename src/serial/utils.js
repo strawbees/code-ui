@@ -1,5 +1,5 @@
 import {
-	logOpen,
+	logOpenCollapsed,
 	logClose,
 	logError
 } from './log'
@@ -119,7 +119,7 @@ export async function tryToExecute(generator, maxTries = 5, interval = 100) {
 	let result
 	while (!success && tries < maxTries) {
 		tries++
-		logOpen('Try to execute', tries)
+		logOpenCollapsed('Try to execute', tries)
 		try {
 			result = await generator()
 			success = true

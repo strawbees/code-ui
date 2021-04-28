@@ -549,7 +549,7 @@ async function handleSinglePendingUpload(links, upload, uploads) {
 			upload.hexString,
 			() => saveLinksStateToLocalStorage(links)
 		)
-		log('%cSuccess', 'color:green')
+		log('%cUpload success', 'color:green')
 	} catch (error) {
 		log('%cUpload error', 'color:red', error)
 		upload.error = error
@@ -569,14 +569,14 @@ async function handlePendingEnterBootloaderModes(links, requests) {
 }
 
 async function handleSinglePendingEnterBootloaderMode(links, request, requests) {
-	logOpenCollapsed('Enter Bootloader Mode')
+	logOpenCollapsed('Enter bootloader mode')
 	request.link.enteringBootloaderMode = true
 	await saveLinksStateToLocalStorage(links)
 	try {
 		await guaranteeSingleLinkEnterBootloaderMode(request.link)
-		log('%cSuccess', 'color:green')
+		log('%cEnter bootloader success!', 'color:green')
 	} catch (error) {
-		log('%cEnter Bootloader error', 'color:red', error)
+		log('%cEnter bootloader error', 'color:red', error)
 		request.error = error
 	}
 	request.link.enteringBootloaderMode = false
@@ -594,14 +594,14 @@ async function handlePendingExitBootloaderModes(links, requests) {
 }
 
 async function handleSinglePendingExitBootloaderMode(links, request, requests) {
-	logOpenCollapsed('Exit Bootloader Mode')
+	logOpenCollapsed('Exit bootloader mode')
 	request.link.exitingBootloaderMode = true
 	await saveLinksStateToLocalStorage(links)
 	try {
 		await guaranteeSingleLinkExitBootloaderMode(request.link)
-		log('%cSuccess', 'color:green')
+		log('%Exit bootloader success!', 'color:green')
 	} catch (error) {
-		log('%Exit Bootloader error', 'color:red', error)
+		log('%Exit bootloader error', 'color:red', error)
 		request.error = error
 	}
 	request.link.exitingBootloaderMode = false

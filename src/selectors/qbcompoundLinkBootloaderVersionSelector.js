@@ -7,7 +7,7 @@ const qbcompoundLinkBootloaderVersionSelector = () => createSelector(
 	],
 	(
 		uuid
-	) => Number.parseInt(uuid.slice(2, 4), 10)
+	) => (uuid ? Number.parseInt(uuid.slice(2, 4), 10) : NaN)
 )
 
 export default qbcompoundLinkBootloaderVersionSelector
