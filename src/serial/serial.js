@@ -22,8 +22,16 @@ export async function openPort(port, options = { baudRate : AVR.BaudRateCommunic
 	await port.open(options)
 }
 
-export async function closePort(port) {
-	await port.close()
+export async function closePort(port, timeout = 1000) {
+	await new Promise((resolve, reject) => {
+		const timer = setTimeout(reject, timeout)
+		async function close() {
+			await port.close()
+			clearTimeout(timer)
+			resolve()
+		}
+		close()
+	})
 }
 
 export function createPortHash(port) {

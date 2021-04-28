@@ -128,20 +128,31 @@ export async function sendAndReceiveMessageToSingleLink(link, bytes, transformer
 	return message
 }
 
+export async function sendMessageAndExpectExactOneByteResponseToSingleLink(link, message, expectedResponse, transformers = undefined, timeout = undefined, openClosePort = undefined, portOptions = undefined) {
+	logOpenCollapsed('Sending message and expecting exact one by response...')
+	log('Sending message:', message)
+	const response = await sendAndReceiveMessageToSingleLink(link, message, transformers, timeout, openClosePort, portOptions)
+	log('Received response:', response)
+	if (!response || response[0] !== expectedResponse) {
+		log(`Never received expected response "${expectedResponse}"`)
+		logClose()
+		throw new Error(`Never received expected response "${expectedResponse}"`)
+	}
+	logClose()
+}
+
 export async function testSingleLinkConnectionByReadingBootloaderInterface(link) {
 	logOpenCollapsed('Testing single link by "reading bootloader interface"')
 
 	let connected = false
-
-	const response = await sendAndReceiveMessageToSingleLink(
-		link, [COMMANDS.ReadBootloaderInterface], [], 5, false /* don't open/close port */
-	)
-	log('Received response:', response)
-	if (response[0] === AVR.SerialInterface) {
+	try {
+		await sendMessageAndExpectExactOneByteResponseToSingleLink(
+			link, [COMMANDS.ReadBootloaderInterface], AVR.SerialInterface, [], 5, false /* don't open/close port */
+		)
 		connected = true
 		log('Connection is working.')
-	} else {
-		log(`Never received response "${AVR.SerialInterface}"`)
+	} catch (e) {
+		log('Connection is not working. Error', e)
 	}
 	logClose()
 	return connected
@@ -316,13 +327,27 @@ export async function exitSingleLinkBootloaderMode(link) {
 
 export async function controlSingleLinkBootloaderMode(bootloader, link) {
 	// Send the command for the board to enter/exit booloader mode
-	log('Opening port...')
-	await openPort(link.port)
-	const command = bootloader ? COMMANDS.EnterBootloader : COMMANDS.ExitBootloader
-	log('Sending command:', command)
-	await writeBytesToPort(link.port, [command])
-	log('Closing port...')
-	await closePort(link.port)
+	if (!bootloader) {
+		// When trying to exit the bootloader, the board will first respond after
+		// the "exit" command is received, and only then it will reboot.
+		log('Sending command to exit bootloader...')
+		const message = [COMMANDS.ExitBootloader]
+		await sendMessageAndExpectExactOneByteResponseToSingleLink(
+			link, message, AVR.Ok, [], 5, true, { baudRate : AVR.BaudRateUpload }
+		)
+	} else {
+		// When entering bootloader, the board will NOT respond after the "enter"
+		// command is received. It will only reboot immediatly.
+		log('Sending command to enter bootloader')
+		log('Opening port...')
+		await openPort(link.port, { baudRate : AVR.BaudRateUpload })
+		const command = bootloader ? COMMANDS.EnterBootloader : COMMANDS.ExitBootloader
+		log('Sending command:', command)
+		await writeBytesToPort(link.port, [COMMANDS.EnterBootloader])
+		await delay(10)
+		log('Closing port...')
+		await closePort(link.port)
+	}
 
 	// Now the device should reconnect, so we monitor the ports
 	logOpenCollapsed('Waiting for new device...')
@@ -424,10 +449,13 @@ export async function AVRSetProgrammingAddress(link, pageNumber) {
 	logOpenCollapsed('Set programming address for page:', pageNumber)
 	const address = pageNumber * (AVR.PageSize / 2)
 	const message = [COMMANDS.SetCurrentAddress, ...convertToTwoBytes(address)]
-	const response = await sendAndReceiveMessageToSingleLink(link, message, [], 5, false /* don't open/close port */)
-	log('Received response:', response)
-	if (response && response[0] !== AVR.Ok) {
-		log(`Never received response "${AVR.Ok}"`)
+	try {
+		await sendMessageAndExpectExactOneByteResponseToSingleLink(
+			link, message, AVR.Ok, [], 5, false /* don't open/close port */
+		)
+		log('Programming address set!')
+	} catch (e) {
+		log('Programming address not set.')
 		logClose()
 		throw new Error('Could not set programming address.')
 	}
@@ -436,27 +464,25 @@ export async function AVRSetProgrammingAddress(link, pageNumber) {
 
 export async function AVRWritePage(link, data, pageNumber) {
 	logOpenCollapsed('Writing page:', pageNumber)
+
+	const pageData = data.slice(
+		pageNumber * AVR.PageSize,
+		(pageNumber + 1) * AVR.PageSize
+	)
+	const message = [
+		COMMANDS.BlockWrite,
+		...convertToTwoBytes(AVR.PageSize),
+		AVR.FlashType
+	].concat(pageData)
 	try {
-		const pageData = data.slice(
-			pageNumber * AVR.PageSize,
-			(pageNumber + 1) * AVR.PageSize
+		await sendMessageAndExpectExactOneByteResponseToSingleLink(
+			link, message, AVR.Ok, [], 20, false /* don't open/close port */
 		)
-		const message = [
-			COMMANDS.BlockWrite,
-			...convertToTwoBytes(AVR.PageSize),
-			AVR.FlashType
-		].concat(pageData)
-		const response = await sendAndReceiveMessageToSingleLink(link, message, [], 20, false /* don't open/close port */)
-		log('Received response:', response)
-		if (response && response[0] !== AVR.Ok) {
-			log(`Never received response "${AVR.Ok}"`)
-			logClose()
-			throw new Error('Could not set write page.')
-		}
+		log('Page written!')
 	} catch (e) {
-		log('Error during AVRWritePage', e)
+		log('Could not write page, error:', e)
 		logClose()
-		throw e
+		throw new Error('Could write page')
 	}
 
 	logClose()
