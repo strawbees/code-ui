@@ -357,7 +357,7 @@ export async function controlSingleLinkBootloaderMode(bootloader, link) {
 
 	log('Opening port...')
 	const command = bootloader ? COMMANDS.EnterBootloader : COMMANDS.ExitBootloader
-	const baudRate = bootloader ? COMMANDS.BaudRateCommunication : COMMANDS.BaudRateUpload
+	const baudRate = bootloader ? AVR.BaudRateCommunication : AVR.BaudRateUpload
 	await openPort(link.port, { baudRate })
 	log('Sending command:', bootloader ? 'enter' : 'exit', command)
 	await writeBytesToPort(link.port, [command])
