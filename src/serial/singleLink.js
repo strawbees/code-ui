@@ -334,9 +334,13 @@ export async function controlSingleLinkBootloaderMode(bootloader, link) {
 		// the "exit" command is received, and only then it will reboot.
 		log('Sending command to exit bootloader...')
 		const message = [COMMANDS.ExitBootloader]
-		await sendMessageAndExpectExactOneByteResponseToSingleLink(
-			link, message, AVR.Ok, [], 50, true, { baudRate : AVR.BaudRateUpload }
-		)
+		try {
+			await sendMessageAndExpectExactOneByteResponseToSingleLink(
+				link, message, AVR.Ok, [], 50, true, { baudRate : AVR.BaudRateUpload }
+			)
+		} catch (e) {
+			log('Error trying to exit bootloader, continuing anyway. Error:', e)
+		}
 	} else {
 		// When entering bootloader, the board will NOT respond after the "enter"
 		// command is received. It will only reboot immediatly.
@@ -360,6 +364,8 @@ export async function controlSingleLinkBootloaderMode(bootloader, link) {
 		log('Link was updated with a new device port', link)
 	} catch (e) {
 		log('Link as not updated, because a new device never appeared ', e)
+		logClose()
+		throw e
 	}
 
 	logClose()
