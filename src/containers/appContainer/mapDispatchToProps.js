@@ -9,6 +9,7 @@ import {
 
 import {
 	setCompilerBootloaderUpdaterHex,
+	setCompilerFactoryCodeHex,
 } from 'src/actions/compiler'
 
 import {
@@ -26,6 +27,7 @@ const mapDispatchToProps = autobindDispatchToActionCreators({
 	setHiddenGlobalBanners,
 	setupEditor,
 	setCompilerBootloaderUpdaterHex,
+	setCompilerFactoryCodeHex,
 	setOS,
 })
 

@@ -81,6 +81,7 @@ class AppContainer extends React.Component {
 			setSetup,
 			setHiddenGlobalBanners,
 			setCompilerBootloaderUpdaterHex,
+			setCompilerFactoryCodeHex,
 		} = this.props
 
 		setSetup({
@@ -92,8 +93,17 @@ class AppContainer extends React.Component {
 			// hide the initial page loader
 			displayPageLoader : false
 		})
-		// preload the bootloader updater
-		const bootloaderUpdaterRes = await fetch(`${COMPILER_URL}/cfirmware-booloader-updater`)
+		// hide the global banners
+		setHiddenGlobalBanners(browserStorage.getKeys('hiddenGlobalBanners'))
+
+		// preload the bootloader updater and factory code
+		const [
+			bootloaderUpdaterRes,
+			factoryCodeRes,
+		] = await Promise.all([
+			await fetch(`${COMPILER_URL}/cfirmware-booloader-updater`),
+			await fetch(`${COMPILER_URL}/cfirmware-reset`)
+		])
 		if (bootloaderUpdaterRes.ok) {
 			try {
 				const bootloaderUpdaterHex = await bootloaderUpdaterRes.json()
@@ -102,9 +112,14 @@ class AppContainer extends React.Component {
 				console.log('Error while trying to fetch bootloader updater', e)
 			}
 		}
-
-		// hide the global banners
-		setHiddenGlobalBanners(browserStorage.getKeys('hiddenGlobalBanners'))
+		if (factoryCodeRes.ok) {
+			try {
+				const factoryCodeHex = await factoryCodeRes.json()
+				setCompilerFactoryCodeHex(factoryCodeHex)
+			} catch (e) {
+				console.log('Error while trying to fetch factory code', e)
+			}
+		}
 	}
 
 	render() {
@@ -128,6 +143,7 @@ AppContainer.propTypes = {
 	setDisplayPageLoader            : PropTypes.func,
 	setupEditor                     : PropTypes.func,
 	setCompilerBootloaderUpdaterHex : PropTypes.func,
+	setCompilerFactoryCodeHex       : PropTypes.func,
 	displayPageLoader               : PropTypes.bool,
 	displayError                    : PropTypes.PropTypes.oneOf([false, 404, 500]),
 	setOS                           : PropTypes.func,
