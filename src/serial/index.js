@@ -308,7 +308,8 @@ export function getLinkByRuntimeId(runtimeId) {
 }
 
 export async function uploadHexToLink(link, hexString) {
-	if (pendingUploads.filter(upload => upload.link === link).length) {
+	const requests = pendingUploads
+	if (requests.filter(upload => upload.link === link).length) {
 		throw new Error('There is an ongoing upload to this link.')
 	}
 
@@ -316,23 +317,29 @@ export async function uploadHexToLink(link, hexString) {
 		throw new Error('This link is not midi enabled.')
 	}
 
-	const pendingUpload = {
+	const request = {
 		link,
 		hexString
 	}
-	pendingUploads.push(pendingUpload)
+	requests.push(request)
 
 	await asyncSafeWhile(
-		async () => pendingUploads.includes(pendingUpload),
+		async () => requests.includes(request),
 		async () => delay(100),
-		() => log('Pending uploads took too long to clear, exiting'),
+		() => {
+			request.error = new Error('Pending uploads took too long to clear, exiting')
+			request.link.uploading = false
+			if (requests.includes(request)) {
+				requests.splice(requests.indexOf(request), 1)
+			}
+		},
 		600
 	)
 
-	if (pendingUpload.error) {
-		throw pendingUpload.error
+	if (request.error) {
+		throw request.error
 	}
-	return pendingUpload.link
+	return request.link
 }
 
 export async function uploadHexToLinkByUuid(uuid, hexString) {
@@ -340,18 +347,25 @@ export async function uploadHexToLinkByUuid(uuid, hexString) {
 }
 
 export async function enterBootloaderMode(link) {
-	if (pendingEnterBootloaderMode.filter(request => request.link === link).length) {
+	const requests = pendingEnterBootloaderMode
+	if (requests.filter(request => request.link === link).length) {
 		throw new Error('There is an ongoing request to enter bootloader mode on this link.')
 	}
 
 	const request = {
 		link
 	}
-	pendingEnterBootloaderMode.push(request)
+	requests.push(request)
 	await asyncSafeWhile(
-		async () => pendingEnterBootloaderMode.includes(request),
+		async () => requests.includes(request),
 		async () => delay(100),
-		() => log('Pending enter bootloader took too long to clear, exiting'),
+		() => {
+			request.error = new Error('Pending enter bootloader took too long to clear, exiting')
+			request.link.enteringBootloaderMode = false
+			if (requests.includes(request)) {
+				requests.splice(requests.indexOf(request), 1)
+			}
+		},
 		600
 	)
 
@@ -366,18 +380,25 @@ export async function enterBootloaderModeByUuid(uuid) {
 }
 
 export async function exitBootloaderMode(link) {
-	if (pendingExitBootloaderMode.filter(request => request.link === link).length) {
+	const requests = pendingExitBootloaderMode
+	if (requests.filter(request => request.link === link).length) {
 		throw new Error('There is an ongoing request to exit bootloader mode on this link.')
 	}
 
 	const request = {
 		link
 	}
-	pendingExitBootloaderMode.push(request)
+	requests.push(request)
 	await asyncSafeWhile(
-		async () => pendingExitBootloaderMode.includes(request),
+		async () => requests.includes(request),
 		async () => delay(100),
-		() => log('Pending exit bootloader took too long to clear, exiting'),
+		() => {
+			request.error = new Error('Pending exit bootloader took too long to clear, exiting')
+			request.link.exitingBootloaderMode = false
+			if (requests.includes(request)) {
+				requests.splice(requests.indexOf(request), 1)
+			}
+		},
 		600
 	)
 
@@ -539,23 +560,26 @@ async function handlePendingUploads(links, uploads) {
 	}
 }
 
-async function handleSinglePendingUpload(links, upload, uploads) {
+async function handleSinglePendingUpload(links, request, requests) {
 	logOpenCollapsed('Upload')
-	upload.link.uploading = true
+	request.link.uploading = true
 	await saveLinksStateToLocalStorage(links)
 	try {
 		await uploadHexToSingleLink(
-			upload.link,
-			upload.hexString,
+			request.link,
+			request.hexString,
 			() => saveLinksStateToLocalStorage(links)
 		)
 		log('%cUpload success', 'color:green')
 	} catch (error) {
 		log('%cUpload error', 'color:red', error)
-		upload.error = error
+		request.error = error
 	}
-	upload.link.uploading = false
-	uploads.splice(uploads.indexOf(upload), 1)
+	request.link.uploading = false
+	if (requests.includes(request)) {
+		requests.splice(requests.indexOf(request), 1)
+	}
+
 	await saveLinksStateToLocalStorage(links)
 	logClose()
 }
@@ -580,7 +604,9 @@ async function handleSinglePendingEnterBootloaderMode(links, request, requests) 
 		request.error = error
 	}
 	request.link.enteringBootloaderMode = false
-	requests.splice(requests.indexOf(request), 1)
+	if (requests.includes(request)) {
+		requests.splice(requests.indexOf(request), 1)
+	}
 	await saveLinksStateToLocalStorage(links)
 	logClose()
 }
@@ -605,7 +631,9 @@ async function handleSinglePendingExitBootloaderMode(links, request, requests) {
 		request.error = error
 	}
 	request.link.exitingBootloaderMode = false
-	requests.splice(requests.indexOf(request), 1)
+	if (requests.includes(request)) {
+		requests.splice(requests.indexOf(request), 1)
+	}
 	await saveLinksStateToLocalStorage(links)
 	logClose()
 }
