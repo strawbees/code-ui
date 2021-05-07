@@ -8,7 +8,7 @@ const mapStateToProps = () => createSelector(
 	(
 		physicalRepresentationRenderInfo,
 	) => ({
-		...physicalRepresentationRenderInfo
+		...physicalRepresentationRenderInfo,
 	})
 )
 

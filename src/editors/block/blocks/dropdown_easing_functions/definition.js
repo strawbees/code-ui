@@ -38,8 +38,8 @@ const definition = (strings) => ({
 				[s(strings, 'block.blocks.easing.bounce-in'), 'EASING_BOUNCE_IN'],
 				[s(strings, 'block.blocks.easing.bounce-out'), 'EASING_BOUNCE_OUT'],
 				[s(strings, 'block.blocks.easing.bounce-in-out'), 'EASING_BOUNCE_IN_OUT'],
-			]
-		}
+			],
+		},
 	],
 	output          : 'Number',
 	category        : 'input',

@@ -9,7 +9,7 @@ import { WHITE, BLUE } from 'src/constants/colors'
 
 class DropdownMenu extends React.Component {
 	state = {
-		linkFromKey : ''
+		linkFromKey : '',
 	}
 
 	constructor(props) {
@@ -250,7 +250,7 @@ class DropdownMenu extends React.Component {
 }
 
 DropdownMenu.defaultProps = {
-	options : []
+	options : [],
 }
 
 DropdownMenu.propTypes = {
@@ -271,7 +271,7 @@ DropdownMenu.propTypes = {
 		link             : PropTypes.string,
 		linkKey          : PropTypes.string,
 		linkExternal     : PropTypes.bool,
-	}))
+	})),
 }
 
 export default DropdownMenu

@@ -8,7 +8,7 @@ import mergeProps from './mergeProps'
 
 const OutletListContainer = ({
 	id,
-	outletIds
+	outletIds,
 }) =>
 	<React.Fragment>
 		{outletIds && outletIds.map((outletId) =>

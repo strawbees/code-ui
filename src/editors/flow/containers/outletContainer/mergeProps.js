@@ -1,7 +1,7 @@
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
 	const {
 		id,
-		instanceId
+		instanceId,
 	} = ownProps
 	const {
 		setInstanceParameter,
@@ -20,12 +20,12 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
 		onConnect   : (parameter) => setInstanceParameter({
 			id          : parameter.instanceId,
 			parameterId : parameter.parameterId,
-			value       : `${instanceId}.${id}`
+			value       : `${instanceId}.${id}`,
 		}),
 		onHover : (parameter) => {
 			parameter = parameter ? {
 				id          : parameter.instanceId,
-				parameterId : parameter.parameterId
+				parameterId : parameter.parameterId,
 			} : null
 			highlightInstanceParameterDropArea(parameter)
 		},
@@ -35,8 +35,8 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
 		setDragMethods : (methods) => setOutletTransferDragMethods({
 			outletId : id,
 			instanceId,
-			methods
-		})
+			methods,
+		}),
 	}
 }
 

@@ -16,7 +16,7 @@ import {
 	setHiddenGlobalBanners,
 } from 'src/actions/ui'
 import {
-	setup as setupEditor
+	setup as setupEditor,
 } from 'src/actions/editor'
 
 const mapDispatchToProps = autobindDispatchToActionCreators({

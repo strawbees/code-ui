@@ -11,7 +11,7 @@ const WarningDisconnectedReportContainer = (props) =>
 	/>
 
 WarningDisconnectedReportContainer.propTypes = {
-	nodeType : PropTypes.string
+	nodeType : PropTypes.string,
 }
 
 const WarningDisconnectedReportContainerConnected = connect(

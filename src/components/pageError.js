@@ -22,11 +22,11 @@ const PageError = ({
 </div>
 
 PageError.defaultProps = {
-	statusCode : 404
+	statusCode : 404,
 }
 
 PageError.propTypes = {
-	statusCode : PropTypes.number
+	statusCode : PropTypes.number,
 }
 
 export default PageError

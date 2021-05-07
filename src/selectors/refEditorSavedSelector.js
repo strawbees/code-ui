@@ -5,7 +5,7 @@ import storageProgramsSelector from 'src/selectors/storageProgramsSelector'
 const refEditorSavedSelector = () => createSelector(
 	[
 		refEditorIdSelector(),
-		storageProgramsSelector()
+		storageProgramsSelector(),
 	],
 	(
 		refEditorId,

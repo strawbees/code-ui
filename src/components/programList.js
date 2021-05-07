@@ -3,20 +3,20 @@ import S from 'src/containers/sManager'
 import SvgIcon from 'src/components/svgIcon'
 import syncIcon from 'src/assets/icons/general/sync.svg'
 import {
-	WHITE
+	WHITE,
 } from 'src/constants/colors'
 import {
 	NEEDS_SYNC,
 	SYNCING,
 	READY,
-	ERROR
+	ERROR,
 } from 'src/constants/storage'
 
 const StorageProgramList = ({
 	ids,
 	ItemContainer,
 	title,
-	storageStatus
+	storageStatus,
 }) => (
 	<div className='root programList'>
 		<style jsx>{`
@@ -135,7 +135,7 @@ const StorageProgramList = ({
 )
 
 StorageProgramList.defaultProps = {
-	ids : []
+	ids : [],
 }
 
 StorageProgramList.propTypes = {
@@ -149,8 +149,8 @@ StorageProgramList.propTypes = {
 		NEEDS_SYNC,
 		SYNCING,
 		READY,
-		ERROR
-	])
+		ERROR,
+	]),
 }
 
 export default StorageProgramList

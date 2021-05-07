@@ -5,13 +5,13 @@ import Draggable from 'react-draggable'
 import {
 	GRAY,
 	YELLOW,
-	WHITE
+	WHITE,
 } from 'src/constants/colors'
 
 class Outlet extends React.Component {
 	state = {
 		dragging : false,
-		position : { x : 0, y : 0 }
+		position : { x : 0, y : 0 },
 	}
 
 	constructor(props) {
@@ -38,7 +38,7 @@ class Outlet extends React.Component {
 			left,
 			top,
 			width,
-			height
+			height,
 		} = this.startDragRect
 
 		// Current rectangle
@@ -62,7 +62,7 @@ class Outlet extends React.Component {
 	onDragStart = (e, { x, y }) => {
 		this.setState({
 			dragging : true,
-			position : { x, y }
+			position : { x, y },
 		})
 		this.props.onDragStart()
 		this.dragRef.current.focus({ preventScroll : true })
@@ -76,7 +76,7 @@ class Outlet extends React.Component {
 			.map(element => ({
 				rect        : element.getBoundingClientRect(),
 				parameterId : element.dataset.id,
-				instanceId  : element.dataset.instanceId
+				instanceId  : element.dataset.instanceId,
 			}))
 
 		// avoid scrolling on ios
@@ -85,7 +85,7 @@ class Outlet extends React.Component {
 
 	onDragMove = (e, { x, y }) => {
 		this.setState({
-			position : { x, y }
+			position : { x, y },
 		})
 		const parameter = this.getInstanceParameter(x, y)
 		if (this.lastHoveredParameter !== parameter) {
@@ -94,14 +94,14 @@ class Outlet extends React.Component {
 		}
 		this.props.setActiveLineRects({
 			from : this.startDragRect,
-			to   : this.dragToRef.current.getBoundingClientRect()
+			to   : this.dragToRef.current.getBoundingClientRect(),
 		})
 	}
 
 	onDragStop = (e, { x, y }) => {
 		this.setState({
 			dragging : false,
-			position : { x : 0, y : 0 }
+			position : { x : 0, y : 0 },
 		})
 		this.props.onDragStop()
 		this.props.setActiveLineRects(null)
@@ -135,7 +135,7 @@ class Outlet extends React.Component {
 		} = this.props
 		const {
 			dragging,
-			position
+			position,
 		} = this.state
 		return (
 			<div className='root outlet'>

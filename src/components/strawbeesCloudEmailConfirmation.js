@@ -14,7 +14,7 @@ class StrawbeesCloudEmailConfirmation extends React.Component {
 	state = {
 		loading  : true,
 		success  : false,
-		errorKey : null
+		errorKey : null,
 	}
 
 	onSubmit = async () => {
@@ -33,7 +33,7 @@ class StrawbeesCloudEmailConfirmation extends React.Component {
 		} catch (error) {
 			this.setState({
 				success  : false,
-				errorKey : errorKeys[error.message] || errorKeys.UNHADLED
+				errorKey : errorKeys[error.message] || errorKeys.UNHADLED,
 			})
 		}
 
@@ -61,7 +61,7 @@ class StrawbeesCloudEmailConfirmation extends React.Component {
 		const {
 			loading,
 			success,
-			errorKey
+			errorKey,
 		} = this.state
 		return (
 			<div className='root strawbeesCloudEmailConfirmation'>
@@ -96,7 +96,7 @@ class StrawbeesCloudEmailConfirmation extends React.Component {
 }
 
 StrawbeesCloudEmailConfirmation.propTypes = {
-	onSubmit : PropTypes.func
+	onSubmit : PropTypes.func,
 }
 
 export default StrawbeesCloudEmailConfirmation

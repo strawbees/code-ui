@@ -21,8 +21,8 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
 		onValueCodeChange : (valueCode) => safeUpdateInstanceParameterByValueCode({
 			id,
 			parameterId,
-			valueCode
-		})
+			valueCode,
+		}),
 	}
 }
 

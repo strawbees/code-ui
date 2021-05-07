@@ -5,7 +5,7 @@ import NodeTypeName from 'src/editors/flow/components/nodeTypeName'
 const NodeMini = ({
 	icon,
 	name,
-	color
+	color,
 }) =>
 	<div className='root nodeMini'>
 		<style jsx>{`

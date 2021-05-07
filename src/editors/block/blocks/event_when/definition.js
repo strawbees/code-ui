@@ -6,14 +6,14 @@ const definition = (strings) => ({
 		{
 			type  : 'input_value',
 			name  : 'CONDITION',
-			check : 'Boolean'
-		}
+			check : 'Boolean',
+		},
 	],
 	inputsInline    : true,
 	nextStatement   : null,
 	colour          : '#FFBF00',
 	colourSecondary : '#E6AC00',
-	colourTertiary  : '#CC9900'
+	colourTertiary  : '#CC9900',
 })
 
 export default definition

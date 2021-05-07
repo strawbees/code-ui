@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { BLACK } from 'src/constants/colors'
 
 const GlobalStyles = ({
-	rootPath
+	rootPath,
 }) =>
 	<>
 		<style jsx>{`
@@ -155,7 +155,7 @@ const GlobalStyles = ({
 	</>
 
 GlobalStyles.propTypes = {
-	rootPath : PropTypes.string
+	rootPath : PropTypes.string,
 }
 
 export default GlobalStyles

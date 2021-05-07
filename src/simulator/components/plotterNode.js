@@ -119,7 +119,7 @@ export const PlotterNode = ({
 		const two = new Two({
 			type  : Two.Types.svg,
 			width : lineWidth,
-			height
+			height,
 		})
 
 		const points = []

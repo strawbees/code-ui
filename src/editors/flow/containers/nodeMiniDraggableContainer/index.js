@@ -13,7 +13,7 @@ class NodeMiniDraggableContainer extends React.Component {
 		this.draggable = React.createRef()
 		this.state = {
 			dragClass : 'drag-end',
-			dragStyle : {}
+			dragStyle : {},
 		}
 	}
 
@@ -24,7 +24,7 @@ class NodeMiniDraggableContainer extends React.Component {
 				top  : bounding.y,
 				left : bounding.x,
 			},
-			dragClass : 'drag-start'
+			dragClass : 'drag-start',
 		})
 		// avoid scrolling on ios
 		document.ontouchmove = (event) => event.preventDefault()
@@ -37,7 +37,7 @@ class NodeMiniDraggableContainer extends React.Component {
 					top  : null,
 					left : null,
 				},
-				dragClass : 'drag-move'
+				dragClass : 'drag-move',
 			})
 		}
 	}
@@ -46,7 +46,7 @@ class NodeMiniDraggableContainer extends React.Component {
 		const { getDropAreaRect } = this.props
 		const {
 			rect,
-			scroll
+			scroll,
 		} = getDropAreaRect()
 
 		if (x > rect.left &&
@@ -55,7 +55,7 @@ class NodeMiniDraggableContainer extends React.Component {
 			y < rect.bottom) {
 			const {
 				id : nodeId,
-				safeAddInstance
+				safeAddInstance,
 			} = this.props
 			safeAddInstance({
 				nodeId,
@@ -69,7 +69,7 @@ class NodeMiniDraggableContainer extends React.Component {
 				top  : null,
 				left : null,
 			},
-			dragClass : 'drag-end'
+			dragClass : 'drag-end',
 		})
 
 		// restore scrolling on ios

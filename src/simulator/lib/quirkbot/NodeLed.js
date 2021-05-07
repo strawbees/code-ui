@@ -1,9 +1,9 @@
 import {
-	DISCONNECTED
+	DISCONNECTED,
 } from './core/board'
 import {
 	Node,
-	Input
+	Input,
 } from './CommonNodeIncludes'
 
 export class Led extends Node {

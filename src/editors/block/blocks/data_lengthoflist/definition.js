@@ -6,7 +6,7 @@ const definition = (strings) => ({
 		{
 			type          : 'field_variable',
 			name          : 'LIST',
-			variableTypes : ['list']
+			variableTypes : ['list'],
 		},
 	],
 	category        : 'data-lists',

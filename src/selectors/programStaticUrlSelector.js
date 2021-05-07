@@ -10,7 +10,7 @@ const {
 		CANONICAL_URL,
 		SHARE_LINKS_OMIT_ROOT_PATH,
 		ROOT_PATH,
-	}
+	},
 } = getConfig()
 const baseUrl = typeof CANONICAL_URL !== 'undefined' ? CANONICAL_URL : ''
 
@@ -24,7 +24,7 @@ const programStaticUrlSelector = () => createSelector(
 		{
 			name,
 			type,
-			source
+			source,
 		},
 	) => {
 		let url = `${makeStringSelector(`routes.${type}`)(state)}?data=`
@@ -35,7 +35,7 @@ const programStaticUrlSelector = () => createSelector(
 		url += LZString.compressToEncodedURIComponent(JSON.stringify({
 			name,
 			type,
-			source
+			source,
 		}))
 		return url
 	}

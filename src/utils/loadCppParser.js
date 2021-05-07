@@ -4,7 +4,7 @@ const loadCppParser = async (rootPath = '') => {
 	if (!TreeSitter) {
 		// Set the correct path for loding the wasm module
 		window.Module = {
-			locateFile : (s) => `${rootPath}/static/lib/tree-sitter/${s}`
+			locateFile : (s) => `${rootPath}/static/lib/tree-sitter/${s}`,
 		}
 		TreeSitter = (await import('static/lib/tree-sitter/tree-sitter')).default
 	}

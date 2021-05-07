@@ -41,8 +41,8 @@ const connectionLineInfosSelector = () => createSelector(
 					},
 					to : {
 						instanceId : instance.id,
-						parameterId
-					}
+						parameterId,
+					},
 				}
 			})
 		)

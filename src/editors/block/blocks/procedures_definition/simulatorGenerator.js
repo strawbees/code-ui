@@ -76,7 +76,7 @@ const generator = ({ statement, next }, structure, shallow) => {
 	const args = argumentNames.map(id => argsById[id])
 	structure.procedures[procId] = {
 		instance,
-		args
+		args,
 	}
 
 	// don't further process the body in case this is shallow run

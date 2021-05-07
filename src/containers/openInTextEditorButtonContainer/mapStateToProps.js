@@ -25,7 +25,7 @@ const mapStateToProps = () => createSelector(
 		url += '?data='
 		url += LZString.compressToEncodedURIComponent(JSON.stringify(program))
 		return {
-			url
+			url,
 		}
 	}
 )

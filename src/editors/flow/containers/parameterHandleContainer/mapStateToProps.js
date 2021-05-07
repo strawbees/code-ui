@@ -8,7 +8,7 @@ const mapStateToProps = () => createStructuredSelector({
 	connected                 : parameterIsConnectedSelector(),
 	highlighted               : parameterIsHighlightedSelector(),
 	recommeded                : isDraggingOutletSelector(),
-	outletTransferDragMethods : parameterOutletTransferDragMethodsSelector()
+	outletTransferDragMethods : parameterOutletTransferDragMethodsSelector(),
 })
 
 export default mapStateToProps

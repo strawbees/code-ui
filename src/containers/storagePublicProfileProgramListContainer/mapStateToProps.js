@@ -2,7 +2,7 @@ import { createStructuredSelector } from 'reselect'
 import storagePublicProfileProgramsSortedIdsSelector from 'src/selectors/storagePublicProfileProgramsSortedIdsSelector'
 
 const mapStateToProps = () => createStructuredSelector({
-	ids : storagePublicProfileProgramsSortedIdsSelector()
+	ids : storagePublicProfileProgramsSortedIdsSelector(),
 })
 
 export default mapStateToProps

@@ -136,7 +136,7 @@ class StrawbeesCloudChangePassword extends React.Component {
 }
 
 StrawbeesCloudChangePassword.propTypes = {
-	onSubmit : PropTypes.func
+	onSubmit : PropTypes.func,
 }
 
 export default StrawbeesCloudChangePassword

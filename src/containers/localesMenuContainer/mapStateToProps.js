@@ -33,9 +33,9 @@ const mapStateToProps = () => createSelector(
 				link  : Object.keys(routes).filter(path =>
 					routes[path].query.locale === locale.id
 					&& routes[path].query.ref === queryRef
-				).pop() + urlVarsString
-			}))
-		]
+				).pop() + urlVarsString,
+			})),
+		],
 	})
 )
 

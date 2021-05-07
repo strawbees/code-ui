@@ -10,7 +10,7 @@ const mapStateToProps = () => createStructuredSelector({
 	credentials  : storageCredentialsSelector(),
 	status       : storageStatusSelector(),
 	user         : storageUserSelector(),
-	remoteMirror : storageRemoteMirrorSelector()
+	remoteMirror : storageRemoteMirrorSelector(),
 })
 
 export default mapStateToProps

@@ -14,7 +14,7 @@ const Link = ({ children, ...props }) => {
 
 	const {
 		href,
-		as
+		as,
 	} = resolveLinkUrl(to)
 
 	const onClickOrKeyUp = (nativeEvent) => {
@@ -100,7 +100,7 @@ const Link = ({ children, ...props }) => {
 
 Link.propTypes = {
 	to       : PropTypes.string,
-	external : PropTypes.bool
+	external : PropTypes.bool,
 }
 
 export default Link

@@ -68,7 +68,7 @@ const StrawbeesCloudConnect = ({
 					fireGlobalEvent('track-event', {
 						category : 'ui',
 						action   : 'sign-up',
-						label    : 'account settings'
+						label    : 'account settings',
 					})
 				}}
 			/>
@@ -84,7 +84,7 @@ const StrawbeesCloudConnect = ({
 					fireGlobalEvent('track-event', {
 						category : 'ui',
 						action   : 'sign-in',
-						label    : 'account settings'
+						label    : 'account settings',
 					})
 				}}
 			/>

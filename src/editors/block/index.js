@@ -8,7 +8,7 @@ import debounce from 'src/utils/debounce'
 import {
 	GRAY,
 	WHITE,
-	BLUE
+	BLUE,
 } from 'src/constants/colors'
 import sortBlocklyDomNode from './utils/sortBlocklyDomNode'
 import makeRootBlockDeletableOnSource from './utils/makeRootBlockDeletableOnSource'
@@ -91,7 +91,7 @@ class BlockEditor extends React.Component {
 
 	loadSource = (source) => {
 		const {
-			Blockly
+			Blockly,
 		} = window
 		this.mainWorkspace.clear()
 
@@ -124,12 +124,12 @@ class BlockEditor extends React.Component {
 
 	componentDidMount() {
 		const {
-			Blockly
+			Blockly,
 		} = window
 
 		const {
 			strings,
-			mediaPath
+			mediaPath,
 		} = this.props
 		// Load the correct strings
 		Blockly.Msg = strings['_scracth-blocks']
@@ -140,7 +140,7 @@ class BlockEditor extends React.Component {
 			if (definition) {
 				Blockly.Blocks[id] = {
 					/* eslint-disable-next-line object-shorthand,func-names */
-					init : function () { this.jsonInit(definition(strings)) }
+					init : function () { this.jsonInit(definition(strings)) },
 				}
 			}
 			delete Blockly.Blocks.data_showvariable
@@ -163,12 +163,12 @@ class BlockEditor extends React.Component {
 			zoom    : {
 				controls   : true,
 				wheel      : true,
-				startScale : 0.66
+				startScale : 0.66,
 			},
 			trashcan : true,
 			colours  : {
 				scrollbar : 'rgba(0, 0, 0, 0.05)',
-			}
+			},
 		})
 
 		// HACK: as way to avoid spurious variables from being created at
@@ -178,7 +178,7 @@ class BlockEditor extends React.Component {
 		// Handle the source changes
 		const {
 			onSourceChange,
-			refEditorSource
+			refEditorSource,
 		} = this.props
 		this.source = refEditorSource
 		this.mainWorkspace.addChangeListener((e) => {
@@ -292,12 +292,12 @@ class BlockEditor extends React.Component {
 				this.proceduresWorkspace = Blockly.inject(container, {
 					media : mediaPath,
 					zoom  : {
-						startScale : 0.66
+						startScale : 0.66,
 					},
 					colours : {
 						scrollbar : 'rgba(0, 0, 0, 0)',
 					},
-					scrollbars : true
+					scrollbars : true,
 				})
 				this.proceduresWorkspace.addChangeListener(() => {
 					if (this.proceduresMutationRoot) {
@@ -413,7 +413,7 @@ class BlockEditor extends React.Component {
 							setTimeout(() => this.props.openDialog({
 								descriptionKey : 'block.procedures.error.existing.description',
 								displayCancel  : false,
-								limitWidth     : true
+								limitWidth     : true,
 							}), 0)
 							return
 						}
@@ -452,7 +452,7 @@ class BlockEditor extends React.Component {
 						this.proceduresWorkspace.clear()
 						// eslint-disable-next-line no-underscore-dangle
 						this.mainWorkspace.refreshToolboxSelection_()
-					}
+					},
 				},
 				<ExternalProceduresContainer
 					onMount={setup}
@@ -466,7 +466,7 @@ class BlockEditor extends React.Component {
 
 	componentWillUnmount() {
 		const {
-			Blockly
+			Blockly,
 		} = window
 
 		if (this.cancelSourceUpdate) {

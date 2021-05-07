@@ -6,20 +6,20 @@ const definition = (strings) => ({
 		{
 			type  : 'input_value',
 			name  : 'PLACE',
-			check : 'Place'
+			check : 'Place',
 		},
 		{
 			type  : 'input_value',
 			name  : 'COLOR',
-			check : 'Number'
-		}
+			check : 'Number',
+		},
 	],
 	previousStatement : null,
 	nextStatement     : null,
 	category          : 'input',
 	colour            : '#f580c5',
 	colourSecondary   : '#f75abb',
-	colourTertiary    : '#f442b0'
+	colourTertiary    : '#f442b0',
 })
 
 export default definition

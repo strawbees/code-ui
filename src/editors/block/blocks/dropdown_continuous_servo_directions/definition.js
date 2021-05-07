@@ -9,8 +9,8 @@ const definition = (strings) => ({
 			options : [
 				[s(strings, 'block.blocks.direction.clockwise'), 'DIRECTION_CLOCKWISE'],
 				[s(strings, 'block.blocks.direction.counter_clockwise'), 'DIRECTION_COUNTER_CLOCKWISE'],
-			]
-		}
+			],
+		},
 	],
 	output          : 'Number',
 	category        : 'input',

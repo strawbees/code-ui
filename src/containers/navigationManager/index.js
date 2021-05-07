@@ -67,7 +67,7 @@ class NavigationManager extends React.PureComponent {
 		as,
 		href,
 		nativeEvent,
-		inApp
+		inApp,
 	}) => {
 		if (!inApp) {
 			// ignore links that are not from inside the app
@@ -141,7 +141,7 @@ class NavigationManager extends React.PureComponent {
 				titleKey        : 'ui.dialog.discard.title',
 				descriptionKey  : 'ui.dialog.discard.description',
 				confirmLabelKey : 'ui.dialog.discard.confirm',
-				limitWidth      : true
+				limitWidth      : true,
 			}
 		)
 		// Now we are in a very special case... that requires a bit of hack to
@@ -162,7 +162,7 @@ class NavigationManager extends React.PureComponent {
 			asPath === as) {
 			this.processNavigation({
 				...this.props,
-				queryRef : 'hack'
+				queryRef : 'hack',
 			})
 		}
 	}
@@ -287,7 +287,7 @@ class NavigationManager extends React.PureComponent {
 			// Finaly load the program
 			const program = {
 				name   : json.name,
-				source : json.source
+				source : json.source,
 			}
 			setCurrentEditorProgram(program)
 			setDisplayPageLoader(false)

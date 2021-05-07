@@ -6,11 +6,11 @@ const definition = (strings) => ({
 		{
 			type          : 'field_variable',
 			name          : 'LIST',
-			variableTypes : ['list']
+			variableTypes : ['list'],
 		},
 		{
 			type : 'input_value',
-			name : 'ITEM'
+			name : 'ITEM',
 		},
 	],
 	category        : 'data-lists',

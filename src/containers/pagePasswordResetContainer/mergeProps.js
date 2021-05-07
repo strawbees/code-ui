@@ -15,7 +15,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
 		onSubmit : async ({ password }) => {
 			const backend = resolveBackendFromBackendName('strawbees')
 			return backend.resetPassword({ token, password })
-		}
+		},
 	}
 }
 

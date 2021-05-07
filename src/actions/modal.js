@@ -6,7 +6,7 @@ import {
 	MODAL_SHOW_MODAL,
 	MODAL_HIDE_MODAL,
 	MODAL_SET_CONTENT,
-	MODAL_SET_ON_REQUEST_CLOSE
+	MODAL_SET_ON_REQUEST_CLOSE,
 } from 'src/constants/actionTypes'
 
 export const showModal = generateAction(MODAL_SHOW_MODAL)

@@ -1,11 +1,11 @@
 import {
-	DISCONNECTED
+	DISCONNECTED,
 } from './core/board'
 import {
 	Node,
 	Input,
 	Output,
-	Updatable
+	Updatable,
 } from './CommonNodeIncludes'
 
 export const QB_CIRCUIT_TOUCH_MAX_TIME = 10000

@@ -16,7 +16,7 @@ if (process.browser) {
 const Modal = ({
 	display,
 	content,
-	onRequestClose
+	onRequestClose,
 }) =>
 	<ReactModal
 		isOpen={display}
@@ -85,7 +85,7 @@ const Modal = ({
 Modal.propTypes = {
 	display        : PropTypes.bool,
 	content        : PropTypes.element,
-	onRequestClose : PropTypes.func
+	onRequestClose : PropTypes.func,
 }
 
 export default Modal

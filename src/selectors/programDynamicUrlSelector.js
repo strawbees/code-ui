@@ -10,7 +10,7 @@ const {
 		CANONICAL_URL,
 		SHARE_LINKS_OMIT_ROOT_PATH,
 		ROOT_PATH,
-	}
+	},
 } = getConfig()
 const baseUrl = typeof CANONICAL_URL !== 'undefined' ? CANONICAL_URL : ''
 

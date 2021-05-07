@@ -183,7 +183,7 @@ export async function saveLinksStateToLocalStorage(links) {
 	logOpenCollapsed('Save state to localStorage')
 	const state = await Promise.all(links.map(async (link) => ({
 		...link,
-		port : await serializePort(link.port)
+		port : await serializePort(link.port),
 	})))
 	localStorage.setItem('_qbwebserial_links_', JSON.stringify(state))
 	log('State', state)

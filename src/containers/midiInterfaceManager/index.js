@@ -9,7 +9,7 @@ class MidiInterfaceManager extends React.Component {
 	onTick() {
 		const {
 			setQbmidiLinks,
-			midiGetLinks
+			midiGetLinks,
 		} = this.props
 
 		const links = midiGetLinks().reduce((acc, link) => {
@@ -23,7 +23,7 @@ class MidiInterfaceManager extends React.Component {
 				updated                : link.updated,
 				uploading              : link.uploading,
 				enteringBootloaderMode : link.enteringBootloaderMode,
-				exitingBootloaderMode  : link.exitingBootloaderMode
+				exitingBootloaderMode  : link.exitingBootloaderMode,
 			}
 			return acc
 		}, {})

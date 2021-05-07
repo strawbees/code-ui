@@ -7,7 +7,7 @@ const parameterValueCodeSelector = () => createSelector(
 	],
 	(
 		{
-			code
+			code,
 		}
 	) => code
 )

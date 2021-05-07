@@ -1,10 +1,10 @@
 import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
 import {
-	modalOpenUploaderDependencies
+	modalOpenUploaderDependencies,
 } from 'src/actions/uploader'
 
 const mapDispatchToProps = autobindDispatchToActionCreators({
-	openUploaderDependencies : modalOpenUploaderDependencies
+	openUploaderDependencies : modalOpenUploaderDependencies,
 })
 
 export default mapDispatchToProps

@@ -8,8 +8,8 @@ const definition = (strings) => ({
 		},
 		{
 			type : 'input_value',
-			name : 'VALUE'
-		}
+			name : 'VALUE',
+		},
 	],
 	category          : 'data',
 	previousStatement : null,

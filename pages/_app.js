@@ -11,7 +11,7 @@ const {
 		URL_SCHEME,
 		ROOT_PATH,
 		USE_SERVICE_WORKER,
-	}
+	},
 } = getConfig()
 
 // handle redirects
@@ -38,7 +38,7 @@ class NextApp extends App {
 			pageProps : {
 				// Call page-level getInitialProps
 				...(Component.getInitialProps ? await Component.getInitialProps(ctx) : {}),
-			}
+			},
 		}
 	}
 
@@ -60,7 +60,7 @@ class NextApp extends App {
 					({
 						pathname,
 						search,
-						hash
+						hash,
 					} = new URL(url))
 				} catch (e) {
 					return
@@ -72,7 +72,7 @@ class NextApp extends App {
 				to = to.replace('//', '/')
 				const {
 					href,
-					as
+					as,
 				} = resolveLinkUrl(to)
 				// eslint-disable-next-line no-console
 				console.log('Opening via URL Scheme', url, to, href, as)

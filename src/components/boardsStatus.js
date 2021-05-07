@@ -32,7 +32,7 @@ const BoardsStatus = ({
 		fireGlobalEvent('track-event', {
 			category : 'ui',
 			action   : 'open uploader dependencies',
-			label
+			label,
 		})
 	}
 	return (

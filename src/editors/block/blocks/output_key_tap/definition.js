@@ -6,7 +6,7 @@ const definition = (strings) => ({
 		{
 			type  : 'input_value',
 			name  : 'KEY',
-			check : 'Key'
+			check : 'Key',
 		},
 	],
 	previousStatement : null,

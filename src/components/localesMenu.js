@@ -26,8 +26,8 @@ LocalesMenu.propTypes = {
 	options : PropTypes.arrayOf(PropTypes.shape({
 		label    : PropTypes.string,
 		link     : PropTypes.string,
-		disabled : PropTypes.bool
-	}))
+		disabled : PropTypes.bool,
+	})),
 }
 
 export default LocalesMenu

@@ -5,12 +5,12 @@ import S from 'src/containers/sManager'
 import {
 	BLACK,
 	BLUE,
-	WHITE
+	WHITE,
 } from 'src/constants/colors'
 
 class CopyableUrl extends React.Component {
 	state = {
-		showCopied : false
+		showCopied : false,
 	}
 
 	constructor(props) {
@@ -60,10 +60,10 @@ class CopyableUrl extends React.Component {
 			titleKey,
 			url,
 			description,
-			descriptionKey
+			descriptionKey,
 		} = this.props
 		const {
-			showCopied
+			showCopied,
 		} = this.state
 		return (
 			<div className={`root copyableUrl ${showCopied ? 'active' : ''}`}

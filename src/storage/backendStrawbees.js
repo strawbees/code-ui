@@ -3,8 +3,8 @@ import * as browserStorage from 'src/utils/browserStorage'
 
 const {
 	publicRuntimeConfig : {
-		STRAWBEES_CODE_API_URL
-	}
+		STRAWBEES_CODE_API_URL,
+	},
 } = getConfig()
 
 // "Public" api
@@ -17,7 +17,7 @@ export const refreshCredentials = async (credentials) => {
 		method : 'post',
 		data   : {
 			grant_type    : 'refresh_token',
-			refresh_token : credentials.refreshToken
+			refresh_token : credentials.refreshToken,
 		},
 		formEncoded : true,
 		headers     : {
@@ -59,7 +59,7 @@ export const loadUserPublicProfile = async (id) => {
 
 	return {
 		user,
-		programs
+		programs,
 	}
 }
 
@@ -79,7 +79,7 @@ export const sync = async (
 	// need replace it.
 	const result = {
 		mirror           : {},
-		programIdChanges : {}
+		programIdChanges : {},
 	}
 
 	// Get a fresh copy of the user
@@ -94,7 +94,7 @@ export const sync = async (
 	// create a list of all program ids
 	const programIds = [...new Set([
 		...Object.keys(remotePrograms),
-		...Object.keys(programs)])
+		...Object.keys(programs)]),
 	]
 	// iterate over all the ids
 	/* eslint-disable no-continue */
@@ -180,12 +180,12 @@ export const forgotPassword = async ({ username }) => {
 		url    : 'auth/resetRequest',
 		method : 'post',
 		data   : {
-			nickname : username
+			nickname : username,
 		},
 		headers : {
-			Authorization : 'Basic YWJjMTphc2Q='
+			Authorization : 'Basic YWJjMTphc2Q=',
 		},
-		formEncoded : true
+		formEncoded : true,
 	})
 
 	if (!ok) {
@@ -203,8 +203,8 @@ export const resetPassword = async ({ token, password }) => {
 		method : 'post',
 		data   : {
 			token,
-			password
-		}
+			password,
+		},
 	})
 	if (!ok) {
 		throw new Error(json.code)
@@ -217,9 +217,9 @@ export const changePassword = async (credentials, { password }) => {
 		url    : 'auth/changePassword',
 		method : 'post',
 		data   : {
-			password
+			password,
 		},
-		credentials
+		credentials,
 	})
 	if (!ok) {
 		throw new Error(json.code)
@@ -262,7 +262,7 @@ const registerRemoteUser = async (
 			})(),
 			email,
 			password,
-		}
+		},
 	})
 	if (!ok) {
 		if (json && json.error === 'E_VALIDATION') {
@@ -291,9 +291,9 @@ const authenticateRemoteUser = async ({ username, password }) => {
 			grant_type : 'password',
 		},
 		headers : {
-			Authorization : 'Basic YWJjMTphc2Q='
+			Authorization : 'Basic YWJjMTphc2Q=',
 		},
-		formEncoded : true
+		formEncoded : true,
 	})
 
 	if (!ok) {
@@ -310,7 +310,7 @@ const authenticateRemoteUser = async ({ username, password }) => {
 const loadRemoteMe = async (credentials) => {
 	const { ok, json } = await apiCall({
 		url : 'user/me',
-		credentials
+		credentials,
 	})
 	if (!ok) {
 		throw new Error('UNHADLED')
@@ -366,7 +366,7 @@ const loadRemoteProgramById = async (credentials, { programId }) => {
 const loadRemoteCompleteData = async (credentials) => {
 	const { ok, json } = await apiCall({
 		url : 'user/data',
-		credentials
+		credentials,
 	})
 	if (!ok) {
 		throw new Error('UNHADLED')
@@ -432,7 +432,7 @@ const apiCall = async (
 		credentials,
 		headers,
 		data,
-		formEncoded
+		formEncoded,
 	}) => {
 	let body
 	if (data) {
@@ -451,7 +451,7 @@ const apiCall = async (
 		Authorization : (credentials && credentials.accessToken) ?
 			`Bearer ${credentials.accessToken}` :
 			'',
-		...headers
+		...headers,
 	}
 
 	let response
@@ -459,7 +459,7 @@ const apiCall = async (
 		response = await fetch(`${STRAWBEES_CODE_API_URL}/${url}`, {
 			method,
 			body,
-			headers
+			headers,
 		})
 	} catch (error) {
 		// eslint-disable-next-line no-console
@@ -572,7 +572,7 @@ const normalizeProgramToApi = (program) => {
 				collection.push({
 					id,
 					value,
-					type : 'Number'
+					type : 'Number',
 				})
 			} else if (value.split('.').length === 2) {
 				// Output
@@ -581,14 +581,14 @@ const normalizeProgramToApi = (program) => {
 				collection.push({
 					id,
 					value : `${nodeId}.${outlet}`,
-					type  : 'Output'
+					type  : 'Output',
 				})
 			} else {
 				// Constant
 				collection.push({
 					id,
 					value,
-					type : 'Constant'
+					type : 'Constant',
 				})
 			}
 		}
@@ -606,7 +606,7 @@ const normalizeProgramToApi = (program) => {
 					if (!dynamicInputs[parameter]) {
 						dynamicInputs[parameter] = {
 							id       : parameter,
-							children : []
+							children : [],
 						}
 					}
 					pushValueHelper(

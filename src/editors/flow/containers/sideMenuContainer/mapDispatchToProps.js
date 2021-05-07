@@ -2,7 +2,7 @@ import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToAction
 import { setDisplayAdancedNodes } from 'src/editors/flow/actions'
 
 const mapDispatchToProps = autobindDispatchToActionCreators({
-	setDisplayAdancedNodes
+	setDisplayAdancedNodes,
 })
 
 export default mapDispatchToProps

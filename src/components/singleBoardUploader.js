@@ -14,7 +14,7 @@ import {
 	YELLOW,
 	GRAY,
 	RED,
-	GREEN
+	GREEN,
 } from 'src/constants/colors'
 
 const SingleBoardUploader = ({
@@ -29,7 +29,7 @@ const SingleBoardUploader = ({
 	hexes,
 	uploaderBusy,
 	uploadSuccess,
-	uploadError
+	uploadError,
 }) => {
 	let type
 	if (hardwareInterface === 'midi' && !midi) {
@@ -258,7 +258,7 @@ const SingleBoardUploader = ({
 }
 
 SingleBoardUploader.defaultProps = {
-	hexes : []
+	hexes : [],
 }
 
 SingleBoardUploader.propTypes = {

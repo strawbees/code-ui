@@ -14,8 +14,8 @@ import {
 
 const {
 	publicRuntimeConfig : {
-		PREFER_WEB_SERIAL
-	}
+		PREFER_WEB_SERIAL,
+	},
 } = getConfig()
 
 const UploaderDependencies = ({

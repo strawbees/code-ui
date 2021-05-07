@@ -56,7 +56,7 @@ export class Converter extends Node {
 			inMax    : this.inMax.get(),
 			outMin   : this.outMin.get(),
 			outMax   : this.outMax.get(),
-			out      : this.out.get()
+			out      : this.out.get(),
 		}
 	}
 }

@@ -23,7 +23,7 @@ const defaults = {
 		{ usbVendorId : 0x2886, usbProductId : 0xF005, isBootloader : true },
 		{ usbVendorId : 0x2886, usbProductId : 0xF006, isBootloader : true },
 		{ usbVendorId : 0x2886, usbProductId : 0xF007, isBootloader : true },
-	]
+	],
 }
 
 // configs for common known targets
@@ -79,7 +79,7 @@ const commonConfigs = {
 		GAID                     : 'UA-69443341-8',
 		CHROME_EXTENSION_ID      : 'jgbaejhmonchgianepimdbcpfgcbdmam',
 		DOWNLOAD_DESKTOP_APP_URL : 'https://downloads.strawbees.com/code-desktop',
-	}
+	},
 }
 // generate the final config, allowing overwritting from env
 const config = {
@@ -91,7 +91,7 @@ const config = {
 			acc[key] = process.env[key]
 		}
 		return acc
-	}, {}))
+	}, {})),
 }
 
 module.exports = {
@@ -121,10 +121,10 @@ module.exports = {
 				options : {
 					svgoConfig : {
 						plugins : {
-							removeViewBox : false
-						}
-					}
-				}
+							removeViewBox : false,
+						},
+					},
+				},
 			}],
 		})
 		/**
@@ -138,5 +138,5 @@ module.exports = {
 			src    : path.resolve(__dirname, 'src'),
 		}
 		return webpackConfig
-	}
+	},
 }

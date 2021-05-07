@@ -125,7 +125,7 @@ CodingCardsBrowserCard.defaultProps = {
 CodingCardsBrowserCard.propTypes = {
 	type : PropTypes.oneOf([
 		'flow',
-		'block'
+		'block',
 	]),
 	title      : PropTypes.string,
 	programUrl : PropTypes.string,

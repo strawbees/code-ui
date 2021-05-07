@@ -32,7 +32,7 @@ import {
 	EDITOR_SET_TEXT_NAME,
 	EDITOR_SET_TEXT_ID,
 	EDITOR_SET_TEXT_SOURCE,
-	EDITOR_SET_TEXT_GENERATED_CODE
+	EDITOR_SET_TEXT_GENERATED_CODE,
 } from 'src/constants/actionTypes'
 import { setup as setupFlow } from 'src/editors/flow/actions'
 
@@ -100,7 +100,7 @@ export const resetEditorProgramByType = (type) => (dispatch) => {
 	const program = {
 		id     : null,
 		name   : null,
-		source : generateNewProgramSource(type)
+		source : generateNewProgramSource(type),
 	}
 	dispatch(setEditorProgramByType(type, program))
 }

@@ -16,7 +16,7 @@ import mergeProps from './mergeProps'
 const {
 	publicRuntimeConfig : {
 		CONFIG,
-	}
+	},
 } = getConfig()
 
 class TrackingManager extends React.Component {
@@ -26,8 +26,8 @@ class TrackingManager extends React.Component {
 			// debug     : true,
 			gaOptions : {
 				anonymiseIp  : true,
-				sendPageView : false
-			}
+				sendPageView : false,
+			},
 		})
 		ReactGA.set({
 			// // this will allow us to separate the traffic from the app / web

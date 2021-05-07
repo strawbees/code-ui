@@ -5,14 +5,14 @@ const definition = (strings) => ({
 	args0    : [
 		{
 			type : 'field_label_serializable',
-			name : 'VALUE'
-		}
+			name : 'VALUE',
+		},
 	],
 	output          : 'Number',
 	colour          : '#FF6680',
 	colourSecondary : '#FF4D6A',
 	colourTertiary  : '#FF3355',
-	outputShape     : window.Blockly.OUTPUT_SHAPE_ROUND
+	outputShape     : window.Blockly.OUTPUT_SHAPE_ROUND,
 })
 
 export default definition

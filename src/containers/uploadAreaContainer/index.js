@@ -33,7 +33,7 @@ class UploadAreaContainer extends React.Component {
 		const {
 			hex,
 			boardIds,
-			uploadMutipleHexes
+			uploadMutipleHexes,
 		} = this.props
 		if (
 			!prevHex &&

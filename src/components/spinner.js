@@ -2,11 +2,11 @@ import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import {
 	BLUE,
-	YELLOW
+	YELLOW,
 } from 'src/constants/colors'
 
 const Spinner = ({
-	scale
+	scale,
 }) =>
 	<div className='root spinner'>
 		<style jsx>{`
@@ -64,7 +64,7 @@ const Spinner = ({
 	</div>
 
 Spinner.defaultProps = {
-	scale : 1
+	scale : 1,
 }
 Spinner.propTypes = {
 	scale : PropTypes.number,

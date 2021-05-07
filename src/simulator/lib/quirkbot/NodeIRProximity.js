@@ -6,7 +6,7 @@ import {
 	Node,
 	Input,
 	Output,
-	HasInterval
+	HasInterval,
 } from './CommonNodeIncludes'
 
 export const QB_IR_PROXIMITY_OUTPUT_PIN = BP4

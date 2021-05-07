@@ -7,7 +7,7 @@ const qbcompoundLinkUuidSelector = () => createSelector(
 	],
 	(
 		{
-			uuid
+			uuid,
 		},
 	) => uuid
 )

@@ -22,7 +22,7 @@ class Workspace extends React.Component {
 						this.selfRef.current.scrollTop,
 					left : this.selfRef.current &&
 						this.selfRef.current.scrollLeft,
-				}
+				},
 			})
 		)
 	}

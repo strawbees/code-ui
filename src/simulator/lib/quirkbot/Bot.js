@@ -89,8 +89,8 @@ export class Bot {
 			time   : this.seconds(),
 			nodes  : {
 				ids      : [],
-				entities : {}
-			}
+				entities : {},
+			},
 		}
 		for (let i = 0; i < this.nodes.size(); i++) {
 			const entity = this.nodes.get(i).getInternalData()

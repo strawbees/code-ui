@@ -11,7 +11,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
 		...stateProps,
 		...otherDispatchProps,
 		...otherOwnProps,
-		onNameInputChange : (name) => safeUpdateInstanceName({ id, name })
+		onNameInputChange : (name) => safeUpdateInstanceName({ id, name }),
 	}
 }
 

@@ -19,7 +19,7 @@ const {
 		NEXT_SERVER_PORT,
 		ROOT_PATH,
 		COMPILER_URL,
-	}
+	},
 } = getConfig()
 
 class AppContainer extends React.Component {
@@ -54,7 +54,7 @@ class AppContainer extends React.Component {
 					data   : await (await nodeFetch(`${serverStatic}/i18n/${query.locale}.json`)).json(),
 				},
 				// show the initial page loader
-				displayPageLoader : true
+				displayPageLoader : true,
 			})
 			// Editor setup only needs to happen once, in server
 			setupEditor()
@@ -70,9 +70,9 @@ class AppContainer extends React.Component {
 			...(!stringsLoaded[query.locale] ? {
 				strings : {
 					locale : query.locale,
-					data   : await (await fetch(`${clientStatic}/i18n/${query.locale}.json`)).json()
-				}
-			} : {})
+					data   : await (await fetch(`${clientStatic}/i18n/${query.locale}.json`)).json(),
+				},
+			} : {}),
 		})
 	}
 
@@ -91,7 +91,7 @@ class AppContainer extends React.Component {
 			// set the sniffed os
 			os                : getOS(),
 			// hide the initial page loader
-			displayPageLoader : false
+			displayPageLoader : false,
 		})
 		// hide the global banners
 		setHiddenGlobalBanners(browserStorage.getKeys('hiddenGlobalBanners'))
@@ -102,7 +102,7 @@ class AppContainer extends React.Component {
 			factoryCodeRes,
 		] = await Promise.all([
 			await fetch(`${COMPILER_URL}/cfirmware-booloader-updater`),
-			await fetch(`${COMPILER_URL}/cfirmware-reset`)
+			await fetch(`${COMPILER_URL}/cfirmware-reset`),
 		])
 		if (bootloaderUpdaterRes.ok) {
 			try {

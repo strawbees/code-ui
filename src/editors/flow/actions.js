@@ -87,12 +87,12 @@ export const safeAddInstance = ({
 		name,
 		nodeId,
 		x,
-		y
+		y,
 	}))
 }
 export const safeUpdateInstanceName = ({
 	id,
-	name
+	name,
 }) => async (dispatch, getState) => {
 	const state = getState()
 	if (name) {
@@ -123,13 +123,13 @@ export const safeUpdateInstanceName = ({
 	}
 	dispatch(updateInstanceName({
 		id,
-		name
+		name,
 	}))
 }
 export const safeUpdateInstanceParameterByValueCode = ({
 	id,
 	parameterId,
-	valueCode
+	valueCode,
 }) => async (dispatch, getState) => {
 	const state = getState()
 	// When valueCode represents an outlet, it uses the instance "name", and not
@@ -167,6 +167,6 @@ export const safeUpdateInstanceParameterByValueCode = ({
 	dispatch(setInstanceParameter({
 		id,
 		parameterId,
-		value
+		value,
 	}))
 }

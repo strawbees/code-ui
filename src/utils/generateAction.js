@@ -1,6 +1,6 @@
 const generateAction = (type) => payload => ({
 	type,
-	payload
+	payload,
 })
 
 export default generateAction

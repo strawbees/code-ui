@@ -28,13 +28,13 @@ const generateEventListenerAdder = (eventName, extensionId) => (callback) => {
 		uuid,
 		addListener : true,
 		name        : eventName,
-		arguments   : []
+		arguments   : [],
 	}
 
 	const handler = {
 		port,
 		uuid,
-		callback
+		callback,
 	}
 
 	port.onMessage.addListener((response) => {
@@ -69,7 +69,7 @@ const generateEventListenerRemover = (eventName) => (callback) => {
 			removeListener : true,
 			uuid           : removed.uuid,
 			name           : eventName,
-			arguments      : []
+			arguments      : [],
 		}
 
 		removed.port.postMessage(message)
@@ -80,7 +80,7 @@ const generateEventListenerRemover = (eventName) => (callback) => {
 export const generateMethod = (name, extensionId) => (...args) => new Promise((resolve, reject) => {
 	const message = {
 		name,
-		arguments : args
+		arguments : args,
 	}
 	if (!window.chrome.runtime) {
 		reject(new Error('Runtime not avaiable'))
@@ -104,5 +104,5 @@ export const generateMethod = (name, extensionId) => (...args) => new Promise((r
 
 export const generateEvent = (eventName, extensionId) => ({
 	add    : generateEventListenerAdder(eventName, extensionId),
-	remove : generateEventListenerRemover(eventName)
+	remove : generateEventListenerRemover(eventName),
 })

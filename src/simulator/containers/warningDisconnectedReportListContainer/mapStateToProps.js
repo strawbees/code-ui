@@ -8,7 +8,7 @@ const mapStateToProps = () => createSelector(
 	(
 		nodeTypesString,
 	) => ({
-		nodeTypesString
+		nodeTypesString,
 	})
 )
 

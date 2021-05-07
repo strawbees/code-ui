@@ -4,7 +4,7 @@ import SvgIcon from 'src/components/svgIcon'
 const ParameterDisplayValue = ({
 	type,
 	text,
-	icon
+	icon,
 }) =>
 	<div className={`root parameterDisplayValue ${type}`}>
 		<style jsx>{`

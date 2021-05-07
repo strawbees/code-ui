@@ -53,7 +53,7 @@ const Banner = ({
 				fireGlobalEvent('track-event', {
 					category : 'ui',
 					action   : 'banner click',
-					label    : id
+					label    : id,
 				})
 			}}>
 			{title &&
@@ -75,7 +75,7 @@ const Banner = ({
 				fireGlobalEvent('track-event', {
 					category : 'ui',
 					action   : 'hide banner',
-					label    : id
+					label    : id,
 				})
 			}}
 		/>

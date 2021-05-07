@@ -17,7 +17,7 @@ const SimulatorSandbox = () => {
 	const sendInternalDataToController = (data) => {
 		controllerWindow.source.postMessage({
 			key   : 'internalData',
-			value : data
+			value : data,
 		}, controllerWindow.origin)
 	}
 

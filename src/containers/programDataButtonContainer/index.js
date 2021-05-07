@@ -14,7 +14,7 @@ ProgramDataButtonContainer.propTypes = {
 	onClick : PropTypes.func,
 	source  : PropTypes.oneOfType([
 		PropTypes.array,
-		PropTypes.string
+		PropTypes.string,
 	]),
 }
 

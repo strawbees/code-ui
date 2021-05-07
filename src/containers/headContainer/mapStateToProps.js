@@ -7,8 +7,8 @@ import getConfig from 'next/config'
 
 const {
 	publicRuntimeConfig : {
-		CANONICAL_URL
-	}
+		CANONICAL_URL,
+	},
 } = getConfig()
 const baseUrl = typeof CANONICAL_URL !== 'undefined' ? CANONICAL_URL : ''
 
@@ -39,7 +39,7 @@ const makeRefOgSelector = (ref, id) => createSelector(
 			ogTitle       : title || homeTitle,
 			ogDescription : description || homeDescription,
 			ogImage       : relativeImage && `${baseUrl}${relativeImage}`,
-			ogType        : type || 'website'
+			ogType        : type || 'website',
 		}
 	}
 )
@@ -58,7 +58,7 @@ const mapStateToProps = () => createSelector(
 		state,
 	) => ({
 		rootPath,
-		...makeRefOgSelector(queryRef, queryId)(state)
+		...makeRefOgSelector(queryRef, queryId)(state),
 	})
 )
 

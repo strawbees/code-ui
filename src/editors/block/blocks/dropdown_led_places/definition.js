@@ -16,8 +16,8 @@ const definition = (strings) => ({
 				[s(strings, 'block.blocks.places.right_arm'), 'PLACE_RIGHT_ARM'],
 				[s(strings, 'block.blocks.places.left_leg'), 'PLACE_LEFT_LEG'],
 				[s(strings, 'block.blocks.places.right_leg'), 'PLACE_RIGHT_LEG'],
-			]
-		}
+			],
+		},
 	],
 	output          : 'Place',
 	category        : 'input',

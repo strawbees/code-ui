@@ -12,7 +12,7 @@ let ZINDEX = 0
 
 class InstanceDraggableContainer extends React.Component {
 	state = {
-		style : {}
+		style : {},
 	}
 
 	constructor(props) {
@@ -24,8 +24,8 @@ class InstanceDraggableContainer extends React.Component {
 		if (this.state.style.zIndex !== ZINDEX) {
 			this.setState({
 				style : {
-					zIndex : ++ZINDEX
-				}
+					zIndex : ++ZINDEX,
+				},
 			})
 		}
 	}
@@ -37,7 +37,7 @@ class InstanceDraggableContainer extends React.Component {
 		}
 		const {
 			id,
-			updateInstancePosition
+			updateInstancePosition,
 		} = this.props
 		if (x < 16) {
 			x = 16
@@ -57,7 +57,7 @@ class InstanceDraggableContainer extends React.Component {
 		// cache the start position
 		this.dragStartPosition = {
 			x,
-			y
+			y,
 		}
 		// bring the instance to the front
 		this.bumpZ()
@@ -83,7 +83,7 @@ class InstanceDraggableContainer extends React.Component {
 	onKeyUp = ({ key }) => {
 		const {
 			id,
-			updateInstancePosition
+			updateInstancePosition,
 		} = this.props
 		let {
 			x,
@@ -121,7 +121,7 @@ class InstanceDraggableContainer extends React.Component {
 	onCloseClick = () => {
 		const {
 			id,
-			removeInstance
+			removeInstance,
 		} = this.props
 		removeInstance(id)
 	}

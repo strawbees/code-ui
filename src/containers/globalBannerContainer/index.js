@@ -7,7 +7,7 @@ import mergeProps from './mergeProps'
 
 class GlobalBannerContainer extends React.Component {
 	state = {
-		mounted : false
+		mounted : false,
 	}
 
 	componentDidMount() {

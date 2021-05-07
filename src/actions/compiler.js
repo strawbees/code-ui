@@ -18,8 +18,8 @@ import getConfig from 'next/config'
 
 const {
 	publicRuntimeConfig : {
-		COMPILER_URL
-	}
+		COMPILER_URL,
+	},
 } = getConfig()
 
 export const addCompilerCode = generateAction(COMPILER_ADD_GENERATED_CODE)

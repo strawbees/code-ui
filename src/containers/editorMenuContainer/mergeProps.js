@@ -8,7 +8,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
 		...otherStateProps
 	} = stateProps
 	const {
-		type
+		type,
 	} = stateProps
 	const {
 		updateCurrentEditorProgramName,

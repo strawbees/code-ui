@@ -11,7 +11,7 @@ const PhysicalRepresentationContainer = (props) =>
 	/>
 
 PhysicalRepresentationContainer.propTypes = {
-	containerWidth : PropTypes.number
+	containerWidth : PropTypes.number,
 }
 
 const PhysicalRepresentationContainerConnected = connect(

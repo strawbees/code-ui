@@ -8,7 +8,7 @@ const mapStateToProps = () => createSelector(
 	(
 		node,
 	) => ({
-		id : node.id
+		id : node.id,
 	})
 )
 

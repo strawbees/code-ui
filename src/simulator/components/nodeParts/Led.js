@@ -20,7 +20,7 @@ import {
 
 export const Led = ({
 	place,
-	light
+	light,
 }) => {
 	switch (place) {
 		case PLACE_LEFT_MOUTH:

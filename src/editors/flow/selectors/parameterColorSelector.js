@@ -6,7 +6,7 @@ import instanceColorSelector from 'src/editors/flow/selectors/instanceColorSelec
 const parameterColorSelector = () => createSelector(
 	[
 		stateSelector(),
-		propsInstanceIdSelector()
+		propsInstanceIdSelector(),
 	],
 	(
 		state,

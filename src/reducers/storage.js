@@ -10,7 +10,7 @@ import {
 	STORAGE_REMOVE_ALL_PROGRAMS,
 	STORAGE_SET_REMOTE_MIRROR,
 	STORAGE_SET_PUBLIC_PROFILE,
-	STORAGE_CLEAR
+	STORAGE_CLEAR,
 } from 'src/constants/actionTypes'
 
 const status = (state = null, { type, payload }) => {
@@ -59,18 +59,18 @@ const programs = (state = defaultPrograms, { type, payload }) => {
 	switch (type) {
 		case STORAGE_SET_PROGRAMS:
 			return {
-				...payload
+				...payload,
 			}
 		case STORAGE_ADD_PROGRAM:
 		case STORAGE_UPDATE_PROGRAM: {
 			return {
 				...state,
-				[payload.id] : payload.data
+				[payload.id] : payload.data,
 			}
 		}
 		case STORAGE_REMOVE_PROGRAM: {
 			const newState = {
-				...state
+				...state,
 			}
 			delete newState[payload.id]
 			return newState

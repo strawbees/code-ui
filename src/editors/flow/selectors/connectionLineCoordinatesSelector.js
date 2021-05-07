@@ -46,7 +46,7 @@ const connectionLineCoordinatesSelector = () => createSelector(
 			x2,
 			y1,
 			y2,
-			inactive : toId === disconnectingParameterId
+			inactive : toId === disconnectingParameterId,
 		}
 	}
 )

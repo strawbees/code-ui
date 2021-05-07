@@ -8,7 +8,7 @@ import {
 	NEEDS_SYNC,
 	SYNCING,
 	READY,
-	ERROR
+	ERROR,
 } from 'src/constants/storage'
 
 const UserHeaderAvatar = ({
@@ -67,7 +67,7 @@ const UserHeaderAvatar = ({
 						onClick  : () => fireGlobalEvent('track-event', {
 							category : 'ui',
 							action   : 'go to profile',
-							label    : 'user avatar menu'
+							label    : 'user avatar menu',
 						}),
 						// icon     : userIcons.user,
 					},
@@ -79,7 +79,7 @@ const UserHeaderAvatar = ({
 							fireGlobalEvent('track-event', {
 								category : 'ui',
 								action   : 'logout',
-								label    : 'user avatar menu'
+								label    : 'user avatar menu',
 							})
 						},
 						// icon     : userIcons.logout,
@@ -92,7 +92,7 @@ const UserHeaderAvatar = ({
 							fireGlobalEvent('track-event', {
 								category : 'ui',
 								action   : 'sign-up',
-								label    : 'user avatar menu'
+								label    : 'user avatar menu',
 							})
 						},
 						// icon     : strawbeesIcon,
@@ -104,7 +104,7 @@ const UserHeaderAvatar = ({
 							fireGlobalEvent('track-event', {
 								category : 'ui',
 								action   : 'sign-in',
-								label    : 'user avatar menu'
+								label    : 'user avatar menu',
 							})
 						},
 						// icon     : userIcons.login,
@@ -126,8 +126,8 @@ UserHeaderAvatar.propTypes = {
 		NEEDS_SYNC,
 		SYNCING,
 		READY,
-		ERROR
-	])
+		ERROR,
+	]),
 }
 
 export default UserHeaderAvatar

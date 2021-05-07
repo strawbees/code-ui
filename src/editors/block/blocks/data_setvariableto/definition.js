@@ -8,12 +8,12 @@ const definition = (strings) => ({
 		{
 			type : 'input_value',
 			name : 'VALUE',
-		}
+		},
 	],
 	category   : window.Blockly.Categories.data,
 	extensions : [
 		'colours_data',
-		'shape_statement'
+		'shape_statement',
 	],
 })
 

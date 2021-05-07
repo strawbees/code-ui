@@ -3,8 +3,8 @@ import { generateMethod } from 'src/utils/chromeExtensionApi'
 
 const {
 	publicRuntimeConfig : {
-		CHROME_EXTENSION_ID
-	}
+		CHROME_EXTENSION_ID,
+	},
 } = getConfig()
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => ({
@@ -12,7 +12,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => ({
 	...dispatchProps,
 	...ownProps,
 	generateMethod,
-	extensionId : CHROME_EXTENSION_ID
+	extensionId : CHROME_EXTENSION_ID,
 })
 
 export default mergeProps

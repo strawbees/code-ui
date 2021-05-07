@@ -5,7 +5,7 @@ import {
 	computeInstanceName,
 	parseInstaceDefinition,
 	parseNodeInstacePropertyAssignment,
-	setNodeInstacePropertyOneTimeAssignment
+	setNodeInstacePropertyOneTimeAssignment,
 } from '../../utils/simulatorParsing'
 
 const generator = ({ value, next }, structure) => {

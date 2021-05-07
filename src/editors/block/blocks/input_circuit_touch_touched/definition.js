@@ -6,7 +6,7 @@ const definition = (strings) => ({
 		{
 			type  : 'input_value',
 			name  : 'PLACE',
-			check : 'Place'
+			check : 'Place',
 		},
 	],
 	output          : 'Boolean',
@@ -14,7 +14,7 @@ const definition = (strings) => ({
 	colour          : '#7fd5f0',
 	colourSecondary : '#76c4e2',
 	colourTertiary  : '#01adee',
-	outputShape     : window.Blockly.OUTPUT_SHAPE_HEXAGONAL
+	outputShape     : window.Blockly.OUTPUT_SHAPE_HEXAGONAL,
 })
 
 export default definition

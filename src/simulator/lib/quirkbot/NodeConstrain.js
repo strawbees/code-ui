@@ -39,7 +39,7 @@ export class Constrain extends Node {
 			in       : this.in.get(),
 			min      : this.min.get(),
 			max      : this.max.get(),
-			out      : this.out.get()
+			out      : this.out.get(),
 		}
 	}
 }

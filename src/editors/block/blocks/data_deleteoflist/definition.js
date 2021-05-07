@@ -5,13 +5,13 @@ const definition = (strings) => ({
 	args0    : [
 		{
 			type : 'input_value',
-			name : 'INDEX'
+			name : 'INDEX',
 		},
 		{
 			type          : 'field_variable',
 			name          : 'LIST',
-			variableTypes : ['list']
-		}
+			variableTypes : ['list'],
+		},
 	],
 	category          : 'data-lists',
 	previousStatement : null,

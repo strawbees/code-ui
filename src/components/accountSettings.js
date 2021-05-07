@@ -38,7 +38,7 @@ class AccountSettings extends React.Component {
 			changePassword,
 			isOpen,
 			expandAccountSettings,
-			collapseAccountSettings
+			collapseAccountSettings,
 		} = this.props
 		if (isAnon) {
 			return <StrawbeesCloudConnectContainer />
@@ -130,7 +130,7 @@ class AccountSettings extends React.Component {
 									fireGlobalEvent('track-event', {
 										category : 'ui',
 										action   : isOpen ? 'close account settings' : 'open account settings',
-										label    : 'account settings'
+										label    : 'account settings',
 									})
 								}}
 							/>
@@ -143,7 +143,7 @@ class AccountSettings extends React.Component {
 										fireGlobalEvent('track-event', {
 											category : 'ui',
 											action   : 'copy profile url',
-											label    : 'account settings'
+											label    : 'account settings',
 										})
 									}}
 								/>
@@ -156,7 +156,7 @@ class AccountSettings extends React.Component {
 										fireGlobalEvent('track-event', {
 											category : 'ui',
 											action   : 'change password',
-											label    : 'account settings'
+											label    : 'account settings',
 										})
 									}}
 								/>
@@ -168,7 +168,7 @@ class AccountSettings extends React.Component {
 										fireGlobalEvent('track-event', {
 											category : 'ui',
 											action   : 'download data',
-											label    : 'account settings'
+											label    : 'account settings',
 										})
 									}}
 								/>
@@ -180,7 +180,7 @@ class AccountSettings extends React.Component {
 										fireGlobalEvent('track-event', {
 											category : 'ui',
 											action   : 'logout',
-											label    : 'account settings'
+											label    : 'account settings',
 										})
 									}}
 								/>
@@ -200,7 +200,7 @@ class AccountSettings extends React.Component {
 										fireGlobalEvent('track-event', {
 											category : 'ui',
 											action   : 'pressed delete account button',
-											label    : 'account settings'
+											label    : 'account settings',
 										})
 									}}
 								/>
@@ -214,7 +214,7 @@ class AccountSettings extends React.Component {
 }
 
 AccountSettings.defaultProps = {
-	isAnon : true
+	isAnon : true,
 }
 
 AccountSettings.propTypes = {

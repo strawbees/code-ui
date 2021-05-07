@@ -267,7 +267,7 @@ class Form extends React.Component {
 
 Form.defaultProps = {
 	submitLabelKey : 'ui.form.submit',
-	fields         : []
+	fields         : [],
 }
 
 Form.propTypes = {
@@ -285,7 +285,7 @@ Form.propTypes = {
 			'number',
 			'email',
 			'password',
-			'checkbox'
+			'checkbox',
 		]),
 		id               : PropTypes.string,
 		name             : PropTypes.string,
@@ -300,7 +300,7 @@ Form.propTypes = {
 		validateOnChange : PropTypes.bool,
 		notify           : PropTypes.arrayOf(PropTypes.string),
 		errorKeys        : PropTypes.object,
-	}))
+	})),
 }
 
 export default Form

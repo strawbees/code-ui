@@ -5,5 +5,5 @@ import text from './text.svg'
 export default {
 	block,
 	flow,
-	text
+	text,
 }

@@ -8,7 +8,7 @@ const mapStateToProps = () => createSelector(
 	(
 		placeConstantsString,
 	) => ({
-		placeConstantsString
+		placeConstantsString,
 	})
 )
 

@@ -5,7 +5,7 @@ import rootPathSelector from 'src/selectors/rootPathSelector'
 const makeInternalUrlStringSelector = (key, showKeyIfMissing) => createSelector(
 	[
 		makeStringSelector(key, showKeyIfMissing),
-		rootPathSelector()
+		rootPathSelector(),
 	],
 	(
 		string,

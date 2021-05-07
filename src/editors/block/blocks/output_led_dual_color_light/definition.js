@@ -6,13 +6,13 @@ const definition = (strings) => ({
 		{
 			type  : 'input_value',
 			name  : 'PLACE',
-			check : 'Place'
+			check : 'Place',
 		},
 		{
 			type  : 'input_value',
 			name  : 'LIGHT',
-			check : 'Number'
-		}
+			check : 'Number',
+		},
 	],
 	previousStatement : null,
 	nextStatement     : null,

@@ -9,7 +9,7 @@ class DelayedInput extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			computedValue : props.value
+			computedValue : props.value,
 		}
 		this.debounceId = `DelayedInput${++ID_FACTORY}`
 		this.input = React.createRef()
@@ -21,7 +21,7 @@ class DelayedInput extends React.Component {
 			input.current &&
 			input.current.selectionStart) {
 			return {
-				caret : input.current.selectionStart
+				caret : input.current.selectionStart,
 			}
 		}
 		return {}
@@ -155,7 +155,7 @@ DelayedInput.defaultProps = {
 	spellCheck  : 'false',
 	autoCorrect : 'off',
 	autoFocus   : false,
-	disabled    : false
+	disabled    : false,
 }
 
 DelayedInput.propTypes = {

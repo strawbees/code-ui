@@ -8,7 +8,7 @@ const mapStateToProps = () => createSelector(
 	(
 		node,
 	) => ({
-		place : node.place
+		place : node.place,
 	})
 )
 

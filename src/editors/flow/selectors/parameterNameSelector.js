@@ -3,7 +3,7 @@ import makeStringSelector from 'src/selectors/makeStringSelector'
 
 const parameterNameSelector = () => createSelector(
 	[
-		(state, { id }) => makeStringSelector(`flow.parameter.${id}`)(state)
+		(state, { id }) => makeStringSelector(`flow.parameter.${id}`)(state),
 	],
 	(
 		name,

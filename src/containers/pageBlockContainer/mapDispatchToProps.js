@@ -4,7 +4,7 @@ import {
 	safeOpenAlertAlternative,
 	safeOpenConfirmAlternative,
 	safeOpenPromptAlternative,
-	safeOpenDialogModal
+	safeOpenDialogModal,
 } from 'src/actions/modal'
 
 const mapDispatchToProps = autobindDispatchToActionCreators({
@@ -12,7 +12,7 @@ const mapDispatchToProps = autobindDispatchToActionCreators({
 	openConfirm    : safeOpenConfirmAlternative,
 	openAlert      : safeOpenAlertAlternative,
 	openPrompt     : safeOpenPromptAlternative,
-	onSourceChange : updateCurrentEditorProgramSource
+	onSourceChange : updateCurrentEditorProgramSource,
 })
 
 export default mapDispatchToProps

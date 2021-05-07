@@ -9,7 +9,7 @@ const SManager = ({
 	string,
 	onChange,
 	render = true,
-	markdown = false
+	markdown = false,
 }) => {
 	if (onChange) {
 		onChange(string)

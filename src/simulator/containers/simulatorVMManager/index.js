@@ -85,7 +85,7 @@ const SimulatorVMManager = ({
 		const handleInternalData = async () => {
 			iframe.contentWindow.postMessage({
 				key   : 'data',
-				value : externalDataRef.current
+				value : externalDataRef.current,
 			}, '*')
 			handleInternalDataTimerRef.current = requestAnimationFrame(handleInternalData, 0)
 		}
@@ -94,7 +94,7 @@ const SimulatorVMManager = ({
 		onIframeLoadedHandlerRef.current = () => {
 			iframe.contentWindow.postMessage({
 				key   : 'code',
-				value : transpiledCode
+				value : transpiledCode,
 			}, '*')
 		}
 		onIframeLoadedHandlerRef.current()

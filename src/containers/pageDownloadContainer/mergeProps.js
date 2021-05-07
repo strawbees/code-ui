@@ -3,7 +3,7 @@ import getConfig from 'next/config'
 const {
 	publicRuntimeConfig : {
 		DOWNLOAD_DESKTOP_APP_URL,
-	}
+	},
 } = getConfig()
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
@@ -24,8 +24,8 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
 			},
 			darwin : {
 				x64 : `${DOWNLOAD_DESKTOP_APP_URL}/darwin/x64`,
-			}
-		}
+			},
+		},
 	}
 }
 

@@ -2,7 +2,7 @@ import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToAction
 import { safeUpdateInstanceParameterByValueCode } from 'src/editors/flow/actions'
 
 const mapDispatchToProps = autobindDispatchToActionCreators({
-	safeUpdateInstanceParameterByValueCode
+	safeUpdateInstanceParameterByValueCode,
 })
 
 export default mapDispatchToProps

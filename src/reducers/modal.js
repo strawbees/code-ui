@@ -24,5 +24,5 @@ const onRequestClose = generateReducer(MODAL_SET_ON_REQUEST_CLOSE)
 export default combineReducers({
 	display,
 	content,
-	onRequestClose
+	onRequestClose,
 })

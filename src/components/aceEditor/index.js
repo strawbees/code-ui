@@ -2,7 +2,7 @@ import React from 'react'
 
 class AceEditor extends React.Component {
 	state = {
-		isMounted : false
+		isMounted : false,
 	}
 
 	componentDidMount() {
@@ -41,7 +41,7 @@ class AceEditor extends React.Component {
 }
 
 AceEditor.defaultProps = {
-	fontSize : 14
+	fontSize : 14,
 }
 
 export default AceEditor

@@ -3,7 +3,7 @@ import makeStringSelector from 'src/selectors/makeStringSelector'
 
 const outletNameSelector = () => createSelector(
 	[
-		(state, { id }) => makeStringSelector(`flow.outlet.${id}`)(state)
+		(state, { id }) => makeStringSelector(`flow.outlet.${id}`)(state),
 	],
 	(
 		name,

@@ -15,7 +15,7 @@ export const loadProgram = async (id) => browserStorage.get('program', id)
 export const sync = async (credentials, data) => {
 	const result = {
 		mirror           : data,
-		programIdChanges : {}
+		programIdChanges : {},
 	}
 	return result
 }

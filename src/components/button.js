@@ -16,7 +16,7 @@ class Button extends React.Component {
 	onClick = (e) => {
 		const {
 			onClick,
-			keepFocusAfterClick
+			keepFocusAfterClick,
 		} = this.props
 
 		if (!keepFocusAfterClick && this.selfRef.current) {

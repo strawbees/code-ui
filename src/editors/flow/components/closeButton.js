@@ -5,7 +5,7 @@ import tinycolor from 'tinycolor2'
 import {
 	RED,
 	GRAY,
-	WHITE
+	WHITE,
 } from 'src/constants/colors'
 
 const CloseButton = ({ onClick }) =>
@@ -33,7 +33,7 @@ const CloseButton = ({ onClick }) =>
 	</button>
 
 CloseButton.propTypes = {
-	onClick : PropTypes.func
+	onClick : PropTypes.func,
 }
 
 export default CloseButton

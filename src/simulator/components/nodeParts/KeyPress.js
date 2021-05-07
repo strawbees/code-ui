@@ -83,7 +83,7 @@ keyNames[KEY_F12] = 'f12'
 
 export const KeyPress = ({
 	keyValue,
-	pressed
+	pressed,
 }) => {
 	if (keyValue === NO_KEY) {
 		return null
@@ -150,7 +150,7 @@ KeyPress.defaultProps = {
 KeyPress.propTypes = {
 	keyValue : PropTypes.oneOfType([
 		PropTypes.number,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	pressed : PropTypes.bool,
 }

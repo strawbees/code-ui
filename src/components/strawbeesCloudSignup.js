@@ -151,7 +151,7 @@ const fields = [
 		errorKeys : {
 			agree : 'ui.sb_cloud.signup.terms.error.agree',
 		},
-	}
+	},
 ]
 
 const errorKeys = {
@@ -162,7 +162,7 @@ const errorKeys = {
 }
 class StrawbeesCloudSignup extends React.Component {
 	state = {
-		disabled : false
+		disabled : false,
 	}
 
 	getFormApi = (api) => {
@@ -208,7 +208,7 @@ class StrawbeesCloudSignup extends React.Component {
 			onSubmit,
 		} = this
 		const {
-			disabled
+			disabled,
 		} = this.state
 		return (
 			<div className='root strawbeesCloudSignup'>
@@ -234,7 +234,7 @@ class StrawbeesCloudSignup extends React.Component {
 }
 
 StrawbeesCloudSignup.propTypes = {
-	onSignup : PropTypes.func
+	onSignup : PropTypes.func,
 }
 
 export default StrawbeesCloudSignup

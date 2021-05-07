@@ -51,7 +51,7 @@ const ProgramListItem = ({
 								fireGlobalEvent('track-event', {
 									category : 'ui',
 									action   : 'upload program',
-									label    : 'program menu'
+									label    : 'program menu',
 								})
 							},
 						},
@@ -63,7 +63,7 @@ const ProgramListItem = ({
 								fireGlobalEvent('track-event', {
 									category : 'ui',
 									action   : 'duplicate program',
-									label    : 'program menu'
+									label    : 'program menu',
 								})
 							},
 						},
@@ -75,7 +75,7 @@ const ProgramListItem = ({
 								fireGlobalEvent('track-event', {
 									category : 'ui',
 									action   : 'share program',
-									label    : 'program menu'
+									label    : 'program menu',
 								})
 							},
 						},
@@ -87,7 +87,7 @@ const ProgramListItem = ({
 								fireGlobalEvent('track-event', {
 									category : 'ui',
 									action   : 'export program',
-									label    : 'program menu'
+									label    : 'program menu',
 								})
 							},
 						},
@@ -99,7 +99,7 @@ const ProgramListItem = ({
 								fireGlobalEvent('track-event', {
 									category : 'ui',
 									action   : 'remove program',
-									label    : 'program menu'
+									label    : 'program menu',
 								})
 							},
 						},

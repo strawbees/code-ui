@@ -8,7 +8,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
 		...stateProps,
 		...otherDispatchProps,
 		...ownProps,
-		toggle : () => toggleFoldedCategory()
+		toggle : () => toggleFoldedCategory(),
 	}
 }
 

@@ -1,11 +1,11 @@
 import {
-	DISCONNECTED
+	DISCONNECTED,
 } from './core/board'
 import {
 	Node,
 	Input,
 	Output,
-	HasInterval
+	HasInterval,
 } from './CommonNodeIncludes'
 
 export class AnalogSensor extends HasInterval(Node) {
