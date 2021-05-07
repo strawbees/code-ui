@@ -1,4 +1,4 @@
-const definition = (strings) => ({
+const definition = () => ({
 	message0 : window.Blockly.Msg.DATA_SETVARIABLETO,
 	args0    : [
 		{

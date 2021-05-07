@@ -1,6 +1,4 @@
-import s from 'src/utils/s'
-
-const definition = (strings) => ({
+const definition = () => ({
 	message0 : window.Blockly.Msg.DATA_DELETEOFLIST,
 	args0    : [
 		{

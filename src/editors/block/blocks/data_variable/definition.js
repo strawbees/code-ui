@@ -1,4 +1,4 @@
-const definition = (strings) => ({
+const definition = () => ({
 	message0        : '%1',
 	lastDummyAlign0 : 'CENTRE',
 	args0           : [

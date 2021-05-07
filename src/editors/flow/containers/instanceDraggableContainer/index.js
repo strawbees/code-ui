@@ -66,7 +66,7 @@ class InstanceDraggableContainer extends React.Component {
 		this.ref.current.focus({ preventScroll : true })
 
 		// avoid scrolling on ios
-		document.ontouchmove = (e) => e.preventDefault()
+		document.ontouchmove = (touchEvent) => touchEvent.preventDefault()
 	}
 
 	onDragMove = (e, { x, y }) => {

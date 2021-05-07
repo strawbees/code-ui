@@ -109,6 +109,7 @@ class AppContainer extends React.Component {
 				const bootloaderUpdaterHex = await bootloaderUpdaterRes.json()
 				setCompilerBootloaderUpdaterHex(bootloaderUpdaterHex)
 			} catch (e) {
+				// eslint-disable-next-line no-console
 				console.log('Error while trying to fetch bootloader updater', e)
 			}
 		}
@@ -117,6 +118,7 @@ class AppContainer extends React.Component {
 				const factoryCodeHex = await factoryCodeRes.json()
 				setCompilerFactoryCodeHex(factoryCodeHex)
 			} catch (e) {
+				// eslint-disable-next-line no-console
 				console.log('Error while trying to fetch factory code', e)
 			}
 		}

@@ -1,7 +1,5 @@
-import s from 'src/utils/s'
-
-const definition = (strings) => ({
-	message0 : Blockly.Msg.DATA_REPLACEITEMOFLIST,
+const definition = () => ({
+	message0 : window.Blockly.Msg.DATA_REPLACEITEMOFLIST,
 	args0    : [
 		{
 			type : 'input_value',

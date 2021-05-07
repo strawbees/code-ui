@@ -1,5 +1,3 @@
-import s from 'src/utils/s'
-
 const definition = () => ({
 	message0 : window.Blockly.Msg.DATA_ADDTOLIST,
 	args0    : [
