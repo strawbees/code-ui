@@ -11,7 +11,7 @@ import {
 import {
 	log,
 	logOpenCollapsed,
-	logClose
+	logClose,
 } from './log'
 
 import { parseIntelHex } from './hex'
@@ -25,8 +25,12 @@ import {
 } from './serial'
 
 import {
+	refreshPorts,
+} from './access'
+
+import {
 	SlicerTransformer,
-	RawSerialReportTransformer
+	RawSerialReportTransformer,
 } from './transformers'
 
 import {
@@ -40,7 +44,7 @@ export function createNewLink(data) {
 	return {
 		runtimeId : data.runtimeId || generateUniqueId(),
 		updated   : data.updated || Date.now(),
-		...data
+		...data,
 	}
 }
 
@@ -171,7 +175,7 @@ export async function discoverSingleLinkUuid(link) {
 				[COMMANDS.ReadUUID],
 				[
 					new window.TransformStream(new SlicerTransformer(UUID_SIZE)),
-					new window.TextDecoderStream()
+					new window.TextDecoderStream(),
 				],
 				50
 			)
@@ -185,7 +189,7 @@ export async function discoverSingleLinkUuid(link) {
 							REPORT_DELIMITERS.Start, REPORT_DELIMITERS.UUID
 						)
 					),
-					new window.TextDecoderStream()
+					new window.TextDecoderStream(),
 				],
 				1000
 			)
@@ -258,11 +262,20 @@ export async function refreshSingleLinkInfoIfNeeded(link) {
 	await refreshSingleLinkInfo(link)
 }
 
-export async function uploadHexToSingleLink(link, hexString, onUpdate = async () => {}) {
-	logOpenCollapsed('Guarantee bootloader')
-	await guaranteeSingleLinkEnterBootloaderMode(link)
-	await onUpdate()
-	logClose()
+export async function uploadHexToSingleLink({
+	link,
+	hexString,
+	onUpdate = async () => {},
+	enterBootloader = true,
+	exitBootloader = true,
+	waitForNewDevice = true,
+}) {
+	if (enterBootloader) {
+		logOpenCollapsed('Guarantee bootloader')
+		await guaranteeSingleLinkEnterBootloaderMode(link)
+		await onUpdate()
+		logClose()
+	}
 
 	logOpenCollapsed('Send firmware')
 	let data = []
@@ -272,15 +285,19 @@ export async function uploadHexToSingleLink(link, hexString, onUpdate = async ()
 	await onUpdate()
 	logClose()
 
-	// Exit the bootloader mode. Here we don't want to "guarantee" the booloader
-	// since there could firmwares that will send the board directly back to
-	// bootloader mode (eg. bootloader updater).
-	logOpenCollapsed('Exit bootloader mode')
-	await exitSingleLinkBootloaderMode(link)
-	logClose()
-	await refreshSingleLinkBootloaderStatus(link)
+	if (exitBootloader) {
+		// Exit the bootloader mode. Here we don't want to "guarantee" the booloader
+		// since there could firmwares that will send the board directly back to
+		// bootloader mode (eg. bootloader updater).
+		logOpenCollapsed('Exit bootloader mode')
+		await exitSingleLinkBootloaderMode(link, waitForNewDevice)
+		logClose()
+		if (waitForNewDevice) {
+			await refreshSingleLinkBootloaderStatus(link)
+		}
 
-	await onUpdate()
+		await onUpdate()
+	}
 }
 
 export async function guaranteeSingleLinkExitBootloaderMode(link) {
@@ -319,15 +336,15 @@ export async function guaranteeSingleLinkEnterBootloaderMode(link) {
 	}
 }
 
-export async function enterSingleLinkBootloaderMode(link) {
-	await controlSingleLinkBootloaderMode(true, link)
+export async function enterSingleLinkBootloaderMode(link, waitForNewDevice) {
+	await controlSingleLinkBootloaderMode(true, link, waitForNewDevice)
 }
 
-export async function exitSingleLinkBootloaderMode(link) {
-	await controlSingleLinkBootloaderMode(false, link)
+export async function exitSingleLinkBootloaderMode(link, waitForNewDevice) {
+	await controlSingleLinkBootloaderMode(false, link, waitForNewDevice)
 }
 
-export async function controlSingleLinkBootloaderMode(bootloader, link) {
+export async function controlSingleLinkBootloaderMode(bootloader, link, waitForNewDevice = true) {
 	// Send the command for the board to enter/exit booloader mode
 	log('Opening port...')
 	const command = bootloader ? COMMANDS.EnterBootloader : COMMANDS.ExitBootloader
@@ -339,20 +356,24 @@ export async function controlSingleLinkBootloaderMode(bootloader, link) {
 	log('Closing port...')
 	await closePort(link.port)
 
-	// Now the device should reconnect, so we monitor the ports
-	logOpenCollapsed('Waiting for new device...')
-	try {
-		// Update the link connections
-		const newPort = await waitForPortToAppear(link)
-		link.port = newPort
-		log('Link was updated with a new device port', link)
-	} catch (e) {
-		log('Link as not updated, because a new device never appeared ', e)
-		logClose()
-		throw e
-	}
+	if (waitForNewDevice) {
+		// Now the device should reconnect, so we monitor the ports
+		logOpenCollapsed('Waiting for new device...')
+		try {
+			// Update the link connections
+			const newPort = await waitForPortToAppear()
+			link.port = newPort
+			log('Link was updated with a new device port', link)
+			logClose()
+		} catch (e) {
+			log('Link as not updated, because a new device never appeared', e)
 
-	logClose()
+			logClose()
+			throw e
+		}
+	} else {
+		log('Link as not updated, because it was requested to don\'t wait for new devices')
+	}
 }
 
 export async function waitForPortToAppear() {
@@ -464,7 +485,7 @@ export async function AVRWritePage(link, data, pageNumber) {
 	const message = [
 		COMMANDS.BlockWrite,
 		...convertToTwoBytes(AVR.PageSize),
-		AVR.FlashType
+		AVR.FlashType,
 	].concat(pageData)
 	try {
 		await sendMessageAndExpectExactOneByteResponseToSingleLink(

@@ -1,13 +1,13 @@
 import getConfig from 'next/config'
 
 import {
-	AVR
+	AVR,
 } from './constants'
 
 const {
 	publicRuntimeConfig : {
-		QUIRKBOT_USB_SERIAL_IDS
-	}
+		QUIRKBOT_USB_SERIAL_IDS,
+	},
 } = getConfig()
 
 export async function getPorts() {
@@ -44,6 +44,22 @@ export async function writeBytesToPort(port, bytes) {
 	const data = new Uint8Array(bytes)
 	await writer.write(data)
 	writer.releaseLock()
+}
+
+export async function writeDataToFirstAvaiblePort(bytes) {
+	const [port] = await navigator.serial.getPorts()
+	// If there's no port, we have a bigger issue and can't do antyhing...
+	if (!port) {
+		throw new Error('No port avaiable.')
+	}
+	// Open the port
+	await port.open({ baudRate : 9600 })
+	// Send the "enter bootloader" message
+	const writer = port.writable.getWriter()
+	const data = new Uint8Array(bytes)
+	await writer.write(data)
+	writer.releaseLock()
+	await port.close()
 }
 
 export function getUsbFilters({ bootloader, program }) {
