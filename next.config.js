@@ -35,7 +35,7 @@ const commonConfigs = {
 		LOCALES                  : ['en', 'pt_BR', 'sv', 'zh-Hans-CN', 'ja'],
 		ROOT_PATH                : '',
 		USE_SERVICE_WORKER       : true,
-		PREFER_WEB_SERIAL        : true,
+		PREFER_WEB_SERIAL        : false,
 		URL_SCHEME               : 'strawbeescode-stage',
 		GAID                     : 'UA-69443341-7',
 		CHROME_EXTENSION_ID      : 'ackaalhbfjagidmjlhlokoblhbnahegd',
