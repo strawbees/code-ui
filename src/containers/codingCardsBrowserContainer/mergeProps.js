@@ -48,7 +48,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
 		title,
 		cardIds,
 		currentCardId,
-		setCurrentCardId
+		setCurrentCardId,
 	}
 }
 

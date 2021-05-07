@@ -41,7 +41,7 @@ const mapStateToProps = () => createSelector(
 		}))
 		return {
 			entry,
-			programUrl
+			programUrl,
 		}
 	}
 )

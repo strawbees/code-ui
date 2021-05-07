@@ -717,6 +717,10 @@ msgctxt "ui.board.status.notReady"
 msgid "Missing helper, click to install."
 msgstr "Helperが見つかりません。クリックしてインストールする。"
 
+msgctxt "ui.board.status.notAllowed"
+msgid "Click here to allow access"
+msgstr ""
+
 msgctxt "ui.board.status.notAvailable"
 msgid "Browser not supported"
 msgstr "ブラウザーがサポートされていません"
@@ -741,6 +745,10 @@ msgctxt "ui.board.dependencies.serial.title.not_supported"
 msgid "Browser not supported."
 msgstr "ブラウザーがサポートされていません。"
 
+msgctxt "ui.board.dependencies.serial.title.allow_web_serial_access"
+msgid "Allow access to Quirkbot"
+msgstr ""
+
 msgctxt "ui.board.dependencies.serial.title.missing"
 msgid "Add Strawbees CODE helper"
 msgstr "Strawbees CODE helperを追加"
@@ -758,6 +766,26 @@ msgstr "Quirkbotと通信するためには、*Google Chrome Broswer*を使用�
 msgctxt "ui.board.dependencies.serial.ready"
 msgid "We are ready to communicate with your Quirkbot!"
 msgstr "Quirkbotと通信する準備ができました！"
+
+msgctxt "ui.board.dependencies.serial.allow_web_serial_access.text"
+msgid ""
+"To be able to communicate with your Quirkbot, you need to allow this device "
+"to connect to serial ports first. Please follow these steps:\n"
+"\n"
+"1. **Turn ON** your Quirkbot.\n"
+"2. **Connect it via the USB cable** to this device.\n"
+"3. Press the **Connect to serial** button bellow (you may be required to do "
+"it multiple times)."
+msgstr ""
+
+msgctxt "ui.board.dependencies.serial.allow_web_serial_access.cta"
+msgid "Connect to serial"
+msgstr ""
+
+msgctxt ""
+"ui.board.dependencies.serial.allow_web_serial_access.reset-permissions"
+msgid "Reset permissions"
+msgstr ""
 
 msgctxt "ui.board.dependencies.serial.install.text"
 msgid ""

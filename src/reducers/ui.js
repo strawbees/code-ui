@@ -29,7 +29,7 @@ const hiddenGlobalBanners = (state = {}, { type, payload }) => {
 		case UI_HIDE_GLOBAL_BANNER:
 			return {
 				...state,
-				[payload] : true
+				[payload] : true,
 			}
 		case UI_SHOW_GLOBAL_BANNER: {
 			const newState = { ...state }
@@ -47,7 +47,7 @@ const hiddenGlobalBanners = (state = {}, { type, payload }) => {
 			return state
 	}
 }
-const codingCardsflowFilterIds = (state = [], { type, payload }) => {
+const codingCardsFlowFilterIds = (state = [], { type, payload }) => {
 	switch (type) {
 		case UI_SET_CODING_CARDS_FLOW_FILTER_IDS:
 			return payload
@@ -101,7 +101,7 @@ const codingCardsBlockCurrentCardId = generateReducer(UI_SET_CODING_CARDS_BLOCK_
 export default combineReducers({
 	accountSettingsOpen,
 	hiddenGlobalBanners,
-	codingCardsflowFilterIds,
+	codingCardsFlowFilterIds,
 	codingCardsBlockFilterIds,
 	codingCardsFlowCurrentCardId,
 	codingCardsBlockCurrentCardId,

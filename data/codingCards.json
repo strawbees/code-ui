@@ -20,7 +20,1841 @@
 		}
 	},
 	"cards": {
-		"flow": {},
+		"flow": {
+			"advance-motor-position": {
+				"title": "coding_cards.flow.card.advance-motor-position.title",
+				"hardware": [
+					"circuit-touch",
+					"servo-motor"
+				],
+				"source": [
+					{
+						"id": "0_",
+						"name": "list1",
+						"nodeId": "list",
+						"x": 420,
+						"y": 276,
+						"parameters": {
+							"items.0": "1",
+							"items.1": "0.3",
+							"items.2": ".7",
+							"items.3": ".5",
+							"items.4": null,
+							"in": "3_.out"
+						}
+					},
+					{
+						"id": "1_",
+						"name": "counter1",
+						"nodeId": "counter",
+						"x": 240,
+						"y": 69,
+						"parameters": {
+							"trigger": "5_.out"
+						}
+					},
+					{
+						"id": "2_",
+						"name": "math1",
+						"nodeId": "math",
+						"x": 24,
+						"y": 279,
+						"parameters": {
+							"operation": "MATH_MODULO",
+							"value": "5",
+							"in": "1_.out"
+						}
+					},
+					{
+						"id": "3_",
+						"name": "math2",
+						"nodeId": "math",
+						"x": 215,
+						"y": 276,
+						"parameters": {
+							"in": "2_.out",
+							"value": "5",
+							"operation": "MATH_DIVIDE"
+						}
+					},
+					{
+						"id": "4_",
+						"name": "servoMotor1",
+						"nodeId": "servo-motor",
+						"x": 21,
+						"y": 502,
+						"parameters": {
+							"position": "0_.out",
+							"place": "PLACE_SERVO_MOTOR_1"
+						}
+					},
+					{
+						"id": "5_",
+						"name": "circuitTouch1",
+						"nodeId": "makey-touch",
+						"x": 26,
+						"y": 19,
+						"parameters": {
+							"place": "PLACE_HORN",
+							"sensitivity": ".5"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-advance-motor-position",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"back-and-forth": {
+				"title": "coding_cards.flow.card.back-and-forth.title",
+				"hardware": [
+					"servo-motor"
+				],
+				"source": [
+					{
+						"name": "wave1",
+						"nodeId": "wave",
+						"x": 96,
+						"y": 178,
+						"id": "0_",
+						"parameters": {
+							"min": "0.25",
+							"max": "0.75"
+						}
+					},
+					{
+						"name": "servoMotor1",
+						"nodeId": "servo-motor",
+						"x": 341,
+						"y": 201,
+						"id": "1_",
+						"parameters": {
+							"place": "PLACE_SERVO_MOTOR_1",
+							"position": "0_.out"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-back-and-forth",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"blink-randomly-30percent-of-the-time": {
+				"title": "coding_cards.flow.card.blink-randomly-30percent-of-the-time.title",
+				"hardware": [
+					"built-in-led"
+				],
+				"source": [
+					{
+						"id": "0_",
+						"name": "led1",
+						"nodeId": "led",
+						"x": 464,
+						"y": 225,
+						"parameters": {
+							"place": "PLACE_LEFT_EYE",
+							"light": "2_.out"
+						}
+					},
+					{
+						"id": "1_",
+						"name": "randomizer1",
+						"nodeId": "randomizer",
+						"x": 23,
+						"y": 72,
+						"parameters": {
+							"interval": "1"
+						}
+					},
+					{
+						"id": "2_",
+						"name": "comparison1",
+						"nodeId": "comparison",
+						"x": 240,
+						"y": 152,
+						"parameters": {
+							"in": "1_.out",
+							"operation": "COMP_LESS_EQ",
+							"value": ".33",
+							"ifThen": "3_.out"
+						}
+					},
+					{
+						"id": "3_",
+						"name": "randomizer2",
+						"nodeId": "randomizer",
+						"x": 20,
+						"y": 293,
+						"parameters": {
+							"interval": ".2"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-blink-randomly-30percent-of-the-time",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"blink": {
+				"title": "coding_cards.flow.card.blink.title",
+				"hardware": [
+					"built-in-led"
+				],
+				"source": [
+					{
+						"name": "wave1",
+						"nodeId": "wave",
+						"x": 85,
+						"y": 149,
+						"id": "0_",
+						"parameters": {
+							"type": "WAVE_SQUARE"
+						}
+					},
+					{
+						"name": "led1",
+						"nodeId": "led",
+						"x": 311,
+						"y": 163,
+						"id": "1_",
+						"parameters": {
+							"place": "PLACE_LEFT_EYE",
+							"light": "0_.out"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-blink",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"change-both-color-and-brightness": {
+				"title": "coding_cards.flow.card.change-both-color-and-brightness.title",
+				"hardware": [
+					"dual-color-led"
+				],
+				"source": [
+					{
+						"id": "0_",
+						"name": "wave1",
+						"nodeId": "wave",
+						"x": 80,
+						"y": 102.359375
+					},
+					{
+						"id": "1_",
+						"name": "randomizer1",
+						"nodeId": "randomizer",
+						"x": 77,
+						"y": 401.34375
+					},
+					{
+						"id": "2_",
+						"name": "dualColorLed1",
+						"nodeId": "dual-color-led",
+						"x": 316,
+						"y": 258,
+						"parameters": {
+							"place": "PLACE_HORN",
+							"light": "0_.out",
+							"color": "1_.out"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-change-both-color-and-brightness",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"change-fade-speed": {
+				"title": "coding_cards.flow.card.change-fade-speed.title",
+				"hardware": [
+					"built-in-led"
+				],
+				"source": [
+					{
+						"name": "led1",
+						"nodeId": "led",
+						"x": 452,
+						"y": 126,
+						"id": "0_",
+						"parameters": {
+							"light": "1_.out",
+							"place": "PLACE_LEFT_EYE"
+						}
+					},
+					{
+						"name": "wave1",
+						"nodeId": "wave",
+						"x": 242,
+						"y": 96,
+						"id": "1_",
+						"parameters": {
+							"length": "2_.out"
+						}
+					},
+					{
+						"name": "circuitTouch1",
+						"nodeId": "makey-touch",
+						"x": 21,
+						"y": 130,
+						"id": "2_",
+						"parameters": {
+							"place": "PLACE_HORN",
+							"sensitivity": "undefined.5",
+							"min": "2",
+							"max": "undefined.5"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-change-fade-speed",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"change-movement-amplitude": {
+				"title": "coding_cards.flow.card.change-movement-amplitude.title",
+				"hardware": [
+					"circuit-touch",
+					"servo-motor"
+				],
+				"source": [
+					{
+						"name": "wave1",
+						"nodeId": "wave",
+						"x": 259,
+						"y": 145,
+						"id": "0_",
+						"parameters": {
+							"max": "1_.out",
+							"length": "1.5"
+						}
+					},
+					{
+						"name": "circuitTouch1",
+						"nodeId": "makey-touch",
+						"x": 21,
+						"y": 168,
+						"id": "1_",
+						"parameters": {
+							"sensitivity": "undefined.5",
+							"place": "PLACE_HORN",
+							"min": "1",
+							"max": "0.3"
+						}
+					},
+					{
+						"name": "servoMotor1",
+						"nodeId": "servo-motor",
+						"x": 478,
+						"y": 183,
+						"id": "2_",
+						"parameters": {
+							"position": "0_.out",
+							"place": "PLACE_SERVO_MOTOR_1"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-change-movement-amplitude",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"circle-leds": {
+				"title": "coding_cards.flow.card.circle-leds.title",
+				"hardware": [
+					"built-in-led"
+				],
+				"source": [
+					{
+						"id": "0_",
+						"name": "led1",
+						"nodeId": "led",
+						"x": 479,
+						"y": 235,
+						"parameters": {
+							"place": "1_.out"
+						}
+					},
+					{
+						"id": "1_",
+						"name": "list1",
+						"nodeId": "list",
+						"x": 234,
+						"y": 189,
+						"parameters": {
+							"items.0": "PLACE_LEFT_EYE",
+							"items.1": "PLACE_RIGHT_EYE",
+							"items.2": "PLACE_RIGHT_MOUTH",
+							"items.3": "PLACE_LEFT_MOUTH",
+							"in": "2_.out"
+						}
+					},
+					{
+						"id": "2_",
+						"name": "wave1",
+						"nodeId": "wave",
+						"x": 24,
+						"y": 175,
+						"parameters": {
+							"type": "WAVE_RAMP_UP"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-circle-leds",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"complex-brightness-change": {
+				"title": "coding_cards.flow.card.complex-brightness-change.title",
+				"hardware": [
+					"built-in-led"
+				],
+				"source": [
+					{
+						"id": "0_",
+						"name": "led1",
+						"nodeId": "led",
+						"x": 433,
+						"y": 161,
+						"parameters": {
+							"light": "1_.out",
+							"place": "PLACE_LEFT_EYE"
+						}
+					},
+					{
+						"id": "1_",
+						"name": "wave1",
+						"nodeId": "wave",
+						"x": 227,
+						"y": 159,
+						"parameters": {
+							"length": "2_.out"
+						}
+					},
+					{
+						"id": "2_",
+						"name": "wave2",
+						"nodeId": "wave",
+						"x": 21,
+						"y": 159,
+						"parameters": {
+							"min": ".1",
+							"max": "2",
+							"length": "6"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-complex-brightness-change",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"control-2-leds": {
+				"title": "coding_cards.flow.card.control-2-leds.title",
+				"hardware": [
+					"built-in-led"
+				],
+				"source": [
+					{
+						"name": "led1",
+						"nodeId": "led",
+						"x": 357,
+						"y": 163,
+						"id": "0_",
+						"parameters": {
+							"place": "PLACE_LEFT_EYE",
+							"light": "2_.out"
+						}
+					},
+					{
+						"name": "led2",
+						"nodeId": "led",
+						"x": 358,
+						"y": 340,
+						"id": "1_",
+						"parameters": {
+							"place": "PLACE_RIGHT_EYE",
+							"light": "2_.out"
+						}
+					},
+					{
+						"name": "circuitTouch1",
+						"nodeId": "makey-touch",
+						"x": 112,
+						"y": 195,
+						"id": "2_",
+						"parameters": {
+							"place": "PLACE_HORN",
+							"sensitivity": "0.5"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-control-2-leds",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"control-motor-and-led": {
+				"title": "coding_cards.flow.card.control-motor-and-led.title",
+				"hardware": [
+					"built-in-led",
+					"servo-motor"
+				],
+				"source": [
+					{
+						"name": "led1",
+						"nodeId": "led",
+						"x": 359,
+						"y": 112,
+						"id": "1_",
+						"parameters": {
+							"light": "2_.out",
+							"place": "PLACE_LEFT_EYE"
+						}
+					},
+					{
+						"name": "circuitTouch1",
+						"nodeId": "makey-touch",
+						"x": 124,
+						"y": 149,
+						"id": "2_",
+						"parameters": {
+							"place": "PLACE_HORN",
+							"sensitivity": ".5"
+						}
+					},
+					{
+						"name": "servoMotor1",
+						"nodeId": "servo-motor",
+						"x": 360,
+						"y": 290,
+						"id": "3_",
+						"parameters": {
+							"place": "PLACE_SERVO_MOTOR_1",
+							"position": "2_.out"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-control-motor-and-led",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"double-oscillation": {
+				"title": "coding_cards.flow.card.double-oscillation.title",
+				"hardware": [
+					"servo-motor"
+				],
+				"source": [
+					{
+						"id": "0_",
+						"name": "servoMotor1",
+						"nodeId": "servo-motor",
+						"x": 245,
+						"y": 412,
+						"parameters": {
+							"place": "PLACE_SERVO_MOTOR_1",
+							"position": "1_.out"
+						}
+					},
+					{
+						"id": "1_",
+						"name": "wave1",
+						"nodeId": "wave",
+						"x": 245,
+						"y": 78,
+						"parameters": {
+							"length": ".8",
+							"max": "3_.out",
+							"min": "2_.out"
+						}
+					},
+					{
+						"id": "2_",
+						"name": "wave2",
+						"nodeId": "wave",
+						"x": 18,
+						"y": 78,
+						"parameters": {
+							"min": "0",
+							"max": ".8",
+							"type": "WAVE_TRIANGLE",
+							"length": "20"
+						}
+					},
+					{
+						"id": "3_",
+						"name": "math1",
+						"nodeId": "math",
+						"x": 20,
+						"y": 374,
+						"parameters": {
+							"value": ".2",
+							"in": "2_.out"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-double-oscillation",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"flicker": {
+				"title": "coding_cards.flow.card.flicker.title",
+				"hardware": [
+					"built-in-led"
+				],
+				"source": [
+					{
+						"id": "0_",
+						"name": "logic1",
+						"nodeId": "logic",
+						"x": 18,
+						"y": 279,
+						"parameters": {
+							"items.0": "4_.out",
+							"items.1": "1",
+							"operation": "LOGIC_XOR"
+						}
+					},
+					{
+						"id": "1_",
+						"name": "led1",
+						"nodeId": "led",
+						"x": 451,
+						"y": 160,
+						"parameters": {
+							"place": "PLACE_LEFT_EYE",
+							"light": "4_.out"
+						}
+					},
+					{
+						"id": "2_",
+						"name": "led2",
+						"nodeId": "led",
+						"x": 244,
+						"y": 351,
+						"parameters": {
+							"place": "PLACE_RIGHT_EYE",
+							"light": "0_.out"
+						}
+					},
+					{
+						"id": "3_",
+						"name": "randomizer1",
+						"nodeId": "randomizer",
+						"x": 8,
+						"y": 45.265625,
+						"parameters": {
+							"interval": "0.1"
+						}
+					},
+					{
+						"id": "4_",
+						"name": "comparison1",
+						"nodeId": "comparison",
+						"x": 218,
+						"y": 32.21875,
+						"parameters": {
+							"operation": "COMP_GREATER_EQ",
+							"value": ".5",
+							"in": "3_.out"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-flicker",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"light-to-different-movements": {
+				"title": "coding_cards.flow.card.light-to-different-movements.title",
+				"hardware": [
+					"light-sensor",
+					"servo-motor"
+				],
+				"source": [
+					{
+						"id": "0_",
+						"name": "lightSensor1",
+						"nodeId": "light-sensor",
+						"x": 329,
+						"y": 20,
+						"parameters": {
+							"place": "PLACE_HORN"
+						}
+					},
+					{
+						"id": "1_",
+						"name": "list1",
+						"nodeId": "list",
+						"x": 314,
+						"y": 239,
+						"parameters": {
+							"in": "0_.out",
+							"items.0": "2_.out",
+							"items.1": "3_.out"
+						}
+					},
+					{
+						"id": "2_",
+						"name": "wave1",
+						"nodeId": "wave",
+						"x": 46,
+						"y": 26,
+						"parameters": {
+							"length": "0.2",
+							"type": "WAVE_PULSE",
+							"min": "0.4",
+							"max": "0.6"
+						}
+					},
+					{
+						"id": "3_",
+						"name": "wave2",
+						"nodeId": "wave",
+						"x": 47,
+						"y": 317,
+						"parameters": {
+							"length": "5"
+						}
+					},
+					{
+						"id": "4_",
+						"name": "servoMotor1",
+						"nodeId": "servo-motor",
+						"x": 328,
+						"y": 442,
+						"parameters": {
+							"position": "1_.out",
+							"place": "PLACE_SERVO_MOTOR_1"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-light-to-different-movements",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"move-randomly": {
+				"title": "coding_cards.flow.card.move-randomly.title",
+				"hardware": [
+					"servo-motor"
+				],
+				"source": [
+					{
+						"name": "randomizer1",
+						"nodeId": "randomizer",
+						"x": 141,
+						"y": 206,
+						"id": "0_",
+						"parameters": {
+							"interval": "1"
+						}
+					},
+					{
+						"name": "servoMotor1",
+						"nodeId": "servo-motor",
+						"x": 357,
+						"y": 205,
+						"id": "1_",
+						"parameters": {
+							"position": "0_.out",
+							"place": "PLACE_SERVO_MOTOR_1"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-move-randomly",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"move-and-blink-independently": {
+				"title": "coding_cards.flow.card.move-and-blink-independently.title",
+				"hardware": [
+					"dual-color-led",
+					"servo-motor"
+				],
+				"source": [
+					{
+						"id": "1_",
+						"name": "wave1",
+						"nodeId": "wave",
+						"x": 24,
+						"y": 351,
+						"parameters": {
+							"min": ".2",
+							"max": ".8"
+						}
+					},
+					{
+						"id": "2_",
+						"name": "servoMotor1",
+						"nodeId": "servo-motor",
+						"x": 256,
+						"y": 426,
+						"parameters": {
+							"position": "1_.out",
+							"place": "PLACE_SERVO_MOTOR_1"
+						}
+					},
+					{
+						"id": "3_",
+						"name": "dualColorLed1",
+						"nodeId": "dual-color-led",
+						"x": 420,
+						"y": 108,
+						"parameters": {
+							"color": "4_.out",
+							"place": "PLACE_LEFT_ARM",
+							"light": "5_.out"
+						}
+					},
+					{
+						"id": "4_",
+						"name": "circuitTouch1",
+						"nodeId": "makey-touch",
+						"x": 18,
+						"y": 96,
+						"parameters": {
+							"place": "PLACE_HORN"
+						}
+					},
+					{
+						"id": "5_",
+						"name": "randomizer1",
+						"nodeId": "randomizer",
+						"x": 218,
+						"y": 22
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-move-and-blink-independently",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"move-in-the-dark": {
+				"title": "coding_cards.flow.card.move-in-the-dark.title",
+				"hardware": [
+					"light-sensor",
+					"servo-motor"
+				],
+				"source": [
+					{
+						"id": "0_",
+						"name": "lightSensor1",
+						"nodeId": "light-sensor",
+						"x": 59,
+						"y": 59,
+						"parameters": {
+							"place": "PLACE_HORN"
+						}
+					},
+					{
+						"id": "1_",
+						"name": "wave1",
+						"nodeId": "wave",
+						"x": 54,
+						"y": 284,
+						"parameters": {
+							"length": "2_.out",
+							"min": ".2",
+							"max": ".8"
+						}
+					},
+					{
+						"id": "2_",
+						"name": "comparison1",
+						"nodeId": "comparison",
+						"x": 278,
+						"y": 62,
+						"parameters": {
+							"in": "0_.out",
+							"operation": "COMP_LESS",
+							"value": ".3",
+							"ifThen": ".8"
+						}
+					},
+					{
+						"id": "3_",
+						"name": "servoMotor1",
+						"nodeId": "servo-motor",
+						"x": 273,
+						"y": 373,
+						"parameters": {
+							"position": "1_.out",
+							"place": "PLACE_SERVO_MOTOR_1"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-move-in-the-dark",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"press-left-and-right-keys": {
+				"title": "coding_cards.flow.card.press-left-and-right-keys.title",
+				"hardware": [
+					"circuit-touch",
+					"key-press"
+				],
+				"source": [
+					{
+						"id": "0_",
+						"name": "circuitTouch1",
+						"nodeId": "makey-touch",
+						"x": 38,
+						"y": 48,
+						"parameters": {
+							"sensitivity": ".5",
+							"place": "PLACE_RIGHT_ARM"
+						}
+					},
+					{
+						"id": "1_",
+						"name": "circuitTouch2",
+						"nodeId": "makey-touch",
+						"x": 36,
+						"y": 318,
+						"parameters": {
+							"sensitivity": ".5",
+							"place": "PLACE_LEFT_ARM"
+						}
+					},
+					{
+						"id": "2_",
+						"name": "keyPress1",
+						"nodeId": "key-press",
+						"x": 255,
+						"y": 84,
+						"parameters": {
+							"trigger": "0_.out",
+							"key": "KEY_LEFT"
+						}
+					},
+					{
+						"id": "3_",
+						"name": "keyPress2",
+						"nodeId": "key-press",
+						"x": 256,
+						"y": 348,
+						"parameters": {
+							"trigger": "1_.out",
+							"key": "KEY_RIGHT"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-press-left-and-right-keys",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"random-color": {
+				"title": "coding_cards.flow.card.random-color.title",
+				"hardware": [
+					"dual-color-led"
+				],
+				"source": [
+					{
+						"name": "randomizer1",
+						"nodeId": "randomizer",
+						"x": 159,
+						"y": 244,
+						"id": "0_",
+						"parameters": {}
+					},
+					{
+						"name": "dualColorLed1",
+						"nodeId": "dual-color-led",
+						"x": 396,
+						"y": 242,
+						"id": "1_",
+						"parameters": {
+							"color": "0_.out",
+							"place": "PLACE_HORN"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-random-color",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"shake": {
+				"title": "coding_cards.flow.card.shake.title",
+				"hardware": [
+					"servo-motor"
+				],
+				"source": [
+					{
+						"id": "0_",
+						"name": "servoMotor1",
+						"nodeId": "servo-motor",
+						"x": 433,
+						"y": 91,
+						"parameters": {
+							"position": "1_.out",
+							"place": "PLACE_SERVO_MOTOR_1"
+						}
+					},
+					{
+						"id": "1_",
+						"name": "wave1",
+						"nodeId": "wave",
+						"x": 224,
+						"y": 86,
+						"parameters": {
+							"type": "WAVE_SQUARE",
+							"length": "2_.out",
+							"min": ".4",
+							"max": ".6"
+						}
+					},
+					{
+						"id": "2_",
+						"name": "wave2",
+						"nodeId": "wave",
+						"x": 20,
+						"y": 90,
+						"parameters": {
+							"type": "WAVE_PULSE",
+							"length": "8",
+							"max": ".1"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-shake",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"shine-in-the-dark": {
+				"title": "coding_cards.flow.card.shine-in-the-dark.title",
+				"hardware": [
+					"light-sensor",
+					"built-in-led"
+				],
+				"source": [
+					{
+						"id": "0_",
+						"name": "lightSensor1",
+						"nodeId": "light-sensor",
+						"x": 57,
+						"y": 106.375,
+						"parameters": {
+							"place": "PLACE_HORN",
+							"min": "1",
+							"max": "0"
+						}
+					},
+					{
+						"id": "1_",
+						"name": "led1",
+						"nodeId": "led",
+						"x": 280,
+						"y": 119.078125,
+						"parameters": {
+							"light": "0_.out",
+							"place": "PLACE_LEFT_EYE"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-shine-in-the-dark",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"switch-fast-and-slow-movement": {
+				"title": "coding_cards.flow.card.switch-fast-and-slow-movement.title",
+				"hardware": [
+					"circuit-touch",
+					"servo-motor"
+				],
+				"source": [
+					{
+						"name": "circuitTouch1",
+						"nodeId": "makey-touch",
+						"x": 49,
+						"y": 129,
+						"id": "0_",
+						"parameters": {
+							"min": "1",
+							"max": "0.3",
+							"place": "PLACE_HORN",
+							"sensitivity": "undefined.5"
+						}
+					},
+					{
+						"name": "wave1",
+						"nodeId": "wave",
+						"x": 278,
+						"y": 102,
+						"id": "1_",
+						"parameters": {
+							"length": "0_.out",
+							"min": "undefined.2",
+							"max": "undefined.8"
+						}
+					},
+					{
+						"name": "servoMotor1",
+						"nodeId": "servo-motor",
+						"x": 490,
+						"y": 158,
+						"id": "2_",
+						"parameters": {
+							"position": "1_.out",
+							"place": "PLACE_SERVO_MOTOR_1"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-switch-fast-and-slow-movement",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"switch-steady-and-random-light": {
+				"title": "coding_cards.flow.card.switch-steady-and-random-light.title",
+				"hardware": [
+					"circuit-touch",
+					"built-in-led"
+				],
+				"source": [
+					{
+						"name": "circuitTouch1",
+						"nodeId": "makey-touch",
+						"x": 236,
+						"y": 141,
+						"id": "0_",
+						"parameters": {
+							"max": "1_.out",
+							"min": "1",
+							"place": "PLACE_HORN"
+						}
+					},
+					{
+						"name": "randomizer1",
+						"nodeId": "randomizer",
+						"x": 23,
+						"y": 187,
+						"id": "1_",
+						"parameters": {
+							"interval": "0.25"
+						}
+					},
+					{
+						"name": "led1",
+						"nodeId": "led",
+						"x": 443,
+						"y": 166,
+						"id": "2_",
+						"parameters": {
+							"light": "0_.out",
+							"place": "PLACE_LEFT_EYE"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-switch-steady-and-random-light",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"switch-twinkle-eye": {
+				"title": "coding_cards.flow.card.switch-twinkle-eye.title",
+				"hardware": [
+					"built-in-led"
+				],
+				"source": [
+					{
+						"id": "0_",
+						"name": "circuitTouch1",
+						"nodeId": "makey-touch",
+						"x": 56,
+						"y": 261,
+						"parameters": {
+							"min": "PLACE_LEFT_EYE",
+							"place": "PLACE_HORN",
+							"max": "PLACE_RIGHT_EYE",
+							"sensitivity": ".5"
+						}
+					},
+					{
+						"id": "2_",
+						"name": "randomizer1",
+						"nodeId": "randomizer",
+						"x": 63,
+						"y": 46,
+						"parameters": {
+							"interval": "0.1"
+						}
+					},
+					{
+						"id": "3_",
+						"name": "led1",
+						"nodeId": "led",
+						"x": 293,
+						"y": 178,
+						"parameters": {
+							"place": "0_.out",
+							"light": "2_.out"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-switch-twinkle-eye",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"touch-light-switch": {
+				"title": "coding_cards.flow.card.touch-light-switch.title",
+				"hardware": [
+					"circuit-touch",
+					"built-in-led"
+				],
+				"source": [
+					{
+						"id": "0_",
+						"name": "circuitTouch1",
+						"nodeId": "makey-touch",
+						"x": 37,
+						"y": 99,
+						"parameters": {
+							"place": "PLACE_HORN",
+							"sensitivity": ".5"
+						}
+					},
+					{
+						"id": "1_",
+						"name": "counter1",
+						"nodeId": "counter",
+						"x": 38,
+						"y": 370,
+						"parameters": {
+							"trigger": "0_.out"
+						}
+					},
+					{
+						"id": "2_",
+						"name": "math1",
+						"nodeId": "math",
+						"x": 241,
+						"y": 330,
+						"parameters": {
+							"operation": "MATH_MODULO",
+							"value": "2",
+							"in": "1_.out"
+						}
+					},
+					{
+						"id": "3_",
+						"name": "led1",
+						"nodeId": "led",
+						"x": 244,
+						"y": 135,
+						"parameters": {
+							"place": "PLACE_LEFT_EYE",
+							"light": "2_.out"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-touch-light-switch",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"touch-to-change-color-10-times": {
+				"title": "coding_cards.flow.card.touch-to-change-color-10-times.title",
+				"hardware": [
+					"circuit-touch",
+					"dual-color-led"
+				],
+				"source": [
+					{
+						"id": "0_",
+						"name": "sequence1",
+						"nodeId": "sequence",
+						"x": 222,
+						"y": 112,
+						"parameters": {
+							"items.0": "1",
+							"items.1": ".5",
+							"items.2": ".2",
+							"items.3": ".7",
+							"items.4": null,
+							"items.5": ".1",
+							"items.6": ".8",
+							"items.7": ".5",
+							"items.8": ".3",
+							"items.9": null,
+							"trigger": "2_.out",
+							"duration": "3"
+						}
+					},
+					{
+						"id": "1_",
+						"name": "dualColorLed1",
+						"nodeId": "dual-color-led",
+						"x": 427,
+						"y": 161,
+						"parameters": {
+							"color": "0_.out",
+							"place": "PLACE_LEFT_ARM"
+						}
+					},
+					{
+						"id": "2_",
+						"name": "circuitTouch1",
+						"nodeId": "makey-touch",
+						"x": 16,
+						"y": 106,
+						"parameters": {
+							"place": "PLACE_HORN",
+							"sensitivity": ".5"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-touch-to-change-color-10-times",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"touch-to-light": {
+				"title": "coding_cards.flow.card.touch-to-light.title",
+				"hardware": [
+					"circuit-touch",
+					"built-in-led"
+				],
+				"source": [
+					{
+						"name": "circuitTouch1",
+						"nodeId": "makey-touch",
+						"x": 126,
+						"y": 145,
+						"id": "0_",
+						"parameters": {
+							"sensitivity": "undefined.5",
+							"place": "PLACE_HORN"
+						}
+					},
+					{
+						"name": "led1",
+						"nodeId": "led",
+						"x": 349,
+						"y": 151,
+						"id": "1_",
+						"parameters": {
+							"place": "PLACE_LEFT_EYE",
+							"light": "0_.out"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-touch-to-light",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"touch-to-move": {
+				"title": "coding_cards.flow.card.touch-to-move.title",
+				"hardware": [
+					"circuit-touch",
+					"servo-motor"
+				],
+				"source": [
+					{
+						"name": "servoMotor1",
+						"nodeId": "servo-motor",
+						"x": 308,
+						"y": 174,
+						"id": "0_",
+						"parameters": {
+							"place": "PLACE_SERVO_MOTOR_1",
+							"position": "1_.out"
+						}
+					},
+					{
+						"name": "circuitTouch1",
+						"nodeId": "makey-touch",
+						"x": 82,
+						"y": 169,
+						"id": "1_",
+						"parameters": {
+							"place": "PLACE_HORN",
+							"min": "0.2",
+							"max": "0.8",
+							"sensitivity": "0.5"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-touch-to-move",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"touch-to-siren-light": {
+				"title": "coding_cards.flow.card.touch-to-siren-light.title",
+				"hardware": [
+					"circuit-touch",
+					"dual-color-led"
+				],
+				"source": [
+					{
+						"id": "0_",
+						"name": "circuitTouch1",
+						"nodeId": "makey-touch",
+						"x": 29,
+						"y": 103,
+						"parameters": {
+							"place": "PLACE_HORN",
+							"sensitivity": ".5",
+							"max": "2"
+						}
+					},
+					{
+						"id": "1_",
+						"name": "wave1",
+						"nodeId": "wave",
+						"x": 247,
+						"y": 111,
+						"parameters": {
+							"type": "WAVE_RAMP_DOWN",
+							"length": "0_.out"
+						}
+					},
+					{
+						"id": "2_",
+						"name": "dualColorLed1",
+						"nodeId": "dual-color-led",
+						"x": 467,
+						"y": 94,
+						"parameters": {
+							"place": "PLACE_LEFT_ARM",
+							"color": "1_.out"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-touch-to-siren-light",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"touch-to-wave": {
+				"title": "coding_cards.flow.card.touch-to-wave.title",
+				"hardware": [
+					"circuit-touch",
+					"servo-motor"
+				],
+				"source": [
+					{
+						"id": "0_",
+						"name": "wave1",
+						"nodeId": "wave",
+						"x": 16,
+						"y": 69,
+						"parameters": {
+							"length": 1,
+							"min": ".2",
+							"max": ".8"
+						}
+					},
+					{
+						"id": "1_",
+						"name": "servoMotor1",
+						"nodeId": "servo-motor",
+						"x": 441,
+						"y": 85,
+						"parameters": {
+							"position": "2_.out",
+							"place": "PLACE_SERVO_MOTOR_1"
+						}
+					},
+					{
+						"id": "2_",
+						"name": "circuitTouch1",
+						"nodeId": "makey-touch",
+						"x": 228,
+						"y": 55,
+						"parameters": {
+							"place": "PLACE_HORN",
+							"sensitivity": ".5",
+							"max": "0_.out",
+							"min": ".5"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-touch-to-wave",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"touch-to-wink": {
+				"title": "coding_cards.flow.card.touch-to-wink.title",
+				"hardware": [
+					"circuit-touch",
+					"built-in-led"
+				],
+				"source": [
+					{
+						"id": "0_",
+						"name": "circuitTouch1",
+						"nodeId": "makey-touch",
+						"x": 20,
+						"y": 69,
+						"parameters": {
+							"place": "PLACE_HORN",
+							"sensitivity": ".5"
+						}
+					},
+					{
+						"id": "1_",
+						"name": "wave1",
+						"nodeId": "wave",
+						"x": 235,
+						"y": 117,
+						"parameters": {
+							"length": "0_.out"
+						}
+					},
+					{
+						"id": "2_",
+						"name": "led1",
+						"nodeId": "led",
+						"x": 436,
+						"y": 184.328125,
+						"parameters": {
+							"light": "1_.out",
+							"place": "PLACE_LEFT_EYE"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-touch-to-wink",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"trigger-movement-pattern": {
+				"title": "coding_cards.flow.card.trigger-movement-pattern.title",
+				"hardware": [
+					"circuit-touch",
+					"servo-motor"
+				],
+				"source": [
+					{
+						"id": "0_",
+						"name": "circuitTouch1",
+						"nodeId": "makey-touch",
+						"x": 30,
+						"y": 157,
+						"parameters": {
+							"sensitivity": ".5",
+							"place": "PLACE_HORN"
+						}
+					},
+					{
+						"id": "1_",
+						"name": "sequence1",
+						"nodeId": "sequence",
+						"x": 241,
+						"y": 163,
+						"parameters": {
+							"items.0": null,
+							"items.1": ".3",
+							"items.2": ".7",
+							"items.3": ".1",
+							"items.4": ".5",
+							"items.5": "1",
+							"trigger": "0_.out",
+							"duration": "4"
+						}
+					},
+					{
+						"id": "2_",
+						"name": "servoMotor1",
+						"nodeId": "servo-motor",
+						"x": 444,
+						"y": 169,
+						"parameters": {
+							"position": "1_.out",
+							"place": "PLACE_SERVO_MOTOR_1"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-trigger-movement-pattern",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"twinkle-for-4-seconds-at-startup": {
+				"title": "coding_cards.flow.card.twinkle-for-4-seconds-at-startup.title",
+				"hardware": [
+					"built-in-led"
+				],
+				"source": [
+					{
+						"id": "2_",
+						"name": "led1",
+						"nodeId": "led",
+						"x": 474,
+						"y": 224,
+						"parameters": {
+							"light": "6_.out",
+							"place": "3_.out"
+						}
+					},
+					{
+						"id": "3_",
+						"name": "list1",
+						"nodeId": "list",
+						"x": 221,
+						"y": 362,
+						"parameters": {
+							"items.0": "PLACE_LEFT_EYE",
+							"items.1": "PLACE_RIGHT_EYE",
+							"items.2": "PLACE_RIGHT_MOUTH",
+							"items.3": "PLACE_LEFT_MOUTH",
+							"in": "4_.out"
+						}
+					},
+					{
+						"id": "4_",
+						"name": "randomizer1",
+						"nodeId": "randomizer",
+						"x": 16,
+						"y": 374,
+						"parameters": {
+							"interval": ".1"
+						}
+					},
+					{
+						"id": "5_",
+						"name": "time1",
+						"nodeId": "time",
+						"x": 23,
+						"y": 156
+					},
+					{
+						"id": "6_",
+						"name": "comparison1",
+						"nodeId": "comparison",
+						"x": 244,
+						"y": 65,
+						"parameters": {
+							"in": "5_.out",
+							"operation": "COMP_LESS",
+							"value": "4"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-twinkle-for-4-seconds-at-startup",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"type-key-over-and-over": {
+				"title": "coding_cards.flow.card.type-key-over-and-over.title",
+				"hardware": [
+					"key-press"
+				],
+				"source": [
+					{
+						"id": "0_",
+						"name": "keyPress1",
+						"nodeId": "key-press",
+						"x": 277,
+						"y": 210,
+						"parameters": {
+							"key": "KEY_Q",
+							"trigger": "1_.out"
+						}
+					},
+					{
+						"id": "1_",
+						"name": "wave1",
+						"nodeId": "wave",
+						"x": 55,
+						"y": 170,
+						"parameters": {
+							"type": "WAVE_PULSE",
+							"length": "2"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-type-key-over-and-over",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"wave-quick-ands-slow": {
+				"title": "coding_cards.flow.card.wave-quick-ands-slow.title",
+				"hardware": [
+					"servo-motor"
+				],
+				"source": [
+					{
+						"id": "0_",
+						"name": "servoMotor1",
+						"nodeId": "servo-motor",
+						"x": 434,
+						"y": 154,
+						"parameters": {
+							"position": "1_.out",
+							"place": "PLACE_SERVO_MOTOR_1"
+						}
+					},
+					{
+						"id": "1_",
+						"name": "wave1",
+						"nodeId": "wave",
+						"x": 224,
+						"y": 129,
+						"parameters": {
+							"min": ".2",
+							"max": ".8",
+							"length": "2_.out"
+						}
+					},
+					{
+						"id": "2_",
+						"name": "wave2",
+						"nodeId": "wave",
+						"x": 17,
+						"y": 130,
+						"parameters": {
+							"min": ".2",
+							"length": "15",
+							"type": "WAVE_TRIANGLE",
+							"max": "2"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-wave-quick-ands-slow",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			},
+			"write-hello-in-one-second": {
+				"title": "coding_cards.flow.card.write-hello-in-one-second.title",
+				"hardware": [
+					"circuit-touch",
+					"key-press"
+				],
+				"source": [
+					{
+						"id": "0_",
+						"name": "keySequence1",
+						"nodeId": "key-sequence",
+						"x": 440,
+						"y": 155,
+						"parameters": {
+							"key": "1_.out"
+						}
+					},
+					{
+						"id": "1_",
+						"name": "sequence1",
+						"nodeId": "sequence",
+						"x": 232,
+						"y": 131,
+						"parameters": {
+							"items.0": "KEY_H",
+							"items.1": "KEY_E",
+							"items.2": "KEY_L",
+							"items.3": "KEY_L",
+							"items.4": "KEY_O",
+							"trigger": "2_.out"
+						}
+					},
+					{
+						"id": "2_",
+						"name": "circuitTouch1",
+						"nodeId": "makey-touch",
+						"x": 13,
+						"y": 148.390625,
+						"parameters": {
+							"place": "PLACE_HORN",
+							"sensitivity": ".5"
+						}
+					}
+				],
+				"slides": [
+					{
+						"id": "flow-write-hello-in-one-second",
+						"title": "coding_cards.block.slide.code-and-hardware.title"
+					}
+				]
+			}
+		},
 		"block": {
 			"blink": {
 				"title": "coding_cards.block.card.blink.title",
