@@ -45,7 +45,7 @@ const valueParsedSelector = () => createSelector(
 				display : makeStringSelector(`flow.constant.${id}`)(state),
 				code    : uppercaseValue,
 				raw     : uppercaseValue,
-				icon    : icons.constants[id]
+				icon    : icons.constants[id],
 			}
 		}
 		result = getConstant()
@@ -76,7 +76,7 @@ const valueParsedSelector = () => createSelector(
 				display : instanceNodeNameSelector()(state, { id : instanceId }),
 				code    : `${instanceNameSelector()(state, { id : instanceId })}.${outletId}`,
 				raw     : value,
-				icon    : instanceIconSelector()(state, { id : instanceId })
+				icon    : instanceIconSelector()(state, { id : instanceId }),
 			}
 		}
 		result = getOutlet()
@@ -106,7 +106,7 @@ const valueParsedSelector = () => createSelector(
 				display : text,
 				code    : text,
 				raw     : value,
-				icon    : null
+				icon    : null,
 			}
 		}
 		result = getNumber()

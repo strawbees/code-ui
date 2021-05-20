@@ -4,7 +4,7 @@ const {
 	publicRuntimeConfig : {
 		WINDOWS_DRIVERS_INSTALLER_URL,
 		CHROME_EXTENSION_ID,
-	}
+	},
 } = getConfig()
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => ({

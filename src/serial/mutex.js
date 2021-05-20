@@ -1,10 +1,10 @@
 import {
-	log
+	log,
 } from './log'
 
 import {
 	delay,
-	tryToExecute
+	tryToExecute,
 } from './utils'
 
 import localStorage from './localStorage'
@@ -28,7 +28,7 @@ export async function lockThread(runtimeId) {
 
 	lock = {
 		runtimeId,
-		ts : Date.now()
+		ts : Date.now(),
 	}
 	log('Set lock value', lock)
 	setLock(lock)

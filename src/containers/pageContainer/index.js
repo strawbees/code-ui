@@ -62,7 +62,7 @@ PageContainer.propTypes = {
 		'password-reset',
 		'text',
 		'user',
-	])
+	]),
 }
 
 const pageContainerConnected = connect(

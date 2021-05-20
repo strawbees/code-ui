@@ -4,7 +4,7 @@ import generalIcons from 'src/editors/flow/assets/icons/general'
 import tinycolor from 'tinycolor2'
 import {
 	WHITE,
-	BLACK
+	BLACK,
 } from 'src/constants/colors'
 
 const RemoveItemButton = ({ onClick }) =>
@@ -32,7 +32,7 @@ const RemoveItemButton = ({ onClick }) =>
 	</button>
 
 RemoveItemButton.propTypes = {
-	onClick : PropTypes.func
+	onClick : PropTypes.func,
 }
 
 export default RemoveItemButton

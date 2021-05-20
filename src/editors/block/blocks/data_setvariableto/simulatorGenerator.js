@@ -3,7 +3,7 @@ import {
 	parseNext,
 	getValueBlockByAttributeName,
 	parseInstaceDefinition,
-	getBlockBody
+	getBlockBody,
 } from '../../utils/simulatorParsing'
 
 const generator = ({ value, field, next }, structure) => {

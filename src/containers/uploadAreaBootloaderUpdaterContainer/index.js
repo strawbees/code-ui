@@ -33,13 +33,13 @@ class UploadAreaBootloadUpdaterContainer extends React.Component {
 	// one board connected, upload straight away
 	componentDidUpdate({
 		bootloaderUpdaterHex : prevBootloaderUpdaterHex,
-		factoryCodeHex : prevFactoryCodeHex
+		factoryCodeHex : prevFactoryCodeHex,
 	}) {
 		const {
 			bootloaderUpdaterHex,
 			factoryCodeHex,
 			boardIds,
-			uploadMutipleHexes
+			uploadMutipleHexes,
 		} = this.props
 		if (
 			(

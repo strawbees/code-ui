@@ -8,20 +8,20 @@ export default (scripts, Child, Preloader) => {
 		constructor(props) {
 			super(props)
 			this.state = {
-				loaded : scripts.reduce((e, s) => e && CACHE[s], true)
+				loaded : scripts.reduce((e, s) => e && CACHE[s], true),
 			}
 		}
 
 		handleScriptLoad(script) {
 			CACHE[script] = true
 			this.setState({
-				loaded : scripts.reduce((e, s) => e && CACHE[s], true)
+				loaded : scripts.reduce((e, s) => e && CACHE[s], true),
 			})
 		}
 
 		render() {
 			const {
-				loaded
+				loaded,
 			} = this.state
 
 			if (loaded) {

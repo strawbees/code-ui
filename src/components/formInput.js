@@ -16,7 +16,7 @@ class FormInput extends React.Component {
 			labelValue,
 			placeholderKey,
 			defaultValue,
-			onChange
+			onChange,
 		} = this.props
 		return (
 			<div className='root formInput'>

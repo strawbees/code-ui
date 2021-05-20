@@ -169,7 +169,7 @@ export const CircuitTouch = ({
 			/>
 			<div className='indicator'
 				style={{
-					transform : `translate3d(${touchX}px,${touchY}px,0px)`
+					transform : `translate3d(${touchX}px,${touchY}px,0px)`,
 				}}>
 				<div className='center'/>
 				<div className='radial-1'/>

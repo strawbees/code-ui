@@ -24,7 +24,7 @@ const codingCardsBlockFormatedEntitiesSelector = () => createSelector(
 				id    : slide.id,
 				title : makeStringSelector(slide.title)(state),
 				url   : `${rootPath}/static/coding-cards/${slide.id}.png`,
-			}))) || []
+			}))) || [],
 		}
 		return acc
 	}, {})

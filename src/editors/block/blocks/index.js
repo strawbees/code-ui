@@ -137,6 +137,6 @@ export default {
 	output_servo,
 	output_servo_transition,
 	text,
-	undefined
+	undefined,
 }
 /* eslint-enable camelcase */

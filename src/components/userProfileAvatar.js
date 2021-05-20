@@ -50,7 +50,7 @@ const UserProfileAvatar = ({
 	</div>
 
 UserProfileAvatar.defaultProps = {
-	isAnon : true
+	isAnon : true,
 }
 
 UserProfileAvatar.propTypes = {

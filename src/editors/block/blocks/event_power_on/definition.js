@@ -6,7 +6,7 @@ const definition = (strings) => ({
 	nextStatement   : null,
 	colour          : '#FFBF00',
 	colourSecondary : '#E6AC00',
-	colourTertiary  : '#CC9900'
+	colourTertiary  : '#CC9900',
 })
 
 export default definition

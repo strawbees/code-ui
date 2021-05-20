@@ -4,7 +4,7 @@ import generalIcons from 'src/editors/flow/assets/icons/general'
 import tinycolor from 'tinycolor2'
 import {
 	WHITE,
-	BLACK
+	BLACK,
 } from 'src/constants/colors'
 
 const AddItemButton = ({ onClick }) =>
@@ -32,7 +32,7 @@ const AddItemButton = ({ onClick }) =>
 	</button>
 
 AddItemButton.propTypes = {
-	onClick : PropTypes.func
+	onClick : PropTypes.func,
 }
 
 export default AddItemButton

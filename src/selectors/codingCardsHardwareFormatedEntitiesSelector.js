@@ -14,7 +14,7 @@ const codingCardsHardwareFormatedEntitiesSelector = () => createSelector(
 	) => Object.keys(codingCardsHardwareEntities).reduce((acc, id) => {
 		acc[id] = {
 			id,
-			title : makeStringSelector(codingCardsHardwareEntities[id].title)(state)
+			title : makeStringSelector(codingCardsHardwareEntities[id].title)(state),
 		}
 		return acc
 	}, {})

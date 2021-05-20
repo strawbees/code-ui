@@ -198,7 +198,7 @@ const EditorMenu = ({
 					onClick  : () => fireGlobalEvent('track-event', {
 						category : 'ui',
 						action   : 'new flow program',
-						label    : 'file menu'
+						label    : 'file menu',
 					}),
 				},
 				{
@@ -208,7 +208,7 @@ const EditorMenu = ({
 					onClick  : () => fireGlobalEvent('track-event', {
 						category : 'ui',
 						action   : 'new block program',
-						label    : 'file menu'
+						label    : 'file menu',
 					}),
 				},
 				{
@@ -218,7 +218,7 @@ const EditorMenu = ({
 					onClick  : () => fireGlobalEvent('track-event', {
 						category : 'ui',
 						action   : 'new text program',
-						label    : 'file menu'
+						label    : 'file menu',
 					}),
 				},
 				{
@@ -232,7 +232,7 @@ const EditorMenu = ({
 						fireGlobalEvent('track-event', {
 							category : 'ui',
 							action   : 'save program',
-							label    : 'file menu'
+							label    : 'file menu',
 						})
 					},
 				},
@@ -245,7 +245,7 @@ const EditorMenu = ({
 						fireGlobalEvent('track-event', {
 							category : 'ui',
 							action   : 'duplicate program',
-							label    : 'file menu'
+							label    : 'file menu',
 						})
 					},
 				},
@@ -258,7 +258,7 @@ const EditorMenu = ({
 						fireGlobalEvent('track-event', {
 							category : 'ui',
 							action   : 'upload program',
-							label    : 'file menu'
+							label    : 'file menu',
 						})
 					},
 				},
@@ -272,7 +272,7 @@ const EditorMenu = ({
 						fireGlobalEvent('track-event', {
 							category : 'ui',
 							action   : 'share program',
-							label    : 'file menu'
+							label    : 'file menu',
 						})
 					},
 				},
@@ -285,7 +285,7 @@ const EditorMenu = ({
 						fireGlobalEvent('track-event', {
 							category : 'ui',
 							action   : 'export program',
-							label    : 'file menu'
+							label    : 'file menu',
 						})
 					},
 				},
@@ -297,7 +297,7 @@ const EditorMenu = ({
 						fireGlobalEvent('track-event', {
 							category : 'ui',
 							action   : 'import program',
-							label    : 'file menu'
+							label    : 'file menu',
 						})
 					},
 				},
@@ -309,7 +309,7 @@ const EditorMenu = ({
 						fireGlobalEvent('track-event', {
 							category : 'ui',
 							action   : 'upload factory program',
-							label    : 'file menu'
+							label    : 'file menu',
 						})
 					},
 				},
@@ -320,7 +320,7 @@ const EditorMenu = ({
 						fireGlobalEvent('track-event', {
 							category : 'ui',
 							action   : 'upload bootloader update program',
-							label    : 'file menu'
+							label    : 'file menu',
 						})
 					},
 				},
@@ -370,7 +370,7 @@ const EditorMenu = ({
 								fireGlobalEvent('track-event', {
 									category : 'ui',
 									action   : 'save program',
-									label    : 'header'
+									label    : 'header',
 								})
 							}}
 							hideLabelOnMediaQuery={'max-width: 950px'}
@@ -384,7 +384,7 @@ const EditorMenu = ({
 							fireGlobalEvent('track-event', {
 								category : 'ui',
 								action   : 'upload program',
-								label    : 'header'
+								label    : 'header',
 							})
 						}}
 						hideLabelOnMediaQuery={'max-width: 950px'}
@@ -406,7 +406,7 @@ EditorMenu.propTypes = {
 		NEEDS_SYNC,
 		SYNCING,
 		READY,
-		ERROR
+		ERROR,
 	]),
 	onNameChange                      : PropTypes.func,
 	onSavePress                       : PropTypes.func,

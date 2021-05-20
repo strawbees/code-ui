@@ -12,7 +12,7 @@ import {
 
 class ParameterHandle extends React.Component {
 	state = {
-		disconnecting : false
+		disconnecting : false,
 	}
 
 	constructor(props) {
@@ -129,7 +129,7 @@ class ParameterHandle extends React.Component {
 			selfRef,
 		} = this
 		const {
-			disconnecting
+			disconnecting,
 		} = this.state
 		const {
 			id,
@@ -292,7 +292,7 @@ ParameterHandle.propTypes = {
 		onDragStart : PropTypes.func,
 		onDragMove  : PropTypes.func,
 		onDragStop  : PropTypes.func,
-	})
+	}),
 }
 
 export default ParameterHandle

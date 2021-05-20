@@ -15,7 +15,7 @@ const mapStateToProps = () => createSelector(
 		exitingBootloaderMode,
 	}) => {
 		const result = {
-			uuid
+			uuid,
 		}
 		if (hardwareInterface === 'midi' && !midi) {
 			result.status = 'problem'

@@ -13,8 +13,8 @@ const genereateSimulatorCode = (source, state) => {
 		...state,
 		flowEditor : {
 			...state.flowEditor,
-			source
-		}
+			source,
+		},
 	}
 	// Sort nodes by input > brains > output
 	const sortedSource = source.slice(0).sort((instanceA, instanceB) => {

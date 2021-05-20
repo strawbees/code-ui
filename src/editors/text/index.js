@@ -14,7 +14,7 @@ const TextEditor = ({
 
 TextEditor.propTypes = {
 	source         : PropTypes.string,
-	onSourceChange : PropTypes.func
+	onSourceChange : PropTypes.func,
 }
 
 export default TextEditor

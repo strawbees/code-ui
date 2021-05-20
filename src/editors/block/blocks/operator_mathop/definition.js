@@ -18,16 +18,16 @@ const definition = () => ({
 				[window.Blockly.Msg.OPERATORS_MATHOP_LN, 'ln'],
 				[window.Blockly.Msg.OPERATORS_MATHOP_LOG, 'log'],
 				[window.Blockly.Msg.OPERATORS_MATHOP_EEXP, 'e ^'],
-				[window.Blockly.Msg.OPERATORS_MATHOP_10EXP, '10 ^']
-			]
+				[window.Blockly.Msg.OPERATORS_MATHOP_10EXP, '10 ^'],
+			],
 		},
 		{
 			type  : 'input_value',
 			name  : 'NUM',
 			check : 'Number',
-		}
+		},
 	],
 	category   : window.Blockly.Categories.operators,
-	extensions : ['colours_operators', 'output_number']
+	extensions : ['colours_operators', 'output_number'],
 })
 export default definition

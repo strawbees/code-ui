@@ -1,17 +1,15 @@
-import s from 'src/utils/s'
-
 const definition = () => ({
 	message0 : window.Blockly.Msg.DATA_ADDTOLIST,
 	args0    : [
 		{
 			type : 'input_value',
-			name : 'ITEM'
+			name : 'ITEM',
 		},
 		{
 			type          : 'field_variable',
 			name          : 'LIST',
-			variableTypes : ['list']
-		}
+			variableTypes : ['list'],
+		},
 	],
 	category          : 'data-lists',
 	previousStatement : null,

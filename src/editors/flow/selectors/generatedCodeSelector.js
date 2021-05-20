@@ -6,7 +6,7 @@ import generateCode from 'src/editors/flow/utils/generateCode'
 const generatedCodeSelector = () => createSelector(
 	[
 		stateSelector(),
-		sourceSelector()
+		sourceSelector(),
 	],
 	(
 		state,

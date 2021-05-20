@@ -9,7 +9,7 @@ const UploadArea = ({
 	boardIds,
 	hex,
 	compilerError,
-	uploaderError
+	uploaderError,
 }) =>
 	<div className='root uploadArea'>
 		<style jsx>{`
@@ -68,14 +68,14 @@ const UploadArea = ({
 	</div>
 
 UploadArea.defaultProps = {
-	boardIds : []
+	boardIds : [],
 }
 
 UploadArea.propTypes = {
 	boardIds      : PropTypes.arrayOf(PropTypes.string),
 	hex           : PropTypes.string,
 	compilerError : PropTypes.string,
-	uploaderError : PropTypes.string
+	uploaderError : PropTypes.string,
 }
 
 export default UploadArea

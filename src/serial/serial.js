@@ -1,13 +1,13 @@
 import getConfig from 'next/config'
 
 import {
-	AVR
+	AVR,
 } from './constants'
 
 const {
 	publicRuntimeConfig : {
-		QUIRKBOT_USB_SERIAL_IDS
-	}
+		QUIRKBOT_USB_SERIAL_IDS,
+	},
 } = getConfig()
 
 export async function getPorts() {
@@ -22,8 +22,16 @@ export async function openPort(port, options = { baudRate : AVR.BaudRateCommunic
 	await port.open(options)
 }
 
-export async function closePort(port) {
-	await port.close()
+export async function closePort(port, timeout = 1000) {
+	await new Promise((resolve, reject) => {
+		const timer = setTimeout(reject, timeout)
+		async function close() {
+			await port.close()
+			clearTimeout(timer)
+			resolve()
+		}
+		close()
+	})
 }
 
 export function createPortHash(port) {
@@ -38,6 +46,22 @@ export async function writeBytesToPort(port, bytes) {
 	writer.releaseLock()
 }
 
+export async function writeDataToFirstAvaiblePort(bytes) {
+	const [port] = await navigator.serial.getPorts()
+	// If there's no port, we have a bigger issue and can't do antyhing...
+	if (!port) {
+		throw new Error('No port avaiable.')
+	}
+	// Open the port
+	await port.open({ baudRate : 9600 })
+	// Send the "enter bootloader" message
+	const writer = port.writable.getWriter()
+	const data = new Uint8Array(bytes)
+	await writer.write(data)
+	writer.releaseLock()
+	await port.close()
+}
+
 export function getUsbFilters({ bootloader, program }) {
 	let filters = []
 	if (bootloader) {
@@ -49,13 +73,27 @@ export function getUsbFilters({ bootloader, program }) {
 	return filters
 }
 
-export async function getPortByFilter({ usbVendorId, usbProductId }) {
+export function generatePortId(port, index) {
+	const info = port.getInfo()
+	return `${info.usbVendorId}_${info.usbProductId}_${index}`
+}
+
+export async function unserializePort(id) {
 	const ports = await getPorts()
 	for (let i = 0; i < ports.length; i++) {
 		const port = ports[i]
-		const info = port.getInfo()
-		if (info.usbVendorId === usbVendorId && info.usbProductId === usbProductId) {
+		if (id === generatePortId(port, i)) {
 			return port
+		}
+	}
+	return null
+}
+
+export async function serializePort(port) {
+	const ports = await getPorts()
+	for (let i = 0; i < ports.length; i++) {
+		if (port === ports[i]) {
+			return generatePortId(port, i)
 		}
 	}
 	return null

@@ -25,7 +25,7 @@ const DownloadInfo = ({
 	}
 	const {
 		url,
-		version
+		version,
 	} = urls[platform][arch]
 	const selected = currentArch === arch && currentPlatform === platform
 	return (
@@ -78,8 +78,8 @@ class PageDownload extends React.Component {
 					url      : null,
 					checksum : null,
 				},
-			}
-		}
+			},
+		},
 	}
 
 	loadDownloadData = async (platform, arch) => {
@@ -90,7 +90,7 @@ class PageDownload extends React.Component {
 		const {
 			name,
 			version,
-			installer : { path, checksum }
+			installer : { path, checksum },
 		} = await (await fetch(`${base}/latest.json`)).json()
 		if (this.isUnmounted) {
 			return
@@ -106,10 +106,10 @@ class PageDownload extends React.Component {
 						name,
 						version,
 						checksum,
-						url : `${base}/${path}`
-					}
-				}
-			}
+						url : `${base}/${path}`,
+					},
+				},
+			},
 		})
 	}
 
@@ -129,7 +129,7 @@ class PageDownload extends React.Component {
 			currentArch,
 		} = this.props
 		const {
-			urls
+			urls,
 		} = this.state
 		return (
 			<div className='root pageDownload'>
@@ -249,8 +249,8 @@ PageDownload.propTypes = {
 		}),
 		darwin : PropTypes.shape({
 			x64 : PropTypes.string,
-		})
-	})
+		}),
+	}),
 }
 
 export default PageDownload

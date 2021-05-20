@@ -1,6 +1,6 @@
 import {
 	parseNext,
-	getBlockBody
+	getBlockBody,
 } from '../../utils/simulatorParsing'
 
 const generator = ({ next, mutation, value }, structure) => {

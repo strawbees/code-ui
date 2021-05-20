@@ -11,7 +11,7 @@ parsedPlatform.node = {
 		'x64' :
 		parsedPlatform.os.architecture === 32 ?
 			'ia32' :
-			''
+			'',
 }
 const getOS = () => parsedPlatform
 

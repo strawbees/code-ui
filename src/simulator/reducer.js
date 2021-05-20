@@ -6,7 +6,7 @@ import {
 	SET_EXTERNAL_DATA,
 	SET_EXTERNAL_NODE_DATA,
 	SHOW_SIMULATOR,
-	HIDE_SIMULATOR
+	HIDE_SIMULATOR,
 } from './actionTypes'
 
 const defaultInternalDataState = {
@@ -15,11 +15,11 @@ const defaultInternalDataState = {
 	time   : 0,
 	nodes  : {
 		ids      : [],
-		entities : {}
-	}
+		entities : {},
+	},
 }
 const defaultExternalDataState = {
-	nodes : {}
+	nodes : {},
 }
 const internalData = generateReducer(SET_INTERNAL_DATA, defaultInternalDataState)
 const externalData = (state = defaultExternalDataState, { type, payload }) => {
@@ -45,7 +45,7 @@ const externalData = (state = defaultExternalDataState, { type, payload }) => {
 		if (needsSync) {
 			return {
 				...state,
-				nodes
+				nodes,
 			}
 		}
 		return state
@@ -54,7 +54,7 @@ const externalData = (state = defaultExternalDataState, { type, payload }) => {
 	switch (type) {
 		case SET_EXTERNAL_DATA: {
 			return {
-				...payload
+				...payload,
 			}
 		}
 		case SET_EXTERNAL_NODE_DATA: {
@@ -63,7 +63,7 @@ const externalData = (state = defaultExternalDataState, { type, payload }) => {
 			nodes[id] = { ...data }
 			return {
 				...state,
-				nodes
+				nodes,
 			}
 		}
 		default:

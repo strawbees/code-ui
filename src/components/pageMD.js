@@ -4,12 +4,12 @@ import tinycolor from 'tinycolor2'
 import S from 'src/containers/sManager'
 import {
 	GRAY,
-	WHITE
+	WHITE,
 } from 'src/constants/colors'
 
 const PageMD = ({
 	queryRef,
-	queryId
+	queryId,
 }) =>
 	<div className='root pageMD'>
 		<style jsx>{`
@@ -48,7 +48,7 @@ PageMD.defaultProps = {}
 
 PageMD.propTypes = {
 	queryRef : PropTypes.string,
-	queryId  : PropTypes.string
+	queryId  : PropTypes.string,
 }
 
 export default PageMD

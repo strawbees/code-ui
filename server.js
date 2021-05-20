@@ -11,7 +11,7 @@ const init = async () => {
 	const handle = app.getRequestHandler()
 	const routes = JSON.parse(await fs.readFile(path.join('static', 'routes.json')))
 	const {
-		publicRuntimeConfig
+		publicRuntimeConfig,
 	} = nextConfig
 	// eslint-disable-next-line no-console
 	console.log('CONFIG:', publicRuntimeConfig)
@@ -29,7 +29,7 @@ const init = async () => {
 		if (routes[`${pathname}/`]) {
 			// then add the trailing slash and redirect
 			res.writeHead(301, {
-				Location : req.url.replace(pathname, `${pathname}/`)
+				Location : req.url.replace(pathname, `${pathname}/`),
 			})
 			res.end()
 			return

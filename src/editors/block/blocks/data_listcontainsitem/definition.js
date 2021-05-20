@@ -1,16 +1,14 @@
-import s from 'src/utils/s'
-
-const definition = (strings) => ({
+const definition = () => ({
 	message0 : window.Blockly.Msg.DATA_LISTCONTAINSITEM,
 	args0    : [
 		{
 			type          : 'field_variable',
 			name          : 'LIST',
-			variableTypes : ['list']
+			variableTypes : ['list'],
 		},
 		{
 			type : 'input_value',
-			name : 'ITEM'
+			name : 'ITEM',
 		},
 	],
 	category        : 'data-lists',

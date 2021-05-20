@@ -26,7 +26,7 @@ class Range extends React.Component {
 	render() {
 		const {
 			onKeyDown,
-			cancelEvent
+			cancelEvent,
 		} = this
 		const {
 			value,
@@ -181,7 +181,7 @@ class Range extends React.Component {
 Range.defaultProps = {
 	min  : 0,
 	max  : 1,
-	step : 0.01
+	step : 0.01,
 }
 
 Range.propTypes = {

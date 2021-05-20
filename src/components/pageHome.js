@@ -4,7 +4,7 @@ import UserArea from 'src/components/userArea'
 import StorageProgramListContainer from 'src/containers/storageProgramListContainer'
 import ProgramCreatorContainer from 'src/containers/programCreatorContainer'
 import {
-	GRAY
+	GRAY,
 } from 'src/constants/colors'
 
 const PageHome = () =>

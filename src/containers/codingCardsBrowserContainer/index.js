@@ -12,7 +12,7 @@ const CodingCardsBrowserContainer = (props) =>
 CodingCardsBrowser.propTypes = {
 	type : PropTypes.oneOf([
 		'flow',
-		'block'
+		'block',
 	]),
 }
 

@@ -6,7 +6,7 @@ import {
 	getBlockBody,
 	parseNodeInstacePropertyAssignmentFromValue,
 	parseNodeInstacePropertyRetrieval,
-	setNodeInstacePropertyOneTimeAssignment
+	setNodeInstacePropertyOneTimeAssignment,
 } from '../../utils/parsing'
 
 const generator = ({ attributes, value, next }, structure) => {

@@ -79,7 +79,7 @@ export class Sequence extends HasTrigger(HasInterval(Node)) {
 			duration : this.duration.get(),
 			trigger  : this.trigger.get(),
 			out      : this.out.get(),
-			items
+			items,
 		}
 	}
 }

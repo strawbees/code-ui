@@ -36,7 +36,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
 		setCurrentCardId,
 		title      : entry.title,
 		slides     : entry.slides,
-		onOpenCode : closeModal
+		onOpenCode : closeModal,
 	}
 }
 

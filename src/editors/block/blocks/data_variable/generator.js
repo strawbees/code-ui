@@ -1,7 +1,7 @@
 import { sanitizeCPPVariableName } from 'src/utils/string'
 import {
 	parseNext,
-	parseInstaceDefinition
+	parseInstaceDefinition,
 } from '../../utils/parsing'
 
 const generator = ({ field, next }, structure) => {

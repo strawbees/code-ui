@@ -19,7 +19,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
 				allHexes = allHexes.concat(hexes)
 			}
 			uploadMutipleHexes(runtimeId, allHexes, true)
-		}
+		},
 	}
 }
 

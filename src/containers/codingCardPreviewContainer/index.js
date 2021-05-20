@@ -12,10 +12,10 @@ const CodingCardPreviewContainer = (props) =>
 CodingCardPreview.propTypes = {
 	type : PropTypes.oneOf([
 		'flow',
-		'block'
+		'block',
 	]),
 	id      : PropTypes.string,
-	onClick : PropTypes.func
+	onClick : PropTypes.func,
 }
 
 const codingCardPreviewContainerConnected = connect(

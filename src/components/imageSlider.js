@@ -98,7 +98,7 @@ ImageSlider.propTypes = {
 	items     : PropTypes.arrayOf(PropTypes.shape({
 		title : PropTypes.string,
 		url   : PropTypes.string,
-	}))
+	})),
 }
 
 export default ImageSlider

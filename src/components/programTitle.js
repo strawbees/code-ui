@@ -74,7 +74,7 @@ const ProgramTitle = ({
 }
 
 ProgramTitle.defaultProps = {
-	displayAsButton : true
+	displayAsButton : true,
 }
 
 ProgramTitle.propTypes = {

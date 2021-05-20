@@ -2,7 +2,7 @@ import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToAction
 import { persistentHideGlobalBanner } from 'src/actions/ui'
 
 const mapDispatchToProps = autobindDispatchToActionCreators({
-	hideBanner : persistentHideGlobalBanner
+	hideBanner : persistentHideGlobalBanner,
 })
 
 export default mapDispatchToProps

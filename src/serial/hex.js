@@ -1,5 +1,5 @@
 import {
-	Buffer
+	Buffer,
 } from 'buffer/'
 /*
 The MIT License (MIT)
@@ -135,7 +135,7 @@ export const parseIntelHex = (data, bufferSize) => {
 				return {
 					data : buf.slice(0, bufLength),
 					startSegmentAddress,
-					startLinearAddress
+					startLinearAddress,
 				}
 			case EXT_SEGMENT_ADDR:
 				if (dataLength !== 2 || lowAddress !== 0) {

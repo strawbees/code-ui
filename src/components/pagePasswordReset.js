@@ -4,11 +4,11 @@ import tinycolor from 'tinycolor2'
 import StrawbeesCloudResetPassword from 'src/components/strawbeesCloudResetPassword'
 import {
 	GRAY,
-	WHITE
+	WHITE,
 } from 'src/constants/colors'
 
 const PagePasswordReset = ({
-	onSubmit
+	onSubmit,
 }) =>
 	<div className='root pagePasswordReset'>
 		<style jsx>{`

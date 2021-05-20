@@ -4,7 +4,7 @@ import connectionLineActiveCoordinatesSelector from 'src/editors/flow/selectors/
 
 const mapStateToProps = () => createStructuredSelector({
 	connectionLineIds     : connectionLineIdsSelector(),
-	activeLineCoordinates : connectionLineActiveCoordinatesSelector()
+	activeLineCoordinates : connectionLineActiveCoordinatesSelector(),
 })
 
 export default mapStateToProps

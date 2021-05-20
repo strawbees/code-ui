@@ -9,7 +9,7 @@ const StorageProgramListItemContainer = props =>
 	<ProgramListItem {...props} />
 
 StorageProgramListItemContainer.propTypes = {
-	id : PropTypes.string
+	id : PropTypes.string,
 }
 
 const storageProgramListItemContainerConnected = connect(

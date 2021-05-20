@@ -7,14 +7,14 @@ import {
 import {
 	safeOpenModal,
 	safeOpenDialogModal,
-	closeModal
+	closeModal,
 } from 'src/actions/modal'
 import {
 	safeAddProgram,
 	safeRemoveProgram,
 } from 'src/actions/storage'
 import {
-	resetEditorProgramByType
+	resetEditorProgramByType,
 } from 'src/actions/editor'
 import storageFormatedProgramSelector from 'src/selectors/storageFormatedProgramSelector'
 import storageProgramsSelector from 'src/selectors/storageProgramsSelector'
@@ -128,7 +128,7 @@ export const modalRemoveProgram = (id) => async (dispatch) => {
 			descriptionKey  : 'ui.dialog.remove.description',
 			confirmLabelKey : 'ui.dialog.remove.confirm',
 			limitWidth      : true,
-			onConfirm
+			onConfirm,
 		}
 	))
 }
@@ -158,7 +158,7 @@ export const modalDuplicateProgramById = (id) => async (dispatch, getState) => {
 			titleKey        : 'ui.dialog.duplicate.title',
 			confirmLabelKey : 'ui.dialog.duplicate.confirm',
 			// limitWidth      : true,
-			onConfirm
+			onConfirm,
 		},
 		<FormInput
 			defaultValue={newName}
@@ -177,7 +177,7 @@ export const modalDuplicateProgramData = (program) => async (dispatch) => {
 			titleKey        : 'ui.dialog.duplicate.title',
 			confirmLabelKey : 'ui.dialog.duplicate.confirm',
 			// limitWidth      : true,
-			onConfirm
+			onConfirm,
 		},
 		<FormInput
 			defaultValue={newName}
@@ -206,7 +206,7 @@ export const modalImportProgram = () => async (dispatch) =>
 		{
 			titleKey       : 'ui.dialog.import.title',
 			displayConfirm : false,
-			displayCancel  : false
+			displayCancel  : false,
 		},
 		<ProgramImporterContainer />
 	))
@@ -217,7 +217,7 @@ export const modalShareProgramData = (program) => async (dispatch, getState) => 
 		id,
 		name,
 		type,
-		source
+		source,
 	} = program
 
 	const dynamicUrl = programDynamicUrlSelector()(state, { id, type })

@@ -14,7 +14,7 @@ const parameterValueDisplaySelector = () => createSelector(
 	) => ({
 		type,
 		text,
-		icon
+		icon,
 	})
 )
 

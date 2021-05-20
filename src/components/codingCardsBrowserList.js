@@ -5,7 +5,7 @@ import CodingCardPreviewContainer from 'src/containers/codingCardPreviewContaine
 import SvgIcon from 'src/components/svgIcon'
 import editorIcons from 'src/assets/icons/editors/small'
 import {
-	GRAY
+	GRAY,
 } from 'src/constants/colors'
 
 const CodingCardsBrowserList = ({
@@ -95,7 +95,7 @@ CodingCardsBrowserList.defaultProps = {
 CodingCardsBrowserList.propTypes = {
 	type : PropTypes.oneOf([
 		'flow',
-		'block'
+		'block',
 	]),
 	title            : PropTypes.string,
 	cardIds          : PropTypes.arrayOf(PropTypes.string),

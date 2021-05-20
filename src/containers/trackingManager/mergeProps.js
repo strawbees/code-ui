@@ -3,7 +3,7 @@ import getConfig from 'next/config'
 const {
 	publicRuntimeConfig : {
 		GAID,
-	}
+	},
 } = getConfig()
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => ({

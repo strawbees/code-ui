@@ -9,8 +9,9 @@ import resolveLinkUrl from 'src/utils/resolveLinkUrl'
 const {
 	publicRuntimeConfig : {
 		URL_SCHEME,
-		ROOT_PATH
-	}
+		ROOT_PATH,
+		USE_SERVICE_WORKER,
+	},
 } = getConfig()
 
 // handle redirects
@@ -22,7 +23,7 @@ if (process.browser) {
 }
 
 // register the service worker
-if (process.browser) {
+if (USE_SERVICE_WORKER && process.browser) {
 	if ('serviceWorker' in navigator) {
 		// Use the window load event to keep the page load performant
 		window.addEventListener('load', () => {
@@ -37,7 +38,7 @@ class NextApp extends App {
 			pageProps : {
 				// Call page-level getInitialProps
 				...(Component.getInitialProps ? await Component.getInitialProps(ctx) : {}),
-			}
+			},
 		}
 	}
 
@@ -59,7 +60,7 @@ class NextApp extends App {
 					({
 						pathname,
 						search,
-						hash
+						hash,
 					} = new URL(url))
 				} catch (e) {
 					return
@@ -71,7 +72,7 @@ class NextApp extends App {
 				to = to.replace('//', '/')
 				const {
 					href,
-					as
+					as,
 				} = resolveLinkUrl(to)
 				// eslint-disable-next-line no-console
 				console.log('Opening via URL Scheme', url, to, href, as)

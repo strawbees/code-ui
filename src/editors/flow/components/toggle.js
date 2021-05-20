@@ -4,14 +4,14 @@ import S from 'src/containers/sManager'
 import {
 	GRAY,
 	RED,
-	WHITE
+	WHITE,
 } from 'src/constants/colors'
 
 const Toggle = ({
 	on,
 	onLabel,
 	offLabel,
-	onChange
+	onChange,
 }) =>
 	<div className={`root toggle ${on ? 'on' : 'off'}`}>
 		<style jsx>{`

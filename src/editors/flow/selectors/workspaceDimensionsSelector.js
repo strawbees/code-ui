@@ -27,7 +27,7 @@ const workspaceDimensionsSelector = () => createSelector(
 		if (!width || !height) {
 			return {
 				width,
-				height
+				height,
 			}
 		}
 
@@ -58,7 +58,7 @@ const workspaceDimensionsSelector = () => createSelector(
 
 		return {
 			width,
-			height
+			height,
 		}
 	}
 )

@@ -24,7 +24,7 @@
     "arrow-parens": ["off"],
     "arrow-body-style": ["error", "as-needed" ],
     "function-paren-newline": ["off"],
-    "comma-dangle": ["off"],
+    "comma-dangle": ["error", "always-multiline"],
     "import/imports-first": ["warn"],
     "import/named": ["warn"],
     "import/newline-after-import": ["warn"],

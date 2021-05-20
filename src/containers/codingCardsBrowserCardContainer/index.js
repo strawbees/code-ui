@@ -12,7 +12,7 @@ const CodingCardsBrowserCardContainer = (props) =>
 CodingCardsBrowserCard.propTypes = {
 	type : PropTypes.oneOf([
 		'flow',
-		'block'
+		'block',
 	]),
 	id : PropTypes.string,
 }

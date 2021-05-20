@@ -7,7 +7,7 @@ import {
 	COMPILER_SET_BOOTLOADER_UPDATER_RETRIVAL_ERROR,
 	COMPILER_SET_FACTORY_CODE_HEX,
 	COMPILER_SET_FACTORY_CODE_RETRIVAL_ERROR,
-	COMPILER_SET_HEX
+	COMPILER_SET_HEX,
 } from 'src/constants/actionTypes'
 import hashCode from 'src/utils/hashCode'
 
@@ -27,7 +27,7 @@ const entities = (state = {}, { type, payload }) => {
 					code  : payload,
 					hex   : null,
 					error : null,
-				}
+				},
 			}
 		}
 		case COMPILER_SET_COMPILATION_ERROR: {
@@ -38,7 +38,7 @@ const entities = (state = {}, { type, payload }) => {
 					...state[id],
 					hex   : null,
 					error : payload.error,
-				}
+				},
 			}
 		}
 		case COMPILER_SET_HEX: {
@@ -49,7 +49,7 @@ const entities = (state = {}, { type, payload }) => {
 					...state[id],
 					hex   : payload.hex,
 					error : null,
-				}
+				},
 			}
 		}
 		default:

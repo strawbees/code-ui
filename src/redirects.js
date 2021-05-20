@@ -6,7 +6,7 @@ const redirects = (url) => {
 		({
 			pathname,
 			search,
-			hash
+			hash,
 		} = new URL(url))
 	} catch (e) {
 		/* eslint-disable no-console */

@@ -7,7 +7,7 @@ import banners from 'static/banners.json'
 const {
 	publicRuntimeConfig : {
 		CONFIG,
-	}
+	},
 } = getConfig()
 
 const mapStateToProps = () => createSelector(
@@ -26,7 +26,7 @@ const mapStateToProps = () => createSelector(
 			.map(id => ({
 				id,
 				...banners[id].content[locale],
-			}))
+			})),
 	})
 )
 

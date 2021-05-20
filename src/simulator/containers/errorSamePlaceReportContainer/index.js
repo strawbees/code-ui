@@ -11,7 +11,7 @@ const ErrorSamePlaceReportContainer = (props) =>
 	/>
 
 ErrorSamePlaceReportContainer.propTypes = {
-	place : PropTypes.number
+	place : PropTypes.number,
 }
 
 const ErrorSamePlaceReportContainerConnected = connect(

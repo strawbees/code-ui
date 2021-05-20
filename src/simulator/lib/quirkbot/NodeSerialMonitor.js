@@ -39,7 +39,7 @@ export class SerialMonitor extends HasInterval(Node) {
 			nodeType : this.nodeTypeInternal,
 			id       : this.getTypedId(),
 			interval : this.interval.get(),
-			items
+			items,
 		}
 	}
 }

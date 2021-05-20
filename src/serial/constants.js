@@ -30,6 +30,7 @@ export const AVR = {
 	Ok                    : 0x0D, // Carriage return
 
 }
+
 export const REPORT_DELIMITERS = {
 	Start         : 0xFA,
 	End           : 0xFF,
@@ -37,4 +38,14 @@ export const REPORT_DELIMITERS = {
 	NumberOfNodes : 0xFC,
 	NodeContent   : 0xFD,
 }
+
 export const UUID_SIZE = 16
+
+export const LINK_PERMISSION_TYPE = {
+	ProgramUpToDate               : 'ProgramUpToDate',
+	ProgramNeedsBootloaderUpdate  : 'ProgramNeedsBootloaderUpdate',
+	ProgramBootloaderNotUpdatable : 'ProgramBootloaderNotUpdatable',
+	BootloaderUpToDate            : 'BootloaderUpToDate',
+	BootloaderNeedsUpdate         : 'BootloaderNeedsUpdate',
+	BootloaderNotUpdatable        : 'BootloaderNotUpdatable',
+}

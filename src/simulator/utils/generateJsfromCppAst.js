@@ -128,7 +128,7 @@ GENERATORS.call_expression = (node) => {
 				argument_list = {
 					type     : child.type,
 					text     : child.text,
-					children : child.children.splice(0)
+					children : child.children.splice(0),
 				}
 				children[i] = argument_list
 				break
@@ -144,7 +144,7 @@ GENERATORS.call_expression = (node) => {
 					children : [
 						{ type : '"', text : '"' },
 						{ type : '"', text : '"' },
-					]
+					],
 				}
 				break
 			}
@@ -274,7 +274,7 @@ GENERATORS.declaration = (node) => {
 			.filter((child) => child.type === 'identifier')
 			.map(child => ({
 				type     : 'declaration',
-				children : [type, child, maybeSemi]
+				children : [type, child, maybeSemi],
 			}))
 		return generatedNodes.map(generate).join('')
 	}

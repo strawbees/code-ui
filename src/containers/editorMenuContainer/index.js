@@ -10,7 +10,7 @@ const EditorMenuContainer = (props) =>
 	<EditorMenu {...props}/>
 
 EditorMenuContainer.propTypes = {
-	disabled : PropTypes.bool
+	disabled : PropTypes.bool,
 }
 
 const editorMenuContainerConnected = connect(

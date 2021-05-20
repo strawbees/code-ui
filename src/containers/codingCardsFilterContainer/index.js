@@ -12,7 +12,7 @@ const CodingCardsFilterContainer = (props) =>
 CodingCardsFilter.propTypes = {
 	type : PropTypes.oneOf([
 		'flow',
-		'block'
+		'block',
 	]),
 }
 

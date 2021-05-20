@@ -1,4 +1,4 @@
-const definition = (strings) => ({
+const definition = () => ({
 	message0 : window.Blockly.Msg.DATA_CHANGEVARIABLEBY,
 	args0    : [
 		{
@@ -8,8 +8,8 @@ const definition = (strings) => ({
 		},
 		{
 			type : 'input_value',
-			name : 'VALUE'
-		}
+			name : 'VALUE',
+		},
 	],
 	category          : 'data',
 	previousStatement : null,

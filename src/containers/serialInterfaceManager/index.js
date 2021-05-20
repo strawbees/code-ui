@@ -10,8 +10,8 @@ import mergeProps from './mergeProps'
 
 const {
 	publicRuntimeConfig : {
-		PREFER_WEB_SERIAL
-	}
+		PREFER_WEB_SERIAL,
+	},
 } = getConfig()
 
 class SerialInterfaceManager extends React.Component {
@@ -90,11 +90,11 @@ class SerialInterfaceManager extends React.Component {
 			// The avaiablity will be handle on componentDidMount/componentWillUnmountMount
 
 			// Constatly monitor the access status
-			const currentAllowedStatus = await QuirkbotWebSerial.getRequestAccessStatus()
-			if (currentAllowedStatus[0] !== allowedStatus[0] || currentAllowedStatus[1] !== allowedStatus[1]) {
-				setQbserialAllowedStatus(currentAllowedStatus)
+			const [currentBootloaderStatus, currentProgramStatus] = await QuirkbotWebSerial.getRequestAccessStatus()
+			if (currentBootloaderStatus !== allowedStatus[0] || currentProgramStatus !== allowedStatus[1]) {
+				setQbserialAllowedStatus([currentBootloaderStatus, currentProgramStatus])
 			}
-			if (currentAllowedStatus.every(status => status === true)) {
+			if (currentBootloaderStatus && currentProgramStatus) {
 				if (!allowed) setQbserialAllowed(true)
 				if (!ready) setQbserialReady(true)
 			} else {

@@ -40,7 +40,7 @@ const generator = ({ statement, next }, structure, shallow) => {
 
 	structure.procedures[procId] = {
 		instance,
-		args
+		args,
 	}
 
 	// don't further process the body in case this is shallow run

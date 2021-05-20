@@ -75,7 +75,7 @@ const UploadAreaBootloaderUpdater = ({
 	</div>
 
 UploadAreaBootloaderUpdater.defaultProps = {
-	boardIds : []
+	boardIds : [],
 }
 
 UploadAreaBootloaderUpdater.propTypes = {

@@ -13,7 +13,7 @@ const links = (state = {}, { type, payload }) => {
 	switch (type) {
 		case QBSERIAL_SET_LINKS:
 			return {
-				...payload
+				...payload,
 			}
 		default:
 			return state

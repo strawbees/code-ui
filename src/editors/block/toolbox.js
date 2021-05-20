@@ -13,7 +13,7 @@ const toolbox = (strings) => ([
 			{
 				type : 'event_when',
 			},
-		]
+		],
 	},
 	{
 		id              : 'input',
@@ -28,7 +28,7 @@ const toolbox = (strings) => ([
 						name  : 'PLACE',
 						type  : 'dropdown_circuit_touch_places',
 						field : 'VALUE',
-						value : 'PLACE_HORN'
+						value : 'PLACE_HORN',
 					},
 				],
 			},
@@ -39,7 +39,7 @@ const toolbox = (strings) => ([
 						name  : 'PLACE',
 						type  : 'dropdown_circuit_touch_places',
 						field : 'VALUE',
-						value : 'PLACE_HORN'
+						value : 'PLACE_HORN',
 					},
 				],
 			},
@@ -50,11 +50,11 @@ const toolbox = (strings) => ([
 						name  : 'PLACE',
 						type  : 'dropdown_light_sensor_places',
 						field : 'VALUE',
-						value : 'PLACE_HORN'
+						value : 'PLACE_HORN',
 					},
 				],
-			}
-		]
+			},
+		],
 	},
 	{
 		id              : 'output',
@@ -69,15 +69,15 @@ const toolbox = (strings) => ([
 						name  : 'PLACE',
 						type  : 'dropdown_servo_places',
 						field : 'VALUE',
-						value : 'PLACE_SERVO_MOTOR_1'
+						value : 'PLACE_SERVO_MOTOR_1',
 					},
 					{
 						name  : 'POSITION',
 						type  : 'math_positive_number',
 						field : 'NUM',
-						value : 1
-					}
-				]
+						value : 1,
+					},
+				],
 			},
 			{
 				type   : 'output_servo_transition',
@@ -86,27 +86,27 @@ const toolbox = (strings) => ([
 						name  : 'PLACE',
 						type  : 'dropdown_servo_places',
 						field : 'VALUE',
-						value : 'PLACE_SERVO_MOTOR_1'
+						value : 'PLACE_SERVO_MOTOR_1',
 					},
 					{
 						name  : 'POSITION',
 						type  : 'math_positive_number',
 						field : 'NUM',
-						value : 1
+						value : 1,
 					},
 					{
 						name  : 'DURATION',
 						type  : 'math_positive_number',
 						field : 'NUM',
-						value : 2
+						value : 2,
 					},
 					{
 						name  : 'EASING',
 						type  : 'dropdown_easing_functions',
 						field : 'VALUE',
-						value : 'EASING_LINEAR'
+						value : 'EASING_LINEAR',
 					},
-				]
+				],
 			},
 			{
 				type   : 'output_continuous_servo_speed',
@@ -115,15 +115,15 @@ const toolbox = (strings) => ([
 						name  : 'PLACE',
 						type  : 'dropdown_continuous_servo_places',
 						field : 'VALUE',
-						value : 'PLACE_SERVO_MOTOR_1'
+						value : 'PLACE_SERVO_MOTOR_1',
 					},
 					{
 						name  : 'SPEED',
 						type  : 'math_positive_number',
 						field : 'NUM',
-						value : 1
-					}
-				]
+						value : 1,
+					},
+				],
 			},
 			{
 				type   : 'output_continuous_servo_direction',
@@ -132,15 +132,15 @@ const toolbox = (strings) => ([
 						name  : 'PLACE',
 						type  : 'dropdown_continuous_servo_places',
 						field : 'VALUE',
-						value : 'PLACE_SERVO_MOTOR_1'
+						value : 'PLACE_SERVO_MOTOR_1',
 					},
 					{
 						name  : 'DIRECTION',
 						type  : 'dropdown_continuous_servo_directions',
 						field : 'VALUE',
-						value : 'DIRECTION_CLOCKWISE'
-					}
-				]
+						value : 'DIRECTION_CLOCKWISE',
+					},
+				],
 			},
 			{
 				type   : 'output_led',
@@ -149,15 +149,15 @@ const toolbox = (strings) => ([
 						name  : 'PLACE',
 						type  : 'dropdown_led_places',
 						field : 'VALUE',
-						value : 'PLACE_LEFT_EYE'
+						value : 'PLACE_LEFT_EYE',
 					},
 					{
 						name  : 'LIGHT',
 						type  : 'math_positive_number',
 						field : 'NUM',
-						value : 1
-					}
-				]
+						value : 1,
+					},
+				],
 			},
 			{
 				type   : 'output_led_dual_color_light',
@@ -166,15 +166,15 @@ const toolbox = (strings) => ([
 						name  : 'PLACE',
 						type  : 'dropdown_led_dual_color_places',
 						field : 'VALUE',
-						value : 'PLACE_HORN'
+						value : 'PLACE_HORN',
 					},
 					{
 						name  : 'LIGHT',
 						type  : 'math_positive_number',
 						field : 'NUM',
-						value : 1
-					}
-				]
+						value : 1,
+					},
+				],
 			},
 			{
 				type   : 'output_led_dual_color_color',
@@ -183,15 +183,15 @@ const toolbox = (strings) => ([
 						name  : 'PLACE',
 						type  : 'dropdown_led_dual_color_places',
 						field : 'VALUE',
-						value : 'PLACE_HORN'
+						value : 'PLACE_HORN',
 					},
 					{
 						name  : 'COLOR',
 						type  : 'math_positive_number',
 						field : 'NUM',
-						value : 1
-					}
-				]
+						value : 1,
+					},
+				],
 			},
 			{
 				type   : 'output_key_tap',
@@ -200,9 +200,9 @@ const toolbox = (strings) => ([
 						name  : 'KEY',
 						type  : 'dropdown_key_keys',
 						field : 'VALUE',
-						value : 'KEY_SPACE'
+						value : 'KEY_SPACE',
 					},
-				]
+				],
 			},
 			{
 				type   : 'output_key_press',
@@ -211,9 +211,9 @@ const toolbox = (strings) => ([
 						name  : 'KEY',
 						type  : 'dropdown_key_keys',
 						field : 'VALUE',
-						value : 'KEY_SPACE'
+						value : 'KEY_SPACE',
 					},
-				]
+				],
 			},
 			{
 				type   : 'output_key_release',
@@ -222,9 +222,9 @@ const toolbox = (strings) => ([
 						name  : 'KEY',
 						type  : 'dropdown_key_keys',
 						field : 'VALUE',
-						value : 'KEY_SPACE'
+						value : 'KEY_SPACE',
 					},
-				]
+				],
 			},
 			{
 				type   : 'output_key_hold',
@@ -233,17 +233,17 @@ const toolbox = (strings) => ([
 						name  : 'KEY',
 						type  : 'dropdown_key_keys',
 						field : 'VALUE',
-						value : 'KEY_SPACE'
+						value : 'KEY_SPACE',
 					},
 					{
 						name  : 'DURATION',
 						type  : 'math_positive_number',
 						field : 'NUM',
-						value : 2
+						value : 2,
 					},
-				]
+				],
 			},
-		]
+		],
 	},
 	{
 		id              : 'control',
@@ -258,9 +258,9 @@ const toolbox = (strings) => ([
 						name  : 'DURATION',
 						type  : 'math_positive_number',
 						field : 'NUM',
-						value : 1
-					}
-				]
+						value : 1,
+					},
+				],
 			},
 			{
 				type   : 'control_repeat',
@@ -269,9 +269,9 @@ const toolbox = (strings) => ([
 						name  : 'TIMES',
 						type  : 'math_whole_number',
 						field : 'NUM',
-						value : 1
-					}
-				]
+						value : 1,
+					},
+				],
 			},
 			{
 				type : 'control_forever',
@@ -287,8 +287,8 @@ const toolbox = (strings) => ([
 			},
 			{
 				type : 'control_repeat_until',
-			}
-		]
+			},
+		],
 	},
 	{
 		id              : 'operators',
@@ -303,15 +303,15 @@ const toolbox = (strings) => ([
 						name  : 'NUM1',
 						type  : 'math_number',
 						field : 'NUM',
-						value : ''
+						value : '',
 					},
 					{
 						name  : 'NUM2',
 						type  : 'math_number',
 						field : 'NUM',
-						value : ''
-					}
-				]
+						value : '',
+					},
+				],
 			},
 			{
 				type   : 'operator_subtract',
@@ -320,15 +320,15 @@ const toolbox = (strings) => ([
 						name  : 'NUM1',
 						type  : 'math_number',
 						field : 'NUM',
-						value : ''
+						value : '',
 					},
 					{
 						name  : 'NUM2',
 						type  : 'math_number',
 						field : 'NUM',
-						value : ''
-					}
-				]
+						value : '',
+					},
+				],
 			},
 			{
 				type   : 'operator_multiply',
@@ -337,15 +337,15 @@ const toolbox = (strings) => ([
 						name  : 'NUM1',
 						type  : 'math_number',
 						field : 'NUM',
-						value : ''
+						value : '',
 					},
 					{
 						name  : 'NUM2',
 						type  : 'math_number',
 						field : 'NUM',
-						value : ''
-					}
-				]
+						value : '',
+					},
+				],
 			},
 			{
 				type   : 'operator_divide',
@@ -354,15 +354,15 @@ const toolbox = (strings) => ([
 						name  : 'NUM1',
 						type  : 'math_number',
 						field : 'NUM',
-						value : ''
+						value : '',
 					},
 					{
 						name  : 'NUM2',
 						type  : 'math_number',
 						field : 'NUM',
-						value : ''
-					}
-				]
+						value : '',
+					},
+				],
 			},
 			{
 				type   : 'operator_random',
@@ -371,15 +371,15 @@ const toolbox = (strings) => ([
 						name  : 'FROM',
 						type  : 'math_number',
 						field : 'NUM',
-						value : ''
+						value : '',
 					},
 					{
 						name  : 'TO',
 						type  : 'math_number',
 						field : 'NUM',
-						value : ''
-					}
-				]
+						value : '',
+					},
+				],
 			},
 			{
 				type   : 'operator_lt',
@@ -388,15 +388,15 @@ const toolbox = (strings) => ([
 						name  : 'OPERAND1',
 						type  : 'math_number',
 						field : 'NUM',
-						value : ''
+						value : '',
 					},
 					{
 						name  : 'OPERAND2',
 						type  : 'math_number',
 						field : 'NUM',
-						value : ''
-					}
-				]
+						value : '',
+					},
+				],
 			},
 			{
 				type   : 'operator_equals',
@@ -405,15 +405,15 @@ const toolbox = (strings) => ([
 						name  : 'OPERAND1',
 						type  : 'math_number',
 						field : 'NUM',
-						value : ''
+						value : '',
 					},
 					{
 						name  : 'OPERAND2',
 						type  : 'math_number',
 						field : 'NUM',
-						value : ''
-					}
-				]
+						value : '',
+					},
+				],
 			},
 			{
 				type   : 'operator_gt',
@@ -422,24 +422,24 @@ const toolbox = (strings) => ([
 						name  : 'OPERAND1',
 						type  : 'math_number',
 						field : 'NUM',
-						value : ''
+						value : '',
 					},
 					{
 						name  : 'OPERAND2',
 						type  : 'math_number',
 						field : 'NUM',
-						value : ''
-					}
-				]
+						value : '',
+					},
+				],
 			},
 			{
-				type : 'operator_and'
+				type : 'operator_and',
 			},
 			{
-				type : 'operator_or'
+				type : 'operator_or',
 			},
 			{
-				type : 'operator_not'
+				type : 'operator_not',
 			},
 			{
 				type   : 'operator_mod',
@@ -448,15 +448,15 @@ const toolbox = (strings) => ([
 						name  : 'NUM1',
 						type  : 'math_number',
 						field : 'NUM',
-						value : ''
+						value : '',
 					},
 					{
 						name  : 'NUM2',
 						type  : 'math_number',
 						field : 'NUM',
-						value : ''
-					}
-				]
+						value : '',
+					},
+				],
 			},
 			{
 				type   : 'operator_round',
@@ -465,9 +465,9 @@ const toolbox = (strings) => ([
 						name  : 'NUM',
 						type  : 'math_number',
 						field : 'NUM',
-						value : ''
-					}
-				]
+						value : '',
+					},
+				],
 			},
 			{
 				type   : 'operator_mathop',
@@ -476,26 +476,26 @@ const toolbox = (strings) => ([
 						name  : 'NUM',
 						type  : 'math_number',
 						field : 'NUM',
-						value : ''
-					}
-				]
-			}
-		]
+						value : '',
+					},
+				],
+			},
+		],
 	},
 	{
 		id              : 'variables',
 		name            : window.Blockly.Msg.CATEGORY_VARIABLES,
 		colour          : window.Blockly.Colours.data.primary,
 		secondaryColour : window.Blockly.Colours.data.secondary,
-		custom          : 'VARIABLE'
+		custom          : 'VARIABLE',
 	},
 	{
 		id              : 'myBlocks',
 		name            : window.Blockly.Msg.CATEGORY_MYBLOCKS,
 		colour          : window.Blockly.Colours.more.primary,
 		secondaryColour : window.Blockly.Colours.more.secondary,
-		custom          : 'PROCEDURE'
-	}
+		custom          : 'PROCEDURE',
+	},
 ])
 
 export default toolbox

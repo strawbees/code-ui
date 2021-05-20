@@ -32,12 +32,12 @@ const query = (state = null, { type, payload }) => {
 	switch (type) {
 		case SETUP_SET_QUERY:
 			return {
-				...payload
+				...payload,
 			}
 		case SETUP_SET:
 			if (typeof payload.query !== 'undefined') {
 				return {
-					...payload.query
+					...payload.query,
 				}
 			}
 			return state
@@ -62,12 +62,12 @@ const urlVars = (state = null, { type, payload }) => {
 	switch (type) {
 		case SETUP_SET_URL_VARS:
 			return {
-				...payload
+				...payload,
 			}
 		case SETUP_SET:
 			if (typeof payload.urlVars !== 'undefined') {
 				return {
-					...payload.urlVars
+					...payload.urlVars,
 				}
 			}
 			return state
@@ -79,12 +79,12 @@ const locales = (state = null, { type, payload }) => {
 	switch (type) {
 		case SETUP_SET_LOCALES:
 			return [
-				...payload
+				...payload,
 			]
 		case SETUP_SET:
 			if (typeof payload.locales !== 'undefined') {
 				return [
-					...payload.locales
+					...payload.locales,
 				]
 			}
 			return state
@@ -96,12 +96,12 @@ const routes = (state = null, { type, payload }) => {
 	switch (type) {
 		case SETUP_SET_ROUTES:
 			return {
-				...payload
+				...payload,
 			}
 		case SETUP_SET:
 			if (typeof payload.routes !== 'undefined') {
 				return {
-					...payload.routes
+					...payload.routes,
 				}
 			}
 			return state
@@ -113,7 +113,7 @@ const strings = (state = {}, { type, payload }) => {
 	switch (type) {
 		case SETUP_SET_STRINGS: {
 			const newState = {
-				...state
+				...state,
 			}
 			newState[payload.locale] = payload.data
 			return newState
@@ -121,7 +121,7 @@ const strings = (state = {}, { type, payload }) => {
 		case SETUP_SET: {
 			if (typeof payload.strings !== 'undefined') {
 				const newState = {
-					...state
+					...state,
 				}
 				newState[payload.strings.locale] = payload.strings.data
 				return newState
@@ -136,7 +136,7 @@ const stringsLoaded = (state = {}, { type, payload }) => {
 	switch (type) {
 		case SETUP_SET_STRINGS: {
 			const newState = {
-				...state
+				...state,
 			}
 			newState[payload.locale] = true
 			return newState
@@ -144,7 +144,7 @@ const stringsLoaded = (state = {}, { type, payload }) => {
 		case SETUP_SET: {
 			if (typeof payload.strings !== 'undefined') {
 				const newState = {
-					...state
+					...state,
 				}
 				newState[payload.strings.locale] = true
 				return newState

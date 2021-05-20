@@ -6,7 +6,7 @@ import parameterColorSelector from 'src/editors/flow/selectors/parameterColorSel
 const mapStateToProps = () => createStructuredSelector({
 	valueCode  : parameterValueCodeSelector(),
 	validation : parameterValidationParsedSelector(),
-	color      : parameterColorSelector()
+	color      : parameterColorSelector(),
 })
 
 export default mapStateToProps

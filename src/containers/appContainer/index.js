@@ -19,7 +19,7 @@ const {
 		NEXT_SERVER_PORT,
 		ROOT_PATH,
 		COMPILER_URL,
-	}
+	},
 } = getConfig()
 
 class AppContainer extends React.Component {
@@ -54,7 +54,7 @@ class AppContainer extends React.Component {
 					data   : await (await nodeFetch(`${serverStatic}/i18n/${query.locale}.json`)).json(),
 				},
 				// show the initial page loader
-				displayPageLoader : true
+				displayPageLoader : true,
 			})
 			// Editor setup only needs to happen once, in server
 			setupEditor()
@@ -70,9 +70,9 @@ class AppContainer extends React.Component {
 			...(!stringsLoaded[query.locale] ? {
 				strings : {
 					locale : query.locale,
-					data   : await (await fetch(`${clientStatic}/i18n/${query.locale}.json`)).json()
-				}
-			} : {})
+					data   : await (await fetch(`${clientStatic}/i18n/${query.locale}.json`)).json(),
+				},
+			} : {}),
 		})
 	}
 
@@ -81,6 +81,7 @@ class AppContainer extends React.Component {
 			setSetup,
 			setHiddenGlobalBanners,
 			setCompilerBootloaderUpdaterHex,
+			setCompilerFactoryCodeHex,
 		} = this.props
 
 		setSetup({
@@ -90,21 +91,37 @@ class AppContainer extends React.Component {
 			// set the sniffed os
 			os                : getOS(),
 			// hide the initial page loader
-			displayPageLoader : false
+			displayPageLoader : false,
 		})
-		// preload the bootloader updater
-		const bootloaderUpdaterRes = await fetch(`${COMPILER_URL}/cfirmware-booloader-updater`)
+		// hide the global banners
+		setHiddenGlobalBanners(browserStorage.getKeys('hiddenGlobalBanners'))
+
+		// preload the bootloader updater and factory code
+		const [
+			bootloaderUpdaterRes,
+			factoryCodeRes,
+		] = await Promise.all([
+			await fetch(`${COMPILER_URL}/cfirmware-booloader-updater`),
+			await fetch(`${COMPILER_URL}/cfirmware-reset`),
+		])
 		if (bootloaderUpdaterRes.ok) {
 			try {
 				const bootloaderUpdaterHex = await bootloaderUpdaterRes.json()
 				setCompilerBootloaderUpdaterHex(bootloaderUpdaterHex)
 			} catch (e) {
+				// eslint-disable-next-line no-console
 				console.log('Error while trying to fetch bootloader updater', e)
 			}
 		}
-
-		// hide the global banners
-		setHiddenGlobalBanners(browserStorage.getKeys('hiddenGlobalBanners'))
+		if (factoryCodeRes.ok) {
+			try {
+				const factoryCodeHex = await factoryCodeRes.json()
+				setCompilerFactoryCodeHex(factoryCodeHex)
+			} catch (e) {
+				// eslint-disable-next-line no-console
+				console.log('Error while trying to fetch factory code', e)
+			}
+		}
 	}
 
 	render() {
@@ -128,6 +145,7 @@ AppContainer.propTypes = {
 	setDisplayPageLoader            : PropTypes.func,
 	setupEditor                     : PropTypes.func,
 	setCompilerBootloaderUpdaterHex : PropTypes.func,
+	setCompilerFactoryCodeHex       : PropTypes.func,
 	displayPageLoader               : PropTypes.bool,
 	displayError                    : PropTypes.PropTypes.oneOf([false, 404, 500]),
 	setOS                           : PropTypes.func,

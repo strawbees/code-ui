@@ -30,7 +30,7 @@ ProgramMenu.propTypes = {
 		icon     : PropTypes.func,
 		labelKey : PropTypes.string,
 		onClick  : PropTypes.func,
-	}))
+	})),
 }
 
 export default ProgramMenu

@@ -9,8 +9,8 @@ const definition = (strings) => ({
 			options : [
 				[s(strings, 'block.blocks.places.servor_motor_1'), 'PLACE_SERVO_MOTOR_1'],
 				[s(strings, 'block.blocks.places.servor_motor_2'), 'PLACE_SERVO_MOTOR_2'],
-			]
-		}
+			],
+		},
 	],
 	output          : 'Place',
 	category        : 'input',

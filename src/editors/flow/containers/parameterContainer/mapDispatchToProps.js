@@ -1,12 +1,12 @@
 import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToActionCreators'
 import {
 	addInstanceParameterItem,
-	removeInstanceParameterItem
+	removeInstanceParameterItem,
 } from 'src/editors/flow/actions'
 
 const mapDispatchToProps = autobindDispatchToActionCreators({
 	addInstanceParameterItem,
-	removeInstanceParameterItem
+	removeInstanceParameterItem,
 })
 
 export default mapDispatchToProps

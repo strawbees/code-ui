@@ -15,7 +15,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
 		onSubmit : () => {
 			const backend = resolveBackendFromBackendName('strawbees')
 			return backend.confirmEmail(token)
-		}
+		},
 	}
 }
 

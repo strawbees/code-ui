@@ -27,5 +27,5 @@ export default combineReducers({
 		name   : generateReducer(EDITOR_SET_TEXT_NAME),
 		id     : generateReducer(EDITOR_SET_TEXT_ID),
 		source : generateReducer(EDITOR_SET_TEXT_SOURCE),
-	})
+	}),
 })

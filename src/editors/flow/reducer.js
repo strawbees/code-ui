@@ -85,10 +85,10 @@ const source = (state = [], { type, payload }) => {
 				}
 				// clone the instance
 				refInstance.parameters = {
-					...refInstance.parameters
+					...refInstance.parameters,
 				}
 				refInstance = {
-					...refInstance
+					...refInstance,
 				}
 				let updated = false
 				Object.keys(refInstance.parameters).forEach(parameterId => {
@@ -125,7 +125,7 @@ const source = (state = [], { type, payload }) => {
 			newState[instanceIndex] = {
 				...newState[instanceIndex],
 				x,
-				y
+				y,
 			}
 			return newState
 		}
@@ -140,7 +140,7 @@ const source = (state = [], { type, payload }) => {
 			// copy and update it
 			newState[instanceIndex] = {
 				...newState[instanceIndex],
-				name
+				name,
 			}
 			return newState
 		}
@@ -154,14 +154,14 @@ const source = (state = [], { type, payload }) => {
 			}
 			// manage the parameters map
 			const parameters = {
-				...(newState[instanceIndex].parameters || {})
+				...(newState[instanceIndex].parameters || {}),
 			}
 			// set the value
 			parameters[parameterId] = value
 			// copy and update it
 			newState[instanceIndex] = {
 				...newState[instanceIndex],
-				parameters
+				parameters,
 			}
 			return newState
 		}
@@ -175,7 +175,7 @@ const source = (state = [], { type, payload }) => {
 			}
 			// manage the parameters map
 			const parameters = {
-				...(newState[instanceIndex].parameters || {})
+				...(newState[instanceIndex].parameters || {}),
 			}
 			// find how many items are already there
 			const numItems = Object.keys(parameters).reduce((acc, key) => {
@@ -188,7 +188,7 @@ const source = (state = [], { type, payload }) => {
 			// copy and update it
 			newState[instanceIndex] = {
 				...newState[instanceIndex],
-				parameters
+				parameters,
 			}
 			return newState
 		}
@@ -203,7 +203,7 @@ const source = (state = [], { type, payload }) => {
 			}
 			// manage the parameters map
 			const parameters = {
-				...(newState[instanceIndex].parameters || {})
+				...(newState[instanceIndex].parameters || {}),
 			}
 			// check if parameters exists
 			if (typeof parameters[parameterKey] === 'undefined') {
@@ -232,7 +232,7 @@ const source = (state = [], { type, payload }) => {
 			// copy and update it
 			newState[instanceIndex] = {
 				...newState[instanceIndex],
-				parameters
+				parameters,
 			}
 			return newState
 		}
@@ -252,7 +252,7 @@ const outletTransferDragMethods = (state = {}, { type, payload }) => {
 			const id = `${instanceId}.${outletId}`
 			if (methods) {
 				newState[id] = {
-					...methods
+					...methods,
 				}
 			} else {
 				delete newState[id]

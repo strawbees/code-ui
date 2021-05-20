@@ -2,7 +2,7 @@
 /* eslint-disable indent */
 const toolboxToXmlString = (toolbox) => `<xml>
 	${toolbox.reduce((xml, {
-		id, name, colour, secondaryColour, blocks = [], custom
+		id, name, colour, secondaryColour, blocks = [], custom,
 	}) => {
 		xml += `<category
 			${id ? `id="${id}"` : ''}
@@ -13,7 +13,7 @@ const toolboxToXmlString = (toolbox) => `<xml>
 			${blocks && blocks.reduce((xml, { type, values = [] }) => {
 				xml += `<block ${type ? `type="${type}"` : ''}>
 					${values && values.reduce((xml, {
-						name, type, field, value
+						name, type, field, value,
 					}) => {
 						xml += `<value name="${name}">
 							<shadow type="${type}">

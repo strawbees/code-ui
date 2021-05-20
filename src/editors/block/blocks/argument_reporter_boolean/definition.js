@@ -1,18 +1,16 @@
-import s from 'src/utils/s'
-
-const definition = (strings) => ({
+const definition = () => ({
 	message0 : '%1',
 	args0    : [
 		{
 			type : 'field_label_serializable',
-			name : 'VALUE'
-		}
+			name : 'VALUE',
+		},
 	],
 	output          : 'Boolean',
 	colour          : '#FF6680',
 	colourSecondary : '#FF4D6A',
 	colourTertiary  : '#FF3355',
-	outputShape     : window.Blockly.OUTPUT_SHAPE_HEXAGONAL
+	outputShape     : window.Blockly.OUTPUT_SHAPE_HEXAGONAL,
 })
 
 export default definition

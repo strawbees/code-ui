@@ -42,7 +42,7 @@ import {
 	STORAGE_REMOVE_ALL_PROGRAMS,
 	STORAGE_SET_REMOTE_MIRROR,
 	STORAGE_SET_PUBLIC_PROFILE,
-	STORAGE_CLEAR
+	STORAGE_CLEAR,
 } from 'src/constants/actionTypes'
 import {
 	READY,
@@ -126,7 +126,7 @@ export const safeAddProgram = (type, name, source) => async (dispatch, getState)
 		source,
 		createdAt : Date.now(),
 		updatedAt : Date.now(),
-		version   : 0
+		version   : 0,
 	}
 	dispatch(addProgram({ id, data }))
 	// important to return the program, as this will be consumed by other actions
@@ -135,7 +135,7 @@ export const safeAddProgram = (type, name, source) => async (dispatch, getState)
 
 export const safeUpdateProgram = (id, data, externalChange = false) => async (dispatch, getState) => {
 	data = {
-		...data
+		...data,
 	}
 	if (!externalChange) {
 		data.updatedAt = Date.now()
@@ -183,7 +183,7 @@ export const safeSync = () => async (dispatch, getState) => {
 		}
 		const {
 			mirror,
-			programIdChanges
+			programIdChanges,
 		} = result
 
 		// update the storage based on the results
@@ -245,7 +245,7 @@ export const modalDeleteAccount = () => async (dispatch, getState) => {
 				fireGlobalEvent('track-event', {
 					category : 'ui',
 					action   : 'delete account confirmed',
-					label    : 'modal'
+					label    : 'modal',
 				})
 				await dispatch(safeBackendCall('deleteAccount', user.id))
 				await dispatch(safeClearLoggedInData())
@@ -258,9 +258,9 @@ export const modalDeleteAccount = () => async (dispatch, getState) => {
 				fireGlobalEvent('track-event', {
 					category : 'ui',
 					action   : 'delete account canceled',
-					label    : 'modal'
+					label    : 'modal',
 				})
-			}
+			},
 		}
 	))
 }
@@ -275,19 +275,19 @@ const onModalConnect = ({ credentials, user }) => async (dispatch, getState) => 
 				descriptionKey  : 'ui.dialog.anonymous_copy_programs.description',
 				confirmLabelKey : 'ui.dialog.anonymous_copy_programs.confirm',
 				cancelLabelKey  : 'ui.dialog.anonymous_copy_programs.cancel',
-				limitWidth      : true
+				limitWidth      : true,
 			}))
 			dispatch(setRemoteMirror(null))
 			fireGlobalEvent('track-event', {
 				category : 'user',
 				action   : 'copy guest programs',
-				label    : 'modal'
+				label    : 'modal',
 			})
 		} catch (e) {
 			fireGlobalEvent('track-event', {
 				category : 'user',
 				action   : 'discard guest programs',
-				label    : 'modal'
+				label    : 'modal',
 			})
 		}
 	}
@@ -316,7 +316,7 @@ export const modalSignup = (backendName) => async (dispatch) => {
 		{
 			titleKey       : 'ui.sb_cloud.signup.title',
 			displayConfirm : false,
-			displayCancel  : false
+			displayCancel  : false,
 		},
 		<SignupComponent
 			onSignup={async (values) => {
@@ -324,7 +324,7 @@ export const modalSignup = (backendName) => async (dispatch) => {
 				fireGlobalEvent('track-event', {
 					category : 'user',
 					action   : 'sign-up-complete',
-					label    : 'modal'
+					label    : 'modal',
 				})
 				dispatch(onModalConnect(result))
 			}}
@@ -351,7 +351,7 @@ export const modalSignin = (backendName) => async (dispatch) => {
 		{
 			titleKey       : 'ui.sb_cloud.signin.title',
 			displayConfirm : false,
-			displayCancel  : false
+			displayCancel  : false,
 		},
 		<SigninComponent
 			onSignin={async (values) => {
@@ -359,7 +359,7 @@ export const modalSignin = (backendName) => async (dispatch) => {
 				fireGlobalEvent('track-event', {
 					category : 'user',
 					action   : 'sign-in-complete',
-					label    : 'modal'
+					label    : 'modal',
 				})
 				dispatch(onModalConnect(result))
 			}}
@@ -368,7 +368,7 @@ export const modalSignin = (backendName) => async (dispatch) => {
 				fireGlobalEvent('track-event', {
 					category : 'user',
 					action   : 'forgot-password-complete',
-					label    : 'modal'
+					label    : 'modal',
 				})
 			}}
 		/>
@@ -404,7 +404,7 @@ export const modalChangePassword = (backendName) => async (dispatch, getState) =
 				fireGlobalEvent('track-event', {
 					category : 'user',
 					action   : 'change-password-complete',
-					label    : 'modal'
+					label    : 'modal',
 				})
 			}}
 		/>

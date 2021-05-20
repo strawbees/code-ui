@@ -99,8 +99,8 @@ const definition = (strings) => ({
 				[s(strings, 'block.blocks.keys.key-delete'), 'KEY_DELETE'],
 				[s(strings, 'block.blocks.keys.key-backspace'), 'KEY_BACKSPACE'],
 				[s(strings, 'block.blocks.keys.key-caps_lock'), 'KEY_CAPS_LOCK'],
-			]
-		}
+			],
+		},
 	],
 	output          : 'Key',
 	category        : 'input',

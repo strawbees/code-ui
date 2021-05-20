@@ -16,7 +16,7 @@ const mapStateToProps = () => createSelector(
 	) => ({
 		internalDataNodeIdsString,
 		internalDataNodeTypesString,
-		...physicalRepresentationRenderInfo
+		...physicalRepresentationRenderInfo,
 	})
 )
 

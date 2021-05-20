@@ -3,14 +3,14 @@ import {
 	getValueBlockByAttributeName,
 	computeInstanceName,
 	parseInstaceDefinition,
-	getBlockBody
+	getBlockBody,
 } from '../../utils/simulatorParsing'
 
 const generator = ({
 	attributes,
 	value,
 	next,
-	statement
+	statement,
 }, structure) => {
 	const timesBlock = getValueBlockByAttributeName(value, 'TIMES')
 	if (!timesBlock) {

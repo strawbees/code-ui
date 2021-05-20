@@ -26,7 +26,7 @@ class SourceSyncManager extends React.Component {
 			source,
 			setSource,
 			refEditorSource,
-			setRefEditorSource
+			setRefEditorSource,
 		} = this.props
 		if (!shallowCompareArrays(source, prevSource) &&
 			!shallowCompareArrays(source, refEditorSource)) {

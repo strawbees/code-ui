@@ -1,7 +1,7 @@
 import {
-	logOpen,
+	logOpenCollapsed,
 	logClose,
-	logError
+	logError,
 } from './log'
 
 export function delay(millis) {
@@ -12,7 +12,7 @@ export function arrayMedian(s) {
 	const ordered = []
 	s.reduce((a, c) => a.set(c, (a.get(c) || 0) + 1), new Map())
 		.forEach((count, value) => ordered.push({
-			count, value
+			count, value,
 		}))
 	ordered.sort((a, b) => a.count < b.count)
 	const median = ordered.shift()
@@ -119,7 +119,7 @@ export async function tryToExecute(generator, maxTries = 5, interval = 100) {
 	let result
 	while (!success && tries < maxTries) {
 		tries++
-		logOpen('Try to execute', tries)
+		logOpenCollapsed('Try to execute', tries)
 		try {
 			result = await generator()
 			success = true

@@ -16,12 +16,12 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
 		...ownProps,
 		addItem : () => addInstanceParameterItem({
 			parameterId,
-			id
+			id,
 		}),
 		removeItem : (parameterIndex) => removeInstanceParameterItem({
 			parameterIndex,
 			parameterId,
-			id
+			id,
 		}),
 	}
 }

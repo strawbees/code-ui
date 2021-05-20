@@ -68,7 +68,7 @@ const CodingCardsFilterItem = ({
 	</div>
 
 CodingCardsFilterItem.defaultProps = {
-	onClick : () => {}
+	onClick : () => {},
 }
 
 CodingCardsFilterItem.propTypes = {

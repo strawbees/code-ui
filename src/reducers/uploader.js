@@ -42,7 +42,7 @@ const entities = (state = {}, { type, payload }) => {
 				[id] : {
 					success : null,
 					error   : null,
-				}
+				},
 			}
 		case UPLOADER_SET_ERROR:
 			return {
@@ -50,7 +50,7 @@ const entities = (state = {}, { type, payload }) => {
 				[id] : {
 					success : false,
 					error   : payload.error,
-				}
+				},
 			}
 		case UPLOADER_SET_SUCCESS:
 			return {
@@ -58,7 +58,7 @@ const entities = (state = {}, { type, payload }) => {
 				[id] : {
 					success : true,
 					error   : null,
-				}
+				},
 			}
 		default:
 			return state
@@ -68,5 +68,5 @@ const entities = (state = {}, { type, payload }) => {
 export default combineReducers({
 	current,
 	lastError,
-	entities
+	entities,
 })

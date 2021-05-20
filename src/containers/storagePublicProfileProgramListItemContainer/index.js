@@ -9,7 +9,7 @@ const StoragePublicProfileProgramListItemContainer = props =>
 	<ProgramListItem {...props} />
 
 StoragePublicProfileProgramListItemContainer.propTypes = {
-	id : PropTypes.string
+	id : PropTypes.string,
 }
 
 const storagePublicProfileProgramListItemContainerConnected = connect(

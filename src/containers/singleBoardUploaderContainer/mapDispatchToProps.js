@@ -2,7 +2,7 @@ import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToAction
 import { uploadMutipleHexes } from 'src/actions/uploader'
 
 const mapDispatchToProps = autobindDispatchToActionCreators({
-	uploadMutipleHexes
+	uploadMutipleHexes,
 })
 
 export default mapDispatchToProps

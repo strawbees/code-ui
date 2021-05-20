@@ -1,4 +1,4 @@
-import * as browserStorage from 'src/utils/browserStorage'
+// import * as browserStorage from 'src/utils/browserStorage'
 
 import {
 	inPlaceArrayDiff,
@@ -14,7 +14,7 @@ import {
 	logClose,
 	enableLogs,
 	disableLogs,
-	setCustomLogHandler
+	setCustomLogHandler,
 } from './log'
 
 import {
@@ -23,8 +23,10 @@ import {
 } from './mutex'
 
 import {
-	getUsbFilters,
-} from './serial'
+	getRequestAccessStatus,
+	resetAccess,
+	requestAccess as requestAccessInternal,
+} from './access'
 
 import {
 	findDeadLinks,
@@ -37,7 +39,7 @@ import {
 import {
 	uploadHexToSingleLink,
 	guaranteeSingleLinkEnterBootloaderMode,
-	guaranteeSingleLinkExitBootloaderMode
+	guaranteeSingleLinkExitBootloaderMode,
 } from './singleLink'
 
 /**
@@ -49,209 +51,21 @@ const pendingUploads = []
 const pendingEnterBootloaderMode = []
 const pendingExitBootloaderMode = []
 let monitoring = false
+let requestingAccess = false
 
-async function writeDataToFirstAvaiblePort(bytes) {
-	const [port] = await navigator.serial.getPorts()
-	// If there's no port, we have a bigger issue and can't do antyhing...
-	if (!port) {
-		throw new Error('No port avaiable.')
-	}
-	// Open the port
-	await port.open({ baudRate : 9600 })
-	// Send the "enter bootloader" message
-	const writer = port.writable.getWriter()
-	const data = new Uint8Array(bytes)
-	await writer.write(data)
-	writer.releaseLock()
-	await port.close()
+export {
+	enableLogs,
+	disableLogs,
+	setCustomLogHandler,
+	getRequestAccessStatus,
+	resetAccess,
 }
 
-async function detectInPorts({ bootloader, program }) {
-	const filters = getUsbFilters({ bootloader, program })
-	let detected = false
-	const ports = await navigator.serial.getPorts()
-	ports.forEach((port) => {
-		if (detected) {
-			return
-		}
-		const { usbProductId, usbVendorId } = port.getInfo()
-		filters.forEach((d) => {
-			if (detected) {
-				return
-			}
-			if (d.usbProductId === usbProductId && d.usbVendorId === usbVendorId) {
-				detected = true
-			}
-		})
-	})
-	return detected
+export async function requestAccess(bootloaderHex, programHex) {
+	requestingAccess = true
+	await requestAccessInternal(bootloaderHex, programHex)
+	requestingAccess = false
 }
-
-async function refreshPorts({ bootloader, program }) {
-	let filters = []
-	if (bootloader) {
-		filters = filters.concat(getUsbFilters({ bootloader : true }))
-	}
-	if (program) {
-		filters = filters.concat(getUsbFilters({ program : true }))
-	}
-
-	try {
-		await navigator.serial.requestPort({ filters })
-	}	catch (e) {
-		console.log('Web Serial request ports error:', e)
-	}
-}
-
-export async function setRequestAccessStatus({ bootloader, program }) {
-	if (typeof bootloader !== 'undefined') {
-		browserStorage.set('web-serial', 'bootloader-detected', bootloader)
-	}
-	if (typeof program !== 'undefined') {
-		browserStorage.set('web-serial', 'program-detected', program)
-	}
-}
-
-export async function getRequestAccessStatus() {
-	const bootloader = browserStorage.get('web-serial', 'bootloader-detected') || false
-	const program = browserStorage.get('web-serial', 'program-detected') || false
-	return [bootloader, program]
-}
-
-export async function resetAccess() {
-	await setRequestAccessStatus({ bootloader : false, program : false })
-}
-
-export async function requestAccess() {
-	// Check if permission settings have been saved already
-	let [bootloader, program] = await getRequestAccessStatus()
-	if (bootloader && program) {
-		// Success!
-		return
-	}
-	// If the permissions are not granted, check again, as it may only be the case
-	// that the storage has been cleared, but the permissions are actually in place
-	if (!bootloader) {
-		bootloader = await detectInPorts({ bootloader : true })
-		await setRequestAccessStatus({ bootloader })
-	}
-	if (!program) {
-		program = await detectInPorts({ program : true })
-		await setRequestAccessStatus({ program })
-	}
-
-	if (bootloader && program) {
-		// Success!
-		return
-	}
-	// If we don't have anything allowed yet...
-	if (!bootloader && !program) {
-		// Request access to both
-		await refreshPorts({ bootloader : true, program : true })
-		bootloader = await detectInPorts({ bootloader : true })
-		program = await detectInPorts({ program : true })
-		await setRequestAccessStatus({ bootloader, program })
-		// If nothing was detected, we are out of luck and this routine can end now.
-		if (!bootloader && !program) {
-			return
-		}
-	}
-	// At this point, at least one device was allowed.
-	if (program) {
-		// We can be in these three states:
-		// 1. No device is connected (no port avaiable)
-		// 2. Device is connected on bootloader mode (no port avaiable - maybe no permissions yet)
-		// 3. Device is connected on program mode (port should be avaible)
-
-		// Anyway, we send a message to put the board on bootloader mode.
-		// If state is 1 or 2, it will throw an error, but we can just skip it.
-		// If state is 3, the board will disconnect and connect again in bootloader
-		try {
-			await writeDataToFirstAvaiblePort([0xb]) // 0xb == "enter bootloader"
-		} catch (e) {
-			// State was 1 or 2, ignorig...
-		}
-
-		// // There's a chance the bootloader is actually already allowed, but the
-		// // permissions have been cleared (eg. localStorage deleted). To avoid an
-		// // unecessary prompt on this case, we wait a little bit (so the new device
-		// // has enought time to be picked up by the OS), and try to detected it,
-		// // before refreshing the posts
-		// await new Promise(r => setTimeout(r, 1000))
-		// bootloader = await detectInPorts({ bootloader : true })
-		// await setRequestAccessStatus({ bootloader })
-		// // If the bootloader was detected, great! We are done.
-		// if (bootloader) {
-		// 	// For convenience, we exit the bootloader mode
-		// 	try {
-		// 		await writeDataToFirstAvaiblePort([0x45]) // 0x45 == "exit bootloader"
-		// 	} catch (e) {}
-		// 	// Success!
-		// 	return
-		// }
-
-		// Ok, if we got here, maybe the bootloader has not permissions yet. In
-		// that case, request access (only for bootloader)
-		await refreshPorts({ bootloader : true })
-		bootloader = await detectInPorts({ bootloader : true })
-		await setRequestAccessStatus({ bootloader })
-		// If the bootloader was detected, great! We are done.
-		if (bootloader) {
-			// For convenience, we exit the bootloader mode
-			try {
-				await writeDataToFirstAvaiblePort([0x45]) // 0x45 == "exit bootloader"
-			} catch (e) {}
-			// Success!
-			return
-		}
-		// If was not detected it means that either we are in state 1, or that we
-		// were on state 3, but we failed to put the board in bootloader mode.
-		// Anyway, we can't do anything here.
-		return
-	}
-
-	if (bootloader) {
-		// We can be in these three states:
-		// 1. No device is connected (no port avaiable)
-		// 2. Device is connected on bootloader mode (port should be avaible)
-		// 3. Device is connected on program mode (no port avaiable - maybe no permissions yet)
-
-		// Anyway, we send a message to exit bootloader mode.
-		// If state is 1 or 3, it will throw an error, but we can just skip it.
-		// If state is 2, the board will disconnect and connect again in bootloader
-		try {
-			await writeDataToFirstAvaiblePort([0x45]) // 0x45 == "exit bootloader"
-		} catch (e) {
-			// State was 1 or 3, ignorig...
-		}
-
-		// // There's a chance the program mode is actually already allowed, but the
-		// // permissions have been cleared (eg. localStorage deleted). To avoid an
-		// // unecessary prompt on this case, we wait a little bit (so the new device
-		// // has enought time to be picked up by the OS), and try to detected it,
-		// // before refreshing the posts
-		// await new Promise(r => setTimeout(r, 2000))
-		// program = await detectInPorts({ program : true })
-		// await setRequestAccessStatus({ program })
-		// // If the program was detected, great! We are done.
-		// if (program) {
-		// 	// Success!
-		// 	return
-		// }
-
-		// Ok, if we got here, maybe the bootloader has not permissions yet. In
-		// that case, request access (only for bootloader)
-		await refreshPorts({ program : true })
-		program = await detectInPorts({ program : true })
-		await setRequestAccessStatus({ program })
-
-		// Nothing else to do here
-	}
-}
-
-/// ////////////// From MIDI interface
-
-export { enableLogs, disableLogs, setCustomLogHandler }
 
 export async function init() {
 	if (monitoring) {
@@ -308,7 +122,8 @@ export function getLinkByRuntimeId(runtimeId) {
 }
 
 export async function uploadHexToLink(link, hexString) {
-	if (pendingUploads.filter(upload => upload.link === link).length) {
+	const requests = pendingUploads
+	if (requests.filter(upload => upload.link === link).length) {
 		throw new Error('There is an ongoing upload to this link.')
 	}
 
@@ -316,23 +131,29 @@ export async function uploadHexToLink(link, hexString) {
 		throw new Error('This link is not midi enabled.')
 	}
 
-	const pendingUpload = {
+	const request = {
 		link,
-		hexString
+		hexString,
 	}
-	pendingUploads.push(pendingUpload)
+	requests.push(request)
 
 	await asyncSafeWhile(
-		async () => pendingUploads.includes(pendingUpload),
+		async () => requests.includes(request),
 		async () => delay(100),
-		() => log('Pending uploads took too long to clear, exiting'),
+		() => {
+			request.error = new Error('Pending uploads took too long to clear, exiting')
+			request.link.uploading = false
+			if (requests.includes(request)) {
+				requests.splice(requests.indexOf(request), 1)
+			}
+		},
 		600
 	)
 
-	if (pendingUpload.error) {
-		throw pendingUpload.error
+	if (request.error) {
+		throw request.error
 	}
-	return pendingUpload.link
+	return request.link
 }
 
 export async function uploadHexToLinkByUuid(uuid, hexString) {
@@ -340,18 +161,25 @@ export async function uploadHexToLinkByUuid(uuid, hexString) {
 }
 
 export async function enterBootloaderMode(link) {
-	if (pendingEnterBootloaderMode.filter(request => request.link === link).length) {
+	const requests = pendingEnterBootloaderMode
+	if (requests.filter(request => request.link === link).length) {
 		throw new Error('There is an ongoing request to enter bootloader mode on this link.')
 	}
 
 	const request = {
-		link
+		link,
 	}
-	pendingEnterBootloaderMode.push(request)
+	requests.push(request)
 	await asyncSafeWhile(
-		async () => pendingEnterBootloaderMode.includes(request),
+		async () => requests.includes(request),
 		async () => delay(100),
-		() => log('Pending enter bootloader took too long to clear, exiting'),
+		() => {
+			request.error = new Error('Pending enter bootloader took too long to clear, exiting')
+			request.link.enteringBootloaderMode = false
+			if (requests.includes(request)) {
+				requests.splice(requests.indexOf(request), 1)
+			}
+		},
 		600
 	)
 
@@ -366,18 +194,25 @@ export async function enterBootloaderModeByUuid(uuid) {
 }
 
 export async function exitBootloaderMode(link) {
-	if (pendingExitBootloaderMode.filter(request => request.link === link).length) {
+	const requests = pendingExitBootloaderMode
+	if (requests.filter(request => request.link === link).length) {
 		throw new Error('There is an ongoing request to exit bootloader mode on this link.')
 	}
 
 	const request = {
-		link
+		link,
 	}
-	pendingExitBootloaderMode.push(request)
+	requests.push(request)
 	await asyncSafeWhile(
-		async () => pendingExitBootloaderMode.includes(request),
+		async () => requests.includes(request),
 		async () => delay(100),
-		() => log('Pending exit bootloader took too long to clear, exiting'),
+		() => {
+			request.error = new Error('Pending exit bootloader took too long to clear, exiting')
+			request.link.exitingBootloaderMode = false
+			if (requests.includes(request)) {
+				requests.splice(requests.indexOf(request), 1)
+			}
+		},
 		600
 	)
 
@@ -393,19 +228,26 @@ export async function exitBootloaderModeByUuid(uuid) {
 
 async function continuouslyMonitor(firstRun, linksMap, links, uploads, enterBootloaderModes, exitBootloaderModes) {
 	if (!monitoring) {
-		log('Monitoring disabled. Call init() to start')
+		log('Monitor - Monitoring disabled. Call init() to start')
 		return
 	}
-	const runtimeId = generateUniqueId()
-	logOpenCollapsed(`Monitor - Runtime ID: ${runtimeId}`)
 
-	if (typeof document !== 'undefined' && document.hidden) {
-		log('Tab is not visible. Stopping task.')
-		logClose(true)
+	if (requestingAccess) {
+		log('Monitor - Currently requesting access. Rescheduling.')
 		await delay(200 + (Math.random() * 100))
 		continuouslyMonitor(false, linksMap, links, uploads, enterBootloaderModes, exitBootloaderModes)
 		return
 	}
+
+	if (typeof document !== 'undefined' && document.hidden) {
+		log('Monitor - Tab is not visible. Rescheduling.')
+		await delay(200 + (Math.random() * 100))
+		continuouslyMonitor(false, linksMap, links, uploads, enterBootloaderModes, exitBootloaderModes)
+		return
+	}
+
+	const runtimeId = generateUniqueId()
+	logOpenCollapsed(`Monitor - Runtime ID: ${runtimeId}`)
 
 	logOpenCollapsed('Lock Thread')
 	try {
@@ -441,7 +283,7 @@ async function continuouslyMonitor(firstRun, linksMap, links, uploads, enterBoot
 	inPlaceArrayDiff(links, removedLinks)
 	removedLinks.forEach(link => linksMap.delete(link))
 	log('Removed links', removedLinks)
-	saveLinksStateToLocalStorage(links)
+	await saveLinksStateToLocalStorage(links)
 	logClose()
 
 	logOpenCollapsed('Find new links')
@@ -455,20 +297,20 @@ async function continuouslyMonitor(firstRun, linksMap, links, uploads, enterBoot
 	inPlaceArrayConcat(links, foundLinks)
 	foundLinks.forEach(link => linksMap.set(link, link))
 	log('Found links', foundLinks)
-	saveLinksStateToLocalStorage(links)
+	await saveLinksStateToLocalStorage(links)
 	logClose()
 
 	log('Current links', links)
 
-	logOpenCollapsed('Update access permissions')
-	await Promise.all(links.map(async (link) => {
-		if (link.bootloader) {
-			await setRequestAccessStatus({ bootloader : true })
-		} else {
-			await setRequestAccessStatus({ program : true })
-		}
-	}))
-	logClose()
+	// logOpenCollapsed('Update access permissions')
+	// await Promise.all(links.map(async (link) => {
+	// 	if (link.bootloader) {
+	// 		await setRequestAccessStatus({ bootloader : true })
+	// 	} else {
+	// 		await setRequestAccessStatus({ program : true })
+	// 	}
+	// }))
+	// logClose()
 
 	logOpenCollapsed('Update links info (if needed)')
 	try {
@@ -476,7 +318,7 @@ async function continuouslyMonitor(firstRun, linksMap, links, uploads, enterBoot
 	} catch (error) {
 		log(error)
 	}
-	saveLinksStateToLocalStorage(links)
+	await saveLinksStateToLocalStorage(links)
 	logClose()
 
 	logOpenCollapsed('Handle pending enter bootloader mode')
@@ -485,7 +327,7 @@ async function continuouslyMonitor(firstRun, linksMap, links, uploads, enterBoot
 	} catch (error) {
 		log(error)
 	}
-	saveLinksStateToLocalStorage(links)
+	await saveLinksStateToLocalStorage(links)
 	logClose()
 
 	logOpenCollapsed('Handle pending exit bootloader mode')
@@ -494,7 +336,7 @@ async function continuouslyMonitor(firstRun, linksMap, links, uploads, enterBoot
 	} catch (error) {
 		log(error)
 	}
-	saveLinksStateToLocalStorage(links)
+	await saveLinksStateToLocalStorage(links)
 	logClose()
 
 	logOpenCollapsed('Handle pending uploads')
@@ -503,7 +345,7 @@ async function continuouslyMonitor(firstRun, linksMap, links, uploads, enterBoot
 	} catch (error) {
 		log(error)
 	}
-	saveLinksStateToLocalStorage(links)
+	await saveLinksStateToLocalStorage(links)
 	logClose()
 
 	logOpenCollapsed('Unlock Thread')
@@ -539,24 +381,27 @@ async function handlePendingUploads(links, uploads) {
 	}
 }
 
-async function handleSinglePendingUpload(links, upload, uploads) {
+async function handleSinglePendingUpload(links, request, requests) {
 	logOpenCollapsed('Upload')
-	upload.link.uploading = true
-	saveLinksStateToLocalStorage(links)
+	request.link.uploading = true
+	await saveLinksStateToLocalStorage(links)
 	try {
-		await uploadHexToSingleLink(
-			upload.link,
-			upload.hexString,
-			() => saveLinksStateToLocalStorage(links)
-		)
-		log('%cSuccess', 'color:green')
+		await uploadHexToSingleLink({
+			link      : request.link,
+			hexString : request.hexString,
+			onUpdate  : () => saveLinksStateToLocalStorage(links),
+		})
+		log('%cUpload success', 'color:green')
 	} catch (error) {
 		log('%cUpload error', 'color:red', error)
-		upload.error = error
+		request.error = error
 	}
-	upload.link.uploading = false
-	uploads.splice(uploads.indexOf(upload), 1)
-	saveLinksStateToLocalStorage(links)
+	request.link.uploading = false
+	if (requests.includes(request)) {
+		requests.splice(requests.indexOf(request), 1)
+	}
+
+	await saveLinksStateToLocalStorage(links)
 	logClose()
 }
 
@@ -569,19 +414,21 @@ async function handlePendingEnterBootloaderModes(links, requests) {
 }
 
 async function handleSinglePendingEnterBootloaderMode(links, request, requests) {
-	logOpenCollapsed('Enter Bootloader Mode')
+	logOpenCollapsed('Enter bootloader mode')
 	request.link.enteringBootloaderMode = true
-	saveLinksStateToLocalStorage(links)
+	await saveLinksStateToLocalStorage(links)
 	try {
 		await guaranteeSingleLinkEnterBootloaderMode(request.link)
-		log('%cSuccess', 'color:green')
+		log('%cEnter bootloader success!', 'color:green')
 	} catch (error) {
-		log('%cEnter Bootloader error', 'color:red', error)
+		log('%cEnter bootloader error', 'color:red', error)
 		request.error = error
 	}
 	request.link.enteringBootloaderMode = false
-	requests.splice(requests.indexOf(request), 1)
-	saveLinksStateToLocalStorage(links)
+	if (requests.includes(request)) {
+		requests.splice(requests.indexOf(request), 1)
+	}
+	await saveLinksStateToLocalStorage(links)
 	logClose()
 }
 
@@ -594,19 +441,21 @@ async function handlePendingExitBootloaderModes(links, requests) {
 }
 
 async function handleSinglePendingExitBootloaderMode(links, request, requests) {
-	logOpenCollapsed('Exit Bootloader Mode')
+	logOpenCollapsed('Exit bootloader mode')
 	request.link.exitingBootloaderMode = true
-	saveLinksStateToLocalStorage(links)
+	await saveLinksStateToLocalStorage(links)
 	try {
 		await guaranteeSingleLinkExitBootloaderMode(request.link)
-		log('%cSuccess', 'color:green')
+		log('%Exit bootloader success!', 'color:green')
 	} catch (error) {
-		log('%Exit Bootloader error', 'color:red', error)
+		log('%Exit bootloader error', 'color:red', error)
 		request.error = error
 	}
 	request.link.exitingBootloaderMode = false
-	requests.splice(requests.indexOf(request), 1)
-	saveLinksStateToLocalStorage(links)
+	if (requests.includes(request)) {
+		requests.splice(requests.indexOf(request), 1)
+	}
+	await saveLinksStateToLocalStorage(links)
 	logClose()
 }
 

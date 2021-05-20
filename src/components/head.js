@@ -7,7 +7,7 @@ const Head = ({
 	ogUrl,
 	ogDescription,
 	ogImage,
-	ogType
+	ogType,
 }) =>
 	<DocumentHead>
 		{ogTitle &&
@@ -51,7 +51,7 @@ Head.propTypes = {
 	ogUrl         : PropTypes.string,
 	ogDescription : PropTypes.string,
 	ogImage       : PropTypes.string,
-	ogType        : PropTypes.string
+	ogType        : PropTypes.string,
 }
 
 export default Head

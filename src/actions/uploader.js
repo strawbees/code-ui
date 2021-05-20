@@ -23,8 +23,8 @@ import {
 const {
 	publicRuntimeConfig : {
 		CHROME_EXTENSION_ID,
-		PREFER_WEB_SERIAL
-	}
+		PREFER_WEB_SERIAL,
+	},
 } = getConfig()
 
 export const startUpload = generateAction(UPLOADER_START_UPLOAD)
@@ -36,7 +36,7 @@ export const uploadHex = (runtimeId, hex) => async (dispatch, getState) => {
 	dispatch(startUpload({ runtimeId, hex }))
 	fireGlobalEvent('track-event', {
 		category : 'quirkbot',
-		action   : 'upload-start'
+		action   : 'upload-start',
 	})
 
 	const testLink = qbcompoundLinkSelector()(getState(), { runtimeId })
@@ -64,7 +64,7 @@ export const uploadHex = (runtimeId, hex) => async (dispatch, getState) => {
 		dispatch(setUploadSuccess({ runtimeId, hex }))
 		fireGlobalEvent('track-event', {
 			category : 'quirkbot',
-			action   : 'upload-success'
+			action   : 'upload-success',
 		})
 	} catch ({ name : errorName, message : errorMessage }) {
 		let error
@@ -75,7 +75,7 @@ export const uploadHex = (runtimeId, hex) => async (dispatch, getState) => {
 		dispatch(setUploadError({ runtimeId, hex, error }))
 		fireGlobalEvent('track-event', {
 			category : 'quirkbot',
-			action   : 'upload-error'
+			action   : 'upload-error',
 		})
 	}
 }
@@ -88,7 +88,7 @@ export const uploadMutipleHexes = (runtimeId, hexes, updateBootloader) => async 
 			fireGlobalEvent('track-event', {
 				category : 'quirkbot',
 				action   : 'auto-bootloader-update',
-				label    : bootloaderVersion
+				label    : bootloaderVersion,
 			})
 			const compilerBootloaderUpdaterHex = compilerBootloaderUpdaterHexSelector()(getState())
 			hexArray.unshift(compilerBootloaderUpdaterHex)

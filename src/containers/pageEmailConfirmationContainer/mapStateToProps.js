@@ -3,12 +3,12 @@ import urlVarsSelector from 'src/selectors/urlVarsSelector'
 
 const mapStateToProps = () => createSelector(
 	[
-		urlVarsSelector()
+		urlVarsSelector(),
 	],
 	(
 		urlVars
 	) => ({
-		token : urlVars.t
+		token : urlVars.t,
 	})
 )
 

@@ -4,11 +4,11 @@ import tinycolor from 'tinycolor2'
 import StrawbeesCloudEmailConfirmation from 'src/components/strawbeesCloudEmailConfirmation'
 import {
 	GRAY,
-	WHITE
+	WHITE,
 } from 'src/constants/colors'
 
 const PageEmailConfirmation = ({
-	onSubmit
+	onSubmit,
 }) =>
 	<div className='root pageEmailConfirmation'>
 		<style jsx>{`

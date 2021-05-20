@@ -2,7 +2,7 @@ import autobindDispatchToActionCreators from 'src/utils/autobindDispatchToAction
 import { toggleFoldedCategory } from 'src/editors/flow/actions'
 
 const mapDispatchToProps = autobindDispatchToActionCreators({
-	toggleFoldedCategory
+	toggleFoldedCategory,
 })
 
 export default mapDispatchToProps

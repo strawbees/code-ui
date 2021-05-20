@@ -98,7 +98,7 @@ export const setGlobalOneTimeStatement = (structure, statement) => {
 export const getBlockBody = (block, structure) => {
 	const tempStructure = {
 		...structure,
-		body : ''
+		body : '',
 	}
 	parseBlock(block, tempStructure)
 	return tempStructure.body
@@ -146,7 +146,7 @@ export const assembleStructure = structure => {
 
 	const {
 		header,
-		body
+		body,
 	} = structure
 
 	const raw = `${header}\n` +
@@ -230,7 +230,7 @@ export const generateCode = source => {
 		definitions            : {},
 		oneTimeAssignments     : {},
 		oneTimeStatements      : {},
-		body                   : ''
+		body                   : '',
 	}
 
 	if (json && json.block) {

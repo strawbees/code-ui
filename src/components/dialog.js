@@ -5,7 +5,7 @@ import S from 'src/containers/sManager'
 import {
 	WHITE,
 	GREEN,
-	RED
+	RED,
 } from 'src/constants/colors'
 
 const Dialog = ({
@@ -107,7 +107,7 @@ Dialog.defaultProps = {
 Dialog.propTypes = {
 	children : PropTypes.oneOfType([
 		PropTypes.string,
-		PropTypes.element
+		PropTypes.element,
 	]),
 	titleKey              : PropTypes.string,
 	titleValue            : PropTypes.string,

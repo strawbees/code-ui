@@ -1,5 +1,5 @@
 import {
-	DISCONNECTED
+	DISCONNECTED,
 } from './core/board'
 import {
 	Node,

@@ -70,7 +70,7 @@ const Header = ({
 			onClick={() => fireGlobalEvent('track-event', {
 				category : 'ui',
 				action   : 'go to profile',
-				label    : 'logo'
+				label    : 'logo',
 			})}>
 			<div className='logo'>
 				<SvgIcon icon={logoIcon} />

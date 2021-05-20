@@ -1,4 +1,4 @@
-# Paulo Barcelos <paulo@strawbees.com>, 2021. #zanata
+# Kristofer Hagbard <kristofer@strawbees.com>, 2021. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
@@ -6,8 +6,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2021-04-21 06:46-0400\n"
-"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
+"PO-Revision-Date: 2021-05-07 08:48-0400\n"
+"Last-Translator: Kristofer Hagbard <kristofer@strawbees.com>\n"
 "Language-Team: Swedish\n"
 "Language: sv\n"
 "X-Generator: Zanata 4.6.2\n"
@@ -71,11 +71,11 @@ msgstr "Blinka"
 
 msgctxt "coding_cards.block.card.touch-and-wink.title"
 msgid "Touch and wink"
-msgstr "Rör vid för att blinka"
+msgstr "Vidrör för att blinka"
 
 msgctxt "coding_cards.block.card.touch-to-shine.title"
 msgid "Touch to shine"
-msgstr "Rör vid för att lysa"
+msgstr "Vidrör för att tända"
 
 msgctxt "coding_cards.block.card.shine-in-the-dark.title"
 msgid "Shine in the dark"
@@ -99,11 +99,11 @@ msgstr "Växla färg"
 
 msgctxt "coding_cards.block.card.touch-to-siren-light.title"
 msgid "Touch to siren light"
-msgstr "Rör vid för sirenljus"
+msgstr "Vidrör för sirenljus"
 
 msgctxt "coding_cards.block.card.touch-to-change-color.title"
 msgid "Touch to change color"
-msgstr "Rör vid för att ändra färg"
+msgstr "Vidrör för att ändra färg"
 
 msgctxt "coding_cards.block.card.change-color-in-the-dark.title"
 msgid "Change color in the dark"
@@ -127,11 +127,11 @@ msgstr "Fram och tillbaka"
 
 msgctxt "coding_cards.block.card.touch-and-trap.title"
 msgid "Touch and trap"
-msgstr "Rör vid och fånga"
+msgstr "Vidrör och fånga upp"
 
 msgctxt "coding_cards.block.card.touch-to-hold-position.title"
 msgid "Touch to hold position"
-msgstr "Rör vid för att hålla position"
+msgstr "Vidrör för att hålla position"
 
 msgctxt "coding_cards.block.card.shake-in-the-dark.title"
 msgid "Shake in the dark"
@@ -147,7 +147,7 @@ msgstr "Svep"
 
 msgctxt "coding_cards.block.card.touch-to-switch-position.title"
 msgid "Touch to switch position"
-msgstr "Rör vid för att byta position"
+msgstr "Vidrör för att byta position"
 
 msgctxt "coding_cards.block.card.type-a-key-over-and-over.title"
 msgid "Type a key over and over"
@@ -155,11 +155,11 @@ msgstr "Tryck ner tangent om och om igen"
 
 msgctxt "coding_cards.block.card.touch-to-write-a-word.title"
 msgid "Touch to write a word"
-msgstr "Rör vid för att skriva ett ord"
+msgstr "Vidrör för att skriva ett ord"
 
 msgctxt "coding_cards.block.card.touch-to-steer.title"
 msgid "Touch to steer"
-msgstr "Rör vid för att styra"
+msgstr "Vidrör för att styra"
 
 msgctxt "coding_cards.block.card.press-a-key-in-the-dark.title"
 msgid "Press a key in the dark"
@@ -175,4 +175,148 @@ msgstr "Skriv en sekvens av bokstäver"
 
 msgctxt "coding_cards.block.card.touch-to-alternate-keys.title"
 msgid "Touch to alternate keys"
-msgstr "Rör vid för att växla tangent"
+msgstr "Vidrör för att växla tangent"
+
+msgctxt "coding_cards.flow.card.advance-motor-position.title"
+msgid "Advance motor position"
+msgstr "Avancera motorns position"
+
+msgctxt "coding_cards.flow.card.back-and-forth.title"
+msgid "Back and forth"
+msgstr "Fram och tillbaka"
+
+msgctxt "coding_cards.flow.card.blink-randomly-30percent-of-the-time.title"
+msgid "Blink randomly 30% of the time"
+msgstr "Blinka slumpmässigt 30% av tiden"
+
+msgctxt "coding_cards.flow.card.blink.title"
+msgid "Blink"
+msgstr "Blinka"
+
+msgctxt "coding_cards.flow.card.change-both-color-and-brightness.title"
+msgid "Change both color and brightness"
+msgstr "Ändra både färg och ljusstyrka"
+
+msgctxt "coding_cards.flow.card.change-fade-speed.title"
+msgid "Change fade speed"
+msgstr "Ändra hastighet på dimningen."
+
+msgctxt "coding_cards.flow.card.change-movement-amplitude.title"
+msgid "Change movement amplitude"
+msgstr "Ändra rörelsens amplitud"
+
+msgctxt "coding_cards.flow.card.circle-leds.title"
+msgid "Circle LEDs"
+msgstr "Cirkulera LEDs"
+
+msgctxt "coding_cards.flow.card.complex-brightness-change.title"
+msgid "Complex brightness change"
+msgstr "Komplex förändring av ljusstyrkan"
+
+msgctxt "coding_cards.flow.card.control-2-leds.title"
+msgid "Control 2 LEDs"
+msgstr "Kontrollera 2 LEDs"
+
+msgctxt "coding_cards.flow.card.control-motor-and-led.title"
+msgid "Control Motor and LED"
+msgstr "Kontrollera Motor och LED"
+
+msgctxt "coding_cards.flow.card.double-oscillation.title"
+msgid "Double oscillation"
+msgstr "Dubbla svängningar "
+
+msgctxt "coding_cards.flow.card.flicker.title"
+msgid "Flicker"
+msgstr "Flimmer"
+
+msgctxt "coding_cards.flow.card.light-to-different-movements.title"
+msgid "Light to different movements"
+msgstr "Ljus styr olika rörelser"
+
+msgctxt "coding_cards.flow.card.move-randomly.title"
+msgid "Move Randomly"
+msgstr "Slumpmässig rörelse"
+
+msgctxt "coding_cards.flow.card.move-and-blink-independently.title"
+msgid "Move and blink independently"
+msgstr "Oberoende rörelse och och blinkning"
+
+msgctxt "coding_cards.flow.card.move-in-the-dark.title"
+msgid "Move in the dark"
+msgstr "Rör sig i mörker"
+
+msgctxt "coding_cards.flow.card.press-left-and-right-keys.title"
+msgid "Press left and right keys"
+msgstr "Tryck på vänster och höger tangent"
+
+msgctxt "coding_cards.flow.card.random-color.title"
+msgid "Random Color"
+msgstr "Slumpmässiga färger"
+
+msgctxt "coding_cards.flow.card.shake.title"
+msgid "Shake"
+msgstr "Skaka"
+
+msgctxt "coding_cards.flow.card.shine-in-the-dark.title"
+msgid "Shine in the dark"
+msgstr "Lys i mörkret"
+
+msgctxt "coding_cards.flow.card.switch-fast-and-slow-movement.title"
+msgid "Switch fast and slow movement"
+msgstr "Byt mellan snabb och långsam rörelse"
+
+msgctxt "coding_cards.flow.card.switch-steady-and-random-light.title"
+msgid "Switch steady and random light"
+msgstr "Byt mellan statiskt och slumpmässigt ljus"
+
+msgctxt "coding_cards.flow.card.switch-twinkle-eye.title"
+msgid "Switch twinkle eye"
+msgstr "Slå på och av skimrande öga"
+
+msgctxt "coding_cards.flow.card.touch-light-switch.title"
+msgid "Touch light switch"
+msgstr "Berörings ljusknapp"
+
+msgctxt "coding_cards.flow.card.touch-to-change-color-10-times.title"
+msgid "Touch to change color 10 times"
+msgstr "Vidrör för att ändra färg 10 gånger"
+
+msgctxt "coding_cards.flow.card.touch-to-light.title"
+msgid "Touch to light"
+msgstr "Vidrör för att tända"
+
+msgctxt "coding_cards.flow.card.touch-to-move.title"
+msgid "Touch to move"
+msgstr "Vidrör för att starta rörelse"
+
+msgctxt "coding_cards.flow.card.touch-to-siren-light.title"
+msgid "Touch to siren light"
+msgstr "Vidrör för varningsljus"
+
+msgctxt "coding_cards.flow.card.touch-to-wave.title"
+msgid "Touch to wave"
+msgstr "Vidrör för att vinka"
+
+msgctxt "coding_cards.flow.card.touch-to-wink.title"
+msgid "Touch to wink"
+msgstr "Vidrör för att blinka"
+
+msgctxt "coding_cards.flow.card.trigger-movement-pattern.title"
+msgid "Trigger movement pattern"
+msgstr "Aktivera rörelsemönster"
+
+msgctxt "coding_cards.flow.card.twinkle-for-4-seconds-at-startup.title"
+msgid "Twinkle for 4 seconds at startup"
+msgstr "Skimra i 4 sekunder vid start"
+
+msgctxt "coding_cards.flow.card.type-key-over-and-over.title"
+msgid "Type key over and over"
+msgstr "Tryck på tangent igen och igen"
+
+msgctxt "coding_cards.flow.card.wave-quick-ands-slow.title"
+msgid "Wave quick ands slow"
+msgstr "Vinka snabbt och långsamt"
+
+msgctxt "coding_cards.flow.card.write-hello-in-one-second.title"
+msgid "Write HELLO in one second"
+msgstr "Skriv HELLO på en sekund"

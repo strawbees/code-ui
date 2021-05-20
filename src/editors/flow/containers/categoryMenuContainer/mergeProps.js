@@ -13,7 +13,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
 		...stateProps,
 		...otherDispatchProps,
 		...otherOwnProps,
-		toggle : () => toggleFoldedCategory(id)
+		toggle : () => toggleFoldedCategory(id),
 	}
 }
 

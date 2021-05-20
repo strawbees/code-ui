@@ -1,7 +1,7 @@
 import blocks from '../blocks'
 import {
 	registerGenerators,
-	generateCode
+	generateCode,
 } from './parsing'
 
 const generators = Object.keys(blocks).reduce((acc, id) => {

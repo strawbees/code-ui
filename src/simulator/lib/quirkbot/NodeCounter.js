@@ -2,7 +2,7 @@ import {
 	Node,
 	Input,
 	Output,
-	HasTrigger
+	HasTrigger,
 } from './CommonNodeIncludes'
 
 export class Counter extends HasTrigger(Node) {
@@ -46,7 +46,7 @@ export class Counter extends HasTrigger(Node) {
 			id       : this.getTypedId(),
 			trigger  : this.trigger.get(),
 			amount   : this.amount.get(),
-			out      : this.out.get()
+			out      : this.out.get(),
 		}
 	}
 }

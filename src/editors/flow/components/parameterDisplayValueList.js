@@ -10,7 +10,7 @@ const ParameterDisplayValueList = ({
 	color,
 	value,
 	onChange,
-	items
+	items,
 }) =>
 	<div className='root parameterDisplayValueList'>
 		<style jsx>{`

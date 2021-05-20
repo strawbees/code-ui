@@ -10,9 +10,9 @@ const definition = () => ({
 			type  : 'input_value',
 			name  : 'NUM2',
 			check : 'Number',
-		}
+		},
 	],
 	category   : window.Blockly.Categories.operators,
-	extensions : ['colours_operators', 'output_number']
+	extensions : ['colours_operators', 'output_number'],
 })
 export default definition

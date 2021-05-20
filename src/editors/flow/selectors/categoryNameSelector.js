@@ -3,7 +3,7 @@ import makeStringSelector from 'src/selectors/makeStringSelector'
 
 const categoryNameSelector = () => createSelector(
 	[
-		(state, { id }) => makeStringSelector(`flow.category.${id}`)(state)
+		(state, { id }) => makeStringSelector(`flow.category.${id}`)(state),
 	],
 	(
 		name

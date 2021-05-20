@@ -4,7 +4,7 @@ import {
 	GREEN,
 	BLUE,
 	GRAY,
-	YELLOW
+	YELLOW,
 } from 'src/constants/colors'
 
 window.ace.define('ace/theme/quirkbot', ['require', 'exports', 'module', 'ace/lib/dom'], (acequire, exports) => {

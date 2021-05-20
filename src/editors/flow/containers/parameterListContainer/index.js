@@ -8,7 +8,7 @@ import mergeProps from './mergeProps'
 
 const ParameterListContainer = ({
 	id,
-	parameterIds
+	parameterIds,
 }) =>
 	<React.Fragment>
 		{parameterIds && parameterIds.map((parameterId) =>

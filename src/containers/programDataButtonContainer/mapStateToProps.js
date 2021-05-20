@@ -14,7 +14,7 @@ const mapStateToProps = () => createSelector(
 		{
 			name,
 			type,
-			source
+			source,
 		},
 	) => {
 		let url = makeStringSelector(`routes.${type}`)(state)
@@ -22,12 +22,12 @@ const mapStateToProps = () => createSelector(
 		url += LZString.compressToEncodedURIComponent(JSON.stringify({
 			name,
 			type,
-			source
+			source,
 		}))
 		return {
 			name,
 			type,
-			url
+			url,
 		}
 	}
 )

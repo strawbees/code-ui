@@ -38,7 +38,7 @@ const errorKeys = {
 class StrawbeesCloudResetPassword extends React.Component {
 	state = {
 		displaySuccess : false,
-		disabled       : false
+		disabled       : false,
 	}
 
 	getFormApi = (api) => {
@@ -86,7 +86,7 @@ class StrawbeesCloudResetPassword extends React.Component {
 		} = this
 		const {
 			displaySuccess,
-			disabled
+			disabled,
 		} = this.state
 		return (
 			<div className='root strawbeesCloudResetPassword'>
@@ -122,7 +122,7 @@ class StrawbeesCloudResetPassword extends React.Component {
 }
 
 StrawbeesCloudResetPassword.propTypes = {
-	onSubmit : PropTypes.func
+	onSubmit : PropTypes.func,
 }
 
 export default StrawbeesCloudResetPassword

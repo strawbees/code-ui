@@ -9,13 +9,14 @@ import {
 
 import {
 	setCompilerBootloaderUpdaterHex,
+	setCompilerFactoryCodeHex,
 } from 'src/actions/compiler'
 
 import {
 	setHiddenGlobalBanners,
 } from 'src/actions/ui'
 import {
-	setup as setupEditor
+	setup as setupEditor,
 } from 'src/actions/editor'
 
 const mapDispatchToProps = autobindDispatchToActionCreators({
@@ -26,6 +27,7 @@ const mapDispatchToProps = autobindDispatchToActionCreators({
 	setHiddenGlobalBanners,
 	setupEditor,
 	setCompilerBootloaderUpdaterHex,
+	setCompilerFactoryCodeHex,
 	setOS,
 })
 

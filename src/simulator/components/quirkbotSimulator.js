@@ -36,7 +36,7 @@ const QuirkbotSimulator = ({
 	</div>
 
 QuirkbotSimulator.defaultProps = {
-	width : 320
+	width : 320,
 }
 
 QuirkbotSimulator.propTypes = {

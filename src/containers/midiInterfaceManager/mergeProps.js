@@ -2,7 +2,7 @@ import {
 	init,
 	getLinks,
 	enableLogs,
-	disableLogs
+	disableLogs,
 } from 'quirkbot-midi-interface'
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => ({

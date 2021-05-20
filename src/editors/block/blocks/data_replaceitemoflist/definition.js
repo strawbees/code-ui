@@ -1,20 +1,18 @@
-import s from 'src/utils/s'
-
-const definition = (strings) => ({
-	message0 : Blockly.Msg.DATA_REPLACEITEMOFLIST,
+const definition = () => ({
+	message0 : window.Blockly.Msg.DATA_REPLACEITEMOFLIST,
 	args0    : [
 		{
 			type : 'input_value',
-			name : 'INDEX'
+			name : 'INDEX',
 		},
 		{
 			type          : 'field_variable',
 			name          : 'LIST',
-			variableTypes : ['list']
+			variableTypes : ['list'],
 		},
 		{
 			type : 'input_value',
-			name : 'ITEM'
+			name : 'ITEM',
 		},
 	],
 	category          : 'data-lists',

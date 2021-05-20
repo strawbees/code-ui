@@ -3,12 +3,13 @@ const path = require('path')
 
 // default configs
 const defaults = {
-	CANONICAL_URL                 : 'http://code-dev.strawbees.com:3000',
+	CANONICAL_URL                 : 'http://localhost:3000',
 	COMPILER_URL                  : 'https://strawbees-compiler-stage.us-east-1.elasticbeanstalk.com',
 	STRAWBEES_CODE_API_URL        : 'https://cloud-api.strawbees.com',
 	LOCALES                       : ['en', 'pt_BR', 'sv', 'zh-Hans-CN', 'ja'],
 	ROOT_PATH                     : '',
 	SHARE_LINKS_OMIT_ROOT_PATH    : true,
+	USE_SERVICE_WORKER            : false,
 	PREFER_WEB_SERIAL             : true,
 	URL_SCHEME                    : 'strawbeescode',
 	GAID                          : 'UA-NNNNNN-N',
@@ -22,7 +23,7 @@ const defaults = {
 		{ usbVendorId : 0x2886, usbProductId : 0xF005, isBootloader : true },
 		{ usbVendorId : 0x2886, usbProductId : 0xF006, isBootloader : true },
 		{ usbVendorId : 0x2886, usbProductId : 0xF007, isBootloader : true },
-	]
+	],
 }
 
 // configs for common known targets
@@ -33,6 +34,7 @@ const commonConfigs = {
 		STRAWBEES_CODE_API_URL   : 'https://cloud-api.strawbees.com',
 		LOCALES                  : ['en', 'pt_BR', 'sv', 'zh-Hans-CN', 'ja'],
 		ROOT_PATH                : '',
+		USE_SERVICE_WORKER       : false,
 		PREFER_WEB_SERIAL        : true,
 		URL_SCHEME               : 'strawbeescode-stage',
 		GAID                     : 'UA-69443341-7',
@@ -45,6 +47,7 @@ const commonConfigs = {
 		STRAWBEES_CODE_API_URL   : 'https://cloud-api.strawbees.com',
 		LOCALES                  : ['en', 'pt_BR', 'sv', 'zh-Hans-CN', 'ja'],
 		ROOT_PATH                : '',
+		USE_SERVICE_WORKER       : true,
 		PREFER_WEB_SERIAL        : false,
 		URL_SCHEME               : 'strawbeescode',
 		GAID                     : 'UA-69443341-8',
@@ -57,6 +60,7 @@ const commonConfigs = {
 		STRAWBEES_CODE_API_URL   : 'https://cloud-api-stage.strawbees.com',
 		LOCALES                  : ['en', 'pt_BR', 'sv', 'zh-Hans-CN', 'ja'],
 		ROOT_PATH                : '/ui',
+		USE_SERVICE_WORKER       : false,
 		PREFER_WEB_SERIAL        : true,
 		URL_SCHEME               : 'strawbeescode-stage',
 		GAID                     : 'UA-69443341-7',
@@ -69,12 +73,13 @@ const commonConfigs = {
 		STRAWBEES_CODE_API_URL   : 'https://cloud-api.strawbees.com',
 		LOCALES                  : ['en', 'pt_BR', 'sv', 'zh-Hans-CN', 'ja'],
 		ROOT_PATH                : '/ui',
+		USE_SERVICE_WORKER       : false,
 		PREFER_WEB_SERIAL        : false,
 		URL_SCHEME               : 'strawbeescode',
 		GAID                     : 'UA-69443341-8',
 		CHROME_EXTENSION_ID      : 'jgbaejhmonchgianepimdbcpfgcbdmam',
 		DOWNLOAD_DESKTOP_APP_URL : 'https://downloads.strawbees.com/code-desktop',
-	}
+	},
 }
 // generate the final config, allowing overwritting from env
 const config = {
@@ -86,7 +91,7 @@ const config = {
 			acc[key] = process.env[key]
 		}
 		return acc
-	}, {}))
+	}, {})),
 }
 
 module.exports = {
@@ -116,10 +121,10 @@ module.exports = {
 				options : {
 					svgoConfig : {
 						plugins : {
-							removeViewBox : false
-						}
-					}
-				}
+							removeViewBox : false,
+						},
+					},
+				},
 			}],
 		})
 		/**
@@ -133,5 +138,5 @@ module.exports = {
 			src    : path.resolve(__dirname, 'src'),
 		}
 		return webpackConfig
-	}
+	},
 }

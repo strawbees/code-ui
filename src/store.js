@@ -42,7 +42,7 @@ const initStore = () => {
 			collapsed : true,
 			diff      : true,
 			// avoid clutering from the simulator
-			predicate : (_, action) => action.type !== 'SIMULATOR_SET_INTERNAL_DATA'
+			predicate : (_, action) => action.type !== 'SIMULATOR_SET_INTERNAL_DATA',
 		}))
 	}
 

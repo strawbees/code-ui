@@ -12,7 +12,7 @@ const mapStateToProps = () => createSelector(
 		homeUrl,
 	) => ({
 		editorMenu : queryRef === 'flow' || queryRef === 'block' || queryRef === 'text',
-		homeUrl
+		homeUrl,
 	})
 )
 

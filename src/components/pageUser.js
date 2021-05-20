@@ -4,11 +4,11 @@ import tinycolor from 'tinycolor2'
 import UserProfileAvatar from 'src/components/userProfileAvatar'
 import StoragePublicProfileProgramListContainer from 'src/containers/storagePublicProfileProgramListContainer'
 import {
-	GRAY
+	GRAY,
 } from 'src/constants/colors'
 
 const PageUser = ({
-	username
+	username,
 }) =>
 	<div className='root pageUser'>
 		<style jsx>{`
@@ -36,7 +36,7 @@ const PageUser = ({
 PageUser.defaultProps = {}
 
 PageUser.propTypes = {
-	username : PropTypes.string
+	username : PropTypes.string,
 }
 
 export default PageUser

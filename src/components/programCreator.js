@@ -10,7 +10,7 @@ import { fireGlobalEvent } from 'src/utils/globalEvents'
 import {
 	WHITE,
 	BLACK,
-	YELLOW
+	YELLOW,
 } from 'src/constants/colors'
 
 const ProgramCreator = ({
@@ -78,7 +78,7 @@ const ProgramCreator = ({
 				onClick={() => fireGlobalEvent('track-event', {
 					category : 'ui',
 					action   : 'new flow program',
-					label    : 'program creator'
+					label    : 'program creator',
 				})}>
 				<SvgIcon icon={createIcons.flow} />
 				<S value='flow.base.title'/>
@@ -87,7 +87,7 @@ const ProgramCreator = ({
 				onClick={() => fireGlobalEvent('track-event', {
 					category : 'ui',
 					action   : 'new block program',
-					label    : 'program creator'
+					label    : 'program creator',
 				})}>
 				<SvgIcon icon={createIcons.block} />
 				<S value='block.base.title'/>
@@ -96,7 +96,7 @@ const ProgramCreator = ({
 				onClick={() => fireGlobalEvent('track-event', {
 					category : 'ui',
 					action   : 'new text program',
-					label    : 'program creator'
+					label    : 'program creator',
 				})}>
 				<SvgIcon icon={createIcons.text} />
 				<S value='text.base.title'/>
@@ -110,7 +110,7 @@ const ProgramCreator = ({
 				fireGlobalEvent('track-event', {
 					category : 'ui',
 					action   : 'upload factory program',
-					label    : 'program creator'
+					label    : 'program creator',
 				})
 			}}
 		/>

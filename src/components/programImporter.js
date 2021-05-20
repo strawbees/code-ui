@@ -15,7 +15,7 @@ import {
 class ProgramImporter extends React.Component {
 	state = {
 		invalid : false,
-		program : null
+		program : null,
 	}
 
 	onDrop = async (files) => {
@@ -55,7 +55,7 @@ class ProgramImporter extends React.Component {
 	render() {
 		const {
 			invalid,
-			program
+			program,
 		} = this.state
 		const {
 			onProgramClick,
@@ -156,7 +156,7 @@ class ProgramImporter extends React.Component {
 							getRootProps,
 							getInputProps,
 							isDragActive,
-							isDragReject
+							isDragReject,
 						}) =>
 							<div {...getRootProps()}
 								className={`dropzone ${isDragActive ? 'active' : ''} ${isDragReject ? 'reject' : ''}`}>
@@ -190,7 +190,7 @@ class ProgramImporter extends React.Component {
 }
 
 ProgramImporter.propTypes = {
-	onProgramClick : PropTypes.func
+	onProgramClick : PropTypes.func,
 }
 
 export default ProgramImporter

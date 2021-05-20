@@ -9,7 +9,7 @@ import {
 	RED,
 	GREEN,
 	BLUE,
-	YELLOW
+	YELLOW,
 } from 'src/constants/colors'
 
 const SingleBoardStatus = ({
@@ -109,7 +109,7 @@ const SingleBoardStatus = ({
 
 SingleBoardStatus.defaultProps = {
 	status : 'busy',
-	scale  : 1
+	scale  : 1,
 }
 
 SingleBoardStatus.propTypes = {

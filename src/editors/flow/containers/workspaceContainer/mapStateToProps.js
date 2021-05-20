@@ -13,7 +13,7 @@ const mapStateToProps = () => createSelector(
 	) => ({
 		instanceIds,
 		width,
-		height
+		height,
 	})
 )
 

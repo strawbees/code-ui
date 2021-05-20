@@ -26,7 +26,7 @@ class LightSensorRange extends React.Component {
 	render() {
 		const {
 			onKeyDown,
-			cancelEvent
+			cancelEvent,
 		} = this
 		const {
 			value,
@@ -195,7 +195,7 @@ class LightSensorRange extends React.Component {
 LightSensorRange.defaultProps = {
 	min  : 0,
 	max  : 1,
-	step : 0.01
+	step : 0.01,
 }
 
 LightSensorRange.propTypes = {

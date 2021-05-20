@@ -8,7 +8,7 @@ const parameterValueRawSelector = () => createSelector(
 	[
 		stateSelector(),
 		propsIdSelector(),
-		propsInstanceIdSelector()
+		propsInstanceIdSelector(),
 	],
 	(
 		state,
