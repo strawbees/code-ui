@@ -36,7 +36,7 @@
     "file-saver": "^2.0.5",
     "informed": "^3.32.0",
     "lz-string": "^1.4.4",
-    "next": "^10.2.2",
+    "next": "^11.1.3",
     "next-redux-wrapper": "^6.0.2",
     "node-fetch": "^2.6.1",
     "platform": "^1.3.6",
