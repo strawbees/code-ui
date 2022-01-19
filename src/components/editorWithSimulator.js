@@ -5,11 +5,17 @@ import ExpandIcon from 'src/simulator/assets/images/general/expand.svg'
 import CollapseIcon from 'src/simulator/assets/images/general/collapse.svg'
 import SimulatorVMManager from 'src/simulator/containers/simulatorVMManager'
 import QuirkbotSimulatorContainer from 'src/simulator/containers/quirkbotSimulatorContainer'
-
+import getConfig from 'next/config'
 import {
 	GRAY,
 	WHITE,
 } from 'src/constants/colors'
+
+const {
+	publicRuntimeConfig : {
+		ENABLE_SIMULATOR,
+	},
+} = getConfig()
 
 const EditorWithSimulator = ({
 	children,
@@ -53,7 +59,7 @@ const EditorWithSimulator = ({
 		`}</style>
 		<div className='editor'>
 			{children}
-			{false && // TODO: reenable simulator
+			{ENABLE_SIMULATOR &&
 				<TabButton
 					className='simulator-toggle'
 					textColor={WHITE}
@@ -65,9 +71,10 @@ const EditorWithSimulator = ({
 					onClick={isSimulatorVisible ? hideSimulator : showSimulator}
 				/>
 			}
+
 		</div>
-		{isSimulatorVisible && <SimulatorVMManager/>}
-		{isSimulatorVisible &&
+		{ENABLE_SIMULATOR && isSimulatorVisible && <SimulatorVMManager/>}
+		{ENABLE_SIMULATOR && isSimulatorVisible &&
 			<div className='simulator-container'>
 				<QuirkbotSimulatorContainer />
 			</div>
