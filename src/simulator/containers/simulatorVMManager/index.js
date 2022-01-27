@@ -42,7 +42,7 @@ const SimulatorVMManager = ({
 		iframeContainerRef.current.style.right = '0'
 		iframeContainerRef.current.style.width = '1px'
 		iframeContainerRef.current.style.height = '1px'
-		iframeContainerRef.current.innerHTML = `<iframe class='simulator-sandbox-iframe' sandbox="allow-scripts ${process.env.NODE_ENV === 'development' ? 'allow-same-origin' : ''}" src="${simulatorSandboxUrl}"/>`
+		iframeContainerRef.current.innerHTML = `<iframe class='simulator-sandbox-iframe' sandbox="allow-scripts ${(true || process.env.NODE_ENV === 'development') ? 'allow-same-origin' : ''}" src="${simulatorSandboxUrl}"/>`
 		const iframe = iframeContainerRef.current.querySelector('.simulator-sandbox-iframe')
 		onMessageHandlerRef.current = (e) => {
 			if ((process.env.NODE_ENV !== 'development' && e.origin !== 'null') || e.source !== iframe.contentWindow) {
