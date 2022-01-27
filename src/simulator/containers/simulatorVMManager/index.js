@@ -87,7 +87,7 @@ const SimulatorVMManager = ({
 				key   : 'data',
 				value : externalDataRef.current,
 			}, '*')
-			handleInternalDataTimerRef.current = requestAnimationFrame(handleInternalData, 0)
+			handleInternalDataTimerRef.current = requestAnimationFrame(handleInternalData)
 		}
 		handleInternalDataTimerRef.current = requestAnimationFrame(handleInternalData)
 
