@@ -37,7 +37,11 @@ const SimulatorVMManager = ({
 	useEffect(() => {
 		iframeContainerRef.current = document.createElement('div')
 		iframeContainerRef.current.className = 'simulator-sandbox'
-		iframeContainerRef.current.style.display = 'none'
+		iframeContainerRef.current.style.position = 'fixed'
+		iframeContainerRef.current.style.bottom = '0'
+		iframeContainerRef.current.style.right = '0'
+		iframeContainerRef.current.style.width = '1px'
+		iframeContainerRef.current.style.height = '1px'
 		iframeContainerRef.current.innerHTML = `<iframe class='simulator-sandbox-iframe' sandbox="allow-scripts ${process.env.NODE_ENV === 'development' ? 'allow-same-origin' : ''}" src="${simulatorSandboxUrl}"/>`
 		const iframe = iframeContainerRef.current.querySelector('.simulator-sandbox-iframe')
 		onMessageHandlerRef.current = (e) => {
