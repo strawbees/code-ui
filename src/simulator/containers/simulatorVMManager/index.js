@@ -37,8 +37,13 @@ const SimulatorVMManager = ({
 	useEffect(() => {
 		iframeContainerRef.current = document.createElement('div')
 		iframeContainerRef.current.className = 'simulator-sandbox'
-		iframeContainerRef.current.style.display = 'none'
-		iframeContainerRef.current.innerHTML = `<iframe class='simulator-sandbox-iframe' sandbox="allow-scripts ${process.env.NODE_ENV === 'development' ? 'allow-same-origin' : ''}" src="${simulatorSandboxUrl}"/>`
+		iframeContainerRef.current.style.position = 'fixed'
+		iframeContainerRef.current.style.bottom = '0'
+		iframeContainerRef.current.style.right = '0'
+		iframeContainerRef.current.style.width = '10px'
+		iframeContainerRef.current.style.height = '10px'
+		iframeContainerRef.current.style.pointerEvents = 'none'
+		iframeContainerRef.current.innerHTML = `<iframe class='simulator-sandbox-iframe' sandbox="allow-scripts ${(process.env.NODE_ENV === 'development') ? 'allow-same-origin' : ''}" src="${simulatorSandboxUrl}"/>`
 		const iframe = iframeContainerRef.current.querySelector('.simulator-sandbox-iframe')
 		onMessageHandlerRef.current = (e) => {
 			if ((process.env.NODE_ENV !== 'development' && e.origin !== 'null') || e.source !== iframe.contentWindow) {
@@ -87,7 +92,7 @@ const SimulatorVMManager = ({
 				key   : 'data',
 				value : externalDataRef.current,
 			}, '*')
-			handleInternalDataTimerRef.current = requestAnimationFrame(handleInternalData, 0)
+			handleInternalDataTimerRef.current = requestAnimationFrame(handleInternalData)
 		}
 		handleInternalDataTimerRef.current = requestAnimationFrame(handleInternalData)
 

@@ -59,8 +59,8 @@ class SerialInterfaceManager extends React.Component {
 
 		// If we are using QuirkbotWebSerial, make it avaiable right away
 		if (PREFER_WEB_SERIAL && 'serial' in navigator) {
-			const {	setQbserialAvailable } = this.props
-			QuirkbotWebSerial.enableLogs()
+			const { setQbserialAvailable } = this.props
+			// QuirkbotWebSerial.enableLogs()
 			QuirkbotWebSerial.init()
 			this.getModel.current = QuirkbotWebSerial.getModel
 			setQbserialAvailable(true)

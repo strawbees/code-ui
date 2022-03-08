@@ -54,11 +54,11 @@ msgid "value of light sensor %1"
 msgstr "%1の光センサーの値"
 
 msgctxt "block.blocks.output_continuous_servo_direction.message0"
-msgid "set continuos servo %1 direction to %2"
+msgid "set continuous servo %1 direction to %2"
 msgstr "連続自動制御モーター %1 の向きを %2 にする"
 
 msgctxt "block.blocks.output_continuous_servo_speed.message0"
-msgid "set continuos servo %1 speed to %2"
+msgid "set continuous servo %1 speed to %2"
 msgstr "連続自動制御モーター %1 の速度を %2 にする"
 
 msgctxt "block.blocks.output_led.message0"
