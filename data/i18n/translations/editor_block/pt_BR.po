@@ -55,11 +55,11 @@ msgid "value of light sensor %1"
 msgstr "valor do Sensor de luminosidade no %1"
 
 msgctxt "block.blocks.output_continuous_servo_direction.message0"
-msgid "set continuos servo %1 direction to %2"
+msgid "set continuous servo %1 direction to %2"
 msgstr "mude o sentido do Servo contínuo %1 para %2"
 
 msgctxt "block.blocks.output_continuous_servo_speed.message0"
-msgid "set continuos servo %1 speed to %2"
+msgid "set continuous servo %1 speed to %2"
 msgstr "mude a velocidade do Servo contínuo %1 para %2"
 
 msgctxt "block.blocks.output_led.message0"
