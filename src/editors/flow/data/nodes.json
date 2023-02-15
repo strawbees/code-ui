@@ -554,7 +554,7 @@
 						"PLACE_LEFT_ARM_FRONT",
 						"PLACE_RIGHT_ARM_FRONT",
 						"PLACE_LEFT_LEG_FRONT",
-						"PLACE_LEFT_ARM_FRONT"
+						"PLACE_RIGHT_LEG_FRONT"
 					]
 				},
 				"code": "place"
