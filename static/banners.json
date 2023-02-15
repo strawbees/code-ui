@@ -1,2 +1,41 @@
 {
+	"app_announcement_20230215" : {
+		"configs" : [
+			"default",
+			"web_stage",
+			"web_production"
+		],
+		"content" : {
+			"en" : {
+				"title" : "Download the app now to continue uploading",
+				"content" : "From the next Chrome update, uploading to Quirkbots will only be possible using the app. Please download it as soon as possible!<br>[Download the app now.](/download/)",
+				"backgroundColor" : "red",
+				"textColor" : "white"
+			},
+			"ja" : {
+				"title" : "Download the app now to continue uploading",
+				"content" : "From the next Chrome update, uploading to Quirkbots will only be possible using the app. Please download it as soon as possible!<br>[Download the app now.](/download/)",
+				"backgroundColor" : "red",
+				"textColor" : "white"
+			},
+			"sv" : {
+				"title" : "LADDA NER APPEN NU FÖR ATT KUNNA FORTSÄTTA ANVÄNDA QUIRKBOT",
+				"content" : "För att kunna du ska kunna fortsätta ladda upp din kod till Quirkbot måste du använda appen.<br>Nästa uppdatering från chrome kommer ta bort möjligheten för oss att använda webbtjänsten.<br>[Ladda ner appen nu.](/download/)",
+				"backgroundColor" : "red",
+				"textColor" : "white"
+			},
+			"pt_BR" : {
+				"title" : "Baixe o aplicativo para continuar usando Quirkbots",
+				"content" : "A partir da próxima atualização do Chrome, upload para Quirkbots só será possível com o aplicativo. Faça o download o quanto antes!<br>[Fazer o download agora.](/pt-br/download/)",
+				"backgroundColor" : "red",
+				"textColor" : "white"
+			},
+			"zh-Hans-CN" : {
+				"title" : "立即下载应用程序以便继续上传功能",
+				"content" : "自下一次Chrome更新后  ，您将只能使用我们的应用程序来上传编程文件至Quirkbot。请尽快下载应用程序<br>[立即下载应用程序](/zh-hans-cn/download/)",
+				"backgroundColor" : "red",
+				"textColor" : "white"
+			}
+		}
+	}
 }
